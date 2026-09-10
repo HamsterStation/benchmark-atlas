@@ -30,6 +30,8 @@ class GitHubSyncTests(unittest.TestCase):
         self.git("remote", "add", "origin", str(self.bare))
         self.git("push", "origin", "main")
         self.calls = []
+        self.pr_bodies = []
+        self.pr_created = False
         self.env = patch.dict(os.environ, {"GITHUB_ACTIONS": "true", "ATLAS_WRITE_ENABLED": "true", "GITHUB_REPOSITORY": "test/atlas", "GITHUB_RUN_ID": "1", "GITHUB_SHA": "a" * 40})
         self.env.start()
         self.root_patch = patch.object(sync, "ROOT", self.repo)
@@ -46,7 +48,12 @@ class GitHubSyncTests(unittest.TestCase):
     def local_run(self, args, cwd=None, check=True):
         if args[0] == "gh":
             self.calls.append(args)
-            return subprocess.CompletedProcess(args, 0, "[]" if args[1:3] == ["pr", "list"] else "", "")
+            if "--body-file" in args:
+                self.pr_bodies.append(Path(args[args.index("--body-file") + 1]).read_text())
+            output = json.dumps([{"number": 1}] if self.pr_created else []) if args[1:3] == ["pr", "list"] else ""
+            if args[1:3] == ["pr", "create"]:
+                self.pr_created = True
+            return subprocess.CompletedProcess(args, 0, output, "")
         args = [str(self.bare) if a == "https://github.com/test/atlas.git" else a for a in args]
         return subprocess.run(args, cwd=cwd or self.repo, check=check, capture_output=True, text=True)
 
@@ -72,6 +79,8 @@ class GitHubSyncTests(unittest.TestCase):
         atomic_json(self.repo / "data/triage/arxiv-2609.00001.json", {"decision": "priority_review", "test_only": True})
         self.invoke("review")
         self.assertTrue(any(c[1:3] == ["pr", "create"] for c in self.calls))
+        self.assertIn("累计待审核草稿：1 篇", self.pr_bodies[0])
+        self.assertIn("atlas-review/data/drafts/arxiv-2609.00001.json", self.pr_bodies[0])
         main = subprocess.check_output(["git", "--git-dir", str(self.bare), "ls-tree", "-r", "--name-only", "main"], text=True)
         review = subprocess.check_output(["git", "--git-dir", str(self.bare), "ls-tree", "-r", "--name-only", "atlas-review"], text=True)
         self.assertNotIn("data/drafts", main)
@@ -83,6 +92,18 @@ class GitHubSyncTests(unittest.TestCase):
         with patch.object(sync, "run", return_value=subprocess.CompletedProcess([], 128, "", "network failure")):
             with self.assertRaises(RuntimeError):
                 sync.branch_exists("remote", "atlas-state")
+
+    def test_review_reuses_the_existing_branch_and_pr(self):
+        path = self.repo / "data/drafts/arxiv-2609.00001.json"
+        atomic_json(path, {"title": "TEST ONLY first draft"})
+        atomic_json(self.repo / "data/triage/arxiv-2609.00001.json", {"decision": "priority_review"})
+        self.invoke("review")
+        atomic_json(path, {"title": "TEST ONLY updated draft"})
+        self.invoke("review")
+        self.assertEqual(sum(c[1:3] == ["pr", "create"] for c in self.calls), 1)
+        self.assertEqual(sum(c[1:3] == ["pr", "edit"] for c in self.calls), 1)
+        self.assertIn("TEST ONLY updated draft", self.pr_bodies[-1])
+        self.assertEqual((self.repo / "notes/human.md").read_text(), "Manual note remains unchanged.")
 
     def test_local_invocation_cannot_push(self):
         with patch.dict(os.environ, {"GITHUB_ACTIONS": "false"}), patch("sys.argv", ["github_sync.py", "persist"]):

@@ -264,7 +264,7 @@ class Collector:
         self.triage_validator = Draft7Validator(read_json(self.root / "schemas/triage.schema.json"), format_checker=FormatChecker())
         self.triage_results = {}
         self.validator = Draft7Validator(read_json(self.root / "schemas/paper.schema.json"), format_checker=FormatChecker())
-        self.counts = {key: 0 for key in ["new", "updated", "skipped", "pending_review", "failed", "pages", "model_calls"]}
+        self.counts = {key: 0 for key in ["new", "updated", "reassessed", "skipped", "pending_review", "failed", "pages", "model_calls"]}
         self.errors, self.changes = [], []
         self.reported = set()
         self.known = {}
@@ -294,7 +294,7 @@ class Collector:
         if queued and queued["entry"]["version"] >= version:
             self.report_once("skipped", aid)
             return
-        policy_changed = seen and seen.get("quality_policy") != self.policy_hash and seen.get("status") == "out_of_scope"
+        policy_changed = seen and seen["version"] == version and seen.get("quality_policy") != self.policy_hash and seen.get("status") == "out_of_scope"
         if seen and not policy_changed and (seen["version"] > version or (seen["version"] == version and seen["hash"] == digest)):
             self.report_once("skipped", aid)
             return
@@ -302,7 +302,7 @@ class Collector:
             self.state["seen"][aid] = {"version": version, "hash": digest, "status": "existing"}
             self.report_once("skipped", aid)
             return
-        kind = "updated" if seen or known or queued else "new"
+        kind = "reassessed" if policy_changed else "updated" if seen or known or queued else "new"
         self.state["queue"][aid] = {"entry": entry, "hash": digest, "status": "queued", "attempts": 0, "error": None, "next_attempt_at": None, "kind": kind}
         self.report_once(kind, aid)
 

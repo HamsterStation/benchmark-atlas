@@ -13,6 +13,7 @@ def digest(result, limit=2):
     lines = ["## 论文采集与质量候选", "",
              "以下是摘要级证据筛选，不是论文质量认证。自动收录仍需人工核对贡献、数据、指标和污染风险。", "",
              f"新增 {result.get('new', 0)} / 更新 {result.get('updated', 0)} / 跳过 {result.get('skipped', 0)} / 失败 {result.get('failed', 0)}；读取 {result.get('pages', 0)} 页。",
+             f"规则变更复筛 {result.get('reassessed', 0)} 篇（与论文版本更新分开计数）。",
              f"优先审核 {counts.get('priority_review', 0)} / 待补充证据 {counts.get('needs_evidence', 0)} / 范围排除 {counts.get('excluded', 0)}。",
              f"本轮保存草稿 {len(result.get('changes', []))}；剩余队列 {result.get('queue_remaining', 0)}。", ""]
     if result.get("daily_intake"):
