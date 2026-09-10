@@ -8,12 +8,8 @@
     },
     "cc0b0cc6cecde53ac5cd": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (abs:\"large language model\" OR abs:\"language models\" OR abs:LLM OR abs:LLMs OR abs:\"foundation models\")",
-      "successful_until": "2026-09-10T05:39:06Z",
-      "active": {
-        "since": "2026-09-03T05:39:06+00:00",
-        "until": "2026-09-10T05:47:04Z",
-        "start": 350
-      }
+      "successful_until": "2026-09-10T05:47:04Z",
+      "active": null
     }
   },
   "queue": {
@@ -26091,6 +26087,106 @@
         "abstract": "Language-model checkpoints are commonly selected by pretraining loss or benchmark scores, assuming that the highest-scoring checkpoint will remain the best starting point for subsequent training. We show that this assumption can fail in a full 30B mixture-of-experts training pipeline. The checkpoints that perform better after the full downstream training stack also have higher solution density, i.e., retain downstream performance under local weight perturbations."
       },
       "hash": "3e3b7c1db57e0a7d49e5cc05d84e0c66195804aaf866977b72f0fc2edd1a3f2a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "updated"
+    },
+    "2609.09865": {
+      "entry": {
+        "arxiv_id": "2609.09865",
+        "version": 1,
+        "title": "Keep Evaluation Fair: Detecting Data Leakage in Code Generation Benchmarks via Membership Inference Attacks",
+        "authors": [
+          "Dongdong Zhao",
+          "Jian Chen",
+          "Guancheng Lin",
+          "Jianwen Xiang",
+          "Jacky Wai Keung",
+          "Xiao Yu"
+        ],
+        "published": "2026-09-09T08:16:51Z",
+        "updated": "2026-09-09T08:16:51Z",
+        "abstract": "Code generation benchmarks are widely used to evaluate Large Language Models (LLMs), but benchmark data leakage into training sets can inflate performance and undermine evaluation validity. DetectLeak, a method specifically designed for code generation benchmark leakage detection, relies on perplexity scores to identify likely leaked samples. However, perplexity mainly reflects general familiarity with code patterns and may perform poorly on complex or rare samples. It also overlooks other useful signals, such as code similarity, functional correctness, and semantic representations. To address these limitations, we propose CGMIA (Code-Generation-specific Membership Inference Attack), a method for detecting leakage in code generation benchmarks. CGMIA fine-tunes a shadow model on a subset of benchmark samples to construct labeled member and non-member data. For each sample, it collects the input prompt, generated code, and reference solution, and extracts expert features, including CodeBLEU, edit distance, test pass rate, and perplexity, together with semantic features from CodeBERT embeddings. An integrated learning module combines these features to capture both surface-level memorization signals and deeper behavioral patterns, enabling a classifier to predict whether a sample was included in the target model's training set. Experiments on eight code generation benchmarks show that CGMIA outperforms eight existing membership inference methods in most cases. It also effectively detects known leaked APPS samples in StarCoder-7B's training data."
+      },
+      "hash": "ccd7636dd321cbf853cb23edc75d9d3d46cb864fee20c94858997f3663b55ac9",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "updated"
+    },
+    "2609.10293": {
+      "entry": {
+        "arxiv_id": "2609.10293",
+        "version": 1,
+        "title": "GANDR: Claim Auditing for Verifiable Legal Answer Generation",
+        "authors": [
+          "Chen Qian",
+          "Yimeng Wang",
+          "Yu Chen",
+          "Lingfei Wu",
+          "Andreas Stathopoulos"
+        ],
+        "published": "2026-09-09T15:08:09Z",
+        "updated": "2026-09-09T15:08:09Z",
+        "abstract": "In high-stakes domains such as legal practice, a language-model answer is only useful to the extent that a reader can verify each claim against the source the system cites. Current grounded-generation pipelines score the answer as a whole, so a correct conclusion can rest on fabricated or loosely matched citations and still score well. Closing this gap requires both a system built for per-claim verification and an evaluation that measures it. We introduce GANDR (Grounded ANswer DRafter), a two-agent system in which a Drafter writes an answer in a structured legal-reasoning format and a separate Critic, with the same view as a human verifier, audits each claim against its cited source and emits a per-claim audit trace on every round. We pair it with a strict correctness criterion requiring every citation to resolve to a passage the retriever returned. On a 185-item legal benchmark where all six systems share one backbone, one retrieval surface, and one citation instruction, GANDR ranks first on every primary metric, reaching 70.8% strict accuracy and leading the strongest baseline by 11.3 points (p<0.01). Reverting the protocol-anchored commit rule lowers strict accuracy by 22.7 points, and the strict lead stays positive on three further backbones, at +3.2 to +6.5 points. This lead traces to the Drafter configuration and the protocol-anchored commit, not to rewriting. Against two law-trained annotators the audit flags under-supported claims at F1 0.84 as a binary detector, while its four-way verdict labels agree only weakly and are advisory. Code is available upon request."
+      },
+      "hash": "5a0222fa3f4f20e49df99b4ce65416d0ee3bbbbce6a86616d7aad55b04452359",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "updated"
+    },
+    "2609.10321": {
+      "entry": {
+        "arxiv_id": "2609.10321",
+        "version": 1,
+        "title": "On-Policy Distillation for Vision-Language Model Adaptation, an Effective Paradigm on Low-Quality Multimodal Data",
+        "authors": [
+          "Hongyuan Zhang",
+          "Xianda Guo",
+          "Yanlun Peng",
+          "Qianlong Yang",
+          "Yubin Guo",
+          "Pinhan Fu",
+          "Mulin Chen",
+          "Xiaozhen Qiao",
+          "Ping Luo"
+        ],
+        "published": "2026-09-09T15:26:28Z",
+        "updated": "2026-09-09T15:26:28Z",
+        "abstract": "Knowledge distillation offers an efficient route to transfer a task-adapted vision-language teacher to a compact student. The training target in current vision-language distillation methods is typically constructed from the teacher prediction and applied uniformly to all training samples, making it unreliable under class and domain shifts. In this paper, we argue that distillation target construction should be treated as a dynamic training decision rather than a fixed recipe. To this end, we propose OnPoKD, an on-policy distillation framework for vision-language model adaptation. To the best of our knowledge, OnPoKD is the first framework that applies on-policy distillation to vision-language model adaptation by learning target construction as a policy decision. OnPoKD learns a lightweight controller that constructs sample-wise adaptive targets using reliability and disagreement cues from the teacher model, student model, and zero-shot prior. Instead of relying on a fixed teacher prediction, the controller dynamically balances teacher supervision, zero-shot prior guidance, and hard-label anchoring through bounded policy actions, allowing the distillation target to adapt to varying sample reliability and training stages. The policy controller is updated with validation feedback, encouraging target construction to optimize transferability rather than merely fitting the training distribution. Since the controller is only used during training, OnPoKD can be seamlessly integrated into existing vision-language distillation pipelines while preserving the original inference architecture and test-time cost. Extensive experiments on Base-to-novel generalization and Cross-dataset transfer benchmarks show that OnPoKD consistently improves over strong vision-language distillation baselines."
+      },
+      "hash": "5ac8afc502e05ca2945b02b3d5da6a8ab6951cefcb296b2180c357ea713e7f6e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "updated"
+    },
+    "2609.10445": {
+      "entry": {
+        "arxiv_id": "2609.10445",
+        "version": 1,
+        "title": "Building Multilingual Bridges: Data Mixing as the Pillar of Generalization for In-Language Reasoning",
+        "authors": [
+          "Mehrnaz Mofakhami",
+          "Ananya Sahu",
+          "Alejandro R. Salamanca",
+          "Daniel D'souza",
+          "Alexandre Berard",
+          "Thomas Euyang",
+          "Marzieh Fadaee",
+          "Julia Kreutzer"
+        ],
+        "published": "2026-09-09T16:56:25Z",
+        "updated": "2026-09-09T16:56:25Z",
+        "abstract": "Reasoning language models have made substantial advances on a variety of complex tasks, yet their capabilities remain overwhelmingly English-centric: models primarily reason in English regardless of the language they are prompted in. This is inaccessible for non-English-speaking users, risks losing the intent of the original question, and forgoes knowledge more readily expressed in the target language. In this work, we advance L2 reasoning, the ability of a model to reason consistently in the language of the user's prompt, thus building an in-language bridge between the prompt and the answer. We approach this problem from a data-centric angle, investigating how to optimize data composition and scheduling in SFT for reasoning generalization. Building Tiny Aya L2-Thinker at 3.35B scale, we achieve an L2 reasoning rate above 93% across 60 languages on 6 benchmarks spanning math, commonsense reasoning, instruction following, open-ended generation, and cultural reasoning while keeping performance strong. We show the path to generalizing L2 reasoning to held-out languages goes through broader language coverage, readily available multilingual non-reasoning data, and a sufficient English reasoning backbone. These findings indicate that reasoning is a language-agnostic behavior that can be transferred across typologically diverse languages through careful data mixing and without requiring reasoning supervision in every target language. We release our model weights and multilingual reasoning data to support further research on accessible, in-language reasoning."
+      },
+      "hash": "0334d9f0c88c52457fbca1edcf7fe75e8076b07e8e029c6045dc83c927fd1cfc",
       "status": "queued",
       "attempts": 0,
       "error": null,
