@@ -68,3 +68,25 @@ test('taxonomy and rules remain navigable on mobile', async ({ page }) => {
   await expect(page.locator('body')).toContainText('不使用 MDX');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
 });
+
+test('automatic entries are labeled separately and can be filtered', async ({ page }) => {
+  await page.goto('./');
+  const papers = await (await page.request.get('search-index.json')).json();
+  const automatic = papers.filter((p: any) => p.review.status === 'auto_unreviewed');
+  await page.locator('[name=review]').selectOption('auto_unreviewed');
+  await expect(page.locator('.paper-card:visible')).toHaveCount(automatic.length);
+  if (automatic.length) {
+    await expect(page.locator('#automatic-section')).toBeVisible();
+    await expect(page.locator('#automatic-heading')).toHaveText('自动收录、未审核');
+    for (const p of automatic) {
+      expect(p.review.reviewedAt).toBeNull();
+      expect(p.reproduction.status).toBe('unverified');
+      const detail = await page.goto(`papers/${p.id}/`);
+      expect(detail?.status()).toBe(200);
+      await expect(page.locator('.notice')).toContainText('自动收录、未审核');
+      await expect(page.locator('.date-grid > div').filter({ hasText: '本站核查日期' }).locator('strong')).toHaveText('待核查');
+    }
+  } else {
+    await expect(page.locator('#automatic-section')).toBeHidden();
+  }
+});

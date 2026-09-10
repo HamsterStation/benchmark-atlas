@@ -8,7 +8,7 @@
 
 默认站点入口为 **[GitHub Pages](https://hamsterstation.github.io/benchmark-atlas/)**。本地地址只用于开发和测试。
 
-站点通过 GitHub Actions 构建并发布到 Pages；部署结果见仓库的 **Deploy reviewed site** 工作流。仓库公开，默认发布模式为 review。当前已启用每日 **北京时间 10:20** 采集，每天最多 2 篇待审核草稿；未审核草稿不直接更新正式网站。
+站点通过 GitHub Actions 构建并发布到 Pages；部署结果见仓库的 **Deploy benchmark site** 工作流。当前按维护者要求采用 **auto 自动收录模式**，每天 **北京时间 10:20** 采集、最多处理 2 篇候选。通过证据筛选、字段校验和构建测试的条目自动进入网站的“自动收录、未审核”区，无需逐篇批准 PR；机器检查不冒充人工审核或实测复现。
 
 ## 本地开始
 
@@ -114,7 +114,7 @@ JSON Schema 校验必填字段、枚举、真实日期、HTTPS URL 和未知字�
 
 默认至少 7/11，并且必须同时有“新基准贡献”“评分协议”和“资源链接”，才进入 `priority_review`。通用训练数据集不视为新基准，需明确面向评测。这只是**审核顺序分数，不是质量认证**；链接仅提取自摘要或 arXiv comment，不抓取或执行链接内容，也不直接称为已核对的官方资源。新论文缺少这些摘要级证据时进入 `needs_evidence`，材料保留在队列；不是据此宣布论文低质量。
 
-**每天最多处理 2 篇候选，不凑数。** `config/quality.json` 中 `max_candidates_per_run` 和 `max_candidates_per_day` 均为 2，按 `Asia/Shanghai` 自然日计数。每日 ID/版本名额写入持久 state，手动重跑共用上限，dry-run 不消耗名额。评分相同时优先最近更新的论文；未处理候选下次继续。无模型时只保存元数据和证据，简介留空；后续生成也占当日名额。模型只对达到门槛的候选工作，已有成功结果不会因重复采集再次生成。正式网站仍需人工审核后更新，自动送审不代表已经上线。
+**每天最多处理 2 篇候选，不凑数。** `config/quality.json` 中 `max_candidates_per_run` 和 `max_candidates_per_day` 均为 2，按 `Asia/Shanghai` 自然日计数。每日 ID/版本名额写入持久 state，手动重跑共用上限，dry-run 不消耗名额。评分相同时优先最近更新的论文；未处理候选下次继续。无模型时只保存元数据和证据，简介留空；后续生成也占当日名额。模型只对达到门槛的候选工作，已有成功结果不会因重复采集再次生成。auto 模式通过校验后直接部署，review 模式则等待人工提升和合并。
 
 `data/triage/` 单独保存原文证据、缺失信号、决定、规则版本/哈希、材料版本/哈希和分析日期。相同材料和规则重复运行不会更新时间或重复改文件。所有 triage 和未达门槛材料保存在 `atlas-state`；review PR 只携带优先候选及其证据。自动化不能修改 curated 和人工笔记。
 
@@ -172,8 +172,8 @@ dry-run 不写资料、队列、采集成功时间，不调用模型，不创建
 
 | 模式 | 行为 |
 | --- | --- |
-| `review`（默认） | 生成或更新固定 `atlas-review` 分支上的一个待审核 PR。只改机器草稿与状态快照；不自动合并。人工提升、核查并合并 curated 后，默认分支部署。只合并 drafts 不会让它进入正式索引。 |
-| `auto`（显式配置） | 通过 schema 和内容边界校验的新增模型草稿进入索引，状态固定为“自动收录、未审核”。元数据空简介、uncertain 与 uses_benchmark 不发布。该次采集工作流直接构建、上传 Pages artifact 并部署，不依赖机器人 push 触发另一个工作流。 |
+| `review`（可切回） | 生成或更新固定 `atlas-review` 分支上的一个待审核 PR。只改机器草稿与状态快照；不自动合并。人工提升、核查并合并 curated 后，默认分支部署。只合并 drafts 不会让它进入正式索引。 |
+| `auto`（当前采用） | 通过 schema 和内容边界校验的新增模型草稿进入索引，状态固定为“自动收录、未审核”。元数据空简介、uncertain 与 uses_benchmark 不发布。该次采集工作流直接构建、上传 Pages artifact 并部署，不依赖机器人 push 触发另一个工作流。 |
 
 不自动写默认分支。review PR 更新会合并默认分支，冲突则停下等待人工解决，不 force push。`GITHUB_TOKEN` 创建 PR / 推送分支不一定触发其他工作流，所以采集工作流自身已经做校验、测试与构建；受保护分支要求单独 CI 状态时，可从 Actions 的 Validate and test 手动选择 atlas-review 分支运行，或另行配置符合团队政策的 GitHub App。项目不绕过这些要求。
 
@@ -181,14 +181,14 @@ dry-run 不写资料、队列、采集成功时间，不调用模型，不创建
 
 ## 需要你设置的部署选项
 
-当前仓库已完成 Pages、采集开关、模型 Secret/变量和 PR 创建权限配置。以下清单用于迁移或重建；维护者日常只需审核 PR，更换 Key 时在 Actions Secrets 中更新 `MODEL_API_KEY`。
+当前仓库已完成 Pages、采集开关、模型 Secret/变量和权限配置。以下清单用于迁移或重建；当前 auto 模式无需逐篇审核 PR，更换 Key 时在 Actions Secrets 中更新 `MODEL_API_KEY`。
 
 1. 审阅 GitHub 仓库中的项目。仓库名可以是 `benchmark-atlas`。是否公开由你决定；私有仓库可用的 Pages 能力取决于账户计划。
 2. Settings → Pages → Build and deployment → Source 选择 **GitHub Actions**。配置 `github-pages` environment 允许默认分支部署，按需保留人工审批。
 3. Settings → Actions → General 允许需要的官方 Actions，允许工作流创建 PR。提供的 job 仅申请所需 `contents: write`、`pull-requests: write` 或 `pages: write` + `id-token: write`；PR CI 只有 `contents: read`。组织策略可进一步限制，遇到拒绝不会自动提升权限。
 4. 首次只手动运行采集 workflow，保持 dry-run。确认日志和审核流程后，设置 Repository Variable **`COLLECTION_ENABLED=true`** 才启用每日持久采集。
-5. 确认要公开部署后，设置 **`PAGES_ENABLED=true`**，再手动运行 Deploy reviewed site。它只允许从默认分支部署。
-6. 长期保持 **`PUBLISH_MODE=review`**；如果你决定使用自动收录，再设 `PUBLISH_MODE=auto`，且启用 Pages。手动选择 auto 只影响那次采集；后续部署模式仍以仓库变量为准。
+5. 确认要公开部署后，设置 **`PAGES_ENABLED=true`**，再手动运行 Deploy benchmark site。它只允许从默认分支部署。
+6. 当前采用 **`PUBLISH_MODE=auto`**，且已启用 Pages。需要恢复人工送审时把变量改为 `review`。手动采集的 mode 默认 auto，仅影响当次运行；日程和常规部署以仓库变量为准。本地构建默认值在 `config/publication.json`，可用环境变量覆盖。
 
 基础采集、review PR 和 Pages 不需要额外 PAT，默认使用仓库提供的 GITHUB_TOKEN。需要模型时才配置上一节变量/Secret。不要把 Key 写入 JSON、Markdown 或 workflow。流式响应同样有总字节数与时间限制，截断、异常完成或工具调用会被拒绝，不会被当成成功简介。
 
@@ -218,9 +218,9 @@ Python 测试覆盖分页、断点续采、重叠窗口、重复运行、版本�
 
 验收报告和截图见 `outputs/`。2026-09-10 的质量采集 dry-run 完整读取 30 页，发现 1,201 个唯一候选，优先审核 51、待补证据 940、排除 210，预览草稿 2，失败 0；没有调用模型或写入生产队列。精简报告为 `outputs/quality-dry-run.md`；完整 JSON 仅保留本地或 Actions artifact，不反复提交大体积采集快照。
 
-当前验证包括 9 个 TypeScript 测试、40 个 Python 测试、8 个生产页面浏览器测试、类型检查、生产构建及 actionlint。用户配置的流式兼容模型已实际返回中文草稿并通过论文 schema；开发与测试仍不需要 Key。模型必须输出单个贡献类型和 JSON Unicode 转义，服务返回乱码或回显凭据时拒绝保存。真实 arXiv Markdown 链接解析问题已修复，新增回归测试，并对 1,201 条真实材料的链接执行了构建校验。
+当前验证包括 9 个 TypeScript 测试、40 个 Python 测试、10 个生产页面浏览器测试、类型检查、生产构建及 actionlint。auto 模式使用持久状态中的两篇真实模型草稿在隔离目录构建，已验证 12 条索引、独立自动收录区域、桌面与手机筛选、详情页及未核查标识。用户配置的流式兼容模型已实际返回中文草稿并通过论文 schema；开发与测试仍不需要 Key。模型必须输出单个贡献类型和 JSON Unicode 转义，服务返回乱码或回显凭据时拒绝保存。真实 arXiv Markdown 链接解析问题已修复，新增回归测试，并对 1,201 条真实材料的链接执行了构建校验。
 
-GitHub [dry-run](https://github.com/HamsterStation/benchmark-atlas/actions/runs/34441587319) 已通过，模型调用为 0，状态分支未变化。首次正式运行生成 2 篇简介后在链接校验处停止，线上网站保留；[修复后重跑](https://github.com/HamsterStation/benchmark-atlas/actions/runs/34442408357) 通过全部测试、构建并创建 [审核 PR #1](https://github.com/HamsterStation/benchmark-atlas/pull/1)。重跑的模型调用为 0，当日累计仍为 2 次，2 篇草稿及 989 条待处理材料保存在状态分支。PR 不修改人工资料或 notes；只有完成审核并提升为 curated 的论文才进入默认正式索引。
+切换 auto 前的 review 模式验收：GitHub [dry-run](https://github.com/HamsterStation/benchmark-atlas/actions/runs/34441587319) 已通过，模型调用为 0，状态分支未变化。首次正式运行生成 2 篇简介后在链接校验处停止，线上网站保留；[修复后重跑](https://github.com/HamsterStation/benchmark-atlas/actions/runs/34442408357) 通过全部测试、构建并创建 [审核 PR #1](https://github.com/HamsterStation/benchmark-atlas/pull/1)。重跑的模型调用为 0，当日累计仍为 2 次，2 篇草稿及 989 条待处理材料保存在状态分支。PR 不修改人工资料或 notes；该次 review 模式仅发布 curated；后续已按维护者要求切换为 auto。
 
 GitHub Pages 已公开部署。尚未验证论文实验复现、GAIA 受限数据下载或自定义分支保护规则；未来某一天的 GitHub 定时触发无法提前实测，可在 Actions 检查实际调度。没有提交 PDF、数据集、模型权重或密钥，也没有执行论文项目代码。
 
