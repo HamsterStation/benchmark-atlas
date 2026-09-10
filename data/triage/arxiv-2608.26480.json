@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2608.26480",
+  "arxivId": "2608.26480",
+  "version": 1,
+  "title": "Zero-Shot Self-Orchestration with Ledger-Based Control for Improved LLM Coding Performance",
+  "paperUrl": "https://arxiv.org/abs/2608.26480v1",
+  "assessedAt": "2026-09-10T05:39:06Z",
+  "policyVersion": 1,
+  "policyHash": "acbeaa006d93730b60dae78a1d0bb3f46ae75bfd69a64c68da6ed7bc891a1091",
+  "materialHash": "b81be04f04b5d4092474a39d2cf285086192c18e0d1200853a138619004d00c7",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 4,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级材料不足以进入优先审核，等待补充官方材料"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "材料中提供代码或数据链接（未核验内容）",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "Across nine models -- five open-weight, spanning 9B to ~2.8T parameters, and four frontier closed models -- on the 100 latest hard LiveCodeBench problems, the scaffold's benefit is real but conditional: large and statistically significant for some (Qwen3.8-27B +23.4, GPT-5.6-Luna +10.6 and GPT-5.6-Terra +8.0, each over five paired passes; Kimi-K3 +30.4 and Minimax-M3 +11.0 over five paired passes with reasoning off, both at $p < 10^{-4}$, and +42 and +12 in a single pass at a 128k cap) and null or negative for others (Qwen3.6-35B -1 to -9 with reasoning off).",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2608.26480v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "Running a manager roughly triples the token bill, but it buys accuracy more cheaply than moving to a larger model does: GPT-5.6-Terra with a manager nearly matches Fable 5's single-call accuracy (85.0 against 87.4, $p = 0.59$) at a fifth of the price (\\$11.71 against \\$61.11 per 100-problem pass, $p < 10^{-4}$), and the Qwen-27B arm does it for \\$51.75 on weights anyone can self-host.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2608.26480v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "Multi-agent large language model systems are widely reported to beat single-model baselines, but the evidence is mixed, and comparisons are usually confounded: pipelines change token budgets, tool calls, and prompts simultaneously, so an aggregate gain rarely reveals what actually helped.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2608.26480v1"
+    }
+  ],
+  "resourceCandidates": [],
+  "declaredVenue": null,
+  "venueVerified": false,
+  "qualityVerified": false
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2609.01361",
+  "arxivId": "2609.01361",
+  "version": 1,
+  "title": "Investigating Linear Probe Robustness to Linguistic Register, Medical Specialty, and Corpus Shifts in Medical QA",
+  "paperUrl": "https://arxiv.org/abs/2609.01361v1",
+  "assessedAt": "2026-09-10T05:39:06Z",
+  "policyVersion": 1,
+  "policyHash": "acbeaa006d93730b60dae78a1d0bb3f46ae75bfd69a64c68da6ed7bc891a1091",
+  "materialHash": "20d44912ae3ea15ae89a08ac8e8ff999965a225f7ab1d0b6fbedefad36966fdb",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "priority_review",
+  "score": 8,
+  "scoreMax": 11,
+  "reasons": [
+    "新基准贡献、评分协议和资源证据达到配置的送审门槛；链接内容仍需人工核查"
+  ],
+  "missingSignals": [
+    "报告基线或多个模型的评测",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "benchmark_contribution",
+      "label": "明确提出新的评测资料或框架",
+      "weight": 3,
+      "excerpt": "We build a benchmark using 500 MedQA entries, each rewritten into four styles (textbook, patient, clinical note, colloquial), annotated with clinical specialty, and grouped with two other exam corpora, MedMCQA and MMLU-medical, for cross-dataset evaluation.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.01361v1"
+    },
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "We isolate three such variables in medical question-answering (QA): writing style (register), domain (medical specialty), and corpus (dataset).",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.01361v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "Probing four open-weight LLMs (2--8B), we find that the truth direction is largely robust to writing style (mean $Δ_\\text{register} \\approx 0.10$ AUROC on held-out facts) and to medical specialty ($Δ_\\text{specialty} \\approx 0.03$), but degrades unevenly across corpora: by $0.12$ AUROC on MMLU-medical and by $0.21$ on MedMCQA, roughly twice the register gap.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.01361v1"
+    },
+    {
+      "signal": "resource_link",
+      "label": "材料中提供代码或数据链接（未核验内容）",
+      "weight": 2,
+      "excerpt": "https://github.com/mnishant2/MedProbe_release",
+      "source": "arxiv_comment",
+      "sourceUrl": "https://arxiv.org/abs/2609.01361v1"
+    }
+  ],
+  "resourceCandidates": [
+    "https://github.com/mnishant2/MedProbe_release"
+  ],
+  "declaredVenue": "Accepted to EMNLP 2026 (Main Conference). 9 pages, 4 figures (main text); 28 pages total, including appendix. Code and data: https://github.com/mnishant2/MedProbe_release",
+  "venueVerified": false,
+  "qualityVerified": false
+}

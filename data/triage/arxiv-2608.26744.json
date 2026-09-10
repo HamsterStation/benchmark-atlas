@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2608.26744",
+  "arxivId": "2608.26744",
+  "version": 1,
+  "title": "G2D: Generative-to-Discriminative Collaborative Inference for Zero-Shot Image Classification",
+  "paperUrl": "https://arxiv.org/abs/2608.26744v1",
+  "assessedAt": "2026-09-10T05:39:06Z",
+  "policyVersion": 1,
+  "policyHash": "acbeaa006d93730b60dae78a1d0bb3f46ae75bfd69a64c68da6ed7bc891a1091",
+  "materialHash": "5d0261aaa6446f1f04f5920905b26bbf5140b77440a79f9210952fabc50c1598",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 4,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级材料不足以进入优先审核，等待补充官方材料"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "描述任务、问题或评测环境",
+    "报告基线或多个模型的评测",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "Zero-shot classification needs efficient label retrieval and fine-grained visual reasoning, yet discriminative and generative vision-language models fail in complementary ways.When CLIP's top-1 prediction is wrong, the correct label often remains in its top-$K$ shortlist, making disambiguation rather than recall the key challenge.Standalone generative models, however, are hindered by large label spaces and unconstrained outputs.This complementarity motivates separating broad candidate retrieval from fine-grained, image-grounded verification.We propose G2D, a training-free framework that uses a generative VLM to verify CLIP-retrieved candidates against the image.Candidate names and CLIP probabilities provide a structured prior for resolving visually similar classes.Fixed confidence routing, entropy-adaptive candidate sizing, and trie-constrained decoding focus generative reasoning on uncertain samples and ensure one valid output for each input at test time.Across eight benchmarks, G2D achieves 68.85% average accuracy, versus 59.35% for CLIP and 63.11% for the standalone VLM.Across seven generator configurations, candidate-set verification improves average accuracy by 1.08--27.42 per",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2608.26744v1"
+    },
+    {
+      "signal": "resource_link",
+      "label": "材料中提供代码或数据链接（未核验内容）",
+      "weight": 2,
+      "excerpt": "https://github.com/Harzva/G2D",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2608.26744v1"
+    }
+  ],
+  "resourceCandidates": [
+    "https://github.com/Harzva/G2D"
+  ],
+  "declaredVenue": "Proceedings of the 34th ACM International Conference on Multimedia (MM '26), 2026",
+  "venueVerified": false,
+  "qualityVerified": false
+}
