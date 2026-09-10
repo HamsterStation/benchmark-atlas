@@ -24,8 +24,7 @@ const groups = [['target', '评测对象', 'targets'], ['scenario', '任务场�
     <p class="catalog-hint">默认展示最新收录。分类可组合筛选；来源核查与实测复现分别记录。</p>
     <noscript><p class="notice">搜索筛选需要 JavaScript。你仍可浏览全部论文和独立详情页。</p></noscript>
     <p id="search-error" class="notice" hidden>搜索索引加载失败，请刷新重试。完整论文列表仍可浏览。</p>
-    <div class="paper-grid" id="paper-grid">{papers.filter(p => p.review.status !== 'auto_unreviewed').map((p, i) => <PaperCard paper={p} index={i} />)}</div>
-    <section id="automatic-section" class="automatic-section" hidden={!papers.some(p => p.review.status === 'auto_unreviewed')} aria-labelledby="automatic-heading"><h3 id="automatic-heading">自动收录、未审核</h3><p class="scope-note">机器草稿仅通过字段校验，尚未人工核对；不代表全文解读或实验复现。</p><div class="paper-grid" id="automatic-grid">{papers.filter(p => p.review.status === 'auto_unreviewed').map((p, i) => <PaperCard paper={p} index={i} />)}</div></section>
+    <div class="paper-grid" id="paper-grid">{papers.map((p, i) => <PaperCard paper={p} index={i} />)}</div>
     <div id="empty-state" class="empty-state" hidden><h3>没有匹配的论文</h3><p>试试更短的关键词，或清除部分筛选条件。</p></div>
   </section>
   <section class="method-strip"><strong>每个判断，都有出处。</strong><p>英文标题保留原文，中文简介注明材料范围。未知字段显示“待核查”，未经运行不标记复现成功。</p><a href={withBase('rules/')}>阅读收录规则 ↗</a></section>
@@ -35,7 +34,6 @@ const groups = [['target', '评测对象', 'targets'], ['scenario', '任务场�
   import { matches, sortPapers, type Filters, type SearchPaper } from '../lib/filter';
   const form = document.querySelector<HTMLFormElement>('#filters')!;
   const grid = document.querySelector<HTMLElement>('#paper-grid')!;
-  const automatic = document.querySelector<HTMLElement>('#automatic-grid')!;
   const cards = new Map(Array.from(document.querySelectorAll<HTMLElement>('[data-paper-id]')).map(el => [el.dataset.paperId!, el]));
   const params = new URLSearchParams(location.search);
   for (const control of Array.from(form.elements)) if (control instanceof HTMLInputElement || control instanceof HTMLSelectElement) control.value = params.get(control.name) || (control.name === 'sort' ? 'added' : '');
@@ -51,11 +49,10 @@ const groups = [['target', '评测对象', 'targets'], ['scenario', '任务场�
       if (!card) continue;
       card.hidden = !matches(p, values);
       if (!card.hidden) count++;
-      (p.review.status === 'auto_unreviewed' ? automatic : grid).append(card);
+      grid.append(card);
     }
     document.querySelector('#result-count')!.textContent = `显示 ${count} / ${papers.length} 篇论文`;
     document.querySelector<HTMLElement>('#empty-state')!.hidden = count > 0;
-    document.querySelector<HTMLElement>('#automatic-section')!.hidden = !Array.from(automatic.children).some(el => !(el as HTMLElement).hidden);
     if (sync) {
       const q = new URLSearchParams(Object.entries(values).filter(([, v]) => v && v !== 'added'));
       history.replaceState(null, '', `${location.pathname}${q.size ? '?' + q : ''}${location.hash}`);

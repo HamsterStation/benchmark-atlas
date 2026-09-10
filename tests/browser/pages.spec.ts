@@ -69,24 +69,27 @@ test('taxonomy and rules remain navigable on mobile', async ({ page }) => {
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
 });
 
-test('automatic entries are labeled separately and can be filtered', async ({ page }) => {
+test('automatic entries join the main catalog and can be sorted and filtered', async ({ page }) => {
   await page.goto('./');
   const papers = await (await page.request.get('search-index.json')).json();
   const automatic = papers.filter((p: any) => p.review.status === 'auto_unreviewed');
+  await expect(page.locator('#paper-grid > .paper-card')).toHaveCount(papers.length);
+  await expect(page.locator('#automatic-section')).toHaveCount(0);
+  for (const [order, field] of [['added', 'addedAt'], ['updated', 'updatedAt'], ['published', 'publishedAt']]) {
+    await page.locator('[name=sort]').selectOption(order);
+    const ids = await page.locator('#paper-grid > .paper-card').evaluateAll(cards => cards.map(card => (card as HTMLElement).dataset.paperId));
+    const dates = ids.map(id => papers.find((p: any) => p.id === id)[field] || '');
+    expect(dates).toEqual([...dates].sort().reverse());
+  }
   await page.locator('[name=review]').selectOption('auto_unreviewed');
-  await expect(page.locator('.paper-card:visible')).toHaveCount(automatic.length);
-  if (automatic.length) {
-    await expect(page.locator('#automatic-section')).toBeVisible();
-    await expect(page.locator('#automatic-heading')).toHaveText('自动收录、未审核');
-    for (const p of automatic) {
-      expect(p.review.reviewedAt).toBeNull();
-      expect(p.reproduction.status).toBe('unverified');
-      const detail = await page.goto(`papers/${p.id}/`);
-      expect(detail?.status()).toBe(200);
-      await expect(page.locator('.notice')).toContainText('自动收录、未审核');
-      await expect(page.locator('.date-grid > div').filter({ hasText: '本站核查日期' }).locator('strong')).toHaveText('待核查');
-    }
-  } else {
-    await expect(page.locator('#automatic-section')).toBeHidden();
+  await expect(page.locator('#paper-grid > .paper-card:visible')).toHaveCount(automatic.length);
+  for (const p of automatic) {
+    expect(p.review.reviewedAt).toBeNull();
+    expect(p.reproduction.status).toBe('unverified');
+    const detail = await page.goto(`papers/${p.id}/`);
+    expect(detail?.status()).toBe(200);
+    await expect(page.locator('.paper-hero .status')).toHaveText('自动收录');
+    await expect(page.locator('.notice')).toContainText('自动整理');
+    await expect(page.locator('.date-grid > div').filter({ hasText: '本站核查日期' }).locator('strong')).toHaveText('待核查');
   }
 });

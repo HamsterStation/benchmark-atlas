@@ -49,9 +49,11 @@ try {
   build('auto');
   const autoIndex = JSON.parse(fs.readFileSync(path.join(sandbox, 'dist/search-index.json')));
   assert.equal(autoIndex.find(p => p.id === pending.id).review.status, 'auto_unreviewed');
-  assert.ok(fs.readFileSync(path.join(sandbox, `dist/papers/${pending.id}/index.html`), 'utf8').includes('自动收录、未审核'));
+  assert.ok(fs.readFileSync(path.join(sandbox, `dist/papers/${pending.id}/index.html`), 'utf8').includes('自动整理'));
   const autoHome = fs.readFileSync(path.join(sandbox, 'dist/index.html'), 'utf8');
-  assert.ok(autoHome.includes('id="automatic-grid"'));
+  assert.ok(!autoHome.includes('id="automatic-grid"'));
+  assert.ok(autoHome.includes(`data-paper-id="${pending.id}"`));
+  assert.ok(autoHome.includes('自动收录'));
   fs.writeFileSync(paperPath, realRecord);
   build('auto');
   assert.equal(JSON.parse(fs.readFileSync(path.join(sandbox, 'dist/search-index.json'))).find(p => p.id === pending.id).review.status, 'source_verified');
