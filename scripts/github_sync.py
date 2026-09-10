@@ -10,7 +10,7 @@ import tempfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from collector.collect import ROOT, atomic_json, read_json, utcnow
-from collector.report import digest
+from collector.report import digest, safe_text
 
 
 def run(args, cwd=ROOT, check=True):
@@ -147,8 +147,19 @@ def main():
         if run(["git", "diff", "--quiet", f"origin/{args.base}", "HEAD"], directory, check=False).returncode == 0:
             return
         report = read_json(args.report, {})
-        body = ("自动采集的论文草稿等待维护者审核。仅依据 arXiv 元数据与摘要，不代表全文解读或实测复现。\n\n"
-                + digest(report) + "\n\n"
+        changed_paths = run(["git", "diff", "--name-only", f"origin/{args.base}", "HEAD", "--", "data/drafts"], directory).stdout.splitlines()
+        inventory = []
+        for relative in changed_paths:
+            paper = read_json(directory / relative)
+            if paper and paper.get("publication") != "excluded":
+                inventory.append((relative, paper.get("title", Path(relative).stem)))
+        inventory_text = f"### 累计待审核草稿：{len(inventory)} 篇\n\n" + "\n".join(
+            f"- [{safe_text(title[:240])}](https://github.com/{repository}/blob/atlas-review/{relative})" for relative, title in inventory[:20])
+        if len(inventory) > 20:
+            inventory_text += "\n\n这里只列前 20 篇，完整清单见 Files changed。"
+        body = ("自动采集的论文草稿等待维护者审核。仅依据 arXiv 元数据与摘要，不代表全文解读或实测复现。"
+                "此 PR 持续汇总草稿；以下统计只代表最近一次运行，完整待审核条目见 Files changed 中的 data/drafts。\n\n"
+                + inventory_text + "\n\n" + digest(report) + "\n\n"
                 "review 模式只发布 data/curated。请使用手工提升命令创建待审核副本，核对来源、版本与分类后，再将审核完成的条目标为 listed。"
                 "仅合并机器草稿不会让它进入正式索引。人工资料与 notes/ 不由采集程序修改。\n\n"
                 "此 PR 由 GITHUB_TOKEN 维护；不要依赖机器人推送再次触发 CI。采集工作流已运行字段校验、测试与生产构建，合并前可手动运行 CI 验证此分支。\n")

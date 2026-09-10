@@ -164,3 +164,26 @@ class IntakeTests(unittest.TestCase):
         report = self.collector([entry("2609.00002")], dry_run=True).run()
         self.assertFalse((self.root / "data/triage/arxiv-2609.00002.json").exists())
         self.assertTrue(report["quality_candidates"])
+
+    def test_policy_reassessment_is_not_counted_as_a_paper_version_update(self):
+        paper = entry(version=2)
+        paper["abstract"] = "We propose a method for LLMs. We evaluate our method on existing benchmarks."
+        self.collector([paper]).run()
+        quality = read_json(self.root / "config/quality.json")
+        quality["version"] += 1
+        (self.root / "config/quality.json").write_text(json.dumps(quality))
+        again = self.collector([paper]).run()
+        self.assertEqual((again["new"], again["updated"], again["reassessed"]), (0, 0, 1))
+
+    def test_policy_changes_cannot_roll_back_a_seen_paper_version(self):
+        paper = entry(version=2)
+        paper["abstract"] = "We propose a method for LLMs. We evaluate our method on existing benchmarks."
+        self.collector([paper]).run()
+        quality = read_json(self.root / "config/quality.json")
+        quality["version"] += 1
+        (self.root / "config/quality.json").write_text(json.dumps(quality))
+        paper["version"] = 1
+        c = self.collector([paper])
+        again = c.run()
+        self.assertEqual(again["skipped"], 1)
+        self.assertEqual(c.state["seen"][paper["arxiv_id"]]["version"], 2)

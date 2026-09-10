@@ -8,7 +8,7 @@
 
 默认站点入口为 **[GitHub Pages](https://hamsterstation.github.io/benchmark-atlas/)**。本地地址只用于开发和测试。
 
-站点通过 GitHub Actions 构建并发布到 Pages；部署结果见仓库的 **Deploy reviewed site** 工作流。仓库公开，默认发布模式为 review，定时采集独立控制。
+站点通过 GitHub Actions 构建并发布到 Pages；部署结果见仓库的 **Deploy reviewed site** 工作流。仓库公开，默认发布模式为 review。当前已启用每日 **北京时间 10:20** 采集，每天最多 2 篇待审核草稿；未审核草稿不直接更新正式网站。
 
 ## 本地开始
 
@@ -145,7 +145,7 @@ dry-run 不写资料、队列、采集成功时间，不调用模型，不创建
 
 无模型配置时仍完成分页采集，优先候选保留 `waiting_model` 与 null 简介；后续有模型时处理队列。队列先处理未处理的高优先级条目，避免等 Key 的旧条目挡住新元数据。证据不足保留 `awaiting_evidence`，名额用完保留 `intake_limit`；纯使用 Benchmark 的模型草稿标为 excluded。人工审核与运行记录永远不由采集写入。
 
-报告包含 new、updated、skipped、pending_review、failed、pages、model_calls 和 queue_remaining；额外的 `quality_counts` 区分优先审核、待补充证据和排除，`quality_candidates` 保存本轮分析明细。前五项是本轮触及的处理计数，并非相加等于检索总数的互斥分类；`queue_remaining` 才是运行结束后待处理总量。首次发现的 v2 论文仍计为 new，因为本站此前没有这个基础 ID。
+报告包含 new、updated、reassessed、skipped、pending_review、failed、pages、model_calls 和 queue_remaining；reassessed 单独统计规则变更导致的复筛，不冒充论文新版本；额外的 `quality_counts` 区分优先审核、待补充证据和排除，`quality_candidates` 保存本轮分析明细。前五项是本轮触及的处理计数，并非相加等于检索总数的互斥分类；`queue_remaining` 才是运行结束后待处理总量。首次发现的 v2 论文仍计为 new，因为本站此前没有这个基础 ID。
 
 ## 可选模型
 
@@ -153,7 +153,7 @@ dry-run 不写资料、队列、采集成功时间，不调用模型，不创建
 
 | 配置 | 类型 | 含义 |
 | --- | --- | --- |
-| `MODEL_API_KEY` | Secret / 本地环境变量 | 唯一模型密钥，不打印、不保存 |
+| `MODEL_API_KEY` | Secret / 本地环境变量 | 只保存在 Secret 或进程环境，不写入资料、代码或日志 |
 | `MODEL_API_URL` | Repository Variable / 环境变量 | 完整 HTTPS 请求地址，不自动拼路径，不接受重定向 |
 | `MODEL_NAME` | Repository Variable / 环境变量 | 服务支持的模型名称，项目不指定品牌 |
 | `MODEL_API_STREAM` | Repository Variable / 环境变量 | 默认 false；只接受流式请求的兼容服务设 true，解析 SSE 后仍执行同一套 JSON 校验 |
@@ -180,6 +180,8 @@ dry-run 不写资料、队列、采集成功时间，不调用模型，不创建
 采集、持久化、校验或构建失败均不会进入部署 job，现有线上站点保留。成功采集时间仅在所有检索窗口完成后更新，与模型是否可用分开；单页预算中断不算整个检索完成。部署时间只在 deploy-pages 成功后记录到 `atlas-state:automation/deployment.json`。网站显示的是构建时已知的成功记录，通常是上一轮；最新值以该分支记录和 Pages 运行结果为准。若部署已成功但后续记录写入失败，工作流会报错，维护者应依据 deploy job 补记。
 
 ## 需要你设置的部署选项
+
+当前仓库已完成 Pages、采集开关、模型 Secret/变量和 PR 创建权限配置。以下清单用于迁移或重建；维护者日常只需审核 PR，更换 Key 时在 Actions Secrets 中更新 `MODEL_API_KEY`。
 
 1. 审阅 GitHub 仓库中的项目。仓库名可以是 `benchmark-atlas`。是否公开由你决定；私有仓库可用的 Pages 能力取决于账户计划。
 2. Settings → Pages → Build and deployment → Source 选择 **GitHub Actions**。配置 `github-pages` environment 允许默认分支部署，按需保留人工审批。
@@ -216,7 +218,11 @@ Python 测试覆盖分页、断点续采、重叠窗口、重复运行、版本�
 
 验收报告和截图见 `outputs/`。2026-09-10 的质量采集 dry-run 完整读取 30 页，发现 1,201 个唯一候选，优先审核 51、待补证据 940、排除 210，预览草稿 2，失败 0；没有调用模型或写入生产队列。精简报告为 `outputs/quality-dry-run.md`；完整 JSON 仅保留本地或 Actions artifact，不反复提交大体积采集快照。
 
-当前本地验证包括 9 个 TypeScript 测试、36 个 Python 测试、8 个生产页面浏览器测试、类型检查、生产构建及 actionlint。用户配置的流式兼容模型已实际返回中文草稿并通过论文 schema；开发与测试仍不需要 Key。模型必须输出单个贡献类型和 JSON Unicode 转义，服务返回乱码或回显凭据时拒绝保存。GitHub Pages 已公开部署，线上采集与 PR 验收以 Actions 运行记录为准。尚未验证论文实验复现、GAIA 受限数据下载或自定义分支保护规则。没有提交 PDF、数据集、模型权重或密钥，也没有执行论文项目代码。
+当前验证包括 9 个 TypeScript 测试、39 个 Python 测试、8 个生产页面浏览器测试、类型检查、生产构建及 actionlint。用户配置的流式兼容模型已实际返回中文草稿并通过论文 schema；开发与测试仍不需要 Key。模型必须输出单个贡献类型和 JSON Unicode 转义，服务返回乱码或回显凭据时拒绝保存。真实 arXiv Markdown 链接解析问题已修复，新增回归测试，并对 1,201 条真实材料的链接执行了构建校验。
+
+GitHub [dry-run](https://github.com/HamsterStation/benchmark-atlas/actions/runs/34441587319) 已通过，模型调用为 0，状态分支未变化。首次正式运行生成 2 篇简介后在链接校验处停止，线上网站保留；[修复后重跑](https://github.com/HamsterStation/benchmark-atlas/actions/runs/34442408357) 通过全部测试、构建并创建 [审核 PR #1](https://github.com/HamsterStation/benchmark-atlas/pull/1)。重跑的模型调用为 0，当日累计仍为 2 次，2 篇草稿及 989 条待处理材料保存在状态分支。PR 不修改人工资料或 notes；只有完成审核并提升为 curated 的论文才进入默认正式索引。
+
+GitHub Pages 已公开部署。尚未验证论文实验复现、GAIA 受限数据下载或自定义分支保护规则；未来某一天的 GitHub 定时触发无法提前实测，可在 Actions 检查实际调度。没有提交 PDF、数据集、模型权重或密钥，也没有执行论文项目代码。
 
 ## 后续维护
 
