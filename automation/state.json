@@ -7,7 +7,7 @@
       "active": {
         "since": "2026-08-25T00:00:00+00:00",
         "until": "2026-09-10T05:39:06Z",
-        "start": 250
+        "start": 300
       }
     }
   },
@@ -6109,6 +6109,1265 @@
         "comment": "13 pages, 9 figures"
       },
       "hash": "59cee16edf2c668b1d6d1b271c3565e347ae0f6cba21e88f9e95598dc1f4a8b8",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.05274": {
+      "entry": {
+        "arxiv_id": "2609.05274",
+        "version": 1,
+        "title": "How to Speculate about Uncertainty in Agentic Coding? A Draft-Model Gate Method",
+        "authors": [
+          "Konstantin Grotov",
+          "Valentin Malykh"
+        ],
+        "published": "2026-09-04T15:30:22Z",
+        "updated": "2026-09-04T15:30:22Z",
+        "abstract": "LLM agents deployed for software engineering fail expensively: they act confidently wrong, and bad actions are recognized only after costly execution and retry. We present Speculative Uncertainty (SU), a method that recovers a predictive failure signal for a black-box agent from its output tokens alone, with no access to logits, weights, activations, or repeated sampling. Inverting speculative decoding, a small open-weight draft model scores the agent's already-generated trajectory in a single forward pass. From these speculative cross-likelihoods we extract phase-aware features by separating the reasoning and action spans, and calibrate them against a verifiable objective. SU produces a failure-likelihood score that any downstream policy, such as routing, human intervention, or extra test-time compute, can consume directly. To show the signal is actionable, we instantiate one such policy, a pre-execution veto gate, on software engineering agents Qwen3-Coder-480B and closed-source Claude 3.5 Sonnet, cutting execution error rate by 6-8 percentage points and token cost by 14-19% in deployment, transferring to out-of-distribution benchmarks without retraining, and generalizing across agent models.",
+        "comment": "11 pages, 2 figures, EMNLP 2026, Industry track"
+      },
+      "hash": "127c209cab1b49fe000d9b4405c21d7c415b5adcd91f82f0edf7709ded5698c1",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.05318": {
+      "entry": {
+        "arxiv_id": "2609.05318",
+        "version": 1,
+        "title": "Optimal Rates for Agentic Networked Information Aggregation",
+        "authors": [
+          "MohammadHossein Bateni",
+          "Zahra Hadizadeh",
+          "MohammadTaghi Hajiaghayi",
+          "Mahdi JafariRaviz",
+          "Shayan Taherijam"
+        ],
+        "published": "2026-09-04T16:12:16Z",
+        "updated": "2026-09-04T16:12:16Z",
+        "abstract": "Building on the pioneering paper of Kearns, Roth, and Ryu (SODA'26), we study information aggregation in a networked learning model. The model captures a central pattern in agentic AI: each agent sees only part of the data and passes on only its own conclusion. Their model considers a linear regression problem with the mean squared error (MSE) loss. Agents sit in a DAG and each sees only a subset of the features and its parents' predictions, fits a linear predictor, and passes only its prediction forward. The benchmark is the full-feature learner that sees all raw features. A path of depth $D$ is $M$-covered if every block of $M$ consecutive agents collectively sees all raw features. Kearns, Roth, and Ryu proved that the excess mean squared error of the last agent on such a path is $O(M/\\sqrt D)$, and gave a cyclic instance with excess error $Ω(M/D)$ for $D<M^2$. We close this gap: the correct rate is constant up to depth $M^2$, and $Θ(M^2/D)$ beyond it. We first give a sharper analysis of the cyclic instance and improve its lower bound to $Ω(\\sqrt{M/D})$ for $D<M^2$. We then construct, for every depth $D\\ge M^2$, an $M$-covered path of depth $D$ with excess error $Ω(M^2/D)$. The same instance gives the constant lower bound for all $D < M^2$. We also show that for any fixed distribution the excess error contracts geometrically along the path, ruling out any single instance that witnesses any polynomial lower bound at every depth. Finally, we prove the same optimal rate for logistic classification in the logit-passing model of Bateni et al., which considers the binary cross-entropy (BCE) loss. The same improved upper bound of $O(M^2/D)$ holds, and we transfer all the regression lower bounds by showing that on those examples the logistic path follows the least-squares path up to rescaling.",
+        "comment": "Initial version submitted to SODA 2027 on July 9, 2026"
+      },
+      "hash": "5b21396b55d9f672c58fb46449d5962efbaf7727a2783a07c54af777df9b82f9",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.05374": {
+      "entry": {
+        "arxiv_id": "2609.05374",
+        "version": 1,
+        "title": "CUA-Universe: A Scalable and Dynamic Environment for Hybrid GUI+CLI Agents",
+        "authors": [
+          "Haoting Shi",
+          "Wenhao Wang",
+          "Weicheng Fang",
+          "Yaozhong Liang",
+          "Tian Jin",
+          "Pengxiang Zhao",
+          "Guangyi Liu",
+          "Siheng Chen",
+          "Yanfeng Wang"
+        ],
+        "published": "2026-09-04T17:26:18Z",
+        "updated": "2026-09-04T17:26:18Z",
+        "abstract": "Computer-use agents have advanced on benchmarks like OSWorld and AndroidWorld, but still act mostly through the GUI, often producing inefficient trajectories. Real-world computer work is hybrid, combining visual-state inspection with precise, high-throughput command-line operations, so capable agents must coordinate both modalities over shared application state. Yet scalable hybrid environments remain scarce because supporting both GUI and CLI over real applications typically requires substantial manual engineering for each application. Existing agents also struggle to use the two interfaces complementarily: CLI-native agents lack visual perception for tasks involving interface state or layout, while GUI-native agents are inefficient for operations better executed through commands. We introduce CUA-Universe, a scalable environment-to-data pipeline that turns real desktop software into hybrid GUI+CLI environments. App-Forge adapts applications into reproducible VMs and command-line surfaces it discovers, wraps, or generates, scaling to 16 applications; Task-Weave synthesizes diverse hybrid tasks of controllable difficulty from reusable operations over seed files; and Path-Steer steers rollouts along efficient hybrid paths and harvests verified trajectories for post-training. Training on this data shifts behavior from inefficient GUI interaction and brittle CLI scripting toward effective GUI+CLI orchestration. Our 9B model improves both success and efficiency on CUA-Verse (Score +39.3 pts; -37% steps, -60% tokens), OSWorld (SR +16.8 pts; -57% steps, -44% tokens), and OSWorld-MCP (Score +7.84 pts; -27% steps, -30% tokens). CUA-Universe provides a scalable path toward more capable and efficient computer-use agents.",
+        "comment": "21 pages, 9 figures"
+      },
+      "hash": "bd5cb3c965d402d753f91538ea62eef7becec6a425c745021c63c048d88777a8",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.05395": {
+      "entry": {
+        "arxiv_id": "2609.05395",
+        "version": 1,
+        "title": "Multi-Step Tool-Calling over Korean Open Public APIs: A Benchmark and a Data-Synthesis Recipe",
+        "authors": [
+          "Dain Kim",
+          "Eungi Cho",
+          "Kyumin Kim",
+          "Shinyeong Noh",
+          "Kyuseong Lim"
+        ],
+        "published": "2026-09-04T17:44:52Z",
+        "updated": "2026-09-04T17:44:52Z",
+        "abstract": "Data-sovereignty regulations increasingly require public institutions to deploy open-source, on-premise LLM agents that chain multiple tool-calls across live government APIs. However, open-source models consistently underperform in this multi-step setting, and no existing benchmark measures the gap. We introduce the Korean Open Public API Benchmark (KOPA-Bench), comprising 145 real-world tasks. To close this gap, we present EDGE, an Execution-grounded Dynamic Graph for tool-calling data synthEsis driven by live execution. EDGE builds a graph of how each tool's output can feed another's input, keeps only the links that succeed when actually called against the live APIs, and traverses these verified links to synthesize executable multi-step trajectories. Fine-tuned via GRPO on the resulting dataset, our 9B model nearly matches the untuned 27B model from the same family, improving substantially not only on KOPA-Bench but also on the BFCL benchmark.",
+        "comment": "30 pages, 7 figures, 26 tables. Accepted to EMNLP 2026 Industry Track"
+      },
+      "hash": "7686e85189a3b892d88e01a08bab8aa4e3da96be0c095434fdf88d2b667e5d39",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.05596": {
+      "entry": {
+        "arxiv_id": "2609.05596",
+        "version": 1,
+        "title": "Time-Aware Assistive Navigation",
+        "authors": [
+          "Masaki Kuribayashi",
+          "Zhongkai Shangguan",
+          "Eshed Ohn-Bar"
+        ],
+        "published": "2026-09-04T17:59:47Z",
+        "updated": "2026-09-04T17:59:47Z",
+        "abstract": "Can interactive vision-and-language agents learn not just what to say but also \\textbf{\\textit{when}} to say it? Current language models rarely plan over whether and when to realize a real-time response to a user. However, providing accurate and timely support for human decision-making, such as when guiding visually impaired individuals through urban environments, requires careful real-time responsiveness--poorly timed responses can distract users or add unnecessary cognitive load. As a machine intelligence challenge for Multimodal Large Language Model (MLLM)-based agents, we introduce a large-scale multimodal benchmark for an egocentric, assistive navigation task in complex outdoor environments. Using this benchmark, we uncover a fundamental limitation of off-the-shelf MLLMs in delivering safe and time-sensitive navigation instructions, even with model fine-tuning on substantial amounts of data. We then demonstrate that a simple yet effective modification of the model, including direct supervision to predict the underlying reason for each instruction, yields significant performance gains across open-loop, closed-loop, and sim-to-real generalization settings. However, our analysis highlights persistent challenges in temporal reasoning, safety-critical object awareness, and relational and distance understanding. To advance the development of scalable assistive agents, we will release our simulation, benchmark, and code (available at the project website: https://timeli-icra.github.io/).",
+        "comment": "ICRA 2026"
+      },
+      "hash": "02f561b973f4b0830322b03413f2e8bb526c5c27e3b1cf5caaa7f5939050e68d",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.05663": {
+      "entry": {
+        "arxiv_id": "2609.05663",
+        "version": 1,
+        "title": "What LLM Trading Agents Actually Do in Production: A Six-Month, Population-Scale Record from Two Fleets",
+        "authors": [
+          "T. J. Barton",
+          "Chris Constantakis",
+          "Patti Hauseman",
+          "Annie Mous",
+          "Alaska Hoffman",
+          "Brian Bergeron",
+          "Hunter Goodreau"
+        ],
+        "published": "2026-09-04T18:56:31Z",
+        "updated": "2026-09-04T18:56:31Z",
+        "abstract": "We present a continuous, population-scale measurement record of autonomous language-model trading agents operating in production across two systems with one design lineage: DX Terminal Pro (3,505 user-funded vaults trading real ETH in Base memecoin markets for 21 days, February to March 2026) and the DXAP live alpha fleet (500 to 599 user-created agents all-history, 91 to 117 concurrently active, trading Hyperliquid perpetuals, June to August 2026). The record spans roughly six months, 7.5M single-model invocations with about 300K onchain actions, and a further 231,638 multi-tool turns producing 14,596 fills. Four findings carry the paper. First, the operating layer determines behavior more than anything written in strategy text: a risk slider explains leverage (+0.425 per level), agent fixed effects absorb 60% of variance, and a leaderboard render boundary causally routes selection (regression discontinuity 1.75x at the top-3 cut). Second, sizing is volatility-blind: median leverage is 5.0x in every volatility sextile, and one posture-slider cell (11% of the book) holds 62% of liquidations. Third, agents capture almost none of the upside they reach: 43.2% of positions saw at least +300 bps of favorable excursion within 24h, yet 49.3% of those closed with a negative trade return; a mechanical bracket recovers +39.0 bps per position. Fourth, neither fleet shows a directional edge. The DXAP fleet is not profitable and trails a matched Hyperliquid retail benchmark (41% vs. 50% roundtrip win rate). A paired-replay league of frontier models on 416 captured production scenarios finds decision quality statistically indistinguishable at this horizon, while choice stability differs sharply across model families. Every headline survives day-clustered inference, permutation nulls, and a common-fee restatement; the paper closes with a 17-rule methodology canon bought with our own retractions.",
+        "comment": "17 pages, 8 figures, 3 tables. Artifacts, figures, and aggregate data: https://github.com/ProjectDXAI/continuous-record-llm-trading-agents"
+      },
+      "hash": "15eda8c3d116061f481a6cbc9963ca2e4e7c5b85f32a924379eb531e69908151",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.05776": {
+      "entry": {
+        "arxiv_id": "2609.05776",
+        "version": 1,
+        "title": "DI-Bench: Systematically Generating In-Domain Data Intelligence Benchmarks for Enterprise Agents",
+        "authors": [
+          "Jiangyun Zhang",
+          "Kristen Surrao",
+          "Torpong Nitayanont",
+          "Yupei Zhang",
+          "Roopali Singh",
+          "Zhiyu Chen",
+          "Julia Huang",
+          "Zhou Tang",
+          "Shayan Ali Akbar",
+          "Omar Alonso",
+          "Erwin Cornejo",
+          "Yuan Li",
+          "Yi Zhang"
+        ],
+        "published": "2026-09-04T23:53:21Z",
+        "updated": "2026-09-04T23:53:21Z",
+        "abstract": "Evaluating enterprise agents on domain-specific benchmarks is critical, yet public benchmarks rarely evaluate whether agents can integrate business knowledge with analytical computation, and constructing such benchmarks manually is costly. We present DI-Bench, a pipeline for generating realistic benchmarks for data intelligence (DI), the practice of extracting insights from large volumes of enterprise data. To emulate realistic DI tasks that require both computation and knowledge retrieval, DI-Bench builds an artifact linkage graph over data tables, dimensions, metrics, and documents to form questions involving structured data and associated knowledge. Ground truth answers are derived via query execution, followed by LLM question generation and validation. Applied to two public datasets, the pipeline produces a 731-task benchmark covering knowledge retrieval, analytical computation, and rule-grounded reasoning. To show the discriminatory capability and difficulty of the benchmark, we evaluate four models, revealing a substantial finding: models achieve only 32% accuracy when doing computational tasks where retrieved business rules modify the computation.",
+        "comment": "19 pages, 3 figures, 13 tables. Accepted to the EMNLP 2026 Industry Track"
+      },
+      "hash": "b73751eec0df8246caa91174ce442b8e6f7a52baf2b6981b1daa921fd1f64596",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.05818": {
+      "entry": {
+        "arxiv_id": "2609.05818",
+        "version": 1,
+        "title": "Agentic BAIM-LLM Evaluation (ABLE): Benchmarking LLM Use of Protein Design Tools",
+        "authors": [
+          "Bryce Cai",
+          "Geetha Jeyapragasan",
+          "Samira Nedungadi",
+          "Jake Yukich",
+          "Seth Donoughe"
+        ],
+        "published": "2026-09-05T02:28:21Z",
+        "updated": "2026-09-05T02:28:21Z",
+        "abstract": "We introduce ABLE, a benchmark for evaluating LLM agents' ability to use biological AI models (BAIMs), such as ProteinMPNN and AlphaFold3, in dual-use protein design workflows. ABLE assesses agent performance through a set of tasks spanning structure retrieval, sequence generation, and design validation. We evaluate 15 frontier models and find that seven refuse all tasks, while the remaining models exhibit substantial performance differences. Claude Sonnet 4 and Gemini 3 Pro achieve the highest scores across information retrieval, tool selection, and tool use. We further compare model performance on a subset of tasks against an expert human baseline. Our results suggest that current LLMs can substantially lower barriers to protein design, but remain inconsistent in planning, strategy generation, and integrating biological knowledge with tool use.",
+        "comment": "Last revised in February 2026; presented without further revision. An earlier revision at was presented at the NeurIPS 2025 Workshop on Biosecurity Safeguards for Generative AI; see https://openreview.net/forum?id=fDysOrWaGd"
+      },
+      "hash": "9f272ac97783e208a9a747b5d07c42c16081d7d4e749d5684ec019ec55c553ea",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.05824": {
+      "entry": {
+        "arxiv_id": "2609.05824",
+        "version": 1,
+        "title": "Beyond Top-$k$ Skill Retrieval: Diversity-Aware Skill Routing for LLM Agents",
+        "authors": [
+          "Wang Wei",
+          "Tiankai Yang",
+          "Samyadeep Basu",
+          "Hongjie Chen",
+          "Yue Zhao",
+          "Zhengzhong Tu",
+          "Xiyang Hu",
+          "Franck Dernoncourt",
+          "Ryan A. Rossi",
+          "Hoda Eldardiry"
+        ],
+        "published": "2026-09-05T02:39:28Z",
+        "updated": "2026-09-05T02:39:28Z",
+        "abstract": "Large language model (LLM) agents increasingly rely on external skills, but routing user requests over large skill registries is difficult because many skills are functionally redundant while complex tasks often require complementary skill sets. Existing skill routers typically rank candidates independently by query relevance, which can waste context budget on redundant skills. We propose Diverse Skill Routing (DSR), a diversity-aware reranking framework that uses a Determinantal Point Process to balance relevance and non-redundancy. DSR introduces a query-residual diversity kernel that penalizes redundant skill overlap while reducing penalties caused only by shared query relevance. On the SkillRouter benchmark, DSR improves recall and full coverage over a strong pointwise reranking baseline, with larger gains on multi-skill queries. These results suggest that skill routing should be treated not only as relevance ranking, but also as complementary set selection."
+      },
+      "hash": "873b2c88712d35624ea06822bfba50f39cbe4283c4b62312d48c89d93f839c3c",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.05876": {
+      "entry": {
+        "arxiv_id": "2609.05876",
+        "version": 1,
+        "title": "FACT: A Forensic Agent with Compiled Tool-Use Trajectories for AI-Generated Image Detection",
+        "authors": [
+          "Jiaoyang Chen",
+          "Bin Hu",
+          "Jingyu Hu",
+          "Kun Zhou",
+          "Qin Zhang",
+          "Zhengzhe Liu"
+        ],
+        "published": "2026-09-05T04:39:49Z",
+        "updated": "2026-09-05T04:39:49Z",
+        "abstract": "AI-generated image detection is increasingly open-world: new image generators produce highly realistic images that make visual artifacts harder to identify. Existing detectors usually rely on a fixed set of forensic cues, so a detector that works well for one generator family may fail on another. We introduce FACT (Forensic Agent with Compiled Tool-use Trajectories), which learns an image-conditioned tool-use policy for forensic analysis. Instead of applying a fixed detector, FACT decides which forensic tools to call, interprets the returned evidence, and stops when sufficient evidence has been collected. FACT follows an Evolve--Distill--Refine pipeline: it evolves an execution-verified forensic skill, compiles the skill into action--observation tool-use trajectories, distills them into a compact agent, and refines the policy with cost-aware GRPO. Across two internal and four public benchmarks, FACT achieves the best performance among all compared methods, including on recent unseen generators, deepfakes, and manipulated images."
+      },
+      "hash": "a8e77072597930a5150c1a4e96213b40731353bc11a6a5768eaa0e9f5ed7a8be",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.05903": {
+      "entry": {
+        "arxiv_id": "2609.05903",
+        "version": 1,
+        "title": "EvoSafeHarness: Evolving Model- and Domain-Specific Harnesses for Securing Agents",
+        "authors": [
+          "Nanxi Li",
+          "Yingzi Ma",
+          "Yulong Cao",
+          "Edward Suh",
+          "Bo Li",
+          "Dawn Song",
+          "Chaowei Xiao"
+        ],
+        "published": "2026-09-05T05:56:41Z",
+        "updated": "2026-09-05T05:56:41Z",
+        "abstract": "Large Language Model (LLM) agents are turning language into real-world effects, making safety necessary against both indirect prompt injections and direct harmful requests. System-level safety harnesses add an enforcement layer beyond model-level defenses, but existing harnesses are usually designed once by experts and applied across heterogeneous models and domains. Effective protection is deployment-dependent: models differ in how much enforcement they need before utility declines, while domains differ in the effects, state, and action sequences that must be governed. A harness that is strict enough for one model may over-block another, and a policy that transfers across domains may miss application-specific safety relations. We present EvoSafeHarness, a safety-specific optimization framework that synthesizes a deployable harness for a frozen model in a target domain. It jointly searches a natural-language policy and executable code logic, guided by model behavior, domain specifications, and fresh-context adversarial review to reject benchmark-specific rules. Across four agent benchmark families, EvoSafeHarness achieves a stronger safety-utility frontier than fixed expert-designed defenses. On DecodingTrust-Agent, it reduces average attack success rate from 45.6% to 10.0% at a 3.3-point utility cost and achieves the best score in 14 of 15 cells. On AgentDojo, it reaches 82.8% utility at 0.0% ASR, twice CaMeL's utility at the same operating point, and transfers unchanged to unseen AgentDyn suites. It also achieves the best score on Agent-SafetyBench for every victim and keeps mean ASR below 20% under adaptive PAIR attacks with a refinement budget of 16. Analysis shows that domain semantics determine which safety relations and trajectory state are needed, while model and runtime behavior determine how and where those relations should be enforced."
+      },
+      "hash": "71c1219657f8c60e4c38473f267cdf3f445eaef44014e17b291c978df9c406ab",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.05905": {
+      "entry": {
+        "arxiv_id": "2609.05905",
+        "version": 1,
+        "title": "From Narrative to Auditable Forecasts: A Structured Scaffold for Agentic Forecasting",
+        "authors": [
+          "Yuanpu Cao",
+          "Yongkang Du",
+          "Yurui Chang",
+          "Lu Lin",
+          "Jinghui Chen"
+        ],
+        "published": "2026-09-05T05:58:39Z",
+        "updated": "2026-09-05T05:58:39Z",
+        "abstract": "LLM agents are increasingly used for live forecasting, where they retrieve up-to-date information and produce estimates for unresolved future events. However, current agentic forecasting often relies on implicit narrative aggregation: agents collect evidence, discuss it in prose, and often assign a probability without an explicit update path from evidence to forecast. This limits both forecasting accuracy and auditability. We propose AuditForecast, an agentic scaffold for structured probabilistic forecasting. AuditForecast first anchors the forecast with a suitable quantitative baseline model, uses model-guided data retrieval to derive a base probability, and then applies situational factor updates outside the model's scope through mechanical aggregation in odds space. This turns forecasting from a prose-based judgment into a structured process with explicit intermediate objects. Across multiple live forecasting benchmarks, AuditForecast improves forecasting accuracy and calibration relative to strong agentic baselines, surpasses market-implied references in several settings, and outperforms substantially more expensive deep-research agents while remaining Pareto-dominant in the cost--accuracy tradeoff. Beyond performance gains, AuditForecast produces an auditable forecasting report that makes forecast construction explicit and supports systematic post hoc analysis.",
+        "comment": "Accepted to Findings of EMNLP 2026"
+      },
+      "hash": "ad217845d61d98018e2e7e9cb4f22e113c12766fb8998221dbcf3c1e27e67143",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.05927": {
+      "entry": {
+        "arxiv_id": "2609.05927",
+        "version": 1,
+        "title": "GIF: Agentic Generation of Interactive and Functional Object Compositions for Robot Learning",
+        "authors": [
+          "Long Xu",
+          "Zhiqi Zhang",
+          "Mi Yan",
+          "Shengliang Deng",
+          "Chong Xia",
+          "Mingyu Dong",
+          "Jiayi Chen",
+          "Jiangran Lyu",
+          "Fei Gao",
+          "Zhizheng Zhang",
+          "He Wang"
+        ],
+        "published": "2026-09-05T06:36:20Z",
+        "updated": "2026-09-05T06:36:20Z",
+        "abstract": "Robot manipulation foundation models require scalable evaluation and data generation across diverse scenarios, with simulation providing an environment for both. Automated scene generation offers a promising path, yet prior work has largely emphasized coarse-grained scene layouts rather than fine-grained functional object compositions. Motivated by this gap, we present GIF, an agentic Generation framework for Interactive and Functional object compositions. In this framework, we recast this problem as disentangled reconstruction followed by relative pose recovery. CoGen produces instance-disentangled meshes with coarse initial poses leveraging complementary strengths of 2D and 3D generative models. GPRM refines the relative pose under joint geometric and physical guidance, and a VLM verifier selects the candidate that best matches the structured specification. We further construct a benchmark spanning eight representative contact-geometry classes and compare with state-of-the-art generators; GIF improves both asset quality and relation matching, while reducing collision rate to below 1%. Finally, we synthesize data for policy learning, revealing diversity scaling in both simulation and real-world deployment.",
+        "comment": "50 pages, including supplementary material"
+      },
+      "hash": "c10b395d5b5dc1f43c66430e0eec412e7b383adbce808138ad62abcce50a0680",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.05933": {
+      "entry": {
+        "arxiv_id": "2609.05933",
+        "version": 1,
+        "title": "Rethinking the Evaluation of Efficiency Methods for Multi-Agent Systems",
+        "authors": [
+          "Jiamu Zhang",
+          "Lingxi Zhang",
+          "Pengjun Lu",
+          "Qiyue Zhang",
+          "Yu-Neng Chuang",
+          "Zhengchen Li",
+          "Shuai Xu",
+          "Vipin Chaudhary",
+          "Hanjie Chen"
+        ],
+        "published": "2026-09-05T06:47:38Z",
+        "updated": "2026-09-05T06:47:38Z",
+        "abstract": "Efficiency is increasingly important for Large Language Model (LLM)-based multi-agent systems (MAS), as larger models and more agents introduce substantial execution costs. Recent methods aim to make MAS cheaper by pruning agents, removing communication edges, or searching for compact structures. However, we argue that existing evaluations may overestimate their true ability to improve MAS efficiency. Reported gains are often measured under method-specific prompts and starting topologies, making them difficult to attribute to the proposed structural changes. Moreover, many reported successes appear in non-MAS-demanding settings, where a single agent or a randomly pruned system can already preserve strong performance. To study these issues, we introduce a controlled and MAS-demanding diagnostic benchmark for representative MAS efficiency methods. We evaluate methods under a shared backbone model, agent registry, and runtime, across controlled variations in topology, scale, depth, and tool use. Our analysis shows that many reported gains are setup-dependent and may arise from structural collapse, disabled tool pathways, or starting systems where random pruning already preserves accuracy, rather than robust improvements in MAS efficiency.",
+        "comment": "The 2026 Conference on Empirical Methods in Natural Language Processing"
+      },
+      "hash": "5b782ab4a879a2a860613dd39d1b572149060274845a95cc09531c4230ef69ec",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.05947": {
+      "entry": {
+        "arxiv_id": "2609.05947",
+        "version": 1,
+        "title": "Beyond Final Decisions: A Process-Centric Benchmark for Transparent AI-Assisted Peer Review",
+        "authors": [
+          "Siming Yuan",
+          "Xueyi Zhang",
+          "Wangze Ni",
+          "Tianfang Xiao",
+          "Shimin Di",
+          "Jia Zhu",
+          "Zhuoren Jiang",
+          "Rong Tan",
+          "Lei Chen",
+          "Kui Ren"
+        ],
+        "published": "2026-09-05T07:30:52Z",
+        "updated": "2026-09-05T07:30:52Z",
+        "abstract": "Peer review is central to quality control in science. However, existing evaluations of AI-assisted peer review mainly focus on the overall quality of generated reviews or the accuracy of final decisions. They therefore provide limited evidence about whether model decisions are supported by sufficient and reliable review evidence. We introduce a process-centric diagnostic benchmark for AI-assisted peer review. It uses (x,$z_s$,$z_c$,$z_r$,y) to represent the paper content, summary, critique, suggestion, and decision. We convert heterogeneous review records from PeerRead, NLPeer ARR-22, and OpenReview-ICLR into process-aligned data. Our benchmark uses direct decision prediction from the paper content (Direct) as its baseline. It compares the decision value of Gold-process variables and Predicted-process variables, and conducts stage-level evaluation, chain-consistency evaluation, and interventional sensitivity analysis. Experiments across three datasets and six models show that Gold-process variables generally have higher decision value. For the main analysis model, the Gold--Predicted gap remains stable across datasets and random seeds. This gap is also reproduced in most model--dataset combinations. Although model-generated intermediate review texts show relatively high local consistency across adjacent stages, the final decisions are not consistently supported by the preceding review evidence. Our benchmark targets AI systems designed to assist rather than replace human reviewers. It provides a transparent and auditable diagnostic tool for evaluating the reliability of their review processes."
+      },
+      "hash": "b05718be75c340b7ec67ad254505b8fac18fe09553b6fbaf61428cdf9667ba4b",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06027": {
+      "entry": {
+        "arxiv_id": "2609.06027",
+        "version": 1,
+        "title": "Evaluating Deep-Search Agents under Hierarchical Web Evidence Poisoning",
+        "authors": [
+          "Zhongan Bi",
+          "Qiwen Wang",
+          "Jianrong Jiang",
+          "Jigang Ding",
+          "Wenwen Xiong",
+          "Changhua Meng",
+          "Xuanang Gao",
+          "Kepeng Lin",
+          "Changjiang Jiang",
+          "Yiang Chen",
+          "Huan Yao",
+          "Wei Wang",
+          "Zhenyu Ma",
+          "Wenhui Dong"
+        ],
+        "published": "2026-09-05T11:05:58Z",
+        "updated": "2026-09-05T11:05:58Z",
+        "abstract": "Search-augmented LLM agents are increasingly used for consumer decisions, making them vulnerable to Generative Engine Optimization (GEO) poisoning. Existing benchmarks largely measure whether manipulated content is retrieved or endorsed, but do not track whether an agent verifies suspicious evidence, revises adopted claims, or recovers before producing its final recommendation. We introduce HAE-GEO, a benchmark that tracks the full trajectory from exposure to recovery under progressively more persuasive Web poisoning. Agents interact via a multi-turn Search-Scrape interface across three attack levels (L1 direct assertion, L2 contextual camouflage, and L3 apparent corroboration), supported by a controlled corpus of 72,039 clean pages and 770 poisoned pages per level spanning 8 product categories and 154 brands. Evaluation combines deterministic behavioral measures with six semantic rubric dimensions. Evaluating 10 agents, we find three recurring patterns: evidence recognition degrades under the corroboration trap; agentic search improves final resistance without improving evidence recognition or utility; and defense prompting increases verification, yet rarely converts verification into recovery.",
+        "comment": "36 pages, 9 figures, and 10 tables. Code and benchmark: https://github.com/zhonganbi102-netizen/HAE-GEO"
+      },
+      "hash": "d2d6d88d84cbb75e1c3439c7f0149622fc2dbaec8905a482bae0d767640710b7",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06059": {
+      "entry": {
+        "arxiv_id": "2609.06059",
+        "version": 1,
+        "title": "DAREBench: Deployment-Aware and Reliable Evaluation of Models as Agents",
+        "authors": [
+          "Yu Liu",
+          "Zhilin Liu",
+          "Zhiwei Yang",
+          "Shaojie Zhang",
+          "Zheyuan Deng",
+          "Tingwei Huang",
+          "Zhenbo Luo",
+          "Lei Jiang",
+          "Yanbing Liu",
+          "Pei Fu"
+        ],
+        "published": "2026-09-05T12:36:59Z",
+        "updated": "2026-09-05T12:36:59Z",
+        "abstract": "As large language models evolve from question-answering systems into general-purpose agents, evaluation must move beyond static answer correctness to assess multimodal perception, multi-step execution, tool use, and artifact delivery. However, existing benchmarks are often tied to specific task types, execution environments, or scoring protocols, limiting their comparability, interpretability, and reliability for deployment decisions. We introduce DAREBench (Deployment-Aware and Reliable Evaluation of Models as Agents), a benchmark designed to capture workload variation and support reliable agent evaluation. Built on a shared OpenClaw execution environment, DAREBench organizes 233 tasks selected and adapted from 22 source benchmarks into a $2\\times3$ workload matrix defined by input modality and execution form, and evaluates them under a unified contract-based protocol with evidence-based score auditing. We evaluate 23 commercial API models and 12 locally deployed open-weight models over 7,587 model--task runs, reporting accuracy and token consumption alongside reference costs for API models. Results show that no single model dominates all workload groups, text and multimodal tasks exhibit distinct accuracy--cost trade-offs, and local open-weight models are competitive in several groups but still trail frontier commercial models overall. These findings suggest that agent deployment and model selection should consider workload profiles, deployment mode, and accuracy--cost trade-offs rather than rely on a single aggregate score."
+      },
+      "hash": "e00d31136f3ea4aab9b292990e084349c576a44a2c72f566e808519aa954aa01",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06063": {
+      "entry": {
+        "arxiv_id": "2609.06063",
+        "version": 1,
+        "title": "Explaining AI Agents Through Execution Traces",
+        "authors": [
+          "Vittoria Vineis",
+          "Fabiano Veglianti",
+          "Lorenzo Antonelli",
+          "Claudia Di Carlo",
+          "Matteo Silvestri",
+          "Gabriele Tolomei"
+        ],
+        "published": "2026-09-05T12:45:56Z",
+        "updated": "2026-09-05T12:45:56Z",
+        "abstract": "AI Agents are increasingly deployed in real-world settings, where they interact with external tools and make sequential decisions with limited human oversight. This creates a pressing need for reliable and auditable explanations of what an agent did and why. However, traditional Explainable AI (XAI) methods fall short of providing the process-level transparency required for such interactive, multi-step systems, motivating a paradigm shift toward approaches specifically designed for AI Agents. To address this gap, we present a post-hoc XAI framework that transforms a lengthy agent's execution trace into a structured report and a faithful natural-language explanation explicitly grounded in its observable behavior. Because it relies solely on execution traces, the framework applies across different agent architectures, environments, and tasks. Human and automated evaluations across multiple benchmarks and architectures show that our framework produces high-quality, trace-faithful explanations while reliably identifying unsupported claims, unjustified actions, and evidence gaps, outperforming naive LLM-generated explanations."
+      },
+      "hash": "3dc73c94ec4ea80b80c927f85f906bc138b138b57a6507d14ff3e9e2c1f2889a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06208": {
+      "entry": {
+        "arxiv_id": "2609.06208",
+        "version": 1,
+        "title": "From Gaze to Meaning: A Training-Free AI Agent for Unified Grounding and Explanation",
+        "authors": [
+          "Shayan Nasiriboukani",
+          "Sara Atito",
+          "Mohammad Nezamipour",
+          "Muhammad Awais"
+        ],
+        "published": "2026-09-05T17:54:58Z",
+        "updated": "2026-09-05T17:54:58Z",
+        "abstract": "Understanding human attention is fundamental for scene interpretation, yet existing approaches often rely on heavily trained models that lack interpretability. Prior methods struggle to jointly reason about gaze targets, attended objects, and visual grounding without extensive supervision. To the best of our knowledge, this work introduces the first training-free Gaze Target Agent (GTA) for gaze-guided reasoning across tasks such as gaze target prediction, attention localization, and object identification. This is achieved by leveraging pretrained vision-language models, augmenting them with visually guided prompts, and employing a memory-based retrieval strategy for high-uncertainty samples to improve performance without additional training. We evaluate our approach using both quantitative metrics and qualitative results. Quantitatively, our method achieves state of the art performance on the GazeFollow and GazeHOI benchmarks. Qualitatively, our agent provides detailed semantic predictions, predicts the correct targets even when ground truth labels are wrong, and remains flexible without vocabulary constraints.",
+        "comment": "Accepted at ECCV 2026"
+      },
+      "hash": "945e9d0fa0043cb287b611a10ff3dd9d8fa4b86e513c454b99b265a6292b7efd",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06229": {
+      "entry": {
+        "arxiv_id": "2609.06229",
+        "version": 1,
+        "title": "SWE-Test: Benchmarking LLM Vulnerability Discovery via Input Prediction",
+        "authors": [
+          "Yuanxiang Shi",
+          "Jiayi Lin",
+          "Xuanyong Lin",
+          "Liangcai Su",
+          "Yeheng Duan",
+          "Wei Wang",
+          "Qi Han",
+          "Bing Zhao",
+          "Wei Hu",
+          "Xander Xu",
+          "Chenxiong Qian"
+        ],
+        "published": "2026-09-05T19:04:41Z",
+        "updated": "2026-09-05T19:04:41Z",
+        "abstract": "Vulnerability discovery is becoming an important ability of large language model (LLM) agents: agents that silently miss real defects leave critical software exposed. Rigorously measuring this ability is therefore urgent, but existing benchmarks are gameable through data contamination, score recall against an unknowable vulnerability set, often rely on synthetic bugs, and report a single end-to-end verdict that cannot localize where an agent fails. Vulnerability discovery is a composite ability: an agent must comprehend source code, infer input constraints, construct inputs, execute them, and iteratively correct from feedback. We recast its measurement as an input-prediction task with a closed, deterministic ground truth: using coverage-guided fuzzing, we mine deep target branches in real-world C/C++ programs and ask an agent to predict an input that drives execution to a given branch. This decomposes discovery into three task modes over 22 real-world C/C++ programs spanning 15 domains. Open-loop and Feedback-enabled share 60 fixed-target task instances across 16 of these codebases (13 domains), testing input construction without and with a distance oracle to isolate code comprehension from feedback-driven correction. Online Arena instead removes the predefined target and scores path exploration by coverage gain on a separate, partially overlapping pool of 11 programs; agents collectively confirmed 13 distinct bugs across six programs. Evaluating 15 default-effort model-scaffold configurations, the best reaches only 55.0% pass rate in the Feedback-enabled mode, and the mean across seven paired Claude Code configurations is 36.4% with feedback versus 19.3% without. Decomposing failures, we find constraint inference, not navigation, is the dominant bottleneck. We release SWE-Test with a turnkey evaluation environment."
+      },
+      "hash": "fbed10f1811fd13b595d7a9143fed98024681f5c8b98a3ed9bef8e1f095decef",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.09212": {
+      "entry": {
+        "arxiv_id": "2609.09212",
+        "version": 1,
+        "title": "AgentHijack: Visual Patch Attacks on Multimodal Computer-Use Agents",
+        "authors": [
+          "Zhihao Liu",
+          "Hongyu Sun",
+          "Zhiyuan Fu",
+          "Xiaonan Duan",
+          "Jice Wang",
+          "Shangru Zhao",
+          "Weizhi Meng",
+          "Wuxin Yang",
+          "Yangfan Zhou",
+          "Yuqing Zhang"
+        ],
+        "published": "2026-09-06T03:49:45Z",
+        "updated": "2026-09-06T03:49:45Z",
+        "abstract": "This paper presents an end-to-end evaluation framework for image-triggered command injection against computer-use agents (CUAs). The goal is to test whether a local visual patch can induce verifiable environmental consequences along the full chain of screenshot input, VLM generation, action parsing, and environment execution. We train and deploy patches on author-controlled GitHub Pages pages and a locally deployed CSDN clone, and evaluate them in real environments across five open-source or publicly available GUI-agent or vision-language-model (VLM) backends. Our experiment aggregates 600 instance-level online cases, with T-ASR, TAPR, and E2E-ASR reaching 84.5%, 47.0%, and 20.3%, respectively. Trajectory analysis further shows that in some successful cases the agent first executes a malicious terminal command and then continues the original benign task. These results indicate that optimized local visual signals can affect not only VLM outputs but also propagate through the execution pipeline of open CUAs and create real environmental risk."
+      },
+      "hash": "7bbc15611fde76374c32cbc9da6842de36f91061731809ffd7acd5c2ee63952f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06530": {
+      "entry": {
+        "arxiv_id": "2609.06530",
+        "version": 1,
+        "title": "Selective Knowledge Control for Continual GUI Agent Learning over Application Streams",
+        "authors": [
+          "Zirui Shang",
+          "Xin Shu",
+          "Yang Liu",
+          "Zhi Gao",
+          "Xinxiao Wu",
+          "Lifeng Fan"
+        ],
+        "published": "2026-09-06T10:50:55Z",
+        "updated": "2026-09-06T10:50:55Z",
+        "abstract": "Continual learning is a crucial capability for Graphical User Interface (GUI) agents to adapt to evolving applications while retaining knowledge acquired from previous applications. Such application streams pose a challenging knowledge modeling problem: new applications often share underlying knowledge with past ones, yet also introduce specific knowledge that must not interfere with historical knowledge. In this paper, we propose activation-conditioned selective knowledge control, a lightweight method that achieves selective knowledge retention via neuron-level gradient manipulation. Our method maintains a compact historical knowledge state to protect highly activated MLP neurons that preserve previous knowledge. When a new application arrives, it performs real-time gradient surgery conditioned on forward activation. Concretely, the protected neurons are categorized into two types: unactivated neurons holding specific knowledge, whose gradients are truncated to prevent interference; and activated neurons holding shared knowledge, whose gradients are orthogonally projected to preserve stability while enabling adaptation. After each application stage, newly identified critical neurons are merged into the historical state for future learning. Empirical evaluations on multi-app sequential benchmark demonstrate that our method effectively mitigates catastrophic forgetting on prior applications while sustaining robust adaptation to new ones."
+      },
+      "hash": "d6a9bd1a59be0cae45c2a0017c16a0533b386490ad28fb90509f748a54805a6a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06535": {
+      "entry": {
+        "arxiv_id": "2609.06535",
+        "version": 1,
+        "title": "3DHarnessBench: Probing Agentic 3D-to-Code Capabilities of Frontier Vision-Language Models",
+        "authors": [
+          "Ling Liu",
+          "Bingchen Gong",
+          "Amal Dev Parakkat",
+          "Maks Ovsjanikov"
+        ],
+        "published": "2026-09-06T10:59:15Z",
+        "updated": "2026-09-06T10:59:15Z",
+        "abstract": "We introduce 3DHarnessBench, a benchmark that evaluates the agentic ability of frontier vision-language models (VLMs) to recover 3D geometry as Blender Python code from a variety of inputs. Unlike previous frameworks that prompt the VLMs with a fixed input (e.g., a single rendering or a text description), 3DHarnessBench evaluates four separate harness settings that progressively enable active agentic exploration, facilitated by recent Blender MCP functionality. Our hierarchy from Single-view, Multi-view, Active Visual (arbitrary viewpoint access), and Full 3D Interaction (complete access to the target object through Blender function calls) probes the models' abilities in both visual perception and active inference, tool calling, and self-correction. We observe that the ability of all frontier models to recover 3D geometry improves significantly with richer function call access, although the improvements are strongly model-dependent, revealing highly uneven agentic 3D-to-code capabilities. We will release the benchmark, code, outputs, and agent trajectories for reproducible 3D evaluation."
+      },
+      "hash": "41942776a3a65c3319f510db1f92d86b0bf892aa7fb7fed4fa8b4774fdba47a4",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2608.29228": {
+      "entry": {
+        "arxiv_id": "2608.29228",
+        "version": 2,
+        "title": "Localizing Emergent Failures in Agentic AI: Recovering Minimal Repair Families via Counterfactual Replay",
+        "authors": [
+          "Bingjie Li",
+          "Yumeng Song",
+          "Zhongming Yao",
+          "Tianyi Li"
+        ],
+        "published": "2026-08-29T12:34:08Z",
+        "updated": "2026-09-06T14:47:32Z",
+        "abstract": "Failures in agentic AI systems can arise from interactions among messages exchanged by multiple large language model (LLM) agents. Pointwise attribution cannot distinguish a jointly necessary repair from alternative singleton repairs. We formulate Minimal Repair Family Recovery (MRFR): recovering all inclusion-minimal event sets whose counterfactual replay restores task success within a declared size bound. We propose Graph-Constrained Joint Replay (GCJR), which slices failure-relevant events from an execution dependency graph, constructs graph-feasible singleton and pair candidates, and verifies them by replay with paired clean counterparts. For fixed replay outcomes, GCJR is exact within its declared graph domain. On 90 in-scope cases from a 120-DAG controlled benchmark, GCJR achieves 1.000 Family Exact Match while reducing mean replay calls from 56.3 to 25.3 (55.1%) relative to exhaustive search. On a 24-case, four-agent LLM pilot, it again achieves 1.000 Family Exact Match and reduces mean model calls from 21.0 to 10.0 (52.4%); single-event replay misses jointly necessary repairs.",
+        "comment": "6 pages, conference paper"
+      },
+      "hash": "5af123398af81e36a0f4530e52493338b17ffcc5b8d6836e44d6b9ef0ae3b71c",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2608.30441": {
+      "entry": {
+        "arxiv_id": "2608.30441",
+        "version": 2,
+        "title": "ECLIPSE: Self-Evolving Stealthy Prompt Injection Attack against Long-Horizon Agentic Systems",
+        "authors": [
+          "Shiqian Zhao",
+          "Yangfan Zhou",
+          "Xinfeng Li",
+          "Runyi Hu",
+          "Yechao Zhang",
+          "Yi Xie",
+          "Tianwei Zhang",
+          "Luu Anh Tuan"
+        ],
+        "published": "2026-08-31T08:32:22Z",
+        "updated": "2026-09-06T17:54:43Z",
+        "abstract": "Recently, large language model (LLM) agents, such as Codex, Claude Code, and OpenClaw, have become capable of planning and executing long-horizon tasks through repeated tool calls. This capability also creates new opportunities for prompt injection. Existing attacks either place the malicious objective in one explicit instruction, making it easy to detect, or distribute the intent across multiple execution stages, making successful completion unreliable. In this work, we propose ECLIPSE, a self-evolving and stealthy prompt-injection framework for long-horizon agentic systems. ECLIPSE combines direct user-prompt injection with indirect tool-side injection through two components. On the one hand, Stealthy Attack Trajectory Synthesis uses a sandbox to generate and iteratively verify candidate tool chains, then renders a verified chain as a natural one-shot prompt to serve as the direct instruction. Then, Tool-Chain Steering transfers this plan to the target environment through Static Workflow Encoding (SWE), which embeds state-transition cues in target-tool descriptions, and Dynamic Trajectory Correction (DTC), which supplies corrective signals when execution deviates from the planned chain. To enable systematic evaluation, we further introduce LASE-Bench, a long-horizon agent-safety benchmark with 120 malicious tasks and 198 unique tools; 96.7% of its tasks make at least five tool calls. The experimental results show that ECLIPSE is highly effective: it achieves up to 96.7% attack success without defense and 69.2% under the common safety filter, exceeding the strongest baseline by 27.5% in the defended setting. Evaluations against representative defenses further show that existing safeguards do not reliably defend it, which raises the need for more effective defenses."
+      },
+      "hash": "fd37e49bdaa493edf90e5826611281aded4754d082071aac479fd9f9fb28300e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06758": {
+      "entry": {
+        "arxiv_id": "2609.06758",
+        "version": 1,
+        "title": "Agentic Visual Generation: From Generative Models to Agentic Control",
+        "authors": [
+          "Yinming Huang",
+          "Shuyuan Tu",
+          "Xi Yan",
+          "Jiahao Zhan",
+          "Zihan Yang",
+          "Zhen Xing",
+          "Hui Zhang",
+          "Tiehua Zhang",
+          "Yu-Gang Jiang",
+          "Zuxuan Wu"
+        ],
+        "published": "2026-09-06T17:59:24Z",
+        "updated": "2026-09-06T17:59:24Z",
+        "abstract": "Visual generation is evolving from generative models used through a single invocation into agentic control processes that can plan, select tools, inspect intermediate synthesized outputs, revise failures, and reuse prior experience. In most existing systems, the controller is an LLM or VLM, while visual generation models serve as tools or executors. However, existing work lacks a consistent criterion for determining when a generation system becomes agentic. Planning depth, tool use, multi-role collaboration, and reinforcement learning are often treated as evidence of agenticity, even though none of them necessarily determines which generation decisions the controller can make. We organize the field according to what the controller can directly control in the generation process. At L1 Conditioning Control, the controller prepares the input to a predetermined generator but does not control which visual operation is executed. At L2 Execution Control, it selects and invokes actual generation, editing, rendering, or other content-modifying operations. At L3 Outcome-Adaptive Control, it observes an intermediate outcome and uses that observation to change a subsequent operation within the current task. At L4 Experience-Adaptive Control, it retains experience from completed tasks and uses that experience to change decisions on future tasks. L0 Fixed Support separately denotes generators, editors, evaluators, reward models, benchmarks, and fixed pipelines without a deployed controller that makes generation-level decisions. These levels describe a progressively broader decision-making scope rather than model size, system complexity, output quality, tool or role count, or training method. Applying this framework across image, video, editing, 3D, world, slide, and user-interface generation reveals how controller capabilities have evolved and how their mechanisms are distributed across levels.",
+        "comment": "project page: https://github.com/YinmingHuang/Awesome-agentic-visual-generation-model"
+      },
+      "hash": "94007075ae5a386197a4aba67f84e86f23fd1e92b8abf29bf6ea410870080f7e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2608.27439": {
+      "entry": {
+        "arxiv_id": "2608.27439",
+        "version": 2,
+        "title": "RedEvoAgent: Automatic Red-Teaming Agent with Experience-Driven Skill Evolution",
+        "authors": [
+          "Junjie Zhang",
+          "Hui Liu",
+          "Kecheng Chen",
+          "Xianbo Mo",
+          "Changsheng Chen",
+          "Haoliang Li"
+        ],
+        "published": "2026-08-27T17:55:33Z",
+        "updated": "2026-09-06T18:25:19Z",
+        "abstract": "LLM-based agents are increasingly deployed in product-level execution harnesses, where jailbreaks can trigger harmful tool use and persistent state changes, creating greater risks than unsafe text generation alone. Existing automatic red-teaming methods often rely on fixed attacks, while recent agentic attackers coordinate multiple jailbreak tools and show stronger potential through trajectory-based retrieval. However, such retrieval can reuse misleading experiences due to retrieval bias and unclear tool credit, and full trajectories add context overhead while reducing interpretability. We propose RedEvoAgent, a black-box red-teaming agent that distills cross-case attack trajectories into a concise, human-readable attack skill. The attack skill adaptively evolves through tool-effectiveness profiling and Deciding-Tool Attribution for skill updates, and a validation ratchet that retains only updates improving validation performance. Experiments on multiple benchmarks, target models, and target execution harnesses show that RedEvoAgent outperforms fixed and agentic baselines, improves tool efficiency, and transfers across attacker models and target execution harnesses."
+      },
+      "hash": "3da1a271e2e316fdcfcafa4735069b45dc6f30e59ca6c77446dc4f820d141a1f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06780": {
+      "entry": {
+        "arxiv_id": "2609.06780",
+        "version": 1,
+        "title": "Shortcutting the Fix: Identifying and Categorizing Agentic Exploits in Software Engineering Benchmarks",
+        "authors": [
+          "Nikolai Ludwig",
+          "Wasi Uddin Ahmad",
+          "Somshubra Majumdar",
+          "Boris Ginsburg"
+        ],
+        "published": "2026-09-06T18:55:39Z",
+        "updated": "2026-09-06T18:55:39Z",
+        "abstract": "While autonomous software engineering (SWE) agents achieve high benchmark resolution rates, these scores can mask exploitative behaviors---such as leveraging local Git histories, accessing upstream repositories, or recalling memorized solutions---rather than demonstrating genuine problem solving. We systematize and audit these exploits across five open large language models on SWE-bench Multilingual and DeepSWE using a turn-level LLM-as-a-judge protocol. Under standard prompts, exploitation rates reach 45.1\\%--82.4\\% on SWE-bench Multilingual and 44.2\\%--66.1\\% on DeepSWE. Appending a targeted instruction enforcing solution originality drastically cuts these exploitation rates---down to 4.0\\%--10.7\\% and 1.5\\%--7.1\\%, respectively, while maintaining strong core task performance. Our findings demonstrate the critical need for exploit-aware evaluation frameworks that measure true repository-level problem solving over benchmark gaming.",
+        "comment": "Preprint"
+      },
+      "hash": "435c1c8e99233dc92aee2081510120e6a5f8904f00f83485c96566a5bdf1d111",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06792": {
+      "entry": {
+        "arxiv_id": "2609.06792",
+        "version": 1,
+        "title": "Improving Proficiency and Efficiency of Android GUI Agents via Self-Generating Tool Actions",
+        "authors": [
+          "Juyong Lee",
+          "Woogyeol Jin",
+          "Kimin Lee"
+        ],
+        "published": "2026-09-06T19:22:53Z",
+        "updated": "2026-09-06T19:22:53Z",
+        "abstract": "Android agents using a hybrid action space that combines GUI actions and tool actions (e.g., accessing application data via APIs) remain largely underexplored, mainly due to the excessive effort required to create tools. To address this gap, we introduce DroidTool, a framework for augmenting the agents with self-generated tools, which are realized as Python functions operating on application states (e.g., a database). To create tools with minimal human labor, DroidTool employs an agentic workflow featuring stages: proposal, implementation, test generation and execution, and repair. Notably, when testing the created tools for verification, it constructs relational tests across relevant tools for natural preparation of appropriate test preconditions and improved test coverage, rather than testing each tool separately. The GUI agents augmented with the generated tools achieved approximately 4.47%p higher performance with approximately 20.05% fewer interactions than the GUI-only agents, averaged across representative benchmarks: AndroidWorld, B-MoCA, and MobileSafetyBench."
+      },
+      "hash": "4fa430cb99d265d2a252e57d7d89e2be77889372233cf01b7a2c3ad3da5ff084",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06815": {
+      "entry": {
+        "arxiv_id": "2609.06815",
+        "version": 1,
+        "title": "Typed Federated Artifacts for the Agentic Web:Sharing Tool-Routing Knowledge Across Frozen,Heterogeneous LLM Agents",
+        "authors": [
+          "Abhijit Chakraborty",
+          "Ni Trieu",
+          "Vivek Gupta"
+        ],
+        "published": "2026-09-06T20:15:09Z",
+        "updated": "2026-09-06T20:15:09Z",
+        "abstract": "An open, networked web will allow agents to run frozen models from multiple vendors, keep their history private, and teach each other which tool to call and when. Flat text (prompts, example pools) makes it difficult for the protocol to distinguish between noise statistics, merging rules, and documentation. Weights and adapters cannot transfer that knowledge between platforms. We suggest sharing typed federated artifacts, schema-validated objects with well-defined fields for per-field privacy (described here, but measured), dispute resolution, and cross-model transfer, and instantiating them as SYNAPSE1, a common tool-routing knowledge. After deleting 192 garbage entries and 1,916 training items that duplicate or almost duplicate test queries, a federated compendium routes within 1.1 points of a centralized one at 20 MB of JSON per client each round on StableToolBench (3,180 tools). The same experience merged and shown to the router as typed fields rather than one flat string is worth 8.5 points on clean data and 7.4 under 60% injected contradiction. Crossing merge and rendering shows the halves are inseparable (the typed merge shown flat is the worst arm), while three conflict policies are indistinguishable, so the conflict log that motivated this work is not the On τ-bench retail, each compendium arm improves GPT-4o agents' per-step tool-call accuracy by at least 6.7 points, attributed to format rather than federated experience. Two cautionary findings conclude the paper: on a topic-labeled math proxy and StableToolBench, a TF-IDF classifier over the same labeled experience beats every LLM routing arm (by 48 and 26 points, mostly retrieval recall) because the benchmark's pool holds labeled queries for every supposedly unseen tool and every test query verbatim before our filter. It cannot measure routing to tools without labels, which routing exists for."
+      },
+      "hash": "65048461644d5e6b6e16689ad37548bac6d9f319f06e1503b7f05824897ea889",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2608.28553": {
+      "entry": {
+        "arxiv_id": "2608.28553",
+        "version": 3,
+        "title": "Logos: An Agent Harness on a Cross-Process Bus",
+        "authors": [
+          "Hanzhang Jia",
+          "Liheng Zeng",
+          "Hao Cheng",
+          "Yi Gao",
+          "Bo Ma"
+        ],
+        "published": "2026-08-28T17:30:10Z",
+        "updated": "2026-09-06T20:18:38Z",
+        "abstract": "Plugin-based agents assemble capabilities at runtime, and the spatiotemporal-composability calculus proves a reversibility guarantee for this assembly. However, the guarantee is carried by a single process, which confines all components, sessions, and recovery records to one failure domain, where a fault spreads past the plugin boundary, and process death interrupts every session the process hosts. Resting only on the hypotheses the calculus already states and the stateless interface of the model call, this paper relaxes the single-process restriction of the calculus to an arbitrary assignment of components and records to processes, gives four sufficient conditions, and proves with Theorem 1, derived from the four lemmas, that the reversibility guarantee holds across processes when these conditions are met. Based on Theorem 1, this paper constructs Logos, a cross-process plugin-based agent in the peer-process and name-routed form of ROS, where a plugin is a process, the router holds only a rebuildable routing table, and the session state needed for recovery lives in an append-only transcript owned by no process. Under one fault on two hundred benchmark tasks across three configurations, the single-process reference lost every session and scored 1.5 percent on the official validator, the MCP configuration kept its sessions while spending 1099 calls on a dead endpoint, and Logos kept every session alive, wasted zero calls, and succeeded on 120 tasks against 102 for both configurations combined. At the mechanism level, eighty sessions terminated at four points of the tool-call cycle all resumed with no repeated action, 3,500 concurrent calls paired with zero violations, and one bus hop cost 1 in 823 of the model's first token. The results show that the reversibility guarantee holds across processes and that assembly itself can leave the host process.",
+        "comment": "Still just draft, version 0.1.0. The author contributions are still under discussion, and the draft doesn't represent the final decision"
+      },
+      "hash": "0f0430ce0de0a6af48b6632f32728a60b369fe532155c47b8160d448ad247b39",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06835": {
+      "entry": {
+        "arxiv_id": "2609.06835",
+        "version": 1,
+        "title": "Skynet: Workflow-Level Anomaly Detection for Agentic AI via Semantic and Structural Modeling",
+        "authors": [
+          "Chaoyu Zhang",
+          "Hexuan Yu",
+          "Heng Jin",
+          "Shanghao Shi",
+          "Ning Zhang",
+          "Yi Shi",
+          "Yulia R. Gel",
+          "Y. Thomas Hou",
+          "Wenjing Lou"
+        ],
+        "published": "2026-09-06T21:16:42Z",
+        "updated": "2026-09-06T21:16:42Z",
+        "abstract": "Agentic AI systems execute complex tasks through long-horizon workflows of planning, tool use, and multi-agent coordination. Task failures in these systems often originate from a single step, such as an injected prompt or a flawed plan, and are then amplified through downstream dependencies as the corrupted step propagates across many subsequent agents and tool calls. Existing defenses either target a specific class of attacks or failures, or inspect individual prompts and steps in isolation. Both leave the global dependency structure of a workflow unexamined, and miss the inconsistencies that only emerge when the execution is viewed as a whole. We argue that anomaly detection for agentic AI must reason at the workflow level, where global execution structure exposes signals that local checks cannot see. We present Skynet, a principled workflow-level anomaly detection framework that turns observed multi-agent execution into directed workflow graphs and scores them against learned benign behavior. Skynet jointly models the semantic execution context and the structural organization of inter-agent delegation, tool invocation, and data-flow dependencies, and trains only on benign workflows. Because training never sees attacks or failures, this design naturally extends to zero-day detection: any execution that violates benign workflow regularities surfaces as off-manifold geometry under a single decision rule. We evaluate Skynet on three public agentic safety and failure benchmarks. It sustains high recall together with a sub-1% false positive rate, with per-workflow and per-step latencies low enough for online monitoring of agentic AI runtimes.",
+        "comment": "10 pages, 4 figures. Accepted by ACM MobiHoc 2026"
+      },
+      "hash": "ffdbdf5a85ae186662977bf712956a6b38142d0bc2487fa6331c003dd5d807aa",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.09218": {
+      "entry": {
+        "arxiv_id": "2609.09218",
+        "version": 1,
+        "title": "The Double Measurement Confound in Agent Benchmarks: De-Scaffolding, Ground-Truth Scoring, and Reliability Beyond the Mean",
+        "authors": [
+          "Yonghong Zhang",
+          "Shadi Motaali",
+          "Vu Phong Dinh",
+          "Avin Piroutiniya",
+          "Jorge E. López de Vergara",
+          "Luis de Pedro",
+          "Ricardo Correia",
+          "Isabel M. Parra",
+          "Yong Xie"
+        ],
+        "published": "2026-09-06T21:23:11Z",
+        "updated": "2026-09-06T21:23:11Z",
+        "abstract": "Agent benchmarks are increasingly used to compare large language models (LLMs) and guide deployment decisions, yet benchmark scores are meaningful only if they measure model capability rather than properties of the evaluation pipeline. We identify a double measurement confound: execution-critical decisions are performed by a fixed scaffold instead of the model, while the scorer evaluates outputs using criteria that may not reflect task correctness. We unify these issues within a measurement-theoretic framework that characterizes when benchmark scores can be interpreted as evidence of model capability, and instantiate it with an audit-and-repair protocol that (i) transfers execution-critical decisions from the scaffold to the model, (ii) replaces shape-based evaluation with seeded ground-truth scoring, and (iii) reports reliability beyond the mean through worst-case and tail-risk metrics. Experiments on ComtradeBench show that the joint intervention transforms a nearly flat leaderboard into a reliability spectrum that distinguishes both average performance and robustness across seeds. Applying the audit to existing benchmarks further shows that scorer validity is benchmark-specific, whereas scaffold ownership is an uncontrolled axis wherever we probed it. Our results suggest that benchmark scores should be interpreted together with their scaffolding level, scoring criterion, and reliability profile, providing a practical framework for more valid evaluation of LLM agents.",
+        "comment": "31 pages, 18 figures; supplementary material included as appendix"
+      },
+      "hash": "13915f4e8d923e0a7a37dae82a50fa2723b620904034c780918dca055f47fa44",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06966": {
+      "entry": {
+        "arxiv_id": "2609.06966",
+        "version": 1,
+        "title": "MOLE: Detecting Insider Threats in AI Agents",
+        "authors": [
+          "Aashiq Muhamed",
+          "Virginia Smith"
+        ],
+        "published": "2026-09-07T03:04:31Z",
+        "updated": "2026-09-07T03:04:31Z",
+        "abstract": "Model misalignment, prompt injection, or operator misuse could lead AI agents operating frontier-lab accounts to exfiltrate model weights, poison training data, or weaken release gates. Existing benchmarks do not test whether defenders can detect this activity among routine work under a limited review budget. We introduce MOLE, an open benchmark of 150 AI-operated accounts sharing 9 stateful services over 30 workdays, with 12 threats and 8 corpora from four models totaling roughly 20 billion tokens. Of 39 agent models, 72% complete most assigned harmful objectives and agent refusal does not predict completion. MOLE enables comparison of 40 monitors across corpus generators, observability levels, and threats; even the best evaluated monitor in our single-day audit-event comparison misses nearly half of completed harm. MOLE also enables monitor development: benchmark-guided search improves a mid-tier monitor by 49-64%, while selective use of a stronger monitor improves budget-AUC by 10% over applying it to every account-day at comparable modeled cost."
+      },
+      "hash": "ec77e2a3ed4334fd03bc9fda1dec4bf889126f5391a1d326dc909d12161a58a9",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06972": {
+      "entry": {
+        "arxiv_id": "2609.06972",
+        "version": 1,
+        "title": "AgentDrift: A Step-Labeled Benchmark of Injection-Hijacked LLM Agent Trajectories",
+        "authors": [
+          "Asif Pinjari",
+          "Mithun Paul Saint-Germain"
+        ],
+        "published": "2026-09-07T03:10:23Z",
+        "updated": "2026-09-07T03:10:23Z",
+        "abstract": "LLM agents complete tasks by issuing sequences of tool calls, and every observation they read is a channel through which an indirect prompt injection can enter. A successful injection has a characteristic shape when the trajectory is read in order: a benign prefix gives way to actions that serve the attacker rather than the user. Existing benchmarks measure whether such attacks succeed against live agents, and existing guard models judge a trace as a whole; no public corpus labels, step by step, where an injection enters a trajectory and which steps it corrupts. We present AgentDrift, a benchmark of 12,536 synthetic tool-call trajectories over five agent domains in which every one of the 71,024 steps carries one of four labels: benign, injection point, hijacked, or failed injection. The corpus contains 4,000 benign, 5,536 attacked, 1,500 failed-attack, and 1,500 hard-negative trajectories; attacked trajectories follow three compliance patterns whose label strings obey a stated regular grammar. Failed attacks carry an injection the agent resisted, and hard negatives carry legitimate content that resembles an attack, so a detector must separate attempt from success and deviation from novelty. Trajectories were generated by a single open model under category-specific protocols, enforced by a closed-vocabulary structural validator, screened by an LLM judge, and audited by hand on 1,200 trajectories; we show that the LLM judge was itself fooled by the hard negatives. A surface-feature logistic regression recovers only 55.4% of attacks (F1 0.647), including only 8.2% of partial hijacks and 23.1% of delayed executions, so nearly half of the attacks require modeling the behavioral sequence. We measure template concentration, attack-goal-family collapse, and world-identity leakage in the generated data, and release the corpus with its documentation under CC BY 4.0.",
+        "comment": "19 pages, 8 figures, 13 tables. Dataset: https://github.com/Asif-0209/AgentDrift"
+      },
+      "hash": "ee9cb430ec49bb42cfeedad5448bf420574c55ad0b886b5284b0dee73395cd1d",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07051": {
+      "entry": {
+        "arxiv_id": "2609.07051",
+        "version": 1,
+        "title": "TrojanWorld: Backdooring World-Model Agents via Imagination Steering",
+        "authors": [
+          "Wenkai Huang",
+          "Siyuan Liang",
+          "Gaolei Li",
+          "Yiming Li",
+          "Tianhao Peng",
+          "Jianhua Li",
+          "Dacheng Tao"
+        ],
+        "published": "2026-09-07T05:14:10Z",
+        "updated": "2026-09-07T05:14:10Z",
+        "abstract": "World models increasingly serve as the predictive core of model-based reinforcement learning agents, enabling them to simulate future dynamics and reason over imagined trajectories before acting. Their substantial training demands make pretrained world models attractive for distribution and reuse, exposing downstream systems to model supply chain threats. Backdoor attacks offer a targeted and stealthy means of exploiting such supply chains, yet their threat to interactive world-model agents remains largely unexplored. To fill this gap, we present TrojanWorld, a backdoor framework for world-model agents that induces attacker-specified behavior by steering internal imagination. A physical object placed in the scene acts as the trigger, enabling deployment-time activation through the agent's native observation pipeline without digitally manipulating the observation stream. To achieve effective, stealthy, and persistent control, TrojanWorld combines Decision-Reflective Induction to steer trigger-conditioned imagination toward attacker-specified actions using decision feedback, Clean Behavior Anchoring to preserve trigger-free predictive and behavioral fidelity, and Causal Propagation to sustain the induced preference along subsequent trajectories after the trigger disappears. Together, these mechanisms establish an end-to-end attack chain from physical perception through corrupted imagination to malicious action selection. Experiments with the TD-MPC2, DreamerV3, and R2-Dreamer systems across the DeepMind Control, MetaWorld, MyoSuite, and RoboDesk benchmarks show that under trigger activation, TrojanWorld achieves a target-action deviation as low as 0.026 while retaining at least 98.8% of the corresponding clean performance. Even after trigger removal, the compromised agent can remain trapped in the induced behavioral trajectory, continuing to execute attacker-specified actions."
+      },
+      "hash": "eba92dc9999c267b5b02f13629d5d494ae1e5dc7229e3bcd2637dde4915a79b5",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07065": {
+      "entry": {
+        "arxiv_id": "2609.07065",
+        "version": 1,
+        "title": "VST: Verifiable Structured Transport for Auditable Agent-to-Agent Alpha Discovery",
+        "authors": [
+          "Yuqi Li",
+          "Siyuan Liu",
+          "Bingjun Liu"
+        ],
+        "published": "2026-09-07T05:43:50Z",
+        "updated": "2026-09-07T05:43:50Z",
+        "abstract": "Agent-to-agent (A2A) alpha discovery is slowed by repeated feedback cycles between mining and evaluation agents, whose hand-offs, in contemporary LLM multi-agent systems, are free-form natural-language messages that carry no stable contract and cannot be replayed. We first restructure this communication as a structured agent-to-agent protocol of \\emph{typed, causally addressable, unicast records}, so that the committed stream forms a causal trajectory. On that trajectory a single predictor with four typed heads forecasts the accumulated guidance the two miners would receive several cycles ahead; a transactional verify--leap controller then commits a multi-cycle speculative outcome only when it passes a four-level gate, and otherwise rolls back to the exact prior state. Structure is the enabling contribution, and its value is not accuracy. A controlled ablation shows an equal-information free-text channel reaches the same predictor hit rate. What typing provides is a state that can be schema-checked, replayed deterministically, and prevented by construction from leaking a forecast to an evaluator: auditability by construction, not an empirically stress-tested guarantee. On a CSI~1000 out-of-sample holdout, our single run is the only one among eight methods (seven baselines and ours) to hold a positive median annualized return and Sharpe at the factor level, though the median return \\emph{in excess} of the benchmark stays negative for every method including ours; its development-selected top-20 portfolios reach a $0.71$ median holdout Sharpe, selected on a split inside the optimization horizon. We report these single-run results descriptively, gross of costs, and are explicit about their limits throughout; in particular we do not isolate the effect of the leap machinery from the inherited search substrate, which we leave to future work."
+      },
+      "hash": "acc28dbd1a97bc752c9589756276e6aae5c57fb5b2dc845f360881d673945733",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07194": {
+      "entry": {
+        "arxiv_id": "2609.07194",
+        "version": 1,
+        "title": "EmoMed: An Emotionally-Aware Agent for Multimodal Medical Support with Real-Time Information Retrieval",
+        "authors": [
+          "Ivan Nasonov",
+          "Nikita Glazkov",
+          "Ivan Makovetskiy",
+          "Mikhail Mozikov",
+          "Daniil Sukhorukov",
+          "Andrey Savchenko",
+          "Ilya Makarov"
+        ],
+        "published": "2026-09-07T08:19:03Z",
+        "updated": "2026-09-07T08:19:03Z",
+        "abstract": "We present EmoMed - a multimodal medical consultation agent that adapts its responses based on users' emotional states while maintaining clinical accuracy. The system processes text and medical images, detects affect indicators (anxiety, confusion, urgency) from user input, and adjusts response tone, structure, and detail level accordingly. To ensure factual reliability, the agent grounds clinical information through a dual retrieval mechanism: web-based fact-checking and an API-connected, continuously updated medical knowledge base. We evaluate our approach across seven state-of-the-art language models (GPT-4/5, Qwen3, Llama 4, Gemini 2.5, Grok4, Claude3) using comprehensive metrics including LLM-as-judge assessments, MedQA style accuracy tests, BERT Score, safety/helpfulness ratings, and multimodal medical benchmarks. The results demonstrate that emotionally adaptive responses consistently outperform neutral baseline across evaluation dimensions, without compromising clinical accuracy. A controlled user study validated these findings, with participants reporting improved perceived empathy and communication clarity, while maintaining trust in factual accuracy. Source code: https://github.com/NasonovIvan/EmoMed-Agent",
+        "journal_ref": "Workshop SECURE AI4H, AAAI 2026, https://link.springer.com/book/9789819239238"
+      },
+      "hash": "3b88be3e5d6a430201edb46bace27c74c1dc5c752780b81b7b2f15989dff44ef",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07204": {
+      "entry": {
+        "arxiv_id": "2609.07204",
+        "version": 1,
+        "title": "Agentic Algorithm Engineering: Improving Shared-Memory Exact Minimum Cuts",
+        "authors": [
+          "David A. Bader",
+          "Adil Chhabra",
+          "Ernestine Großmann",
+          "Monika Henzinger",
+          "Alexander Noe",
+          "Christian Schulz"
+        ],
+        "published": "2026-09-07T08:26:05Z",
+        "updated": "2026-09-07T08:26:05Z",
+        "abstract": "The minimum cut problem for an undirected edge-weighted graph asks us to divide its set of nodes into two blocks while minimizing the weighted sum of the cut edges. Over the last years, we engineered a range of fast algorithms for this problem. Our fastest exact algorithm uses an inexact algorithm to obtain a better bound for the problem, reductions that depend on this bound, improved data structures and parallel contraction routines. It is available in the open-source package VieCut and, on real-world instances, outperformed the previously fastest solvers by a factor of up to 2.5 sequentially and up to 12.9 when run in parallel. We improve this algorithm using agentic algorithm engineering (AAE), a methodology that we introduce here, in which autonomous large language model agents run the algorithm engineering cycle on an existing code base: they form hypotheses about where running time is lost, implement them, benchmark the result on a fixed instance set and keep or discard the change. Even though we had already tuned our algorithm by hand extensively, the agent finds significant optimizations, in particular on the DIMACS core instances: factors of 1.28 (sequential) and 1.63 (32 threads) on real-world k-cores, and 6.26 and 127 on the DIMACS core instances."
+      },
+      "hash": "79f1e6608615dec44230669b34b8c2a5dd525a85e9c73e91f2e0fbbf2ddfcfed",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07357": {
+      "entry": {
+        "arxiv_id": "2609.07357",
+        "version": 1,
+        "title": "EnvPilot: Systematic Design and Evaluation of an Experience-Augmented Agent for Software Environment Setup",
+        "authors": [
+          "Hanwu Chen",
+          "Hanyu Lin",
+          "Zhanjiang Yang",
+          "Linhao Zhang",
+          "Aoyan Li",
+          "Jinxi Li",
+          "Meng Li",
+          "Yin Chen",
+          "Daoguang Zan"
+        ],
+        "published": "2026-09-07T11:24:14Z",
+        "updated": "2026-09-07T11:24:14Z",
+        "abstract": "Environment Setup is a critical yet complex task in software engineering that relies heavily on expert knowledge. Existing automated environment setup methods lack the ability to accumulate experience from past execution trajectories and to evolve over time. As a result, their performance is limited because they often perform redundant exploration, ignore useful past solutions, and fail to generalize across diverse software ecosystems. We present the systematic design and empirical validation of EnvPilot, an experience-augmented agent that operationalizes trajectory-derived experience reuse for software environment setup. EnvPilot maintains an expandable Trajectory-Derived Memory (TDM), initialized with 667 high-quality experiences. It systematically transforms implicit knowledge from historical execution trajectories into structured experience and retrieves the most relevant guidance during task execution through the Context-aware Retrieval mechanism. This enables EnvPilot to combine multiple validated setup strategies, providing more precise and detailed guidance than methods that rely solely on static project files or web retrieval. To evaluate EnvPilot, we construct AES-Bench, a multilingual benchmark of 112 real-world GitHub instances across 9 programming languages. Experiments show that EnvPilot achieves a new state-of-the-art (SOTA) with a 75.00% Pass@1 success rate while reducing reasoning costs. Our empirical study shows that both the structured experience representation and the Context-aware Retrieval mechanism are essential.",
+        "comment": "49 pages, 8 figures. Accepted for publication in ACM Transactions on Software Engineering and Methodology (TOSEM)"
+      },
+      "hash": "88e77ccea617b1e46d122ed5fd8241c42f98c7ec4054fb2112a8767f6d449512",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07471": {
+      "entry": {
+        "arxiv_id": "2609.07471",
+        "version": 1,
+        "title": "MEMO: Multimodal Evidence Memory Organization for Long-Horizon LLM Agents",
+        "authors": [
+          "Xian Gao",
+          "Jinpeng Wang",
+          "Jiacheng Ruan",
+          "Guangyu Cao",
+          "Ting Liu",
+          "Yuzhuo Fu"
+        ],
+        "published": "2026-09-07T13:24:40Z",
+        "updated": "2026-09-07T13:24:40Z",
+        "abstract": "Long-running LLM agents rely on external memory to store and reuse information beyond a single context window, yet there is a fundamental tension between the continuous accumulation of interaction trajectories and the limited context capacity. The key challenge in agent memory is therefore not only to retrieve relevant records, but also to select necessary evidence under a given budget and organize it in an appropriate modality. Existing memory readout methods mainly use textual or visual forms. Text preserves high fidelity, but its linear token representation makes contents with different importance compete for the limited context at nearly uniform unit cost. Visual readout renders text into document-like images, which can use two-dimensional layouts to expose structure and emphasize key information, but it may lose fine-grained details during rendering and compression. To address this issue, we propose MEMO, a multimodal evidence memory organization method for LLM agents. MEMO first uses a trained evidence extractor to select relevant memory blocks and form evidence units with source information and presentation requirements. A trained query-conditioned memory manager assigns each unit to a textual, visual, or dual-channel carrier and selects a layout that matches the evidence structure. A deterministic memory construction module then generates the textual package and visual pages. The memory manager is trained with feedback from an offline reader that measures the utility of the guided memory plan, so that retention and presentation decisions align with downstream usage. We evaluate MEMO on four benchmarks, HotpotQA, 2WikiMultiHopQA, LoCoMo, and ALFWorld, with multiple reader backends. The results show that MEMO presents memory more efficiently with fewer memory tokens, improves downstream task performance, and builds more effective working memory under constrained budgets.",
+        "comment": "8 pages, 2 figures. Working in progress"
+      },
+      "hash": "feb1525324f725bd8ba70d1b20e76e52cd93f789432e00b12ecb13c4730f63a0",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07529": {
+      "entry": {
+        "arxiv_id": "2609.07529",
+        "version": 1,
+        "title": "CoRL: Co-Evolutionary Reinforcement Learning for Adaptive Indirect Prompt-Injection Attacks and Defenses",
+        "authors": [
+          "Boyang Zhang",
+          "Qingxin Xiao",
+          "Lingwei Dang",
+          "Qingyao Wu"
+        ],
+        "published": "2026-09-07T14:09:11Z",
+        "updated": "2026-09-07T14:09:11Z",
+        "abstract": "Tool-augmented language agents are vulnerable to indirect prompt injection (IPI). Unlike direct prompt injection, IPI hides adversarial instructions in untrusted tool outputs and can covertly alter the execution of a legitimate task. Defenses trained on fixed attacks may fail as an attacker changes its strategy, injection site, and payload. To address this problem, we formulate adaptive IPI as an asymmetric, partially observable, general-sum Markov game: a multi-turn attacker adapts payloads at reached tool-return sites from the public trajectory, while a tool-using defender must block the injected objective and complete the user task. We propose CoRL, a verifier-grounded co-evolution and repair framework with three stages: Attacker SFT initializes multi-turn attacks from successful trajectories; bilateral Co-PPO jointly trains both agents with role-specific rewards and historical opponent populations; and Defender SFT consolidates verifier-accepted teacher repairs for population-discovered failures. Across 1,514 clean, fixed-template, and adaptive executions per defender, CoRL reduces overall ASR by 38.5 points to 0.0% and raises utility by 13.1 points to 76.3%. Stage-wise and controlled ablations show positive contributions from online Co-PPO and population-mined repair, while external-benchmark evaluation indicates transfer in attack resistance. The defender balances safety and task utility under the evaluated attacks, while the retained attackers provide candidates for adaptive red-team evaluation.",
+        "comment": "31 pages, 7 figures"
+      },
+      "hash": "54947c1a15a7660cfd24526300b5d0c4d394ddde2f3de511988c11c7e4a7eb4a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07603": {
+      "entry": {
+        "arxiv_id": "2609.07603",
+        "version": 1,
+        "title": "FinCUABuild: Can Agents Build Reliable Benchmarks for Dynamic Financial Computer Use?",
+        "authors": [
+          "Jingpu Yang",
+          "Fengxian Ji",
+          "Jinri Guo",
+          "Tianhao Li",
+          "Qian Jiang",
+          "Fan Zhang",
+          "Min Peng",
+          "Qianqian Xie",
+          "Preslav Nakov",
+          "Zhuohan Xie"
+        ],
+        "published": "2026-09-07T15:13:23Z",
+        "updated": "2026-09-07T15:13:23Z",
+        "abstract": "Financial scenarios are diverse and complex, spanning varying data conditions, tool configurations, and workflows. Yet existing CUA, Computer-Using Agent, evaluation tasks remain largely manually constructed, limiting scalable coverage of real-world financial scenarios. Then, can agents autonomously construct diverse CUA evaluation tasks for financial scenarios? Evaluating this capability poses three key challenges: scenario coverage of construction requests, fair comparison across construction methods, and reliable assessment of generated task quality. To solve these, we introduce FinCUABuildBench, a benchmark for evaluating financial CUA task construction, featuring: (i) 576 construction requests covering 24 financial workflows and three types of runtime variation; (ii) standardized input, budget, and output specifications; and (iii) a task qualification mechanism based on execution tests and quality checks. We further introduce FinCUABuildAgent, a multi-agent system for automatically constructing dynamic financial CUA evaluation tasks. It consists of three modules that jointly construct tasks, environments, and validators. On FinCUABuildBench, under the same model backbone, existing agent-based construction methods achieve strict qualification rates of only 1.3-8.3%, while FinCUABuildAgent reaches 31.3%. Downstream evaluations further show that the constructed tasks can effectively differentiate CUA task-execution capabilities. These results demonstrate that agents can autonomously construct financial CUA tasks with meaningful evaluation value, offering a practical path toward broader evaluation coverage in financial scenarios. Code: https://github.com/FengxianJi/FinCUABuild",
+        "comment": "Jingpu Yang, Fengxian Ji: co-first author"
+      },
+      "hash": "5e4369d9360536125867ba27aa6d58048a283bd2b1abc3e0afff93bce0823c54",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07611": {
+      "entry": {
+        "arxiv_id": "2609.07611",
+        "version": 1,
+        "title": "AgentIdeaBench: Benchmarking Scientific Ideation in the Agent Era",
+        "authors": [
+          "Yunxiang Mo",
+          "Tianshi Zheng",
+          "Yisen Gao",
+          "Rui Wang",
+          "Newt Nguyen Kim Hue Nam",
+          "Kelvin Kiu Wai Tam",
+          "Jiaxin Bai",
+          "Yangqiu Song",
+          "Ginny Wong",
+          "Simon See"
+        ],
+        "published": "2026-09-07T15:19:13Z",
+        "updated": "2026-09-07T15:19:13Z",
+        "abstract": "Scientific ideation is the capacity to formulate novel and testable hypotheses from scientific evidence, and autonomous AI scientists depend on it. Existing evaluations largely assess it by asking models to generate ideas from a static, curated set of reference papers. That passive setup departs from the retrieval-and-reasoning workflow of modern AI scientists, and it becomes less discriminative as models improve. We introduce AgentIdeaBench, a multidisciplinary benchmark that evaluates scientific ideation under two matched settings, static observation and active exploration. We report matched Static-Active evaluations for 33 LLMs across 40 densely scored subfields spanning five disciplines, using a multidimensional, literature-verified scoring framework whose critics assess originality against retrieved prior art. Active exploration reveals considerably more capability headroom, and that headroom is unevenly distributed across models. Performance scales about twice as fast as under static observation, and the exploration gain is capability-gated, favoring the strongest models over the weakest. The gain reflects better grounding, improving feasibility, clarity, and specificity while leaving measured originality unchanged under our critics. We further explore Scientific World Modeling, a generation-time loop that refines a draft hypothesis through structured thought experiments. It benefits mid-capability models, and its impact diminishes among frontier models that appear to have internalized such reasoning patterns already. AgentIdeaBench gives future work on scientific ideation a measurement basis suited to the agent era.",
+        "comment": "25 pages, 9 figures, 8 tables. Code and data: https://github.com/HKUST-KnowComp/AgentIdeaBench"
+      },
+      "hash": "4a31b41fc8b85d6391289cd739f7a0030742a5fe895eb23c475665181278e261",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07712": {
+      "entry": {
+        "arxiv_id": "2609.07712",
+        "version": 1,
+        "title": "APPSim-Bench: Bridging Real-world Apps and Reproducible Evaluation for Mobile GUI Agents",
+        "authors": [
+          "Jintian Feng",
+          "Long Chen",
+          "Xiao Yu",
+          "Jiayi Dai",
+          "Chenglong Liu",
+          "Haoru Wang",
+          "Zizhen Xue",
+          "Yuxuan Shi",
+          "Ziyang Wang",
+          "Yichen Gong"
+        ],
+        "published": "2026-09-07T16:25:13Z",
+        "updated": "2026-09-07T16:25:13Z",
+        "abstract": "Mobile GUI agents can execute tasks from natural-language instructions, but their evaluation remains difficult to make both realistic and reproducible. Existing benchmarks typically trade off these goals: simplified apps lack real-world mobile complexity, whereas live commercial apps introduce uncontrolled variation from recommendations, advertisements, accounts, and changing content. We propose AppSim-Bench, which addresses this trade-off through controllable simulated apps that preserve task-relevant interaction logic while supporting deterministic evaluation. Built through a coding-agent-assisted and human-verified workflow, it contains 557 tasks across 17 high-frequency Chinese and English apps. Its controllable backend data and outcome-based verification remove major sources of environmental stochasticity, enabling reproducible cross-model comparison. Evaluating 19 GUI agents, spanning general-purpose and GUI-specialized systems, we find that autonomous mobile execution remains far from solved. The best model completes only 50.27% of tasks, and 28.55% of tasks are not solved by any agent. Further analysis shows that failures concentrate in longer workflows, numerical reasoning tasks, and inefficient trajectories marked by high action overhead and budget exhaustion. Our project is available at https://github.com/Acrab-Agentic-Labs/AppSim."
+      },
+      "hash": "c997a24439d19d334a3c5f88fb41f04448dfb411149017269d8766a0fb00f638",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07741": {
+      "entry": {
+        "arxiv_id": "2609.07741",
+        "version": 1,
+        "title": "When Intelligence Becomes Agency: A Theory of Governed, Proactive Agency for Symbiotic AI Systems",
+        "authors": [
+          "João Dias Ferreira"
+        ],
+        "published": "2026-09-07T16:46:38Z",
+        "updated": "2026-09-07T16:46:38Z",
+        "abstract": "Persistent AI assistants are intended to extend human attention, memory, and coordination across changing digital and physical environments. To be truly useful they must do more than just act when asked. They must decide on their own whether a situation warrants behavior at all, when it does and in what mode, whether to act, ask, monitor, defer or deliberately refrain. We call this the activation problem. Research on commitment, appraisal, mixed-initiative interaction and delegation each illuminates part of it, but none ties situated activation to continuing authorization and accountability. This paper develops a conceptual and formal framework for governed proactive agency, organizing behavior across time through perception, intent, affective-conative appraisal, constraint, and feedback. It distinguishes autonomous and delegated agency and defines symbiotic agency as delegation under a standing, revocable mandate, with continuing coupling to the principal's situation, calibrated inference of their condition, and bounded personalization. The distinctive contribution is an integrated account linking activation decisions to authorized perception, behavior selection, authority containment, traceable restraint, and constrained adaptation, with behavioral episodes as the unit of analysis. Through an agency classification method, an evaluation framework, proposed benchmark scenarios, and a reference architecture, the account provides a basis for specifying and assessing whether assistance is warranted, timely, authorized, and answerable beyond task completion alone. It is intended to guide the development and evaluation of always-present personal assistants and embodied support systems that augment human capabilities while preserving the principal's authority and judgment.",
+        "comment": "75 pages, 3 figures, 9 tables"
+      },
+      "hash": "b3cd5d4344bd4b5e14df6e117d5394e3d9f056c62dadc9d65cd4a32208a19fd7",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07826": {
+      "entry": {
+        "arxiv_id": "2609.07826",
+        "version": 1,
+        "title": "SolutionsX: supergravity theories/solutions as code, with an agentic workflow for machine-verifiable physics",
+        "authors": [
+          "Vasil Dimitrov"
+        ],
+        "published": "2026-09-07T18:00:01Z",
+        "updated": "2026-09-07T18:00:01Z",
+        "abstract": "A supergravity solution in the literature is an artifact that cannot be verified without re-deriving it: conventions might not be clearly stated, papers have typos, algebra is tedious. SolutionsX is a Mathematica package that turns an xAct environment, whatever physics it may describe, into a stored, machine-verifiable record: code that replays in a fresh kernel, carries its own verification, and can later be fetched for re-use or extension. The shipped examples are supergravity theories and their solutions, but the scope is anything xAct reaches: abstract tensors, differential forms, spinors in any dimension. We follow one published solution through the entire workflow, benchmark the package's component engine against xAct's, and report on three blind runs of an agentic workflow in which an AI coding agent, given the package and a small toolkit, correctly codified a recent paper in under three hours. A database of such records is useful to researchers today and gives agents worked examples to learn from. The package acts as an internal verifier during the thought process of an agent: a claim is checked in the kernel before it is made.",
+        "comment": "50 pages, 4 tables"
+      },
+      "hash": "4b47775d34822d8f331e8a05a89fb97689e8255ef7b3ad1b4d84f1b067890795",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07984": {
+      "entry": {
+        "arxiv_id": "2609.07984",
+        "version": 1,
+        "title": "From Event Logs to Governed Action: A BlueSky Agenda for Agentic Process Mining",
+        "authors": [
+          "Yiyuan Yang",
+          "Zheshun Wu",
+          "Yong Chu",
+          "Zhenghua Chen",
+          "Zenglin Xu",
+          "Qingsong Wen"
+        ],
+        "published": "2026-09-07T21:02:23Z",
+        "updated": "2026-09-07T21:02:23Z",
+        "abstract": "Process mining has long turned event logs into process knowledge: discovered models, conformance evidence, bottleneck diagnoses, and runtime predictions. Agentic AI changes the target. Process-aware agents will not only ask what happened. They will ask whether a proposed action should be taken, given the available evidence, privacy budget, organizational authority, and downstream risk. This BlueSky paper proposes event-to-action process mining: a process-mining agenda for transforming heterogeneous operational event data into governed action. The goal is not another dashboard, a generic enterprise simulator, or a language interface over logs. We argue that the community needs four mineable artifacts: event-object representations, action evidence packages, governance contracts, and benchmarks where act, defer, ask, and refuse are all valid outputs. This agenda is timely because agentic business process management (BPM), LLM-assisted process mining, object-centric event standards, causal process monitoring, and privacy-preserving learning are maturing separately. Bringing them together defines a data-mining target inside process mining: mining logged organizational behavior for accountable action, not only retrospective insight.",
+        "comment": "Accepted by ICDM 2026"
+      },
+      "hash": "8c2621c07946c421f63506a1b425b88a084457971e40ca43fef0f9a3cc0cd669",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.08025": {
+      "entry": {
+        "arxiv_id": "2609.08025",
+        "version": 1,
+        "title": "Eliciting Self-Verification in Multimodal Reasoning Agents with Reinforcement Learning",
+        "authors": [
+          "Vishwas Sathish",
+          "Viresh Ranjan",
+          "Xinliang Zhu",
+          "Arnab Dhua",
+          "Douglas Gray"
+        ],
+        "published": "2026-09-07T22:15:47Z",
+        "updated": "2026-09-07T22:15:47Z",
+        "abstract": "Reasoning agents increasingly rely on external tools such as web search to answer complex queries. Reinforcement learning (RL) finetuning algorithms such as GRPO have improved long-form reasoning in text-only language models, particularly for coding and mathematics. Reliable tool use in multimodal agents, however, remains challenging because models must interpret text and images while integrating noisy retrieved evidence, often under sparse outcome-level supervision without explicit verification signals. We present Self-Verification via Reinforcement Learning (SVRL), an RL-only finetuning framework that trains multimodal agents to verify and filter retrieved evidence within their own reasoning traces, reducing reliance on external verifiers at inference time. SVRL also introduces a search-aware penalty that discourages unnecessary tool calls and a query-diversity reward that encourages diverse, well-formed search queries, providing fine-grained feedback on when and what to search. Finetuning Qwen-2.5-VL-7B with SVRL on only 5{,}000 visual question answering examples yields consistent gains in multi-hop VQA generalization and tool efficiency across benchmarks. Overall, SVRL narrows the gap between compact agents and much larger proprietary models while requiring substantially lower training and inference cost.",
+        "comment": "To appear in ECCV 2026. 11 main pages. 7 figures"
+      },
+      "hash": "3cb8b8a7f5c913254002da501e663208c6f5be001e0b1daaa7b8dda577e18d25",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2608.28877": {
+      "entry": {
+        "arxiv_id": "2608.28877",
+        "version": 2,
+        "title": "HALO: A Physics-Aware LLM Agent Framework for Nanophotonic Design",
+        "authors": [
+          "Yubo Zhang",
+          "Jinlin Xiang",
+          "Zijun Zhao",
+          "Yang Zhao",
+          "Eli Shlizerman",
+          "Arka Majumdar"
+        ],
+        "published": "2026-08-28T21:28:28Z",
+        "updated": "2026-09-07T22:48:07Z",
+        "abstract": "Language models have recently been applied to nanophotonic design, but it remains unclear whether they can reliably translate optical objectives into simulation-ready designs, execute electromagnetic analysis, and revise decisions from numerical feedback. We introduce HALO, a physics-aware framework that couples language-model planners with typed design specifications, electromagnetic simulation, diagnostic evaluation, and optional reuse of prior failure trajectories in an iterative design loop. We further introduce HALO-Bench, a 52-task benchmark spanning lab-derived, paper-derived, and open-ended nanophotonic design tasks under a shared evaluation protocol. We compare three planner configurations: a Fixed Structured Workflow, an Autonomous Structured Agent using the same simulation interface, and an Autonomous Coding Agent that directly writes and executes simulation code. The Fixed Structured Workflow is the most token-efficient and exhibits no observed code- or path-level failures, while autonomous coding can achieve higher task success with stronger models at the cost of additional operational failures. We also study reuse of prior failed trajectories. On targeted multi-round tasks, retrieved failure feedback reduces both iterations to first success and total token use. These results clarify the tradeoffs between explicit interfaces, autonomous execution, and reusable design experience in scientific agents.",
+        "comment": "9 pages, 3 figures, 5 charts"
+      },
+      "hash": "2ef1bab07db1d0bf68126a0a425802beaacd4672f3d139fb7161ce7888cae333",
       "status": "queued",
       "attempts": 0,
       "error": null,
