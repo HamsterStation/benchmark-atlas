@@ -1,6 +1,12 @@
 {
-  "version": 3,
-  "profile": "recent_evidence_first",
+  "version": 4,
+  "profile": "recent_agent_and_model_evaluation",
+  "scope": {
+    "min_published_year": 2023,
+    "excluded_topic_pattern": "\\b(?:medical|biomedical|clinical|healthcare|health care|patient|patients|diagnosis|diagnostic|radiology|pathology|oncology|phenotypic|phenotype|phenotypes|drug discovery|computational biology)\\b|医学|医疗|临床|诊断|患者|病理|药物|生物医学",
+    "preferred_topic_pattern": "\\b(?:agents?|agentic|software engineering|code generation|coding|programming|repository[- ]level|tool[- ](?:use|using)|function calling|computer[- ]use|web navigation|terminal|swe[- ]bench)\\b|智能体|软件工程|代码生成|工具调用|工具使用",
+    "note": "只展示 2023 年起的论文，医学与生物医学专题不收录。同一近期时间档优先 Agent、软件工程、工具调用，其次通用模型能力评测；不把摘要偶然提及医学应用当成医学专题。"
+  },
   "min_priority_score": 9,
   "require_resource_link": true,
   "required_signals": ["benchmark_contribution", "task_definition", "evaluation_protocol", "baseline_comparison", "resource_link"],
@@ -17,5 +23,5 @@
     "scale_or_coverage": { "label": "给出任务规模或覆盖范围", "weight": 1 },
     "validity_analysis": { "label": "讨论泛化、污染、稳健性或人工核验", "weight": 1 }
   },
-  "note": "优先近 7 天、近 30 天的新论文，不足时从近 90 天补充；同一时间档按证据完整度、首发时间排序。经典条目保留，旧论文的新版本单独处理，不冒充新论文。分数只用于候选排序，不是质量认证，不按机构、作者、star 或宣传用语加分。"
+  "note": "优先近 7 天、近 30 天的新论文，不足时从近 90 天补充；同一时间档先看 Agent / 编程方向，再按证据完整度、首发时间排序。2023 年起的经典条目保留，旧论文的新版本单独处理，不冒充新论文。分数只用于候选排序，不是质量认证，不按机构、作者、star 或宣传用语加分。"
 }

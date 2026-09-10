@@ -12,9 +12,9 @@ CONTRIBUTION = re.compile(r"\b(?:we|this (?:paper|work|study))\s+(?:(?:therefore
 METHOD = re.compile(r"\b(?:method|algorithm|model|training (?:method|framework)|architecture|approach)\b", re.I)
 USES = re.compile(r"\b(?:evaluat\w*|test\w*|experiment\w*|outperform\w*|achiev\w*)\b.{0,100}\b(?:on|across|using)\b.{0,100}\b(?:benchmarks?|datasets?)\b", re.I)
 PATTERNS = {
-    "task_definition": r"\b(?:tasks?|questions?|problems?|interactive environments?|web(?:sites?| browsing)|tool[- ]use|code generation|software engineering)\b",
-    "evaluation_protocol": r"\b(?:metrics?|scoring|accuracy|success rate|pass@\d+|evaluation protocol|functional correctness|held[- ]out|train[/-]test|test split|answer correctness|human evaluation)\b",
-    "baseline_comparison": r"\b(?:baselines?|compar(?:e|es|ed|ing|ison)|evaluat\w*\s+(?:\w+\s+){0,3}(?:\d+|several|multiple|various|diverse)\s+(?:\w+\s+){0,3}(?:models?|agents?|llms?)|state[- ]of[- ]the[- ]art models?)\b",
+    "task_definition": r"\b(?:tasks?|subtasks?|workflows?|questions?|problems?|interactive environments?|web(?:sites?| browsing)|tool[- ]use|code generation|software engineering)\b",
+    "evaluation_protocol": r"\b(?:metrics?|scoring|grading|graders?|accuracy|success rate|pass rates?|pass@\d+|evaluation protocol|functional correctness|held[- ]out|train[/-]test|test split|answer correctness|human evaluation)\b",
+    "baseline_comparison": r"\b(?:baselines?|compar(?:e|es|ed|ing|ison)|(?:evaluat\w*|across|experiments with)\s+(?:\w+\s+){0,3}(?:\d+|two|three|four|five|six|several|multiple|various|diverse)\s+(?:[\w-]+\s+){0,5}(?:models?|agents?|llms?|llm backends)|state[- ]of[- ]the[- ]art models?)\b",
     "scale_or_coverage": r"\b\d[\d,.]*\s*(?:k\s+)?(?:\w+\s+){0,2}(?:tasks?|questions?|problems?|domains?|environments?|websites?|instances?|samples?|examples?)\b",
     "validity_analysis": r"\b(?:contamination|data leakage|generalization|generalisation|robustness|human[- ](?:verified|validated|annotated)|expert[- ](?:verified|validated|annotated)|inter[- ]annotator)\b",
 }
@@ -26,6 +26,10 @@ def sentences(text):
 
 def policy_hash(config):
     return hashlib.sha256(json.dumps(config, sort_keys=True).encode()).hexdigest()
+
+
+def topic_priority(entry, config):
+    return 0 if re.search(config["scope"]["preferred_topic_pattern"], entry["title"] + " " + entry.get("abstract", ""), re.I) else 1
 
 
 def freshness(entry, config, now, known=None):
@@ -43,7 +47,7 @@ def freshness(entry, config, now, known=None):
 def selection_key(entry, assessment, age, config):
     bands = [f"within_{days}_days" for days in config["freshness_days"]] + ["tracked_update", "archive", "future"]
     timestamp = lambda key: datetime.fromisoformat(entry[key].replace("Z", "+00:00")).timestamp()
-    return (bands.index(age["band"]), -assessment["score"], -timestamp("published"), -timestamp("updated"), entry["arxiv_id"])
+    return (bands.index(age["band"]), topic_priority(entry, config), -assessment["score"], -timestamp("published"), -timestamp("updated"), entry["arxiv_id"])
 
 
 def assess(entry, config, now):
@@ -97,7 +101,15 @@ def assess(entry, config, now):
     signals = {e["signal"] for e in evidence}
     score = sum(e["weight"] for e in evidence)
     reasons = []
-    if not relevant or not has_benchmark:
+    # Check the benchmark's subject, not incidental applications elsewhere in the abstract.
+    topic_text = title + " " + " ".join(contributions)
+    if int(entry["published"][:4]) < config["scope"]["min_published_year"]:
+        decision = "excluded"
+        reasons.append(f"论文首发早于 {config['scope']['min_published_year']} 年，不在当前收录范围；新版本不改变首发年份")
+    elif re.search(config["scope"]["excluded_topic_pattern"], topic_text, re.I):
+        decision = "excluded"
+        reasons.append("医学、生物医学或临床专题，超出当前 Agent 与通用模型评测方向")
+    elif not relevant or not has_benchmark:
         decision = "excluded"
         reasons.append("未找到 LLM / Agent 评测对象与基准主题的共同证据")
     elif review_article and not contributions:

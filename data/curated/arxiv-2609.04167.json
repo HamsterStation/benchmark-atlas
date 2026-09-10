@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2609.04167",
+  "arxivId": "2609.04167",
+  "title": "SWE-Gate: Passing Functional Tests Is Not Enough for Software Engineering Agents",
+  "acronym": "SWE-Gate",
+  "authors": [
+    "Xin He",
+    "Yanlin Wang",
+    "Mingwei Liu",
+    "Jiachi Chen",
+    "Hongyu Zhang",
+    "Guanbin Li"
+  ],
+  "paperUrl": "https://arxiv.org/abs/2609.04167v1",
+  "publishedAt": "2026-09-03",
+  "versionUpdatedAt": "2026-09-03",
+  "version": 1,
+  "addedAt": "2026-09-10",
+  "updatedAt": "2026-09-10",
+  "checkedAt": "2026-09-10",
+  "role": "introduces_benchmark",
+  "targets": [
+    "llm",
+    "agent"
+  ],
+  "scenarios": [
+    "software"
+  ],
+  "capabilities": [
+    "code",
+    "reasoning",
+    "planning"
+  ],
+  "summaryZh": "SWE-Gate 把真实代码评审中的约束引入仓库级修复评测，包含来自 75 个开源 Python 仓库的 303 个任务。每题分别提供功能测试和约束测试，用来区分“修好了问题”与“满足完整开发要求”。论文比较四个 LLM 后端，发现仅通过功能测试会高估 Agent 的修复能力，适合补充 SWE-bench 一类评测。",
+  "taskFormat": "根据代码仓库、问题描述和评审约束生成补丁，分别运行功能测试与约束测试。",
+  "metrics": [
+    {
+      "name": "功能测试与约束测试通过情况",
+      "description": "分别报告补丁是否通过功能测试、约束测试，以及同时满足完整修复规范的情况。",
+      "sourceUrl": "https://github.com/DeepSoftwareAnalytics/SWE-Gate/blob/5f303b30dd53af3499d05558cfd82eda641be22b/README.md"
+    }
+  ],
+  "officialCode": "https://github.com/DeepSoftwareAnalytics/SWE-Gate",
+  "officialData": "https://github.com/DeepSoftwareAnalytics/SWE-Gate/tree/5f303b30dd53af3499d05558cfd82eda641be22b/data/dataset",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/2609.04167v1",
+      "kind": "arxiv_abstract",
+      "version": "v1",
+      "checkedAt": "2026-09-10",
+      "scope": "通过官方 arXiv Atom API 核对标题、完整作者列表、首发日期、版本时间与摘要；未下载 PDF 或阅读全文。"
+    },
+    {
+      "url": "https://github.com/DeepSoftwareAnalytics/SWE-Gate/blob/5f303b30dd53af3499d05558cfd82eda641be22b/README.md",
+      "kind": "official_repository",
+      "version": "5f303b30dd53af3499d05558cfd82eda641be22b",
+      "checkedAt": "2026-09-10",
+      "scope": "原论文提供的官方仓库；只读取固定 commit 的 README，核对任务、资源路径、运行说明与已知限制，没有执行代码或下载数据集。"
+    }
+  ],
+  "review": {
+    "status": "source_verified",
+    "reviewer": null,
+    "reviewedAt": null
+  },
+  "reproduction": {
+    "status": "official_docs_unrun",
+    "notes": "官方要求 Python 3.10–3.12、Node.js 18+、Git 和 Docker，在仓库根目录执行。先安装依赖并检查宿主机与 Docker，再按 README 的单实例流程构建镜像、生成补丁并评测。执行 Agent 需要模型凭据；评测已有补丁本身不调用模型。发布包中 255/303 个实例提供独立 validation_matrix.json，另 48 个的覆盖限制见官方文档。以下为已核对 README 的命令摘录，本站未运行。",
+    "commands": [
+      {
+        "text": "python3 -m venv .venv\n. .venv/bin/activate\npython -m pip install --upgrade pip\npython -m pip install -r requirements.txt",
+        "sourceUrl": "https://github.com/DeepSoftwareAnalytics/SWE-Gate/blob/5f303b30dd53af3499d05558cfd82eda641be22b/README.md",
+        "sourceVersion": "5f303b30dd53af3499d05558cfd82eda641be22b",
+        "context": "在仓库根目录建立环境并安装依赖。"
+      },
+      {
+        "text": "python scripts/swe_if_pipeline/13_run_swefactory_queue.py \\\n  --output-dir runs/preflight \\\n  --preflight-only",
+        "sourceUrl": "https://github.com/DeepSoftwareAnalytics/SWE-Gate/blob/5f303b30dd53af3499d05558cfd82eda641be22b/README.md",
+        "sourceVersion": "5f303b30dd53af3499d05558cfd82eda641be22b",
+        "context": "检查宿主机与 Docker，不调用 LLM。"
+      },
+      {
+        "text": "python scripts/swe_if_pipeline/13_run_swefactory_queue.py \\\n  --dataset-json data/dataset/swe_if_instances.json \\\n  --context-root data \\\n  --output-dir runs/mini_swe_agent \\\n  --instance-ids 02506978e8943df4_nltk_weighted_choice_bins \\\n  --llm-provider deepseek \\\n  --llm-model deepseek-chat \\\n  --api-key-file /secure/path/model_key.txt \\\n  --workers 1 \\\n  --build-slots 1 \\\n  --base-workers 1",
+        "sourceUrl": "https://github.com/DeepSoftwareAnalytics/SWE-Gate/blob/5f303b30dd53af3499d05558cfd82eda641be22b/README.md",
+        "sourceVersion": "5f303b30dd53af3499d05558cfd82eda641be22b",
+        "context": "官方单实例示例；模型凭据路径是占位符，运行需要 Docker 和模型服务。"
+      },
+      {
+        "text": "python scripts/swe_if_pipeline/eval_swe_if.py \\\n  --predictions-jsonl runs/predictions.jsonl \\\n  --dataset-json data/dataset/swe_if_instances.json \\\n  --output-json runs/evaluation.json \\\n  --output-jsonl runs/evaluation.jsonl",
+        "sourceUrl": "https://github.com/DeepSoftwareAnalytics/SWE-Gate/blob/5f303b30dd53af3499d05558cfd82eda641be22b/README.md",
+        "sourceVersion": "5f303b30dd53af3499d05558cfd82eda641be22b",
+        "context": "评测已有 JSONL 补丁；先按官方文档构建并用 gold patch 验证所需镜像。"
+      }
+    ],
+    "runs": []
+  },
+  "provenance": {
+    "method": "source_check",
+    "generatedAt": null,
+    "materialScope": "abstract_and_official_docs",
+    "materialVersion": "v1",
+    "materialHash": "db8b9d6e904543fbe58a478a0c4587024826c9fa3c38805b6abb2ace5487ae4b",
+    "materialTruncated": false,
+    "model": null
+  },
+  "publication": "listed",
+  "isTest": false
+}

@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2608.29128",
+  "arxivId": "2608.29128",
+  "title": "APIFlow-Bench: Measuring Whether Agents Survive Long, Dependent API Workflows",
+  "acronym": "APIFlow-Bench",
+  "authors": [
+    "Zelin Wan",
+    "Arash Nourian",
+    "Xiaoxiao Li",
+    "Nihar Nandan",
+    "Kamalakannan Nandagopal"
+  ],
+  "paperUrl": "https://arxiv.org/abs/2608.29128v1",
+  "publishedAt": "2026-08-29",
+  "versionUpdatedAt": "2026-08-29",
+  "version": 1,
+  "addedAt": "2026-09-10",
+  "updatedAt": "2026-09-10",
+  "checkedAt": "2026-09-10",
+  "role": "introduces_benchmark",
+  "targets": [
+    "llm",
+    "agent"
+  ],
+  "scenarios": [
+    "tools"
+  ],
+  "capabilities": [
+    "tool-use",
+    "planning",
+    "reasoning",
+    "robustness"
+  ],
+  "summaryZh": "APIFlow-Bench 在可重复的模拟 API 环境中评测长链路工具调用，任务涉及鉴权、参数修复、状态变更和错误恢复。官方 1.0 任务库有 467 个任务，最长串联 20 个子任务；评分同时检查最终状态、答案与真实调用路径是否一致。论文比较 19 个模型，并公开 44,362 条执行记录，用多次成功率区分偶尔做对与稳定完成。",
+  "taskFormat": "在模拟 REST API 环境中完成单步或有依赖的多步任务，提交带调用来源的最终答案。",
+  "metrics": [
+    {
+      "name": "Task pass rate",
+      "description": "每个任务按确定性验证器判为成功或失败，官方评分工具报告成功率和按 world 自举的 90% 置信区间。",
+      "sourceUrl": "https://github.com/postmanlabs/APIFlow-Bench/blob/501766a9ccbebe32a72bf29189ba034e34c5333a/README.md"
+    },
+    {
+      "name": "Best-of-five / all-five-of-five",
+      "description": "分别衡量五次中至少成功一次与五次全部成功，区分最佳能力和稳定性。",
+      "sourceUrl": "https://arxiv.org/abs/2608.29128v1"
+    }
+  ],
+  "officialCode": "https://github.com/postmanlabs/APIFlow-Bench",
+  "officialData": "https://github.com/postmanlabs/APIFlow-Bench/tree/501766a9ccbebe32a72bf29189ba034e34c5333a/tasks/v1.0",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/2608.29128v1",
+      "kind": "arxiv_abstract",
+      "version": "v1",
+      "checkedAt": "2026-09-10",
+      "scope": "通过官方 arXiv Atom API 核对标题、完整作者列表、首发日期、版本时间与摘要；未下载 PDF 或阅读全文。"
+    },
+    {
+      "url": "https://github.com/postmanlabs/APIFlow-Bench/blob/501766a9ccbebe32a72bf29189ba034e34c5333a/README.md",
+      "kind": "official_repository",
+      "version": "501766a9ccbebe32a72bf29189ba034e34c5333a",
+      "checkedAt": "2026-09-10",
+      "scope": "原论文提供的官方仓库；只读取固定 commit 的 README，核对任务、资源路径、运行说明与已知限制，没有执行代码或下载数据集。"
+    }
+  ],
+  "review": {
+    "status": "source_verified",
+    "reviewer": null,
+    "reviewedAt": null
+  },
+  "reproduction": {
+    "status": "official_docs_unrun",
+    "notes": "官方使用 Python 3.13、Inspect AI 和 apiflow CLI。安装依赖后在本地 .env 配置所选模型服务的 Key，从单任务、单模型、单次执行开始；API 环境为本地 mock。完整论文设置每题运行 5 次，再用 apiflow score 统计成功率。1.0 库中 465/467 个任务有参考轨迹回放验证；官方还披露约 8% 链式试验涉及任务描述缺陷，解读结果时需结合 clean slice 和仓库限制说明。以下命令来自官方 README，本站未运行。",
+    "commands": [
+      {
+        "text": "conda create -n apiflow-bench python=3.13 -y\nconda activate apiflow-bench\npip install -e .              # installs the `apiflow` CLI\n\ncp .env.example .env          # then fill in your API keys (table below)",
+        "sourceUrl": "https://github.com/postmanlabs/APIFlow-Bench/blob/501766a9ccbebe32a72bf29189ba034e34c5333a/README.md",
+        "sourceVersion": "501766a9ccbebe32a72bf29189ba034e34c5333a",
+        "context": "创建官方 Python 环境；在仓库内安装项目并填写所需服务的 Key。"
+      },
+      {
+        "text": "# Cheap first run — one task, one model, one trial:\napiflow run --task v56-w01-sub01 -m anthropic/claude-haiku-4-5-20251001",
+        "sourceUrl": "https://github.com/postmanlabs/APIFlow-Bench/blob/501766a9ccbebe32a72bf29189ba034e34c5333a/README.md",
+        "sourceVersion": "501766a9ccbebe32a72bf29189ba034e34c5333a",
+        "context": "官方最小示例；需要该模型服务的 Key。"
+      }
+    ],
+    "runs": []
+  },
+  "provenance": {
+    "method": "source_check",
+    "generatedAt": null,
+    "materialScope": "abstract_and_official_docs",
+    "materialVersion": "v1",
+    "materialHash": "c1eed9f3c6c37f434aba13a1585d3fbf15d06ac76a9317b63b04ed462fff0a95",
+    "materialTruncated": false,
+    "model": null
+  },
+  "publication": "listed",
+  "isTest": false
+}

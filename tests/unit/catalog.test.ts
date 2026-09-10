@@ -1,16 +1,26 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { loadCatalog, readDirectory } from '../../src/lib/catalog.mjs';
+import { loadCatalog, readDirectory, inPublicationScope } from '../../src/lib/catalog.mjs';
 import { validatePaper, validateCollection } from '../../src/lib/validation.mjs';
 import { matches, sortPapers } from '../../src/lib/filter';
 import { renderNote } from '../../src/lib/notes.mjs';
 
 const papers = loadCatalog();
-const sample = () => structuredClone(papers.find(p => p.acronym === 'MMLU')!);
-test('the initial source-checked records remain available as the index grows', () => {
-  assert.ok(papers.length >= 10);
+const sample = () => structuredClone(papers.find(p => p.acronym === 'SWE-bench')!);
+test('the catalog keeps in-scope benchmarks and excludes old publication years', () => {
+  assert.ok(papers.length >= 5);
   assert.ok(papers.every(p => p.sources.length && !p.isTest));
+  assert.ok(papers.every(p => p.publishedAt && p.publishedAt >= '2023-01-01'));
+  assert.ok(!papers.some(p => p.acronym === 'MMLU'));
   assert.ok(sample().checkedAt);
+});
+test('publication scope blocks restored medical drafts and old papers with new versions', () => {
+  assert.equal(inPublicationScope({ ...sample(), publishedAt: '2022-12-31', versionUpdatedAt: '2026-09-10' }), false);
+  assert.equal(inPublicationScope({ ...sample(), publishedAt: '2023-01-01' }), true);
+  assert.equal(inPublicationScope({ ...sample(), publishedAt: null }), false);
+  assert.equal(inPublicationScope({ ...sample(), title: 'Biomedical Ontology Normalization with LLMs' }), false);
+  assert.equal(inPublicationScope({ ...sample(), taskFormat: '使用 Agent 进行临床诊断。' }), false);
+  assert.equal(inPublicationScope({ ...sample(), summaryZh: '通用评测，可能应用于医学或其他领域。' }), true);
 });
 test('schema rejects missing fields, invalid dates and unsafe URLs', () => {
   for (const change of [(p: any) => { delete p.title; }, (p: any) => { p.checkedAt = '2026-02-30'; }, (p: any) => { p.officialCode = 'javascript:alert(1)'; }, (p: any) => { p.targets = ['imagined']; }]) {
@@ -23,10 +33,10 @@ test('duplicate IDs and production test data are rejected', () => {
 });
 test('all filters combine and search normalizes case and width', () => {
   const p = sample();
-  assert.ok(matches(p, { q: 'ｍＭＬＵ', target: 'llm', scenario: 'knowledge', capability: 'reasoning' }));
-  assert.ok(matches(p, { q: '学科' }));
-  assert.ok(matches(p, { q: 'massive multitask' }));
-  for (const f of [{ target: 'agent' }, { scenario: 'web' }, { capability: 'code' }, { q: 'nothing-matches' }]) assert.equal(matches(p, f), false);
+  assert.ok(matches(p, { q: 'ＳＷＥ-bench', target: 'llm', scenario: 'software', capability: 'code' }));
+  assert.ok(matches(p, { q: '代码库' }));
+  assert.ok(matches(p, { q: 'real-world github' }));
+  for (const f of [{ target: 'multimodal' }, { scenario: 'web' }, { capability: 'grounding' }, { q: 'nothing-matches' }]) assert.equal(matches(p, f), false);
 });
 test('sorting never mutates the input and distinguishes timestamps', () => {
   const first = { ...sample(), id: 'a', addedAt: '2026-09-10', updatedAt: '2026-09-10', publishedAt: '2020-01-01' };

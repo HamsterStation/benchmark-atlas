@@ -20,7 +20,7 @@ from zoneinfo import ZoneInfo
 
 from defusedxml import ElementTree as ET
 from jsonschema import Draft7Validator, FormatChecker
-from collector.quality import assess, freshness, policy_hash, selection_key
+from collector.quality import assess, freshness, policy_hash, selection_key, topic_priority
 
 ROOT = Path(__file__).resolve().parents[1]
 NS = {"a": "http://www.w3.org/2005/Atom", "o": "http://a9.com/-/spec/opensearch/1.1/", "arxiv": "http://arxiv.org/schemas/atom"}
@@ -256,6 +256,13 @@ class Collector:
         self.model = model or ModelClient(self.config)
         self.taxonomy = read_json(self.root / "config/taxonomy.json")
         self.quality = read_json(self.root / "config/quality.json")
+        scope = self.quality["scope"]
+        if type(scope["min_published_year"]) is not int or not 2000 <= scope["min_published_year"] <= 2100:
+            raise ValueError("Invalid minimum publication year")
+        for field in ["excluded_topic_pattern", "preferred_topic_pattern"]:
+            if not isinstance(scope[field], str) or not scope[field]:
+                raise ValueError("Topic patterns must be nonempty strings")
+            re.compile(scope[field])
         self.policy_hash = policy_hash(self.quality)
         if not all(1 <= self.quality[key] <= 100 for key in ["max_candidates_per_run", "max_candidates_per_day"]) or not 1 <= self.quality["min_priority_score"] <= sum(v["weight"] for v in self.quality["signals"].values()):
             raise ValueError("Invalid quality threshold or review intake budget")
@@ -393,7 +400,8 @@ class Collector:
             # Compute recency on every run; cached evidence must not freeze a paper's age.
             age = freshness(item["entry"], self.quality, self.now, self.known.get(aid))
             self.selection[aid] = {"id": stable_id(aid), "version": item["entry"]["version"],
-                                   "score": triage["score"], "decision": triage["decision"], **age}
+                                   "score": triage["score"], "decision": triage["decision"],
+                                   "topicPriority": topic_priority(item["entry"], self.quality), **age}
             if triage["decision"] == "excluded":
                 self.finish(aid, item, "out_of_scope")
             elif triage["decision"] == "needs_evidence":
@@ -515,7 +523,7 @@ class Collector:
                 "model_available": self.model.available,
                 "daily_intake": {"date": self.intake_day, "timezone": self.quality["intake_timezone"], "used": len(self.state["intake_usage"].get(self.intake_day, [])), "limit": self.quality["max_candidates_per_day"]},
                 "quality_policy": self.policy_hash,
-                "selection_policy": {"freshness_days": self.quality["freshness_days"], "min_score": self.quality["min_priority_score"], "required_signals": self.quality["required_signals"]},
+                "selection_policy": {"freshness_days": self.quality["freshness_days"], "min_score": self.quality["min_priority_score"], "required_signals": self.quality["required_signals"], "scope": self.quality["scope"]},
                 "selection_candidates": list(self.selection.values()),
                 "quality_candidates": sorted(self.triage_results.values(), key=lambda p: (-p["score"], p["id"])),
                 "errors": self.errors, "changes": self.changes}

@@ -22,10 +22,10 @@ test('search title, acronym and Chinese summary, combine filters and clear', asy
   const total = papers.length;
   await expect(page.locator('#result-count')).toHaveText(`显示 ${total} / ${total} 篇论文`);
   const search = page.getByRole('searchbox', { name: '搜索论文' });
-  for (const q of ['MMLU', 'Massive Multitask', '57 个学科']) {
+  for (const q of ['SWE-bench', 'Real-World GitHub Issues', '2,294']) {
     await search.fill(q);
     await expect(page.locator('.paper-card:visible')).toHaveCount(papers.filter((p: any) => matches(p, { q })).length);
-    await expect(page.locator('[data-paper-id="arxiv-2009.03300"]')).toBeVisible();
+    await expect(page.locator('[data-paper-id="arxiv-2310.06770"]')).toBeVisible();
   }
   await search.fill('');
   await page.locator('[name=target]').selectOption('agent');
@@ -56,9 +56,9 @@ test('detail pages show summaries, sourced methods and distinct paper dates', as
     expect(html).not.toContain('人工审核人');
     expect(html).not.toContain('class="repro-status"');
   }
-  await page.goto('papers/arxiv-2107.03374/');
-  await expect(page.locator('#reproduction .command code')).toContainText('evaluate_functional_correctness');
-  await expect(page.locator('#reproduction .command a')).toHaveAttribute('href', /github\.com\/openai\/human-eval\/blob\/[a-f0-9]{40}\//);
+  await page.goto('papers/arxiv-2310.06770/');
+  await expect(page.locator('#reproduction .command code')).toContainText('swebench eval');
+  await expect(page.locator('#reproduction .command a')).toHaveAttribute('href', /github\.com\/SWE-bench\/SWE-bench\/blob\/[a-f0-9]{40}\//);
   await expect(page.locator('#reproduction .method-links a')).toBeVisible();
   await page.goto('papers/arxiv-2311.12983/');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('GAIA: a benchmark for General AI Assistants');
@@ -69,6 +69,15 @@ test('detail pages show summaries, sourced methods and distinct paper dates', as
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
   await page.getByRole('link', { name: '返回论文索引' }).click();
   await expect(page).toHaveURL(/\/benchmark-atlas\/#catalog$/);
+});
+
+test('removed years and medical entries have no index entries or generated detail routes', async ({ request }) => {
+  const papers = await (await request.get('search-index.json')).json();
+  expect(papers.every((p: any) => p.publishedAt >= '2023-01-01')).toBeTruthy();
+  for (const id of ['arxiv-2009.03300', 'arxiv-2103.03874', 'arxiv-2107.03374', 'arxiv-2110.14168', 'arxiv-2211.09110', 'arxiv-2609.10055']) {
+    expect(papers.some((p: any) => p.id === id)).toBeFalsy();
+    expect((await request.get(`papers/${id}/`)).status()).toBe(404);
+  }
 });
 test('taxonomy and rules remain navigable on mobile', async ({ page }) => {
   await page.goto('./');

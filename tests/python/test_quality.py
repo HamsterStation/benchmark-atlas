@@ -104,6 +104,32 @@ class QualityTests(unittest.TestCase):
         p = self.check("We introduce a dataset to evaluate language model agents with 300 tasks. We compare baseline accuracy. Data: https://github.com/example/evaluation.")
         self.assertEqual(p["decision"], "priority_review")
 
+    def test_medical_topics_are_excluded_even_for_agents_with_complete_evidence(self):
+        for title in ["Clinical Agent Benchmark", "Biomedical Ontology Normalization", "A Benchmark for Medical Coding Agents"]:
+            e = entry()
+            e["title"] = title
+            self.assertEqual(assess(e, self.config, self.now)["decision"], "excluded")
+        p = self.check("We introduce a benchmark for LLM agents performing medical diagnosis with 300 tasks. We compare baseline accuracy. Code: https://github.com/example/medical.")
+        self.assertEqual(p["decision"], "excluded")
+
+    def test_incidental_medical_application_does_not_exclude_general_benchmark(self):
+        e = entry()
+        e["abstract"] += " Language models have applications in healthcare and other industries."
+        self.assertEqual(assess(e, self.config, self.now)["decision"], "priority_review")
+
+    def test_publication_cutoff_uses_first_publication_not_version_date(self):
+        e = entry(version=7)
+        e["published"] = "2022-12-31T00:00:00Z"
+        self.assertEqual(assess(e, self.config, self.now)["decision"], "excluded")
+        e["published"] = "2023-01-01T00:00:00Z"
+        self.assertEqual(assess(e, self.config, self.now)["decision"], "priority_review")
+
+    def test_agent_protocol_and_model_comparison_wording(self):
+        p = self.check("We introduce a benchmark for LLM agents executing dependent API workflows. Grading is deterministic. Across 19 frontier and open-weight models, we report pass rates. Code: https://github.com/example/tool-eval.")
+        self.assertEqual(p["decision"], "priority_review")
+        p = self.check("We introduce a benchmark for software engineering agents with 300 tasks and functional correctness tests. Experiments with four LLM backends reveal a gap. Code: https://github.com/example/code-eval.")
+        self.assertEqual(p["decision"], "priority_review")
+
 
 class IntakeTests(unittest.TestCase):
     setUp = fixtures.CollectorTests.setUp
@@ -114,6 +140,41 @@ class IntakeTests(unittest.TestCase):
         quality = read_json(self.root / "config/quality.json")
         quality.update({"max_candidates_per_run": value, "max_candidates_per_day": value})
         (self.root / "config/quality.json").write_text(json.dumps(quality))
+
+    def test_same_recency_band_prioritizes_agents_before_general_model_benchmarks(self):
+        self.limit(1)
+        agent, general = entry(), entry("2609.00002")
+        general["title"] = "TEST ONLY: Language Model Reasoning Benchmark"
+        general["abstract"] = general["abstract"].replace("agents", "models") + " We study contamination across 300 questions."
+        report = self.collector([general, agent], model=Model()).run()
+        self.assertEqual([p["id"] for p in report["changes"]], ["arxiv-2609.00001"])
+
+    def test_removed_topics_and_years_do_not_use_model_or_daily_intake(self):
+        old, medical = entry(), entry("2609.00002")
+        old["published"] = "2022-12-31T00:00:00Z"
+        medical["title"] = "TEST ONLY: Biomedical Agent Benchmark"
+        model = Model()
+        report = self.collector([old, medical], model=model).run()
+        self.assertEqual((report["model_calls"], report["daily_intake"]["used"], report["changes"]), (0, 0, []))
+        self.assertEqual(report["quality_counts"]["excluded"], 2)
+
+    def test_scope_change_rechecks_waiting_model_queue_without_overwriting_notes(self):
+        medical = entry()
+        medical["title"] = "TEST ONLY: Clinical Agent Benchmark"
+        path = self.root / "config/quality.json"
+        quality = read_json(path)
+        previous = json.loads(json.dumps(quality))
+        previous["scope"]["excluded_topic_pattern"] = "NO_TEST_MATCH"
+        path.write_text(json.dumps(previous))
+        self.collector([medical]).run()
+        note = self.root / "notes/arxiv-2609.00001.md"
+        note.parent.mkdir()
+        note.write_text("Human notes remain intact.")
+        path.write_text(json.dumps(quality))
+        report = self.collector([medical], model=Model()).run()
+        self.assertEqual(report["model_calls"], 0)
+        self.assertEqual(report["quality_counts"]["excluded"], 1)
+        self.assertEqual(note.read_text(), "Human notes remain intact.")
 
     def test_new_week_beats_stronger_older_papers_and_old_version_bumps(self):
         self.limit(1)

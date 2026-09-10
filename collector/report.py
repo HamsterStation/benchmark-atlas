@@ -22,8 +22,10 @@ def digest(result, limit=2):
         candidates = result.get("selection_candidates", [])
         eligible = sum(p["eligible"] and p["decision"] == "priority_review" for p in candidates)
         archived = sum(p["band"] == "archive" and p["decision"] != "excluded" for p in candidates)
-        lines += [f"新论文时间档：{windows}；同档按证据完整度和首发时间排序，最低 {policy['min_score']} 分。",
+        lines += [f"新论文时间档：{windows}；同档优先 Agent / 编程方向，再按证据完整度和首发时间排序，最低 {policy['min_score']} 分。",
                   f"同时满足证据与时间条件 {eligible} 篇；超出近期窗口保留 {archived} 篇，不占当日名额。", ""]
+        if policy.get("scope"):
+            lines += [safe_text(policy["scope"]["note"]), ""]
     if result.get("daily_intake"):
         intake = result["daily_intake"]
         lines += [f"当日处理名额：{intake['used']}/{intake['limit']}（{safe_text(intake['date'])}，{safe_text(intake['timezone'])}）。", ""]
