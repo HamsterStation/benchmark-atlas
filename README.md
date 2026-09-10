@@ -4,6 +4,12 @@
 
 第一阶段使用 Astro 静态构建、少量 TypeScript 和 Python 采集程序。没有数据库、登录、常驻后端、向量数据库或模型运行服务。开发、测试、构建与基础采集不需要模型 Key。
 
+## 默认访问地址
+
+默认站点入口为 **[GitHub Pages](https://hamsterstation.github.io/benchmark-atlas/)**。本地地址只用于开发和测试。
+
+当前 Pages 尚未上线：GitHub API 返回 HTTP 422，当前账户套餐不支持此私有仓库的 Pages。需要仓库所有者确认公开仓库，或升级到支持私有仓库 Pages 的套餐后完成部署。
+
 ## 本地开始
 
 要求 Node.js **22.22.0**（见 `.nvmrc`）、npm、Python **3.13**。
@@ -23,7 +29,7 @@ npm run build
 npm run preview
 ```
 
-默认地址为 `http://127.0.0.1:4321/benchmark-atlas/`。Astro 7 的 preview 可能后台运行，停止命令为 `npx astro preview stop`。
+本地开发预览地址为 `http://127.0.0.1:4321/benchmark-atlas/`，不作为默认分享入口。Astro 7 的 preview 可能后台运行，停止命令为 `npx astro preview stop`。
 
 `package-lock.json` 和 `requirements.lock` 锁定依赖；GitHub Actions 也固定 commit。`esbuild` override 固定到已修复安全公告的 0.28.2，升级时重新运行完整测试。字体优先使用 Noto Serif SC / Noto Sans SC / DM Mono；字体 CDN 不可用时使用本机中文字体，功能不依赖字体网络请求。
 
