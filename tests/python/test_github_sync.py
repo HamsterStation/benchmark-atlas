@@ -69,6 +69,7 @@ class GitHubSyncTests(unittest.TestCase):
 
     def test_review_creates_branch_without_touching_main_or_notes(self):
         atomic_json(self.repo / "data/drafts/arxiv-2609.00001.json", {"test_only": True})
+        atomic_json(self.repo / "data/triage/arxiv-2609.00001.json", {"decision": "priority_review", "test_only": True})
         self.invoke("review")
         self.assertTrue(any(c[1:3] == ["pr", "create"] for c in self.calls))
         main = subprocess.check_output(["git", "--git-dir", str(self.bare), "ls-tree", "-r", "--name-only", "main"], text=True)

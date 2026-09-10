@@ -39,10 +39,12 @@ npm run preview
 | --- | --- | --- |
 | `data/curated/<id>.json` | 人工维护、来源核查后的论文资料 | 否 |
 | `data/drafts/<id>.json` | 机器元数据和模型草稿 | 是 |
+| `data/triage/<id>.json` | 摘要级质量候选证据与送审决定 | 是 |
 | `notes/<id>.md` | 长篇人工复现笔记 | 否 |
 | `schemas/paper.schema.json` | 共用 JSON Schema（AJV / Python） | 否 |
 | `config/taxonomy.json` | 分类 ID、中文标签和说明 | 否 |
 | `config/collector.json` | 检索词、起点、分页、配额与重试 | 否 |
+| `config/quality.json` | 候选门槛、证据权重和每轮送审数量 | 否 |
 | `automation/state.json` | 窗口、游标、去重记录、队列、每日调用数 | 是 |
 | `automation/deployment.json` | 最近成功部署的时间、commit、运行链接 | 仅部署成功后 |
 | `work/` | 临时来源材料、隔离测试、工具 | 不提交 |
@@ -96,6 +98,30 @@ JSON Schema 校验必填字段、枚举、真实日期、HTTPS URL 和未知字�
 
 ## arXiv 采集与 dry-run
 
+### 优先采集哪些论文
+
+采用 **证据优先** 的候选筛选：覆盖 LLM 与 Agent，优先提出新的 Benchmark、评测环境、数据集或评测框架。仅使用已有基准评估新方法的论文，以及没有新基准贡献的综述，默认排除。机构名、作者名、GitHub star、摘要中的宣传用语不加分；会议或期刊信息只作为未核实声明保存，不冒充已确认录用。
+
+| 原文可观察信号 | 审核优先级权重 |
+| --- | ---: |
+| 明确提出新的评测资料或框架 | 3 |
+| 描述任务或环境 | 1 |
+| 评分指标或评测协议 | 2 |
+| 基线或多个模型比较 | 1 |
+| 材料提供代码/数据链接 | 2 |
+| 任务规模或覆盖范围 | 1 |
+| 污染、泛化、稳健性或人工核验分析 | 1 |
+
+默认至少 7/11，并且必须同时有“新基准贡献”“评分协议”和“资源链接”，才进入 `priority_review`。通用训练数据集不视为新基准，需明确面向评测。这只是**审核顺序分数，不是质量认证**；链接仅提取自摘要或 arXiv comment，不抓取或执行链接内容，也不直接称为已核对的官方资源。新论文缺少这些摘要级证据时进入 `needs_evidence`，材料保留在队列；不是据此宣布论文低质量。
+
+**每天最多处理 2 篇候选，不凑数。** `config/quality.json` 中 `max_candidates_per_run` 和 `max_candidates_per_day` 均为 2，按 `Asia/Shanghai` 自然日计数。每日 ID/版本名额写入持久 state，手动重跑共用上限，dry-run 不消耗名额。评分相同时优先最近更新的论文；未处理候选下次继续。无模型时只保存元数据和证据，简介留空；后续生成也占当日名额。模型只对达到门槛的候选工作，已有成功结果不会因重复采集再次生成。正式网站仍需人工审核后更新，自动送审不代表已经上线。
+
+`data/triage/` 单独保存原文证据、缺失信号、决定、规则版本/哈希、材料版本/哈希和分析日期。相同材料和规则重复运行不会更新时间或重复改文件。所有 triage 和未达门槛材料保存在 `atlas-state`；review PR 只携带优先候选及其证据。自动化不能修改 curated 和人工笔记。
+
+GitHub Actions 的摘要和审核 PR 列出排名靠前的候选及原文理由，并附人工审核清单。采集材料里的 HTML、Markdown 链接、提及和脚本作为转义文本处理。`schemas/triage.schema.json` 与 `npm run validate` 检查结构和分数一致性。
+
+### 运行方式
+
 ```bash
 # 默认检索，可分页；仅预览，默认不调用模型
 .venv/bin/python -m collector.collect --dry-run --report work/preview.json
@@ -117,9 +143,9 @@ dry-run 不写资料、队列、采集成功时间，不调用模型，不创建
 
 先把取得的材料放入持久队列，再提交游标。单篇模型失败不会被游标推进吞掉，失败条目保留；模型异常退避 6 小时，每版本总尝试上限默认 3 次。达到上限后保留 `retry_exhausted`，修好服务后维护者可在 state 分支将该条目的 `attempts` 设为 0、`next_attempt_at` 设为 null 再重试。不要删除队列来“消除”错误。
 
-无模型配置时仍完成分页采集，候选保留 `waiting_model` 与 null 简介；后续有模型时处理队列。队列先处理未处理条目，避免等 Key 的旧条目挡住新元数据。宽松关键词规则只做范围预筛，最终类型不足则 `uncertain`，纯使用 Benchmark 的模型草稿标为 excluded。人工审核与运行记录永远不由采集写入。
+无模型配置时仍完成分页采集，优先候选保留 `waiting_model` 与 null 简介；后续有模型时处理队列。队列先处理未处理的高优先级条目，避免等 Key 的旧条目挡住新元数据。证据不足保留 `awaiting_evidence`，名额用完保留 `intake_limit`；纯使用 Benchmark 的模型草稿标为 excluded。人工审核与运行记录永远不由采集写入。
 
-报告包含 new、updated、skipped、pending_review、failed、pages、model_calls 和 queue_remaining。前五项是本轮触及的处理计数，并非相加等于检索总数的互斥分类；`queue_remaining` 才是运行结束后待处理总量。首次发现的 v2 论文仍计为 new，因为本站此前没有这个基础 ID。
+报告包含 new、updated、skipped、pending_review、failed、pages、model_calls 和 queue_remaining；额外的 `quality_counts` 区分优先审核、待补充证据和排除，`quality_candidates` 保存本轮分析明细。前五项是本轮触及的处理计数，并非相加等于检索总数的互斥分类；`queue_remaining` 才是运行结束后待处理总量。首次发现的 v2 论文仍计为 new，因为本站此前没有这个基础 ID。
 
 ## 可选模型
 
@@ -130,10 +156,11 @@ dry-run 不写资料、队列、采集成功时间，不调用模型，不创建
 | `MODEL_API_KEY` | Secret / 本地环境变量 | 唯一模型密钥，不打印、不保存 |
 | `MODEL_API_URL` | Repository Variable / 环境变量 | 完整 HTTPS 请求地址，不自动拼路径，不接受重定向 |
 | `MODEL_NAME` | Repository Variable / 环境变量 | 服务支持的模型名称，项目不指定品牌 |
+| `MODEL_API_STREAM` | Repository Variable / 环境变量 | 默认 false；只接受流式请求的兼容服务设 true，解析 SSE 后仍执行同一套 JSON 校验 |
 
 模型只收到当前标题和摘要，没有网页访问、工具调用、文件系统或执行权限。响应只能包含 7 个分类/简介字段，任何额外字段会被拒绝。JSON 文本不会成为 MDX、模板或构建代码。材料版本、范围、输入哈希、截断标记、模型名与生成时间写入 provenance；没有读取的全文不进入声明。
 
-每日调用上限 20，输入上限 12,000 字符，每轮重试上限 1，每个版本总尝试上限 3，均可配置。失败调用也占配额。CI 会在模型请求前把配额预留推送到持久 state 分支；持久化失败就停止，不在未知配额状态下继续请求。模型返回格式或服务不兼容时保留待审核元数据；本阶段未接入真实付费模型，相关异常和成功路径使用明确的测试替身验证。
+每日模型调用上限 6（按 UTC 计数，独立于北京时间每日 2 篇名额），输入上限 12,000 字符，每轮重试上限 1，每个版本总尝试上限 3，均可配置。失败调用也占配额。CI 会在模型请求前把配额预留推送到持久 state 分支；持久化失败就停止，不在未知配额状态下继续请求。模型返回格式或服务不兼容时保留待审核元数据，错误只记录类型，不记录请求头或原始响应。
 
 ## GitHub Actions 与持久状态
 
@@ -161,7 +188,7 @@ dry-run 不写资料、队列、采集成功时间，不调用模型，不创建
 5. 确认要公开部署后，设置 **`PAGES_ENABLED=true`**，再手动运行 Deploy reviewed site。它只允许从默认分支部署。
 6. 长期保持 **`PUBLISH_MODE=review`**；如果你决定使用自动收录，再设 `PUBLISH_MODE=auto`，且启用 Pages。手动选择 auto 只影响那次采集；后续部署模式仍以仓库变量为准。
 
-基础采集、review PR 和 Pages 不需要额外 PAT，默认使用仓库提供的 GITHUB_TOKEN。需要模型时才配置上一节三个变量/Secret。不要把 Key 写入 JSON、Markdown 或 workflow。
+基础采集、review PR 和 Pages 不需要额外 PAT，默认使用仓库提供的 GITHUB_TOKEN。需要模型时才配置上一节变量/Secret。不要把 Key 写入 JSON、Markdown 或 workflow。流式响应同样有总字节数与时间限制，截断、异常完成或工具调用会被拒绝，不会被当成成功简介。
 
 部署脚本自动从 `owner/repository` 得到 `SITE_URL=https://owner.github.io` 和 `BASE_PATH=/repository`；`owner.github.io` 用户站使用 `/`。本地自定义测试：
 
@@ -185,9 +212,11 @@ node scripts/test-addition.mjs
 
 浏览器测试实际访问**生产构建**，覆盖首页、标题/简称/中文搜索、组合筛选、URL 状态、空结果、重置、10 个详情地址、分类/规则页与手机宽度。新增测试在隔离副本中把真实 GAIA 条目从 pending 改为 listed，验证首页/搜索/详情由 9 篇变为 10 篇，结束后删除自己的隔离副本，不修改正式资料。
 
-Python 测试覆盖分页、断点续采、重叠窗口、重复运行、版本更新、模型失败/缺 Key、HTTP 重试、每日配额、输入限制、仅使用基准排除、JSON 注入拒绝、XML 实体拒绝、dry-run 不落盘与人工笔记保护。合成测试资料不会发布。GitHub 工作流另用 actionlint 做静态检查。
+Python 测试覆盖分页、断点续采、重叠窗口、重复运行、版本更新、模型失败/缺 Key、HTTP 与连接中断重试、每日配额、北京时间跨天重置、输入限制、质量证据门槛、训练数据与仅使用基准排除、JSON 注入拒绝、XML 实体拒绝、dry-run 不落盘与人工笔记保护。合成测试资料不会发布。GitHub 工作流另用 actionlint 做静态检查。
 
-本次验收报告和截图见 `outputs/`。尚未验证在线 PR 创建、分支保护、真实 Pages 部署、付费模型兼容性、论文实验复现或 GAIA 受限数据下载。没有提交 PDF、数据集、模型权重或密钥；只读取过官方文本材料和仓库 refs，没有 clone/执行论文项目。
+验收报告和截图见 `outputs/`。2026-09-10 的质量采集 dry-run 完整读取 30 页，发现 1,201 个唯一候选，优先审核 51、待补证据 940、排除 210，预览草稿 2，失败 0；没有调用模型或写入生产队列。精简报告为 `outputs/quality-dry-run.md`；完整 JSON 仅保留本地或 Actions artifact，不反复提交大体积采集快照。
+
+当前本地验证包括 9 个 TypeScript 测试、36 个 Python 测试、8 个生产页面浏览器测试、类型检查、生产构建及 actionlint。用户配置的流式兼容模型已实际返回中文草稿并通过论文 schema；开发与测试仍不需要 Key。模型必须输出单个贡献类型和 JSON Unicode 转义，服务返回乱码或回显凭据时拒绝保存。GitHub Pages 已公开部署，线上采集与 PR 验收以 Actions 运行记录为准。尚未验证论文实验复现、GAIA 受限数据下载或自定义分支保护规则。没有提交 PDF、数据集、模型权重或密钥，也没有执行论文项目代码。
 
 ## 后续维护
 

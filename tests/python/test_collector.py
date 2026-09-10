@@ -7,7 +7,8 @@ import tempfile
 import unittest
 from urllib.parse import parse_qs, urlparse
 from urllib.error import URLError
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock
+from http.client import RemoteDisconnected, IncompleteRead
 
 from collector.collect import Collector, ROOT, HttpClient, atomic_json, base_id, parse_feed, read_json
 
@@ -15,7 +16,7 @@ from collector.collect import Collector, ROOT, HttpClient, atomic_json, base_id,
 def entry(aid="2609.00001", version=1):
     return {"arxiv_id": aid, "version": version, "title": "TEST ONLY: A Benchmark for Language Model Agents",
             "authors": ["Fixture Author"], "published": "2026-09-01T10:00:00Z", "updated": "2026-09-09T10:00:00Z",
-            "abstract": "We introduce a benchmark for language model agents in interactive environments."}
+            "abstract": "We introduce a benchmark for language model agents in interactive environments. We measure task success rate and compare baseline agents. Code and data: https://github.com/example/test-only-benchmark."}
 
 
 def feed(entries, start=0, total=None):
@@ -64,6 +65,9 @@ class CollectorTests(unittest.TestCase):
             shutil.copytree(ROOT / directory, self.root / directory)
         self.config = read_json(self.root / "config/collector.json")
         self.config.update({"queries": ["benchmark"], "page_size": 2, "max_pages_per_run": 10, "model_retries": 0})
+        quality = read_json(self.root / "config/quality.json")
+        quality.update({"max_candidates_per_run": 100, "max_candidates_per_day": 100})
+        atomic_json(self.root / "config/quality.json", quality)
         self.now = "2026-09-10T03:00:00Z"
 
     def tearDown(self):
@@ -196,6 +200,17 @@ class CollectorTests(unittest.TestCase):
             remote.assert_not_called()
         with self.assertRaises(ValueError):
             self.collector([entry()], remote_checkpoints=True)
+
+    def test_interrupted_arxiv_connection_retries_the_same_page(self):
+        for error in [RemoteDisconnected("disconnected"), IncompleteRead(b"partial")]:
+            client = HttpClient(self.config, sleeper=lambda _: None)
+            response = MagicMock()
+            response.__enter__.return_value.read.return_value = feed([entry()])
+            with patch.object(client.opener, "open", side_effect=[error, response]) as call:
+                result = client.get("https://export.arxiv.org/api/query?start=50")
+                self.assertEqual(parse_feed(result)[2][0]["arxiv_id"], "2609.00001")
+                self.assertEqual(call.call_count, 2)
+                self.assertEqual(call.call_args_list[0].args[0].full_url, call.call_args_list[1].args[0].full_url)
 
 
 if __name__ == "__main__":

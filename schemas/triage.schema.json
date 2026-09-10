@@ -1,0 +1,194 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "arxivId",
+    "version",
+    "title",
+    "paperUrl",
+    "assessedAt",
+    "policyVersion",
+    "policyHash",
+    "materialHash",
+    "materialScope",
+    "decision",
+    "score",
+    "scoreMax",
+    "reasons",
+    "missingSignals",
+    "evidence",
+    "resourceCandidates",
+    "declaredVenue",
+    "venueVerified",
+    "qualityVerified"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^arxiv-[A-Za-z0-9.-]+$"
+    },
+    "arxivId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "paperUrl": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "assessedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "policyVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "policyHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "materialHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "materialScope": {
+      "const": "abstract_and_arxiv_metadata"
+    },
+    "decision": {
+      "enum": [
+        "priority_review",
+        "needs_evidence",
+        "excluded"
+      ]
+    },
+    "score": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "scoreMax": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2000
+      },
+      "maxItems": 30
+    },
+    "missingSignals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2000
+      },
+      "maxItems": 30
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "signal",
+          "label",
+          "weight",
+          "excerpt",
+          "source",
+          "sourceUrl"
+        ],
+        "properties": {
+          "signal": {
+            "enum": [
+              "benchmark_contribution",
+              "task_definition",
+              "evaluation_protocol",
+              "baseline_comparison",
+              "resource_link",
+              "scale_or_coverage",
+              "validity_analysis"
+            ]
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "weight": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "excerpt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "source": {
+            "enum": [
+              "abstract",
+              "arxiv_comment"
+            ]
+          },
+          "sourceUrl": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "format": "uri",
+            "pattern": "^https://"
+          }
+        }
+      },
+      "maxItems": 30
+    },
+    "resourceCandidates": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2000,
+        "format": "uri",
+        "pattern": "^https://"
+      },
+      "maxItems": 30
+    },
+    "declaredVenue": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 4000
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "venueVerified": {
+      "const": false
+    },
+    "qualityVerified": {
+      "const": false
+    }
+  }
+}

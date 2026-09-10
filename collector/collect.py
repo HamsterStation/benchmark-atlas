@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import copy
 import hashlib
+from http.client import RemoteDisconnected, IncompleteRead
 import json
 import os
 from pathlib import Path
@@ -15,12 +16,14 @@ from datetime import datetime, timedelta, timezone
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode, urlparse
 from urllib.request import Request, build_opener, HTTPRedirectHandler
+from zoneinfo import ZoneInfo
 
 from defusedxml import ElementTree as ET
 from jsonschema import Draft7Validator, FormatChecker
+from collector.quality import assess, policy_hash
 
 ROOT = Path(__file__).resolve().parents[1]
-NS = {"a": "http://www.w3.org/2005/Atom", "o": "http://a9.com/-/spec/opensearch/1.1/"}
+NS = {"a": "http://www.w3.org/2005/Atom", "o": "http://a9.com/-/spec/opensearch/1.1/", "arxiv": "http://arxiv.org/schemas/atom"}
 ID_PATTERN = re.compile(r"^(\d{4}\.\d{4,5}|[a-zA-Z-]+(?:\.[A-Z]{2})?/\d{7})(?:v([1-9]\d*))?$")
 
 
@@ -90,7 +93,7 @@ class HttpClient:
                 if len(data) > self.config["max_response_bytes"]:
                     raise ValueError("API response exceeds size limit")
                 return data
-            except (HTTPError, URLError, TimeoutError) as error:
+            except (HTTPError, URLError, TimeoutError, ConnectionError, RemoteDisconnected, IncompleteRead) as error:
                 retryable = not isinstance(error, HTTPError) or error.code == 429 or error.code >= 500
                 if not retryable or attempt == self.config["request_retries"]:
                     raise
@@ -117,17 +120,13 @@ def parse_feed(data):
         entries.append({"arxiv_id": aid, "version": version, "title": get("title"),
                         "authors": [a.findtext("a:name", default="", namespaces=NS) for a in node.findall("a:author", NS)],
                         "published": get("published"), "updated": get("updated"), "abstract": get("summary")})
+        for field in ["comment", "journal_ref"]:
+            value = node.findtext("arxiv:" + field, default="", namespaces=NS).strip()
+            if value:
+                entries[-1][field] = value[:4000]
     if not entries and total > start:
         raise ValueError("Truncated or empty page before reported end")
     return total, start, entries
-
-
-def scope_candidate(entry):
-    material = (entry["title"] + " " + entry["abstract"]).lower()
-    subject = re.search(r"language model|\bllm|\bagent|foundation model", material)
-    benchmark = re.search(r"benchmark|evaluation|dataset|testbed", material)
-    # This is a recall-oriented routing rule; it never claims human verification.
-    return bool(subject and benchmark)
 
 
 def metadata_record(entry, now):
@@ -149,6 +148,47 @@ def metadata_record(entry, now):
     }
 
 
+def read_chat_stream(response, byte_limit, timeout_seconds):
+    total, finished = 0, False
+    content, event = [], []
+    deadline = time.monotonic() + timeout_seconds
+    while True:
+        if time.monotonic() > deadline:
+            raise TimeoutError("Model stream deadline exceeded")
+        line = response.readline(byte_limit - total + 1)
+        total += len(line)
+        if total > byte_limit:
+            raise ValueError("Model response too large")
+        if not line:
+            raise ValueError("Model stream ended before completion")
+        line = line.rstrip(b"\r\n")
+        if line.startswith(b"data:"):
+            event.append(line[5:].lstrip())
+        elif not line and event:
+            payload = b"\n".join(event)
+            event = []
+            if payload == b"[DONE]":
+                if not finished:
+                    raise ValueError("Model stream has no successful finish")
+                return json.loads("".join(content))
+            chunk = json.loads(payload)
+            if "error" in chunk:
+                raise ValueError("Model stream returned an error")
+            for choice in chunk.get("choices", []):
+                if choice.get("index", 0) != 0:
+                    continue
+                delta = choice.get("delta", {})
+                if delta.get("tool_calls") or delta.get("function_call") or delta.get("refusal"):
+                    raise ValueError("Model stream contains unsupported output")
+                if delta.get("content"):
+                    content.append(delta["content"])
+                reason = choice.get("finish_reason")
+                if reason is not None:
+                    if reason != "stop":
+                        raise ValueError("Model stream did not finish normally")
+                    finished = True
+
+
 class ModelClient:
     """Optional JSON-only HTTP service; no tools, browsing, or executable output."""
     def __init__(self, config):
@@ -156,6 +196,7 @@ class ModelClient:
         self.key = os.getenv("MODEL_API_KEY")
         self.endpoint = os.getenv("MODEL_API_URL")
         self.name = os.getenv("MODEL_NAME")
+        self.stream = os.getenv("MODEL_API_STREAM", "false").lower() == "true"
         self.available = bool(self.key and self.endpoint and self.name)
         if self.available and (urlparse(self.endpoint).scheme != "https" or urlparse(self.endpoint).username):
             raise ValueError("MODEL_API_URL must be an HTTPS endpoint without embedded credentials")
@@ -167,16 +208,30 @@ class ModelClient:
             "只能根据提供的标题和摘要生成中文资料，不能声称读过全文、核查资源或完成复现。"
             "区分提出 Benchmark/评测框架与仅使用 Benchmark；信息不足用 uncertain、空数组或 null。"
             "只返回 JSON 对象，严格包含 role, targets, scenarios, capabilities, summaryZh, taskFormat, acronym。"
+            "role 必须是单个枚举字符串，绝不能是数组；论文兼有新方法和新基准时选择 introduces_benchmark。"
+            "targets、scenarios、capabilities 必须是枚举字符串数组；summaryZh、taskFormat、acronym 是字符串或 null。"
+            "中文简介控制在 120 至 200 个汉字，taskFormat 不超过 80 个汉字；材料不足时可以更短或为 null。"
+            "为避免流式传输乱码，输出 JSON 的所有非 ASCII 字符必须使用 Unicode 转义，如中文写作 \\u4e2d\\u6587；解析后仍为中文。"
             "summaryZh 必须是基于材料的中文摘要，不能补猜。可用分类：" + json.dumps(allowed, ensure_ascii=False)
         )
         payload = {"model": self.name, "messages": [{"role": "system", "content": prompt}, {"role": "user", "content": material}],
                    "response_format": {"type": "json_object"}, "temperature": 0, "max_tokens": 1800}
+        if self.stream:
+            payload["stream"] = True
         req = Request(self.endpoint, data=json.dumps(payload).encode(), headers={"Authorization": "Bearer " + self.key, "Content-Type": "application/json"})
         with build_opener(NoRedirect).open(req, timeout=self.config["model_timeout_seconds"]) as response:
-            raw = response.read(self.config["model_max_output_bytes"] + 1)
-        if len(raw) > self.config["model_max_output_bytes"]:
-            raise ValueError("Model response too large")
-        return json.loads(json.loads(raw)["choices"][0]["message"]["content"])
+            if self.stream:
+                output = read_chat_stream(response, self.config["model_max_output_bytes"], self.config["model_timeout_seconds"])
+            else:
+                raw = response.read(self.config["model_max_output_bytes"] + 1)
+                if len(raw) > self.config["model_max_output_bytes"]:
+                    raise ValueError("Model response too large")
+                output = json.loads(json.loads(raw)["choices"][0]["message"]["content"])
+        if self.key in json.dumps(output, ensure_ascii=False):
+            raise ValueError("Provider echoed a credential; response rejected")
+        if "\ufffd" in json.dumps(output, ensure_ascii=False):
+            raise ValueError("Provider returned corrupted Unicode text")
+        return output
 
 
 class Collector:
@@ -200,6 +255,14 @@ class Collector:
         self.client = client or HttpClient(self.config)
         self.model = model or ModelClient(self.config)
         self.taxonomy = read_json(self.root / "config/taxonomy.json")
+        self.quality = read_json(self.root / "config/quality.json")
+        self.policy_hash = policy_hash(self.quality)
+        if not all(1 <= self.quality[key] <= 100 for key in ["max_candidates_per_run", "max_candidates_per_day"]) or not 1 <= self.quality["min_priority_score"] <= sum(v["weight"] for v in self.quality["signals"].values()):
+            raise ValueError("Invalid quality threshold or review intake budget")
+        self.intake_day = parse_time(self.now).astimezone(ZoneInfo(self.quality["intake_timezone"])).date().isoformat()
+        self.state.setdefault("intake_usage", {})
+        self.triage_validator = Draft7Validator(read_json(self.root / "schemas/triage.schema.json"), format_checker=FormatChecker())
+        self.triage_results = {}
         self.validator = Draft7Validator(read_json(self.root / "schemas/paper.schema.json"), format_checker=FormatChecker())
         self.counts = {key: 0 for key in ["new", "updated", "skipped", "pending_review", "failed", "pages", "model_calls"]}
         self.errors, self.changes = [], []
@@ -231,10 +294,11 @@ class Collector:
         if queued and queued["entry"]["version"] >= version:
             self.report_once("skipped", aid)
             return
-        if seen and (seen["version"] > version or (seen["version"] == version and seen["hash"] == digest)):
+        policy_changed = seen and seen.get("quality_policy") != self.policy_hash and seen.get("status") == "out_of_scope"
+        if seen and not policy_changed and (seen["version"] > version or (seen["version"] == version and seen["hash"] == digest)):
             self.report_once("skipped", aid)
             return
-        if known and (known["version"] or 0) >= version:
+        if known and not policy_changed and (known["version"] or 0) >= version:
             self.state["seen"][aid] = {"version": version, "hash": digest, "status": "existing"}
             self.report_once("skipped", aid)
             return
@@ -297,42 +361,75 @@ class Collector:
             record["addedAt"] = previous["addedAt"]
         if not self.dry_run:
             atomic_json(destination, record)
+        self.changes = [change for change in self.changes if change["id"] != record["id"]]
         self.changes.append({"id": record["id"], "version": record["version"], "publication": record["publication"], "summary_generated": record["summaryZh"] is not None})
+
+    def triage(self, entry):
+        path = self.root / "data/triage" / (stable_id(entry["arxiv_id"]) + ".json")
+        previous = read_json(path)
+        if previous and previous["materialHash"] == material_hash(entry) and previous["policyHash"] == self.policy_hash:
+            result = previous
+        else:
+            result = assess(entry, self.quality, self.now)
+        self.triage_validator.validate(result)
+        self.triage_results[result["id"]] = result
+        if not self.dry_run and result != previous:
+            atomic_json(path, result)
+        return result
 
     def process_queue(self):
         processed = 0
-        pending = sorted(self.state["queue"].items(), key=lambda pair: pair[1]["status"] != "queued")
+        intake = set()
+        daily_intake = self.state["intake_usage"].setdefault(self.intake_day, [])
+        for aid, item in list(self.state["queue"].items()):
+            triage = self.triage(item["entry"])
+            if triage["decision"] == "excluded":
+                self.finish(aid, item, "out_of_scope")
+            elif triage["decision"] == "needs_evidence":
+                item["status"] = "awaiting_evidence"
+            elif item["status"] == "awaiting_evidence":
+                item["status"] = "queued"
+        pending = sorted(self.state["queue"].items(), key=lambda pair: (
+            pair[1]["status"] not in ["queued", "intake_limit"],
+            -self.triage_results[stable_id(pair[0])]["score"],
+            -parse_time(pair[1]["entry"]["updated"]).timestamp(), pair[0]))
         for aid, item in pending:
+            if item["status"] == "awaiting_evidence":
+                continue
             if not self.model.available and item["status"] == "waiting_model":
                 self.report_once("pending_review", aid)
                 continue
-            if processed >= self.config["max_queue_per_run"]:
-                break
-            processed += 1
             entry = item["entry"]
             record = metadata_record(entry, self.now)
             previous = read_json(self.root / "data/drafts" / (record["id"] + ".json"))
+            new_candidate = not previous or previous["version"] != entry["version"]
             material = json.dumps({"title": entry["title"], "abstract": entry["abstract"]}, ensure_ascii=False)[:self.config["model_max_input_chars"]]
             if previous and previous["version"] == entry["version"] and previous["provenance"]["method"] == "model" and previous["provenance"]["materialHash"] == hashlib.sha256(material.encode()).hexdigest():
                 self.finish(aid, item, previous["publication"])
                 continue
-            self.report_once("pending_review", aid)
-            if not scope_candidate(entry):
-                record["publication"] = "excluded"
-                self.save_draft(record)
-                self.finish(aid, item, "out_of_scope")
+            if item["attempts"] >= self.config.get("model_max_attempts_per_version", 3):
+                item["status"] = "retry_exhausted"
                 continue
+            if item.get("next_attempt_at") and item["next_attempt_at"] > self.now:
+                continue
+            candidate_key = f"{aid}v{entry['version']}"
+            if (candidate_key not in intake and len(intake) >= self.quality["max_candidates_per_run"]) or (candidate_key not in daily_intake and len(daily_intake) >= self.quality["max_candidates_per_day"]):
+                item["status"] = "intake_limit"
+                continue
+            if processed >= self.config["max_queue_per_run"]:
+                break
+            processed += 1
+            intake.add(candidate_key)
+            if candidate_key not in daily_intake:
+                daily_intake.append(candidate_key)
+                # Reserve the day's unique paper/version before writing drafts or calling a model.
+                self.save(remote=True)
+            self.report_once("pending_review", aid)
             if not self.model.available or self.dry_run:
-                if item["status"] == "queued":
+                if new_candidate:
                     self.save_draft(record)
                 item["status"] = "waiting_model" if not self.model.available else "dry_run_no_model_calls"
                 self.save()
-                continue
-            if item["attempts"] >= self.config.get("model_max_attempts_per_version", 3):
-                item["status"] = "retry_exhausted"
-                self.save()
-                continue
-            if item.get("next_attempt_at") and item["next_attempt_at"] > self.now:
                 continue
             day = self.now[:10]
             for attempt in range(self.config["model_retries"] + 1):
@@ -363,7 +460,7 @@ class Collector:
                         raise ValueError("Expected a Chinese summary")
                     record["publication"] = "listed" if record["role"] in ["introduces_benchmark", "evaluation_framework"] and record["summaryZh"] else "excluded" if record["role"] == "uses_benchmark" else "pending"
                     self.save_draft(record)
-                    self.finish(aid, item, record["publication"])
+                    self.finish(aid, item, record["publication"], remote=True)
                     break
                 except subprocess.CalledProcessError:
                     raise
@@ -377,11 +474,12 @@ class Collector:
                     if attempt == self.config["model_retries"] or item["attempts"] >= self.config.get("model_max_attempts_per_version", 3):
                         self.report_once("failed", aid)
                         self.errors.append({"stage": "model", "id": stable_id(aid), "type": type(error).__name__})
-
-    def finish(self, aid, item, status):
-        self.state["seen"][aid] = {"version": item["entry"]["version"], "hash": item["hash"], "status": status}
-        del self.state["queue"][aid]
         self.save(remote=True)
+
+    def finish(self, aid, item, status, remote=False):
+        self.state["seen"][aid] = {"version": item["entry"]["version"], "hash": item["hash"], "status": status, "quality_policy": self.policy_hash}
+        del self.state["queue"][aid]
+        self.save(remote=remote)
 
     def run(self, ids=None):
         completed = []
@@ -402,6 +500,11 @@ class Collector:
         return {"dry_run": self.dry_run, "collection_complete": collection_complete, **self.counts,
                 "queue_remaining": len(self.state["queue"]), "last_successful_collection_at": self.previous_success if self.dry_run else self.state["last_successful_collection_at"],
                 "preview_collected_at": self.now if self.dry_run and collection_complete else None,
+                "quality_counts": {decision: sum(p["decision"] == decision for p in self.triage_results.values()) for decision in ["priority_review", "needs_evidence", "excluded"]},
+                "model_available": self.model.available,
+                "daily_intake": {"date": self.intake_day, "timezone": self.quality["intake_timezone"], "used": len(self.state["intake_usage"].get(self.intake_day, [])), "limit": self.quality["max_candidates_per_day"]},
+                "quality_policy": self.policy_hash,
+                "quality_candidates": sorted(self.triage_results.values(), key=lambda p: (-p["score"], p["id"])),
                 "errors": self.errors, "changes": self.changes}
 
 

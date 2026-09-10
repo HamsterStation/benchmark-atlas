@@ -22,6 +22,7 @@ jobs:
   collect:
     if: (github.event_name == 'workflow_dispatch' || vars.COLLECTION_ENABLED == 'true') && github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
+    timeout-minutes: 40
     permissions:
       contents: write
       pull-requests: write
@@ -60,6 +61,7 @@ jobs:
           MODEL_API_KEY: ${{ secrets.MODEL_API_KEY }}
           MODEL_API_URL: ${{ vars.MODEL_API_URL }}
           MODEL_NAME: ${{ vars.MODEL_NAME }}
+          MODEL_API_STREAM: ${{ vars.MODEL_API_STREAM || 'false' }}
         run: |
           if [ "$DRY_RUN" = 'true' ]; then
             python -m collector.collect --dry-run --report work/collection-report.json
@@ -73,7 +75,7 @@ jobs:
         if: always()
         run: |
           if [ -f work/collection-report.json ]; then
-            cat work/collection-report.json >> "$GITHUB_STEP_SUMMARY"
+            python scripts/collection_report.py work/collection-report.json >> "$GITHUB_STEP_SUMMARY"
           fi
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()

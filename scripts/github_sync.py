@@ -10,6 +10,7 @@ import tempfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from collector.collect import ROOT, atomic_json, read_json, utcnow
+from collector.report import digest
 
 
 def run(args, cwd=ROOT, check=True):
@@ -55,6 +56,26 @@ def copy_drafts(source, destination):
         copy_file(item, destination / "data/drafts" / item.name)
 
 
+def copy_triage(source, destination):
+    import re
+    for item in (source / "data/triage").glob("*.json"):
+        if not re.fullmatch(r"arxiv-[A-Za-z0-9.-]+\.json", item.name):
+            raise ValueError("Unexpected triage filename")
+        copy_file(item, destination / "data/triage" / item.name)
+
+
+def copy_review_candidates(source, destination):
+    for item in (source / "data/drafts").glob("*.json"):
+        triage = source / "data/triage" / item.name
+        assessment = read_json(triage)
+        if not assessment or assessment["decision"] != "priority_review":
+            continue
+        if read_json(item).get("publication") == "excluded":
+            continue
+        copy_file(item, destination / "data/drafts" / item.name)
+        copy_file(triage, destination / "data/triage" / item.name)
+
+
 def commit_push(directory, branch, message):
     run(["git", "add", "--all"], directory)
     if run(["git", "diff", "--cached", "--quiet"], directory, check=False).returncode == 0:
@@ -88,11 +109,13 @@ def main():
                 for filename in ["state.json", "deployment.json"]:
                     copy_file(directory / "automation" / filename, ROOT / "automation" / filename)
                 copy_drafts(directory, ROOT)
+                copy_triage(directory, ROOT)
                 print("Restored durable queue, cursors, drafts and deployment record.")
                 return
             if args.action == "persist":
                 copy_file(ROOT / "automation/state.json", directory / "automation/state.json")
                 copy_drafts(ROOT, directory)
+                copy_triage(ROOT, directory)
             else:
                 atomic_json(directory / "automation/deployment.json", {"last_successful_deployment_at": utcnow(),
                     "run_url": f"https://github.com/{repository}/actions/runs/{os.environ['GITHUB_RUN_ID']}", "commit": os.environ["GITHUB_SHA"]})
@@ -108,7 +131,7 @@ def main():
             run(["git", "merge", "--no-edit", f"origin/{args.base}"], directory)
         else:
             run(["git", "switch", "--create", branch], directory)
-        copy_drafts(ROOT, directory)
+        copy_review_candidates(ROOT, directory)
         run(["git", "add", "--all"], directory)
         changed = run(["git", "diff", "--cached", "--quiet"], directory, check=False).returncode != 0
         if changed:
@@ -124,9 +147,8 @@ def main():
         if run(["git", "diff", "--quiet", f"origin/{args.base}", "HEAD"], directory, check=False).returncode == 0:
             return
         report = read_json(args.report, {})
-        counts = {key: report.get(key, 0) for key in ["new", "updated", "skipped", "pending_review", "failed"]}
         body = ("自动采集的论文草稿等待维护者审核。仅依据 arXiv 元数据与摘要，不代表全文解读或实测复现。\n\n"
-                "本次计数：" + json.dumps(counts, ensure_ascii=False) + "\n\n"
+                + digest(report) + "\n\n"
                 "review 模式只发布 data/curated。请使用手工提升命令创建待审核副本，核对来源、版本与分类后，再将审核完成的条目标为 listed。"
                 "仅合并机器草稿不会让它进入正式索引。人工资料与 notes/ 不由采集程序修改。\n\n"
                 "此 PR 由 GITHUB_TOKEN 维护；不要依赖机器人推送再次触发 CI。采集工作流已运行字段校验、测试与生产构建，合并前可手动运行 CI 验证此分支。\n")
@@ -136,7 +158,7 @@ def main():
         if prs:
             run(["gh", "pr", "edit", str(prs[0]["number"]), "--repo", repository, "--body-file", str(body_path)], directory)
         else:
-            run(["gh", "pr", "create", "--repo", repository, "--base", args.base, "--head", branch, "--title", "审核 Benchmark 论文采集草稿", "--body-file", str(body_path)], directory)
+            run(["gh", "pr", "create", "--repo", repository, "--base", args.base, "--head", branch, "--title", "审核 LLM / Agent Benchmark 优先候选", "--body-file", str(body_path)], directory)
 
 
 if __name__ == "__main__":
