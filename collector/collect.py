@@ -282,9 +282,12 @@ class Collector:
         self.errors, self.changes = [], []
         self.reported = set()
         self.known = {}
+        self.curated = {}
         for group in ["drafts", "curated"]:
             for file in sorted((self.root / "data" / group).glob("*.json")):
                 record = read_json(file)
+                if group == "curated":
+                    self.curated[record["arxivId"]] = record
                 prior = self.known.get(record["arxivId"])
                 if not prior or (record["version"] or 0) > (prior["version"] or 0):
                     self.known[record["arxivId"]] = record
@@ -396,6 +399,12 @@ class Collector:
         intake = set()
         daily_intake = self.state["intake_usage"].setdefault(self.intake_day, [])
         for aid, item in list(self.state["queue"].items()):
+            # Manual additions may supersede entries already in the durable queue.
+            curated = self.curated.get(aid)
+            if curated and curated["publication"] == "listed" and (curated["version"] or 0) >= item["entry"]["version"]:
+                self.report_once("skipped", aid)
+                self.finish(aid, item, "existing")
+                continue
             triage = self.triage(item["entry"])
             # Compute recency on every run; cached evidence must not freeze a paper's age.
             age = freshness(item["entry"], self.quality, self.now, self.known.get(aid))

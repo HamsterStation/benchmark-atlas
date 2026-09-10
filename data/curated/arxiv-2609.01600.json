@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2609.01600",
+  "arxivId": "2609.01600",
+  "title": "CordisBench: Can Language Models Reason About Component Lifecycles in Dynamic Agent Harnesses?",
+  "acronym": "CordisBench",
+  "authors": [
+    "Damien Sileo",
+    "Dimitri Kachler"
+  ],
+  "paperUrl": "https://arxiv.org/abs/2609.01600v1",
+  "publishedAt": "2026-09-01",
+  "versionUpdatedAt": "2026-09-01",
+  "version": 1,
+  "addedAt": "2026-09-10",
+  "updatedAt": "2026-09-10",
+  "checkedAt": "2026-09-10",
+  "role": "introduces_benchmark",
+  "targets": [
+    "llm"
+  ],
+  "scenarios": [
+    "software"
+  ],
+  "capabilities": [
+    "reasoning",
+    "code"
+  ],
+  "summaryZh": "CordisBench 评测语言模型能否推理动态 Agent 运行框架中组件变更的连锁后果。它包含 1,200 道题，覆盖受影响组件定位、卸载顺序预测、必然或可能成立的条件，以及可执行的重配置。任务结合形式化规则与真实 Cordis 运行结果进行确定性评分。论文发现，随着相关交互增多，模型在最终状态预测和跨顺序推理上更容易出错。",
+  "taskFormat": "根据组件依赖与生命周期规则，预测状态、判断条件或输出重配置方案，由参考语义或 Cordis 执行结果评分。",
+  "metrics": [
+    {
+      "name": "Jaccard similarity",
+      "description": "用于组件定位、必然条件与可达条件任务。",
+      "sourceUrl": "https://github.com/sileod/cordis-bench/blob/290d6b4a652516de1684f370e2763a53d9cc473d/README.md"
+    },
+    {
+      "name": "Per-observable accuracy",
+      "description": "用于卸载顺序下的状态预测，逐个可观测量计算准确率。",
+      "sourceUrl": "https://github.com/sileod/cordis-bench/blob/290d6b4a652516de1684f370e2763a53d9cc473d/README.md"
+    },
+    {
+      "name": "Executed success rate",
+      "description": "用于重配置任务：在固定的 Cordis 运行时执行答案并判定是否成功。",
+      "sourceUrl": "https://github.com/sileod/cordis-bench/blob/290d6b4a652516de1684f370e2763a53d9cc473d/README.md"
+    }
+  ],
+  "officialCode": "https://github.com/sileod/cordis-bench",
+  "officialData": "https://huggingface.co/datasets/sileod/cordis-bench",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/2609.01600v1",
+      "kind": "arxiv_abstract",
+      "version": "v1",
+      "checkedAt": "2026-09-10",
+      "scope": "通过官方 arXiv Atom API 核对标题、完整作者、论文首发日期、版本更新时间与摘要；未下载 PDF 或阅读全文。"
+    },
+    {
+      "url": "https://github.com/sileod/cordis-bench/blob/290d6b4a652516de1684f370e2763a53d9cc473d/README.md",
+      "kind": "official_repository",
+      "version": "290d6b4a652516de1684f370e2763a53d9cc473d",
+      "checkedAt": "2026-09-10",
+      "scope": "读取固定 commit 的官方 README，核对项目与论文对应关系、任务指标、数据入口和运行步骤。数据入口经 Hugging Face 元数据 API 确认存在；未下载数据集或执行仓库代码。"
+    }
+  ],
+  "review": {
+    "status": "source_verified",
+    "reviewer": null,
+    "reviewedAt": null
+  },
+  "reproduction": {
+    "status": "official_docs_unrun",
+    "notes": "官方要求 Python 3.11+ 和 Node.js 20。先安装 Python 项目与 native/cordis 依赖并运行运行时自检；随后使用冻结数据或 README 的生成示例，再用 probe 取得模型输出、用 score 评分。probe 需要所选模型服务的凭据，重复执行相同命令可继续未完成问题。论文版本为 v1，数据发布版和生成参数单独标为 v2.0.1 / version 2，二者不要混淆。命令摘自所列 commit 的官方 README；本文档未执行这些命令。",
+    "commands": [
+      {
+        "text": "git clone https://github.com/sileod/cordis-bench.git\ncd cordis-bench\npython -m pip install -e '.[dev]'\nnpm ci --prefix native/cordis\nnode native/cordis/run.mjs --self-test",
+        "sourceUrl": "https://github.com/sileod/cordis-bench/blob/290d6b4a652516de1684f370e2763a53d9cc473d/README.md",
+        "sourceVersion": "290d6b4a652516de1684f370e2763a53d9cc473d",
+        "context": "官方安装与 Cordis 自检流程；复用时应固定至来源记录的代码 commit。"
+      },
+      {
+        "text": "cordis-bench generate --version 2 --seed 0 \\\n  --output v2.0.1-release.jsonl",
+        "sourceUrl": "https://github.com/sileod/cordis-bench/blob/290d6b4a652516de1684f370e2763a53d9cc473d/README.md",
+        "sourceVersion": "290d6b4a652516de1684f370e2763a53d9cc473d",
+        "context": "官方生成示例。完整论文发布集覆盖 seeds 0、1、2；需要完整冻结集时从官方数据入口取得，不将单个示例输出冒充完整发布集。"
+      },
+      {
+        "text": "cordis-bench probe v2.0.1-release.jsonl \\\n  --model provider/model-name \\\n  --effort low --max-tokens 8192 --workers 8 --rpm 35 \\\n  --output predictions.jsonl\n\ncordis-bench score v2.0.1-release.jsonl predictions.jsonl \\\n  --output score.json",
+        "sourceUrl": "https://github.com/sileod/cordis-bench/blob/290d6b4a652516de1684f370e2763a53d9cc473d/README.md",
+        "sourceVersion": "290d6b4a652516de1684f370e2763a53d9cc473d",
+        "context": "provider/model-name 是官方占位符，需替换为实际模型并配置对应服务的凭据；score 按任务规则评分。"
+      }
+    ],
+    "runs": []
+  },
+  "provenance": {
+    "method": "source_check",
+    "generatedAt": null,
+    "materialScope": "abstract_and_official_docs",
+    "materialVersion": "v1",
+    "materialHash": "a412c9dacb78bbfc82e3cfe9698199ba642ebb44cbed73588794c929f6a48f2e",
+    "materialTruncated": false,
+    "model": null
+  },
+  "publication": "listed",
+  "isTest": false
+}

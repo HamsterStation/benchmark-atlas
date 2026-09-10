@@ -10,7 +10,7 @@ from urllib.error import URLError
 from unittest.mock import patch, MagicMock
 from http.client import RemoteDisconnected, IncompleteRead
 
-from collector.collect import Collector, ROOT, HttpClient, atomic_json, base_id, parse_feed, read_json
+from collector.collect import Collector, ROOT, HttpClient, atomic_json, base_id, parse_feed, read_json, metadata_record
 
 
 def entry(aid="2609.00001", version=1):
@@ -106,6 +106,30 @@ class CollectorTests(unittest.TestCase):
         again = self.collector([entry("2009.03300", 4)], model=model).run()
         self.assertEqual(model.calls, 1)
         self.assertEqual(again["skipped"], 1)
+
+    def test_manual_addition_supersedes_queued_version_without_using_model_quota(self):
+        paper = entry()
+        self.collector([paper]).run()
+        curated = metadata_record(paper, self.now)
+        curated.update(publication="listed", checkedAt=self.now[:10], summaryZh="仅供隔离测试的人工资料。")
+        curated["provenance"]["method"] = "source_check"
+        curated["review"]["status"] = "source_verified"
+        curated["sources"][0]["checkedAt"] = self.now[:10]
+        path = self.root / "data/curated" / (curated["id"] + ".json")
+        atomic_json(path, curated)
+        note = self.root / "notes" / (curated["id"] + ".md")
+        note.parent.mkdir()
+        note.write_text("Human notes stay intact.")
+        before = path.read_bytes(), note.read_bytes()
+        model = Model()
+        report = self.collector([paper], model=model, now="2026-09-11T03:00:00Z").run()
+        self.assertEqual((model.calls, report["queue_remaining"], report["daily_intake"]["used"]), (0, 0, 0))
+        self.assertEqual(report["changes"], [])
+        self.assertEqual(before, (path.read_bytes(), note.read_bytes()))
+        newer = dict(paper, version=2, updated="2026-09-11T04:00:00Z")
+        update = self.collector([newer], model=model, now="2026-09-11T05:00:00Z").run()
+        self.assertEqual((model.calls, update["updated"]), (1, 1))
+        self.assertEqual(before, (path.read_bytes(), note.read_bytes()))
 
     def test_model_failure_retains_queue_and_recovers(self):
         failed = self.collector([entry()], model=Model(fail=True)).run()

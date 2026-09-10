@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2608.26546",
+  "arxivId": "2608.26546",
+  "title": "DuMateBench: Evaluating Autonomous Agents in Complex Real-World Workflows",
+  "acronym": "DuMateBench",
+  "authors": [
+    "Zechun Niu",
+    "Yukun Zhao",
+    "Jiaxin Zhang",
+    "Xu Shen",
+    "Jinhua Si",
+    "Han Tian",
+    "Can Xu",
+    "Yunfan Song",
+    "Jiaxin Mao",
+    "Yansong Gao",
+    "Yuchen Li",
+    "Jianmin Wu",
+    "Lingyong Yan",
+    "Shuaiqiang Wang",
+    "Dawei Yin"
+  ],
+  "paperUrl": "https://arxiv.org/abs/2608.26546v1",
+  "publishedAt": "2026-08-27",
+  "versionUpdatedAt": "2026-08-27",
+  "version": 1,
+  "addedAt": "2026-09-10",
+  "updatedAt": "2026-09-10",
+  "checkedAt": "2026-09-10",
+  "role": "introduces_benchmark",
+  "targets": [
+    "agent",
+    "llm"
+  ],
+  "scenarios": [
+    "tools",
+    "general"
+  ],
+  "capabilities": [
+    "planning",
+    "tool-use",
+    "reasoning",
+    "robustness"
+  ],
+  "summaryZh": "DuMateBench 从经匿名化与隐私筛查的真实用户会话重建 200 个任务，覆盖 8 类场景和 17 类细分能力。任务保留必要的交互历史、配置与工作区状态，并在 Docker 环境中加入信息不足、运行不稳定和噪声干扰。它结合确定性检查与模型裁判评估最终产物，比较五种 Agent 框架与四个 LLM 的组合，考察完整任务交付、稳健性和效率。",
+  "taskFormat": "在带历史信息与环境扰动的隔离工作区中调用工具、完成用户请求并提交产物，由任务专用评估器评分。",
+  "metrics": [
+    {
+      "name": "Complete pass",
+      "description": "任务是否完全通过专用评估器；complete_pass 为 1 才表示任务成功，运行流程无异常不等于任务完成。",
+      "sourceUrl": "https://github.com/baidubce/dumate-bench/blob/d423d52db3c5686e04f4d59401aca6b6346b1685/README.md"
+    },
+    {
+      "name": "Partial pass",
+      "description": "记录产物或必要检查的部分完成情况；低于 1 表示仍有未满足的要求。",
+      "sourceUrl": "https://github.com/baidubce/dumate-bench/blob/d423d52db3c5686e04f4d59401aca6b6346b1685/README.md"
+    }
+  ],
+  "officialCode": "https://github.com/baidubce/dumate-bench",
+  "officialData": "https://huggingface.co/datasets/Annihi/dumate_bench",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/2608.26546v1",
+      "kind": "arxiv_abstract",
+      "version": "v1",
+      "checkedAt": "2026-09-10",
+      "scope": "通过官方 arXiv Atom API 核对标题、完整作者、论文首发日期、版本更新时间与摘要；未下载 PDF 或阅读全文。"
+    },
+    {
+      "url": "https://github.com/baidubce/dumate-bench/blob/d423d52db3c5686e04f4d59401aca6b6346b1685/README.md",
+      "kind": "official_repository",
+      "version": "d423d52db3c5686e04f4d59401aca6b6346b1685",
+      "checkedAt": "2026-09-10",
+      "scope": "读取固定 commit 的官方 README，核对项目与论文对应关系、任务指标、数据入口和运行步骤。数据入口经 Hugging Face 元数据 API 确认存在；未下载数据集或执行仓库代码。"
+    },
+    {
+      "url": "https://dumatebench.com/",
+      "kind": "official_documentation",
+      "version": null,
+      "checkedAt": "2026-09-10",
+      "scope": "仅核对原论文所列项目页及其官方代码、数据链接。"
+    }
+  ],
+  "review": {
+    "status": "source_verified",
+    "reviewer": null,
+    "reviewedAt": null
+  },
+  "reproduction": {
+    "status": "official_docs_unrun",
+    "notes": "官方要求 Python 3.10+（推荐 3.12 或 3.13）与 Docker Compose v2，并从源码目录以 editable 模式安装 CLI。先运行固定 Agent 的 smoke test 检查运行环境；它不调用模型，也不能用于衡量模型能力。完整 200 题的数据包约 3.5 GB，须从 Hugging Face 单独取得；原始任务缺少 environment/，按 README 的 C、D 节制作副本、执行 template fill，并导出为 Harbor 任务。真实模型评测按 E 节设置服务凭据与模型，再运行单题。完整评估还可能需要 ffmpeg、LibreOffice、Poppler 等宿主机工具。命令只作官方文档摘录，本站未运行。",
+    "commands": [
+      {
+        "text": "cd /path/to/qianfan_code\n\n# Use a newer Python if the system Python is 3.9.\npython3 -m venv .venv\nsource .venv/bin/activate\n\npython -m pip install --upgrade pip\npython -m pip install -r dumatebench/requirements.txt\npython -m pip install -e dumatebench_cli/\n\n# Required for the Harbor export/run paths; not needed for the local smoke test\n# or a dumate adapter run. Pinned to the version CI verifies against, because\n# Harbor's Hub API and compose behaviour are version-sensitive.\npython -m pip install harbor==0.20.0\n\n# Required only when downloading the public Hugging Face dataset.\npython -m pip install huggingface_hub\n\ndumate --help\ndocker compose version\nharbor --version",
+        "sourceUrl": "https://github.com/baidubce/dumate-bench/blob/d423d52db3c5686e04f4d59401aca6b6346b1685/README.md",
+        "sourceVersion": "d423d52db3c5686e04f4d59401aca6b6346b1685",
+        "context": "官方源码安装示例；将占位路径替换为仓库根目录，Harbor 路径使用官方固定版本 0.20.0。"
+      },
+      {
+        "text": "bash dumatebench/scripts/run_template_task.sh",
+        "sourceUrl": "https://github.com/baidubce/dumate-bench/blob/d423d52db3c5686e04f4d59401aca6b6346b1685/README.md",
+        "sourceVersion": "d423d52db3c5686e04f4d59401aca6b6346b1685",
+        "context": "确定性环境自检，不需要模型 Key；得到 smoke 结果不等于实际模型通过任务。"
+      },
+      {
+        "text": "DATA_ROOT=/absolute/path/to/dumate_bench\nWORK_ROOT=/absolute/path/to/dumatebench_harbor_work\nTEMPLATE=$PWD/dumatebench/datasets/dev/template_task\n\nmkdir -p \"$WORK_ROOT\"\ncp -a \"$DATA_ROOT/final_dataset_clean/.\" \"$WORK_ROOT/\"\n\ndumate template fill \\\n  --dataset \"$WORK_ROOT\" \\\n  --template \"$TEMPLATE\" \\\n  --task-glob 'task_*'\n\ndumate datasets list \"$WORK_ROOT\" --task-glob 'task_*'\ndumate package check \"$WORK_ROOT/task_1\"",
+        "sourceUrl": "https://github.com/baidubce/dumate-bench/blob/d423d52db3c5686e04f4d59401aca6b6346b1685/README.md",
+        "sourceVersion": "d423d52db3c5686e04f4d59401aca6b6346b1685",
+        "context": "准备已下载数据的工作副本，并从官方模板补齐运行环境；DATA_ROOT 指向 C 节已解压的数据目录。"
+      },
+      {
+        "text": "HARBOR_TASKS=/absolute/path/to/harbor_tasks\n\ndumate harbor export \\\n  --dataset \"$WORK_ROOT\" \\\n  --output \"$HARBOR_TASKS\" \\\n  --task-glob 'task_*'",
+        "sourceUrl": "https://github.com/baidubce/dumate-bench/blob/d423d52db3c5686e04f4d59401aca6b6346b1685/README.md",
+        "sourceVersion": "d423d52db3c5686e04f4d59401aca6b6346b1685",
+        "context": "将准备好的任务导出为 Harbor 格式；沿用上一步 WORK_ROOT。"
+      },
+      {
+        "text": "HARBOR_TASKS=/absolute/path/to/harbor_tasks\nJOBS=/absolute/path/to/harbor_jobs\n\nharbor run \\\n  --path \"$HARBOR_TASKS/task_1\" \\\n  --agent openhands-sdk \\\n  --model \"$MODEL\" \\\n  --ae \"LLM_API_KEY=$OPENAI_API_KEY\" \\\n  --ae \"LLM_BASE_URL=$OPENAI_BASE_URL\" \\\n  --agent-setup-timeout-multiplier 5 \\\n  --jobs-dir \"$JOBS/smoke-task-1\" \\\n  --n-concurrent 1 \\\n  --n-attempts 1 \\\n  --yes \\\n  --debug",
+        "sourceUrl": "https://github.com/baidubce/dumate-bench/blob/d423d52db3c5686e04f4d59401aca6b6346b1685/README.md",
+        "sourceVersion": "d423d52db3c5686e04f4d59401aca6b6346b1685",
+        "context": "官方单题模型评测示例。先按 README 的 E 节设置 MODEL、OPENAI_API_KEY、OPENAI_BASE_URL，再运行此命令。"
+      }
+    ],
+    "runs": []
+  },
+  "provenance": {
+    "method": "source_check",
+    "generatedAt": null,
+    "materialScope": "abstract_and_official_docs",
+    "materialVersion": "v1",
+    "materialHash": "9a94c09a06fe4b08be22e47c8d7296a780aff66b950837df2e972702d423effa",
+    "materialTruncated": false,
+    "model": null
+  },
+  "publication": "listed",
+  "isTest": false
+}
