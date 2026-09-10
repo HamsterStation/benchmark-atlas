@@ -59,7 +59,7 @@ def assess(entry, config, now):
             add(signal, match)
     resources = []
     for material, kind in [(abstract, "abstract"), (entry.get("comment", ""), "arxiv_comment")]:
-        for match in re.finditer(r"https://[^\s<>\"{}]+", material):
+        for match in re.finditer(r"https://[^\s<>\"{}\[\]()\\`|^]+", material):
             url = match.group().rstrip(".,;:)]")
             parsed = urlparse(url)
             if parsed.username or parsed.password or not parsed.hostname:

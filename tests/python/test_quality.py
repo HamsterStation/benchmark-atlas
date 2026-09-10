@@ -67,6 +67,15 @@ class QualityTests(unittest.TestCase):
         p = assess(e, self.config, self.now)
         self.assertEqual(p["resourceCandidates"], [])
 
+    def test_markdown_and_latex_resource_links_keep_only_the_url(self):
+        e = entry()
+        url = "https://example.github.io/test-only/"
+        e["abstract"] = e["abstract"].split("Code and data:")[0] + f" \\href{{{url}}}{{project}}"
+        e["comment"] = f"Project home: [{url}]({url}) and `{url}`"
+        result = assess(e, self.config, self.now)
+        self.assertEqual(result["resourceCandidates"], [url])
+        self.assertEqual([v["excerpt"] for v in result["evidence"] if v["signal"] == "resource_link"], [url])
+
     def test_report_escapes_markup_mentions_and_instructions(self):
         p = self.check("We introduce a benchmark for LLM agents. We compare baselines using accuracy. Code: https://github.com/example/test-only.", "<script>alert(1)</script> @someone [click](https://evil.invalid)")
         text = digest({"quality_candidates": [p]})
