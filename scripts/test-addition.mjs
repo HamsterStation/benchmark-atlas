@@ -1,0 +1,62 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+
+const root = process.cwd();
+fs.mkdirSync('work', { recursive: true });
+fs.mkdirSync('outputs', { recursive: true });
+const sandbox = fs.mkdtempSync(path.join(root, 'work', 'addition-test-'));
+const paperFile = 'arxiv-2311.12983.json';
+try {
+  for (const name of ['src', 'public', 'schemas', 'config', 'data', 'notes', 'automation', 'scripts']) fs.cpSync(path.join(root, name), path.join(sandbox, name), { recursive: true });
+  for (const name of ['package.json', 'astro.config.mjs', 'tsconfig.json']) fs.copyFileSync(path.join(root, name), path.join(sandbox, name));
+  fs.symlinkSync(path.join(root, 'node_modules'), path.join(sandbox, 'node_modules'), 'dir');
+  const paperPath = path.join(sandbox, 'data/curated', paperFile);
+  const realRecord = fs.readFileSync(paperPath);
+  const pending = JSON.parse(realRecord.toString());
+  pending.publication = 'pending';
+  fs.writeFileSync(paperPath, JSON.stringify(pending));
+  const build = (mode = 'review') => execFileSync(process.execPath, [path.join(root, 'node_modules/astro/bin/astro.mjs'), 'build'], { cwd: sandbox, env: { ...process.env, PUBLISH_MODE: mode, BASE_PATH: '/test-repository', ASTRO_TELEMETRY_DISABLED: '1' }, stdio: 'pipe' });
+  build();
+  const before = JSON.parse(fs.readFileSync(path.join(sandbox, 'dist/search-index.json')));
+  assert.ok(!before.some(p => p.id === pending.id));
+  fs.writeFileSync(paperPath, realRecord);
+  build();
+  const after = JSON.parse(fs.readFileSync(path.join(sandbox, 'dist/search-index.json')));
+  assert.equal(after.length, before.length + 1);
+  assert.ok(after.some(p => p.id === pending.id && p.acronym === 'GAIA'));
+  const home = fs.readFileSync(path.join(sandbox, 'dist/index.html'), 'utf8');
+  assert.ok(home.includes(`/test-repository/papers/${pending.id}/`));
+  assert.ok(home.includes('/test-repository/search-index.json'));
+  assert.ok(fs.existsSync(path.join(sandbox, `dist/papers/${pending.id}/index.html`)));
+  assert.ok(!home.includes('href="/_astro/'));
+  fs.renameSync(paperPath, path.join(sandbox, 'gaia-backup.json'));
+  const automatic = JSON.parse(realRecord.toString());
+  automatic.checkedAt = null;
+  automatic.review = { status: 'needs_review', reviewer: null, reviewedAt: null };
+  automatic.provenance.method = 'model';
+  automatic.provenance.model = 'isolated-render-fixture-no-real-model';
+  automatic.provenance.generatedAt = '2026-09-10T00:00:00Z';
+  automatic.reproduction = { status: 'unverified', commands: [], runs: [], notes: null };
+  automatic.sources.forEach(s => { s.checkedAt = null; });
+  // This isolated fixture reuses verified source text to exercise rendering only.
+  automatic.summaryZh = '【隔离测试，不发布】' + automatic.summaryZh;
+  fs.mkdirSync(path.join(sandbox, 'data/drafts'), { recursive: true });
+  fs.writeFileSync(path.join(sandbox, 'data/drafts', paperFile), JSON.stringify(automatic));
+  build('review');
+  assert.ok(!JSON.parse(fs.readFileSync(path.join(sandbox, 'dist/search-index.json'))).some(p => p.id === pending.id));
+  build('auto');
+  const autoIndex = JSON.parse(fs.readFileSync(path.join(sandbox, 'dist/search-index.json')));
+  assert.equal(autoIndex.find(p => p.id === pending.id).review.status, 'auto_unreviewed');
+  assert.ok(fs.readFileSync(path.join(sandbox, `dist/papers/${pending.id}/index.html`), 'utf8').includes('自动收录、未审核'));
+  const autoHome = fs.readFileSync(path.join(sandbox, 'dist/index.html'), 'utf8');
+  assert.ok(autoHome.includes('id="automatic-grid"'));
+  fs.writeFileSync(paperPath, realRecord);
+  build('auto');
+  assert.equal(JSON.parse(fs.readFileSync(path.join(sandbox, 'dist/search-index.json'))).find(p => p.id === pending.id).review.status, 'source_verified');
+  fs.writeFileSync(path.join(root, 'outputs/addition-test.json'), JSON.stringify({ passed: true, before: before.length, after: after.length, paper: pending.id, base: '/test-repository', checks: ['homepage', 'search-index', 'detail route', 'asset base'], real_source_record: true }, null, 2) + '\n');
+  console.log(`Addition verified: ${before.length} -> ${after.length}; homepage, search index and detail page under /test-repository/.`);
+} finally {
+  fs.rmSync(sandbox, { recursive: true, force: true });
+}

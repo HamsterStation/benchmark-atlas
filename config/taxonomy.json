@@ -1,0 +1,44 @@
+{
+  "targets": {
+    "llm": { "label": "语言模型", "description": "评估模型的语言理解、知识、推理或生成表现。" },
+    "agent": { "label": "Agent", "description": "评估与工具或环境交互、执行多步任务的系统。" },
+    "multimodal": { "label": "多模态系统", "description": "任务涉及文本之外的图像、文件等输入。" }
+  },
+  "scenarios": {
+    "knowledge": { "label": "知识问答", "description": "学科知识与专业问答。" },
+    "math": { "label": "数学解题", "description": "数学应用题、竞赛问题及答案求解。" },
+    "coding": { "label": "代码生成", "description": "从需求或函数说明生成程序。" },
+    "software": { "label": "软件工程", "description": "理解代码库、修复问题及验证补丁。" },
+    "web": { "label": "网页交互", "description": "页面理解、浏览、导航和操作。" },
+    "tools": { "label": "工具与环境", "description": "在外部工具或交互式环境中完成任务。" },
+    "general": { "label": "综合评测", "description": "跨场景、多维度的系统性评估。" }
+  },
+  "capabilities": {
+    "knowledge": { "label": "知识理解", "description": "理解并使用学科和世界知识。" },
+    "reasoning": { "label": "推理", "description": "跨步骤分析并求得答案。" },
+    "code": { "label": "编程", "description": "产生、理解和修改可执行程序。" },
+    "planning": { "label": "规划决策", "description": "在交互过程中选择动作并推进目标。" },
+    "tool-use": { "label": "工具使用", "description": "通过工具、网页或环境获取信息并采取行动。" },
+    "grounding": { "label": "界面定位", "description": "将语言指令对应到具体界面元素与动作。" },
+    "robustness": { "label": "稳健与可信", "description": "考察鲁棒性、公平性、校准等多维表现。" },
+    "multimodal": { "label": "多模态理解", "description": "结合多种模态理解任务材料。" }
+  },
+  "roles": {
+    "introduces_benchmark": { "label": "提出 Benchmark", "description": "论文提出新的评测任务集、数据集或环境。" },
+    "evaluation_framework": { "label": "提出评测框架", "description": "论文组织多任务、多指标的评测方法与工具。" },
+    "uses_benchmark": { "label": "仅使用 Benchmark", "description": "使用已有基准验证方法；默认不自动收录，手工收录时必须明确标注。" },
+    "uncertain": { "label": "贡献类型待核查", "description": "现有材料不足以确定贡献类型，保留待审核。" }
+  },
+  "reviewStatuses": {
+    "source_verified": { "label": "来源已核查", "description": "已核对列出的原论文和官方材料；不代表实测，也不等于作者背书。" },
+    "human_reviewed": { "label": "人工已审核", "description": "维护者已审阅并记录审核人和日期。" },
+    "needs_review": { "label": "待审核", "description": "材料或结论仍需维护者核对。" },
+    "auto_unreviewed": { "label": "自动收录、未审核", "description": "自动草稿通过字段校验；内容尚未人工审核。" }
+  },
+  "reproductionStatuses": {
+    "unverified": { "label": "复现资料待核查", "description": "尚未整理可核对的官方运行材料。" },
+    "official_docs_unrun": { "label": "官方文档整理、未亲测", "description": "仅整理官方文档；本站没有执行这些命令。" },
+    "minimal_verified": { "label": "最小示例跑通", "description": "有 commit、环境、范围、结果齐全的人工运行记录。" },
+    "experiment_reproduced": { "label": "指定实验结果复现", "description": "有指向指定实验与指标对比的人工运行记录。" }
+  }
+}

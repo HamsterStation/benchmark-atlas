@@ -1,0 +1,15 @@
+---
+import { taxonomy } from '../lib/catalog.mjs';
+import { withBase } from '../lib/paths';
+const { paper: p, index = 0 } = Astro.props;
+---
+<article class="paper-card" data-paper-id={p.id}>
+  <div class="card-index">{String(index + 1).padStart(2, '0')}<span>{p.publishedAt?.slice(0, 4) || '—'}</span></div>
+  <div class="card-body">
+    <div class="card-meta"><span class="acronym">{p.acronym || '简称待核查'}</span><span class:list={['status', { automatic: p.review.status === 'auto_unreviewed' }]}>{taxonomy.reviewStatuses[p.review.status].label}</span></div>
+    <h3><a href={withBase(`papers/${p.id}/`)}>{p.title}</a></h3>
+    <p class="summary">{p.summaryZh || '中文简介待核查'}</p>
+    <div class="tags"><span class="role">{taxonomy.roles[p.role].label}</span>{p.scenarios.map((tag: string) => <span>{taxonomy.scenarios[tag].label}</span>)}{p.targets.map((tag: string) => <span>{taxonomy.targets[tag].label}</span>)}</div>
+    <div class="card-foot"><span>本站更新 {p.updatedAt} <span aria-hidden="true">·</span> 核查 {p.checkedAt || '待核查'}</span><span class="card-arrow" aria-hidden="true">↗</span></div>
+  </div>
+</article>

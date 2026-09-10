@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2110.14168",
+  "arxivId": "2110.14168",
+  "title": "Training Verifiers to Solve Math Word Problems",
+  "acronym": "GSM8K",
+  "authors": [
+    "Karl Cobbe",
+    "Vineet Kosaraju",
+    "Mohammad Bavarian",
+    "Mark Chen",
+    "Heewoo Jun",
+    "Lukasz Kaiser",
+    "Matthias Plappert",
+    "Jerry Tworek",
+    "Jacob Hilton",
+    "Reiichiro Nakano",
+    "Christopher Hesse",
+    "John Schulman"
+  ],
+  "paperUrl": "https://arxiv.org/abs/2110.14168v2",
+  "publishedAt": "2021-10-27",
+  "versionUpdatedAt": "2021-11-18",
+  "version": 2,
+  "addedAt": "2026-09-10",
+  "updatedAt": "2026-09-10",
+  "checkedAt": "2026-09-10",
+  "role": "introduces_benchmark",
+  "targets": [
+    "llm"
+  ],
+  "scenarios": [
+    "math"
+  ],
+  "capabilities": [
+    "reasoning"
+  ],
+  "summaryZh": "提出约 8,500 道小学数学应用题组成的 GSM8K，问题通常需要多步基本运算。论文使用验证器对候选解答排序，以研究语言模型的多步数学推理和解答验证。",
+  "taskFormat": "输入应用题，输出解题过程和最终数值答案。",
+  "metrics": [
+    {
+      "name": "Answer accuracy",
+      "description": "提取 #### 后的最终数值，与标准答案比较；官方文档指向 is_correct 实现。",
+      "sourceUrl": "https://github.com/openai/grade-school-math/blob/3101c7d5072418e28b9008a6636bde82a006892c/README.md"
+    }
+  ],
+  "officialCode": "https://github.com/openai/grade-school-math",
+  "officialData": "https://github.com/openai/grade-school-math/blob/3101c7d5072418e28b9008a6636bde82a006892c/README.md",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/2110.14168v2",
+      "kind": "arxiv_abstract",
+      "version": "v2",
+      "checkedAt": "2026-09-10",
+      "scope": "通过 arXiv Atom API 核对标题、完整作者列表、首发日期、版本更新时间和摘要；未下载或阅读全文。"
+    },
+    {
+      "url": "https://github.com/openai/grade-school-math/blob/3101c7d5072418e28b9008a6636bde82a006892c/README.md",
+      "kind": "official_repository",
+      "version": "3101c7d5072418e28b9008a6636bde82a006892c",
+      "checkedAt": "2026-09-10",
+      "scope": "核对官方 README 中的项目归属、任务说明与资源链接；只读取文档，没有执行仓库代码。"
+    }
+  ],
+  "review": {
+    "status": "source_verified",
+    "reviewer": null,
+    "reviewedAt": null
+  },
+  "reproduction": {
+    "status": "official_docs_unrun",
+    "notes": "官方 README 明确说明示例训练流水线没有用于论文实验；不能把运行示例等同于论文结果复现。",
+    "commands": [
+      {
+        "text": "python view_model_solutions.py",
+        "sourceUrl": "https://github.com/openai/grade-school-math/blob/3101c7d5072418e28b9008a6636bde82a006892c/README.md",
+        "sourceVersion": "3101c7d5072418e28b9008a6636bde82a006892c",
+        "context": "官方 README 明确说明示例训练流水线没有用于论文实验；不能把运行示例等同于论文结果复现。"
+      }
+    ],
+    "runs": []
+  },
+  "provenance": {
+    "method": "source_check",
+    "generatedAt": null,
+    "materialScope": "abstract_and_official_docs",
+    "materialVersion": "v2",
+    "materialHash": "2e38d8a0871be6036ac1a0db2b8db7fe1799dffc568ec3e8b96d3166e1515964",
+    "materialTruncated": false,
+    "model": null
+  },
+  "publication": "listed",
+  "isTest": false
+}

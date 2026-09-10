@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2107.03374",
+  "arxivId": "2107.03374",
+  "title": "Evaluating Large Language Models Trained on Code",
+  "acronym": "HumanEval",
+  "authors": [
+    "Mark Chen",
+    "Jerry Tworek",
+    "Heewoo Jun",
+    "Qiming Yuan",
+    "Henrique Ponde de Oliveira Pinto",
+    "Jared Kaplan",
+    "Harri Edwards",
+    "Yuri Burda",
+    "Nicholas Joseph",
+    "Greg Brockman",
+    "Alex Ray",
+    "Raul Puri",
+    "Gretchen Krueger",
+    "Michael Petrov",
+    "Heidy Khlaaf",
+    "Girish Sastry",
+    "Pamela Mishkin",
+    "Brooke Chan",
+    "Scott Gray",
+    "Nick Ryder",
+    "Mikhail Pavlov",
+    "Alethea Power",
+    "Lukasz Kaiser",
+    "Mohammad Bavarian",
+    "Clemens Winter",
+    "Philippe Tillet",
+    "Felipe Petroski Such",
+    "Dave Cummings",
+    "Matthias Plappert",
+    "Fotios Chantzis",
+    "Elizabeth Barnes",
+    "Ariel Herbert-Voss",
+    "William Hebgen Guss",
+    "Alex Nichol",
+    "Alex Paino",
+    "Nikolas Tezak",
+    "Jie Tang",
+    "Igor Babuschkin",
+    "Suchir Balaji",
+    "Shantanu Jain",
+    "William Saunders",
+    "Christopher Hesse",
+    "Andrew N. Carr",
+    "Jan Leike",
+    "Josh Achiam",
+    "Vedant Misra",
+    "Evan Morikawa",
+    "Alec Radford",
+    "Matthew Knight",
+    "Miles Brundage",
+    "Mira Murati",
+    "Katie Mayer",
+    "Peter Welinder",
+    "Bob McGrew",
+    "Dario Amodei",
+    "Sam McCandlish",
+    "Ilya Sutskever",
+    "Wojciech Zaremba"
+  ],
+  "paperUrl": "https://arxiv.org/abs/2107.03374v2",
+  "publishedAt": "2021-07-07",
+  "versionUpdatedAt": "2021-07-14",
+  "version": 2,
+  "addedAt": "2026-09-10",
+  "updatedAt": "2026-09-10",
+  "checkedAt": "2026-09-10",
+  "role": "introduces_benchmark",
+  "targets": [
+    "llm"
+  ],
+  "scenarios": [
+    "coding"
+  ],
+  "capabilities": [
+    "code",
+    "reasoning"
+  ],
+  "summaryZh": "论文研究代码模型 Codex，同时发布 HumanEval，以人工编写的函数题检查从文档字符串合成程序的功能正确性。重复采样可以改善解题表现；本条目收录的是它提出的新评测集。",
+  "taskFormat": "根据函数签名与说明生成 Python 函数，再用测试检查候选程序。",
+  "metrics": [
+    {
+      "name": "pass@k",
+      "description": "从采样候选程序中衡量至少一个通过功能测试的表现；k 大于样本数时不报告。",
+      "sourceUrl": "https://github.com/openai/human-eval/blob/6d43fb980f9fee3c892a914eda09951f772ad10d/README.md"
+    }
+  ],
+  "officialCode": "https://github.com/openai/human-eval",
+  "officialData": "https://github.com/openai/human-eval/blob/6d43fb980f9fee3c892a914eda09951f772ad10d/README.md",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/2107.03374v2",
+      "kind": "arxiv_abstract",
+      "version": "v2",
+      "checkedAt": "2026-09-10",
+      "scope": "通过 arXiv Atom API 核对标题、完整作者列表、首发日期、版本更新时间和摘要；未下载或阅读全文。"
+    },
+    {
+      "url": "https://github.com/openai/human-eval/blob/6d43fb980f9fee3c892a914eda09951f772ad10d/README.md",
+      "kind": "official_repository",
+      "version": "6d43fb980f9fee3c892a914eda09951f772ad10d",
+      "checkedAt": "2026-09-10",
+      "scope": "核对官方 README 中的项目归属、任务说明与资源链接；只读取文档，没有执行仓库代码。"
+    }
+  ],
+  "review": {
+    "status": "source_verified",
+    "reviewer": null,
+    "reviewedAt": null
+  },
+  "reproduction": {
+    "status": "official_docs_unrun",
+    "notes": "官方工具会执行不可信生成代码，README 明确要求安全沙箱。下列示例只做文档摘录，本站未运行。",
+    "commands": [
+      {
+        "text": "evaluate_functional_correctness data/example_samples.jsonl --problem_file=data/example_problem.jsonl",
+        "sourceUrl": "https://github.com/openai/human-eval/blob/6d43fb980f9fee3c892a914eda09951f772ad10d/README.md",
+        "sourceVersion": "6d43fb980f9fee3c892a914eda09951f772ad10d",
+        "context": "官方工具会执行不可信生成代码，README 明确要求安全沙箱。下列示例只做文档摘录，本站未运行。"
+      }
+    ],
+    "runs": []
+  },
+  "provenance": {
+    "method": "source_check",
+    "generatedAt": null,
+    "materialScope": "abstract_and_official_docs",
+    "materialVersion": "v2",
+    "materialHash": "fdf151f8931c537baf18316784a31cecb4ed2b3c02e7aa62329079db995b4aed",
+    "materialTruncated": false,
+    "model": null
+  },
+  "publication": "listed",
+  "isTest": false
+}

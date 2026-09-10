@@ -1,0 +1,29 @@
+---
+import '../styles/global.css';
+import { withBase } from '../lib/paths';
+const { title = 'Benchmark Atlas', description = '持续整理的 LLM / Agent Benchmark 论文知识库。来源可追溯，复现状态如实记录。', active = '' } = Astro.props;
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f2f0e8" />
+    <title>{title} · benchmark-atlas</title>
+    <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
+  </head>
+  <body>
+    <a class="skip" href="#main">跳到正文</a>
+    <header class="site-header shell">
+      <a class="brand" href={withBase()} aria-label="Benchmark Atlas 首页"><span class="brand-mark" aria-hidden="true">b/a</span><span>benchmark<span class="brand-light">—atlas</span><small>LLM & AGENT RESEARCH INDEX</small></span></a>
+      <nav aria-label="主导航">
+        <a aria-current={active === 'index' ? 'page' : undefined} href={withBase()}>论文索引</a>
+        <a aria-current={active === 'taxonomy' ? 'page' : undefined} href={withBase('taxonomy/')}>分类说明</a>
+        <a aria-current={active === 'rules' ? 'page' : undefined} href={withBase('rules/')}>收录规则</a>
+      </nav>
+    </header>
+    <main id="main" class="shell"><slot /></main>
+    <footer class="shell site-footer"><span><strong>benchmark-atlas</strong><br />一份持续维护的研究索引，不是新提出的 Benchmark。</span><span>先核对来源，再理解评测。<br />来源核查 ≠ 实验复现 · 第一阶段</span></footer>
+  </body>
+</html>

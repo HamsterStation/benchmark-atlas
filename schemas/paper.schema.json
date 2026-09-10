@@ -1,0 +1,598 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://benchmark-atlas.invalid/schemas/paper.schema.json",
+  "title": "Benchmark Atlas Paper",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "arxivId",
+    "title",
+    "acronym",
+    "authors",
+    "paperUrl",
+    "publishedAt",
+    "versionUpdatedAt",
+    "version",
+    "addedAt",
+    "updatedAt",
+    "checkedAt",
+    "role",
+    "targets",
+    "scenarios",
+    "capabilities",
+    "summaryZh",
+    "taskFormat",
+    "metrics",
+    "officialCode",
+    "officialData",
+    "sources",
+    "review",
+    "reproduction",
+    "provenance",
+    "publication",
+    "isTest"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^arxiv-[a-zA-Z0-9.-]+$"
+    },
+    "arxivId": {
+      "type": "string",
+      "pattern": "^(?:[0-9]{4}\\.[0-9]{4,5}|[a-zA-Z-]+(?:\\.[A-Z]{2})?/[0-9]{7})$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "acronym": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "maxItems": 500,
+      "uniqueItems": true
+    },
+    "paperUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://",
+      "maxLength": 2000
+    },
+    "publishedAt": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "versionUpdatedAt": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "version": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "addedAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "checkedAt": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "role": {
+      "enum": [
+        "introduces_benchmark",
+        "evaluation_framework",
+        "uses_benchmark",
+        "uncertain"
+      ]
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "llm",
+          "agent",
+          "multimodal"
+        ]
+      },
+      "maxItems": 10,
+      "uniqueItems": true
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "knowledge",
+          "math",
+          "coding",
+          "software",
+          "web",
+          "tools",
+          "general"
+        ]
+      },
+      "maxItems": 20,
+      "uniqueItems": true
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "knowledge",
+          "reasoning",
+          "code",
+          "planning",
+          "tool-use",
+          "grounding",
+          "robustness",
+          "multimodal"
+        ]
+      },
+      "maxItems": 30,
+      "uniqueItems": true
+    },
+    "summaryZh": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 3000
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "taskFormat": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 3000
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "description",
+          "sourceUrl"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1500
+          },
+          "sourceUrl": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://",
+            "maxLength": 2000
+          }
+        }
+      },
+      "maxItems": 30,
+      "uniqueItems": true
+    },
+    "officialCode": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://",
+          "maxLength": 2000
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "officialData": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://",
+          "maxLength": 2000
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "url",
+          "kind",
+          "version",
+          "checkedAt",
+          "scope"
+        ],
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://",
+            "maxLength": 2000
+          },
+          "kind": {
+            "enum": [
+              "arxiv_abstract",
+              "official_repository",
+              "official_documentation",
+              "official_data",
+              "paper_fulltext"
+            ]
+          },
+          "version": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "checkedAt": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1500
+          }
+        }
+      },
+      "maxItems": 30,
+      "uniqueItems": true
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reviewer",
+        "reviewedAt"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "source_verified",
+            "human_reviewed",
+            "needs_review",
+            "auto_unreviewed"
+          ]
+        },
+        "reviewer": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reviewedAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "reproduction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "notes",
+        "commands",
+        "runs"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "unverified",
+            "official_docs_unrun",
+            "minimal_verified",
+            "experiment_reproduced"
+          ]
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "commands": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "text",
+              "sourceUrl",
+              "sourceVersion",
+              "context"
+            ],
+            "properties": {
+              "text": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 5000
+              },
+              "sourceUrl": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https://",
+                "maxLength": 2000
+              },
+              "sourceVersion": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "context": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1500
+              }
+            }
+          },
+          "maxItems": 30,
+          "uniqueItems": true
+        },
+        "runs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "date",
+              "operator",
+              "commit",
+              "environment",
+              "scope",
+              "result",
+              "experiment",
+              "notePath"
+            ],
+            "properties": {
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "operator": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "commit": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{40}$"
+              },
+              "environment": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              },
+              "scope": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              },
+              "result": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              },
+              "experiment": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2000
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "notePath": {
+                "type": "string",
+                "pattern": "^arxiv-[a-zA-Z0-9.-]+\\.md$"
+              }
+            }
+          },
+          "maxItems": 30,
+          "uniqueItems": true
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "generatedAt",
+        "materialScope",
+        "materialVersion",
+        "materialHash",
+        "materialTruncated",
+        "model"
+      ],
+      "properties": {
+        "method": {
+          "enum": [
+            "source_check",
+            "manual",
+            "metadata_only",
+            "model"
+          ]
+        },
+        "generatedAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "materialScope": {
+          "enum": [
+            "abstract",
+            "abstract_and_official_docs",
+            "fulltext",
+            "manual"
+          ]
+        },
+        "materialVersion": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "materialHash": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "materialTruncated": {
+          "type": "boolean"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "publication": {
+      "enum": [
+        "listed",
+        "pending",
+        "excluded"
+      ]
+    },
+    "isTest": {
+      "type": "boolean"
+    }
+  }
+}

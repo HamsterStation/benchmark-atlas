@@ -1,0 +1,36 @@
+{
+  "name": "benchmark-atlas",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.19.0 <23"
+  },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "validate": "node scripts/validate.mjs",
+    "check": "astro check",
+    "build": "npm run validate && astro build",
+    "preview": "astro preview --host 127.0.0.1",
+    "test": "tsx --test tests/unit/*.test.ts",
+    "test:pages": "playwright test",
+    "test:python": ".venv/bin/python -m unittest discover -s tests/python -v",
+    "test:all": "npm test && npm run test:python && npm run check && npm run build && npm run test:pages"
+  },
+  "dependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "astro": "7.3.2",
+    "micromark": "4.0.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@playwright/test": "1.63.0",
+    "@types/node": "22.19.15",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3"
+  },
+  "overrides": {
+    "esbuild": "0.28.2"
+  }
+}

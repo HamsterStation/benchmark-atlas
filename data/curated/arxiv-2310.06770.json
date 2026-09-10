@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2310.06770",
+  "arxivId": "2310.06770",
+  "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+  "acronym": "SWE-bench",
+  "authors": [
+    "Carlos E. Jimenez",
+    "John Yang",
+    "Alexander Wettig",
+    "Shunyu Yao",
+    "Kexin Pei",
+    "Ofir Press",
+    "Karthik Narasimhan"
+  ],
+  "paperUrl": "https://arxiv.org/abs/2310.06770v3",
+  "publishedAt": "2023-10-10",
+  "versionUpdatedAt": "2024-11-11",
+  "version": 3,
+  "addedAt": "2026-09-10",
+  "updatedAt": "2026-09-10",
+  "checkedAt": "2026-09-10",
+  "role": "introduces_benchmark",
+  "targets": [
+    "llm",
+    "agent"
+  ],
+  "scenarios": [
+    "software"
+  ],
+  "capabilities": [
+    "code",
+    "reasoning",
+    "planning"
+  ],
+  "summaryZh": "从 12 个 Python 仓库的真实 GitHub issue 与对应修复中构建 2,294 个软件工程问题。系统需要结合问题描述修改代码库，常涉及跨函数、跨文件理解；这里描述原论文任务集，其他变体需另行区分。",
+  "taskFormat": "给定代码库和 issue 描述生成补丁，再按评测任务验证修复结果。",
+  "metrics": [
+    {
+      "name": "Resolved rate",
+      "description": "成功解决的软件工程问题占评测问题的比例；当前工具与原论文环境可能不同。",
+      "sourceUrl": "https://arxiv.org/abs/2310.06770v3"
+    }
+  ],
+  "officialCode": "https://github.com/SWE-bench/SWE-bench",
+  "officialData": "https://huggingface.co/datasets/SWE-bench/SWE-bench",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/2310.06770v3",
+      "kind": "arxiv_abstract",
+      "version": "v3",
+      "checkedAt": "2026-09-10",
+      "scope": "通过 arXiv Atom API 核对标题、完整作者列表、首发日期、版本更新时间和摘要；未下载或阅读全文。"
+    },
+    {
+      "url": "https://github.com/SWE-bench/SWE-bench/blob/02e7a74ffd0b707aab73d203fe87bdc7c76afc8e/README.md",
+      "kind": "official_repository",
+      "version": "02e7a74ffd0b707aab73d203fe87bdc7c76afc8e",
+      "checkedAt": "2026-09-10",
+      "scope": "核对官方 README 中的项目归属、任务说明与资源链接；只读取文档，没有执行仓库代码。"
+    }
+  ],
+  "review": {
+    "status": "source_verified",
+    "reviewer": null,
+    "reviewedAt": null
+  },
+  "reproduction": {
+    "status": "official_docs_unrun",
+    "notes": "当前 README 使用新版 CLI，运行需要 Docker 和预测文件。Verified 等变体不可直接与原论文全量任务结果混用。",
+    "commands": [
+      {
+        "text": "swebench eval verified -p <path_to_predictions> --run-id <run_id> -j <num_workers>",
+        "sourceUrl": "https://github.com/SWE-bench/SWE-bench/blob/02e7a74ffd0b707aab73d203fe87bdc7c76afc8e/README.md",
+        "sourceVersion": "02e7a74ffd0b707aab73d203fe87bdc7c76afc8e",
+        "context": "当前 README 使用新版 CLI，运行需要 Docker 和预测文件。Verified 等变体不可直接与原论文全量任务结果混用。"
+      }
+    ],
+    "runs": []
+  },
+  "provenance": {
+    "method": "source_check",
+    "generatedAt": null,
+    "materialScope": "abstract_and_official_docs",
+    "materialVersion": "v3",
+    "materialHash": "67a7b5b540a58a91f9b74da32682d5cc16f6c3224401294320b024b317d98722",
+    "materialTruncated": false,
+    "model": null
+  },
+  "publication": "listed",
+  "isTest": false
+}
