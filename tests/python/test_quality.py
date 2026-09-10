@@ -54,6 +54,15 @@ class QualityTests(unittest.TestCase):
         p = self.check("We introduce a benchmark for language model agents with 300 tasks. Data: https://github.com/example/tasks.")
         self.assertEqual(p["decision"], "needs_evidence")
 
+    def test_high_score_cannot_replace_missing_model_comparison(self):
+        p = self.check("We introduce a benchmark for LLM agents with 300 tasks, accuracy and human evaluation. We study contamination and generalization. Data: https://github.com/example/test-only.")
+        self.assertGreaterEqual(p["score"], self.config["min_priority_score"])
+        self.assertEqual(p["decision"], "needs_evidence")
+
+    def test_missing_task_definition_is_held_even_with_other_signals(self):
+        p = self.check("We introduce a benchmark for LLMs. We compare baseline accuracy and study contamination. Code: https://github.com/example/test-only.")
+        self.assertEqual(p["decision"], "needs_evidence")
+
     def test_unrelated_agent_benchmark_and_survey_are_excluded(self):
         p = self.check("We introduce a benchmark for multi-agent molecular simulation with 300 tasks and success rate.", "Agent simulation benchmark")
         self.assertEqual(p["decision"], "excluded")
@@ -100,6 +109,86 @@ class IntakeTests(unittest.TestCase):
     setUp = fixtures.CollectorTests.setUp
     tearDown = fixtures.CollectorTests.tearDown
     collector = fixtures.CollectorTests.collector
+
+    def limit(self, value=2):
+        quality = read_json(self.root / "config/quality.json")
+        quality.update({"max_candidates_per_run": value, "max_candidates_per_day": value})
+        (self.root / "config/quality.json").write_text(json.dumps(quality))
+
+    def test_new_week_beats_stronger_older_papers_and_old_version_bumps(self):
+        self.limit(1)
+        recent, month, old = [entry(f"2609.0000{i}") for i in range(1, 4)]
+        recent.update(published="2026-09-08T00:00:00Z", updated="2026-09-08T00:00:00Z")
+        month.update(published="2026-08-20T00:00:00Z", updated="2026-09-09T00:00:00Z")
+        old.update(published="2025-01-01T00:00:00Z", updated="2026-09-10T00:00:00Z", version=5)
+        month["abstract"] += " We test 300 tasks and study contamination."
+        old["abstract"] = month["abstract"]
+        model = Model()
+        c = self.collector([old, month, recent], model=model)
+        report = c.run()
+        self.assertEqual([p["id"] for p in report["changes"]], ["arxiv-2609.00001"])
+        self.assertEqual(model.calls, 1)
+        self.assertEqual(c.state["queue"][old["arxiv_id"]]["status"], "outside_recent_window")
+        self.assertEqual(c.state["queue"][old["arxiv_id"]]["entry"], old)
+
+    def test_same_week_prefers_evidence_then_original_publication(self):
+        self.limit()
+        strong, newer, bumped = [entry(f"2609.0000{i}") for i in range(1, 4)]
+        strong.update(published="2026-09-04T00:00:00Z", updated="2026-09-04T00:00:00Z")
+        strong["abstract"] += " We test 300 tasks and study contamination."
+        newer.update(published="2026-09-09T00:00:00Z", updated="2026-09-09T00:00:00Z")
+        bumped.update(published="2026-09-05T00:00:00Z", updated="2026-09-10T00:00:00Z", version=2)
+        report = self.collector([bumped, newer, strong], model=Model()).run()
+        self.assertEqual([p["id"] for p in report["changes"]], ["arxiv-2609.00001", "arxiv-2609.00002"])
+
+    def test_recent_fallback_preserves_archive_without_spending_quota(self):
+        self.limit()
+        month, fallback, archive = [entry(f"2609.0000{i}") for i in range(1, 4)]
+        month["published"] = "2026-08-15T00:00:00Z"
+        fallback["published"] = "2026-07-20T00:00:00Z"
+        archive["published"] = "2025-01-01T00:00:00Z"
+        c = self.collector([archive, fallback, month], model=Model())
+        report = c.run()
+        self.assertEqual([p["id"] for p in report["changes"]], ["arxiv-2609.00001", "arxiv-2609.00002"])
+        self.assertEqual(report["daily_intake"]["used"], 2)
+        again = self.collector([archive], model=Model(), now="2026-09-11T03:00:00Z").run()
+        self.assertEqual((again["model_calls"], again["daily_intake"]["used"], again["queue_remaining"]), (0, 0, 1))
+
+    def test_cached_evidence_does_not_freeze_publication_age(self):
+        paper = entry()
+        self.collector([paper]).run()
+        triage = (self.root / "data/triage/arxiv-2609.00001.json").read_bytes()
+        c = self.collector([paper], model=Model(), now="2027-01-01T00:00:00Z")
+        report = c.run()
+        self.assertEqual(report["model_calls"], 0)
+        self.assertEqual(c.state["queue"][paper["arxiv_id"]]["status"], "outside_recent_window")
+        self.assertEqual((self.root / "data/triage/arxiv-2609.00001.json").read_bytes(), triage)
+
+    def test_known_classic_version_update_remains_eligible(self):
+        self.limit()
+        original = entry()
+        self.collector([original], model=Model()).run()
+        updated = dict(original, version=2, updated="2027-01-01T00:00:00Z")
+        report = self.collector([updated], model=Model(), now="2027-01-01T03:00:00Z").run()
+        self.assertEqual((report["updated"], report["model_calls"]), (1, 1))
+        self.assertEqual(report["selection_candidates"][0]["band"], "tracked_update")
+        self.assertEqual(read_json(self.root / "data/drafts/arxiv-2609.00001.json")["version"], 2)
+
+    def test_future_paper_waits_and_becomes_eligible_without_losing_it(self):
+        paper = entry()
+        paper.update(published="2026-09-11T00:00:00Z", updated="2026-09-11T00:00:00Z")
+        c = self.collector([paper], model=Model())
+        report = c.run()
+        self.assertEqual(report["model_calls"], 0)
+        self.assertIn(paper["arxiv_id"], c.state["queue"])
+        self.assertEqual(self.collector([paper], model=Model(), now="2026-09-11T03:00:00Z").run()["model_calls"], 1)
+
+    def test_invalid_recent_policy_is_rejected(self):
+        original = read_json(self.root / "config/quality.json")
+        for change in [{"freshness_days": [30, 7, 90]}, {"freshness_days": [7, 7, 90]}, {"freshness_days": [True, 30, 90]}, {"required_signals": ["invented"]}]:
+            (self.root / "config/quality.json").write_text(json.dumps({**original, **change}))
+            with self.assertRaises(ValueError):
+                self.collector([])
 
     def test_quality_gate_reduces_model_calls_and_preserves_uncertain_material(self):
         uncertain = entry("2609.00002")

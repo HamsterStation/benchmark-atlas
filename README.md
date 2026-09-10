@@ -44,7 +44,7 @@ npm run preview
 | `schemas/paper.schema.json` | 共用 JSON Schema（AJV / Python） | 否 |
 | `config/taxonomy.json` | 分类 ID、中文标签和说明 | 否 |
 | `config/collector.json` | 检索词、起点、分页、配额与重试 | 否 |
-| `config/quality.json` | 候选门槛、证据权重和每轮送审数量 | 否 |
+| `config/quality.json` | 近期窗口、候选门槛、证据权重和每日处理数量 | 否 |
 | `automation/state.json` | 窗口、游标、去重记录、队列、每日调用数 | 是 |
 | `automation/deployment.json` | 最近成功部署的时间、commit、运行链接 | 仅部署成功后 |
 | `work/` | 临时来源材料、隔离测试、工具 | 不提交 |
@@ -100,9 +100,9 @@ JSON Schema 校验必填字段、枚举、真实日期、HTTPS URL 和未知字�
 
 ### 优先采集哪些论文
 
-采用 **证据优先** 的候选筛选：覆盖 LLM 与 Agent，优先提出新的 Benchmark、评测环境、数据集或评测框架。仅使用已有基准评估新方法的论文，以及没有新基准贡献的综述，默认排除。机构名、作者名、GitHub star、摘要中的宣传用语不加分；会议或期刊信息只作为未核实声明保存，不冒充已确认录用。
+采用 **最新研究优先、证据达标再收录** 的筛选：经典论文继续保留，日常主要寻找新提出的 LLM / Agent Benchmark、评测环境、评测数据集或评测框架。首页默认按论文首发日期倒序，仍可切换最新收录和最近更新。仅使用已有基准评估新方法的论文，以及没有新基准贡献的综述，默认排除。机构名、作者名、GitHub star、摘要中的宣传用语不加分；会议或期刊信息只作为未核实声明保存，不冒充已确认录用。
 
-| 原文可观察信号 | 审核优先级权重 |
+| 原文可观察信号 | 候选排序权重 |
 | --- | ---: |
 | 明确提出新的评测资料或框架 | 3 |
 | 描述任务或环境 | 1 |
@@ -112,9 +112,9 @@ JSON Schema 校验必填字段、枚举、真实日期、HTTPS URL 和未知字�
 | 任务规模或覆盖范围 | 1 |
 | 污染、泛化、稳健性或人工核验分析 | 1 |
 
-默认至少 7/11，并且必须同时有“新基准贡献”“评分协议”和“资源链接”，才进入 `priority_review`。通用训练数据集不视为新基准，需明确面向评测。这只是**审核顺序分数，不是质量认证**；链接仅提取自摘要或 arXiv comment，不抓取或执行链接内容，也不直接称为已核对的官方资源。新论文缺少这些摘要级证据时进入 `needs_evidence`，材料保留在队列；不是据此宣布论文低质量。
+默认至少 **9/11**，必须同时有“新基准贡献”“任务定义”“评分协议”“模型/基线比较”和“资源链接”。高总分不能替代任一必需证据；达到门槛后沿用内部 `priority_review` 枚举，auto 模式无需人工审批。通用训练数据集不视为新基准，需明确面向评测。这只是**候选排序信号，不是质量认证**；链接仅提取自摘要或 arXiv comment，不抓取或执行链接内容，也不直接称为已核对的官方资源。新论文缺少这些摘要级证据时进入 `needs_evidence`，材料保留在队列；不是据此宣布论文低质量。
 
-**每天最多处理 2 篇候选，不凑数。** `config/quality.json` 中 `max_candidates_per_run` 和 `max_candidates_per_day` 均为 2，按 `Asia/Shanghai` 自然日计数。每日 ID/版本名额写入持久 state，手动重跑共用上限，dry-run 不消耗名额。评分相同时优先最近更新的论文；未处理候选下次继续。无模型时只保存元数据和证据，简介留空；后续生成也占当日名额。模型只对达到门槛的候选工作，已有成功结果不会因重复采集再次生成。auto 模式通过校验后直接部署，review 模式则等待人工提升和合并。
+**每天最多处理 2 篇候选，不凑数。** `config/quality.json` 中 `max_candidates_per_run` 和 `max_candidates_per_day` 均为 2，按 `Asia/Shanghai` 自然日计数。每日 ID/版本名额写入持久 state，手动重跑共用上限，dry-run 不消耗名额。按原始首发时间划分 **近 7 天 → 近 30 天 → 近 90 天** 三档；同档先按证据完整度，再按首发时间排序。旧论文仅更新版本不会挤进新论文档。超出 90 天的未收录材料保留队列且不占名额；已收录经典论文的新版本单列在新论文之后处理。时间档每轮重新计算，不因缓存证据而冻结。未处理候选下次继续。无模型时只保存元数据和证据，简介留空；后续生成也占当日名额。模型只对达到门槛的候选工作，已有成功结果不会因重复采集再次生成。auto 模式通过校验后直接部署，review 模式则等待人工提升和合并。
 
 `data/triage/` 单独保存原文证据、缺失信号、决定、规则版本/哈希、材料版本/哈希和分析日期。相同材料和规则重复运行不会更新时间或重复改文件。所有 triage 和未达门槛材料保存在 `atlas-state`；review PR 只携带优先候选及其证据。自动化不能修改 curated 和人工笔记。
 
@@ -143,9 +143,9 @@ dry-run 不写资料、队列、采集成功时间，不调用模型，不创建
 
 先把取得的材料放入持久队列，再提交游标。单篇模型失败不会被游标推进吞掉，失败条目保留；模型异常退避 6 小时，每版本总尝试上限默认 3 次。达到上限后保留 `retry_exhausted`，修好服务后维护者可在 state 分支将该条目的 `attempts` 设为 0、`next_attempt_at` 设为 null 再重试。不要删除队列来“消除”错误。
 
-无模型配置时仍完成分页采集，优先候选保留 `waiting_model` 与 null 简介；后续有模型时处理队列。队列先处理未处理的高优先级条目，避免等 Key 的旧条目挡住新元数据。证据不足保留 `awaiting_evidence`，名额用完保留 `intake_limit`；纯使用 Benchmark 的模型草稿标为 excluded。人工审核与运行记录永远不由采集写入。
+无模型配置时仍完成分页采集，优先候选保留 `waiting_model` 与 null 简介；后续有模型时处理队列。队列先处理近期且证据完整的候选；已预留当日名额的同版本可恢复生成。证据不足保留 `awaiting_evidence`，名额用完保留 `intake_limit`；纯使用 Benchmark 的模型草稿标为 excluded。人工审核与运行记录永远不由采集写入。
 
-报告包含 new、updated、reassessed、skipped、pending_review、failed、pages、model_calls 和 queue_remaining；reassessed 单独统计规则变更导致的复筛，不冒充论文新版本；额外的 `quality_counts` 区分优先审核、待补充证据和排除，`quality_candidates` 保存本轮分析明细。前五项是本轮触及的处理计数，并非相加等于检索总数的互斥分类；`queue_remaining` 才是运行结束后待处理总量。首次发现的 v2 论文仍计为 new，因为本站此前没有这个基础 ID。
+报告包含 new、updated、reassessed、skipped、pending_review、failed、pages、model_calls 和 queue_remaining；reassessed 单独统计规则变更导致的复筛，不冒充论文新版本；额外的 `quality_counts` 区分证据达标、待补充证据和排除，`quality_candidates` 保存本轮证据；`selection_policy` 与 `selection_candidates` 保存首发日期、版本更新日期、时间档及是否在窗口内。前五项是本轮触及的处理计数，并非相加等于检索总数的互斥分类；`queue_remaining` 才是运行结束后待处理总量。首次发现的 v2 论文仍计为 new，因为本站此前没有这个基础 ID。
 
 ## 可选模型
 
@@ -218,7 +218,7 @@ Python 测试覆盖分页、断点续采、重叠窗口、重复运行、版本�
 
 验收报告和截图见 `outputs/`。2026-09-10 的质量采集 dry-run 完整读取 30 页，发现 1,201 个唯一候选，优先审核 51、待补证据 940、排除 210，预览草稿 2，失败 0；没有调用模型或写入生产队列。精简报告为 `outputs/quality-dry-run.md`；完整 JSON 仅保留本地或 Actions artifact，不反复提交大体积采集快照。
 
-当前验证包括 9 个 TypeScript 测试、40 个 Python 测试、10 个生产页面浏览器测试、类型检查、生产构建及 actionlint。auto 模式使用持久状态中的两篇真实模型草稿在隔离目录构建，已验证 12 条索引、自动条目并入主列表的排序和筛选、桌面与手机详情页及来源标识。用户配置的流式兼容模型已实际返回中文草稿并通过论文 schema；开发与测试仍不需要 Key。模型必须输出单个贡献类型和 JSON Unicode 转义，服务返回乱码或回显凭据时拒绝保存。真实 arXiv Markdown 链接解析问题已修复，新增回归测试，并对 1,201 条真实材料的链接执行了构建校验。
+当前验证包括 9 个 TypeScript 测试、49 个 Python 测试、10 个生产页面浏览器测试、类型检查、生产构建及 actionlint。auto 模式使用持久状态中的两篇真实模型草稿在隔离目录构建，已验证 12 条索引、自动条目并入主列表的排序和筛选、桌面与手机详情页及来源标识。用户配置的流式兼容模型已实际返回中文草稿并通过论文 schema；开发与测试仍不需要 Key。模型必须输出单个贡献类型和 JSON Unicode 转义，服务返回乱码或回显凭据时拒绝保存。真实 arXiv Markdown 链接解析问题已修复，新增回归测试，并对 1,201 条真实材料的链接执行了构建校验。
 
 切换 auto 前的 review 模式验收：GitHub [dry-run](https://github.com/HamsterStation/benchmark-atlas/actions/runs/34441587319) 已通过，模型调用为 0，状态分支未变化。首次正式运行生成 2 篇简介后在链接校验处停止，线上网站保留；[修复后重跑](https://github.com/HamsterStation/benchmark-atlas/actions/runs/34442408357) 通过全部测试、构建并创建 [审核 PR #1](https://github.com/HamsterStation/benchmark-atlas/pull/1)。重跑的模型调用为 0，当日累计仍为 2 次，2 篇草稿及 989 条待处理材料保存在状态分支。PR 不修改人工资料或 notes；该次 review 模式仅发布 curated；后续已按维护者要求切换为 auto。
 

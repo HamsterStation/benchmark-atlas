@@ -1,8 +1,10 @@
 {
-  "version": 2,
-  "profile": "evidence_first",
-  "min_priority_score": 7,
+  "version": 3,
+  "profile": "recent_evidence_first",
+  "min_priority_score": 9,
   "require_resource_link": true,
+  "required_signals": ["benchmark_contribution", "task_definition", "evaluation_protocol", "baseline_comparison", "resource_link"],
+  "freshness_days": [7, 30, 90],
   "max_candidates_per_run": 2,
   "max_candidates_per_day": 2,
   "intake_timezone": "Asia/Shanghai",
@@ -15,5 +17,5 @@
     "scale_or_coverage": { "label": "给出任务规模或覆盖范围", "weight": 1 },
     "validity_analysis": { "label": "讨论泛化、污染、稳健性或人工核验", "weight": 1 }
   },
-  "note": "分数只用于安排人工审核顺序，不是论文质量分或引用影响力。只看取得的原文证据，不按机构、作者名、GitHub star 或模型自评打分。"
+  "note": "优先近 7 天、近 30 天的新论文，不足时从近 90 天补充；同一时间档按证据完整度、首发时间排序。经典条目保留，旧论文的新版本单独处理，不冒充新论文。分数只用于候选排序，不是质量认证，不按机构、作者、star 或宣传用语加分。"
 }

@@ -75,12 +75,22 @@ test('automatic entries join the main catalog and can be sorted and filtered', a
   const automatic = papers.filter((p: any) => p.review.status === 'auto_unreviewed');
   await expect(page.locator('#paper-grid > .paper-card')).toHaveCount(papers.length);
   await expect(page.locator('#automatic-section')).toHaveCount(0);
+  await expect(page.locator('[name=sort]')).toHaveValue('published');
+  const newest = papers.reduce((a: any, b: any) => (a.publishedAt || '') > (b.publishedAt || '') ? a : b).publishedAt;
+  const firstId = await page.locator('#paper-grid > .paper-card').first().getAttribute('data-paper-id');
+  expect(papers.find((p: any) => p.id === firstId).publishedAt).toBe(newest);
   for (const [order, field] of [['added', 'addedAt'], ['updated', 'updatedAt'], ['published', 'publishedAt']]) {
     await page.locator('[name=sort]').selectOption(order);
+    await page.reload();
+    await expect(page.locator('#result-count')).toHaveText(`显示 ${papers.length} / ${papers.length} 篇论文`);
+    await expect(page.locator('[name=sort]')).toHaveValue(order);
     const ids = await page.locator('#paper-grid > .paper-card').evaluateAll(cards => cards.map(card => (card as HTMLElement).dataset.paperId));
     const dates = ids.map(id => papers.find((p: any) => p.id === id)[field] || '');
     expect(dates).toEqual([...dates].sort().reverse());
   }
+  await page.locator('[name=sort]').selectOption('added');
+  await page.getByRole('button', { name: '清除筛选' }).click();
+  await expect(page.locator('[name=sort]')).toHaveValue('published');
   await page.locator('[name=review]').selectOption('auto_unreviewed');
   await expect(page.locator('#paper-grid > .paper-card:visible')).toHaveCount(automatic.length);
   for (const p of automatic) {

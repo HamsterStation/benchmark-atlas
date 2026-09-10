@@ -2,6 +2,7 @@
 import hashlib
 import json
 import re
+from datetime import datetime
 from urllib.parse import urlparse
 
 SUBJECT = re.compile(r"\b(?:llms?|(?:large |multimodal )?language models?|foundation models?|(?:general )?ai assistants?|language agents?|llm[- ](?:based |powered )?agents?)\b", re.I)
@@ -25,6 +26,24 @@ def sentences(text):
 
 def policy_hash(config):
     return hashlib.sha256(json.dumps(config, sort_keys=True).encode()).hexdigest()
+
+
+def freshness(entry, config, now, known=None):
+    published = datetime.fromisoformat(entry["published"].replace("Z", "+00:00"))
+    current = datetime.fromisoformat(now.replace("Z", "+00:00"))
+    age = (current.date() - published.date()).days
+    windows = config["freshness_days"]
+    band = "future" if published > current else next((f"within_{days}_days" for days in windows if age <= days), "archive")
+    if band == "archive" and known and known["publication"] == "listed" and entry["version"] > (known["version"] or 0):
+        band = "tracked_update"
+    return {"publishedAt": entry["published"], "versionUpdatedAt": entry["updated"],
+            "ageDays": age, "band": band, "eligible": band not in ["archive", "future"]}
+
+
+def selection_key(entry, assessment, age, config):
+    bands = [f"within_{days}_days" for days in config["freshness_days"]] + ["tracked_update", "archive", "future"]
+    timestamp = lambda key: datetime.fromisoformat(entry[key].replace("Z", "+00:00")).timestamp()
+    return (bands.index(age["band"]), -assessment["score"], -timestamp("published"), -timestamp("updated"), entry["arxiv_id"])
 
 
 def assess(entry, config, now):
@@ -87,12 +106,12 @@ def assess(entry, config, now):
     elif uses_only:
         decision = "excluded"
         reasons.append("材料表明提出方法并使用已有基准评估，未见新基准贡献")
-    elif contributions and "evaluation_protocol" in signals and ("resource_link" in signals if config.get("require_resource_link", True) else bool(signals.intersection({"resource_link", "baseline_comparison"}))) and score >= config["min_priority_score"]:
+    elif contributions and "evaluation_protocol" in signals and set(config["required_signals"]).issubset(signals) and ("resource_link" in signals if config.get("require_resource_link", True) else bool(signals.intersection({"resource_link", "baseline_comparison"}))) and score >= config["min_priority_score"]:
         decision = "priority_review"
-        reasons.append("新基准贡献、评分协议和资源证据达到配置的送审门槛；链接内容仍需人工核查")
+        reasons.append("新基准贡献、任务、评分协议、模型比较及资源线索达到自动筛选门槛；资源内容尚未核实")
     else:
         decision = "needs_evidence"
-        reasons.append("摘要级材料不足以进入优先审核，等待补充官方材料")
+        reasons.append("摘要级证据不足以自动收录，保留材料等待补充")
     return {
         "schemaVersion": 1, "id": "arxiv-" + entry["arxiv_id"].replace("/", "-"),
         "arxivId": entry["arxiv_id"], "version": entry["version"], "title": title,

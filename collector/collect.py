@@ -20,7 +20,7 @@ from zoneinfo import ZoneInfo
 
 from defusedxml import ElementTree as ET
 from jsonschema import Draft7Validator, FormatChecker
-from collector.quality import assess, policy_hash
+from collector.quality import assess, freshness, policy_hash, selection_key
 
 ROOT = Path(__file__).resolve().parents[1]
 NS = {"a": "http://www.w3.org/2005/Atom", "o": "http://a9.com/-/spec/opensearch/1.1/", "arxiv": "http://arxiv.org/schemas/atom"}
@@ -259,10 +259,17 @@ class Collector:
         self.policy_hash = policy_hash(self.quality)
         if not all(1 <= self.quality[key] <= 100 for key in ["max_candidates_per_run", "max_candidates_per_day"]) or not 1 <= self.quality["min_priority_score"] <= sum(v["weight"] for v in self.quality["signals"].values()):
             raise ValueError("Invalid quality threshold or review intake budget")
+        windows = self.quality.get("freshness_days")
+        required = self.quality.get("required_signals")
+        if not isinstance(windows, list) or len(windows) != 3 or any(type(day) is not int or not 1 <= day <= 365 for day in windows) or windows != sorted(set(windows)):
+            raise ValueError("Freshness windows must be three increasing day limits within 1..365")
+        if not isinstance(required, list) or not required or any(not isinstance(key, str) or key not in self.quality["signals"] for key in required):
+            raise ValueError("Required quality signals must name configured signals")
         self.intake_day = parse_time(self.now).astimezone(ZoneInfo(self.quality["intake_timezone"])).date().isoformat()
         self.state.setdefault("intake_usage", {})
         self.triage_validator = Draft7Validator(read_json(self.root / "schemas/triage.schema.json"), format_checker=FormatChecker())
         self.triage_results = {}
+        self.selection = {}
         self.validator = Draft7Validator(read_json(self.root / "schemas/paper.schema.json"), format_checker=FormatChecker())
         self.counts = {key: 0 for key in ["new", "updated", "reassessed", "skipped", "pending_review", "failed", "pages", "model_calls"]}
         self.errors, self.changes = [], []
@@ -383,18 +390,22 @@ class Collector:
         daily_intake = self.state["intake_usage"].setdefault(self.intake_day, [])
         for aid, item in list(self.state["queue"].items()):
             triage = self.triage(item["entry"])
+            # Compute recency on every run; cached evidence must not freeze a paper's age.
+            age = freshness(item["entry"], self.quality, self.now, self.known.get(aid))
+            self.selection[aid] = {"id": stable_id(aid), "version": item["entry"]["version"],
+                                   "score": triage["score"], "decision": triage["decision"], **age}
             if triage["decision"] == "excluded":
                 self.finish(aid, item, "out_of_scope")
             elif triage["decision"] == "needs_evidence":
                 item["status"] = "awaiting_evidence"
-            elif item["status"] == "awaiting_evidence":
+            elif not age["eligible"]:
+                item["status"] = "outside_recent_window"
+            elif item["status"] in ["awaiting_evidence", "outside_recent_window"]:
                 item["status"] = "queued"
-        pending = sorted(self.state["queue"].items(), key=lambda pair: (
-            pair[1]["status"] not in ["queued", "intake_limit"],
-            -self.triage_results[stable_id(pair[0])]["score"],
-            -parse_time(pair[1]["entry"]["updated"]).timestamp(), pair[0]))
+        pending = sorted(self.state["queue"].items(), key=lambda pair: selection_key(
+            pair[1]["entry"], self.triage_results[stable_id(pair[0])], self.selection[pair[0]], self.quality))
         for aid, item in pending:
-            if item["status"] == "awaiting_evidence":
+            if item["status"] in ["awaiting_evidence", "outside_recent_window"]:
                 continue
             if not self.model.available and item["status"] == "waiting_model":
                 self.report_once("pending_review", aid)
@@ -504,6 +515,8 @@ class Collector:
                 "model_available": self.model.available,
                 "daily_intake": {"date": self.intake_day, "timezone": self.quality["intake_timezone"], "used": len(self.state["intake_usage"].get(self.intake_day, [])), "limit": self.quality["max_candidates_per_day"]},
                 "quality_policy": self.policy_hash,
+                "selection_policy": {"freshness_days": self.quality["freshness_days"], "min_score": self.quality["min_priority_score"], "required_signals": self.quality["required_signals"]},
+                "selection_candidates": list(self.selection.values()),
                 "quality_candidates": sorted(self.triage_results.values(), key=lambda p: (-p["score"], p["id"])),
                 "errors": self.errors, "changes": self.changes}
 
