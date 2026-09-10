@@ -218,7 +218,7 @@ Python 测试覆盖分页、断点续采、重叠窗口、重复运行、版本�
 
 验收报告和截图见 `outputs/`。2026-09-10 的质量采集 dry-run 完整读取 30 页，发现 1,201 个唯一候选，优先审核 51、待补证据 940、排除 210，预览草稿 2，失败 0；没有调用模型或写入生产队列。精简报告为 `outputs/quality-dry-run.md`；完整 JSON 仅保留本地或 Actions artifact，不反复提交大体积采集快照。
 
-当前验证包括 9 个 TypeScript 测试、39 个 Python 测试、8 个生产页面浏览器测试、类型检查、生产构建及 actionlint。用户配置的流式兼容模型已实际返回中文草稿并通过论文 schema；开发与测试仍不需要 Key。模型必须输出单个贡献类型和 JSON Unicode 转义，服务返回乱码或回显凭据时拒绝保存。真实 arXiv Markdown 链接解析问题已修复，新增回归测试，并对 1,201 条真实材料的链接执行了构建校验。
+当前验证包括 9 个 TypeScript 测试、40 个 Python 测试、8 个生产页面浏览器测试、类型检查、生产构建及 actionlint。用户配置的流式兼容模型已实际返回中文草稿并通过论文 schema；开发与测试仍不需要 Key。模型必须输出单个贡献类型和 JSON Unicode 转义，服务返回乱码或回显凭据时拒绝保存。真实 arXiv Markdown 链接解析问题已修复，新增回归测试，并对 1,201 条真实材料的链接执行了构建校验。
 
 GitHub [dry-run](https://github.com/HamsterStation/benchmark-atlas/actions/runs/34441587319) 已通过，模型调用为 0，状态分支未变化。首次正式运行生成 2 篇简介后在链接校验处停止，线上网站保留；[修复后重跑](https://github.com/HamsterStation/benchmark-atlas/actions/runs/34442408357) 通过全部测试、构建并创建 [审核 PR #1](https://github.com/HamsterStation/benchmark-atlas/pull/1)。重跑的模型调用为 0，当日累计仍为 2 次，2 篇草稿及 989 条待处理材料保存在状态分支。PR 不修改人工资料或 notes；只有完成审核并提升为 curated 的论文才进入默认正式索引。
 

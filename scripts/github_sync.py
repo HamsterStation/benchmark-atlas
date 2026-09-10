@@ -126,7 +126,8 @@ def main():
         branch = "atlas-review"
         if branch_exists(remote, branch):
             run(["git", "fetch", "origin", f"{branch}:refs/remotes/origin/{branch}"], directory)
-            run(["git", "switch", "--create", branch, "--track", f"origin/{branch}"], directory)
+            # A single-branch clone has no tracking refspec for the review branch.
+            run(["git", "switch", "--create", branch, "--no-track", f"origin/{branch}"], directory)
             # Conflicts or branch protection stop the run; never force push.
             run(["git", "merge", "--no-edit", f"origin/{args.base}"], directory)
         else:
@@ -176,5 +177,6 @@ if __name__ == "__main__":
     try:
         main()
     except subprocess.CalledProcessError as error:
-        print(f"GitHub synchronization failed ({error.returncode}); no force push or protection bypass attempted.", file=sys.stderr)
+        operation = " ".join(error.cmd[:2])
+        print(f"GitHub synchronization failed ({error.returncode}) during {operation}; no force push or protection bypass attempted.", file=sys.stderr)
         sys.exit(1)
