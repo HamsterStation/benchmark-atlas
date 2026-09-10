@@ -9,7 +9,11 @@
     "cc0b0cc6cecde53ac5cd": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (abs:\"large language model\" OR abs:\"language models\" OR abs:LLM OR abs:LLMs OR abs:\"foundation models\")",
       "successful_until": "2026-09-10T05:39:06Z",
-      "active": null
+      "active": {
+        "since": "2026-09-03T05:39:06+00:00",
+        "until": "2026-09-10T05:47:04Z",
+        "start": 50
+      }
     }
   },
   "queue": {
@@ -25442,6 +25446,109 @@
         "comment": "Accepted to EMNLP 2026 (Main Conference)"
       },
       "hash": "39f15ec2a0f9db2a13b531b7e70b48f1412ba7268f8d0c9838f67bd79152649b",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "updated"
+    },
+    "2609.03470": {
+      "entry": {
+        "arxiv_id": "2609.03470",
+        "version": 1,
+        "title": "ExplainRoute: A Pre-Deployment Audit Framework for Non-Answer-Giving Programming Tutors",
+        "authors": [
+          "Yiming Gai",
+          "Yingying Zhang",
+          "Xuefei Huang"
+        ],
+        "published": "2026-09-03T07:28:22Z",
+        "updated": "2026-09-03T07:28:22Z",
+        "abstract": "Programming tutors should support learners' own explanations rather than immediately providing model answers. We present ExplainRoute, a pre-deployment audit framework for non-answer-giving programming tutors. Given a code line and a learner explanation, it estimates the explanation state and selects one of two bounded responses: a Feynman-style self-explanation prompt or a Socratic scaffold. The framework exposes its state, strategy, cited code fragment, and leakage risk through a machine-checkable contract. Unlike benchmarks that rank tutors by fluency alone, ExplainRoute audits information boundaries, response polarity, failure closure, and the value of learner-explanation visibility before classroom deployment. We evaluate it offline on the 1,770-pair SelfCode corpus using a code-group split, with 443 pairs reserved in 11 untouched holdout groups. The evaluation compares direct answers, fixed open self-explanation, fixed Socratic scaffolding, adaptive routing, and an adaptive no-state ablation. Contract validity reaches 100% for all pedagogical conditions. Adaptive routing matches the frozen reference rule on 60.5% of records, with state macro-F1 of 0.238 (Open: 0.229; Socratic: 0.246), showing no reliable adaptive advantage. An independent language-model judge scores adaptive responses 4.516/5, outperforming the no-state ablation (2.819/5) but slightly below fixed open self-explanation (4.598/5) and Socratic scaffolding (4.658/5). A blinded rubric evaluation on a stratified 40-row subset confirms that visible learner explanations improve information value while adaptive routing does not outperform fixed strategies. The contribution is a validated audit protocol and a boundary finding, rather than evidence of improved learning, retention, or causal instructional effectiveness."
+      },
+      "hash": "4d6925822b7742eb6e2e02984114860ad97d3dfede5abec7de06122666e358f3",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "updated"
+    },
+    "2609.03693": {
+      "entry": {
+        "arxiv_id": "2609.03693",
+        "version": 1,
+        "title": "AlcaTRAz - Anchored Tree-Rule Defense Against Jailbreaks",
+        "authors": [
+          "Jakub Reš",
+          "Petr Kaška",
+          "Martin Perešíni",
+          "Martin Ukrop",
+          "Kamil Malinka"
+        ],
+        "published": "2026-09-03T11:30:08Z",
+        "updated": "2026-09-03T11:30:08Z",
+        "abstract": "Large language models (LLMs) are vulnerable to jailbreak attacks that bypass safety alignment through carefully crafted prompts. Many existing defenses require access to model weights or internals, making them difficult to apply to black-box deployments. We propose AlcaTRAz (Anchored Tree-Rule defense Against jailbreaks), a prompt-level defense based on rule trees that operates exclusively on the input text and requires no modification or retraining of the target model. The method automatically learns a transferable transformation rule that inserts controlled character-level perturbations at selected positions, thereby disrupting structural regularities exploited by jailbreak attacks while largely preserving the model's utility on benign queries. We evaluate the proposed method across 33 open-weight models, 22 jailbreak attack types, and a benchmark of short, single-turn benign questions, comparing against three representative prompt-level baselines (Llama Guard, RA-LLM, Goal Prioritization). Among the compared defenses, AlcaTRAz achieves the best composite security and functionality score in 73.4 % of model-attack combinations and shifts the aggregate score from a modal value of 10 (maximal-severity response to the malicious request) in the undefended setting to a modal value of 2 (near-refusal) after defense, while keeping the mean benign score within 0.27 points of the undefended baseline (8.35 vs. 8.62 on a 0-10 scale). AlcaTRAz substantially reduces but does not eliminate jailbreak success: a high-severity tail remains, and we do not consider adaptive attackers, so we position it as one layer within a defense-in-depth strategy rather than a standalone guarantee.",
+        "comment": "Accepted to SECAI 2026 ESORICS workshop"
+      },
+      "hash": "92104585a5f5feeb535b8edecfaa5047b3b75d9b82061bc5156b3568dc83f6fd",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "updated"
+    },
+    "2609.03814": {
+      "entry": {
+        "arxiv_id": "2609.03814",
+        "version": 1,
+        "title": "Evaluating Criterion-Conditioned Behaviour of Large Language Models in Content Moderation",
+        "authors": [
+          "Danting Zhang",
+          "Bei Peng",
+          "Robert Loftin"
+        ],
+        "published": "2026-09-03T13:17:38Z",
+        "updated": "2026-09-03T13:17:38Z",
+        "abstract": "Large language models (LLMs) demonstrate strong performance on standard content moderation benchmarks. However, these benchmarks often aggregate multiple moderation criteria into a single label, making it unclear whether models can disentangle them and reliably apply each criterion when making decisions. To study whether LLMs exhibit criterion-conditioned behaviour, we introduce Diagnostic Evaluation of COntent (DECO), a criterion-independent factorisation of content that enables controlled, criterion-level evaluation. We also introduce pairwise evaluation to compare model outputs across different criteria for the same input. Across four moderation datasets and four LLMs, we find that strong benchmark performance can hide substantial failures at the criterion level. Models struggle most when correct decisions depend not on overall harmfulness, but on the specific aspect of the content that the criterion requires them to assess. Our results highlight a key limitation of current content moderation benchmarks: strong performance on aggregated labels does not provide sufficient evidence that LLMs can reliably evaluate content with respect to individual moderation criteria. These findings call for the development of evaluation methods that explicitly measure criterion-conditioned behaviour.",
+        "comment": "Accepted by EMNLP Findings 2026"
+      },
+      "hash": "485de9f004e393eb172be07264e2551124a5b96ffa9ff559b187dd2b4d7d7c4d",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "updated"
+    },
+    "2609.04010": {
+      "entry": {
+        "arxiv_id": "2609.04010",
+        "version": 1,
+        "title": "Unlocking Lossless Speedups in LLMs via Discrete Diffusion",
+        "authors": [
+          "Subham Sekhar Sahoo",
+          "Lingjie Chen",
+          "Khiem Pham",
+          "Jonathan Geuter",
+          "Chaitanya Dwivedi",
+          "Varad Pimpalkhute",
+          "Yash Akhauri",
+          "Alexander Moreno",
+          "Mikhail Yurochkin",
+          "Zhenting Wang",
+          "Mostafa Elhoushi",
+          "Nolan Dey",
+          "Shane Bergsma",
+          "Joel Hestness",
+          "John Thickstun",
+          "Eric Xing",
+          "Zhengzhong Liu"
+        ],
+        "published": "2026-09-03T15:48:43Z",
+        "updated": "2026-09-03T15:48:43Z",
+        "abstract": "Large Language Models (LLMs) owe much of their success to next-token prediction (NTP), but their autoregressive (AR) structure requires slow, sequential token generation. To overcome this bottleneck, we introduce diffusion-augmented LLMs, a new class of models that defines an AR model distribution while using diffusion to draw multiple tokens in parallel from that distribution. We decouple the parameters of these models into two sets: AR weights, trained using the standard NTP objective, and lightweight diffusion weights, trained to generate multiple tokens simultaneously. The diffusion weights are learned through a simple Diffusion Distillation phase that adds negligible overhead to existing LLM training pipelines. We also introduce $Ψ$-Spec, a family of samplers that enables lossless acceleration and inference-time scaling at a fixed context length. Unlike speculative decoding, our method requires no separate draft model. Unlike diffusion LLMs (d-LLMs), it accelerates generation without sacrificing the quality of the underlying AR model. The resulting models, called Uno, can be trained from scratch or built by augmenting existing open-weight AR LLMs. Uno achieves higher throughput than leading speculative-decoding methods at every evaluated batch size and delivers up to $3\\times$ speedups over the base AR model, including at the largest batch size supported by the device. Notably, our 8B Uno model outperforms the leading open d-LLM, the 26B DiffusionGemma, and the proprietary Mercury 2 across all evaluated benchmarks in agentic tool use, coding, and long-context reasoning. We release code and checkpoints at: https://s-sahoo.github.io/uno/",
+        "comment": "Code and Checkpoints at https://s-sahoo.github.io/uno/"
+      },
+      "hash": "5c65d054f604cea34e4195a3b5f170077fdb721c9fdb9d99407263fb7f7b1768",
       "status": "queued",
       "attempts": 0,
       "error": null,
