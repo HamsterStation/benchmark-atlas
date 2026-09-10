@@ -7,27 +7,27 @@ import { withBase } from '../lib/paths';
 const papers = sortPapers(loadCatalog(), 'published');
 const recent = sortPapers(papers, 'updated').slice(0, 3);
 const status = readStatus();
-const groups = [['target', '评测对象', 'targets'], ['scenario', '任务场景', 'scenarios'], ['capability', '能力标签', 'capabilities'], ['review', '核查状态', 'reviewStatuses'], ['reproduction', '复现状态', 'reproductionStatuses']];
+const groups = [['target', '评测对象', 'targets'], ['scenario', '任务场景', 'scenarios'], ['capability', '能力标签', 'capabilities']];
 ---
 <Layout title="论文索引" active="index">
   <section class="hero">
-    <div class="hero-copy"><p class="eyebrow"><span class="live-dot"></span> A LIVING RESEARCH ATLAS / 001</p><h1>理解评测，<br /><em>从论文开始。</em></h1><p class="hero-description">聚焦最新 LLM 与 Agent Benchmark，保留经典。<br />看清新评测解决什么问题，以及复现到了哪一步。</p><a class="text-link" href="#catalog">浏览论文索引 <span aria-hidden="true">↓</span></a></div>
-    <aside class="atlas-panel" aria-label="知识库概览"><div class="atlas-grid" aria-hidden="true"><span class="axis-label">MODEL → TASK → EVIDENCE</span><span class="atlas-orbit orbit-one"></span><span class="atlas-orbit orbit-two"></span><span class="atlas-point point-one">LLM</span><span class="atlas-point point-two">AGENT</span><span class="atlas-center">评测的<br />研究坐标</span></div><div class="atlas-stats"><div><strong>{String(papers.length).padStart(2, '0')}</strong><span>已收录论文</span></div><div><strong>{papers.filter(p => p.review.status === 'source_verified' || p.review.status === 'human_reviewed').length}</strong><span>来源已核查</span></div><div><strong>{papers.filter(p => p.reproduction.runs.length).length}</strong><span>本站实测</span></div></div></aside>
+    <div class="hero-copy"><p class="eyebrow"><span class="live-dot"></span> A LIVING RESEARCH ATLAS / 001</p><h1>理解评测，<br /><em>从论文开始。</em></h1><p class="hero-description">聚焦最新 LLM 与 Agent Benchmark，保留经典。<br />阅读中文简介，查看官方资源与复现方法。</p><a class="text-link" href="#catalog">浏览论文索引 <span aria-hidden="true">↓</span></a></div>
+    <aside class="atlas-panel" aria-label="知识库概览"><div class="atlas-grid" aria-hidden="true"><span class="axis-label">MODEL → TASK → EVIDENCE</span><span class="atlas-orbit orbit-one"></span><span class="atlas-orbit orbit-two"></span><span class="atlas-point point-one">LLM</span><span class="atlas-point point-two">AGENT</span><span class="atlas-center">评测的<br />研究坐标</span></div><div class="atlas-stats"><div><strong>{String(papers.length).padStart(2, '0')}</strong><span>已收录论文</span></div><div><strong>{papers.filter(p => p.targets.includes('agent')).length}</strong><span>Agent 论文</span></div><div><strong>{new Set(papers.flatMap(p => p.scenarios)).size}</strong><span>任务场景</span></div></div></aside>
   </section>
-  <section class="updates" aria-labelledby="updates-heading"><div><p class="eyebrow">FIELD NOTES</p><h2 id="updates-heading">最近更新</h2><p>按本站资料更新时间</p></div><ol>{recent.map(p => <li><time>{p.updatedAt.slice(5)}</time><a href={withBase(`papers/${p.id}/`)}><strong>{p.acronym || p.title}</strong><span>{taxonomy.reviewStatuses[p.review.status].label}</span></a><span aria-hidden="true">↗</span></li>)}</ol></section>
+  <section class="updates" aria-labelledby="updates-heading"><div><p class="eyebrow">FIELD NOTES</p><h2 id="updates-heading">最近更新</h2><p>按本站资料更新时间</p></div><ol>{recent.map(p => <li><time>{p.updatedAt.slice(5)}</time><a href={withBase(`papers/${p.id}/`)}><strong>{p.acronym || p.title}</strong><span>{p.publishedAt ? `首发 ${p.publishedAt}` : '首发日期未提供'}</span></a><span aria-hidden="true">↗</span></li>)}</ol></section>
   <section id="catalog" class="catalog" aria-labelledby="catalog-heading" data-index-url={withBase('search-index.json')}>
     <div class="section-heading"><div><p class="eyebrow">THE PAPER INDEX</p><h2 id="catalog-heading">论文索引<span> / 最新论文</span></h2></div><p id="result-count" role="status" aria-live="polite">共 {papers.length} 篇论文</p></div>
     <form id="filters" role="search" aria-label="搜索与筛选论文">
       <div class="search-row"><label class="search-box"><span aria-hidden="true">⌕</span><span class="sr-only">搜索论文</span><input type="search" name="q" placeholder="搜索标题、简称或中文简介，例如：网页、MMLU" autocomplete="off" /></label><label class="sort-label">排序<select name="sort"><option value="published">最新发表</option><option value="added">最新收录</option><option value="updated">最近更新</option></select></label></div>
       <div class="filter-row">{groups.map(([name, label, key]) => <label>{label}<select name={name}><option value="">全部</option>{Object.entries(taxonomy[key]).map(([value, item]: [string, any]) => <option value={value}>{item.label}</option>)}</select></label>)}<button type="reset" class="reset-button">清除筛选</button></div>
     </form>
-    <p class="catalog-hint">默认按论文首发日期展示最新研究，经典论文仍可搜索和筛选。来源核查与实测复现分别记录。</p>
+    <p class="catalog-hint">默认按论文首发日期展示最新研究，经典论文仍可搜索和筛选。</p>
     <noscript><p class="notice">搜索筛选需要 JavaScript。你仍可浏览全部论文和独立详情页。</p></noscript>
     <p id="search-error" class="notice" hidden>搜索索引加载失败，请刷新重试。完整论文列表仍可浏览。</p>
     <div class="paper-grid" id="paper-grid">{papers.map((p, i) => <PaperCard paper={p} index={i} />)}</div>
     <div id="empty-state" class="empty-state" hidden><h3>没有匹配的论文</h3><p>试试更短的关键词，或清除部分筛选条件。</p></div>
   </section>
-  <section class="method-strip"><strong>每个判断，都有出处。</strong><p>英文标题保留原文，中文简介注明材料范围。未知字段显示“待核查”，未经运行不标记复现成功。</p><a href={withBase('rules/')}>阅读收录规则 ↗</a></section>
+  <section class="method-strip"><strong>从简介，到复现方法。</strong><p>英文标题保留原文，中文简介注明材料范围。复现方法来自官方文档，附版本与来源链接。</p><a href={withBase('rules/')}>阅读收录规则 ↗</a></section>
   <div class="sync-status"><span>最近成功采集：{status.collection || '尚无成功记录'}</span><span>最近成功部署：{status.deployment || '尚无部署记录'}</span><span>部署时间以仓库 deployment 记录为准</span></div>
 </Layout>
 <script>

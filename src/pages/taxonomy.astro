@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { taxonomy } from '../lib/catalog.mjs';
-const groups = [['targets', '评测对象'], ['scenarios', '任务场景'], ['capabilities', '能力标签'], ['roles', '论文贡献类型'], ['reviewStatuses', '来源与审核状态'], ['reproductionStatuses', '复现验证状态']];
+const groups = [['targets', '评测对象'], ['scenarios', '任务场景'], ['capabilities', '能力标签'], ['roles', '论文贡献类型']];
 ---
-<Layout title="分类说明" active="taxonomy"><header class="document-hero"><p class="eyebrow">A SHARED VOCABULARY</p><h1>分类是一组坐标，<br /><em>不是一张排行榜。</em></h1><p>对象回答“评谁”，场景回答“做什么”，能力回答“考察什么”。同一篇论文可以有多个标签；这些是本站的组织方式，不替代论文的原始定义。</p></header><div class="taxonomy-grid">{groups.map(([key, label]) => <section><h2>{label}</h2><dl>{Object.entries(taxonomy[key]).map(([, v]: [string, any]) => <div><dt>{v.label}</dt><dd>{v.description}</dd></div>)}</dl></section>)}</div><p class="notice">空标签表示尚未确认，详情页显示“待核查”。来源核查和复现验证是两条独立维度，不应互相替代。</p></Layout>
+<Layout title="分类说明" active="taxonomy"><header class="document-hero"><p class="eyebrow">A SHARED VOCABULARY</p><h1>分类是一组坐标，<br /><em>不是一张排行榜。</em></h1><p>对象回答“评谁”，场景回答“做什么”，能力回答“考察什么”。同一篇论文可以有多个标签；这些是本站的组织方式，不替代论文的原始定义。</p></header><div class="taxonomy-grid">{groups.map(([key, label]) => <section><h2>{label}</h2><dl>{Object.entries(taxonomy[key]).map(([, v]: [string, any]) => <div><dt>{v.label}</dt><dd>{v.description}</dd></div>)}</dl></section>)}</div><p class="notice">同一论文可以属于多个场景与能力标签。详情页提供中文简介、任务指标、官方资源与复现方法。</p></Layout>

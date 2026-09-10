@@ -23,10 +23,10 @@ test('duplicate IDs and production test data are rejected', () => {
 });
 test('all filters combine and search normalizes case and width', () => {
   const p = sample();
-  assert.ok(matches(p, { q: 'ｍＭＬＵ', target: 'llm', scenario: 'knowledge', capability: 'reasoning', review: 'source_verified', reproduction: 'official_docs_unrun' }));
+  assert.ok(matches(p, { q: 'ｍＭＬＵ', target: 'llm', scenario: 'knowledge', capability: 'reasoning' }));
   assert.ok(matches(p, { q: '学科' }));
   assert.ok(matches(p, { q: 'massive multitask' }));
-  for (const f of [{ target: 'agent' }, { scenario: 'web' }, { capability: 'code' }, { review: 'auto_unreviewed' }, { reproduction: 'minimal_verified' }, { q: 'nothing-matches' }]) assert.equal(matches(p, f), false);
+  for (const f of [{ target: 'agent' }, { scenario: 'web' }, { capability: 'code' }, { q: 'nothing-matches' }]) assert.equal(matches(p, f), false);
 });
 test('sorting never mutates the input and distinguishes timestamps', () => {
   const first = { ...sample(), id: 'a', addedAt: '2026-09-10', updatedAt: '2026-09-10', publishedAt: '2020-01-01' };

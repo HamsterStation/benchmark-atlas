@@ -5,11 +5,13 @@ test('built homepage and subpath resources load without errors', async ({ page }
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   page.on('response', r => { if (r.url().startsWith('http://127.0.0.1') && r.status() >= 400) errors.push(r.url()); });
-  await page.goto('./');
+  await page.goto('./?review=needs_review&reproduction=minimal_verified');
   const total = (await (await page.request.get('search-index.json')).json()).length;
   await expect(page.getByRole('heading', { level: 1 })).toContainText('理解评测');
   await expect(page.locator('#result-count')).toHaveText(`显示 ${total} / ${total} 篇论文`);
   await expect(page.locator('.paper-card')).toHaveCount(total);
+  await expect(page.locator('[name=review], [name=reproduction], .status, .repro-status')).toHaveCount(0);
+  await expect(page.locator('#filters select')).toHaveCount(4);
   await expect(page.locator('body')).toContainText('最近成功部署');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
   expect(errors).toEqual([]);
@@ -29,9 +31,7 @@ test('search title, acronym and Chinese summary, combine filters and clear', asy
   await page.locator('[name=target]').selectOption('agent');
   await page.locator('[name=scenario]').selectOption('web');
   await page.locator('[name=capability]').selectOption('tool-use');
-  await page.locator('[name=review]').selectOption('source_verified');
-  await page.locator('[name=reproduction]').selectOption('official_docs_unrun');
-  const filtered = papers.filter((p: any) => matches(p, { target: 'agent', scenario: 'web', capability: 'tool-use', review: 'source_verified', reproduction: 'official_docs_unrun' })).length;
+  const filtered = papers.filter((p: any) => matches(p, { target: 'agent', scenario: 'web', capability: 'tool-use' })).length;
   await expect(page.locator('.paper-card:visible')).toHaveCount(filtered);
   await expect(page.locator('[data-paper-id="arxiv-2307.13854"]')).toBeVisible();
   await page.reload();
@@ -41,7 +41,7 @@ test('search title, acronym and Chinese summary, combine filters and clear', asy
   await page.getByRole('button', { name: '清除筛选' }).click();
   await expect(page.locator('.paper-card:visible')).toHaveCount(total);
 });
-test('all detail pages exist and show distinct dates and source scope', async ({ page, request }) => {
+test('detail pages show summaries, sourced methods and distinct paper dates', async ({ page, request }) => {
   const response = await request.get('search-index.json');
   for (const p of await response.json()) {
     const detail = await request.get(`papers/${p.id}/`);
@@ -49,12 +49,23 @@ test('all detail pages exist and show distinct dates and source scope', async ({
     const html = await detail.text();
     expect(html).toContain('论文首发日期');
     expect(html).toContain('论文版本更新时间');
-    expect(html).toContain('本站核查日期');
-    expect(html).toContain('人工运行记录');
+    expect(html).toContain('中文简介');
+    expect(html).toContain('复现方法');
+    expect(html).toContain('来源与材料范围');
+    expect(html).not.toContain('本站核查日期');
+    expect(html).not.toContain('人工审核人');
+    expect(html).not.toContain('class="repro-status"');
   }
+  await page.goto('papers/arxiv-2107.03374/');
+  await expect(page.locator('#reproduction .command code')).toContainText('evaluate_functional_correctness');
+  await expect(page.locator('#reproduction .command a')).toHaveAttribute('href', /github\.com\/openai\/human-eval\/blob\/[a-f0-9]{40}\//);
+  await expect(page.locator('#reproduction .method-links a')).toBeVisible();
   await page.goto('papers/arxiv-2311.12983/');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('GAIA: a benchmark for General AI Assistants');
-  await expect(page.locator('body')).toContainText('官方代码：待核查');
+  await expect(page.locator('body')).toContainText('暂未提供独立代码入口');
+  await expect(page.locator('#reproduction')).toContainText('暂未整理可引用的官方运行步骤');
+  await expect(page.locator('#reproduction pre')).toHaveCount(0);
+  await expect(page.locator('.status, .repro-status')).toHaveCount(0);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
   await page.getByRole('link', { name: '返回论文索引' }).click();
   await expect(page).toHaveURL(/\/benchmark-atlas\/#catalog$/);
@@ -69,10 +80,13 @@ test('taxonomy and rules remain navigable on mobile', async ({ page }) => {
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
 });
 
-test('automatic entries join the main catalog and can be sorted and filtered', async ({ page }) => {
+test('all entries share date sorting and direct method links without status fields', async ({ page }) => {
   await page.goto('./');
   const papers = await (await page.request.get('search-index.json')).json();
-  const automatic = papers.filter((p: any) => p.review.status === 'auto_unreviewed');
+  for (const p of papers) {
+    expect(p).not.toHaveProperty('review');
+    expect(p).not.toHaveProperty('reproduction');
+  }
   await expect(page.locator('#paper-grid > .paper-card')).toHaveCount(papers.length);
   await expect(page.locator('#automatic-section')).toHaveCount(0);
   await expect(page.locator('[name=sort]')).toHaveValue('published');
@@ -91,15 +105,8 @@ test('automatic entries join the main catalog and can be sorted and filtered', a
   await page.locator('[name=sort]').selectOption('added');
   await page.getByRole('button', { name: '清除筛选' }).click();
   await expect(page.locator('[name=sort]')).toHaveValue('published');
-  await page.locator('[name=review]').selectOption('auto_unreviewed');
-  await expect(page.locator('#paper-grid > .paper-card:visible')).toHaveCount(automatic.length);
-  for (const p of automatic) {
-    expect(p.review.reviewedAt).toBeNull();
-    expect(p.reproduction.status).toBe('unverified');
-    const detail = await page.goto(`papers/${p.id}/`);
-    expect(detail?.status()).toBe(200);
-    await expect(page.locator('.paper-hero .status')).toHaveText('自动收录');
-    await expect(page.locator('.notice')).toContainText('自动整理');
-    await expect(page.locator('.date-grid > div').filter({ hasText: '本站核查日期' }).locator('strong')).toHaveText('待核查');
-  }
+  await expect(page.getByRole('link', { name: '复现方法 ↗' })).toHaveCount(papers.length);
+  await page.getByRole('link', { name: '复现方法 ↗' }).first().click();
+  await expect(page).toHaveURL(/\/papers\/[^/]+\/#reproduction$/);
+  await expect(page.getByRole('heading', { name: '复现方法', exact: true })).toBeVisible();
 });

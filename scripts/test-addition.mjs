@@ -48,15 +48,17 @@ try {
   assert.ok(!JSON.parse(fs.readFileSync(path.join(sandbox, 'dist/search-index.json'))).some(p => p.id === pending.id));
   build('auto');
   const autoIndex = JSON.parse(fs.readFileSync(path.join(sandbox, 'dist/search-index.json')));
-  assert.equal(autoIndex.find(p => p.id === pending.id).review.status, 'auto_unreviewed');
+  assert.equal(autoIndex.find(p => p.id === pending.id).summaryZh, automatic.summaryZh);
+  assert.ok(!('review' in autoIndex.find(p => p.id === pending.id)));
+  assert.ok(!('reproduction' in autoIndex.find(p => p.id === pending.id)));
   assert.ok(fs.readFileSync(path.join(sandbox, `dist/papers/${pending.id}/index.html`), 'utf8').includes('自动整理'));
   const autoHome = fs.readFileSync(path.join(sandbox, 'dist/index.html'), 'utf8');
   assert.ok(!autoHome.includes('id="automatic-grid"'));
   assert.ok(autoHome.includes(`data-paper-id="${pending.id}"`));
-  assert.ok(autoHome.includes('自动收录'));
+  assert.ok(autoHome.includes(`/test-repository/papers/${pending.id}/#reproduction`));
   fs.writeFileSync(paperPath, realRecord);
   build('auto');
-  assert.equal(JSON.parse(fs.readFileSync(path.join(sandbox, 'dist/search-index.json'))).find(p => p.id === pending.id).review.status, 'source_verified');
+  assert.equal(JSON.parse(fs.readFileSync(path.join(sandbox, 'dist/search-index.json'))).find(p => p.id === pending.id).summaryZh, JSON.parse(realRecord.toString()).summaryZh);
   fs.writeFileSync(path.join(root, 'outputs/addition-test.json'), JSON.stringify({ passed: true, before: before.length, after: after.length, paper: pending.id, base: '/test-repository', checks: ['homepage', 'search-index', 'detail route', 'asset base'], real_source_record: true }, null, 2) + '\n');
   console.log(`Addition verified: ${before.length} -> ${after.length}; homepage, search index and detail page under /test-repository/.`);
 } finally {
