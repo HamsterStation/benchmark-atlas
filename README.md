@@ -8,7 +8,7 @@
 
 默认站点入口为 **[GitHub Pages](https://hamsterstation.github.io/benchmark-atlas/)**。本地地址只用于开发和测试。
 
-当前 Pages 尚未上线：GitHub API 返回 HTTP 422，当前账户套餐不支持此私有仓库的 Pages。需要仓库所有者确认公开仓库，或升级到支持私有仓库 Pages 的套餐后完成部署。
+站点通过 GitHub Actions 构建并发布到 Pages；部署结果见仓库的 **Deploy reviewed site** 工作流。仓库公开，默认发布模式为 review，定时采集独立控制。
 
 ## 本地开始
 
