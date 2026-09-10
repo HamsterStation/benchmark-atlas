@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { withBase } from '../lib/paths';
 const { title = 'Benchmark Atlas', description = '聚焦最新 LLM / Agent Benchmark 论文，提供中文简介、官方资源和复现方法。', active = '' } = Astro.props;
+const iconUrl = withBase('favicon.svg?v=2');
 ---
 <!doctype html>
 <html lang="zh-CN">
@@ -11,12 +12,12 @@ const { title = 'Benchmark Atlas', description = '聚焦最新 LLM / Agent Bench
     <meta name="description" content={description} />
     <meta name="theme-color" content="#f2f0e8" />
     <title>{title} · benchmark-atlas</title>
-    <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
+    <link rel="icon" type="image/svg+xml" sizes="any" href={iconUrl} />
   </head>
   <body>
     <a class="skip" href="#main">跳到正文</a>
     <header class="site-header shell">
-      <a class="brand" href={withBase()} aria-label="Benchmark Atlas 首页"><span class="brand-mark" aria-hidden="true">b/a</span><span>benchmark<span class="brand-light">—atlas</span><small>LLM & AGENT RESEARCH INDEX</small></span></a>
+      <a class="brand" href={withBase()} aria-label="Benchmark Atlas 首页"><img class="brand-mark" src={iconUrl} width="44" height="44" alt="" aria-hidden="true" /><span>benchmark<span class="brand-light">—atlas</span><small>LLM & AGENT RESEARCH INDEX</small></span></a>
       <nav aria-label="主导航">
         <a aria-current={active === 'index' ? 'page' : undefined} href={withBase()}>论文索引</a>
         <a aria-current={active === 'taxonomy' ? 'page' : undefined} href={withBase('taxonomy/')}>分类说明</a>
