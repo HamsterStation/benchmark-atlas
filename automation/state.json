@@ -12,7 +12,7 @@
       "active": {
         "since": "2026-08-25T00:00:00+00:00",
         "until": "2026-09-10T05:39:06Z",
-        "start": 850
+        "start": 900
       }
     }
   },
@@ -24982,6 +24982,922 @@
         "abstract": "Antimicrobial peptides (AMPs) often act against multiple pathogen classes, making multi-label activity prediction a more realistic screening target than binary antimicrobial classification. The ESCAPE benchmark formalizes this setting, but leading approaches typically rely on multimodal, structure-conditioned deep models that are costly to train and tune. We show that a simple, sequence-only pipeline can match and surpass these methods by combining 330 interpretable sequence descriptors with TabPFN, a tabular foundation model that performs in-context prediction in a single forward pass without gradient-based training or hyperparameter search. On ESCAPE (82,359 peptides; five labels), a label-powerset TabPFN model achieves mAP-5 = 77.8%, improving on the previously best reported 72.1%. A probabilistic classifier chain is the first method to match or exceed the best published average precision on each of the five labels simultaneously. The gains persist under the prior state-of-the-art single-fold training protocol, indicating they are not a training-set-size artefact, and are largest for remote homologues (+11.2 points below 30% sequence identity). Ablations further show that predicted structure is unnecessary at inference and that performance is not driven by any single descriptor family: ten global physicochemical scalars recover 91% of full-feature performance. Finally, explicitly modelling label dependence yields targeted benefits for scarce activities and supports ranking which activity to assay next from partial positive evidence."
       },
       "hash": "f1fb797ab942fe5de2de11696e013259100308a6139651eabb1060b8034d2cc4",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06419": {
+      "entry": {
+        "arxiv_id": "2609.06419",
+        "version": 1,
+        "title": "Separating Capability from Confidence: Grounded Dual-State Calibration for GRPO-Trained Medical Vision-Language Models",
+        "authors": [
+          "Yangyang Xie",
+          "Ke Hao",
+          "Jiaqi Liu",
+          "Yun Gu",
+          "Xinglin Zhang"
+        ],
+        "published": "2026-09-06T06:34:01Z",
+        "updated": "2026-09-06T06:34:01Z",
+        "abstract": "Medical vision-language models (VLMs) require confidence that reflects both answer correctness and patient-specific visual evidence. Recent GRPO-based methods optimize verbalized confidence together with answer generation. However, this joint optimization may interfere with answer learning and drive confidence toward near-binary values. Verbalized confidence also provides no explicit assessment of visual support. We therefore separate capability learning from confidence estimation and propose \\textbf{DualRead}. DualRead builds on the insight that reliability can be read from the actor's internal states at critical moments in the answering process. It freezes the GRPO-trained actor and combines pre-answer solvability with a post-answer assessment of the generated answer and its visual support. To further assess whether confidence reflects visual grounding, we introduce \\textbf{Counterfactual Confidence Grounding AUC} (CCG-AUC). It measures whether confidence decreases when real-image substitution changes the actor from correct to incorrect. Across two VLM backbones and both in- and out-of-distribution medical VQA benchmarks, DualRead improves correctness discrimination and calibration over verbalized confidence while preserving answer accuracy. CCG-AUC reveals whether confidence responds to answer-relevant visual evidence rather than primarily to non-visual cues."
+      },
+      "hash": "bce5f9975fead69ed9a74f56dfe0e4a11ccf1c3911f1a9a74111a3d048ea994a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06498": {
+      "entry": {
+        "arxiv_id": "2609.06498",
+        "version": 1,
+        "title": "DFlow: Enabling Verifier Information Flow in Block Diffusion Speculative Decoding",
+        "authors": [
+          "Yaojie Zhang",
+          "Linfeng Zhang",
+          "Bin Cui",
+          "Xupeng Miao"
+        ],
+        "published": "2026-09-06T09:25:56Z",
+        "updated": "2026-09-06T09:25:56Z",
+        "abstract": "Block diffusion speculative decoding improves LLM inference efficiency by proposing a block of future tokens in parallel and verifying them with a single forward pass through the target model. However, existing methods retain only the accepted prefix and discard the rejected suffix, preventing the computation spent on these positions from benefiting subsequent drafting rounds and forcing the drafter to repeatedly reconstruct representations for future tokens from scratch. We observe that rejection only determines whether a proposed token can be committed, while the verifier representations at rejected positions can still provide useful information for subsequent predictions. Based on this observation, we propose DFlow, a simple yet effective framework that enables verifier information to flow across drafting rounds. DFlow reuses the hidden states produced by the target verifier for the rejected suffix to guide subsequent drafting without additional target computation. To effectively learn this information flow across drafting rounds, we introduce a self-condition train strategy that feeds verifier representations from earlier predictions back into subsequent predictions. Experiments on Qwen3 models across diverse benchmarks demonstrate that DFlow consistently improves draft quality and acceptance length over DFlash."
+      },
+      "hash": "eabb283e57f51c02ec4aa1f75e71a85a6fe4100dfb068a93be75d852c5b84034",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06504": {
+      "entry": {
+        "arxiv_id": "2609.06504",
+        "version": 1,
+        "title": "CAM: Question Answering on Entity-Centric Videos with Continuous Extraction and Adaptive Querying",
+        "authors": [
+          "Yizhou Tian",
+          "Zizhe Chen",
+          "Shiyuan Deng",
+          "Garry Yang",
+          "Zijie Dai",
+          "Luohao Pan",
+          "Hao Lin",
+          "Peiqi Yin",
+          "Xiao Yan",
+          "James Cheng"
+        ],
+        "published": "2026-09-06T09:39:49Z",
+        "updated": "2026-09-06T09:39:49Z",
+        "abstract": "Memory facilitates question answering over long videos by extracting and retrieving facts to fit within the limited context windows of multimodal LLMs (MLLMs). Existing solutions typically extract independent memory entries from fixed-length video clips and thus cannot capture high-level semantics that need to be summarized over extended time periods, such as character traits and relations. Moreover, they rely solely on similarity-based retrieval and may fail to retrieve the fine-grained details required for question answering. To tackle these problems, we propose CAM, featuring continuous extraction for high-level semantics and adaptive querying for fine-grained details. In particular, CAM stores the entities and relations extracted from video clips in a knowledge graph. To capture the high-level semantics of each entity or relation, CAM summarizes the local subgraph of the target entity or relation once the subgraph reaches a predefined size. To retrieve the fine-grained details required for question answering, CAM supports multiple search methods, including knowledge graph traversal, video re-watching, and audio listening. It utilizes a planner-executor-verifier pipeline to adaptively compose these search methods according to question intent. Evaluations on three benchmarks show that CAM outperforms SOTA baselines and improves their accuracy by up to 23 percentage points. Code is available at https://github.com/Jake-Tian/CAM."
+      },
+      "hash": "64ff489e2972ad0b7bdb291c82f5eb330a73258e1ac4cd3055a07a474dcdc7ed",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06527": {
+      "entry": {
+        "arxiv_id": "2609.06527",
+        "version": 1,
+        "title": "ProcArena: A Multi-Scenario Benchmark for LLMs on Direct and Interactive PL/SQL Development from Natural Language",
+        "authors": [
+          "Hang Zhang",
+          "Chaokun Wang",
+          "Yuzhi Pan",
+          "Ziyao Zhong",
+          "Shuo Cao",
+          "Yue Xue",
+          "Zeyu Huang",
+          "Xingwei Zhou",
+          "Fang Niu",
+          "Bofan Xie",
+          "Guanchen Ge",
+          "Leqi Zheng",
+          "Ziyang Liu",
+          "Xiannian Cao",
+          "Pengcheng Ge"
+        ],
+        "published": "2026-09-06T10:47:47Z",
+        "updated": "2026-09-06T10:47:47Z",
+        "abstract": "Large language models (LLMs) have shown strong potential for translating natural-language (NL) requirements into PL/SQL programs, attracting increasing attention from the database community. However, existing NL-to-PL/SQL efforts primarily focus on directly generating PL/SQL from complete NL requirements. In practice, PL/SQL development involves diverse scenarios, such as from-scratch development, code modification, debugging, and optimization, and may require either direct generation or multi-turn interaction. Yet, no comprehensive benchmark evaluates multi-scenario, direct and interactive, and multi-dialect NL-to-PL/SQL development. In this paper, we present ProcArena, an execution-based benchmark covering both Direct and Interactive modes. ProcArena comprises 3,998 executable tasks over 157 databases, spanning nine development subscenarios in PostgreSQL and Oracle. We construct challenging Direct tasks through Iterative Logic Enhancement and scenario-specific adapters, and derive paired Interactive tasks through Knowledge Integration and Requirement Perturbation while preserving executable targets. We further design a controlled Solver-User Simulator protocol that allows models to clarify user intent and inspect the database environment without exposing hidden execution feedback. Evaluating seven language models, we find that the best average scores are only 62.2% and 57.8% in Direct and Interactive, respectively, demonstrating that realistic NL-to-PL/SQL development remains challenging, particularly in interactive settings."
+      },
+      "hash": "0eaf9726d26bcb824a09cf67557e4e52c910d774b3adfa5518a45007cba2f1a0",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06545": {
+      "entry": {
+        "arxiv_id": "2609.06545",
+        "version": 1,
+        "title": "LLMs Mirror Country-Specific Gender Patterns If Asked, but Skew Male When Generating Media in Local Languages",
+        "authors": [
+          "Sharif Kazemi",
+          "Tanya Popli",
+          "Neil K. R. Sehgal",
+          "Sunny Rai",
+          "Niyati Malhotra",
+          "Victor Orozco-Olvera",
+          "Ana María Muñoz Boudet",
+          "Samuel P. Fraiberger",
+          "Sharath Chandra Guntuku",
+          "Manuel Tonneau"
+        ],
+        "published": "2026-09-06T11:34:41Z",
+        "updated": "2026-09-06T11:34:41Z",
+        "abstract": "Large language models (LLMs) are increasingly used to generate media, but whether their content perpetuates gender stereotypes is unknown: standard benchmarks rely on selection-based formats rather than long-form generation, and surveyed baselines for local gender associations are scarce outside the West. We collect gender associations for 22 occupational and domestic roles from 695 respondents across the United States, India, Kenya, and Nigeria, and evaluate eight LLMs under two regimes: direct questioning and media generation. Models track the surveyed associations under direct questioning but skew substantially more male under media generation in major local-language cells, consistent with the male bias documented in human-produced media. Outside the US, the shift is much smaller and non-significant under English prompting, so English-only or country-agnostic evaluation would miss this bias in the languages where these models are most deployed. Instruction prompting reduces the shift directionally, but trades off against alignment with the surveyed associations. Evaluating LLM gender bias for global deployment therefore requires generation-format testing, local-language prompting, and locally-collected human baselines."
+      },
+      "hash": "702e610632d76a8278516c0b4daaa628bf1c5da839acfed8088dd16420ee0b02",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06611": {
+      "entry": {
+        "arxiv_id": "2609.06611",
+        "version": 1,
+        "title": "SAGE: A Hierarchical Framework for Evaluating Interpretive Literary Quality in Narratives",
+        "authors": [
+          "Tianyu Wang",
+          "Nianjun Zhou"
+        ],
+        "published": "2026-09-06T13:57:31Z",
+        "updated": "2026-09-06T13:57:31Z",
+        "abstract": "Assessing the literary quality of narratives requires evaluating interpretive dimensions (cultural representation, emotional depth, and philosophical engagement) that existing NLG metrics cannot measure. We introduce SAGE, a six-layer evaluation framework that separates rule-based assessment of observable textual properties from LLM-based evaluation of interpretive qualities drawn from cultural theory, affect theory, and existentialist philosophy. Each interpretive layer is assessed through multi-round iterative LLM evaluation with independent cross-validation, achieving measurement-grade reliability (98.8% convergence, >94% inter-rater agreement) stable across evaluator models. Validated on 600 evaluations across 100 short stories, our central finding is a systematic capability boundary: emotional-psychological representation approaches human levels, while cultural critique and philosophical depth exhibit approximately double the gap. LLM-generated narratives score below even commercial genre fiction on all three layers. We interpret this as a boundary between pattern-reproducible literary capacities learnable from training corpora and stance-requiring ones demanding cultural positioning and philosophical engagement that pattern matching alone cannot provide.",
+        "comment": "12 pages, 4 figures"
+      },
+      "hash": "9980085a3839e4ff14f591eff87596a238814bedd1660a52ca2b6cc240d60963",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06612": {
+      "entry": {
+        "arxiv_id": "2609.06612",
+        "version": 1,
+        "title": "MechAudit-40: White-Box Auditing across 40 LLM Attack Mechanisms",
+        "authors": [
+          "Zhen Guo",
+          "Shanghao Shi",
+          "Shamim Yazdani",
+          "Ning Zhang",
+          "Reza Tourani"
+        ],
+        "published": "2026-09-06T13:57:41Z",
+        "updated": "2026-09-06T13:57:41Z",
+        "abstract": "While LLM attacks span prompt optimization, multi-turn context manipulation, retrieval poisoning, and model backdoors, white-box defenses are typically evaluated on isolated attack families. Consequently, whether heterogeneous attacks leave internal representation shifts that generalize to unseen threat mechanisms remains unknown. We present MechAudit-40, a systematic evaluation of 40 attack mechanisms across five open-weight model architectures. Threat-specific success criteria, 100,000 matched clean-attack representation pairs, predefined categories, and grouped holdouts isolate genuine attack-induced displacement from target scale, corpus bias, and data-leakage shortcuts. Across this testbed, attacks induce structured multi-depth trajectories rather than isolated layer spikes. While raw peaks are non-portable across architectures, target-calibrated profiles preserve transferable geometric signatures: under complete mechanism holdout, hidden states alone recover the threat category of unseen attacks with 82.5% accuracy. Guided by this finding, we design MechAudit, a runtime auditor that operates under strict zero-oracle constraints without requiring clean baseline traces or attack metadata. MechAudit detects 81.1% of held-out attack executions at a 0.70% false-positive rate and maintains 78.1% recall when an entire functional category is withheld. In matched comparisons, MechAudit is the only detector that avoids mechanism-level coverage collapse, maintaining over 50% recall across all 40 mechanisms. Internal representations thus support cross-mechanism attack-exposure auditing against calibrated benign references, but decouple from downstream task compromise and parameter integrity.",
+        "comment": "31 pages, 18 figures, 13 tables"
+      },
+      "hash": "e08b1e5c8c409fbbd4cc122244323d7b8d6047d5a74149f8455dbc86d337bc67",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06649": {
+      "entry": {
+        "arxiv_id": "2609.06649",
+        "version": 1,
+        "title": "Inducing Emergent Misalignment from Reward Hacks with Iterative DPO",
+        "authors": [
+          "Oliver Daniels",
+          "Perusha Moodley",
+          "Benjamin M. Marlin",
+          "David Lindner"
+        ],
+        "published": "2026-09-06T15:00:56Z",
+        "updated": "2026-09-06T15:00:56Z",
+        "abstract": "Reward hacking during reinforcement learning from verifiable rewards (RLVR) can induce reward seeking and broad misalignment in language models. Studying this misgeneralization is important for developing better threat models and countermeasures, but is often infeasible due to the cost of RL on large models. As an alternative, we propose studying emergent misalignment from iterative DPO, which preserves important properties of RLVR while reducing costs and enabling training on popular finetuning APIs. In practice, we find that training GPT-4.1 with iterative DPO on a single-turn reward hacking environment induces covert misaligned power-seeking and alignment faking, the first openly available (semi)-online training pipeline to induce these concerning forms of misalignment. We also find that training Qwen2.5-32B-Instruct with the same pipeline induces both misalignment and improved instruction following accuracy, showing that iterative DPO can be used as a testbed for selective generalization. Overall, we think iterative DPO can help democratize and accelerate the study of emergent misalignment from RLVR."
+      },
+      "hash": "20e034d451e1d776e566f5ffd2737325129379389973d7f48812a3b8e5447c5c",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06652": {
+      "entry": {
+        "arxiv_id": "2609.06652",
+        "version": 1,
+        "title": "VidaForge: Open Research Infrastructure for Video Pretraining Data Recipes",
+        "authors": [
+          "Yan Ma",
+          "Jiadi Su",
+          "Zhulin Hu",
+          "Ethan Chern",
+          "Linhao Zhang",
+          "Tiantian Mi",
+          "Pengfei Liu"
+        ],
+        "published": "2026-09-06T15:03:58Z",
+        "updated": "2026-09-06T15:03:58Z",
+        "abstract": "Video foundation models increasingly rely on large-scale pretraining data, yet the end-to-end data pipelines behind them remain largely closed and difficult to inspect or reuse. Researchers seeking to understand how video data recipes affect model pretraining often need to build substantial infrastructure before testing even a focused hypothesis. We present VIDAFORGE, an open research infrastructure that represents a video data recipe as an executable five-stage workflow from raw videos to training datasets. A decision in this workflow can be varied to construct alternative datasets while preserving how every sample was produced. To demon strate this research workflow, we compare data recipes with different coverage and quality in early from-scratch pretraining of Wan 2.1 and V-JEPA 2.1. Across both learning objectives, the broader-coverage recipe achieves the highest downstream benchmark scores, while loss-based evaluation favors different recipes. This study demonstrates how VidaForge connects data-recipe choices to downstream model performance. We further release VIDAFORGE-3M, containing 3.14 million scene level clips totaling 6,475 hours, with fine-grained annotations and curation signals for video data-recipe research.",
+        "comment": "https://github.com/GAIR-NLP/VidaForge"
+      },
+      "hash": "f5612a62514774174e7ae13bd93b8eb0ef1d6d8b7f3d9528cff34aaa5779bf52",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06656": {
+      "entry": {
+        "arxiv_id": "2609.06656",
+        "version": 1,
+        "title": "Assessing Covariate-Informed Grid Load Forecasting with a Time-Series Foundation Model",
+        "authors": [
+          "Varsha Pendyala",
+          "Yiwei Fu",
+          "Weizhong Yan",
+          "Nurali Virani"
+        ],
+        "published": "2026-09-06T15:09:12Z",
+        "updated": "2026-09-06T15:09:12Z",
+        "abstract": "Modern power systems are growing increasingly complex as they integrate diverse generation sources to meet rising demand, making accurate load forecasting challenging. Recent advances in time-series foundation models (TSFMs) resulted in promising performance in zero-shot univariate load forecasting tasks. However, real-world load forecasting often involves multiple target variables and requires the integration of exogenous variables, raising important questions about the utility of TSFMs in realistic settings. In this study, we position Chronos-2, a recently developed model by Amazon, as a representative multi-channel TSFM that supports univariate, multivariate, and covariate-informed forecasting, and conduct a systematic investigation of how such models can be used for real-world load forecasting. While prior work has evaluated Chronos-2 on a limited number of energy-related tasks in a zero-shot setting, its performance relative to established task-specific deep learning models and its behavior when adapted using task-specific historical data remains insufficiently understood. In this work, we evaluate Chronos-2 on two real-world utility datasets, ISO New England and ENTSO-E, and benchmark it against widely used task-specific deep learning models. Our results show that Chronos-2 benefits substantially from task-specific fine-tuning and achieves strong short-horizon forecasting performance, but its zero-shot accuracy lags behind task-specific models and its forecasting error grows more rapidly with increasing forecast steps. Overall, this study provides a detailed characterization of the strengths and limitations of TSFMs such as Chronos-2 in grid load forecasting and offers practical insights into how a pretrained TSFM can be effectively adapted for operational load forecasting applications.",
+        "comment": "Presented at the 2026 IEEE International Joint Conference on Neural Networks (IEEE World Congress on Computational Intelligence), Maastricht, Netherlands"
+      },
+      "hash": "2c627e21a953c8a9c421cbef1edaa2e4072c13b437d75dea43c8d658cf4b2716",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2608.24696": {
+      "entry": {
+        "arxiv_id": "2608.24696",
+        "version": 3,
+        "title": "On-policy Distillation with Verifiable Reward",
+        "authors": [
+          "Wenze Lin",
+          "Jiale Zhao",
+          "Xitai Jiang",
+          "Songde Rao",
+          "Yining Li",
+          "Shenzhi Wang",
+          "Bingxiang He",
+          "Gao Huang"
+        ],
+        "published": "2026-08-25T15:21:17Z",
+        "updated": "2026-09-06T15:20:14Z",
+        "abstract": "Reinforcement Learning with Verifiable Rewards (RLVR) and on-policy distillation (OPD) have become two widely adopted paradigms for post-training large language models. However, RLVR suffers from sparse task-level feedback, while OPD provides dense token-level guidance but ignores trajectory correctness, limiting its performance to that of the teacher. Combining them is a promising direction: OPD supplies dense supervisory signals, while RLVR provides task-level correctness. Nevertheless, existing integrations often rely on weighted combination or heuristic switching, introducing extra hyperparameters and trade-offs. We propose On-policy Distillation with Verifiable Reward (OPDVR), a simple yet effective method that seamlessly combines OPD and RLVR without adding any hyperparameters. We first reformulate the implicit reward of sampled-token OPD based on trajectory correctness, then apply a ReLU gating mechanism to ensure that correct trajectories receive non-negative rewards and incorrect ones receive non-positive rewards---thereby aligning the distillation signal with task success while preserving the teacher's distributional guidance. Furthermore, our modification transforms sampled-token OPD into a proper RLVR method, making it readily combinable with any policy gradient algorithm, such as GRPO. Experiments on six reasoning benchmarks show that OPDVR consistently outperforms standard OPD. Our code is available at https://github.com/LeapLabTHU/OPDVR."
+      },
+      "hash": "1cf6d9f1a5a9271f9f3d6f45fde5b6cb8202fc7277d197f5254863666564909f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06670": {
+      "entry": {
+        "arxiv_id": "2609.06670",
+        "version": 1,
+        "title": "Data Efficient Sample Selection for In-Context Learning",
+        "authors": [
+          "V Venktesh",
+          "Cem levi",
+          "Avishek Anand"
+        ],
+        "published": "2026-09-06T15:23:37Z",
+        "updated": "2026-09-06T15:23:37Z",
+        "abstract": "The In-context learning (ICL) paradigm aids large language models (LLMs) to adapt to new tasks without need for fine-tuning. However, selecting an optimal combination of demonstration examples from a large pool of example subsets is a challenging problem. Existing approaches for selection do not model the complex relationship between ICL samples and downstream LLM performance. They typically perform static task-level selection, choosing subsets once offline, which can fail to generalize to unseen queries. We introduce DearICL (Data Efficient Algorithm for Ranking) ICL samples, a new framework that models demonstration example selection as a subset ranking problem. DearICL employs a non-linear surrogate employing a differentiable sorting objective within a gap-index bandit algorithm. The gap-index based approach enables fine-grained separation of good arms and borderline arms, which is used as an auxiliary objective to train the non-linear surrogate through sufficient sampling of borderline arms, supporting instance-level subset ranking. On exemplar selection benchmarks with open-source LLMs, DearICL achieves 8.08-15.9% accuracy gains over strong linear bandit baselines, with low sample complexity. Code and data: https://github.com/VenkteshV/DearICL.",
+        "comment": "Accepted to EMNLP 2026 Main track, 22 pages with sample-complexity proof in Appendix;"
+      },
+      "hash": "92ec431b88d18bc2245c5af77e23d42d22f066ded49a9f94f7ac43aac5e76680",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06690": {
+      "entry": {
+        "arxiv_id": "2609.06690",
+        "version": 1,
+        "title": "A Grapheme-Aware Indic Tokenizer for Tamil: Large-Scale Training and Intrinsic Evaluation",
+        "authors": [
+          "Hari Krishnan K",
+          "Sudarsun Santhiappan"
+        ],
+        "published": "2026-09-06T16:01:26Z",
+        "updated": "2026-09-06T16:01:26Z",
+        "abstract": "Tokenization forms the foundation of modern Natural Language Processing (NLP) systems by transforming raw text into discrete units that neural language models can process. The effectiveness of this process directly influences vocabulary efficiency, sequence length, computational cost, and downstream model performance. Although multilingual tokenizers such as Byte Pair Encoding (BPE), WordPiece, and SentencePiece have performed well across numerous languages, they often segment morphologically rich Indic languages inefficiently. Tamil, in particular, poses unique challenges because its grapheme-based writing system can represent a single visible character with multiple Unicode code points. In this work, we present a grapheme-aware Indic tokenizer for Tamil that preserves complete grapheme clusters through a reversible Unicode mapping strategy prior to WordPiece vocabulary learning. By operating on grapheme-level representations instead of individual Unicode code points, the tokenizer produces linguistically meaningful token boundaries while remaining fully compatible with transformer-based language models. The tokenizer is trained on a large-scale Tamil corpus and evaluated using a comprehensive intrinsic evaluation framework that measures compression efficiency, token fragmentation, information density, and vocabulary utilization. Experimental evaluation compares the proposed tokenizer against five widely used multilingual tokenizers: GPT-2, mBERT, mT5, mBART, and NLLB. The proposed tokenizer achieves the strongest performance among the evaluated tokenizers on fragmentation- and sequence-efficiency-oriented intrinsic metrics, while matching the highest observed compression ratio. These results demonstrate the effectiveness of grapheme-aware preprocessing for Tamil tokenization.",
+        "comment": "10 pages, 1 figure"
+      },
+      "hash": "81a64b9aff59c7f7d7ef81bd7d6c7ed99595ad588dae5c1832fc83f165c9bb6a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06704": {
+      "entry": {
+        "arxiv_id": "2609.06704",
+        "version": 1,
+        "title": "Counterfactual Tests for Measuring Chain-of-Thought Faithfulness in Visual Language Models",
+        "authors": [
+          "Bayar Menzat",
+          "Maximilian Süss",
+          "Ruizhi Wang",
+          "Benno Steinegger",
+          "Thomas Lukasiewicz",
+          "Oana-Maria Camburu"
+        ],
+        "published": "2026-09-06T16:21:14Z",
+        "updated": "2026-09-06T16:21:14Z",
+        "abstract": "Chain-of-thought (CoT) may often look plausible, yet it may not faithfully reflect the model's decision-making process. While methods for measuring the faithfulness of CoTs for textual inputs have been increasingly introduced, using these methods for visual inputs is not straightforward. In this work, we adapt the family of counterfactual methods for measuring CoT faithfulness, namely the Counterfactual Test (CT) and Correlational Counterfactual Test (CCT), to visual inputs, and call them vCT and vCCT, respectively. Using vCT and vCCT, we benchmark eight recent open-source Vision Language Models (VLMs) on two datasets. Our analysis shows that CoTs do not reliably track visual evidence that influences model predictions: they may omit the removed object even when its removal causes a large prediction shift, yet mention it when the shift is small. We further find that Predict-then-Explain explanations align more strongly with perturbation-induced probability shifts than pre-answer CoTs, while binary vCT scores are often nearly saturated. We also include a reconstruction control, in which images pass through the same editing pipeline without object removal, and find that the main object-removal intervention induces larger shifts than reconstruction alone. We construct and release Counter-SNLI-VE and Counter-A-OKVQA, two datasets of image pairs that differ by a single object.",
+        "comment": "Accepted to Findings of the Association for Computational Linguistics: EMNLP 2026"
+      },
+      "hash": "d3e85e9f453a7e3654b3595465bce74877b97d56824313629bfd2cc37210db95",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06721": {
+      "entry": {
+        "arxiv_id": "2609.06721",
+        "version": 1,
+        "title": "Companion-style QA Assistance in Ego-Vision",
+        "authors": [
+          "Hangyu Qin",
+          "Junbin Xiao",
+          "Shenglang Zhang",
+          "Angela Yao"
+        ],
+        "published": "2026-09-06T16:49:45Z",
+        "updated": "2026-09-06T16:49:45Z",
+        "abstract": "AI companions are envisioned as always-on assistants that support users in daily life. With this regard, we introduce BuddyVQA, a benchmark for companion-style question answering (QA) on egocentric streaming video. BuddyVQA contains 21.6K questions linked to 6K highlight moments across 1,012 long, egocentric videos. It features two key characteristics that are common in daily first-person QA assistance but are largely overlooked in existing VideoQA benchmarks: ego-deictic expressions and interactively chained questions (e.g., \"Where is it?\", \"How to get there?\"). These require models to infer a user's in-situation intent by resolving visual pronouns in the context of egocentric visual and QA contents, with both grounded in a long-form streaming setting. To tackle the challenges, we propose MyBuddy, a companion-style QA assistant that highlights a multimodal chain-of-thought reasoning mechanism to infer the final answer based on the historical QA and visual content. An additional question filter and multi-level memory are designed to facilitate efficient QA and visual information retrieval under streaming QA settings. Experiments show that MyBuddy significantly enhances the performance of foundation models on BuddyVQA. Moreover, these gains generalize to other streaming and common video QA benchmarks, demonstrating the applicability and effectiveness of our approach. Our code and dataset are available at https://github.com/QHUni/BuddyVQA",
+        "comment": "Preprint. Under Review"
+      },
+      "hash": "d8dfc76dc2d7630de021ae72fcf688250308f47908351b4971d6013b768fd873",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06726": {
+      "entry": {
+        "arxiv_id": "2609.06726",
+        "version": 1,
+        "title": "Back to the Feature: Zero-Shot 6DoF Pose Estimation via Dense Local Features",
+        "authors": [
+          "Ali Rafiaei",
+          "Michael Greenspan"
+        ],
+        "published": "2026-09-06T16:57:27Z",
+        "updated": "2026-09-06T16:57:27Z",
+        "abstract": "We present B2TFPose, a training-free zero-shot method for 6DoF pose estimation of unseen objects from RGB images. Using a single frozen DINOv3 vision transformer as its only pretrained component within the pose estimation pipeline, B2TFPose extracts dense patch-level features that generalize across the synthetic-to-real domain gap without any task-specific fine-tuning, revisiting the classical local feature matching paradigm through the lens of large-scale self-supervised foundation models. Three contributions advance the training-free state of the art. A geodesic non-maximum suppression strategy retrieves a viewpoint-diverse template set for coarse-to-fine correspondence matching. Render-guided Re-Correspondence (RRC) synthesizes object-specific views at the estimated pose and re-establishes dense 2D-3D correspondences to sharpen the initial estimate without additional learned parameters. A multi-mask hypothesis selection strategy jointly scores competing segmentation candidates to resolve segmentation ambiguity. On the seven core datasets of the BOP Benchmark, B2TFPose achieves 40.7 mean AR without refinement and 56.4 with refinement, establishing state-of-the-art performance among training-free RGB methods and outperforming trained counterparts including GigaPose and GenFlow, at competitive inference speed.",
+        "comment": "Accepted at BMVC 2026"
+      },
+      "hash": "dcd79358ab73c3608ea76e0ce8a7e70fc087a7925e811939ff8c6f2461efd57c",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06746": {
+      "entry": {
+        "arxiv_id": "2609.06746",
+        "version": 1,
+        "title": "Reason Through the Latent! Making Latent Visual Reasoning Necessary",
+        "authors": [
+          "Suhyeong Park",
+          "Junha Jung",
+          "Jaewoo Kang"
+        ],
+        "published": "2026-09-06T17:39:32Z",
+        "updated": "2026-09-06T17:39:32Z",
+        "abstract": "Latent visual reasoning aims to perform multimodal reasoning through hidden-state computation rather than explicit textual chains of thought. However, visual information being present in a latent state does not imply that the model actually relies on that state when producing its answer, especially when alternative image-conditioned paths remain available. We introduce \\textbf{C}ausal \\textbf{V}isual \\textbf{R}ecurrent \\textbf{R}easoning (CVRR), which preserves pretrained visual competence while making recurrent computation the required image-conditioned path to prediction. CVRR initializes recurrence from the question hidden state after the pretrained vision-language model has incorporated the image, then repeatedly updates this state while re-reading the same fixed visual evidence. Before decoding, visual states and the original multimodal KV cache are removed so that only the final recurrent state carries image-conditioned information to the answer. Across the $V^*$, MMVP, BLINK, and MME-RealWorld-Lite benchmarks, CVRR retains strong performance under this strict interface, while compatible latent reasoners fail to recover comparable visual competence even when retrained under the same constraint. Causal interventions further show that predictions remain sensitive to recurrent content when the question is held fixed, and that persistent visual evidence causally revises the recurrent trajectory. These results distinguish latent informativeness from latent computation that is actually used for prediction."
+      },
+      "hash": "705c40778ca96c41b5da282d90bd93ddae8dbfd9b2f2a7c11924c63377c50b70",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06842": {
+      "entry": {
+        "arxiv_id": "2609.06842",
+        "version": 1,
+        "title": "XYBench: Can LLMs Respond Pragmatically to Queries with Misconceptions?",
+        "authors": [
+          "Akhila Yerukola",
+          "Jena D. Hwang",
+          "Mingqian Zheng",
+          "Jenna Godsey",
+          "Hyunwoo Kim",
+          "Valentina Pyatkin",
+          "Jennifer Hu",
+          "Maarten Sap"
+        ],
+        "published": "2026-09-06T21:35:56Z",
+        "updated": "2026-09-06T21:35:56Z",
+        "abstract": "When non-expert users ask LLMs for assistance, their queries can often have misconceptions (e.g., \"How do I parse XML with regex?\"). In such cases, often referred to as the XY-problem, LLMs must identify the misconception (\"regex are fragile\") and meaningfully direct the user toward a pragmatic solution that will address the root problem implicit in the request (\"use an XML parser\"). We introduce XYBench, a benchmark of 8,115 such queries, drawn from technical (StackOverflow/StackExchange) and everyday (WikiHow and a manually-curated subset) domains. We design an evaluation paradigm that assesses model responses along three criteria grounded in cooperative response theory: (a) presence and (b) emphasis on pragmatic solutions, and (c) identification of misconceptions. Our experiments show that even the strongest LLMs predominantly answer the literal request (0.75--0.92) and far less often the intended one (0.33--0.71), while substantially lagging behind humans at identifying misconceptions (at most 63% vs. 79--90%). Further, models overwhelmingly prefer pragmatic responses in a multiple choice setting yet consistently fail to generate them. Oracle ablation experiments show that providing explicit user intent at generation time helps; however a large gap remains, suggesting pragmatic redirection is a fundamentally underdeveloped capability in current LLMs.",
+        "comment": "Accepted to Empirical Methods in Natural Language Processing (EMNLP) 2026, 32 pages, 25 figures"
+      },
+      "hash": "b34e0e6f3d78948fc21761f22566daebb59d9a18fd4784a2d7acc05c9339f3c5",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06870": {
+      "entry": {
+        "arxiv_id": "2609.06870",
+        "version": 1,
+        "title": "Organization of Valence and Arousal in Vision-Language Representations of Built Environments: Insights from the EMOIS Dataset",
+        "authors": [
+          "Madoka Yonekura",
+          "Katsunori Kohda",
+          "Nobuhiko Muramoto",
+          "Takahiro Yamaguchi"
+        ],
+        "published": "2026-09-06T23:12:30Z",
+        "updated": "2026-09-06T23:12:30Z",
+        "abstract": "Visual perception of built environments contributes to the affective impressions that people form in everyday life. However, how these impressions are represented within vision foundation models remains largely unexplored. To support the systematic investigation of this subject, we introduce the Emotional Impression of Spaces (EMOIS) dataset, comprising 1,544 real-world built-environment images. Each image is annotated with image-evoked valence and arousal ratings collected from Japanese adults by conducting a large-scale web-based survey, with approximately 120 ratings per image. Using Contrastive Language--Image Pre-training (CLIP) representations, we perform predictive and geometric analyses to systematically investigate how valence and arousal are encoded and organized within the representation space. These analyses reveal that valence exhibited stronger and more coherent organization than arousal. Cross-dataset analyses with the Open Affective Standardized Image Set (OASIS), a benchmark dataset of general affective photographs, reveal differences in affective organization between the two datasets. Regression analyses demonstrate high predictive performance for valence and arousal within EMOIS, with mean coefficients of determination of 0.865 and 0.807, respectively, across repeated internal hold-out evaluations. Finally, we present an example-based interface illustrating how learned representations can support qualitative interpretation of predicted affective values. These findings can help elucidate affective representations of built environments and establish EMOIS as a densely annotated resource for future affective computing research in this domain."
+      },
+      "hash": "dc6b14a78267c0eb8d97a334481c78335126e2188e534fffa483b6eb7f74305f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06880": {
+      "entry": {
+        "arxiv_id": "2609.06880",
+        "version": 1,
+        "title": "Contextual Observer Grounding: Evaluating Situated Spatial Reasoning in Vision-Language Models",
+        "authors": [
+          "Mimo Shirasaka",
+          "Haochen Zhang",
+          "Yonatan Bisk"
+        ],
+        "published": "2026-09-07T00:00:13Z",
+        "updated": "2026-09-07T00:00:13Z",
+        "abstract": "Reasoning over language instructions in embodied tasks such as robotics often requires understanding spatial relations from a speaker's situated perspective. Humans infer such perspectives from shared environmental knowledge, activity context, and commonsense. Recent vision-language models (VLMs) appear capable of spatial reasoning, but their ability to infer a speaker's viewpoint from contextual cues and interpret situated spatial relations from that viewpoint remains unclear. We call this capability contextual observer grounding. To study this capability, we construct the Point-of-View Benchmark (POVBench), a dataset of 3D scenes and queries that disentangles Inferred, Stated, and Given forms of observer grounding in natural embodied communication. Given multi-view observations and a natural-language sentence, models must localize unseen or underspecified targets from situated spatial and contextual cues. Across state-of-the-art VLMs, localizing targets from directional language remains challenging, even when observer grounding is made explicit. We find that explicit breakdowns of observer-relative spatial reasoning improve target localization. Our project page is available at https://mimo-owl.github.io/POVBench/.",
+        "comment": "Accepted to EMNLP 2026 Findings"
+      },
+      "hash": "efa61a040bab940cf15a53058a9f59ca71a8d51f9cea0debb825818ce077787a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06893": {
+      "entry": {
+        "arxiv_id": "2609.06893",
+        "version": 1,
+        "title": "Towards Bridging the Gap Between Offline and Iterative Alignment via Preference Distillation",
+        "authors": [
+          "Wenbo Zhang",
+          "Wenzhuo Zhou",
+          "Hengrui Cai",
+          "Zhengling Qi"
+        ],
+        "published": "2026-09-07T00:33:50Z",
+        "updated": "2026-09-07T00:33:50Z",
+        "abstract": "Direct preference optimization DPO is a promising offline approach for aligning large language models (LLMs) due to its simplicity, computational efficiency, and implicit modeling of human preferences. Interestingly, iterative extensions of DPO have achieved stronger performance on academic benchmarks, raising two key questions: (i) Why do iterative methods generally outperform offline ones? (ii) Can their advantages be incorporated into offline alignment? To answer the first question, our controlled experiments reveal that the explicit preference model, additionally introduced in the iterative procedure, is a key factor behind its superiority over offline methods. This insight leads us to answer the second question affirmatively and propose Distilled Preference Probability Policy Optimization (DP3O), an effective and efficient offline alignment algorithm. DP3O first learns an explicit preference model using a helper class of LLMs and then distills its knowledge into policy optimization. Theoretically, we show that explicit preference modeling admits better estimation error control than implicit formulations, and that DP3O achieves a tighter generalization bound than hard-label DPO through variance reduction. Empirically, we evaluate DP3O on a wide range of chat-based and downstream tasks and show that it outperforms state-of-the-art offline methods, achieves performance comparable to iterative DPO, and reduces training time by about $42\\%$, demonstrating both its effectiveness and efficiency.",
+        "comment": "Accepted by Transactions on Machine Learning Research (TMLR)"
+      },
+      "hash": "fed3c29ef08b6724bb97758b52178946de8da7fdcdf2026d09a9b87491bee36d",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06912": {
+      "entry": {
+        "arxiv_id": "2609.06912",
+        "version": 1,
+        "title": "From Synthetic Priors to Model Behavior: Structural Coverage in Tabular Foundation Models",
+        "authors": [
+          "He Zhao",
+          "Ryan Thompson",
+          "Daniel M. Steinberg",
+          "Ashfaqur Rahman",
+          "Edwin V. Bonilla",
+          "Cheng Soon Ong"
+        ],
+        "published": "2026-09-07T01:27:45Z",
+        "updated": "2026-09-07T01:27:45Z",
+        "abstract": "Tabular foundation models (TFMs) are commonly pretrained on large collections of procedurally generated synthetic tasks, yet it remains unclear how well these synthetic pretraining priors support the downstream tasks on which the models are evaluated. We study this question from a distribution-level attribution perspective. We recover or reconstruct the synthetic data generators of four TFMs and compare their generated tasks with datasets from two widely used tabular benchmarks. Each dataset is represented by a common set of structural descriptors capturing schema, feature distributions, dependence structure, response properties, and feature--response relationships. In this space, we measure how broadly and repeatedly each synthetic prior reaches benchmark tasks using structural coverage and normalized density, and examine whether stronger local support is associated with better predictive performance. We find substantial differences across synthetic pretraining priors: some generators provide consistently broader and denser support for benchmark tasks than others. Moreover, stronger synthetic-to-benchmark support is generally associated with better relative model performance. These results suggest that structural coverage provides a useful diagnostic for characterizing synthetic pretraining priors and relating their data-generating assumptions to downstream model behavior."
+      },
+      "hash": "038acf017d3ae883fdf33766668239e8d6cdb369b6df7ca253aaf9fd5978ad30",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06914": {
+      "entry": {
+        "arxiv_id": "2609.06914",
+        "version": 1,
+        "title": "A visual large language foundational model for medical image recognition using clinician-oriented social media",
+        "authors": [
+          "Lingxuan Hou",
+          "Yuhua Xie",
+          "Yue Hu",
+          "Yan Zhuang",
+          "Junqi Li",
+          "Chengzhi Xia",
+          "Binh Phu Nguyen",
+          "Abubakar Siddique",
+          "Minh Nguyen",
+          "Yao Hou",
+          "Yanju Bao",
+          "Kexin Liu",
+          "Ke Chen",
+          "Jianjun Sun",
+          "Zeqi Li",
+          "Trung Nguyen",
+          "Jiangli Lin"
+        ],
+        "published": "2026-09-07T01:30:34Z",
+        "updated": "2026-09-07T01:30:34Z",
+        "abstract": "Large language models (LLMs) have demonstrated strong capabilities across diverse domains, showing considerable potential in medicine. However, their application in medical settings remains limited by the scarcity of visual question answering (VQA) datasets that capture clinical reasoning and explicit image-text alignment. Here, we leverage de-identified medical images and expert commentaries shared on clinician-oriented social media. By combining an advanced LLM with clinician-in-the-loop verification, we established a rigorous pipeline to construct ThoughtMed-1M, a long-form medical VQA dataset containing over one million VQA pairs and designed to capture structured clinical logic and medical image-text alignment. To demonstrate its utility, we developed a FOundational LLM Trained on ThoughtMed-1M (FOLTMed). FOLTMed achieved state-of-the-art performance across 42 medical VQA benchmark datasets, with a macro accuracy of 85.4%, and generated more clinically coherent responses on the ThoughtMed-1M test set. It outperformed state-of-the-art models by 3--5% across factuality and similarity metrics, highlighting a scalable paradigm for advancing research on clinically grounded multimodal LLMs."
+      },
+      "hash": "4aee4891ceadc2c8fa7fd6cafeda752bf921de7d6d96c739a31dbd2b776acc0d",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06960": {
+      "entry": {
+        "arxiv_id": "2609.06960",
+        "version": 1,
+        "title": "iBrain: A Unified Foundation Model Reading the Brain from Surface to Spikes",
+        "authors": [
+          "Ying Chen",
+          "Tiou Wang",
+          "Zhifeng Yue"
+        ],
+        "published": "2026-09-07T02:56:42Z",
+        "updated": "2026-09-07T02:56:42Z",
+        "abstract": "Invasive neural recordings provide high-fidelity measurements of brain activity, with signals such as intracranial EEG (iEEG) and intracortical spiking activity capturing neural dynamics at different spatial and temporal scales. Yet existing neural foundation models have largely been developed independently for different invasive recording paradigms, leaving joint pretraining across heterogeneous invasive signals underexplored. In this work, we introduce iBrain, a unified foundation model that jointly learns from iEEG and spiking activity. iBrain employs signal-specific encoders to accommodate their distinct signal characteristics and a shared spatiotemporal Transformer backbone to model dependencies across recording channels and time. We pretrain iBrain on over 7,000 hours of heterogeneous neural recordings using masked signal reconstruction and channel-view alignment, promoting contextual modeling of neural dynamics and robustness across different channels. iBrain consistently outperforms single-signal pretraining baselines and achieves state-of-the-art performance on multiple benchmarks. Further experiments demonstrate that iBrain exhibits transferability and data efficiency across diverse recording settings. These results highlight the potential of joint pretraining on heterogeneous invasive neural recordings to support scalable neural modeling and transferable representations across recording settings and downstream tasks."
+      },
+      "hash": "e405b66ae4d8452b311674a7dcd0016968c7f4893ee8e75caac85fdb11a87cb6",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06963": {
+      "entry": {
+        "arxiv_id": "2609.06963",
+        "version": 1,
+        "title": "TurEngMix: A Text Corpus and Benchmark for Turkish-English Code-Mixed Language Identification and Named Entity Recognition",
+        "authors": [
+          "Ilayda Dogan",
+          "Phuong-Anh Nguyen-Le",
+          "Julia Mendelsohn"
+        ],
+        "published": "2026-09-07T03:00:31Z",
+        "updated": "2026-09-07T03:00:31Z",
+        "abstract": "Natural language processing systems underperform on code-mixed text, particularly for low-resource language pairs. Turkish-English poses a further challenge: it lets English stems combine with Turkish suffixes to form single mixed-language tokens. We introduce TurEngMix, a corpus of 5.5K noisy, naturally occurring social media posts (486,974 tokens) rich in Turkish-English code-mixing. From this corpus, we construct a new Turkish-English benchmark for code-mixed language identification (LID) and named entity recognition (NER), comprising 15K expert-annotated tokens. Evaluating both decoder LLM and fine-tuned encoder baselines, we find that monolingual Turkish and English tokens are labeled reliably, but all models have high error rates on mixed-language tokens for both LID and NER. For morphologically integrated tokens, NER error rates were 5.2x and 6.3x higher for GPT-4o and Qwen, respectively. This highlights how morphological integration remains a challenge. We release the corpus, annotations, and code to support future computational and sociolinguistic research on Turkish-English code-mixing.",
+        "comment": "Accepted to W-NUT 2026 (11th Workshop on Natural User-generated Text), co-located with EMNLP 2026. 15 pages, 4 figures, 12 tables"
+      },
+      "hash": "1f3714a3315673f0f4b41b6680f62f7fe363639ad624039d041cae9301714d29",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06976": {
+      "entry": {
+        "arxiv_id": "2609.06976",
+        "version": 1,
+        "title": "HealthLoopQA: A Context-Aware Question Answering Benchmark for Interpreting Wearable Monitoring Data in Diabetes Care",
+        "authors": [
+          "Yuchen Niu",
+          "Yanan Ma",
+          "Srinivasan Nandakumar",
+          "Maolin Chen",
+          "Viktor Schlegel",
+          "Kexin Wei",
+          "Ling Cheng",
+          "Anna Bird",
+          "Anil Anthony Bharath",
+          "Siew-Kei Lam"
+        ],
+        "published": "2026-09-07T03:11:34Z",
+        "updated": "2026-09-07T03:11:34Z",
+        "abstract": "As medical wearables become integrated into daily chronic disease care, effectively interpreting longitudinal monitoring data is essential for patients and clinicians to understand health trends, detect safety-critical events, and make informed decisions. While large language models (LLMs) show promise for transforming this streaming physiological data into personalized health insights, evaluating their reasoning capability and analytical rigor in diverse monitoring tasks remains a fundamental challenge. Existing medical wearable question answering (QA) benchmarks primarily assess short-horizon classification or statistical summaries, largely ignoring the long-term patterns, therapeutic and behavioural contexts, and potential system failures inherent in real-world deployments. To address this, we introduce HealthLoopQA, a comprehensive diagnostic benchmark for evaluating LLM reasoning over continuous diabetes monitoring data. Grounded in a novel taxonomy of eleven atomic reasoning abilities, HealthLoopQA comprises 127 tasks and over 1,500 QA instances spanning process mining, anomaly detection, and prediction over 30-day horizons. To systematically evaluate safety awareness, we complement real-world datasets with a fault-injected simulation testbed modeling diverse device malfunctions and cyber-physical attacks to generate physiologically plausible hazard scenarios. Evaluating state-of-the-art LLMs across prompting and agentic frameworks reveals severe limitations in complex temporal pattern mining. Furthermore, we identify a broader phenomenon of In-context Laziness under long-context prompting, highlighting critical open challenges in deploying LLMs for rigorous long-horizon medical reasoning."
+      },
+      "hash": "2bb16b16ccf2a8b011222459df0432c9d3f1d9b309b0b6872c7f69159cef708e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.06993": {
+      "entry": {
+        "arxiv_id": "2609.06993",
+        "version": 1,
+        "title": "LatentMD: Benchmarking Markdown Boundary Failures in LLM-Generated Text",
+        "authors": [
+          "Sungjune Lee",
+          "Myungjoo Kang"
+        ],
+        "published": "2026-09-07T03:35:26Z",
+        "updated": "2026-09-07T03:35:26Z",
+        "abstract": "Large language models (LLMs) increasingly generate Markdown that is consumed by renderers, agents, code extractors, and structured downstream pipelines. Yet existing evaluations often conflate content quality with format adherence, leaving Markdown boundary failures under-measured. We introduce LatentMD, a benchmark and evaluation protocol for diagnosing CommonMark-level fence-boundary failures in LLM-generated Markdown. LatentMD separates content correctness from boundary correctness, enabling detection of outputs that are content-correct but boundary-broken. The benchmark contains 4,179 prompts and a CLI for scoring arbitrary model outputs. Across 9 LLMs and roughly 37,600 generations, we find that Markdown boundary failures are widespread: 38.0% of valid main-grid outputs are content-correct but boundary-broken, with substantial boundary breakage under unspecified prompts and in a small human-authored validation set. Ablations show that failures are driven primarily by same-family symmetric-delimiter collisions rather than nesting alone, are only partially mitigated by prompt hints, and generalize to Python triple-quote docstrings while JSON remains robust as an asymmetric-delimiter control. LatentMD provides a reproducible diagnostic target for parser-sensitive LLM evaluation."
+      },
+      "hash": "8f2a2a4ceca1809dd6d49a08b0817013d158ab05feba843f811dab9c3bfce5af",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.03620": {
+      "entry": {
+        "arxiv_id": "2609.03620",
+        "version": 2,
+        "title": "ToolDF: Tool-Integrated Reasoning for Mixed-Authenticity Audio Deepfake Detection",
+        "authors": [
+          "Taewoo Kim",
+          "Young Han Lee",
+          "Nam In Park",
+          "Chanwoo Kim"
+        ],
+        "published": "2026-09-03T10:05:45Z",
+        "updated": "2026-09-07T05:41:50Z",
+        "abstract": "Audio deepfake detection is commonly formulated as clip-level binary classification of single-domain audio. However, real-world manipulated audio can exhibit mixed authenticity, where genuine and manipulated cues coexist across temporal transitions, overlapping sources, or both. This setting requires not only detecting manipulated audio but also localizing the components that provide evidence for the decision. We propose ToolDF, a tool-integrated reasoning framework for mixed-authenticity audio deepfake detection. ToolDF employs an audio large language model as an orchestrator trained with supervised tool-use trajectories. It adaptively analyzes the audio scene, selectively performs source separation, routes components to domain-specific experts, and aggregates their evidence into an interpretable verdict. We further introduce a mixed-authenticity ADD benchmark covering temporal transitions, acoustic overlaps, and hybrid mixtures. Experimental results show that ToolDF achieves the best overall performance on composite-type detection, achieving macro-F1 gains of 3.72 and 14.39 points over the strongest monolithic baseline and a fixed pipeline, respectively, while providing interpretable evidence localized to temporal regions and acoustic sources. Our source code and dataset are publicly available online.",
+        "comment": "To appear in Findings of the Association for Computational Linguistics: EMNLP 2026"
+      },
+      "hash": "46da1ca615cf0c98823e3a97dfa17ce0f9e742862de24267c490ef632c740408",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07093": {
+      "entry": {
+        "arxiv_id": "2609.07093",
+        "version": 1,
+        "title": "Where to Look and What to Use: Retrieve-Localize-Generate for Long-Term Conversational Memory Question Answering",
+        "authors": [
+          "Yifan Wang",
+          "Xinkui Lin",
+          "Yongxiu Xu",
+          "Shen Gao",
+          "Ruochen Yang",
+          "Kun Huang",
+          "Yubin Wang",
+          "Jie Wu",
+          "Wei Liu",
+          "Jian Luan",
+          "Hongbo Xu",
+          "Shuo Shang"
+        ],
+        "published": "2026-09-07T06:32:12Z",
+        "updated": "2026-09-07T06:32:12Z",
+        "abstract": "Retrieval-augmented generation (RAG) enables large language models (LLMs) to answer questions by accessing external knowledge and has been widely adopted for long-term conversational memory question answering. However, existing methods suffer from two key challenges: (1) fragmented evidence scattered across temporally distant sessions, and (2) noisy content within retrieved sessions that triggers the lost-in-the-middle effect. To address these challenges, we propose MemLoc, a unified Retrieve-Localize-Generate framework for long-term conversational memory QA. For retrieval, MemLoc decomposes each session into multi-granularity memory units and performs query routing via an inner-memory graph with entropy-based granularity selection. It further models cross-session semantic and temporal dependencies through a cross-memory graph, enabling coarse-to-fine retrieval of top-K relevant memory candidates. For localization, we introduce a reasoning-based evidence locator trained with Self-reflective Hint Policy Optimization (SHPO), which performs progressive refinement by extracting query-relevant fragments within memory units to suppress noise and reranking across candidates to remove redundancy, producing a compact evidence set with lightweight location IDs. For generation, these IDs act as precise grounding signals that guide the LLM to the correct memory positions, mitigating the lost-in-the-middle effect while preserving original contextual integrity. Extensive experiments on four benchmarks demonstrate that MemLoc achieves state-of-the-art retrieval accuracy and response quality while maintaining efficiency. Our code is available at: https://github.com/Nikol-coder/MemLoc.",
+        "comment": "22 pages, 4 figures, 14 tables. Accepted to the EMNLP 2026 Main Conference"
+      },
+      "hash": "1f90abdd4e6bb1f003ce5dce7ae4ad77241ccdae41c4966ab18ca81fb15b76c9",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07094": {
+      "entry": {
+        "arxiv_id": "2609.07094",
+        "version": 1,
+        "title": "CASCADE: A Spatio-Temporal-Causal Reasoning Representation and Dataset for Driving",
+        "authors": [
+          "Jenny Schmalfuss",
+          "Despoina Paschalidou",
+          "Simon Gerstenecker",
+          "German Ros",
+          "Jose M. Alvarez"
+        ],
+        "published": "2026-09-07T06:32:55Z",
+        "updated": "2026-09-07T06:32:55Z",
+        "abstract": "Reasoning is a promising route to the generalization that autonomous driving requires in the long tail, as it can infer how the elements of a scene depend on one another and traverse those dependencies to conclusions beyond what is observed. Yet it is hard to tell whether a model's conclusions follow the scene's dependencies, because no driving representation makes them explicit enough to test against. Text-based reasoning traces lack spatio-temporal grounding, spatio-temporal scene graphs lack causal links, and reasoning annotations at scale are increasingly model-generated and hard to verify. To this end, we introduce CASCADE (Causal Spatio-Temporal Analysis of Driving Environments), which encompasses two components: (1) a structured scene representation for reasoning in driving scenes and (2) a human-annotated dataset built on it. For every actor that interacts with the ego vehicle, the CASCADE representation records frame-by-frame, for as long as the actor is visible, what action is taken, where it occurs, and how it depends on the actions and states of others. The resulting structure makes reasoning predictions machine-verifiable: they can be scored against it element by element, without relying on (M)LLM judges. The CASCADE dataset provides comprehensive human annotations for 2,066 driving clips of the PhysicalAI dataset, with over 34K elements that establish the spatio-temporal and causal context of each scene, including 8.6K time-stamped ego and agent actions, 3.7K causal links and 2.9K potential influences, and 6.1K annotations for agents, objects, traffic lights, and environments. Being entirely human-annotated, CASCADE provides the reference for this comparison: benchmarking the reasoning abilities of Physical AI models, and verifying the quality of automatically generated reasoning labels. The CASCADE dataset is available at https://huggingface.co/datasets/nvidia/cascade."
+      },
+      "hash": "64c0a1727a56120ed252691d58a4c847ed5914200d7d3ba71112c8ff52e1aef2",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07095": {
+      "entry": {
+        "arxiv_id": "2609.07095",
+        "version": 1,
+        "title": "Risk Is Not Review Value: Wrong-Answer Exposure Under Bounded Review Budgets",
+        "authors": [
+          "SangJin Park",
+          "Myungsub Choi",
+          "Jineok Kim",
+          "Minseung Kang"
+        ],
+        "published": "2026-09-07T06:33:04Z",
+        "updated": "2026-09-07T06:33:04Z",
+        "abstract": "LLM assistants often produce more answers than humans can review before users see them. Most evaluations ask whether an answer is wrong, unsupported, or low-confidence. Bounded review budgets instead ask which answers should be checked first under a fixed review budget. Risk alone is not enough: a high-risk answer may be hard to repair, while a moderately risky answer may be directly correctable from available evidence. For generated-answer evaluation, we model review prioritization as exposure reduction, where review value combines estimated wrongness, intervention affordance, impact, and cost. We evaluate review queues with Wrong-Answer Exposure Ratio (WAER), the fraction of wrong answers left unreviewed, and post-repair residual exposure (PRRE), the fraction still exposed after deterministic benchmark-supported repairs. PRRE uses repairability rules that do not numerically reuse the affordance scores used for ranking. On a 720-item TAT-QA/SciFact stress benchmark, review-value ranking keeps answer-level WAER nearly unchanged at 20% budget (0.605 vs. 0.600) but lowers PRRE from 0.881 to 0.716. These results show that trustworthy LLM evaluation should measure not only error detection, but also how limited review capacity reduces exposed wrong answers.",
+        "comment": "Accepted at SeT-LLM 2026 Workshop, KDD 2026"
+      },
+      "hash": "c6077cd6621e8f1a4c3a44e4cf739228fa6e2f1156d25085aaca87e375aa4221",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07135": {
+      "entry": {
+        "arxiv_id": "2609.07135",
+        "version": 1,
+        "title": "NutriBench-Kitchen: Benchmarking Embodied AI for Nutrition Management",
+        "authors": [
+          "Yulin Wei",
+          "Xiangchen Wang",
+          "Jianhui Pan",
+          "Jinyu Xiao",
+          "Zheng Tan",
+          "Ruozai Tian",
+          "Guanhua Chen",
+          "Feng Zheng"
+        ],
+        "published": "2026-09-07T07:34:33Z",
+        "updated": "2026-09-07T07:34:33Z",
+        "abstract": "An embodied kitchen assistant must do more than recognize food in isolated frames. It must track ingredient states over time and integrate visual observations with recipe and nutritional knowledge to support constraint-aware decision-making. We formalize this capability as \\emph{Embodied Nutrition Management}: perceiving nutrition-relevant events, maintaining a persistent food state, and using it for knowledge-grounded planning. Existing benchmarks evaluate static food understanding or embodied cooking actions, but do not measure whether an agent can continuously update and use nutrition-relevant states in dynamic kitchens. To fill this gap, we introduce \\textbf{NutriBench-Kitchen}, a benchmark containing 1,500 manually verified question--answer pairs from 160 cooking videos. It covers five task families: Ingredient Entry, Memory Management, Recipe Query, Long-Term Planning, and Short-Term Planning, spanning food-state construction, maintenance, knowledge retrieval, and decision-making across different planning horizons. Evaluations of proprietary and open-source large vision-language models reveal a substantial gap from human performance, particularly in quantitative ingredient estimation, long-term state tracking, and reasoning under interacting constraints. We further introduce \\textbf{Nutri-Vgent}, a diagnostic long-video agent with separate episodic, food-state, and recipe memories. Its consistent improvements demonstrate the value of explicit state representations and structured memory for nutrition management. Together, NutriBench-Kitchen and Nutri-Vgent provide a testbed for studying persistent state tracking and knowledge-grounded reasoning in dynamic kitchens. Code is available at https://github.com/V1ol1n/NutriBench-Kitchen.",
+        "comment": "17 pages, 4 figures, ECCV"
+      },
+      "hash": "f868da124e975e78e5952e3538655d3151846af023345363d00f4d9b3a703d81",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07151": {
+      "entry": {
+        "arxiv_id": "2609.07151",
+        "version": 1,
+        "title": "Vishing-Tactics-Bench: Forecasting Exploitation Trajectories in Voice Phishing Calls",
+        "authors": [
+          "Jeongmin Lee",
+          "Dongmyung Sul",
+          "Seung Yun",
+          "Jinxia Huang"
+        ],
+        "published": "2026-09-07T07:48:42Z",
+        "updated": "2026-09-07T07:48:42Z",
+        "abstract": "Voice phishing (vishing) unfolds in real time; by the time a call has ended and post-hoc classification is possible, the harm has already been done. The more actionable question is which concrete harm (Information Gathering or Financial Exploitation) an ongoing call is tactically progressing toward. We present Vishing-Tactics-Bench, a benchmark grounded in Endsley's situation-awareness (SA) framework that recasts vishing defense from after-the-fact fraud classification to harm projection: predicting at each turn whether the call will reach either terminal harm. We adapt MITRE ATT&CK to vishing as a 6-tactic taxonomy (Vishing-Tactics) and label 35,340 scammer utterances across 5,645 synthetic Chinese calls. We define Exploitation Trajectory Forecasting, a survival-style protocol over the two terminal harms with three metrics: AP@k, C-index, and divergence error. Baselines ranging from a Markov heuristic to fine-tuned LLMs show that the tactical trajectory serves as an interpretable representation of the call's tactical state, supporting harm-specific forecasting, which can then be used for the downstream application of intervention selection; a stratified lead-time analysis at a tight false-alarm budget further identifies at what point in a call the trajectory signal yields early warning.",
+        "comment": "16 pages, 3 figures. Accepted to Findings of EMNLP 2026"
+      },
+      "hash": "ebfae5a963729da69a7988b998a854f3c23c29d8e5645c4b43ac41f6f5e57039",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07153": {
+      "entry": {
+        "arxiv_id": "2609.07153",
+        "version": 1,
+        "title": "FreqBLiMP: Frequency-Controlled Minimal Pairs Reveal Robustness and Fragility of LLMs Under Lexical Rarity",
+        "authors": [
+          "Tyrone White",
+          "Yuki Arase"
+        ],
+        "published": "2026-09-07T07:49:45Z",
+        "updated": "2026-09-07T07:49:45Z",
+        "abstract": "Minimal-pair benchmarks such as BLiMP evaluate linguistic knowledge by testing whether language models (LMs) prefer acceptable sentences over minimally different unacceptable ones. However, these benchmarks largely ignore lexical frequency variation, despite lexical frequency being a pervasive and highly skewed property of natural language use. Consequently, existing evaluations do not test whether grammatical preferences remain stable when contrasts involve rare lexical items. We introduce FreqBLiMP, a frequency-controlled extension of BLiMP that regenerates all 67 paradigms under explicit Zipf-frequency regimes while preserving each minimal-pair's grammatical contrast. Evaluating multiple open-weight LLM families across scales, we find that decreasing lexical frequency produces a consistent, monotonic decrease in sentence likelihood, but only a modest reduction in overall contrastive acceptability accuracy. However, this aggregate stability masks substantial variation across linguistic phenomena, with LLMs remaining robust on overt morphosyntactic generalization while degrading on phenomena that require lemma-specific information.",
+        "comment": "Accepted to EMNLP 2026 Main Conference. Repo link: https://github.com/TimeTravelerTy/freqblimp-generation"
+      },
+      "hash": "faaa22351dcda08df39a02415a78ec236cd751b8a4f759736d3b32d6173a5394",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07160": {
+      "entry": {
+        "arxiv_id": "2609.07160",
+        "version": 1,
+        "title": "In-Place Instruction Following in Diffusion Language Models",
+        "authors": [
+          "Zheng Nie",
+          "Zherui Li",
+          "Jiaming Zhang",
+          "Kun Wang",
+          "Zhenhong Zhou",
+          "Yufei Guo"
+        ],
+        "published": "2026-09-07T07:55:40Z",
+        "updated": "2026-09-07T07:55:40Z",
+        "abstract": "Diffusion Large Language Models (dLLMs) generate text via bidirectional iterative denoising, naturally supporting user-specified constraints anchored at arbitrary output positions, a paradigm known as In-place Prompting (IPP). We formalize this as the In-place Instruction Following (IIF) task and construct IIF-Bench, a hierarchical benchmark spanning literal, style, and discourse-function constraints, paired with a rubric-based local-global evaluation protocol. An inference-time attention-bias probe suggests that vanilla dLLMs often under-prioritize constraint spans during denoising. We then propose GRAFT, an IPP-oriented post-training framework combining constraint-aware SFT and preference optimization. On four representative dLLMs, GRAFT raises the average IIF score from 57.75 to 73.10 (+15.35 points), with absolute gains of 15.91 and 15.57 points on literal and discourse-function constraints, while preserving general generation ability."
+      },
+      "hash": "348fd1db15dd3cd4c3096584be1ed8e3842abdbb16e0adb3526643477f9b612f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07162": {
+      "entry": {
+        "arxiv_id": "2609.07162",
+        "version": 1,
+        "title": "The Oversight Gap: What LLM Safety Monitors Miss, and Why It Is Not Capability",
+        "authors": [
+          "Xin Xu"
+        ],
+        "published": "2026-09-07T07:57:28Z",
+        "updated": "2026-09-07T07:57:28Z",
+        "abstract": "Several properties safety monitors are asked to certify, among them cross-tenant noninterference, sandbagging and evaluation awareness, are 2-safety hyperproperties, witnessed only by two executions. The standard consequence is a binary impossibility: one trace cannot decide them. We replace the binary with a measurement. A tight bound puts the balanced accuracy of any single-trace monitor at $\\tfrac12+\\tfrac12\\,TV(P_0,P_1)$, turning undecidability into a graded detectability frontier and defining an oversight gap: a monitor's shortfall below it. On a leak family with closed-form $TV$, nine LLM monitors are optimal at $TV=0$ but capture little signal as $TV$ grows; at $TV=1$, where a 20-line membership check scores $100\\%$, they average $60.9\\%$. That shortfall is mostly not capability: naming what to check closes $61\\%$ of it while leaving the $TV=0$ control at chance. The same split runs through a $2{\\times}2$ factorial: an imagined second run leaves monitors at chance ($50.4\\%$) while the same rule on an executed second run reaches $90.0\\%$, and a stored oracle without a comparison procedure yields only $68.2\\%$. Information and procedure are each necessary and neither is capability. Under nondeterminism, replay tracks a closed-form $k$-replay curve only under the right projection, and a projection frontier shows the resulting dilemma is forced: narrow misses $98.6\\%$ of off-channel leaks, broad flags $75.7\\%$ of clean traffic, and attainable accuracy decays like $1/(qm)$ in the benign-variation rate and the channel count. Finally, two frontier LLM judges certified an earlier version of our own benchmark as sound while a sign test found a directional bias ($p=2.7\\times10^{-5}$) that invalidated three of our findings. Construction validity for hyperproperty benchmarks should be proved mechanically, not audited by models.",
+        "comment": "11 pages, 3 figures. Under review"
+      },
+      "hash": "d0bb15b1faaceebe827f69efc89c52c888609306004e4c38cb22234f0de28fc6",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2608.29387": {
+      "entry": {
+        "arxiv_id": "2608.29387",
+        "version": 2,
+        "title": "EvoGenUI-Bench: Evaluating LLMs as Multi-Turn Generative UI Assistants",
+        "authors": [
+          "Yue Peng",
+          "Lanke Xia",
+          "Zihan Wang",
+          "Jiahao Ye",
+          "Ke Ning",
+          "Hongyi Wen"
+        ],
+        "published": "2026-08-29T17:54:02Z",
+        "updated": "2026-09-07T08:21:41Z",
+        "abstract": "Large language models can generate interactive web interfaces, but reliable generative UI requires maintaining an executable artifact as user requests evolve. We introduce EvoGenUI-Bench, a benchmark for multi-turn interface maintenance comprising 150 five-turn tasks and 750 turns across three scenarios: information presentation, executable interaction, and tool-grounded external state. We execute generated artifacts in a browser and evaluate them using screenshots, source and DOM evidence, actor traces, and runtime logs. Beyond turn-level and episode-level success, we measure cross-turn retention with Adjacent Pass Retention. Across eight models, even the strongest achieves 74.9% Turn Pass while completing only 37.3% of five-turn episodes; APR further falls to 52.4% on tool-grounded tasks. Diagnostic analysis shows that presentation failures center on information architecture, interaction failures on derived-state propagation and affordance binding, and tool-grounded failures additionally involve external-state grounding and requirement decomposition. These results reframe generative UI evaluation from judging isolated outputs to testing whether interface behavior, derived state, external state, and assistant claims remain synchronized as the artifact evolves.",
+        "comment": "Accepted to the 2026 Conference on Empirical Methods in Natural Language Processing (EMNLP 2026)"
+      },
+      "hash": "9bf92f1a5f0c6b4f7ccc1951739fab352d009a48116d41eca7eefc9e86644bfb",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.07229": {
+      "entry": {
+        "arxiv_id": "2609.07229",
+        "version": 1,
+        "title": "Proximity-CLIP: Text-Guided Semantic Proximity Learning for Zero-Shot Anomaly Detection",
+        "authors": [
+          "Manwen Yang",
+          "Leqian Ding",
+          "Yu Guo",
+          "Fei Wang"
+        ],
+        "published": "2026-09-07T08:48:27Z",
+        "updated": "2026-09-07T08:48:27Z",
+        "abstract": "Vision-language models offer a promising approach for zero-shot anomaly detection (ZSAD). However, due to object-centric bias, normal and anomalous text prototypes exhibit a high semantic overlap. While enforcing strict orthogonality between them improves discriminability, mapping highly contiguous visual inputs onto drastically orthogonal prototypes introduces a geometric dilemma, disrupting the pre-trained structural continuity. To address this problem, we propose Proximity-CLIP, a framework that visually calibrates the semantic margin to guide visual adaptation. First, we introduce a visually-calibrated semantic proximity learning mechanism that uses a bounded dynamic regularization to learn an appropriate semantic margin, ensuring discriminative separation while preserving structural alignment. Second, we design an Anomaly Query Module (AQM) driven by these text priors. Using the calibrated anomalous prototype as a semantic query, the AQM actively retrieves localized defect cues from contextual visual patches, mitigating the dilution of subtle anomalies during global pooling. Extensive experiments demonstrate that Proximity-CLIP outperforms current state-of-the-art methods across multiple ZSAD benchmarks with minimal architectural modifications.",
+        "comment": "Accepted to ECCV 2026. Including supplementary material"
+      },
+      "hash": "cbfa1f97851c311ba41af04089f4405b417b05023604c03a1de63a32c1c4d7d0",
       "status": "queued",
       "attempts": 0,
       "error": null,
