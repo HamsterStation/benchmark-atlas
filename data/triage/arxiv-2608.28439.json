@@ -5,20 +5,19 @@
   "version": 1,
   "title": "Fidelity Is Not Enough: Dispatch-Level Instrumentation for Agentic Datasheet Extraction",
   "paperUrl": "https://arxiv.org/abs/2608.28439v1",
-  "assessedAt": "2026-09-10T05:39:06Z",
-  "policyVersion": 1,
-  "policyHash": "acbeaa006d93730b60dae78a1d0bb3f46ae75bfd69a64c68da6ed7bc891a1091",
+  "assessedAt": "2026-09-11T14:28:13Z",
+  "policyVersion": 4,
+  "policyHash": "e009e39b0ca1a30897caeeff8ce5943cc3cbbac1b265f32ecb5342d2e279cfd5",
   "materialHash": "147ebe359733d62a1edf719082b8270e30a18c6c02e097bc1225f27f43a6fdcf",
   "materialScope": "abstract_and_arxiv_metadata",
   "decision": "excluded",
-  "score": 3,
+  "score": 4,
   "scoreMax": 11,
   "reasons": [
     "未找到 LLM / Agent 评测对象与基准主题的共同证据"
   ],
   "missingSignals": [
     "明确提出新的评测资料或框架",
-    "报告基线或多个模型的评测",
     "材料中提供代码或数据链接（未核验内容）",
     "给出任务规模或覆盖范围",
     "讨论泛化、污染、稳健性或人工核验"
@@ -37,6 +36,14 @@
       "label": "描述评分指标或评测协议",
       "weight": 2,
       "excerpt": "Across three deployed model stacks (one destabilised by its serving stack, not by any capability gap) the tool layer buys portability and observability rather than accuracy, and earns its premium only once a document outgrows the context window.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2608.28439v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "The detector raises no flag on 207 clean fidelity-passing extractions across three model families, and recovers all 50 planted faults that withhold exactly the tools its rules check.",
       "source": "abstract",
       "sourceUrl": "https://arxiv.org/abs/2608.28439v1"
     }

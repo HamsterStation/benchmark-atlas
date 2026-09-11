@@ -5,20 +5,19 @@
   "version": 1,
   "title": "Design-to-Plan: A Large Language Model-Based Multi-Agent Framework for Manufacturing Process Planning from 3D CAD Models and 2D Engineering Drawings",
   "paperUrl": "https://arxiv.org/abs/2608.24039v1",
-  "assessedAt": "2026-09-10T05:39:06Z",
-  "policyVersion": 1,
-  "policyHash": "acbeaa006d93730b60dae78a1d0bb3f46ae75bfd69a64c68da6ed7bc891a1091",
+  "assessedAt": "2026-09-11T14:28:13Z",
+  "policyVersion": 4,
+  "policyHash": "e009e39b0ca1a30897caeeff8ce5943cc3cbbac1b265f32ecb5342d2e279cfd5",
   "materialHash": "c7298f90f1f6c554aa2d85a32b806248f1b08c0e3cd473812e7a433c6213fd9e",
   "materialScope": "abstract_and_arxiv_metadata",
   "decision": "excluded",
-  "score": 3,
+  "score": 4,
   "scoreMax": 11,
   "reasons": [
     "材料表明提出方法并使用已有基准评估，未见新基准贡献"
   ],
   "missingSignals": [
     "明确提出新的评测资料或框架",
-    "报告基线或多个模型的评测",
     "材料中提供代码或数据链接（未核验内容）",
     "给出任务规模或覆盖范围",
     "讨论泛化、污染、稳健性或人工核验"
@@ -28,7 +27,7 @@
       "signal": "task_definition",
       "label": "描述任务、问题或评测环境",
       "weight": 1,
-      "excerpt": "The parallel architecture achieves 100% success across downstream agents, Tool F1 scores of 95.9%-97.6%, 90% source detection accuracy in conflict analysis, and a 60%-68% reduction in token usage for key planning tasks.",
+      "excerpt": "However, existing approaches focus on isolated subtasks, such as feature recognition, drawing interpretation, or tool selection, and struggle to support the full reasoning chain from design artifacts to process plans.",
       "source": "abstract",
       "sourceUrl": "https://arxiv.org/abs/2608.24039v1"
     },
@@ -37,6 +36,14 @@
       "label": "描述评分指标或评测协议",
       "weight": 2,
       "excerpt": "The parallel architecture achieves 100% success across downstream agents, Tool F1 scores of 95.9%-97.6%, 90% source detection accuracy in conflict analysis, and a 60%-68% reduction in token usage for key planning tasks.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2608.24039v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "The framework is evaluated using 300 benchmark cases across three downstream ReAct-enabled agents, plus separate evaluations of CAD feature recognition, drawing analysis, and 2D-3D context fusion.",
       "source": "abstract",
       "sourceUrl": "https://arxiv.org/abs/2608.24039v1"
     }

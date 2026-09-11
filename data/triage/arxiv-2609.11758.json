@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2609.11758",
+  "arxivId": "2609.11758",
+  "version": 1,
+  "title": "RAG-Safety-Bench: Reliable Evaluation of Retrieval-Augmented LLM Safety",
+  "paperUrl": "https://arxiv.org/abs/2609.11758v1",
+  "assessedAt": "2026-09-11T14:28:13Z",
+  "policyVersion": 4,
+  "policyHash": "e009e39b0ca1a30897caeeff8ce5943cc3cbbac1b265f32ecb5342d2e279cfd5",
+  "materialHash": "0b460750a9d7f0d8edd4a93b2d45c09f4586ce60fed2b229abf377811675b64d",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 5,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "描述评分指标或评测协议",
+    "材料中提供代码或数据链接（未核验内容）",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "benchmark_contribution",
+      "label": "明确提出新的评测资料或框架",
+      "weight": 3,
+      "excerpt": "We introduce RAG-Safety-Bench, a benchmark to measure the safety impact of RAG on LLM models.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.11758v1"
+    },
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "By removing the confounding effect of retriever quality, and cleanly separating the problem into four conditions -- non-RAG, RAG with an oracle document containing the answer to the harmful request, RAG with documents related to the harmful request but without the specific answer, and RAG with random, safe documents -- the benchmark isolates the impacts of different factors in the observed safety degradation.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.11758v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "We report results across five open-source LLMs, showing an inverse relationship between benign and unsafe capability, strong evidence that baseline safety guardrails do not lead to downstream safety guarantees in the RAG case, and model-specific support for previous findings that even benign documents can lead to unsafe generation in retrieval-enabled systems.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.11758v1"
+    }
+  ],
+  "resourceCandidates": [],
+  "declaredVenue": "Proceedings of EMNLP 2026 (main conference)",
+  "venueVerified": false,
+  "qualityVerified": false
+}
