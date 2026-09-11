@@ -16,6 +16,18 @@ def digest(result, limit=2):
              f"规则变更复筛 {result.get('reassessed', 0)} 篇（与论文版本更新分开计数）。",
              f"证据达标 {counts.get('priority_review', 0)} / 待补充证据 {counts.get('needs_evidence', 0)} / 范围排除 {counts.get('excluded', 0)}。",
              f"本轮保存草稿 {len(result.get('changes', []))}；剩余队列 {result.get('queue_remaining', 0)}。", ""]
+    if result.get("errors"):
+        lines += ["### 失败原因", ""]
+        for error in result["errors"]:
+            detail = f"{error['stage']}: {error['type']}"
+            if error.get("http_status"):
+                detail += f" / HTTP {error['http_status']}"
+            if error.get("retry_after"):
+                detail += f" / 最早重试 {error['retry_after']}"
+            lines += ["- " + safe_text(detail)]
+        lines += ["", "进度与队列已保留；本轮不发布，等待补跑。", ""]
+    if not result.get("collection_complete", True) and not result.get("errors"):
+        lines += ["分页尚未完成；本轮不发布，下次从保存的游标继续。", ""]
     if result.get("selection_policy"):
         policy = result["selection_policy"]
         windows = " → ".join(str(day) + " 天" for day in policy["freshness_days"])

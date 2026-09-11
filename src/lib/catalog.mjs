@@ -7,6 +7,14 @@ export const taxonomy = JSON.parse(fs.readFileSync(path.join(root, 'config/taxon
 export const publication = JSON.parse(fs.readFileSync(path.join(root, 'config/publication.json'), 'utf8'));
 const { scope } = JSON.parse(fs.readFileSync(path.join(root, 'config/quality.json'), 'utf8'));
 const excludedTopic = new RegExp(scope.excluded_topic_pattern, 'i');
+const collectionState = JSON.parse(fs.readFileSync(path.join(root, 'automation/state.json'), 'utf8'));
+const publishableAt = Object.hasOwn(collectionState, 'last_publishable_collection_at')
+  ? collectionState.last_publishable_collection_at : collectionState.last_successful_collection_at;
+
+export function isDraftReady(paper, cutoff) {
+  const generatedAt = Date.parse(paper.provenance.generatedAt);
+  return Number.isFinite(generatedAt) && Number.isFinite(Date.parse(cutoff)) && generatedAt <= Date.parse(cutoff);
+}
 
 export function inPublicationScope(paper) {
   return Boolean(paper.publishedAt && Number(paper.publishedAt.slice(0, 4)) >= scope.min_published_year
@@ -29,7 +37,7 @@ export function loadCatalog(mode = process.env.PUBLISH_MODE || publication.mode)
   const drafts = validateCollection(readDirectory('data/drafts'), { drafts: true });
   const ids = new Set(curated.map(p => p.id));
   // A newer machine version never replaces a curated record, even in auto mode.
-  const automatic = mode === 'auto' ? drafts.filter(p => !ids.has(p.id) && p.publication === 'listed' && p.summaryZh && ['introduces_benchmark', 'evaluation_framework'].includes(p.role)).map(p => ({ ...p, review: { status: 'auto_unreviewed', reviewer: null, reviewedAt: null } })) : [];
+  const automatic = mode === 'auto' ? drafts.filter(p => !ids.has(p.id) && p.publication === 'listed' && p.summaryZh && isDraftReady(p, publishableAt) && ['introduces_benchmark', 'evaluation_framework'].includes(p.role)).map(p => ({ ...p, review: { status: 'auto_unreviewed', reviewer: null, reviewedAt: null } })) : [];
   // Apply current scope to restored drafts too, so old state cannot republish removed topics.
   return [...curated.filter(p => p.publication === 'listed'), ...automatic].filter(inPublicationScope);
 }

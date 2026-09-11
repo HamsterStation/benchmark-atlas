@@ -1,7 +1,8 @@
 name: Collect arXiv paper drafts
 on:
   schedule:
-    - cron: '20 2 * * *'
+    # Beijing 10:20 primary; 11:20, 14:20 and 18:20 recover missed/failed runs.
+    - cron: '20 2,3,6,10 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -19,8 +20,27 @@ concurrency:
   group: benchmark-atlas-production
   cancel-in-progress: false
 jobs:
-  collect:
+  schedule-check:
     if: (github.event_name == 'workflow_dispatch' || vars.COLLECTION_ENABLED == 'true') && github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    outputs:
+      action: ${{ steps.gate.outputs.action }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - id: gate
+        name: Check durable daily progress
+        run: python scripts/schedule_gate.py
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PUBLISH_MODE: ${{ inputs.mode || vars.PUBLISH_MODE || 'review' }}
+  collect:
+    needs: schedule-check
+    if: needs.schedule-check.outputs.action != 'skip'
     runs-on: ubuntu-latest
     timeout-minutes: 40
     permissions:
@@ -56,6 +76,7 @@ jobs:
         run: python scripts/github_sync.py restore
       - name: Collect
         id: collect
+        if: needs.schedule-check.outputs.action == 'collect'
         continue-on-error: true
         env:
           MODEL_API_KEY: ${{ secrets.MODEL_API_KEY }}
@@ -96,6 +117,9 @@ jobs:
       - name: Create or update one review PR
         if: env.DRY_RUN != 'true' && env.PUBLISH_MODE == 'review'
         run: python scripts/github_sync.py review
+      - name: Record completed review publication
+        if: env.DRY_RUN != 'true' && env.PUBLISH_MODE == 'review'
+        run: python scripts/github_sync.py review-complete
       - name: Set actual Pages paths
         if: env.DRY_RUN != 'true' && env.PUBLISH_MODE == 'auto' && vars.PAGES_ENABLED == 'true'
         run: python scripts/pages_env.py

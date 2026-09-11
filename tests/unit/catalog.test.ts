@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { loadCatalog, readDirectory, inPublicationScope } from '../../src/lib/catalog.mjs';
+import { loadCatalog, readDirectory, inPublicationScope, isDraftReady } from '../../src/lib/catalog.mjs';
 import { validatePaper, validateCollection } from '../../src/lib/validation.mjs';
 import { matches, sortPapers } from '../../src/lib/filter';
 import { renderNote } from '../../src/lib/notes.mjs';
@@ -21,6 +21,15 @@ test('publication scope blocks restored medical drafts and old papers with new v
   assert.equal(inPublicationScope({ ...sample(), title: 'Biomedical Ontology Normalization with LLMs' }), false);
   assert.equal(inPublicationScope({ ...sample(), taskFormat: '使用 Agent 进行临床诊断。' }), false);
   assert.equal(inPublicationScope({ ...sample(), summaryZh: '通用评测，可能应用于医学或其他领域。' }), true);
+});
+test('a code deployment cannot publish drafts from a failed collection', () => {
+  const paper = sample();
+  paper.provenance.generatedAt = '2026-09-11T02:46:36Z';
+  assert.equal(isDraftReady(paper, '2026-09-10T07:40:34Z'), false);
+  assert.equal(isDraftReady(paper, null), false);
+  assert.equal(isDraftReady(paper, 'invalid'), false);
+  assert.equal(isDraftReady(paper, '2026-09-11T02:46:36Z'), true);
+  assert.equal(isDraftReady(paper, '2026-09-11T04:00:00Z'), true);
 });
 test('schema rejects missing fields, invalid dates and unsafe URLs', () => {
   for (const change of [(p: any) => { delete p.title; }, (p: any) => { p.checkedAt = '2026-02-30'; }, (p: any) => { p.officialCode = 'javascript:alert(1)'; }, (p: any) => { p.targets = ['imagined']; }]) {

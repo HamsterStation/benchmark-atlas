@@ -13,6 +13,7 @@ import sys
 import subprocess
 import time
 from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode, urlparse
 from urllib.request import Request, build_opener, HTTPRedirectHandler
@@ -72,6 +73,25 @@ class NoRedirect(HTTPRedirectHandler):
         raise ValueError("Redirect refused")
 
 
+class ArxivCooldown(Exception):
+    def __init__(self, status, retry_at):
+        super().__init__("arXiv requests deferred until cooldown expires")
+        self.status, self.retry_at = status, retry_at
+
+
+def retry_deadline(header, seconds, now):
+    fallback = now + timedelta(seconds=seconds)
+    if header.strip().isdigit():
+        return max(fallback, now + timedelta(seconds=int(header)))
+    try:
+        value = parsedate_to_datetime(header)
+        if value.tzinfo is None:
+            value = value.replace(tzinfo=timezone.utc)
+        return max(fallback, value)
+    except (TypeError, ValueError, OverflowError):
+        return fallback
+
+
 class HttpClient:
     def __init__(self, config, sleeper=time.sleep):
         self.config, self.sleep = config, sleeper
@@ -94,6 +114,11 @@ class HttpClient:
                     raise ValueError("API response exceeds size limit")
                 return data
             except (HTTPError, URLError, TimeoutError, ConnectionError, RemoteDisconnected, IncompleteRead) as error:
+                if isinstance(error, HTTPError) and error.code == 429:
+                    deadline = retry_deadline((error.headers or {}).get("Retry-After", ""),
+                                              self.config.get("rate_limit_cooldown_seconds", 900), datetime.now(timezone.utc))
+                    # Stop all queries on 429; honor long Retry-After values across runs.
+                    raise ArxivCooldown(429, deadline.replace(microsecond=0).isoformat().replace("+00:00", "Z")) from None
                 retryable = not isinstance(error, HTTPError) or error.code == 429 or error.code >= 500
                 if not retryable or attempt == self.config["request_retries"]:
                     raise
@@ -243,6 +268,8 @@ class Collector:
         for key in ["max_pages_per_run", "max_queue_per_run", "timeout_seconds", "max_response_bytes", "model_max_input_chars"]:
             if self.config[key] <= 0:
                 raise ValueError(f"{key} must be positive")
+        if self.config.get("rate_limit_cooldown_seconds", 900) < 60:
+            raise ValueError("Rate-limit cooldown must be at least 60 seconds")
         self.dry_run, self.now = dry_run, now or utcnow()
         self.remote_checkpoints = remote_checkpoints
         if remote_checkpoints and self.root.resolve() != ROOT.resolve():
@@ -250,6 +277,7 @@ class Collector:
         self.state_path = self.root / "automation/state.json"
         self.state = read_json(self.state_path, {"schema_version": 1, "queries": {}, "queue": {}, "seen": {}, "model_usage": {}, "last_successful_collection_at": None})
         self.previous_success = self.state["last_successful_collection_at"]
+        self.state.setdefault("last_publishable_collection_at", self.previous_success)
         if self.state["schema_version"] != 1:
             raise ValueError("Unsupported state version")
         self.client = client or HttpClient(self.config)
@@ -512,19 +540,40 @@ class Collector:
     def run(self, ids=None):
         completed = []
         sources = [ids] if ids else self.config["queries"]
+        retry_at = self.state.get("arxiv_retry_after")
+        if retry_at and parse_time(retry_at) > parse_time(self.now):
+            sources = []
+            self.counts["failed"] += 1
+            self.errors.append({"stage": "arxiv", "type": "ArxivCooldown", "http_status": 429, "retry_after": retry_at})
         for source in sources:
             try:
                 completed.append(self.collect_ids(source) if ids else self.collect_query(source))
+                self.state.pop("arxiv_retry_after", None)
             except Exception as error:
                 completed.append(False)
                 self.counts["failed"] += 1
-                self.errors.append({"stage": "arxiv", "type": type(error).__name__})
+                detail = {"stage": "arxiv", "type": type(error).__name__}
+                if isinstance(error, HTTPError):
+                    detail["http_status"] = error.code
+                if isinstance(error, ArxivCooldown):
+                    self.state["arxiv_retry_after"] = error.retry_at
+                    detail.update(http_status=error.status, retry_after=error.retry_at)
+                self.errors.append(detail)
                 self.save()
-        self.process_queue()
+                if isinstance(error, ArxivCooldown):
+                    break
         collection_complete = bool(completed) and all(completed)
         if collection_complete:
+            self.process_queue()
             self.state["last_successful_collection_at"] = self.now
             self.save()
+        if collection_complete and not self.counts["failed"]:
+            self.state["last_publishable_collection_at"] = self.now
+        self.state["last_collection_attempt"] = {"started_at": self.now, "collection_complete": collection_complete,
+                                                  "failed": self.counts["failed"], "errors": self.errors,
+                                                  "run_url": (f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}"
+                                                              if os.getenv("GITHUB_REPOSITORY") and os.getenv("GITHUB_RUN_ID") else None)}
+        self.save()
         return {"dry_run": self.dry_run, "collection_complete": collection_complete, **self.counts,
                 "queue_remaining": len(self.state["queue"]), "last_successful_collection_at": self.previous_success if self.dry_run else self.state["last_successful_collection_at"],
                 "preview_collected_at": self.now if self.dry_run and collection_complete else None,
@@ -549,7 +598,7 @@ def main():
     if args.report:
         atomic_json(args.report, result)
     print(json.dumps(result, ensure_ascii=False, indent=2))
-    return 1 if result["failed"] else 0
+    return 1 if result["failed"] or not result["collection_complete"] else 0
 
 
 if __name__ == "__main__":

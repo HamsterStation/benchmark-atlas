@@ -73,6 +73,11 @@ class GitHubSyncTests(unittest.TestCase):
         self.invoke("restore")
         self.assertEqual(read_json(self.repo / "automation/deployment.json")["commit"], "a" * 40)
         self.assertIsNotNone(read_json(self.repo / "automation/deployment.json")["last_successful_deployment_at"])
+        self.invoke("review-complete")
+        self.invoke("restore")
+        restored = read_json(self.repo / "automation/state.json")
+        self.assertIsNotNone(restored["last_review_publication_at"])
+        self.assertEqual(restored["queue"], state["queue"])
 
     def test_review_creates_branch_without_touching_main_or_notes(self):
         atomic_json(self.repo / "data/drafts/arxiv-2609.00001.json", {"test_only": True})

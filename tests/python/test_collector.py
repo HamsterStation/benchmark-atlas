@@ -6,11 +6,12 @@ import shutil
 import tempfile
 import unittest
 from urllib.parse import parse_qs, urlparse
-from urllib.error import URLError
+from urllib.error import URLError, HTTPError
+from datetime import datetime, timezone
 from unittest.mock import patch, MagicMock
 from http.client import RemoteDisconnected, IncompleteRead
 
-from collector.collect import Collector, ROOT, HttpClient, atomic_json, base_id, parse_feed, read_json, metadata_record
+from collector.collect import Collector, ROOT, HttpClient, atomic_json, base_id, parse_feed, read_json, metadata_record, ArxivCooldown, retry_deadline
 
 
 def entry(aid="2609.00001", version=1):
@@ -136,9 +137,53 @@ class CollectorTests(unittest.TestCase):
         self.assertEqual((failed["failed"], failed["queue_remaining"]), (1, 1))
         self.assertIsNone(read_json(self.root / "data/drafts/arxiv-2609.00001.json")["summaryZh"])
         self.assertIsNotNone(read_json(self.root / "automation/state.json")["last_successful_collection_at"])
+        self.assertIsNone(read_json(self.root / "automation/state.json")["last_publishable_collection_at"])
         model = Model()
         result = self.collector([entry()], model=model, now="2026-09-11T03:00:00Z").run()
         self.assertEqual((result["queue_remaining"], model.calls), (0, 1))
+        self.assertEqual(read_json(self.root / "automation/state.json")["last_publishable_collection_at"], "2026-09-11T03:00:00Z")
+
+    def test_arxiv_outage_or_incomplete_paging_does_not_spend_model_budget(self):
+        records = [entry(f"2609.0000{i}") for i in range(1, 7)]
+        model = Model()
+        failed = self.collector(client=Pages(records, fail_at=2), model=model).run()
+        self.assertEqual((failed["failed"], model.calls), (1, 0))
+        self.config["max_pages_per_run"] = 1
+        self.collector(records, model=model).run()
+        self.assertEqual(model.calls, 0)
+
+    def test_429_stops_all_queries_and_persists_retry_deadline(self):
+        self.config["queries"] = ["first", "second"]
+        client = MagicMock()
+        client.get.side_effect = ArxivCooldown(429, "2026-09-11T04:00:00Z")
+        result = self.collector(client=client, model=Model(), now="2026-09-11T03:00:00Z").run()
+        self.assertEqual(client.get.call_count, 1)
+        self.assertEqual(result["errors"][0]["http_status"], 429)
+        state = read_json(self.root / "automation/state.json")
+        self.assertEqual(state["arxiv_retry_after"], "2026-09-11T04:00:00Z")
+        self.assertEqual(state["last_collection_attempt"]["failed"], 1)
+        blocked = self.collector(client=client, now="2026-09-11T03:30:00Z").run()
+        self.assertEqual(client.get.call_count, 1)
+        self.assertEqual(blocked["pages"], 0)
+        recovered = self.collector([], now="2026-09-11T04:01:00Z").run()
+        self.assertTrue(recovered["collection_complete"])
+        self.assertNotIn("arxiv_retry_after", read_json(self.root / "automation/state.json"))
+
+    def test_http_rate_limit_does_not_retry_immediately(self):
+        client = HttpClient(self.config, sleeper=lambda _: None)
+        error = HTTPError("https://export.arxiv.org/api/query", 429, "rate limited", {"Retry-After": "3600"}, None)
+        with patch.object(client.opener, "open", side_effect=error) as call:
+            with self.assertRaises(ArxivCooldown) as caught:
+                client.get("https://export.arxiv.org/api/query?search_query=test")
+            self.assertEqual(call.call_count, 1)
+            self.assertEqual(caught.exception.status, 429)
+            self.assertGreater(datetime.fromisoformat(caught.exception.retry_at.replace("Z", "+00:00")), datetime.now(timezone.utc))
+
+    def test_retry_after_numeric_and_http_date_are_not_shortened(self):
+        now = datetime(2026, 9, 11, 3, tzinfo=timezone.utc)
+        self.assertEqual(retry_deadline("3600", 900, now).hour, 4)
+        self.assertEqual(retry_deadline("Fri, 11 Sep 2026 05:00:00 GMT", 900, now).hour, 5)
+        self.assertEqual(retry_deadline("malformed", 900, now).minute, 15)
 
     def test_api_failure_cursor_and_queue_survive(self):
         records = [entry(f"2609.0000{i}") for i in range(1, 5)]

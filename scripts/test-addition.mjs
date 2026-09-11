@@ -44,6 +44,10 @@ try {
   automatic.summaryZh = '【隔离测试，不发布】' + automatic.summaryZh;
   fs.mkdirSync(path.join(sandbox, 'data/drafts'), { recursive: true });
   fs.writeFileSync(path.join(sandbox, 'data/drafts', paperFile), JSON.stringify(automatic));
+  const statePath = path.join(sandbox, 'automation/state.json');
+  const state = JSON.parse(fs.readFileSync(statePath, 'utf8'));
+  state.last_publishable_collection_at = automatic.provenance.generatedAt;
+  fs.writeFileSync(statePath, JSON.stringify(state));
   build('review');
   assert.ok(!JSON.parse(fs.readFileSync(path.join(sandbox, 'dist/search-index.json'))).some(p => p.id === pending.id));
   build('auto');

@@ -87,7 +87,7 @@ def commit_push(directory, branch, message):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=["restore", "persist", "review", "deployment"])
+    parser.add_argument("action", choices=["restore", "persist", "review", "review-complete", "deployment"])
     parser.add_argument("--base", default=os.getenv("DEFAULT_BRANCH", "main"))
     parser.add_argument("--report", type=Path, default=ROOT / "work/collection-report.json")
     args = parser.parse_args()
@@ -100,7 +100,7 @@ def main():
     run(["gh", "auth", "setup-git"])
     with tempfile.TemporaryDirectory(prefix="atlas-sync-") as temp:
         directory = Path(temp) / "repo"
-        if args.action in ["restore", "persist", "deployment"]:
+        if args.action in ["restore", "persist", "review-complete", "deployment"]:
             exists = clone_branch(remote, "atlas-state", directory, allow_new=args.action != "restore")
             if not exists:
                 print("No persisted state branch yet; starting from checked-in initial state.")
@@ -116,6 +116,10 @@ def main():
                 copy_file(ROOT / "automation/state.json", directory / "automation/state.json")
                 copy_drafts(ROOT, directory)
                 copy_triage(ROOT, directory)
+            elif args.action == "review-complete":
+                state = read_json(directory / "automation/state.json")
+                state["last_review_publication_at"] = utcnow()
+                atomic_json(directory / "automation/state.json", state)
             else:
                 atomic_json(directory / "automation/deployment.json", {"last_successful_deployment_at": utcnow(),
                     "run_url": f"https://github.com/{repository}/actions/runs/{os.environ['GITHUB_RUN_ID']}", "commit": os.environ["GITHUB_SHA"]})
