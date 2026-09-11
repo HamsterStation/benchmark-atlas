@@ -12,7 +12,7 @@
       "active": {
         "since": "2026-09-03T07:40:34+00:00",
         "until": "2026-09-11T02:47:03Z",
-        "start": 200
+        "start": 250
       }
     },
     "14f880dfad109bc470a7": {
@@ -26894,6 +26894,188 @@
         "abstract": "Invasive neural recordings provide high-fidelity measurements of brain activity, with signals such as intracranial EEG (iEEG) and intracortical spiking activity capturing neural dynamics at different spatial and temporal scales. Yet existing neural foundation models have largely been developed independently for different invasive recording paradigms, leaving joint pretraining across heterogeneous invasive signals underexplored. In this work, we introduce iBrain, a unified foundation model that jointly learns from iEEG and spiking activity. iBrain employs signal-specific encoders to accommodate their distinct signal characteristics and a shared spatiotemporal Transformer backbone to model dependencies across recording channels and time. We pretrain iBrain on over 7,000 hours of heterogeneous neural recordings using masked signal reconstruction and channel-view alignment, promoting contextual modeling of neural dynamics and robustness across different channels. iBrain consistently outperforms single-signal pretraining baselines and achieves state-of-the-art performance on multiple benchmarks. Further experiments demonstrate that iBrain exhibits transferability and data efficiency across diverse recording settings. These results highlight the potential of joint pretraining on heterogeneous invasive neural recordings to support scalable neural modeling and transferable representations across recording settings and downstream tasks."
       },
       "hash": "e405b66ae4d8452b311674a7dcd0016968c7f4893ee8e75caac85fdb11a87cb6",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.07237": {
+      "entry": {
+        "arxiv_id": "2609.07237",
+        "version": 1,
+        "title": "CEDAR: Error-Bounded Residual Routing for Efficient Long-Context Attention",
+        "authors": [
+          "Siyu Li",
+          "Dong Wang",
+          "Jie Zhou",
+          "Wei Li",
+          "Yang Xu",
+          "Sijie Song"
+        ],
+        "published": "2026-09-07T08:56:47Z",
+        "updated": "2026-09-07T08:56:47Z",
+        "abstract": "Post-hoc sparse attention accelerates long-context prefill by routing each query to a small set of token-level interactions. Hard selection, however, assigns zero probability to every omitted chunk: a routing miss cannot be recovered, and a fixed expansion budget spends the same work on easy and ambiguous queries. We introduce Coarse-to-fine Error-aware Dynamic Attention Routing (CEDAR), a coarse-to-fine method that keeps the language model frozen while preserving global coverage. Each semantic chunk contributes a cheap key--value summary to a residual attention path; chunks with high estimated approximation error are then expanded to exact token attention. Exact and summarized contributions are combined in a single softmax normalization, so refinement replaces, rather than duplicates, coarse evidence. We derive an output-error bound governed by within-chunk key/value dispersion and use it to allocate a variable refinement budget. A controlled clustered-attention study shows that residual summaries reduce reconstruction error by more than 98% relative to hard dropping at equal exact-chunk budgets. Experiments on long-context benchmarks demonstrate that CEDAR recovers most of the quality lost by hard sparse routing while maintaining approximately $3\\times$ kernel speedup at 128K context."
+      },
+      "hash": "292d1bded965bd674d0e18dd656dee1a75d860fb5f644db2530b11bd8fc6ec3e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.07499": {
+      "entry": {
+        "arxiv_id": "2609.07499",
+        "version": 1,
+        "title": "CrACK: Adversarial Attacks on Cross-Model Consistency in Collaborative Vision Foundation Models",
+        "authors": [
+          "Feifei Liu",
+          "Jintao Cheng",
+          "Chi Man Vong",
+          "Xiaoyu Tang"
+        ],
+        "published": "2026-09-07T13:47:33Z",
+        "updated": "2026-09-07T13:47:33Z",
+        "abstract": "Training-free collaborative pipelines that integrate Vision Foundation Models such as CLIP, SAM, and DINO achieve strong open-vocabulary dense prediction and are increasingly deployed in safety-critical applications. The security of these systems is commonly assumed to follow from the robustness of their individual models. We challenge this assumption. We identify a vulnerability shared by every collaborative pipeline: each model consumes the intermediate output of another without verifying semantic consistency, an unverified premise that we term the semantic-spatial alignment dependency. Existing adversarial attacks target a single model and overlook this premise, leaving the inter-model interface entirely unguarded. We propose CrACK (Cross-model Adversarial Consistency attack), an inference-time attack that exploits this interface without modifying any input pixel, model weight, or training data. CrACK operates in two stages: Adversarial Affinity Contradiction Injection corrupts the cross-modal affinity matrix by inverting SAM encoder features under the guidance of CLIP patch-level semantics, and Semantic Interface Poisoning steers the prediction through a max-distance label permutation derived from CLIP text embeddings. Experiments on four collaborative pipelines across eight benchmarks show that CrACK causes catastrophic degradation while every individual model continues to produce its unchanged standalone output, rendering per-model defenses structurally blind. The corruption further cascades into large vision-language model reasoning, driving models such as LLaVA to produce erroneous responses from visually intact inputs. Our results show that the security of a collaborative AI system cannot be reduced to the robustness of its components, and that inter-model feature interfaces must be treated as first-class security boundaries."
+      },
+      "hash": "1f844ff350c716839a26afcbb19bcaeca1d82d05a738fbea0f405722e2df5073",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.07573": {
+      "entry": {
+        "arxiv_id": "2609.07573",
+        "version": 1,
+        "title": "From Simulated Citizens to Simulated Deliberation: Challenges in Representation and Interaction",
+        "authors": [
+          "Chaemin Jang",
+          "Junsik Min",
+          "Jaewoo Choi",
+          "Donggyu Lee",
+          "Haiin Lee",
+          "Junyoung Park",
+          "Namhee Kim",
+          "Hyunwoo Kim",
+          "Jungwon Kim",
+          "Juho Kim",
+          "Nuri Kim",
+          "Jihee Kim"
+        ],
+        "published": "2026-09-07T14:49:25Z",
+        "updated": "2026-09-07T14:49:25Z",
+        "abstract": "Multi-agent LLM deliberation has been explored as a scalable way to simulate public deliberation. For such simulations to be informative, persona agents should reflect population opinion patterns and interaction should shape their conclusions. We evaluate whether LLM-based deliberation can meet these two conditions using census-grounded Korean personas debating real policy questions benchmarked against national surveys. Persona agents do not reliably reproduce population opinion patterns: responses are often far more concentrated and frequently reverse demographic differences in the human data. Deliberations nonetheless produce reasoned, reciprocal, and varied arguments alongside substantial stance movement. Yet much of this movement does not require peer exchange: sealed-monologue agents change position at similar rates and reach nearly the same final balance as full debates, while groups initialized with very different positions often converge to similar endpoints. Anchoring population-informed starting positions, meanwhile, sharply suppresses updating. Thus, population representation, argument generation, and interaction-driven opinion change do not necessarily go together. The simulations readily surface arguments on both sides, though whether they capture the diversity of human perspectives remains untested, leaving open a promising role for argument surfacing even as population simulation requires further validation."
+      },
+      "hash": "47bf02b583aff895f89fb561998143ccceb0fc0c6a1532e42d3a78fee667597e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.07681": {
+      "entry": {
+        "arxiv_id": "2609.07681",
+        "version": 1,
+        "title": "On the Recall Scaling Laws in Mamba: A Theoretical and Mechanistic Study via Hashing",
+        "authors": [
+          "Yuval Koren",
+          "Assaf Ben-Kish",
+          "Raja Giryes",
+          "Lior Wolf",
+          "Itamar Zimerman"
+        ],
+        "published": "2026-09-07T16:05:24Z",
+        "updated": "2026-09-07T16:05:24Z",
+        "abstract": "Associative Recall (AR) is the cognitive ability to learn and retrieve links between items in memory. In NLP, AR is used as a benchmark for evaluating the in-context memory capacity of architectures such as Mamba, and has been found to strongly correlate with language modeling performance. This paper explores AR from the perspective of mechanistic interpretability, aiming to reverse-engineer the exact internal algorithm used by Mamba to perform recall. Our key insight is that Mamba performs recall by implicitly learning linear hash functions, and we identify the low-level circuit that enables this behavior. Building on these findings and inspired by theoretical tools in similarity-preserving hashing, such as the Johnson-Lindenstrauss lemma, we develop a theoretical framework for analyzing AR, which we term Recall Scaling Laws. Given the vocabulary size and the number of facts in context, this framework allows us to (1) predict the embedding and state dimensions required for Mamba to achieve perfect recall, (2) predict recall success probability given the model dimensions, and (3) analyze multi-layer models and multi-head SSM patterns. Empirical results show that our theoretical findings are accurate and predictive, offering insights into how AR capacity scales with vocabulary, state, embedding size, and architecture.",
+        "comment": "53 pages, 20 figures. Code and experiments available at: https://github.com/yuvalko1/mamba-recall-scaling-laws"
+      },
+      "hash": "84b90e56c43bb59894cd6e19bef3162a3762ee7202fc2c32c3a20544776065af",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.04579": {
+      "entry": {
+        "arxiv_id": "2609.04579",
+        "version": 2,
+        "title": "Does the Selected Object Reach the Reader? Auditing Identity Handoffs in Grounded Language-Model Pipelines",
+        "authors": [
+          "Siddharth Vohra",
+          "Runmin Jiang",
+          "Xiaomo Li",
+          "Min Xu"
+        ],
+        "published": "2026-09-04T00:20:12Z",
+        "updated": "2026-09-07T16:23:40Z",
+        "abstract": "Grounded language-model pipelines can be divided into three stages: selecting an object, retrieving passages for it, and using that evidence to answer. If the selected object must reach the reader, losing it breaks the handoff. Benchmark recall checks the dataset-linked object, which can differ. We audit 600 HybridQA questions across three selector families. On 1,463 resolvable records where the selected object matches the dataset-traced passage, exact key lookup and exact title matching return the object every time. With every ranked rule given the same decoded selected title, body-only BM25 omits it on 389 records (26.6%) at cutoff five, while hybrid retrieval with reranking omits it on 14 (1.0%). The two identities differ on 329 of 1,792 resolvable records. With original-question rankings, their top-five checks disagree on 106 records (5.9%). Frozen reader comparisons associate the aligned object's presence with 28.6 to 31.0 points higher exact match. In a deliberately selected 64-item cohort, removing that passage sharply lowers exact match, while removing a similar-length comparison passage does not reproduce the drop. We release the Returned-Object Profile (ROP), an executable record of the target, returned-ID field, cutoff, membership rule, and complete expected population, with data and an offline replay.",
+        "comment": "15 pages, 1 figure, 23 tables. Accepted to the GroundLM Workshop (Grounding Language Models: Learning Faithfully and Efficiently) at EMNLP 2026"
+      },
+      "hash": "6a57945fb4efae6b183e37a13f18aa35fc84fb4103b0d22a7ebaa97bca5d0929",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.07821": {
+      "entry": {
+        "arxiv_id": "2609.07821",
+        "version": 1,
+        "title": "A*-Thought-V2: Efficient Latent Reasoning via Geometric Dynamics of LLM",
+        "authors": [
+          "Xiaoang Xu",
+          "Siyuan Liu",
+          "Shuo Wang",
+          "Junlan Feng",
+          "Fanyu Meng",
+          "Zhu Zhang",
+          "Jixun Wang",
+          "Xiaorong Wang",
+          "Zihan Zhou",
+          "Xin Li",
+          "Chaojun Xiao",
+          "Yiming Zhang",
+          "Huijia Wu",
+          "Liuyu Xiang",
+          "Peipei Li",
+          "Zhaofeng He"
+        ],
+        "published": "2026-09-07T17:56:20Z",
+        "updated": "2026-09-07T17:56:20Z",
+        "abstract": "Chain-of-Thought (CoT) improves the reasoning ability of Large Language Models (LLMs) but incurs substantial computation and context costs. Existing methods either lose intermediate information through hard pruning or lack a principled criterion for continuous compression. We present A*-Thought-V2, a geometric dynamics of LLM guided framework that models CoT as a hidden-state trajectory and replaces hard deletion with an explicit-implicit interleaved latent architecture. After projecting question, step, and solution representations into a 3D PCA space, it measures alignment between each local transition and global question-to-solution direction. Aligned steps remain explicit text, whereas deviating steps are compressed into continuous latent tokens. Directional angles capture both local semantics and reasoning dynamics: small angles indicate direct execution and answer formation, while large angles more frequently involve checking, correction, and branch exploration; their temporal variation reveals exploration, convergence, and refinement stages. To train this architecture, we introduce stepwise embedding forcing, which pools each redundant step into a single latent embedding, and label forcing, which supervises that latent token with a soft multi-modal vocabulary distribution instead of a hard one-hot label. Experiments on Qwen3.5-9B and Qwen3.6-27B across six in-domain and out-of-domain benchmarks show that A*-Thought-V2 improves average accuracy by up to 2.6% while reducing response length by up to half, increasing Accuracy per Computation Unit by 2.29$\\times$, and reducing preprocessing and training time by 94.6% and up to 80.3%, respectively. Representation analyses suggest that latent states form a compact region distinct from textual states, while higher entropy at latent-token positions reflects broader soft targets that encourage richer step-level feature learning.",
+        "comment": "Code: https://github.com/AI9Stars/AStar-Thought"
+      },
+      "hash": "0e968a3d9893a8a8809423faa02e81df11a5268ffbef57befe35a30fd8771f0e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.08131": {
+      "entry": {
+        "arxiv_id": "2609.08131",
+        "version": 1,
+        "title": "Jacap: Robust KV Cache Eviction via Jacobian-Based Nonlinear Information Capacity Preservation",
+        "authors": [
+          "Jiaming Yang",
+          "Chenwei Tang",
+          "Liangli Zhen",
+          "Chenyang Zhang",
+          "Jiancheng Lv"
+        ],
+        "published": "2026-09-08T02:08:57Z",
+        "updated": "2026-09-08T02:08:57Z",
+        "abstract": "Key-value (KV) cache eviction is essential for scaling long-context inference in Large Language Models. However, existing policies predominantly rely on empirical heuristics, lacking a rigorous characterization of token utility under the inherently nonlinear softmax attention mechanism. In this work, we rethink KV cache eviction through the lens of local information geometry, modeling the attention process as a nonlinear Gaussian communication channel. By performing a first-order Taylor expansion of the attention mapping, we derive the Jacobian Information Capacity, a novel objective that explicitly captures query relevance, softmax sensitivity, and structural diversity. Guided by this theory, we introduce Jacap, a capacity-aware eviction method that utilizes softmax-aware importance weighting and statistical leverage scores for subset selection. Extensive experiments across diverse architectures and benchmarks demonstrate that \\textsc{Jacap} delivers superior performance in most scenarios, particularly in high-compression regimes.",
+        "comment": "16 pages, 6 figures"
+      },
+      "hash": "f8913e34227a747721eaa8e657c52bfd71878108cd7b34eb0519a0a6c35dfbaa",
       "status": "queued",
       "attempts": 0,
       "error": null,
