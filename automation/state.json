@@ -21,7 +21,7 @@
       "active": {
         "since": "2026-08-25T00:00:00+00:00",
         "until": "2026-09-11T02:47:03Z",
-        "start": 350
+        "start": 400
       }
     }
   },
@@ -2191,24 +2191,24 @@
     "2609.00237": {
       "entry": {
         "arxiv_id": "2609.00237",
-        "version": 1,
+        "version": 2,
         "title": "Learning What to Retain: Gated-Memory Routing for Efficient Collaboration in Multi-Agent LLM Systems",
         "authors": [
           "Rakibul Hasan Rajib",
-          "Mengxing Zheng",
+          "Mengxin Zheng",
           "Qian Lou"
         ],
         "published": "2026-08-31T18:42:57Z",
-        "updated": "2026-08-31T18:42:57Z",
+        "updated": "2026-09-09T22:02:06Z",
         "abstract": "Large language model (LLM)-based multi-agent systems tackle complex reasoning by orchestrating how multiple agents are configured and how they collaborate. A central challenge is to adapt orchestration to the evolving collaboration state. Routing from the query alone cannot adapt to intermediate progress or errors, which hurts accuracy. Routing from the complete execution history supplies this missing context, but forces later decisions to process every prior step, including redundant or low-utility ones. This creates an execution-history overload that inflates cost. Effective orchestration instead requires a compact state that captures useful progress without accumulating redundant context. We propose Gated-Memory Routing, which conditions each decision on the query and a learned execution memory. A learned Memory Write Gate commits only non-redundant reasoning steps, and a learned Retrieval Gate supplies each agent a compact, relevant subset, so every decision conditions on a clean, informative state. At each step, the system selects the next role and backbone from this memory, while an Adaptive Halting Controller stops execution once the memory contains sufficient evidence for answering. Across five reasoning and code-generation benchmarks, our framework is both effective and efficient: it attains the best average accuracy, exceeding the strongest baseline by 2.44 points, while reducing HumanEval inference cost by 31.9% relative to that baseline. Code is available at https://github.com/rajibrhasan/gated-memory-routing",
-        "comment": "Accepted to EMNLP 2026 (Main Conference)"
+        "comment": "Accepted to EMNLP 2026 (Main)"
       },
-      "hash": "e05e6d04d073c0023665baf3bf512bc59a1772c3ae8b047b697c2e8f278660d3",
-      "status": "awaiting_evidence",
+      "hash": "b180146dd16d0daba8764ab653e5682d53379d5a37ccb39287fd92ec7c4e5aea",
+      "status": "queued",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
-      "kind": "new"
+      "kind": "updated"
     },
     "2609.01660": {
       "entry": {
@@ -25546,6 +25546,544 @@
       "error": null,
       "next_attempt_at": null,
       "kind": "reassessed"
+    },
+    "2609.08550": {
+      "entry": {
+        "arxiv_id": "2609.08550",
+        "version": 1,
+        "title": "CreaMem: A Scene-Aware Memory Architecture for Personalized Agents",
+        "authors": [
+          "Qixuan Sun",
+          "Yue Que",
+          "Bowei He",
+          "Jin Guo",
+          "Dihang Yang",
+          "Wenchang Situ",
+          "Chen Ma"
+        ],
+        "published": "2026-09-08T10:33:05Z",
+        "updated": "2026-09-08T10:33:05Z",
+        "abstract": "Long-term memory is a core capability for personalized LLM agents. To support it, existing memory systems organize information using various criteria such as topic segments or summary hierarchies. However, we identify two major limitations in these designs. First, they lack scene awareness: memories from unrelated life scenes share the same retrieval space, which inflates the search space and introduces cross-scene interference. Second, they encode each memory from a single perspective, making it difficult to retrieve complementary views of the same event. In this paper, we propose the CreaMem architecture, which enables scene-aware memory organization by partitioning memory into several Life Scene Memories to reduce cross-scene interference at retrieval. To go beyond the single perspective and achieve cross-memory synergy, entries are dual-coded from both episodic and trait-based perspectives within each memory. We further devise a permemory balanced sampling strategy at retrieval time. Extensive experiments on two long-term memory benchmarks show that CreaMem improves QA accuracy across all evaluation metrics, with particularly large gains on multi-hop reasoning performance, validating scene-aware partitioning and cross-memory synergy. To enhance reproducibility, we release our code in a public GitHub repository.",
+        "comment": "Accepted as EMNLP'26 Findings"
+      },
+      "hash": "377b0f7c0463876f103226660729b65cf4625bc6236b2e73e19c81a2fa3867de",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.08558": {
+      "entry": {
+        "arxiv_id": "2609.08558",
+        "version": 1,
+        "title": "Personalizing LLM Agent Memory Using Biometrics",
+        "authors": [
+          "Yanhong Qian",
+          "Qingguo Meng",
+          "Shihao Ding",
+          "Xingbo Dong",
+          "Zhe Jin",
+          "Hanrui Wang",
+          "Isao Echizen"
+        ],
+        "published": "2026-09-08T10:46:12Z",
+        "updated": "2026-09-08T10:46:12Z",
+        "abstract": "Personalized memory helps LLM agents deliver stable, tailored assistance by storing and reusing user-specific data across interactions. In multi-user scenarios, however, retrieval must consider not only semantic similarity but also whether the current requester matches the identity associated with the stored memory. We propose Bio-Memory, a biometric-aware memory architecture that conditions memory retrieval on both semantic similarity and biometric matching. Built on top of A-Mem, Bio-Memory augments each atomic memory note with a biometric embedding and uses biometric matching to form the retrieval candidate pool before semantic ranking. We evaluate Bio-Memory on LoCoMo in a 10-user shared-agent setting over 7 face benchmarks and 10 palmprint protocols. Across datasets, Bio-Memory consistently separates owner and non-owner queries. Under face-based personalization, the largest average gap reaches 27.29% / 21.15% in F1 / BLEU-1 on CALFW; under palmprint-based personalization, the corresponding gap is 25.75% / 19.22% on MS_Blue. These results support biometrics as a practical control signal for personalized memory retrieval in shared environments."
+      },
+      "hash": "212d34f83007f0800e3ffdb86ea6f4851c9c468b1034d1ddcad8d6c30b807e3f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.08696": {
+      "entry": {
+        "arxiv_id": "2609.08696",
+        "version": 1,
+        "title": "MorphoOrgaAgent: A Foundation-Model-Based Multi-Agent System for Autonomous Organoid Analysis",
+        "authors": [
+          "Hanyi Zhang",
+          "Maximilian Hoermann",
+          "Lion J. Gleiter",
+          "Yiling Xu",
+          "Bettina Katalin Budai",
+          "Hans-Ulrich Kauczor",
+          "Carsten Marr",
+          "Tingying Peng"
+        ],
+        "published": "2026-09-08T12:59:46Z",
+        "updated": "2026-09-08T12:59:46Z",
+        "abstract": "Organoids are three-dimensional tissue models whose morphology provides important insights into tumor development, disease progression, and drug testing. Extracting these morphological features relies heavily on manual segmentation, which is time-consuming and labor-intensive. Furthermore, performing quantitative statistical analysis typically requires custom coding skills and a mathematical background, presenting a major barrier for experimental biologists. To address these challenges, we introduce MorphoOrgaAgent, a multi-agent framework that achieves zero-shot organoid segmentation, automated data analysis, and report generation based on natural language input. The framework consists mainly of three core components: a TaskUnderstandingAgent that identifies requested measurements and visualization types; a hybrid segmentation module that combines Cellpose-derived geometric prompts with text prompts to guide SAM3 for zero-shot organoid instance segmentation; and a ReportAgent that computes quantitative metrics and compiles them alongside generated visualizations into a structured report. We further introduce MorphoOrgaVQA, a benchmark designed for quantitative evaluation of agent systems in organoid morphology analysis. Experimental results demonstrate that MorphoOrgaAgent handles both explicit and descriptive user requests, produces measurements closely matching ground truth, and generates complete analysis reports without requiring manual programming. The complete source code and MorphoOrgaVQA benchmark are publicly available at https://github.com/peng-lab/MorphoOrgaAgent.",
+        "comment": "Accepted at the 2nd Agentic AI for Medicine Workshop, MICCAI 2026. 15 pages, 3 figures, 2 tables"
+      },
+      "hash": "c18dab2bbbb750b17fec2d764d17a8f2f0e7c480ff29b31dbc4ffe858ce21f7e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.08944": {
+      "entry": {
+        "arxiv_id": "2609.08944",
+        "version": 1,
+        "title": "SkillAdam: Stable and Efficient Skill Evolution for Agents",
+        "authors": [
+          "Gaoyuan Li",
+          "Meihao Fan",
+          "Yizhe Liu",
+          "Shaolei Zhang",
+          "Ju Fan",
+          "Siyi Wang",
+          "Jiaheng Hou",
+          "Xudong Weng",
+          "Honghan Tian",
+          "Zang Li"
+        ],
+        "published": "2026-09-08T16:04:45Z",
+        "updated": "2026-09-08T16:04:45Z",
+        "abstract": "Agent skills provide a lightweight way to equip frozen language-model agents with domain knowledge and procedural guidance, yet obtaining high-quality skills remains costly and difficult to scale. Expert-written skills require substantial human effort. Recent skill self-evolution methods automate an iterative loop that uses execution feedback to revise skills, but their heuristic update strategies often yield unstable optimization and low iteration efficiency. We identify two challenges in realizing stable and efficient skill self-evolution. Direction Stability requires effective corrections to accumulate rather than be overwritten by iteration-local feedback. Update Adaptivity requires the scope of each revision to reflect the consistency of recent case-level improvements. We introduce SkillAdam, an Adam-inspired framework for optimizing discrete and non-differentiable skill documents. As a functional analogue of Adam's first moment, an optimization memory records identified problems and the outcomes of prior solution attempts to stabilize the update direction. As a functional analogue of Adam's second moment, a volatility-driven edit budget tracks the history-weighted variation of recent case-level improvements and adaptively controls the update magnitude. Across seven benchmarks that span short- and long-horizon tasks, SkillAdam achieves state-of-the-art performance with more stable optimization dynamics. It also obtains stronger skills with substantially fewer optimization iterations and lower cost than prior methods. Code repository: https://github.com/ruc-datalab/SkillAdam",
+        "comment": "17 pages, 4 figures, 6 tables"
+      },
+      "hash": "7c45434ffe7f62e8be479e755600591afe53c74c5391bd54392d847fdbb59823",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.08965": {
+      "entry": {
+        "arxiv_id": "2609.08965",
+        "version": 1,
+        "title": "PlannerForge: LLM Agents for Scenario-Based Testing of Motion Planners in Autonomous Driving",
+        "authors": [
+          "Yuan Gao",
+          "Sebastian Müller",
+          "Mattia Piccinini",
+          "Marc Kaufeld",
+          "Yuchen Zhang",
+          "Finn Rasmus Schäfer",
+          "Qunying Song",
+          "Johannes Betz"
+        ],
+        "published": "2026-09-08T16:19:06Z",
+        "updated": "2026-09-08T16:19:06Z",
+        "abstract": "Ensuring the safety of autonomous driving is a critical challenge. Scenario-based testing is a systematic process used to validate Autonomous Driving Systems (ADSs), but it remains a fragmented modular pipeline in which scenario generation, retrieval, modification, ADS execution, and results analysis are performed by separate tools with little interaction. Large Language Model (LLM) agents have shown promise across ADS sub-systems such as perception, planning, and control. However, no prior work covers the whole scenario-based testing pipeline for ADSs with a unified LLM-agent framework. We present PlannerForge, an LLM-agent framework that extends all scenario-based testing stages (from Scenario Generation to ADS Assessment) and adds two further LLM-enhanced stages: ADS Enhancement and ADS Benchmarking. We evaluate PlannerForge with 10 off-the-shelf LLMs across all tasks (Generation, Selection, Modification, Module Routing, Planner Testing, and Enhancement) under 5 prompt conditions. Best-per-task scores range from 0.88 to 1.00, and open-source 20-35B backends match commercial APIs on most tasks. Open-source models such as Qwen3.6:35B match commercial APIs on three of the five tasks. Chaining the modules end-to-end retains 83% / 78% of seed queries (commercial / open). It outperforms Scenario Factory 2.0 (Finkeldei et al., 2025) on natural-language generation (193 vs. 144 executable of 200) and realises 92-96% of requested city, road and vehicle attributes. It outperforms BM25 (Robertson and Zaragoza, 2009) at rank 1 selection (92.0% vs. 67.5%) and From-Words-to-Collisions (Gao et al., 2025) on physically valid edits (>=94% vs. 31%). At N=400, cost-tuning lifts planner success from 50.4% to 70.2% and cuts collisions from 19.0% to 8.4%, without domain-specific fine-tuning.",
+        "comment": "Accepted to EMNLP 2026 (Main Conference). 35 pages including appendix"
+      },
+      "hash": "caa0467c145751e3c7587cafde76ca28a2db250e8dc2d764975e7d98e1fc2fb5",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.09135": {
+      "entry": {
+        "arxiv_id": "2609.09135",
+        "version": 1,
+        "title": "Entropy-Regularized Rank-Masked Policy Optimization for Test-Time Reinforcement Learning in Code Generation",
+        "authors": [
+          "Jiacheng Xu",
+          "Feng Chen",
+          "Xiuneng Xu",
+          "Bo An"
+        ],
+        "published": "2026-09-08T17:54:13Z",
+        "updated": "2026-09-08T17:54:13Z",
+        "abstract": "Existing methods for test-time reinforcement learning (TTRL) derive rewards from answer-level self-voting on unlabeled test-time tasks with canonical answers, but this breaks down for code generation because programs cannot be compared by surface form and therefore do not directly provide a usable training signal. To make TTRL applicable to code generation, we propose probe-driven TTRL, which constructs output-free probe inputs from the problem statement, executes candidate programs on these probes, and defines a Probe Consensus Reward (PCR) from the resulting behavioral agreement. PCR provides a behavioral training signal for open-vocabulary programs, but it is not a fully reliable verifier and remains susceptible to reward hacking through spurious consensus. We therefore introduce Entropy-Regularized Rank-Masked Policy Optimization (ERPO), which converts low PCR into conservative negative updates through rank masking and controls policy drift with an entropy ceiling. On coding benchmarks, ERPO substantially improves pass@1 and pass@k in both in-domain adaptation and zero-shot transfer.",
+        "comment": "Accepted to EMNLP 2026 Main Conference. 15 pages, 4 figures, 11 tables"
+      },
+      "hash": "90c8afb6b8fbc97244e7a1fa9470f96ddba1bfbd31b91c5fc9f866119560e63b",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.09448": {
+      "entry": {
+        "arxiv_id": "2609.09448",
+        "version": 1,
+        "title": "Do Agents Know When They Succeed? Calibrating Agent Confidence from Internal Representations",
+        "authors": [
+          "Priyanka Mary Mammen",
+          "Emil Joswin",
+          "Srujananjali Medicherla"
+        ],
+        "published": "2026-09-08T20:58:49Z",
+        "updated": "2026-09-08T20:58:49Z",
+        "abstract": "As agentic systems getting adopted rapidly in safety critical applications, it is vital to measure the confidence associated with the agentic actions. In comparison to the traditional machine learning systems, agentic workflows have complex failure modes with planning, tool invocation and dynamic environment interactions. In this paper, we investigate whether model's internal representations provide stronger signals of eventual task success in multi-turn agentic setups. We introduce two complementary methods: Latent Trajectory Dynamics (LTD), which summarizes changes in residual-stream representations across an an interaction trajectory, and the Action Representation Probe (ARP), which predicts success from representations formed at action decisions. Across three interactive benchmarks (Bash, SQL, Python) and three model families (Qwen14B, Qwen7B, DeepSeek6.7B), our methods consistently outperform surface level generation and sequence-based calibration baselines providing a zero-overhead reliability monitor that requires neither prompt alterations nor multi-sample rollouts."
+      },
+      "hash": "975408850b1dc70ec2a81e0783a17e742ce0c7f9924be077b5e9474bf552ffb1",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.09678": {
+      "entry": {
+        "arxiv_id": "2609.09678",
+        "version": 1,
+        "title": "Safe to Stop? Risk-Constrained Stopping for Sequential Clinical Diagnosis Agents",
+        "authors": [
+          "Yuexin Wu",
+          "Vasile Rus"
+        ],
+        "published": "2026-09-09T03:46:53Z",
+        "updated": "2026-09-09T03:46:53Z",
+        "abstract": "Clinical diagnosis agents must decide not only what test to request next, but also when to diagnose or defer. Existing agent benchmarks largely evaluate accuracy after fixed or unconstrained interaction, leaving autonomous stopping reliability implicit. We present Cros, a risk-constrained stopping layer combining state-wise error ranking, policy design on disjoint development splits, and LTT-style exact tests of selective diagnostic error and minimum autonomous coverage for complete sequential policies. Its finite-sample guarantee requires the candidate family, testing rule, and any randomization to be frozen before calibration labels are accessed. On a 1,834-episode MIMIC-derived abdominal-pain benchmark, the full ranker achieves exploratory state-error AUROC 0.853, compared with 0.715 for maximum class probability and 0.552 for the backbone's native stop score. On the previously viewed 367-episode evaluation split, analytically averaging over the frozen Cros weights yields 16.9% selective error at 78.8% coverage, cost 5.57, and 0.68 tests, versus 30.8% error at 100% coverage, cost 8.14, and 1.53 tests under native stopping. Forced continuation is non-monotone: error is 28.3% with HPI alone and 34.3% after full workup. However, the uniform-weight mixture ablation is cheaper on this viewed split despite missing the locked development margins, and Cros nominally satisfies the joint criterion in only 6 of 20 development resplits. Because evaluation labels were inspected during earlier development, these findings provide exploratory feasibility and audit evidence, not a confirmatory safety certificate."
+      },
+      "hash": "ee1661e4155b44dc29a66cd00a1995c484e7271c47f906f5c903b8b308d3fd3d",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.09849": {
+      "entry": {
+        "arxiv_id": "2609.09849",
+        "version": 1,
+        "title": "Can AI Agents Detect and Repair Artifact Drift in Network Experiments?",
+        "authors": [
+          "Tianzhu Zhang",
+          "Weichen Tao",
+          "Changgang Zheng",
+          "Yusheng Zheng",
+          "Long Chen",
+          "Xiaoyi Fan",
+          "Meikang Qiu"
+        ],
+        "published": "2026-09-09T07:58:24Z",
+        "updated": "2026-09-09T07:58:24Z",
+        "abstract": "In recent years, AI agents have evolved into capable assistants that carry out multi-step tasks in digital environments. The network systems community is beginning to explore these capabilities in operational and experimental settings. However, an agent operating in network systems should not be judged solely by whether it completes the immediate task. The experiment record it modifies must also remain trustworthy. We call this property artifact integrity: the record's claims must remain supported by the available evidence, confined to the scope established by that evidence, and traceable through the artifacts that encode their support. To make this property measurable, we introduce NetArtifactBench, which tests whether AI agents can repair inconsistent records derived from public network-system artifacts while preserving claims that remain supported. The benchmark contains 52 instances with injected inconsistencies ranging from direct contradictions to unstated relations spread across several artifacts. We evaluate 23 agent configurations across three general-purpose AI agent runtimes using deterministic scoring. The average contract pass rate is 65.3 % across 5,980 outputs, but no agent runtime exceeds 30 % when repair requires recovering implicit relations and propagating changes across artifacts. These results reveal a sharp boundary between local correction and complete record-level repair. Therefore, we argue that artifact integrity should become a first-class design and evaluation requirement for AI agents operating on network systems."
+      },
+      "hash": "bc177d54a4dfbf61f508e3d42023aaef910af9bbc312e6dc24265feec05e2a6a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.09865": {
+      "entry": {
+        "arxiv_id": "2609.09865",
+        "version": 1,
+        "title": "Keep Evaluation Fair: Detecting Data Leakage in Code Generation Benchmarks via Membership Inference Attacks",
+        "authors": [
+          "Dongdong Zhao",
+          "Jian Chen",
+          "Guancheng Lin",
+          "Jianwen Xiang",
+          "Jacky Wai Keung",
+          "Xiao Yu"
+        ],
+        "published": "2026-09-09T08:16:51Z",
+        "updated": "2026-09-09T08:16:51Z",
+        "abstract": "Code generation benchmarks are widely used to evaluate Large Language Models (LLMs), but benchmark data leakage into training sets can inflate performance and undermine evaluation validity. DetectLeak, a method specifically designed for code generation benchmark leakage detection, relies on perplexity scores to identify likely leaked samples. However, perplexity mainly reflects general familiarity with code patterns and may perform poorly on complex or rare samples. It also overlooks other useful signals, such as code similarity, functional correctness, and semantic representations. To address these limitations, we propose CGMIA (Code-Generation-specific Membership Inference Attack), a method for detecting leakage in code generation benchmarks. CGMIA fine-tunes a shadow model on a subset of benchmark samples to construct labeled member and non-member data. For each sample, it collects the input prompt, generated code, and reference solution, and extracts expert features, including CodeBLEU, edit distance, test pass rate, and perplexity, together with semantic features from CodeBERT embeddings. An integrated learning module combines these features to capture both surface-level memorization signals and deeper behavioral patterns, enabling a classifier to predict whether a sample was included in the target model's training set. Experiments on eight code generation benchmarks show that CGMIA outperforms eight existing membership inference methods in most cases. It also effectively detects known leaked APPS samples in StarCoder-7B's training data."
+      },
+      "hash": "ccd7636dd321cbf853cb23edc75d9d3d46cb864fee20c94858997f3663b55ac9",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.09947": {
+      "entry": {
+        "arxiv_id": "2609.09947",
+        "version": 1,
+        "title": "SpeechAnnotator: A Context-Aware Multi-Agent Framework and Benchmark for Multidimensional Speech Annotation",
+        "authors": [
+          "Qirui Zhan",
+          "Shuiyuan Wang",
+          "Jingbin Hu",
+          "Haoyu Zhang",
+          "Xiaming Ren",
+          "Jinrui Liang",
+          "Chaoren Yu",
+          "Bengu Wu",
+          "Yunxiang Chen",
+          "Houdun Liu",
+          "Su Feng",
+          "Liumeng Xue",
+          "Lei Xie"
+        ],
+        "published": "2026-09-09T09:37:29Z",
+        "updated": "2026-09-09T09:37:29Z",
+        "abstract": "Recent controllable speech generation requires training data with fine-grained annotations of speaker traits, prosody, emotion, paralinguistic cues, acoustic scenes, and context. Existing workflows often rely on manual correction, paid hosted multimodal services, or fixed processing chains, which limits large-scale data processing through annotation cost, external-service dependence, or weak cross-stage recovery. We introduce SpeechAnnotator, a locally deployable, context-aware multi-agent framework built entirely from open-source models and tools. Supporting frontend modules first obtain speaker-aware segments and final segment transcripts, while prior evidence extractors attach heterogeneous segment-level cues. Three specialist agents then collaborate through shared state: the Planning Agent converts local audio evidence, speaker history, neighboring segments, and recording-level context into field-specific contracts; the Labeling Agent performs contract-guided multimodal prediction for directly observable attributes; and the Review Agent runs a bounded review loop that checks evidence support and cross-segment consistency, triggering relabeling only for unsupported or inconsistent fields. To address the fragmentation of existing evaluation resources across isolated tasks and narrow-domain test sets, we introduce SpeechAnnotator-Bench (SA-Bench), containing 8.87 hours of human-annotated audio across nine source formats, together with SpeechAnnotator-Eval (SA-Eval), which separates Timeline-Eval for speaker-aware timeline recovery, Closed-Eval for finite-set attributes, and Open-Eval for open-ended attributes. Experiments and ablations show that SpeechAnnotator provides a locally deployable alternative to commercial audio-capable systems, while the bounded review loop improves multidimensional annotation through evidence- and context-aware field-level recovery.",
+        "comment": "15 pages, 3 figures, to be published in NCMMSC 2026"
+      },
+      "hash": "a6587ca916a126ca45073cc39646d18f1132670d66ca1b6050e9895811976e8c",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.09987": {
+      "entry": {
+        "arxiv_id": "2609.09987",
+        "version": 1,
+        "title": "Beyond Repository Boundaries: Cross-Repository Graph Retrieval for Code Generation",
+        "authors": [
+          "Minh Le-Anh",
+          "Nam Le Hai",
+          "Quyen Tran",
+          "Anh Nguyen Hoang",
+          "Linh Ngo Van",
+          "Bach Le",
+          "Nghi D. Q. Bui"
+        ],
+        "published": "2026-09-09T10:14:14Z",
+        "updated": "2026-09-09T10:14:14Z",
+        "abstract": "Repository-level code generation requires generated code to be compatible not only with the target repository but also with its dependency environment. Existing retrieval-based methods mainly retrieve context from the local repository, leaving external API usage dependent on the model's pretrained knowledge, which can be insufficient for unseen or version-specific APIs. Moreover, current retrieval strategies largely focus on one-hop evidence and overlook the structural relationships among code components. We propose CrossCoder, a cross-repository code generation framework that explicitly incorporates external libraries into the retrieval context through a unified knowledge graph over repository and library entities. CrossCoder identifies important nodes via planning and semantic retrieval, then selectively expands neighboring nodes to retrieve richer multi-hop contextual evidence for generation. To further evaluate dependency-version compatibility, we introduce VersionExec, an execution-based benchmark derived from BigCodeBench that evaluates generation under different dependency versions. Experimental results on RepoExec, DevEval, and VersionExec demonstrate that CrossCoder consistently improves both functional correctness (up to 6.3% on pass@1) and robustness to dependency-version changes.",
+        "comment": "Accepted to EMNLP Findings 2026"
+      },
+      "hash": "32c85f55f03b9a63168e3079f856c2821615320d894133e6d691f979325bd5ca",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.10297": {
+      "entry": {
+        "arxiv_id": "2609.10297",
+        "version": 1,
+        "title": "TRACE: Trajectory-robust Admission with Evidence Ordering for Efficient GUI Agents",
+        "authors": [
+          "Yuhao Wang",
+          "Mu Qiao",
+          "Xindong Zhang",
+          "Yunzhi Zhuge",
+          "Lei Zhang",
+          "Huchuan Lu"
+        ],
+        "published": "2026-09-09T15:12:48Z",
+        "updated": "2026-09-09T15:12:48Z",
+        "abstract": "GUI agents accumulate high-resolution screenshots as the trajectory unfolds, increasing inference latency and memory usage. Training-free visual token pruning can reduce this cost, but cache reuse introduces a fundamental constraint. Once tokens are discarded, the corresponding visual evidence cannot be recovered without re-encoding. Pruning therefore becomes an \\textit{irreversible admission decision} that must remain useful for unknown future targets while preserving coverage of operable regions under tight budgets. To address these challenges, we propose \\textbf{\\method{}}, a training-free framework for \\emph{\\textbf{T}rajectory-\\textbf{r}obust \\textbf{A}dmission and \\textbf{C}overage-aware \\textbf{E}vidence ordering}. Specifically, we combine a query-independent layout-derived interaction prior with instruction relevance and feature novelty to rank visual evidence according to both potential future utility and diversity. Then, we reserve part of the budget for native visual tokens distributed across the screen, repairing missing spatial coverage without breaking the ordering. Together, these mechanisms produce a nested token order, allowing retained visual evidence to shrink monotonically across budgets while remaining reusable throughout the trajectory. Finally, our monotone KV contraction incrementally contracts retired frames into compact session state, avoiding repeated visual encoding or pruning. Extensive experiments across six GUI benchmarks and diverse models verify the effectiveness of our proposed \\method{} under tight budgets. The source code will be released."
+      },
+      "hash": "f1944f38d8605aca3c3e7ee1f40b88c22a8b96cd450449891f0eebf5d7448fc7",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.10451": {
+      "entry": {
+        "arxiv_id": "2609.10451",
+        "version": 1,
+        "title": "JarvisGUI: Towards Cross-Device GUI Agents with Dynamic Task Composition",
+        "authors": [
+          "Zixiang Chen",
+          "Yuheng Lu",
+          "Zihao Cheng",
+          "Zeming Liu",
+          "Jizeng Bai",
+          "Ziye Huang",
+          "Zhiyin Lin",
+          "Zihan Li",
+          "Yuhang Guo",
+          "Yunhong Wang",
+          "Haifeng Wang"
+        ],
+        "published": "2026-09-09T16:59:59Z",
+        "updated": "2026-09-09T16:59:59Z",
+        "abstract": "Real-world GUI usage frequently involves workflows that span multiple devices and platforms, requiring the transfer of intermediate results, maintenance of shared state, and coordination across heterogeneous environments. However, existing GUI benchmarks overwhelmingly evaluate agents on single-device, statically defined tasks, thus leaving such cross-device capabilities largely unexamined, resulting in an overly optimistic assessment of agents' readiness for real-world usage. We introduce JarvisGUI, a dynamic benchmark that evaluates GUI agents on cross-device workflows requiring coordinated interaction across heterogeneous platforms, including Android, Windows, and Ubuntu. Specifically, JarvisGUI formulates GUI tasks as input-output transformations under a lightweight type system, which allows us to automatically compose multi-step, cross-device workflows and dynamically evaluate agent performance within a unified framework. By evaluating agents in virtual environments spanning multiple operating systems, JarvisGUI reveals that state-of-the-art open-source GUI agents struggle with the state-transfer awareness, cross-platform contextual reasoning, and long-horizon dependency management required for real-world workflows, exposing a critical capability gap invisible to existing benchmarks.",
+        "comment": "Accepted to EMNLP 2026 (Main Conference)"
+      },
+      "hash": "39f15ec2a0f9db2a13b531b7e70b48f1412ba7268f8d0c9838f67bd79152649b",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.10750": {
+      "entry": {
+        "arxiv_id": "2609.10750",
+        "version": 1,
+        "title": "When Synthetic Data Hurts: On Catastrophic Forgetting in Skill Retrieval for LLM Agents",
+        "authors": [
+          "Syed Shariyar Murtaza",
+          "Yifan Nie",
+          "Utkarsh Soni",
+          "Eugene Wen",
+          "Arvid Frydenlund"
+        ],
+        "published": "2026-09-09T18:48:36Z",
+        "updated": "2026-09-09T18:48:36Z",
+        "abstract": "LLM agents increasingly rely on external skills retrieved at runtime, making skill selection from large repositories a critical challenge. We present a production skill router over 34,396 skills and a large-scale study of skill retrieval using limited real supervision and synthetic data. We found that the synthetic-data fine-tuning improves in-distribution retrieval but it causes catastrophic forgetting on real and out-of-distribution (OOD) data. We evaluate several forgetting mitigation fine-tuning approaches inspired by continual learning, including embedding-anchor regularization, Learning without Forgetting (LwF), Elastic Weight Consolidation (EWC), and L2-initialization. The results show that these approaches not only retain the performance on OOD skills retrieval but also improve the retrieval on synthetic in-distribution skills by 13.98\\% for 0.6B Qwen retriever and reranker. Our results provide a practical benchmark and a robust fine-tuning recipe for scarce, multi-positive supervision.",
+        "comment": "8 main pages, 15 pages total, accepted in EMNLP Industry track 2026"
+      },
+      "hash": "c972faf2ef7b7780db6c09a6c33668bb9435290c5a7ed8332647f69fa2d03cdc",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.10824": {
+      "entry": {
+        "arxiv_id": "2609.10824",
+        "version": 1,
+        "title": "Studying Without a Syllabus: Task-Agnostic Environment Preprocessing",
+        "authors": [
+          "Vinay Samuel",
+          "Varun Ursekar",
+          "Vijay S. Kalmath",
+          "Apaar Shanker",
+          "Veronica Chatrath",
+          "Yuan Xue"
+        ],
+        "published": "2026-09-09T20:52:55Z",
+        "updated": "2026-09-09T20:52:55Z",
+        "abstract": "Before an LLM agent tackles tasks in a new environment, it can inspect available corpora and tools and construct reusable resources such as indices, scripts, or procedural guidance. Most automated adaptation methods, however, rely on task examples, trajectories, or evaluation feedback to decide what to build. Existing task-agnostic approaches avoid this supervision but commit in advance to a preparation strategy for a particular type of environment. We study a more open-ended setting: can an agent study an unfamiliar environment without a syllabus, i.e. before test time and without knowledge of the downstream task distribution, and choose how to prepare it? We formalize task-agnostic environment preprocessing, in which a studying system explores an environment under a budget and produces artifacts for a frozen solver. We compare unaided and archive-equipped meta-agents with fixed synthetic-practice and corpus-processing methods across six heterogeneous benchmarks. A meta-agent variant achieves the highest Avg@3 reward on five benchmarks, while fixed corpus processing remains best on the largest corpus benchmark. Larger study budgets do not reliably improve downstream reward. Nevertheless, studied artifacts reduce the test-time sampling needed to reach a given score, demonstrating how reusable preparation can shift computation from repeated test-time attempts to a pre-task study phase."
+      },
+      "hash": "181b11ff9d489d012fd8207e74136be60713f8c6b9a337c57e961f1d500f9ccb",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.10892": {
+      "entry": {
+        "arxiv_id": "2609.10892",
+        "version": 1,
+        "title": "DriftNet: A Dual-Head Trajectory Transformer for Detecting and Localizing Prompt Injection in LLM Agents",
+        "authors": [
+          "Asif Pinjari",
+          "Mithun Paul Saint-Germain"
+        ],
+        "published": "2026-09-09T22:52:23Z",
+        "updated": "2026-09-09T22:52:23Z",
+        "abstract": "When an indirect prompt injection succeeds against an LLM agent, the compromise is visible in the agent's own behavior: a benign prefix of tool calls, a poisoned observation, and a suffix of actions that serve the attacker. An operator needs three facts: where the attack entered, which steps it corrupted, and whether apparent poison was resisted. Existing systems return either a whole-trace verdict or a single unsafe index. We present DriftNet, a dual-head trajectory Transformer that reads a logged tool-call trajectory and answers all three questions in one forward pass: one head classifies the trajectory as compromised or not, and a second assigns every step one of four labels (benign, injection point, hijacked, failed injection). To our knowledge it is the first supervised detector to produce this joint output. A frozen sentence encoder and four identity-free world features embed each step; the trained trunk, under two million parameters and optimized with a class-weighted joint objective over both heads, needs no access to the agent's model. On the task-disjoint split of the AgentDrift benchmark (12,536 trajectories, 71,024 labeled steps), with a 20-configuration sweep bounding hyperparameter sensitivity to 0.011 F1 and the test part evaluated exactly once, DriftNet reaches trajectory-level F1 of 0.983, exact injection-point recovery on 98.7% of attacked trajectories, hijacked-span IoU of 0.979, zero flags on 218 resisted attacks, and 2.9% flags on hard negatives. A surface baseline retrained on the identical split recovers 11.1% of partial hijacks and 17.1% of delayed executions; DriftNet reaches 98.6% and 93.2% while lowering every false-alarm rate. Reading all 26 residual errors shows that most misses trace to trajectories whose labeled injection observation carries no legible instruction, and we report the benchmark's measured world-identity regularity alongside the results.",
+        "comment": "15 pages, 8 figures, 11 tables. Companion detector paper to the AgentDrift benchmark (arXiv:2609.06972); dataset at https://github.com/Asif-0209/AgentDrift"
+      },
+      "hash": "06716cb6e40b7e71ded3af14f6e665b17b8d0dcc370278923885bbe40c97343b",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.10901": {
+      "entry": {
+        "arxiv_id": "2609.10901",
+        "version": 1,
+        "title": "SearchAtlas: Analyzing Agentic Search Strategies via Evidential Query Graphs",
+        "authors": [
+          "Jiacheng Sang",
+          "Mengyuan Li",
+          "Sanxing Chen",
+          "Yukun Huang",
+          "Yu Feng",
+          "Bhuwan Dhingra"
+        ],
+        "published": "2026-09-09T23:09:26Z",
+        "updated": "2026-09-09T23:09:26Z",
+        "abstract": "LLM search agents are often evaluated on final-answer accuracy, overlooking the process. Analyzing a search strategy requires understanding how credible evidence is retrieved to address question constraints. This valuable information is buried in raw search trajectories that are long and difficult to parse. We introduce SearchAtlas, a framework that converts search trajectories into structured graphs whose edges represent how evidence is propagated across the reasoning trace, from the query that retrieves it to the final answer. Our automated parsing pipeline achieves a mean edge F1 of 86.0% against human-annotated graphs and remains consistent across repeated runs. We analyze five search agents on three benchmarks, revealing systematic differences in search scale and evidence aggregation. SearchAtlas exposes fragmented answer support, question constraints that do not reach the answer, and unverified parametric knowledge entering the response. These process failures are strongly associated with incorrect answers, even more so than an LLM judge given either the raw trajectory or the ordered query list, suggesting that the constructed graphs provide useful interpretability. Moreover, an audit of cases in which process-diagnostic scores disagree with final-answer correctness shows that they capture information not reducible to answer accuracy.",
+        "comment": "Accepted to Findings of EMNLP 2026. 30 pages, 9 figures, including appendices"
+      },
+      "hash": "58016729b55cb95014fbd3a67e787d70d738b152850e404e0efeff1ba0332c87",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.10943": {
+      "entry": {
+        "arxiv_id": "2609.10943",
+        "version": 1,
+        "title": "CamPilot: A Multi-Agent Cinematic Assistant for Camera-Controlled Movie Generation",
+        "authors": [
+          "Yang Wu",
+          "Stefano Petrangeli",
+          "Ishita Dasgupta",
+          "Yu Shen"
+        ],
+        "published": "2026-09-10T01:06:14Z",
+        "updated": "2026-09-10T01:06:14Z",
+        "abstract": "The integration of large language models (LLMs) into video generation has enabled rapid text-to-video creation and improved visual quality. However, it still falls short of professional filmmaking, where cinematographic language is less refined than human-crafted camera work and multi-shot continuity remains challenging. To address these limitations, we introduce CamPilot, a multi-agent framework that integrates cinematographic planning and camera-work control to produce more coherent, logically structured, and human-aesthetic movies. CamPilot adopts a GRPO-based learning paradigm to learn camera work planning from 14K real-world professional movies, internalizing motion patterns and composition principles that support reasoning over shooting techniques (e.g., camera angle, motion, and focal behavior) and cross-shot relationships for controllable camera-viewpoint generation. Multiple agents further collaborate and evolve to improve overall output quality. To support this work and further studies in this domain, we establish CamEval, a benchmark for evaluating camera work quality and cinematic engagement. Empirical results show that CamPilot outperforms state-of-the-art text-to-movie generation methods on cinematographic control and quality, highlighting the impact of professional camera design on movie generation.",
+        "comment": "EMNLP 2026 Workshop REALM"
+      },
+      "hash": "a47ef8f639f171e319de2d71e6ac696a1d4bf15e2536b7a4c71a43aad59d0946",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.10945": {
+      "entry": {
+        "arxiv_id": "2609.10945",
+        "version": 1,
+        "title": "LLMVul: A Vulnerability-Labeled Dataset of LLM-Generated C/C++ Functions from Real Production Repositories",
+        "authors": [
+          "Mohammad Farhad",
+          "Shuvalaxmi Dass"
+        ],
+        "published": "2026-09-10T01:10:12Z",
+        "updated": "2026-09-10T01:10:12Z",
+        "abstract": "Large language models (LLMs) are increasingly used to generate and assist with software development, yet existing vulnerability datasets largely focus on human-written code or controlled prompting environments. This limits the ability to study security weaknesses in LLM-generated code as it appears in real-world software projects. We present LLMVul, a vulnerability-labeled dataset of LLM-generated C/C++ functions mined from real production repositories. We mine AI-assisted development activity from GitHub over a 4 year period, from November 13, 2022 to September 3, 2026, using provenance signals such as commit metadata and AI-related authorship evidence. After filtering and deduplication, LLMVul contains 21,430 unique C/C++ functions from 226 repositories, together with repository, commit, function, provenance, and AI-tool metadata. We establish vulnerability labels using an ensemble of complementary static-analysis and pattern-based techniques and assign Common Weakness Enumeration (CWE) categories to confirmed vulnerable functions. To assess labeling reliability, we additionally conduct independent manual annotation and measure inter-rater agreement using Cohen's kappa ($k=0.79$). LLMVul contains 1,540 ensemble-vulnerable functions spanning 17 unique CWE categories, providing substantially more real-world LLM-generated vulnerable C/C++ functions than existing vulnerability-oriented LLM code benchmarks. By preserving both code-level vulnerability labels and generation/provenance metadata, LLMVul enables reproducible research on vulnerability detection, security evaluation of LLM-generated code, and analysis of vulnerability patterns in AI-assisted software development. The LLMVul dataset is publicly available at https://doi.org/10.5281/zenodo.22668216."
+      },
+      "hash": "a5c5621c3274e9aa9437e30b9fffec0937d97a06c1b8ee1062867bcd06177a5b",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.10962": {
+      "entry": {
+        "arxiv_id": "2609.10962",
+        "version": 1,
+        "title": "What a Random Draw from the MCP Registry Contains, and What Tool-Use Benchmarks Contain Instead",
+        "authors": [
+          "Haseeb Mohammed Afsar"
+        ],
+        "published": "2026-09-10T01:33:53Z",
+        "updated": "2026-09-10T01:33:53Z",
+        "abstract": "Studies of the Model Context Protocol (MCP) server ecosystem draw their samples in ways that quietly select for servers that work: reference sets, popularity lists, hand-curated frames, or pipelines that repair a server until it starts. We report what an unrepaired probability sample actually contains. From a 24,135-server registry census we draw 400 npm/stdio servers with a published seed and probe each one over the wire. Only 48.8% complete an initialize handshake, against 66.7% for a hand-curated frame measured with the same instrument, and the dominant failure is not missing credentials (13.3%) but servers that never start at all (37.5%). Among the 195 that do run, hard conformance is total: zero fatal JSON Schema violations across 2,766 advertised tools. Optional safety annotations are the real variance, and the tool-level omission rate on a random draw is 58.8% against 41.5% on the curated frame, so curation flatters this figure too. We then compare the tool descriptions these servers advertise against two tool-use benchmark corpora using one method held constant. Real MCP tools show 2.8% near-duplication at cosine 0.70, and all of it lies within single servers: cross-author near-duplication is 0.0% at every threshold tested. BFCL v4 shows 16.7%, of which 16.4 points lie between independently presented tasks. UltraTool shows 0.3%, cleaner than real tools, so this is a property of BFCL and not of synthetic corpora as a class. Separately, 68.8% of raw BFCL rows and 85.6% of raw UltraTool rows are exact name-plus-description repeats, against 0.4% for real MCP, so any statistic computed over these releases without global deduplication measures repetition rather than tools. All figures regenerate from released scripts and a published seed.",
+        "comment": "10 pages, 3 figures. Seeded, re-runnable pipeline and per-server outcomes: https://github.com/itguruhaseeb/mcp-probe ; archived at doi:10.5281/zenodo.21347997"
+      },
+      "hash": "8400310653f8275523d076e5196378ef0f20c99aadf9d60a2d44ff34ebba8db8",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.10969": {
+      "entry": {
+        "arxiv_id": "2609.10969",
+        "version": 1,
+        "title": "Engineering Reliable Commit Gates for Agentic AI: Cost-Aware Verification Portfolios under Common-Mode Data Failures",
+        "authors": [
+          "Zihao Zheng",
+          "Baichuan Li",
+          "Junyi Yao",
+          "Jiayu Long"
+        ],
+        "published": "2026-09-10T01:42:40Z",
+        "updated": "2026-09-10T01:42:40Z",
+        "abstract": "Agentic systems commit state-changing actions, but additional verifiers can inherit the same upstream fault. We present VP-CONTROL, a runtime-assurance design and deterministic benchmark for cost-aware commit gates. Its 48 task templates yield 2,880 scenarios across six fault regimes. A fixed-call 2 x 2 experiment separates verifier-model diversity from evidence-source diversity. On frozen proposals from two local actor families, a cross-model vote over shared evidence approves 62.9% of unsafe proposals, versus 22.9% with an independent source. The source effect is 40.9 percentage points, compared with 11.3 for model diversity. A portfolio controller selects verification plans using only deployment-observable metadata. Approximate cluster-adjusted calibration at a nominal 5% per-task target yields 1.9% unsafe execution and 38.2% automated safe coverage on the locked test. Matched-budget portfolios also improve on fixed verification policies. Transfer remains conditional: unseen fault families yield 16-26% risk, and a FinQA check fails to reproduce the source effect with the tested small verifiers. A preregistered live HTTP/SQLite study tests concurrent writes and lost responses. After-check races defeat verifier-only gates; transactional partial guards prevent only covered failures, while a full atomic guard records no unsafe effects across 216 episodes. Idempotent request identifiers prevent duplicate effects after lost responses. The results motivate explicit evidence lineage, cost-aware selection, and commit-time enforcement, while exposing the limits of approximate calibration and local-tool generalization."
+      },
+      "hash": "a536b28c4a7634fe1587945d517b75763e26f55144057075437d58cd175a49ad",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
     }
   },
   "seen": {
