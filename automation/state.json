@@ -17,12 +17,8 @@
     },
     "14f880dfad109bc470a7": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (ti:agent OR ti:agents OR ti:agentic OR abs:\"LLM agents\" OR abs:\"language agents\" OR abs:\"AI assistants\" OR abs:\"software engineering\" OR abs:\"code generation\" OR abs:\"tool use\" OR abs:\"function calling\")",
-      "successful_until": null,
-      "active": {
-        "since": "2026-08-25T00:00:00+00:00",
-        "until": "2026-09-11T02:47:03Z",
-        "start": 400
-      }
+      "successful_until": "2026-09-11T02:47:03Z",
+      "active": null
     }
   },
   "queue": {
@@ -3205,23 +3201,25 @@
     "2609.03753": {
       "entry": {
         "arxiv_id": "2609.03753",
-        "version": 1,
-        "title": "SimSkill: A Lifelong Learning AI Agent for Autonomous Mastery of Traffic Simulation",
+        "version": 2,
+        "title": "SimSkill: A Self-Evolving LLM Agent for Skill and Knowledge Accumulation in Traffic Simulation",
         "authors": [
           "Qi Liu",
           "Qinzheng Wang",
-          "Yiming Bie"
+          "Can Li",
+          "Yiming Bie",
+          "Wanjng Ma"
         ],
         "published": "2026-09-03T12:23:56Z",
-        "updated": "2026-09-03T12:23:56Z",
-        "abstract": "As large language models (LLMs) become increasingly capable, the long-term value of AI systems depends not only on solving individual requests, but also on transforming experience and accumulated knowledge into durable, reusable competence. We introduce SimSkill, a self-evolving agent built around the Simulation of Urban MObility (SUMO) traffic simulator. SimSkill identifies capability gaps, generates and solves environment-grounded tasks, verifies solutions through an action--critic loop, and consolidates experience into episodic, procedural, and semantic memory without updating the backbone model. Through autonomous exploration, it builds a reusable library spanning the traffic-simulation workflow. We evaluate SimSkill on two held-out benchmarks with three backbone LLMs and independent artifact-based verification. SimSkill improves verified completion by up to 25 percentage points, while ablations show complementary contributions from procedural and semantic memory. Its benefits remain backbone- and budget-dependent: memory does not improve every model or uniformly reduce inference cost. More broadly, SimSkill illustrates a design paradigm in which natural language preserves and composes computational capabilities, while executable tools and code provide precise and reproducible execution. All code and experimental data are publicly available at https://github.com/qiliuchn/SimSkill-V1."
+        "updated": "2026-09-10T04:03:29Z",
+        "abstract": "Cumulative culture enables humans to preserve, reuse, and extend knowledge and skills across experiences and generations. Inspired by this principle, we introduce \\textit{SimSkill}, a self-evolving agent built around the Simulation of Urban MObility (SUMO) traffic simulator. SimSkill continually identifies capability gaps, generates and solves environment-grounded tasks, verifies solutions through an action--critic loop, and consolidates experience into episodic, procedural, and semantic memory. Through autonomous exploration, it builds a library of reusable skills and knowledge spanning major stages of the traffic-simulation workflow. We evaluate SimSkill on two held-out benchmarks across three backbone LLMs, with each result independently verified. It improves verified success by up to 25 percentage points, and ablations show complementary contributions from procedural and semantic memory. Its benefits remain backbone- and budget-dependent, as memory does not improve every model or uniformly reduce inference cost. More broadly, SimSkill illustrates a natural-language-centered design paradigm for LLM-based agent systems. Its high-level control logic, operating principles, and accumulated knowledge are expressed in natural language, while an LLM integrates them with executable tools and code to realize precise and reproducible execution. All code and experimental data are publicly available at https://github.com/qiliuchn/SimSkill-V1."
       },
-      "hash": "d02329f37df528388a4551b8085e5928b4f232720222cb701055a8afadad8323",
-      "status": "awaiting_evidence",
+      "hash": "14851fab900d2759c81937f001478b9e05c7662a0b1b90a2d405b3a9b24d9b48",
+      "status": "queued",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
-      "kind": "new"
+      "kind": "updated"
     },
     "2609.03815": {
       "entry": {
@@ -3294,7 +3292,7 @@
     "2609.04444": {
       "entry": {
         "arxiv_id": "2609.04444",
-        "version": 1,
+        "version": 2,
         "title": "HarvestBench: Measuring Whether LLM Agents Will Pay to Avoid Killing Animals",
         "authors": [
           "Jasmine Brazilek",
@@ -3304,15 +3302,16 @@
           "Jeremiah Miller"
         ],
         "published": "2026-09-03T20:05:38Z",
-        "updated": "2026-09-03T20:05:38Z",
-        "abstract": "Benchmarks for the side effects an agent causes on the way to a goal already exist, but HarvestBench is the first to put a price on avoiding the side effect and to name that side effect as a living creature. It is a farm simulation: LLM sub-agents drive a crew of two tractors through a cooperative corn harvest, with animals in the field. The environment is a reinforcement learning gridworld, every decision is made without memory, and the harm is never named in the goal. When an animal blocks a tractor's route the autopilot stops and asks the model whether to drive on, at no fuel cost, or swerve around it for a posted fuel price. Kills are compared against two controls: rocks, which damage the tractor and are hit under 1% of the time by every model, and hay bales, which are harmless and not alive. Models can also take crops from the neighbor's field instead of their own, a second test of what they treat as moral. Across nine models and 7,201 priced decisions, 3,951 involved an animal rather than a hay bale or a rock. Kill rates range from 0.4% to 98.8%, with Terra and Sol the most merciful and GPT-4o-mini the most cruel, and they are not ordered by capability. Four of six models were sensitive to price at the 5% level, with elasticities from 0.09 to 1.69. All nine drove over wild animals more often than farmed animals on the default map, and the direction held at every map geometry in every model with room to move. The briefing mattered most: under the morality briefing the kill rate was under 6% in five of six reasoning models, and removing it raised the kill rate above 84% in all six. HarvestBench uses no LLM grader. The scorer counts events in the game log, so it is fully reproducible, and it measures what a model will pay to avoid harm rather than what it says about harm."
+        "updated": "2026-09-10T03:12:52Z",
+        "abstract": "HarvestBench is the first benchmark to 1) put a price on avoiding a side effect and 2) name the side effect as a living creature. Nine LLMs each drive a crew of two tractors to gather a corn harvest. The animals in their path are not part of the goal function. When an animal blocks the route the autopilot pauses and asks the agent whether to drive over it for free or swerve for a given fuel cost. All scoring is programmatic and does not involve LLM judges. Kill rates range between 0.4% and 98.8%, though the kill rate is not ordered by capability. Every model competently avoids damaging rock hits, so every animal killed is a choice, rather than an accident. Under the morality briefing the kill rate was under 6% in 5 of 6 reasoning models. Removing it (the neutral briefing) raised the kill rate to above 84% in all six models. Every model kills wild animals more often than farmed ones. Four out of six models' kill rate per answered encounter were sensitive to price changes. The moral instruction is also fragile. Four bullets of driving mechanics change Sonnet 5's kill rate from 3% to 18% and Gemini 2.5 Flash's from 4% to 39%. A moral instruction in a system prompt is overridden by a short block of operating instructions and a value that can be ignored that easily is not a good method of ensuring agents are aligned.",
+        "comment": "v2: corrects Appendix C and Section 5.8. The August re-runs used a shortened briefing, so the differences they showed were a prompt change, not routing or model drift. Same-briefing re-runs reproduce v1's numbers. Adds the briefing ablation and the resulting prompt-fragility result"
       },
-      "hash": "0681d35a41dc4a1bbaa16609fd4f98a93b61cd523ab882640adb91bbeeb89f6e",
-      "status": "awaiting_evidence",
+      "hash": "acd057eb0b3c6dc379fff7318e6d570c57de6de2dfeb7587a3ab883f06774883",
+      "status": "queued",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
-      "kind": "new"
+      "kind": "updated"
     },
     "2609.04523": {
       "entry": {
@@ -3954,7 +3953,7 @@
     "2609.05927": {
       "entry": {
         "arxiv_id": "2609.05927",
-        "version": 1,
+        "version": 2,
         "title": "GIF: Agentic Generation of Interactive and Functional Object Compositions for Robot Learning",
         "authors": [
           "Long Xu",
@@ -3970,16 +3969,16 @@
           "He Wang"
         ],
         "published": "2026-09-05T06:36:20Z",
-        "updated": "2026-09-05T06:36:20Z",
+        "updated": "2026-09-10T05:59:34Z",
         "abstract": "Robot manipulation foundation models require scalable evaluation and data generation across diverse scenarios, with simulation providing an environment for both. Automated scene generation offers a promising path, yet prior work has largely emphasized coarse-grained scene layouts rather than fine-grained functional object compositions. Motivated by this gap, we present GIF, an agentic Generation framework for Interactive and Functional object compositions. In this framework, we recast this problem as disentangled reconstruction followed by relative pose recovery. CoGen produces instance-disentangled meshes with coarse initial poses leveraging complementary strengths of 2D and 3D generative models. GPRM refines the relative pose under joint geometric and physical guidance, and a VLM verifier selects the candidate that best matches the structured specification. We further construct a benchmark spanning eight representative contact-geometry classes and compare with state-of-the-art generators; GIF improves both asset quality and relation matching, while reducing collision rate to below 1%. Finally, we synthesize data for policy learning, revealing diversity scaling in both simulation and real-world deployment.",
         "comment": "50 pages, including supplementary material"
       },
-      "hash": "c10b395d5b5dc1f43c66430e0eec412e7b383adbce808138ad62abcce50a0680",
-      "status": "awaiting_evidence",
+      "hash": "049b4e8ab8adf100eac4ab5f83727df5e1e6d64bec7961ba4fa9c53b3fc6b85c",
+      "status": "queued",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
-      "kind": "new"
+      "kind": "updated"
     },
     "2609.06027": {
       "entry": {
@@ -26079,6 +26078,553 @@
         "abstract": "Agentic systems commit state-changing actions, but additional verifiers can inherit the same upstream fault. We present VP-CONTROL, a runtime-assurance design and deterministic benchmark for cost-aware commit gates. Its 48 task templates yield 2,880 scenarios across six fault regimes. A fixed-call 2 x 2 experiment separates verifier-model diversity from evidence-source diversity. On frozen proposals from two local actor families, a cross-model vote over shared evidence approves 62.9% of unsafe proposals, versus 22.9% with an independent source. The source effect is 40.9 percentage points, compared with 11.3 for model diversity. A portfolio controller selects verification plans using only deployment-observable metadata. Approximate cluster-adjusted calibration at a nominal 5% per-task target yields 1.9% unsafe execution and 38.2% automated safe coverage on the locked test. Matched-budget portfolios also improve on fixed verification policies. Transfer remains conditional: unseen fault families yield 16-26% risk, and a FinQA check fails to reproduce the source effect with the tested small verifiers. A preregistered live HTTP/SQLite study tests concurrent writes and lost responses. After-check races defeat verifier-only gates; transactional partial guards prevent only covered failures, while a full atomic guard records no unsafe effects across 216 episodes. Idempotent request identifiers prevent duplicate effects after lost responses. The results motivate explicit evidence lineage, cost-aware selection, and commit-time enforcement, while exposing the limits of approximate calibration and local-tool generalization."
       },
       "hash": "a536b28c4a7634fe1587945d517b75763e26f55144057075437d58cd175a49ad",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.04298": {
+      "entry": {
+        "arxiv_id": "2609.04298",
+        "version": 3,
+        "title": "Harbor Adapters and Harbor-Index: Infrastructure and a Curated Meta-Dataset for Large-Scale Agentic Evaluation",
+        "authors": [
+          "Lin Shi",
+          "Haowei Lin",
+          "Zixuan Zhu",
+          "Xiaoyue Zhou",
+          "Xiang Li",
+          "Xiangning Lin",
+          "Yaxuan Deng",
+          "Han Xu",
+          "Yuangang Li",
+          "Shanda Li",
+          "Zizhao Chen",
+          "Hanwen Xing",
+          "Harsh Raj",
+          "Bo Chen",
+          "Quan Shi",
+          "Steven Dillmann",
+          "Yipeng Gao",
+          "Puneesh Khanna",
+          "Ruofan Lu",
+          "Chao Beyond Zhou",
+          "Michael Yang",
+          "Robert Zhang",
+          "Siyuan Chai",
+          "Jiayu Chang",
+          "Yizhao Chen",
+          "Xiaokun Chen",
+          "Yiwei Dai",
+          "Wenting Yang",
+          "Hange Liu",
+          "Minghao Liu",
+          "Zihan Wang",
+          "Adnan El Assadi",
+          "Benedikt Stroebl",
+          "E. Kelly Buchanan",
+          "Han Meng",
+          "Junwei He",
+          "Longxuan Yu",
+          "Radin Shayanfar",
+          "Yukyung Lee",
+          "Zhikang Dong",
+          "Allen G Hart",
+          "Anjiang Wei",
+          "Anurag Kashyap",
+          "Arpandeep Khatua",
+          "Audrey Jixin Zheng",
+          "Chengrui Ma",
+          "David Heineman",
+          "Dubing Chen",
+          "Hai-Anh Trinh",
+          "Haishuo Fang",
+          "Hefan Zhang",
+          "Hui Shen",
+          "Issa Sugiura",
+          "Jiankai Sun",
+          "Jiechao Gao",
+          "Junhong Lin",
+          "Junnan Li",
+          "Kai Yang",
+          "Lei Hsiung",
+          "Maoyu Wang",
+          "Mengze Tang",
+          "Nabil Omi",
+          "Negin Raoof",
+          "Nicholas Edwards",
+          "Octavia Guo",
+          "Orfeas Menis Mastromichalakis",
+          "Pengliang Ji",
+          "Przemysław Hejman",
+          "Qi Qi",
+          "Qunshu Lin",
+          "Richard Zhuang",
+          "Rui Yang",
+          "Ruichen Zheng",
+          "Ryan Marten",
+          "Shaghayegh Fazliani",
+          "Shizheng Hou",
+          "Sicong Jiang",
+          "Sijie Li",
+          "Boqin Yuan",
+          "Michael Glass",
+          "Song Bian",
+          "Terry Yue Zhuo",
+          "Tianqing Wu",
+          "Tom Tang",
+          "Wanjia Zhao",
+          "Weihao Xuan",
+          "Wenhua Liang",
+          "Xian Liu",
+          "Xin Lan",
+          "Xuan Zhang",
+          "Xuandong Zhao",
+          "Yanchuan Tang",
+          "Yifan Jiang",
+          "Yijiang Li",
+          "Yitong Guan",
+          "Yizhi Li",
+          "Yonghui Liu",
+          "Yuheng Tang",
+          " Yujun",
+          " Mao",
+          "Yunfei Zhao",
+          "Yuxin Wang",
+          "Yuxuan Tang",
+          "Zhenheng Tang",
+          "Zhifei Li",
+          "Ziruo Wang",
+          "Ziyu She",
+          "Kaiyuan Liu",
+          "Iheb Chaabane",
+          "Yuxin Tang",
+          "Xiangyi Li",
+          "Satya Sai Srinath Namburi GNVV",
+          "Xinyue Zheng",
+          "Andy Konwinski",
+          "Boxuan Li",
+          "Leon Liangyu Chen",
+          "Alex Dimakis",
+          "Nicholas Carlini",
+          "Soroush Vosoughi",
+          "Sanmi Koyejo",
+          "Di He",
+          "Etash Guha",
+          "Benjamin Feuer",
+          "Mike Merrill",
+          "Ludwig Schmidt",
+          "Alex Shaw"
+        ],
+        "published": "2026-09-03T16:26:20Z",
+        "updated": "2026-09-10T02:39:50Z",
+        "abstract": "Evaluating agents on the growing number of agentic benchmarks is challenging because they often require complex environments and agent integrations. We introduce Harbor Adapters, a unified evaluation infrastructure for agentic benchmarks. Our work makes three contributions. First, we develop benchmark adapters that port more than 80 benchmarks to evaluate arbitrary agents, and validate them through rigorous code review and parity experiments. Second, we conduct a large-scale evaluation of 8 models spanning capability tiers across 54 benchmarks; every model is run with Terminus-2 and with one of 3 native harnesses. This enables a broader analysis of agent capabilities and failure modes than was previously possible. Third, we introduce Harbor-Index, a curated set of 82 difficult, diverse, and high-quality tasks spanning 29 benchmarks, refined from the adapted suite through difficulty filtering, AI and human audit, and an audit-and-fix loop. Harbor-Index preserves the challenge and breadth of large-scale agentic evaluations while being affordable to run; no evaluated model-harness configuration exceeds 30% pass rate, and the strongest (GPT-5.5 with Codex) reaches 28.0%. We release the adapters, evaluation results, in-depth analysis, and Harbor-Index as open-source artifacts to support more reliable and comprehensive evaluation of language-model agents."
+      },
+      "hash": "81c25e67cc149caac26cc0f89d7da29652b4f1430d0e8b2195e6c377eeb9c264",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "updated"
+    },
+    "2609.11018": {
+      "entry": {
+        "arxiv_id": "2609.11018",
+        "version": 1,
+        "title": "Defining AI Agents: A Compendium of Criteria, Metrics, and Benchmarks",
+        "authors": [
+          "Mia Lassiter",
+          "Brinnae Bent"
+        ],
+        "published": "2026-09-10T02:50:29Z",
+        "updated": "2026-09-10T02:50:29Z",
+        "abstract": "The term agent in artificial intelligence lacks a standard definition, complicating the evaluation, comparison, and reproducibility of AI agent research. We address this ambiguity through a survey organized around five dimensions of agenticness: environmental interaction, learning and adaptation, autonomy, goal-directed behavior, and temporal coherence. For each dimension, we examine how the underlying capability has been conceptualized across prior work and synthesize the metrics, benchmarks, and evaluation frameworks used to assess it. This review provides a structured account of the current landscape of agent evaluation, highlighting both established approaches and areas where evaluation remains limited or inconsistent. We additionally introduce the Agent Compendium, a public-facing digital resource that organizes and extends the evaluation methods identified through this review. Together, the survey and compendium provide a common structure for evaluating and comparing agent capabilities across AI systems, supporting more reproducible research, clearer communication, and more systematic study of artificial agents.",
+        "comment": "Agent Compendium: agent.duketrustlab.com"
+      },
+      "hash": "48e202fd3e1329ca763a64ccc281ab66f8e696c0bdf862a795ce192d22036da9",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.11023": {
+      "entry": {
+        "arxiv_id": "2609.11023",
+        "version": 1,
+        "title": "RCL: A Retrieval-Confidence Layer for Detecting Insufficient Context in Enterprise Retrieval-Augmented Code Generation",
+        "authors": [
+          "Chandra Mohan Ravuri"
+        ],
+        "published": "2026-09-10T03:02:23Z",
+        "updated": "2026-09-10T03:02:23Z",
+        "abstract": "Retrieval-Augmented Generation (RAG) for code generation has been studied extensively on public repositories, where a model's parametric knowledge often compensates for imperfect retrieval. This breaks down in enterprise codebases, where private APIs, internal frameworks, and undocumented team conventions fall entirely outside any model's pretraining distribution. Recent work on private-library code generation shows that even oracle (perfect) retrieval does not eliminate errors, but locates failures downstream in API usage; separately, confidence-gated retrieval has been studied for open-domain question answering using model-internal confidence. Neither addresses whether retrieval itself was structurally sufficient for a private-code query before generation begins. We introduce RCL (Retrieval-Confidence Layer), a lightweight module inserted between retrieval and generation that combines a call-graph-derived structural coverage score with a novelty score estimating a query's dependence on knowledge outside the model's prior, to detect insufficient retrieval before generation occurs. When confidence falls below a calibrated threshold, RCL triggers a targeted follow-up retrieval or labels the output for human review, rather than generating silently against incomplete context. We describe RCL's architecture, formalize its scoring functions, and propose an evaluation methodology using a private-code benchmark built by injecting synthetic internal APIs into open-source Java repositories, simulating the enterprise condition without proprietary code. We report results (Section 7) comparing RCL against similarity-only retrieval on generation correctness. Our position is that retrieval sufficiency, assessed structurally rather than from model-internal confidence, is a distinct and currently underaddressed signal for building safer code-generation systems in private, enterprise settings.",
+        "comment": "7 pages, 1 figure, 2 tables"
+      },
+      "hash": "c5d9593718e854e61d0c916159e002f7d08f74fd04925a1fa0ed103abb5924af",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.11028": {
+      "entry": {
+        "arxiv_id": "2609.11028",
+        "version": 1,
+        "title": "BenchShield: Formal Model-Backed Instrumentation for Reward Integrity in LLM-Agent Evaluation Infrastructure",
+        "authors": [
+          "Shenghan Zheng",
+          "Zonglin Di",
+          "Yimin Liu",
+          "Kyoung Whan Choe",
+          "Jiankai Sun",
+          "Heguang Lin",
+          "Penghao Jiang",
+          "Yifeng He",
+          "Xiao Cheng",
+          "Jicheng Wang",
+          "Wenbo Chen",
+          "Alex Yates",
+          "Yinzhe Zhao",
+          "Bingran You",
+          "Yuan Gao",
+          "Ayush Munot",
+          "Shubham Gaur",
+          "Zhe Ye",
+          "Hao Wang",
+          "Xiangyi Li",
+          "Dawn Song",
+          "Christophe Hauser"
+        ],
+        "published": "2026-09-10T03:10:58Z",
+        "updated": "2026-09-10T03:10:58Z",
+        "abstract": "LM-agent benchmarks increasingly function as interactive evaluation infrastructure. Agents observe state, call tools, modify workspaces, submit artifacts, and receive rewards from outcome procedures. This interactivity makes evaluations vulnerable to reward hacking: an agent improves its measured score by exploiting the reward-relevant trajectory instead of solving the intended task. Existing defenses rely largely on task-specific patches, prompt instructions, or post-hoc detectors. They do not provide reusable evidence that a concrete run remained within its intended evaluation boundary. This paper presents BenchShield, a model-backed instrumentation layer for reward integrity in LLM-agent evaluation. BenchShield grounds detection in a finite lifecycle model of an evaluation's reward-relevant events. Within the benchmark infrastructure, two complementary analyses operate over this model. A static, phase-aware taint analysis exposes reward-hacking paths before a run. Its runtime counterpart uses infrastructure-side evidence to attribute concrete agent use and emit evidence-backed claims. We construct BenchShield Trajectories, a human-labeled corpus of 456 adjudicated trajectories from more than 31,000 public agent runs across three benchmarks. Compared with an agentic hackability scanner baseline on the same tasks and model, BenchShield improves full-chain recall from 23-94% to 77-100%, same-vector coverage from 16-56% to 43-78%, and reduces per-task cost by up to 65%. Its runtime analysis achieves 96% accuracy in detecting reward hacking from infrastructure-side evidence."
+      },
+      "hash": "2feaec9398de22cdf6e928eedbc41150f23deaea46a5c5246d1c823c9e229a28",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.11042": {
+      "entry": {
+        "arxiv_id": "2609.11042",
+        "version": 1,
+        "title": "T1: Terminal Agent Reinforcement Learning for Long-Horizon Tasks",
+        "authors": [
+          "Junyao Yang",
+          "Yucheng Shi",
+          "Zhongzhi Li",
+          "Ruhan Wang",
+          "Zongxia Li",
+          "Haitao Mi",
+          "Leowei Liang"
+        ],
+        "published": "2026-09-10T03:42:01Z",
+        "updated": "2026-09-10T03:42:01Z",
+        "abstract": "Agent usage is shifting toward long-horizon tasks such as coding and scientific discovery, among which terminal tasks are especially important. We introduce T1, a Mixture-of-Experts model of 122B total trained with reinforcement learning, operating a real shell in a cloud sandbox for up to 300+ tool-call turns per task, rewarded by executing each task's own verifier. We provide a comprehensive recipe: First, an aggressively warm-started to stabilize actor-critic training, with a dense process reward scoring trajectories by the absolute number of passing verifiers. Second, stable optimization through TITO construction, training on the exact sampled token identifiers with drift repair at turn boundaries, and rollout routing replay, recording the sampler's per-token expert choices at every MoE layer and replaying them during training. Third, fully out-of-distribution training corpus: isolated seeds and synthesized tasks disjoint from Terminal-Bench 2.1 ensures gains reflect genuine capability transfer over benchmark overfitting. Together, TITO and R3 cut the training-to-inference log-probability difference from 0.021 to 0.013, with exactly aligned zero token drift in the loss region. On Terminal-Bench 2.1, our post-train pipeline raises initial base model from 43.8% to T1 with 64.0% resolved. On Long-Horizon Terminal Bench, T1 reaches 27.9% and surpasses GPT-5.4 and GLM-5.1.",
+        "comment": "37 pages, 18 figures"
+      },
+      "hash": "c7b509ee4f254c86e78ee68d344a015626f9186a1e2875ddbe5cbd2d80ba971a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.11101": {
+      "entry": {
+        "arxiv_id": "2609.11101",
+        "version": 1,
+        "title": "ProMediConv: Benchmarking Proactive Conversational Agents in Legal Dispute Mediation",
+        "authors": [
+          "Zesheng Wei",
+          "Mengfan Li",
+          "Wenhao Liu",
+          "Yixin Zhang",
+          "Zilei Wang",
+          "Yang Deng"
+        ],
+        "published": "2026-09-10T05:26:40Z",
+        "updated": "2026-09-10T05:26:40Z",
+        "abstract": "Dispute mediation is essential for maintaining social harmony and resilience, yet developing skilled mediators is costly and time-consuming. Existing LLM-based mediation research remains limited by unrealistic task formulations, low-fidelity datasets, and coarse evaluation metrics that obscure turn-by-turn dynamics. To address these gaps, we introduce ProMediConv, a novel benchmarking framework that models mediation as a proactive, multi-stage, and party-aware dialogue process incorporating 11 mediation strategies and four party behavior pattern (BP) states. Using 972 complete real-world cases, we construct a high-fidelity mediation dataset with utterance-level annotations of strategies and BP states. Furthermore, to better assess agent impact, we propose MAD (Mean Attribute Difference), a fine-grained metric that captures BP shifts throughout the dialogue. Leveraging this framework, we establish a comprehensive benchmark by evaluating diverse models alongside our tailored baseline ProMediAgent. Extensive empirical analyses reveal critical behavioral phenomena and underscore the persistent challenges current models face in dynamic, multi-party mediation. Ultimately, ProMediConv provides a rigorous foundation and a vital quantitative standard for advancing AI-assisted conflict resolution. Our dataset and codebase are accessible at https://github.com/ZsWei66/ProMediConv_repo.",
+        "comment": "Accepted to Findings of EMNLP2026"
+      },
+      "hash": "e608fee1ae8fd2625c32bee555c59fe773c2c1e570755f601a8707b7675510f2",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.11115": {
+      "entry": {
+        "arxiv_id": "2609.11115",
+        "version": 1,
+        "title": "Benchmark Radar: A Living Database and Search Engine for AI Benchmarks and Evaluation",
+        "authors": [
+          "Koutian Wu",
+          "Junjie Zhou",
+          "Ergan Shang",
+          "Jiayu Wang",
+          "Pengqian Han",
+          "Junkai Wang",
+          "Wanghan Xu"
+        ],
+        "published": "2026-09-10T05:47:22Z",
+        "updated": "2026-09-10T05:47:22Z",
+        "abstract": "Benchmark researchers and developers of large language models (LLMs) and other AI systems need to find relevant evaluations, locate their benchmark datasets and code, and understand the settings behind reported scores. We present Benchmark Radar, a living database and search engine for retrieval and discovery of AI benchmarks, covering LLM evaluation, agentic and tool-use benchmarks, coding, reasoning, safety, and domain-specific evaluations. The system combines daily discovery of benchmark papers, repositories, datasets, and releases with a searchable benchmark catalog, mentions in model cards and technical reports, and score histories. It retains source identities and citations so readers can inspect candidate benchmarks and their evaluation evidence. Daily discovery draws on 37 sources: 13 direct connectors and 24 first-party research and engineering feeds. The catalog contains 1,283 source records drawn from 4 benchmark catalogs and 12,916 numeric observations on 790 records. We describe collection and retrieval, audit the full catalog, and examine benchmark saturation, adoption trends, and the limits of score comparisons. A worked example walks through a complete prior-art search, showing how to query the catalog and inspect benchmark evidence when designing a new evaluation. We release the web dashboard with a benchmark leaderboard, a Pareto frontier view of score against measured use, saturation and trend views, daily feeds, downloadable evidence, a command-line interface (CLI) for offline queries, and reproducible analysis.",
+        "comment": "Project site: https://benchmark-radar.org/ Code: https://github.com/ktwu01/benchmark-radar"
+      },
+      "hash": "53bfafaff0a9539f074a6b2a98e9885114fc7066d5f32efcdcf66b650190d359",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.11117": {
+      "entry": {
+        "arxiv_id": "2609.11117",
+        "version": 1,
+        "title": "Overview of the NLPCC 2026 Shared Task 11: Agent-Based Experiment Reproduction from Scientific Papers",
+        "authors": [
+          "Hanhua Hong",
+          "Yizhi Li",
+          "Luu Gia Huy",
+          "Jian Yang",
+          "Ming Zhou",
+          "Chenghua Lin"
+        ],
+        "published": "2026-09-10T05:50:24Z",
+        "updated": "2026-09-10T05:50:24Z",
+        "abstract": "Reproducibility is essential to scientific progress, yet the growing volume and complexity of scientific publications make exhaustive manual verification increasingly impractical. Although recent advances in large language model (LLM) agents enable automated experiment reproduction, existing evaluations largely focus on final repositories and are typically limited to machine learning (ML). We introduce AgentActionBench, a process-oriented benchmark for evaluating agent-based experiment reproduction across ML and AI4Science domains. Our framework uses an MCP-based Action Recorder to capture agents' behaviour throughout the reproduction process and evaluates the resulting traces with paper-specific rubrics. AgentActionBench contains 150 papers, including 120 ML papers and 30 AI4Science papers. A human-annotated subset covering 10% of the benchmark provides validation data, while model-assisted augmentation expands the full benchmark to more than 10,000 rubric items. Experimental results show that current systems remain limited, with execution as the primary bottleneck. Meanwhile, the strong Pearson and Spearman correlations between model-generated and human-annotated rubrics validate the reliability of our scalable rubric-generation approach.",
+        "comment": "NLPCC Shared Task"
+      },
+      "hash": "9e411a051dcd7a735a112fd04d0df1557b8dbe67793ffa0d11752bff72e2e20a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.11141": {
+      "entry": {
+        "arxiv_id": "2609.11141",
+        "version": 1,
+        "title": "Can LLMs Normalize Databases? A Benchmark and Multi-Agent Framework for Schema Normalization",
+        "authors": [
+          "Dong-Jae Koh",
+          "Huisu Kim",
+          "SeongHwan Yoon",
+          "Lasse M. Jantsch",
+          "Chun-Hee Lee",
+          "Seonghyeon Lee",
+          "Young-Kyoon Suh"
+        ],
+        "published": "2026-09-10T06:34:35Z",
+        "updated": "2026-09-10T06:34:35Z",
+        "abstract": "Large Language Models (LLMs) are increasingly used to generate structured outputs, but their reliability remains unclear when those outputs must satisfy database-level constraints. We study this issue through database normalization, involving reasoning about functional dependencies, lossless join decompositions, and inter-table constraints. We introduce a Database Normalization Benchmark (DNBENCH), comprising 3,275 samples for evaluating LLM-driven database normalization from 1NF to BCNF. DNBENCH uses a three-axis protocol to measure semantic equivalence, structural accuracy, and logical validity. Across Single, Complex, and Real World levels, DNBENCH uncovers recurring failures in dependency inference, schema decomposition, and inter-table constraint reconstruction. We further propose Multi-Agent Reasoning for Schemas (MARS), which separates evidence extraction, violation diagnosis, and decomposition planning from schema generation and verification. MARS improves the DNB-SCORE by 82.0% over the single-prompt baseline. All artifacts will be released upon acceptance."
+      },
+      "hash": "88a9664cf73a92f09d3f4c985c56c54922102ad6b430569d9ce3a0fae77dabe5",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.11176": {
+      "entry": {
+        "arxiv_id": "2609.11176",
+        "version": 1,
+        "title": "Debate-to-Skill: Capability-Bound Process Supervision for Industrial Query-to-Agent Annotation",
+        "authors": [
+          "Shiyu Zhang",
+          "Leisheng Cheng",
+          "Huifu Li"
+        ],
+        "published": "2026-09-10T07:24:01Z",
+        "updated": "2026-09-10T07:24:01Z",
+        "abstract": "Industrial query-to-agent matching fails when topical relevance is mistaken for executable capability, especially on long-tail and boundary-sensitive requests. We formulate annotation as \\emph{capability-bound process supervision} and instantiate it with Debate-to-Skill, which uses reusable decision principles, structured deliberation, verifier-based verdict extraction, and disagreement-driven refinement. On an industrial Query2Agent benchmark, we compare Debate-to-Skill with direct-label supervision, reasoning-SFT, and structural ablations. The results test whether gains come from supervising the capability-critical decision process itself, especially on grey-zone cases where semantic relatedness and executable capability diverge.",
+        "comment": "Accepted at EMNLP 2026"
+      },
+      "hash": "d159551bd4277a46e180db9eeac7d83e95637897ddd3120e45f76b407e352e5e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.11243": {
+      "entry": {
+        "arxiv_id": "2609.11243",
+        "version": 1,
+        "title": "Sci-MMR: Benchmarking Multi-Step Evidence-Grounded Scientific Reasoning in Multimodal Agents",
+        "authors": [
+          "Jiaqiang Li",
+          "Yajie Yang",
+          "Zhiheng Xi",
+          "Jiadong Chen",
+          "Enyu Zhou",
+          "Senjie Jin",
+          "Yang Nan",
+          "Jiazheng Zhang",
+          "Han Wang",
+          "Yanxin Li",
+          "Dingwei Zhu",
+          "Bicheng Deng",
+          "Yuhui Wang",
+          "Xiang Zheng",
+          "Qi Zhang",
+          "Lei Bai",
+          "Xingjun Ma",
+          "Tao Gui"
+        ],
+        "published": "2026-09-10T08:41:07Z",
+        "updated": "2026-09-10T08:41:07Z",
+        "abstract": "Autonomous research agents are increasingly expected to search the literature, analyze experimental evidence, and generate scientific hypotheses. These capabilities require multi-step evidence grounded reasoning that progressively acquires, integrates, and verifies evidence before reaching a conclusion. Existing multimodal benchmarks, however, largely evaluate final-answer accuracy, leaving open whether predictions are actually supported by traceable scientific evidence. We introduce Sci-MMR, a benchmark for multi-step evidence-grounded scientific reasoning built on structured argument graphs linking scientific claims, citation-grounded knowledge, visual evidence, and supporting regions. Sci-MMR comprises 235 multi-hop reasoning tasks spanning four scientific disciplines, with an average of nine figure panels per task. Evaluating eight frontier multimodal models, we find that answer accuracy consistently exceeds complete-evidence recovery rate by more than 20%, revealing a substantial gap that answer-only evaluation is structurally unable to capture. Through controlled interventions, we identify two fundamental bottlenecks. First, evidence acquisition: models struggle to extract complete structured evidence from scientific figures, accounting for 57.2% of failures. While cropping tools yield modest gains (+4.5 points), providing gold evidence improves accuracy by up to 37.0 points, indicating difficulty in assembling complete multi-region evidence. Second, evidence integration: models struggle to translate available evidence into correct conclusions, accounting for 31.8% of failures, while even with gold evidence the strongest model achieves only 69.1% accuracy on the hardest tasks. These findings indicate that current answer-centric benchmarks substantially overestimate the evidence-grounded reasoning capabilities of multimodal research agents"
+      },
+      "hash": "31b2cbe5e52b6b1f564c169a8dbad77ac74ba4fdf04228f40540d5e8fb3e5b9c",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.11318": {
+      "entry": {
+        "arxiv_id": "2609.11318",
+        "version": 1,
+        "title": "Mr.LHDR: A Benchmark for Multimodal Real-World Long-Horizon Deep Research Agents",
+        "authors": [
+          "Minghao Guo",
+          "Meng Cao",
+          "Sui Zhao",
+          "Siyu Ning",
+          "Xin Wang",
+          "Haoze Zhao",
+          "Jiaxuan Yang",
+          "Haihong Hao",
+          "Mingfei Han",
+          "Shunlin Rong",
+          "Haijun Wu",
+          "Xiaodan Liang",
+          "Xiaojun Chang"
+        ],
+        "published": "2026-09-10T09:47:44Z",
+        "updated": "2026-09-10T09:47:44Z",
+        "abstract": "Deep research agents are increasingly capable of web search, tool use, multimodal evidence analysis, and information synthesis. However, existing benchmarks mainly evaluate medium-horizon exploration and rarely test whether agents can sustain long, dependency-heavy research processes. We introduce Mr.LHDR (Multimodal real-world Long-Horizon Deep Research), a benchmark for evaluating real-world deep research over long, irreducible chains of interdependent evidence across eight categories. Each question is constructed from a hidden Node-Relation graph and requires an average of 12.1 necessary intermediate conclusions with a mean dependency depth of 10.4 before reaching a short, unique, and verifiable answer. Questions incorporate multimodal evidence, including images, maps, PDFs, logos, charts, tables, and video frames, with at least one non-text element that changes the reasoning state. Mr.LHDR evaluates both final answers and the correctness of intermediate conclusions under annotated dependencies. We evaluate general models, deep research systems, and agent frameworks using Overall Accuracy (OA), Strict Accuracy (SA), Checklist Score (CS), and Dependency-Aware Checklist Score (DACS). Results show that even the strongest system achieves only 43.1% OA and 34.3% SA, indicating that final-answer accuracy substantially overestimates complete research success. Removing images reduces DACS by 12.6 points, demonstrating the importance of multimodal evidence, while SA consistently declines as reasoning chains become longer. These findings reveal sustained, dependency-consistent evidence integration, rather than isolated fact retrieval, as a key bottleneck for current deep research agents.",
+        "comment": "Code and data are available at https://github.com/minghaoguo20/Mr-LHDR-eval"
+      },
+      "hash": "788d177902ef91300e42db74ce712fbcddbe0971e9d6ea71a6774cf91fda56a7",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.10121": {
+      "entry": {
+        "arxiv_id": "2609.10121",
+        "version": 2,
+        "title": "ADMET-EvO: a self-evolving scientific agent for sustained research across heterogeneous tasks",
+        "authors": [
+          "Yiling Zhou",
+          "Yilin Wang",
+          "Jianmin Wang",
+          "Heqin Zhu",
+          "Zirui Wang",
+          "Chang-yu Hiesh",
+          "Kejun Ying",
+          "Jiaqi Wang",
+          "Yuzhi Xu",
+          "Tingjun Hou",
+          "Odin Zhang"
+        ],
+        "published": "2026-09-09T13:00:00Z",
+        "updated": "2026-09-10T11:47:45Z",
+        "abstract": "Scientific agents can move beyond automated model building by using accumulated evidence to revise both their questions and experimental strategies. The challenge is sustaining this adaptation across heterogeneous tasks without overfitting decisions to internal validation. Absorption, distribution, metabolism, excretion and toxicity (ADMET) prediction provides a demanding setting across diverse assays, datasets and chemical domains. We therefore developed ADMET-EvO, an evidence-gated agent that formalizes endpoints, generates falsifiable hypotheses and tests interventions across data, feature and model axes. It carries supported, rejected and inconclusive outcomes forward to guide each new cycle. Across the 22-task Therapeutics Data Commons (TDC) ADMET benchmark, ADMET-EvO achieved the highest task-normalized score of 96.77. Evidence-guided selection reduced cumulative fitting time by 72.2% within a predefined non-inferiority margin. It also formalized 43 toxicity-related tasks and constructed endpoint-specific predictors. Together, these results show how ADMET-EvO can accumulate evidence, revise its strategy and expand its research scope over time."
+      },
+      "hash": "ef30c7fac1e0a79702fb951260e3f74a9303b3afb99b1fe304d6674e2bf16d21",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "updated"
+    },
+    "2609.11515": {
+      "entry": {
+        "arxiv_id": "2609.11515",
+        "version": 1,
+        "title": "ChurnBench: A Drift-Aware Benchmark Demonstrating That Refresh Scheduling, Not Cache Age, Governs Staleness in Agentic AI",
+        "authors": [
+          "Vivek Kumar Singh",
+          "Preeti Priyam"
+        ],
+        "published": "2026-09-10T13:19:29Z",
+        "updated": "2026-09-10T13:19:29Z",
+        "abstract": "In production, agentic systems answer questions over data that lives in several places and keeps changing: licenses are reassigned, users offboarded, prices changed, contracts renewed. Existing retrieval benchmarks freeze the data, so they cannot ask whether an agent's answer is still true, only whether it found the right passage. We present ChurnBench, an open-source benchmark that generates a four-source enterprise data fabric as a timeline rather than a snapshot. Every change is written to an append-only ground-truth ledger, and gold answers are computed from that ledger, never from the live stores. An answer that was correct when its data was retrieved but wrong when evaluated is therefore detected and labeled a freshness error, distinct from a reasoning error; we validate this by resolving ground truth at both timestamps for every case reported. Using the instrument, we find that when a system refreshes on a schedule, cache age does not predict staleness. Across cache ages of 1, 14, and 28 days, freshness errors were 7, 4, and 4, because scheduled refresh bounds staleness by time-to-live, and no TTL lapse was observed in any window. A controlled ablation confirms the mechanism: disabling tiered refresh raises freshness errors from 4 to 45 at 28 days and leaves them identical at one day. The variable a drift benchmark should sweep is therefore TTL configuration against each entity's rate of change, not drift-window length. ChurnBench, the evaluation harness, and all per-error data are released open source.",
+        "comment": "8 pages, 2 figures, 5 tables. Code, data, and evaluation harness: https://github.com/vsingh45/churnbench"
+      },
+      "hash": "dea1f44fe50485daff42e9ec76d59119164e35488d97203b4ab7712f452022c8",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.11682": {
+      "entry": {
+        "arxiv_id": "2609.11682",
+        "version": 1,
+        "title": "COBRA-Skills: Contextual Bandit-Guided Evolution for Agent Skill Optimization",
+        "authors": [
+          "Pingchen Lu",
+          "Xiangyi Wang",
+          "Xiang Li",
+          "Jie Mao",
+          "Zikun Qu",
+          "Junfeng Luo",
+          "Yao Shu",
+          "Bryan Kian Hsiang Low",
+          "Zhongxiang Dai"
+        ],
+        "published": "2026-09-10T15:12:24Z",
+        "updated": "2026-09-10T15:12:24Z",
+        "abstract": "Large language model (LLM) agents can benefit from reusable skills distilled from prior task experience, yet existing skill optimization methods often rely on costly execution-based evaluation and substantial task data. We introduce \\textbf{COBRA-Skills}, an efficient framework that formulates skill optimization as budgeted sequential optimization over a dynamically evolving candidate space. COBRA-Skills couples contextual-bandit-guided prioritization with evidence-grounded skill evolution, selectively allocating evaluations to promising or informative candidates while continually refining the skill population from execution feedback. Across six heterogeneous agent benchmarks and three target models, COBRA-Skills consistently achieves the strongest average performance among compared methods, while reducing optimization cost by 55--58\\% relative to SkillOpt and using only 50 unique optimization examples per benchmark. Further analyses show that COBRA-Skills remains robust to changes in the agent harness and performs effectively when the target model itself is used for skill generation and refinement."
+      },
+      "hash": "ef44e5e070bb873a476085225f0635ae461bd287dc0a563be4e7e84ebcc80cae",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.11899": {
+      "entry": {
+        "arxiv_id": "2609.11899",
+        "version": 1,
+        "title": "Caption-once, Frames-on-Demand: Visual-Need Routing for Budget-Aware Agentic Long Video Understanding",
+        "authors": [
+          "Weitong Cai",
+          "Hang Zhang",
+          "Yukai Huang",
+          "Yiqiao Xie",
+          "Shan Gao",
+          "Jiankang Deng",
+          "Songcen Xu",
+          "Jifei Song",
+          "Zhensong Zhang"
+        ],
+        "published": "2026-09-10T17:53:59Z",
+        "updated": "2026-09-10T17:53:59Z",
+        "abstract": "Long-video understanding on edge devices must reason over hours of content under tight compute and bandwidth budgets. Subsampling visual tokens loses temporal structure, while text-only video memories lose fine-grained visual attributes. We observe a visual-textual duality: language memories carry long-range temporal structure better than dense frames, while pixels remain decisive for attribute-level perception. Building on this insight, we propose Caption-once, Frames-onDemand (CFD), a budget-aware edge-cloud agentic framework. The edge runs a single offline captioning pass that builds a dual-track narrative index, an event-level story skeleton plus a clip-level micro-log, cached and reused across queries without re-captioning. At query time, a cloud-side MLLM reasons over the index in a story-first loop centered on a lightweight Visual-Need Router: a per-query gating module that triggers bounded keyframe retrieval only for perceptual questions (appearance, on-screen text, attribute disambiguation) and keeps temporal-structural questions in language space. The router turns visual access into a first-class, query-conditioned cost, capping per-query frame consumption regardless of video length. Experiments on long-video benchmarks demonstrate strong accuracy-efficiency trade-offs while substantially reducing online visual processing.",
+        "comment": "EMNLP 2026 Main Conference"
+      },
+      "hash": "275be3dbb8b2d5f452f2e6828f777074775bd91df836eb707c20959e3143b35b",
       "status": "queued",
       "attempts": 0,
       "error": null,
