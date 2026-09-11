@@ -21,7 +21,7 @@
       "active": {
         "since": "2026-08-25T00:00:00+00:00",
         "until": "2026-09-11T02:47:03Z",
-        "start": 50
+        "start": 100
       }
     }
   },
@@ -22953,6 +22953,375 @@
         "comment": "15 pages, 8 figures and tables, accepted at the 2026 TPCTC Conference and will be published at Performance Evaluation and Benchmarking (Springer)"
       },
       "hash": "d06956ce9105717c0b7e8563f7b600a71258b371493b31bd976c2371071b06e5",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.26291": {
+      "entry": {
+        "arxiv_id": "2608.26291",
+        "version": 1,
+        "title": "Assessing mentalization in humans and large language models",
+        "authors": [
+          "Aamir Sohail",
+          "Xintong Zhong",
+          "Arkady Konovalov",
+          "Patricia L. Lockwood",
+          "Lei Zhang"
+        ],
+        "published": "2026-08-26T18:16:12Z",
+        "updated": "2026-08-26T18:16:12Z",
+        "abstract": "Mentalization - the ability to infer others' beliefs and intentions to guide one's own choices - is a key cognitive function underlying human social interactions. Large language models (LLMs) demonstrate behaviour consistent with humans on theory-of-mind tasks, yet whether these models can guide adaptive behaviour through mentalization is unknown. Here we use two economic games with cognitive computational modeling to uncover the latent strategies underlying mentalization in LLMs. We tested individual LLM agents across four model families, DeepSeek, GPT-4.1, GPT-5 and Gemini 2.0 Flash (N = 2,099), against opponents of varying sophistication and examined whether a prompting strategy designed to elicit strategic reasoning improved performance. We benchmarked results against human participants (N = 251) as a comparative measure. Across both games, LLMs showed clear behavioural and computational signatures of mentalizing that differed markedly by model provider and size. Strategic prompting generally improved performance by inducing more sophisticated reasoning, yet the extent of the benefit differed across the two tasks. Last, GPT-5 agents flexibly adapted their recursive depth of reasoning to increasingly sophisticated opponents, demonstrating superior performance to human participants. Collectively, we demonstrate different capacities for mentalization across LLMs, and highlight cognitive computational modeling as a formal method for assessing comparative intelligence across humans and machines.",
+        "comment": "46 pages, 4 figures, 2 tables. Supplementary information available on request from the authors"
+      },
+      "hash": "54a1e7ef3700cc6a2542ca47ba8e76966f8f1eed8a8ff7733671968adbf2abf4",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.26432": {
+      "entry": {
+        "arxiv_id": "2608.26432",
+        "version": 1,
+        "title": "SpeechGym: An Audio-Native Gym for Training Voice Agents via Reinforcement Learning",
+        "authors": [
+          "Jiajun Fan",
+          "Jingyuan Li",
+          "Prashanth Gurunath Shivakumar",
+          "Jia-Hong Huang",
+          "Qi Luo",
+          "M. Maruf",
+          "Ivan Bulyko",
+          "Ge Liu",
+          "Roger Ren"
+        ],
+        "published": "2026-08-26T22:16:05Z",
+        "updated": "2026-08-26T22:16:05Z",
+        "abstract": "Voice agents must call tools and hold multi-turn dialogue entirely through speech, yet the dominant paradigm trains them in text. Existing frameworks either cascade TTS and ASR around a proprietary voice API, where gradients cannot flow and per-call cost makes on-policy reinforcement learning prohibitive, or stay in text: they measure voice agents but cannot improve them. We present SpeechGym, an audio-native agentic environment in which two omni-modal models converse in native audio, with no external ASR or TTS and no API boundary, over the unmodified tasks, tools and success check of an established text agentic benchmark, so that the interaction modality is the only variable and the loop stays local and trainable end to end. Audio agentic capability does not follow from audio understanding. The failures speech introduces are perceptual rather than reasoning deficits: the agent picks the right tool and the right argument slot but fills it with a value misheard from the waveform, and that single error cascades into a failed call, a retry of the same call, and a wasted step budget. A second failure is behavioural: under an insistent caller the agent performs an unauthorised write and ends the episode believing it helped. Both are trainable, because the environment labels them for free: a call with a misheard argument fails against the database while a correct one succeeds. The obstacle is sparsity, not signal. Outcome-only GRPO is gradient-starved here, since almost every rollout group fails identically, while a per-turn process reward crediting each successful tool call restores variance to nearly every group. Trained this way, the agent transfers with no further tuning to an independently implemented voice benchmark, more than doubling task success and carrying an open-weights model from last place to second on that leaderboard, while using fewer turns and tokens than before training."
+      },
+      "hash": "fa5a50cda13886eab19522be8ca2d7e4db9dc41742a1a7b50c64e3a1d3295da3",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.26530": {
+      "entry": {
+        "arxiv_id": "2608.26530",
+        "version": 1,
+        "title": "PILOT in the Loop: Live Self-Improvement for Long-Horizon Agents",
+        "authors": [
+          "Yang Xiao",
+          "Yusong Sun",
+          "Haoyi Wu",
+          "Wenyang Hui",
+          "Wen Da",
+          "Zhaokai Luo",
+          "Mu Chuan",
+          "Yao Hu",
+          "Wenjie Li",
+          "Chengyue Jiang"
+        ],
+        "published": "2026-08-27T02:06:22Z",
+        "updated": "2026-08-27T02:06:22Z",
+        "abstract": "Long-horizon agent runs generate experience that can improve both the current run and future work. Most self-improvement methods process this experience only after execution ends, so they cannot redirect the active run or immediately apply and validate lessons learned from it. We argue that self-improvement should instead be live, using emerging experience both to redirect the active run and to update the persistent harness. Existing agent architectures do not fully support this goal. Single-agent self-correction combines task execution and trajectory assessment within one context, while subagent delegation separates execution but typically cannot redirect an active subagent. We present PILOT, a supervisor-worker harness for live self-improvement through two coupled mechanisms: (1) live steering lets a separate supervisor redirect or abort the active worker during execution; and (2) live self-evolution distils procedures and failure modes revealed during execution into reusable skills and memory. Across two frozen backbones and three benchmarks, PILOT ranks first in five of six configurations. On Terminal-Bench 2.0, PILOT outperforms counterpart harnesses by up to 9.8 percentage points. In the self-improvement setting, PILOT gains 14.6 points with GLM-5.1 and 12.4 points with Kimi-K2.6. Mean output tokens fall by 42.9% and 47.4%, while successful evaluations per million output tokens rise by 110.3% and 134.0%, respectively."
+      },
+      "hash": "c6a90d5f6c4ac195e6d4b4eb8765d3f6f4add47c94de4bd4bf9e5d6998d9d1f4",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.27508": {
+      "entry": {
+        "arxiv_id": "2608.27508",
+        "version": 1,
+        "title": "WM-R1: Training GUI Agents to Reason and leverage World Models with Reinforcement Learning",
+        "authors": [
+          "Yu Han",
+          "Tianwen Qian"
+        ],
+        "published": "2026-08-27T07:09:28Z",
+        "updated": "2026-08-27T07:09:28Z",
+        "abstract": "GUI agents trained with reinforcement learning (RL) have showcased strong environment learning capabilities on mobile platforms. However, RL typically demands extensive real-environment interactions, leading to high resource costs and instability, especially in GUI scenarios. To address these, we propose WM-R1, the first reinforcement learning framework that trains mobile GUI agents with world models instead of real environments. Specifically, world models serve as the source of state transitions during all rollouts, replacing the real Android environment within the training loop. WM-R1 also embeds world models directly into the thinking process, enabling agents to reason about the consequences of candidate actions before committing to the final action. Crucially, WM-R1 eliminates the need for real-environment interaction, supports massively parallelized and step-level granularized trajectory generation grounded in world models, and introduces a multi-dimensional rule-based reward that jointly optimizes task success, trajectory efficiency, and world model utilization. For efficient training, we curate a high-quality dataset of 2000 challenging tasks. Experiments on Android mobile benchmarks demonstrate that WM-R1-trained agents significantly outperform GRPO-only baselines and inference-time simulation methods. Code is available at https://github.com/genalyu/WM-R1 ."
+      },
+      "hash": "b3e4b493a48f0dc39ab685fe56bd7df7a801817d39d926036aa1fcda940a3580",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.27086": {
+      "entry": {
+        "arxiv_id": "2608.27086",
+        "version": 1,
+        "title": "A Contract-Centered Architecture for Scalable and Manageable Agentic Runtimes",
+        "authors": [
+          "Yaxiao Liu",
+          "Pengbo Liu",
+          "Yiwen Liu",
+          "Yihua Guan",
+          "Zhenghe Hou",
+          "Jiaxing Song"
+        ],
+        "published": "2026-08-27T13:09:49Z",
+        "updated": "2026-08-27T13:09:49Z",
+        "abstract": "Enterprise AI deployment is a coordination problem across business units, application and AI teams, testing, platform engineering, infrastructure, security, operations, and data governance. Use-case benchmarks show whether one agent completes one task, but not how changing capabilities, models, runtime mechanisms, capacity, and enterprise data should be owned, changed, admitted, or evidenced together. We present four responsibility objects as shared organizational contracts: Skill (reusable, versioned capability and workflow asset), Harness (runtime compiler and governor), Scaffold (execution/control boundary and NFR owner), and a stack-external data substrate under independent CIO-governed semantics and telemetry. The runtime core is A = <S, H, X>, with the data substrate outside that stack. The central contribution is one bounded, falsifiable hypothesis, P1 (cost-aware capability-capacity separability): within a declared operating region, changing activated capability preserves the capacity-response interaction within a preregistered equivalence margin, while changing compatible Scaffold capacity preserves capability semantics up to a non-inferiority margin, and the required controls stay within a declared enforcement budget. Six design conditions become measured obligations whose coverage, violations, uncertainty, cost, and exclusions determine whether P1 is decidable. We propose a cluster-period randomized crossover experiment (balanced order, reset/washout, repeated seeds and failure regimes, cluster-aware uncertainty) with a four-state verdict: supported, falsified, conditional-engineering, or inconclusive. This paper contributes a contract-bounded runtime architecture, a source-preserving data substrate, and a falsifiable measurement protocol. It reports no completed implementation, experiment, dataset, or measured result.",
+        "comment": "48 pages, 7 figures"
+      },
+      "hash": "060f8630cda8b254e37feaebf1e22f12961dfcd3f46fe3d94312488accd85278",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.27334": {
+      "entry": {
+        "arxiv_id": "2608.27334",
+        "version": 1,
+        "title": "BTS-AgentBench: A Deterministic, Replayable Pipeline from Read-Only Telemetry Logs to Agent Benchmarks",
+        "authors": [
+          "Jeong-Yoon Kim"
+        ],
+        "published": "2026-08-27T16:35:52Z",
+        "updated": "2026-08-27T16:35:52Z",
+        "abstract": "Industrial sites contain large volumes of read-only telemetry, but few benchmarks specify how to compile these records into executable multi-turn agent tasks. We present a telemetry-to-episode construction method instantiated as BTS-AgentBench. The pipeline normalizes BTS metadata and raw histories into a read-only tool store, compiles static tasks with tool-derived gold answers and evidence, and lifts retained tasks into typed, bounded operator-facing episodes. The 532-row release adds clarification, goal revision, timestamp policy, quality-gated reporting, and evidence attribution while preserving the source computation and split. Coded contract preflight reports zero findings, and the construction-exclusion controller completes 0/532 rows. Two independent raw-to-episode builds match all 11 logical tool-store exports and reproduce the released 356/87/89 train/dev/test artifact exactly. Applying the shared construction path to XAI4HEAT produces 204 episodes; on its 41-row held-out test split, the controller completes 0 rows and the retained GPT-5.5 execution completes all 41. Code, artifacts, and replay reports are available at https://github.com/kjy7567/BTS-AgentBench."
+      },
+      "hash": "0700d3da4823216ecd52055b37f287aa69365c1c888775ae7b677fa14608146a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.28704": {
+      "entry": {
+        "arxiv_id": "2608.28704",
+        "version": 1,
+        "title": "ORDDAR: Observation-Driven Reasoning for Distortion-Resilient Decision, Action, and Cognitive Recovery",
+        "authors": [
+          "Deblina Kar",
+          "Anant Nawalgaria",
+          "Shyamal Kumar Das Mandal"
+        ],
+        "published": "2026-08-27T17:05:54Z",
+        "updated": "2026-08-27T17:05:54Z",
+        "abstract": "AI agents increasingly perform long-term reasoning, planning, tool use, memory integration, and autonomous decision making, yet erroneous intermediate states can propagate and cause inconsistent decisions and unreliable outputs. Existing reasoning approaches mainly rely on iterative planning, self-reflection, augmented memory, or verification, but rarely localize and selectively repair faulty reasoning. We present ORDDAR (Observation-Driven Reasoning for Distortion-Resilient Decision, Action, and Cognitive Recovery), a reasoning framework that models reasoning as cognitive state transitions, detects localized distortions, retrieves related reasoning from prior experiences, and repairs only the affected states. ORDDAR therefore performs recovery at the local reasoning-transition level rather than regenerating the complete trajectory. Experiments across mathematical, commonsense, multi-hop, and clinical reasoning benchmarks demonstrate improved reasoning quality, recovery ability, and interpretability over multiple evaluated reasoning baselines."
+      },
+      "hash": "edab897f2f61e7e521c79d65d8b562c72a9048c8b24a3978d8f29d75d5fa93df",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2608.27454": {
+      "entry": {
+        "arxiv_id": "2608.27454",
+        "version": 1,
+        "title": "WikiSkill: Compiling Agent Experience into Persistent Knowledge for Skill Evolution",
+        "authors": [
+          "Liyan Tang",
+          "Cyrus Rashtchian",
+          "Chun-Sung Ferng",
+          "Andrew Tomkins",
+          "Da-Cheng Juan",
+          "Tu Vu"
+        ],
+        "published": "2026-08-27T17:59:11Z",
+        "updated": "2026-08-27T17:59:11Z",
+        "abstract": "Agent skills package specialized knowledge and workflows into reusable resources that extend AI agent capabilities. Recent work automatically discovers such skills from agent experience, which enables agents to progressively adapt through interaction. However, the insights that guide skill development typically remain scattered across optimization histories, limiting their systematic reuse across iterations. We introduce WikiSkill, a framework that co-evolves agent skills with a persistent knowledge base (wiki). At a high level, WikiSkill separates raw execution experience, accumulated knowledge, and executable skills, while continuously consolidating experience into the wiki, which subsequent skill updates can build on. Across diverse benchmarks and models, WikiSkill consistently outperforms state-of-the-art skill-evolution methods and improves over no-skill baselines in most model-benchmark settings. We find that skill evolution complements model scaling: larger models generally benefit more from evolved skills, while smaller models with skills can outperform substantially larger models without them. We also find that evolved skills transfer effectively across models and model families, and skills evolved by other models can outperform self-evolved skills. Finally, our ablation studies confirm that persistent knowledge accumulation in the wiki is critical for effective skill evolution. These results demonstrate the benefits of systematically accumulating and refining agent experience for developing reusable and transferable skills."
+      },
+      "hash": "af13f00a1ddb8702d5df96535b4daae9a54b4c18d7dc19402ec09e33a8dd1964",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.27646": {
+      "entry": {
+        "arxiv_id": "2608.27646",
+        "version": 1,
+        "title": "If Agents Were Angels, No Governance Would Be Necessary: Out-of-Band Policy Enforcement at a Trusted Tool Boundary",
+        "authors": [
+          "Marc Millstone",
+          "Tyler Akidau",
+          "Johannes Brüderl",
+          "Marat Pekker"
+        ],
+        "published": "2026-08-27T19:35:48Z",
+        "updated": "2026-08-27T19:35:48Z",
+        "abstract": "Give an agent a human's credential and it inherits the person's reach without the judgment that limits its use. It can sweep every reachable record into model context, where hidden instructions steer its next call, and every request stays credential-valid while the agent exceeds its job or absorbs a secret. Prompts are a brittle guardrail: one fallible reasoner interprets the task and enforces its limits. We present Out-of-Band Policy Enforcement (OBPE), a trusted boundary outside agent reasoning. It authorizes the typed operation and resource, narrows the query before the backend call, then filters records and fields or masks values in the response. Semantic gating can deny or hold an authorized call on argument values or external state. A data policy owner sets the maximum grant; agent policy can only narrow it. We prove, under stated conditions, that the policy plan is order-independent and agent policy cannot widen the ceiling. Field removal covers one execution; masking and history rules claim less. We release an HTTP proxy prototype simplified from our production system, with conformance tests tying its typed Cedar policy core to the model. Against Jira and ServiceNow mocks, our benchmark compares prompted agents with and without OBPE on four models, including 20 adaptive red-team tasks. A trace failure means protected data entered agent context, an exact value appeared in the answer, or a forbidden effect completed. In 3,621 trials it fell from 57.6% to 0.2%, a cluster-weighted reduction of 41.2 points [95% CI: 27.7, 54.9]; fulfillment fell from 79.1% to 60.9%, while paired safe-useful completion rose 21.8 points [9.5, 35.2]. Some answers reconstructed a value that never entered context or used filtered row counts as an oracle: shaping one execution is not noninterference. Write controls, durable approval, and temporal and aggregate policies lie outside this evaluation."
+      },
+      "hash": "6aef6b36201913b4562a1566aac4b043c4c5899cbe6f7a3821121784d5958e24",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.27796": {
+      "entry": {
+        "arxiv_id": "2608.27796",
+        "version": 1,
+        "title": "ReToolSQL: Agentic Reinforcement Learning for Robust Text-to-SQL",
+        "authors": [
+          "Pratik Kakkar",
+          "Chandra Dhir",
+          "Ravi Shankar",
+          "Pareekshit Reddy Gaddam",
+          "Anup Shirgaonkar"
+        ],
+        "published": "2026-08-28T00:23:31Z",
+        "updated": "2026-08-28T00:23:31Z",
+        "abstract": "Recent work has shown that reinforcement learning from execution feedback can substantially improve text-to-SQL performance, often enabling smaller models to match or exceed much larger systems. However, most existing approaches treat SQL generation as a single-turn task, limiting the model's ability to recover from errors through iterative refinement. We present ReToolSQL, a two-stage training framework for text-to-SQL that combines (i) a supervised warm-start on rejection-sampled reasoning traces with (ii) agentic reinforcement fine-tuning (RFT) over multi-turn tool-use trajectories. The key insight is that the two stages act on complementary axes, the supervised fine-tuning (SFT) on verified privileged-teacher traces expands the set of solvable questions (raising pass@k coverage on the hardest cases), while RFT converts that expanded capability into higher single-pass accuracy by teaching the model when to verify, what evidence to retrieve, and how to repair faulty SQL from execution feedback. Applied to Gemma 4 instruction-tuned (31B), RFT alone achieves 73.66% execution accuracy (EX) on the BIRD-SQL development benchmark (74.12% EX with self-consistency). Initializing RFT from the SFT checkpoint (SFT$\\to$RFT) yields our strongest model at 74.32% EX single-pass and 74.77% EX with self-consistency. At the time of writing, this ranked first on the BIRD single-model development-set leaderboard. The approach uses composite rewards anchored on execution correctness, requires no human annotation beyond the benchmark itself, and operates within a single dense 31B model, showing that a properly designed SFT$\\to$RFT pipeline over tool-use trajectories is a practical path toward robust enterprise-grade text-to-SQL."
+      },
+      "hash": "a563d569a97c43fdd901388882e98108e4679a1837fc24dec01e7a8d93d79fe1",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.28122": {
+      "entry": {
+        "arxiv_id": "2608.28122",
+        "version": 1,
+        "title": "Agentic Artifact Creation: Systems, Evaluation, Principles, and Opportunities",
+        "authors": [
+          "Tianfu Wang",
+          "Zhezheng Hao",
+          "Xilin Xia",
+          "Lixin Liu",
+          "Mengkang Hu",
+          "Hongzhang Liu",
+          "Xi Chen",
+          "Ziyan Liu",
+          "Xiankun Lin",
+          "Weijia Zhang",
+          "Nicholas Jing Yuan",
+          "Hui Xiong"
+        ],
+        "published": "2026-08-28T09:35:14Z",
+        "updated": "2026-08-28T09:35:14Z",
+        "abstract": "Generative models can turn natural-language prompts into images, text, code, and other content, lowering the cost of producing drafts and components. Their practical impact increasingly depends on whether those pieces can become complete, dependable deliverables. This survey examines agentic artifact creation, which we define as stateful construction in which an AI system materially constructs or revises a deliverable and intermediate observations redirect later work. Functionally, the process links an operational representation of the artifact, a construction policy, and runtime verification whose feedback can redirect later actions. We reviewed 259 works available through August 20, 2026: 230 systems meeting this definition and 29 benchmarks of agentic artifact construction. We compare six artifact families, then analyze application settings and evaluation practice as separate dimensions. Across families, construction challenges reflect not only modality but also how tightly decisions are coupled and whether failures become visible while they remain repairable. Decomposition can reduce local complexity while increasing coordination and reassembly costs. Learned judges may add little independent evidence when they share the generator's preferences or blind spots. We formulate principles for keeping commitments and responsibility explicit, turning feedback into targeted repair, and revalidating affected state after change. We also identify opportunities for sustaining coherent, accountable control as artifacts, creator intent, and construction systems evolve. A curated paper list is available at https://github.com/GeminiLight/awesome-agentic-artifact-creation."
+      },
+      "hash": "3ce3114668b85b8e64828904cc09da96127acff72bb77f8e188a1eb9b0da6ceb",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.28182": {
+      "entry": {
+        "arxiv_id": "2608.28182",
+        "version": 1,
+        "title": "Benchmarking large language model agent societies against human behavioural distributions",
+        "authors": [
+          "Raad Bin Tareaf"
+        ],
+        "published": "2026-08-28T10:50:32Z",
+        "updated": "2026-08-28T10:50:32Z",
+        "abstract": "Populations of large language model agents are increasingly used as experimental societies. Three doubts shadow every such result: whether the agents behave like the humans they stand in for, whether a finding survives changes to the apparatus that leave the rules untouched, and whether apparent social dynamics are interaction at all rather than the reproduction of experiments the models have read. This article introduces SILICA, an open instrument that tests all three. Five environments carry published human anchors, each paired with perturbations that re-render the same rules and with variants whose payoffs point away from the memorised result. Twelve open-weight models were run through it on a single consumer graphics card. Agreement with human data is confined to starting points: first-round public-goods contributions fall inside the equivalence margin for eight of eleven models, while no model matches end-state contributions or the human corridor of cooperation. Merely swapping the order in which two actions are listed costs one model 58 points of cooperation. Presenting responders with a fixed schedule of offers shows that only one model, the sole reasoning-trained one, places its acceptance threshold where the incentive requires; two move theirs part of the way, two move them the wrong way, and three never acquire one. Conventions form through a shared prior over the names rather than through negotiation, though negotiation reappears once that prior is disrupted. On the certification ladder defined here, current silicon societies support exploratory claims and no more."
+      },
+      "hash": "770b59d02c576b97371b1c341c48872e4d3daa999f0ea93092d61aa1941910b2",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.28345": {
+      "entry": {
+        "arxiv_id": "2608.28345",
+        "version": 1,
+        "title": "AGENT-O: A Semantic Agent Card Framework for Interoperable and Governed Healthcare AI Agents",
+        "authors": [
+          "Pengze Li",
+          "Cui Tao"
+        ],
+        "published": "2026-08-28T13:59:03Z",
+        "updated": "2026-08-28T13:59:03Z",
+        "abstract": "AGENT-O is a modular ontology framework that defines a semantic Agent Card for representing health-oriented AI agent systems and supports assessment of reporting completeness in scientific publications. AGENT-O was developed as an OWL 2/RDF ontology covering runtime, models, workflow, tools, clinical use, evaluation, provenance, governance, and reporting assessment. Evaluation included ontology inventory, OWL-RL reasoning, three SHACL suites, 12 SPARQL competency queries, three cases, and model-assisted reporting-completeness assessment of 279 papers across five dimensions. The ontology contained 1,962 RDF triples and 1,922 Protege axioms, with 252 active classes, 198 active object properties, and 51 datatype properties. All SHACL suites conformed on example graphs, all competency queries returned prespecified evidence, and all 279 papers were scored. Incomplete reporting was highest for runtime/architecture (84.6%), governance/safety (82.8%), and provenance/reproducibility (78.1%), compared with evaluation (25.8%) and benchmark-process alignment (29.8%). AGENT-O supported semantic Agent Card representation and reporting assessment while revealing an evaluation-specification gap: evaluation and benchmark procedures were reported more consistently than runtime architecture, governance, and reproducibility. AGENT-O provides a reusable ontology, semantic Agent Card profile, and reporting-completeness workflow for structured reporting and gap identification, but does not assess agent quality or deployment readiness."
+      },
+      "hash": "df49ae5c207f037dab75f1d5951fddfe01e57e0a857eadd5c352df6dde63116e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.28439": {
+      "entry": {
+        "arxiv_id": "2608.28439",
+        "version": 1,
+        "title": "Fidelity Is Not Enough: Dispatch-Level Instrumentation for Agentic Datasheet Extraction",
+        "authors": [
+          "Qing Ye",
+          "Meng-Hsuan Lin"
+        ],
+        "published": "2026-08-28T15:25:12Z",
+        "updated": "2026-08-28T15:25:12Z",
+        "abstract": "One model passed our fidelity check without ever opening the datasheet. We found it while qualifying models for an internal extraction service: a structured-output constraint had silently disabled tool use, and the model answered anyway, with fabricated source text. Only the per-tool trace exposed it. Fidelity -- whether an extracted value matches the source -- is the standard measure for agentic document extraction, and it scores that run a success. We therefore log every tool call in an agentic benchmark of 25 hand-curated claims over three components, with 12 more on a fourth, 37 in all. From that dispatch record we build two instruments: a rule-based failure-attribution classifier, and a silent-failure detector whose two rules check only which tools were called, never the extracted value. The detector raises no flag on 207 clean fidelity-passing extractions across three model families, and recovers all 50 planted faults that withhold exactly the tools its rules check. The two results are not symmetric: the first bounds the false-positive rate, the second is recall by construction, and detection power against runs that call their tools and still answer wrongly is unmeasured. A second, independent oracle, a causal chamber that tests whether the datasheet's claims hold under physical measurement, is intentionally partial: it confirms only what the apparatus can exercise, a verifiable envelope of 2 of those 37 claims, and we give a taxonomy of why the rest are not physically gradable. Under a controlled perturbation, fidelity passes throughout while the chamber verdict flips exactly at the measurement uncertainty. Across three deployed model stacks (one destabilised by its serving stack, not by any capability gap) the tool layer buys portability and observability rather than accuracy, and earns its premium only once a document outgrows the context window.",
+        "comment": "Accepted at EMNLP 2026 Industry Track. 7 pages + appendices"
+      },
+      "hash": "147ebe359733d62a1edf719082b8270e30a18c6c02e097bc1225f27f43a6fdcf",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.28458": {
+      "entry": {
+        "arxiv_id": "2608.28458",
+        "version": 1,
+        "title": "Acquire, Repair, Preserve: A Diagnosis-Guided Post-Training Recipe for Small-Model Dialogue Game Agents",
+        "authors": [
+          "Nan Li"
+        ],
+        "published": "2026-08-28T15:47:47Z",
+        "updated": "2026-08-28T15:47:47Z",
+        "abstract": "Interactive dialogue games test a capability that static benchmarks largely leave implicit: a model must carry state across turns, interpret feedback, and choose valid actions under changing constraints. We study this setting in the LM Playschool Challenge with a 2B open-weight model, and find that many failures are not only broad knowledge failures but also local decision failures: repeated guesses, malformed actions, and violations of feedback that the model has just seen. These diagnostics motivate a training recipe organized around three steps: acquire broad game participation through supervised fine-tuning, repair mechanically verifiable failures within one targeted dialogue-game family using turn-local preference pairs, and preserve general capabilities beyond these dialogue games. In the official final evaluation, our submission improves public clemscore from 10.67 to 38.92 and closed in-domain score from 13.41 to 41.17, while approximately preserving aggregate static performance (44.14 vs. 44.24 for the baseline). Out-of-domain clemscore remains low at 7.88, with the largest gains concentrated in unseen variants of the targeted family. Our results suggest that broad SFT brings most of the model's capability improvement; turn-local supervision can be effective when failure detection is precise, with observed transfer concentrated primarily within-family.",
+        "comment": "14 pages, 14 tables; Accepted to the LM Playschool Workshop at EMNLP 2026; HF model card: https://huggingface.co/chnln/Qwen3.5-2B-playpen-playornotplay"
+      },
+      "hash": "e2286566fae0d940ae9685b8ef8dfa33ac66043e8bbc78fe93d865709e750711",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.28476": {
+      "entry": {
+        "arxiv_id": "2608.28476",
+        "version": 1,
+        "title": "ContextPilot: Teaching Agents for Proactive Context Management via Fine-grained RL",
+        "authors": [
+          "Zhuoshi Pan",
+          "Qizhi Pei",
+          "Junru Lu",
+          "Honglin Lin",
+          "H. Vicky Zhao",
+          "Di Yin",
+          "Xing Sun"
+        ],
+        "published": "2026-08-28T16:01:08Z",
+        "updated": "2026-08-28T16:01:08Z",
+        "abstract": "Long-horizon agentic tasks require large language models (LLMs) to iteratively retrieve, integrate, and maintain dispersed information across multi-turn interactions, but preserving all interaction histories leads to a continuously growing working context. Recent proactive context management methods allow models to edit their own working context with specialized tools, yet they still face three key limitations: (1) a limited toolset restricted to search, deletion, and summarization, with no support for global planning, long-term memory, and adaptive compression; (2) inefficient exploration that treats context management actions uniformly despite their heterogeneous impacts on final outcomes; and (3) coarse-grained credit assignment that assigns the final trajectory-level reward to all intermediate context editing actions during RL. To bridge these gaps, we introduce ContextPilot, a proactive context management framework for long-horizon agentic reasoning. Our approach systematically augments the toolset with planning, long-term memory, and soft context offloading tools. We further propose an RL method tailored for context management, which uses context and entropy variation to identify critical editing decisions for branch sampling and estimates action-level advantages from all branched trajectories that pass through the corresponding context editing action. Experiments on long-context QA and deep search tasks show that ContextPilot achieves stronger performance with a more compact working context, consistently outperforming existing baselines across various base models and benchmarks. Code is available at https://github.com/Tencent/ContextPilot.",
+        "comment": "10 pages, 6 figures, 5 tables, accepted to EMNLP 2026 (Main Track)"
+      },
+      "hash": "260123459c89a2afedb32bf583ec2ba38e1141d2b80643649ece79baec68a2fc",
       "status": "queued",
       "attempts": 0,
       "error": null,
