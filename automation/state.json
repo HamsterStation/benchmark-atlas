@@ -21,7 +21,7 @@
       "active": {
         "since": "2026-08-25T00:00:00+00:00",
         "until": "2026-09-11T02:47:03Z",
-        "start": 100
+        "start": 150
       }
     }
   },
@@ -23322,6 +23322,342 @@
         "comment": "10 pages, 6 figures, 5 tables, accepted to EMNLP 2026 (Main Track)"
       },
       "hash": "260123459c89a2afedb32bf583ec2ba38e1141d2b80643649ece79baec68a2fc",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.29305": {
+      "entry": {
+        "arxiv_id": "2608.29305",
+        "version": 1,
+        "title": "Learning Simple Test-Time Environments for LLM Web Agents",
+        "authors": [
+          "Junxuan Li",
+          "Zijun Liu",
+          "Ziyi Huang",
+          "Peng Li",
+          "Yuzhou Liu",
+          "Ming Yan",
+          "Yang Liu"
+        ],
+        "published": "2026-08-29T14:45:09Z",
+        "updated": "2026-08-29T14:45:09Z",
+        "abstract": "Large language model (LLM) agents have demonstrated remarkable proficiency in manually constructed environments, yet their performance frequently collapses when transitioned to complex real-world settings. Existing research largely attribute this degradation to the compositional generalization gaps in LLMs on combinations of multiple simple, well-structured environments. In this work, we propose that LLM web agents can learn simple environment observations at test time. Specifically, we introduce trial steps for agents to decompose a complex environment observation into sub-modules, and implement a label-free learning method, Test-Time Environment Decomposition (TTED), to adapt agent behaviors with experience during inference. Our empirical evaluations demonstrate the framework's efficacy across both synthetic and realistic benchmarks, showing (1) experience gains acquired within simpler sub-environments can be effectively composed to improve performance in the full one, and (2) test-time training on sub-environments can significantly enhance the compositional generalization of agents in real-world web automation tasks. We also provide key insights in the design of the label-free learning algorithm. As more complex environments are accessed by LLM agents, we believe learning environment decomposition skills at test time will be critical for robust real-world deployment.",
+        "comment": "Code and data are released at https://github.com/THUNLP-MT/TTED"
+      },
+      "hash": "ee8742bab47f89b1572148f154b8533600c8371e6a888c63143aea617576efe2",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.29420": {
+      "entry": {
+        "arxiv_id": "2608.29420",
+        "version": 1,
+        "title": "One Capability or Many? Testing the Economic Validity of Frontier AI Evaluation",
+        "authors": [
+          "Louis Yiven Zhu"
+        ],
+        "published": "2026-08-29T19:55:20Z",
+        "updated": "2026-08-29T19:55:20Z",
+        "abstract": "Frontier-model leaderboards now rank systems based on economic benchmarks, tests of how well models carry out professional tasks from software engineering to banking workflows, and those rankings inform what organisations buy, what regulators scrutinise, and expectations of how work will change. Whether such benchmarks measure a capability distinct from general test-taking, or re-express the one axis along which every benchmark rises as models improve, is a question of construct validity that has not yet been studied. We test it on a hash-pinned leaderboard snapshot of 421 model configurations across twelve benchmarks, four of them economic, treating benchmarks as items and models as respondents in a latent-variable model with four hypotheses and their thresholds fixed before analysis. A single factor explains 74.5% of common variance and tracks model release date (R^2 = 0.505), so the leading axis of capability is substantially a time trend; where prior work controls for scale, compute adds little once date is removed. Removing the date trend lowers that share by 14.9 points, and by 24.1 with one row per base model. Under the dimensionality rule fixed in advance the economic benchmarks form no distinct factor, yet a leave-one-benchmark-out test with factors re-estimated inside every fold shows that a multi-factor representation predicts held-out economic scores better than a single general index (pooled Delta-MSE 0.037, 95% bootstrap interval [0.019, 0.055]). Economic benchmarks therefore add incremental predictive information to a largely date-driven general factor, and the evidence does not support treating them as a distinct latent capability. Leaderboards remain a sound guide to overall progress, but most of the gap between models released months apart is calendar, so a small gap between contemporaneous models should be date-adjusted before being read as a capability difference.",
+        "comment": "25 pages, 11 figures. Analysis plan deposited at https://doi.org/10.17605/OSF.IO/VD34J (retrospective deposit; see the note there). Code and data: https://github.com/louisyzhu/frontier-ai-economic-validity"
+      },
+      "hash": "b696704fea1f6d14c923940e807f7d716edac26af22ddd55accf5d4d86f3e2c6",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2608.29519": {
+      "entry": {
+        "arxiv_id": "2608.29519",
+        "version": 1,
+        "title": "FuncRoom-Agent: Sequential Feed-Forward 3D Functional Indoor Scene Generation",
+        "authors": [
+          "Hao Feng",
+          "Zhi Zuo",
+          "MingJian Liang",
+          "Jingyu Hu",
+          "Xiaowei Hu",
+          "Liupengfei Wu",
+          "Dian Zhang",
+          "Guoxin Fang",
+          "Zhengzhe Liu"
+        ],
+        "published": "2026-08-30T02:48:11Z",
+        "updated": "2026-08-30T02:48:11Z",
+        "abstract": "We introduce Function-Room Generation, a new indoor 3D scene generation setting that creates rooms supporting explicit functional goals rather than merely visually plausible layouts. Existing agentic and executable methods improve controllability, but often depend on costly test-time generate--evaluate--revise loops, making functional room generation slow and computationally expensive. We address this challenge with three technical contributions. First, we design a recursive domain-specific language to effectively organize the hierarchical object compositions required by functional rooms, from room structure and major furniture to dense support-surface and nested small objects. It represents rooms as staged executable programs with explicit geometric and functional relations. Second, we propose a sequential feed-forward scene construction framework that distills recursive construction traces into a scene construction expert. At inference time, the expert writes executable DSL code stage by stage, and a deterministic executor directly instantiates each stage without teacher agents, online critics, or iterative repair. Third, we introduce ScenePRM, an execution-grounded process reward framework that improves the expert through reinforcement learning with functional, geometric, relational, and future-constructability feedback. We further establish a function-oriented benchmark and show state-of-the-art performance on both general indoor scene generation and function-room generation, achieving stronger functional completeness, relation correctness, geometric executability, and generation efficiency."
+      },
+      "hash": "57aa2e07860b4783fda23a828e04ad25b791b94df24a86778a2526b29233641c",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.29528": {
+      "entry": {
+        "arxiv_id": "2608.29528",
+        "version": 1,
+        "title": "MedCache: Efficient and Temporally Valid Memory for Longitudinal Clinical Agents",
+        "authors": [
+          "Hei Ting",
+          " Chan",
+          "Chenwei Wu",
+          "Xueshen Liu",
+          "Boyuan Zheng",
+          "Liyue Shen",
+          "Jiasi Chen",
+          "Z. Morley Mao"
+        ],
+        "published": "2026-08-30T03:28:56Z",
+        "updated": "2026-08-30T03:28:56Z",
+        "abstract": "Longitudinal clinical agents must maintain an evolving patient state from evidence distributed across visits, time points, and specialties. However, how agent memory should be designed for this setting remains unclear. We introduce a benchmark of multi-visit, multi-specialty patient records that evaluates long-context evidence retrieval, cross-time evidence aggregation, and cross-specialty clinical reasoning. Using this benchmark, we systematically study four memory design choices: curation, organization, retrieval, and memory-augmented reasoning. We find that temporal validity is more important than simply retaining more history; specialty-factorized memory reduces context but can hide shared evidence; and multiple agents help when specialists must reason together, not merely when evidence comes from multiple memories. Guided by these findings, we propose \\textit{MedCache}, a hybrid framework that constructs temporally valid patient memory, organizes evidence into overlapping specialty views, routes each query to relevant memories, and adaptively invokes one or multiple specialists. Experiments show that MedCache improves reasoning accuracy and memory efficiency over strong single-agent and multi-agent baselines, while generalizing across model backbones and external datasets."
+      },
+      "hash": "6f96d5422468889672a20901437d62c976a42ad8a5fa6bbb8958be6e0c359fb7",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.00048": {
+      "entry": {
+        "arxiv_id": "2609.00048",
+        "version": 1,
+        "title": "GUI-CC: Benchmarking Contextual Consistency of GUI World Models as Agent Environments",
+        "authors": [
+          "Lin Fu",
+          "Zheyuan Yang",
+          "Tianhui Zhang",
+          "Jinbiao Wei",
+          "Guo Gan",
+          "Boxu Liu",
+          "Yilun Zhao",
+          "Yu Rong"
+        ],
+        "published": "2026-08-30T05:19:43Z",
+        "updated": "2026-08-30T05:19:43Z",
+        "abstract": "GUI world models are increasingly evaluated as one-step next-screen predictors, yet their intended use is often as multi-step environments for GUI agents. This mismatch leaves a key requirement under-tested: generated states must remain contextually consistent when they are repeatedly reused for future interaction. We introduce GUI-CC, a benchmark that evaluates contextual consistency of GUI world models as agent environments rather than isolated next-screen predictors. GUI-CC contains two complementary tracks: an offline reference-action track that rolls models along real mobile GUI trajectories, and an online agent-loop track that lets fixed probing agents interact with model-generated UIs. We construct 500 offline trajectory tasks from GUIOdyssey and 200 emulator-verified online tasks across 30 mobile apps. GUI-CC evaluates transition fidelity, transition plausibility, contextual consistency, and task progress. Experiments show that plausible single-step generation does not guarantee reliable environment simulation: current models often produce usable-looking screens while failing to preserve task-relevant context or support executable multi-step rollouts.",
+        "comment": "EMNLP 26 Findings"
+      },
+      "hash": "9f87594db1a8bce0cfb6505ec3be460e7b5bc7719773d070fdea600438d67676",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.29617": {
+      "entry": {
+        "arxiv_id": "2608.29617",
+        "version": 1,
+        "title": "Memory-First Fact-Checking: A Knowledge-Graph-Grounded Multi-Agent System for Misinformation Detection",
+        "authors": [
+          "Amelia Petrenciuc",
+          "Alexandru Lecu",
+          "Adrian Groza"
+        ],
+        "published": "2026-08-30T07:16:07Z",
+        "updated": "2026-08-30T07:16:07Z",
+        "abstract": "This paper introduces a hybrid fact-checking framework that integrates Knowledge Graph-based semantic memory with adversarial multi-agent reasoning for explainable misinformation detection. The proposed system follows a memory-first, web-fallback architecture, in which input claims are initially evaluated against a dual-index Knowledge Graph through Sentence-BERT-based semantic retrieval and Natural Language Inference. When the evidence retrieved from the graph is insufficient to support a reliable decision, the framework collects information from trusted web sources and assesses it using an adversarial tribunal composed of support, contradiction, and judging agents. A graph-aware confidence mechanism combines semantic similarity, NLI confidence, and structural graph evidence to determine whether internal knowledge is sufficient, thereby reducing unnecessary web retrieval. Following verification, validated information is transformed into structured triples and incorporated into the Knowledge Graph, supporting the incremental expansion of the system's semantic memory. Experimental evaluation on a curated COVID-19 misinformation benchmark demonstrates that the proposed framework achieves an accuracy of 97.4\\% and a macro-averaged F1-score of 92.6% on resolved claims, outperforming a Llama~3.3~70B baseline, which obtains an accuracy of 87.7% and a macro-averaged F1-score of 86.3%."
+      },
+      "hash": "57af389947a2c43d07146ed5a10ac0c9122199bf0a6c2249c2211444d38d7aad",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.29834": {
+      "entry": {
+        "arxiv_id": "2608.29834",
+        "version": 1,
+        "title": "You Know What I Mean: A Benchmark for Agentic Conversational Reference Grounding",
+        "authors": [
+          "Karen Fuchs",
+          "Uri Katz",
+          "Yoav Goldberg"
+        ],
+        "published": "2026-08-30T15:06:51Z",
+        "updated": "2026-08-30T15:06:51Z",
+        "abstract": "Collaborative conversations frequently contain references whose targets are indirect rather than named: resolving \"this looks like the fix discussed yesterday\" requires combining conversational context with evidence from the surrounding workspace which is accessible through APIs or user interfaces. We formalize this problem as Conversational Reference Grounding (CoRG): using a given set of tools to resolve a reference in conversation to the unique external item intended by the speaker. CoRG is challenging because it combines lexical, semantic, and temporal cues distributed across the conversation and the external workspace. Agents must translate these heterogeneous signals into effective tool use: formulating strategies, discovering plausible candidates, inspecting their metadata and content, and ruling out close alternatives. We study CoRG through RepoRef, a benchmark of 400 developer-chat segments grounded in GitHub issues, pull requests, and commits across 92 repositories. Unlike single-shot retrieval tasks, RepoRef often requires multi-step tool use. Our results show that CoRG remains challenging for current agents, even the best agent reaches only 67.0% success rate, leaving one third of references unresolved. These findings position CoRG as a concrete benchmark for studying how agents search, inspect, and verify information in realistic multi-tool environments.",
+        "comment": "23 pages, 6 figures, Accepted to EMNLP 2026 Main Conference"
+      },
+      "hash": "30284729a1773fe442e2ff440f82e2837da0473f74e1c61fe88ee312ff0742ec",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.00069": {
+      "entry": {
+        "arxiv_id": "2609.00069",
+        "version": 1,
+        "title": "Auditing Harness Tampering in Self-Improving Agents",
+        "authors": [
+          "Xing Wang",
+          "Xiaoyi Zhang",
+          "Jie Shao"
+        ],
+        "published": "2026-08-30T17:18:56Z",
+        "updated": "2026-08-30T17:18:56Z",
+        "abstract": "Self-improving agents iteratively modify their own harness to push the frontier of their performance. However, such modifications can produce illusory performance gains or compromise integrity constraints such as authorization, provenance, and completeness without genuinely improving capability. We term this phenomenon as harness tampering, which extends the concept from reward and measurement tampering to the full self-improvement lifecycle. To systematically study this problem, we propose a two-axis taxonomy that categorizes each misaligned edit by the harness functional role in which it occurs and the obligation it violates. Then we build an annotated corpus by seeding tampered-benign edit pairs into the real trajectories of self-improving agents. We adapt and benchmark diverse audit methods on tampering classification and localization tasks. Finally we systematically audit real trajectories of self-improving agents. The results demonstrate that harness tampering consistently occurs in real runs from different agents, often persists in the lineage of the best agent, and forms distinct system-specific profiles across the taxonomy."
+      },
+      "hash": "f0275b2e709d0c35ed478d74048feb913127b978a15a42fc2a2676bc5fc05bee",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.29953": {
+      "entry": {
+        "arxiv_id": "2608.29953",
+        "version": 1,
+        "title": "SearchWiki: Learning to Build and Navigate Knowledge Wikis for Active Information Seeking",
+        "authors": [
+          "Guransh Singh",
+          "Vishwajeet Kumar",
+          "Arkadeep Acharya",
+          "Adnan Qidwai",
+          "Jaydeep Sen",
+          "Sachindra Joshi"
+        ],
+        "published": "2026-08-30T18:36:13Z",
+        "updated": "2026-08-30T18:36:13Z",
+        "abstract": "Flat retrieval-augmented generation treats a corpus as a bag of chunks, discarding document hierarchy and cross document structure. We introduce SearchWiki, a harness framework that synthesizes a corpus into a hierarchical, typed, navigable wiki and trains an agent, WikiResearcher-9B, to retrieve information through multi-turn tool use. The wiki organizes knowledge into three layers - document overviews, cross- document topic pages, and page-level source records; enabling progressive refinement of retrieval when initial lookup misses. We optimize the agent's navigation policy with on-policy reinforcement learning with a multi-component reward function balancing answer correctness, retrieval quality and trajectory efficiency. Evaluation on ViDoRe-V3 (8 domains), FinanceBench, and memory benchmarks (LoCoMo, LongMemEval, PersonaMem-v2) shows that WikiResearcher- 9B which is our RL-tuned Qwen 9B model, significantly outperforms same-size untrained baselines and exceeds or matches larger external models. SearchWiki paired with WikiResearcher-9B demonstrates that learned navigation over structured corpora is a superior alternative to flat retrieval."
+      },
+      "hash": "df8b1c2ac32722cf5824af9ace15107aa718651b316dddac2dd1287271225fe0",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2608.29992": {
+      "entry": {
+        "arxiv_id": "2608.29992",
+        "version": 1,
+        "title": "SVI2LoD3: Agent-Driven Reconstruction of LoD3 Facade Openings in Semantic 3D City Models from Volunteered Street View Imagery using Large Language and Visual Models",
+        "authors": [
+          "Elmehdi Kanna",
+          "Lukas Arzoumanidis",
+          "Huynh Duc An Son Nguyen",
+          "Youness Dehbi"
+        ],
+        "published": "2026-08-30T19:37:01Z",
+        "updated": "2026-08-30T19:37:01Z",
+        "abstract": "This paper presents an end-to-end, agent-driven pipeline for the LoD3 reconstruction of facade openings in 3D city models, producing directly usable CityGML-conform outputs. In contrast to existing approaches that rely on supervised semantic segmentation and therefore require large amounts of manually annotated training data, the proposed method employs a zero-shot segmentation strategy. This substantially reduces the annotation effort while still achieving strong performance in our benchmark on the eTRIMS dataset. A further key contribution is the enforcement of correct partonomic hierarchies, thereby producing CityGML-conform LoD3 building models. Beyond the reconstruction pipeline itself, this work also introduces a novel evaluation metric for facade reconstruction, termed Facade Feature Distance (FFD). Unlike conventional metrics such as mIoU or FRDS, which assess similarity primarily through pixel-wise overlap, FFD measures distance in a high-level feature space derived from a vision transformer. In doing so, it captures both semantic correctness and architectural layout, providing a more suitable assessment of facade reconstruction quality. The proposed pipeline and evaluation strategy together offer a practical and scalable contribution toward the automated generation and analysis of semantically enriched 3D city models. The developed code is published at: https://github.com/hcu-cml/citydb-SVI2LoD3-ai.",
+        "comment": "Accepted for publication in the ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences"
+      },
+      "hash": "412d637a4da6d71a2cd568cec365dac32a517b43bbdd9ef25fd54c1ab82444e6",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.28062": {
+      "entry": {
+        "arxiv_id": "2608.28062",
+        "version": 2,
+        "title": "WeAgent-MMSearch: Native Text-Vision Interaction for Multimodal Search Agents",
+        "authors": [
+          "Zongkai Liu",
+          "Hui Zhang",
+          "Liqiang Niu",
+          "Zhen Cao",
+          "Han Li",
+          "Juntao Liu",
+          "Wenchao Chen",
+          "Chengduo Zhao",
+          "Chao Yu",
+          "Fandong Meng"
+        ],
+        "published": "2026-08-28T08:28:43Z",
+        "updated": "2026-08-31T01:30:21Z",
+        "abstract": "Multimodal search agents extend parametric knowledge with newly emerging and long-tail evidence from the open web. Yet many existing agentic search environments often expose retrieved evidence only as text and omit tool-returned images from subsequent context, reducing visually grounded trajectories to text-only reasoning. Long-horizon interaction also compounds tool-call, response-length, timeout, and budget failures, which can discard salvageable trajectories, waste rollout computation, and disturb policy updates. To address these issues, we introduce WeAgent-Harness, a multimodal agentic harness that supports native text-vision interaction and runtime recovery. Retrieved images receive persistent disk references, allowing the model to inspect, process, and cite them throughout the trajectory. Based on this harness, we develop WeAgent-MMSearch, an integrated system spanning data construction, agentic post-training, and multimodal rollout. For data construction, a strong MLLM uses WeAgent-Harness to discover, synthesize, and verify MMSearch-style tasks and collect expert trajectories. During post-training, our Failure-Aware GSPO (FA-GSPO) recovers salvageable abnormal rollouts and filters invalid ones to improve bounded multimodal planning and search. We also introduce VisTarget-Bench, a 150-task human-verified benchmark that pairs each question with a held-out target image, distinguishing image-retrieval failures from visual-perception failures. Evaluation on VisTarget-Bench and seven public benchmarks shows that agentic post-training improves the average score by 19.22 points, enabling our model to outperform similarly sized open-source models and rival models with roughly ten times its parameter count."
+      },
+      "hash": "45a86b8d0aacda819bfd800f8226ec2c5bf322f17d0d3f98e7aef20cc1b442bd",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.30257": {
+      "entry": {
+        "arxiv_id": "2608.30257",
+        "version": 1,
+        "title": "Residual Maximin Share: Exact Finite-Agent Frontier, Sparse Extremizers, and Threshold Cuts",
+        "authors": [
+          "Qinghua Qin"
+        ],
+        "published": "2026-08-31T05:07:04Z",
+        "updated": "2026-08-31T05:07:04Z",
+        "abstract": "Residual maximin share (RMMS) is the largest share threshold that remains guaranteeable throughout dynamic allocation processes, even after previously allocated, lower-valued bundles are removed from the item pool. For additive valuations, recent density-balance analyses established finite-agent lower bounds comparing RMMS with the classical maximin share (MMS). In this paper, we prove that these finite-agent lower bounds are exact. Specifically, if $d_n$ denotes the largest odd integer at most $n$, the worst-case ratio satisfies $\\inf_{M,v:\\operatorname{MMS}>0}\\frac{\\operatorname{RMMS}(M,v,n)}{\\operatorname{MMS}(M,v,n)}=\\frac{2d_n}{3d_n-1}$. Consequently, the exact additive frontier forms consecutive odd-even plateaus and converges monotonically to $2/3$. We then investigate the combinatorial structure of extremal instances. While naive witnesses require $Θ(n^2)$ items, we construct an explicit three-valued family achieving the exact boundary with only linear support: $(5n-3)/2$ items for odd $n$ and $(5n-4)/2$ items for even $n$. Its low-valued block supports two exact partitions that simultaneously certify the MMS benchmark and the residual obstruction. By modeling these dual partitions as a bipartite transportation graph, we prove that this block attains the absolute minimum support $q+d-1=3q$. At minimum support, any two-valued filler is uniquely rigid up to relabeling. Finally, we establish structural characterizations of RMMS. A general min--max representation applies to all finite monotone valuations. For integer additive valuations, we prove that a threshold $T$ is residual self-feasible if and only if every subset cut satisfies a packing-covering condition. Because RMMS is pointwise maximal among residual self-feasible shares, these exact constants establish a tight limitation on the fairness guarantees achievable by share-based lone-divider algorithms."
+      },
+      "hash": "b0b078b98887fec16b33991acbf4b95fbb51a7380303b05ef34f17ab4f1887ac",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.30300": {
+      "entry": {
+        "arxiv_id": "2608.30300",
+        "version": 1,
+        "title": "Update from Hell: Can Coding Agents Survive Hidden Breakage in Dependency Upgrades?",
+        "authors": [
+          "Zijian Luo",
+          "Runzhi He",
+          "Pengfei Gao",
+          "Yu Kang",
+          "Zeqi Lin",
+          "Minghua Ma",
+          "Qingwei Lin",
+          "Saravan Rajmohan",
+          "Yongqiang Tian"
+        ],
+        "published": "2026-08-31T06:13:51Z",
+        "updated": "2026-08-31T06:13:51Z",
+        "abstract": "Modern software systems rely heavily on third-party dependencies, but upgrading those dependencies remains a costly maintenance activity. Dependency upgrades do not always preserve the function signatures, type systems, APIs, or runtime semantics assumed by existing code. Consequently, developers often need to perform source code adaptations to accommodate dependency-induced changes. However, such code-level changes are often not explicitly communicated to project maintainers, posing a significant challenge to software reliability. Meanwhile, coding agents have emerged as a new form of software development tool and are increasingly adopted by developers due to their automation capabilities. In this paper, we introduce DEPBENCH, a benchmark consisting of 203 real-world dependency-upgrade tasks across five package ecosystems spanning five language communities, each involving hidden code-level changes that require source code adaptation. We evaluate mainstream coding agents on DEPBENCH. The best completed configuration solves only 104/203 tasks (51.2%), with substantial variation across agent harnesses, models, and ecosystems, highlighting an important gap between current agent capabilities and real-world software maintenance needs."
+      },
+      "hash": "e11c7dcc752c7ea4e182ac7de0825c8cea9765db8f9bb10c15e9e223f13b78a1",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.30686": {
+      "entry": {
+        "arxiv_id": "2608.30686",
+        "version": 1,
+        "title": "Beyond the Payload: How User Invocation Shapes Coding Agent Vulnerability to Repository Poisoning",
+        "authors": [
+          "Fukang Zhu",
+          "Binbin Zhao",
+          "Ruixiao Lin",
+          "Ping He",
+          "Tianyu Du",
+          "Shouling Ji"
+        ],
+        "published": "2026-08-31T12:26:01Z",
+        "updated": "2026-08-31T12:26:01Z",
+        "abstract": "Coding agents are increasingly used for software engineering tasks, including bootstrapping projects from third-party repositories whose integrity cannot be assumed. Prior work on repository poisoning largely focuses on attacker-controlled injection and disguise, but developers also shape risk through everyday invocation choices: what task to delegate, how to phrase the request, and which skills or rules to supply. We term these user-side choices Prompt-Level Configurations (PLCs) and introduce CIPR (Coding In Poisoned Repos), the first benchmark that systematically varies PLCs in poisoned real-world repositories. CIPR comprises 1,920 instances across 20 repositories, four task types, three social-media-grounded prompt styles, and three skill/rule conditions, and measures attack success rate (ASR) and agent alert rate (AR) using automated runtime and trace-based oracles. Our evaluation reveals two key insights: (1) Vulnerability is highly context-dependent, with task type creating up to a 4.5-fold difference in ASR, with test-execution task forming a silent attack surface (high ASR, low AR). (2) Prompt expression shifts risk indirectly: underspecified prompts reduce ASR by truncating execution depth; noisy prompts exhibit a directional trend toward suppressing alerts by making malicious content less conspicuous. These findings highlight that coding agent vulnerability is not a static property, but a dynamic outcome shaped by everyday user configurations.",
+        "comment": "30 pages,7 figures, Accepted to EMNLP 2026 Main Conference"
+      },
+      "hash": "298f859f565e776280e205499754f9a4fb5627cff06abe63863a3c36e44f0ab5",
       "status": "queued",
       "attempts": 0,
       "error": null,
