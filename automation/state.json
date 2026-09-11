@@ -21,7 +21,7 @@
       "active": {
         "since": "2026-08-25T00:00:00+00:00",
         "until": "2026-09-11T02:47:03Z",
-        "start": 0
+        "start": 50
       }
     }
   },
@@ -22440,6 +22440,524 @@
       "error": null,
       "next_attempt_at": null,
       "kind": "new"
+    },
+    "2608.23933": {
+      "entry": {
+        "arxiv_id": "2608.23933",
+        "version": 1,
+        "title": "SoK: ARCUS: On the Efficiency and Efficacy of Hardware Fuzzing",
+        "authors": [
+          "Alenkruth Krishnan Murali",
+          "Raghul Saravanan",
+          "Sai Manoj P D",
+          "Ashish Venkat"
+        ],
+        "published": "2026-08-25T00:45:37Z",
+        "updated": "2026-08-25T00:45:37Z",
+        "abstract": "This work presents a comprehensive analysis of contemporary hardware fuzzing techniques applied across three major abstraction layers: Instruction Set Architecture (ISA), microarchitecture, and Register-Transfer Level (RTL). Our study examines key factors including input stimulus quality, mutation strategies, feedback mechanisms, target platforms, reference models, and achieved coverage. We find challenges, goals, and design trade-offs vary significantly across abstraction layers. We further identify several unmet needs in current hardware fuzzing practices, such as intelligent input generation, reliable and scalable golden reference models, expressive feedback channels, and cross-layer integration. Building on these insights, we outline future research directions, including hybrid fuzzing frameworks, AI-assisted test generation, scalable reference models, standardized evaluation metrics and benchmarks, and human-in-the-loop automation for guided exploration and analysis. Together, they aim to unlock efficient, reliable, and comprehensive hardware verification solutions."
+      },
+      "hash": "541cef87d11359b0b12992b77ecc5af65d915229c8ef834b655c8328c80cddfb",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.23956": {
+      "entry": {
+        "arxiv_id": "2608.23956",
+        "version": 1,
+        "title": "Recursive Agentic Reasoning",
+        "authors": [
+          "Shengxin Zhang",
+          "Xiaomin Wu",
+          "Xiyang Wu",
+          "Jing Xie"
+        ],
+        "published": "2026-08-25T01:34:08Z",
+        "updated": "2026-08-25T01:34:08Z",
+        "abstract": "Test-time reasoning methods such as iterative refinement, decomposition, and repeated sampling are often evaluated in isolation, making their gains difficult to compare across models, benchmarks, and evaluation pipelines. We introduce a unified view of these methods as recursion operators over an agent's reasoning trace: GROW, which deepens a single reasoning path; PRUNE, which decomposes and recomposes the problem; and BRANCH, which samples alternative reasoning paths and selects among them. We evaluate all three operators against a single-pass chain-of-thought baseline under a shared harness with identical prompts, token budgets, and grading code. Across five benchmarks and three frontier models, comprising 14 model-benchmark settings, 49,327 graded items, and 151,876 model calls, BRANCH improves accuracy in all 14 settings by an average of 5.98 percentage points and is the best-performing operator in 12. In contrast, GROW yields a mean gain of 2.18 points and degrades performance in two settings, while PRUNE improves accuracy by 0.94 points on average. Analysis shows that BRANCH's advantage arises not only from exploring multiple reasoning paths, but also from recovering from truncation: its gains strongly correlate with the baseline rate of empty, budget-exhausted outputs (r = 0.72). These results weaken the hypothesis that different problems require routing among test-time reasoning operators; at this level of abstraction, repeated branching is consistently dominant. Finally, we show that unpaired evaluation and treating scoring-pipeline failures as model errors can materially change, and even reverse, comparative conclusions, motivating paired scoring as a standard protocol for test-time-compute evaluation."
+      },
+      "hash": "9a7ce4d6ef17576a3772a713a05170d86d95956fef40f0697e3dd03c2eb94568",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.24955": {
+      "entry": {
+        "arxiv_id": "2608.24955",
+        "version": 1,
+        "title": "The Evolution of Binary Decompilation in the Modern Era: A Taxonomy, Literature Review, and Future Perspectives",
+        "authors": [
+          "Omar Abusabha",
+          "Sungjae Hwang"
+        ],
+        "published": "2026-08-25T02:20:54Z",
+        "updated": "2026-08-25T02:20:54Z",
+        "abstract": "Decompilation has become a foundational technique in software engineering and security analysis, and it is now advancing through the integration of modern machine learning (ML) approaches. This article presents a systematic review of decompilation studies published over the past decades and develops a comprehensive taxonomy of methodologies employed in contemporary research. We further examine trends in evaluation metrics, tools, and benchmarks used to assess state-of-the-art approaches. Our review reveals key challenges, such as the lack of reliable ground truth and the absence of standardized benchmarks, which hinder rigorous comparison. Finally, we outline future research directions."
+      },
+      "hash": "9d29517ca939998894fa641c761b95b62e93c388df6dc2fdb14d17d16c7fa5c0",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2608.24015": {
+      "entry": {
+        "arxiv_id": "2608.24015",
+        "version": 1,
+        "title": "Reflection with Action-Induced Visual Differences for Desktop GUI Agents",
+        "authors": [
+          "Yijie Ma",
+          "Chaoyue Niu",
+          "Fan Wu",
+          "Guihai Chen"
+        ],
+        "published": "2026-08-25T03:10:01Z",
+        "updated": "2026-08-25T03:10:01Z",
+        "abstract": "The Planner-Operator-Reflector (POR) framework is widely used in GUI agents to maintain objective alignment in complex tasks through modular collaboration. However, desktop GUIs introduce a key challenge: large, dense interfaces often exhibit subtle or scattered state changes, placing most of the burden on the reflector, which must compare pre- and post-action screens, while the planner and operator reason over a single state. Existing reflectors collapse change detection and outcome verification into one step, leaving evidence implicit and yielding weakly grounded decisions. To address this limitation, we propose Evidence-First Reflection (EFR), a two-stage reflector that explicitly decouples action-induced visual differences extraction from outcome verification. EFR identifies the action location and candidate changed regions with Set-of-Marks annotations, describes and filters action-relevant changes, and makes the final judgment from the cleaned evidence. This evidence-reasoning decoupled design makes reflection better grounded in screen transitions, while reducing both visual search complexity and reasoning burden. Experiments on OSWorld-Verified and WindowsAgentArena demonstrate that EFR improves reflector accuracy by 7.11%, yielding average end-to-end task success gains of 5.94% and 4.95% on the two benchmarks, respectively."
+      },
+      "hash": "3d854a05df9e6e6f779bda6e1f0cf0b31ce8d55443d58fd1e519c86c27e7bf36",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.24039": {
+      "entry": {
+        "arxiv_id": "2608.24039",
+        "version": 1,
+        "title": "Design-to-Plan: A Large Language Model-Based Multi-Agent Framework for Manufacturing Process Planning from 3D CAD Models and 2D Engineering Drawings",
+        "authors": [
+          "Muhammad Tayyab Khan",
+          "Lequn Chen",
+          "Wenhe Feng",
+          "Seung Ki Moon"
+        ],
+        "published": "2026-08-25T03:57:38Z",
+        "updated": "2026-08-25T03:57:38Z",
+        "abstract": "Manufacturing process planning transforms heterogeneous design information into coherent manufacturing decisions. However, existing approaches focus on isolated subtasks, such as feature recognition, drawing interpretation, or tool selection, and struggle to support the full reasoning chain from design artifacts to process plans. This is critical when planning must interpret 3D CAD models, 2D engineering drawings, materials, and domain-specific rules. To address this gap, this paper presents Design-to-Plan, a large language model (LLM)-based multi-agent framework for end-to-end manufacturing process planning. An orchestrator coordinates specialized agents for 3D feature recognition, 2D drawing analysis, 2D-3D context fusion, knowledge retrieval, process sequencing, tool selection, and report generation. Rather than using LLMs as standalone text generators, the framework deploys them as reasoning agents that interact with deterministic modules and knowledge sources to produce consistent and traceable decisions. In this hybrid design, deterministic modules and specialized agents extract structured information from CAD and drawing inputs, while LLM agents perform context-aware reasoning, retrieve manufacturing rules, resolve conflicts, and generate planning outputs. The framework is evaluated using 300 benchmark cases across three downstream ReAct-enabled agents, plus separate evaluations of CAD feature recognition, drawing analysis, and 2D-3D context fusion. The parallel architecture achieves 100% success across downstream agents, Tool F1 scores of 95.9%-97.6%, 90% source detection accuracy in conflict analysis, and a 60%-68% reduction in token usage for key planning tasks. Results show that structured LLM-based multi-agent coordination can bridge design representations and manufacturing knowledge, enabling scalable, efficient, and traceable design-to-plan automation.",
+        "comment": "Submitted to Elsevier Journal"
+      },
+      "hash": "c7298f90f1f6c554aa2d85a32b806248f1b08c0e3cd473812e7a433c6213fd9e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.24099": {
+      "entry": {
+        "arxiv_id": "2608.24099",
+        "version": 1,
+        "title": "Are Android GUI Agents Robust Against Runtime Anomalies? AnTrap: Evaluating Agents in Dynamic Adversarial Environments",
+        "authors": [
+          "Guo Gan",
+          "Yilun Zhao",
+          "Cong Chen",
+          "Jinbiao Wei",
+          "Tingyu Song",
+          "Zheyuan Yang",
+          "Lin Fu",
+          "Hong Zhou"
+        ],
+        "published": "2026-08-25T05:57:25Z",
+        "updated": "2026-08-25T05:57:25Z",
+        "abstract": "GUI agents often encounter dynamic anomalies when deployed on Android devices, from unexpected pop-ups to action misuse, yet existing benchmarks lack systematic evaluation of agent robustness against runtime anomalies. We introduce AnTrap, a comprehensive benchmark that injects dynamic perturbations into agent execution trajectories. We propose a taxonomy organizing real-world anomalies into four layers (State, Thinking, Action and Round) with ten fine-grained subcategories, and develop a construction pipeline that preserves task solvability while introducing realistic adversarial conditions. Evaluating 16 leading GUI models, we reveal universal vulnerability to dynamic anomalies, with even the strongest models suffering significant performance degradation. Furthermore, we conduct GRPO training in both original and adversarial environments to validate our benchmark, separating environment-learnable anomalies from reasoning-bottlenecked ones. Our findings show that while single-step traps at state and action layers are largely addressable through adversarial reinforcement learning, deep contextual traps, like state deadlock, expose intrinsic limitations that cannot be resolved by training in environments with traps alone."
+      },
+      "hash": "d6bb196dac6e591ca8aa0e91e6c827d10a412790c24ae73caa34c97e702fa6d1",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.28675": {
+      "entry": {
+        "arxiv_id": "2608.28675",
+        "version": 1,
+        "title": "Multi-Agent Self-Improving Reinforcement Learning for Video Reasoning",
+        "authors": [
+          "Mingwen Zhang",
+          "Jisheng Dang",
+          "Minqiang Yang",
+          "Bimei Wang",
+          "Bin Hu",
+          "Tat-Seng Chua"
+        ],
+        "published": "2026-08-25T07:46:32Z",
+        "updated": "2026-08-25T07:46:32Z",
+        "abstract": "Video reasoning tasks such as grounded video question answering and temporal grounding require selecting temporal evidence that supports the query. In many current training setups, temporal supervision is applied through local objectives such as boundary regression or span generation, while verification is used mainly to rerank candidate segments at inference time. We study whether a frozen verifier can also guide training. Our multi-agent framework couples a trainable \\emph{Grounder} with a frozen \\emph{Verifier}: the Grounder samples candidate trajectories and evidence segments, the Verifier assigns query-conditioned segment scores, a group-relative policy-gradient objective favors trajectories that outperform their within-input peers, and a bootstrapped calibration loss steers temporal predictions toward verifier-preferred spans. Trained on source tasks and evaluated without target-dataset fine-tuning, a two-billion-parameter instantiation transfers zero-shot across grounded question answering, temporal grounding, and long-video question answering, reaching 28.7\\% intersection-over-union and 25.4\\% answer-grounding accuracy on a grounded-question-answering benchmark, 46.1\\% intersection-over-union on a temporal-grounding benchmark, and 54.1\\% on a long-video question-answering benchmark. Relative to a strong same-scale baseline, the gains are modest but consistent, with the clearest improvements on relevance-oriented metrics such as intersection-over-union and moderate-overlap recall. Within the tested benchmarks and transfer setting, the results support frozen verification as a training signal for evidence selection, while showing that strict boundary precision remains comparatively weaker. Code and models are available at https://anonymous.4open.science/r/MASIRL-E50C/"
+      },
+      "hash": "551abf90a73e5049e02d46dc00a61f8fb9f88c7dddc2729d8e9ae3c734062baf",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.24314": {
+      "entry": {
+        "arxiv_id": "2608.24314",
+        "version": 1,
+        "title": "Benchmarking LLM Judges for Voice-Agent Evaluation: Reliability, Calibration, and Human Oversight",
+        "authors": [
+          "Anupam Purwar",
+          "Shashank Singh",
+          "Kritika Srivastava"
+        ],
+        "published": "2026-08-25T09:44:36Z",
+        "updated": "2026-08-25T09:44:36Z",
+        "abstract": "Evaluating conversational voice agents at scale re- quires reliable assessment methods that capture both observ- able interaction quality and the contextual judgment typically provided by human evaluators. We investigate LLM-as-a-Judge evaluation by comparing human judgments with GPT-4.1 and GPT-5 on telecom and retail voice-agent conversations, across conversational quality and safety dimensions. The same interac- tions are scored under three evaluation configurations, p0, p1, and p2, to test whether automated judgments are sensitive to the evaluation setup and whether observed patterns generalize across configurations and judge models. Beyond aggregate agreement, we examine metric-level correlations, evaluator consistency, and systematic human-LLM disagreement to identify which conver- sational attributes can be judged reliably by automation and which remain sensitive to interpretation and context. Effective voice-agent evaluation is also shaped by pipeline-level factors such as speech generation, streaming, and error propagation across ASR, reasoning, and tool-calling stages, motivating our focus on comparing how human and LLM judges score the same interactions end to end. Our results show that LLM- based evaluation can serve as an effective component of large- scale voice-agent assessment, but that its reliability is metric- and configuration-dependent rather than uniform. This pro- vides an empirical framework for identifying which metrics suit automated evaluation and supports hybrid pipelines in which LLM judges handle scalable assessment while human evaluators remain engaged for metrics that demand contextual interpretation and higher-confidence judgment.",
+        "comment": "Extends LLM-as-a-Judge to voice agents across telecom and retail, testing GPT-4.1 and GPT-5 against human raters across 10 safety and efficiency metrics. A correlation-based calibration analysis reveals domain-dependent reliability and identifies Recovery Turn Count and safety-recall metrics as unreliable for fully automated judging"
+      },
+      "hash": "09c6e99e7cec58bd9b0dd16317c2b3335d648479ca020f3e3dd60387fd7dce56",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.24585": {
+      "entry": {
+        "arxiv_id": "2608.24585",
+        "version": 1,
+        "title": "Pivot-and-Station Multi-Agent Path Finding: Solvability, Complexity, and Algorithms",
+        "authors": [
+          "Andrea Di Nezza",
+          "Mihir Patel",
+          "Fabio Fagnani",
+          "Sara Bernardini"
+        ],
+        "published": "2026-08-25T14:10:28Z",
+        "updated": "2026-08-25T14:10:28Z",
+        "abstract": "Automated high-density storage systems (warehouses, robotic parking, plant logistics, etc.) require fleets of agents to move through scarce task-critical resources and then park without obstructing future operations. We introduce Pivot-and-Station Multi-Agent Path Finding (PS-MAPF), a MAPF variant in which a subset of tasked agents must each visit one of a set of interchangeable pivots (e.g., workstations) before the entire fleet terminates at anonymous stations, one agent per station. We characterize solvability completely: every instance on a 2-edge-connected graph is solvable, and, on arbitrary connected graphs, a structural effective-distance measure relative to the number of unoccupied vertices gives a necessary and sufficient condition. We prove that minimizing station-makespan or station-flowtime is NP-hard already with a single pivot. We present three algorithms, a complete baseline, a SAT-based optimal solver, and Pivot-Prioritized Planning (PPP), the last solving 74-89% of benchmark instances with makespan and flowtime orders of magnitude below the baseline."
+      },
+      "hash": "8db6b6c347e7b464aa1dfba74e9da8af4543328e1a7d8c815afd89af124d2978",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.26198": {
+      "entry": {
+        "arxiv_id": "2608.26198",
+        "version": 1,
+        "title": "Agentic AI for operating scientific instruments for nanoscale characterization",
+        "authors": [
+          "Zahra Ayar",
+          "Marcos Penedo",
+          "Mahdi Mehdikhani",
+          "Nahid Hosseini",
+          "Prabhu Prasad Swain",
+          "Georg E. Fantner"
+        ],
+        "published": "2026-08-25T14:55:40Z",
+        "updated": "2026-08-25T14:55:40Z",
+        "abstract": "Operating a scientific instrument such as an atomic force microscope (AFM) requires continuous expert decision-making. A trained user defines the experimental intent, translates it into instrument commands, assesses incoming data, adjusts imaging parameters, and post-processes the final image. Existing automation usually addresses only parts of this workflow through hard-coded routines, task-specific controllers, or trained machine-learning models. Here we present an agentic-AI framework that operates the executable part of the AFM workflow using a general-purpose, tool-augmented large language model connected to instrument functions through the Model Context Protocol (MCP). The framework consists of 3 MCP-based agents: AFM Messenger converts natural-language instructions into checked instrument commands; AFM Pilot assesses image quality through a large language model (LLM) and, if necessary, adapts imaging parameters; and AFM Doctor diagnoses image artifacts and applies transparent post-processing from a pre-approved tool set. Because the language model performs image assessment rather than a fixed scalar objective or external optimizer, the same strategy can be applied across sample types and imaging modes without specific retraining. Safe hardware operation is enforced through an ambiguity check layer before execution. Benchmarking against fine-tuned and off-the-shelf tool-using models shows that this guarded execution layer, rather than model capability alone, reduces wrong-command execution to zero. In live experiments on different samples, AFM Pilot matched expert operators in image quality, iteration count, and tuning time, with no significant difference. These results demonstrate a safe route to agentic operation of scientific instruments, where experimental intent remains human-defined while command execution, image-based tuning, and post-processing are delegated to AI agents."
+      },
+      "hash": "bc1d122838fb1a3705200b81dac86599149cdae0f8c22827fba5a17f1555fddb",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.24794": {
+      "entry": {
+        "arxiv_id": "2608.24794",
+        "version": 1,
+        "title": "CAFE: Self-Improving Search Agents Need Co-Evolving Feedback",
+        "authors": [
+          "Boyang Liu",
+          "Senjie Jin",
+          "Peixin Wang",
+          "Zhangyue Yin",
+          "Yibo Wang",
+          "Yuhao Zhou",
+          "Xinbing Liang",
+          "Shizheng Zhu",
+          "Yuhui Wang",
+          "Jingqi Tong",
+          "Zhiheng Xi",
+          "Jiazheng Zhang",
+          "Clive Bai",
+          " Clarenceai",
+          "Blaze Chen",
+          "Tao Gui",
+          "Qi Zhang",
+          "Xuanjing Huang"
+        ],
+        "published": "2026-08-25T16:39:00Z",
+        "updated": "2026-08-25T16:39:00Z",
+        "abstract": "Outcome-supervised search agents learn when and how to retrieve evidence, but terminal rewards neither localize intermediate errors nor redirect an ongoing trajectory before those errors compound. Treating corrective feedback as a learned in-trajectory intervention couples the two roles: the agent must decide when to request and use feedback, while the critic must infer useful corrections from outcome-confounded rollouts whose failure patterns shift as the agent improves. We introduce CAFE (Coupled Agent--Feedback Evolution), a framework in which a shared-parameter model alternates between search-agent and critic roles. CAFE initializes feedback-conditioned recovery from trajectories built around the base agent's own failures, then couples online and offline optimization. During online RL, a comparative feedback estimate uses a prompt-level call--skip success gap to shape request returns, while feedback-aware advantage shaping reweights token advantages before and after feedback. Offline, rollout-derived preference optimization learns feedback from matched successful and unsuccessful trajectories. On seven agentic search benchmarks, CAFE outperforms the evaluated RL-based search agents on average, retains its gains across all six out-of-domain benchmarks, and reduces answer-level hallucinations. One-sided ablations show that improving only the agent or only the critic eventually plateaus, whereas alternating the two updates continues to improve performance. These findings suggest that a self-improving search agent needs feedback that co-evolves with the policy it guides."
+      },
+      "hash": "0f240de0ee3f763c0f6523ce2b297bbd4cebeb9a48366264464d8cae61ee9636",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.24809": {
+      "entry": {
+        "arxiv_id": "2608.24809",
+        "version": 1,
+        "title": "Structurally-bounded Agentic Graph Exploration for Evidence-Grounded Scholarly DeepSearch",
+        "authors": [
+          "Rima Hazra",
+          "Sayan Layek",
+          "Somnath Banerjee",
+          "Soumen Chakrabarti",
+          "Animesh Mukherjee"
+        ],
+        "published": "2026-08-25T16:51:26Z",
+        "updated": "2026-08-25T16:51:26Z",
+        "abstract": "We present Crase, a bounded and inspectable alternative to deep research agents for scholarly search. Instead of an open-ended search loop, Crase queries a search engine once for seed papers, expands them along their 1.5-hop citation neighborhood, prunes citation edges whose claims lack entailment support, and ranks the remaining papers with a recency-aware random walk. This makes the candidate set, the reason each paper is kept, and the stopping condition explicit and fixed before inference. On LitSearch and one further benchmarks over a 500K-paper arXiv corpus, Crase outperforms deep research agents built on proprietary models by up to 3$\\times$ recall@50 at roughly a third of the cost."
+      },
+      "hash": "8317614371ef791b6ae6df48092584231ce1352d30c5db23bee691e4de12ae86",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.24876": {
+      "entry": {
+        "arxiv_id": "2608.24876",
+        "version": 1,
+        "title": "Recursive Experiential-Working Memory Evolution for Long-Horizon Agent Harnesses",
+        "authors": [
+          "Zhaochen Yu",
+          "Yingcheng Wu",
+          "Zhenfei Yin",
+          "Kaiyuan Chen",
+          "Zhe Zhao",
+          "Mengdi Wang",
+          "Shuicheng Yan",
+          "Ling Yang"
+        ],
+        "published": "2026-08-25T17:56:35Z",
+        "updated": "2026-08-25T17:56:35Z",
+        "abstract": "Recursive self-improvement (RSI) remains hard in long-horizon tasks, where growing histories obscure the task state and misalign skill invocation. We introduce Recuris, a recursive Experiential-Working Memory architecture for long-horizon agent harnesses, in which Working Memory tracks task progress and guides skill selection from Experiential Memory, grounding skill use in current needs rather than the full history. This coupling also turns execution into structured evidence that localizes failures to specific memory components. Across tasks, a fixed Meta-Agent turns that evidence into localized, validation-gated updates to Skill Memory that reshape execution and yield new evidence, forming a bounded recursive memory-evolution loop. Across four long-horizon benchmarks and ten models, Recuris improves task success in 35 of the 37 completed model-benchmark pairs, carrying frontier models to SOTA-level task success: on tau-bench it adds +17.8 points to GPT-5.6 Sol and +15.6 to Claude Opus 5, taking Opus 5 to 87.9%, and +16.6/+13.5 points on Qwen3.6-27B/35B on SkillFlow. The advantage widens as the interaction horizon grows, to +32.2 points on the longest tasks, and common long-horizon failures fall by up to 80%. These results position recursively evolving memory as a scalable foundation for RSI, enabling agents to continuously transform accumulated experience into increasingly effective long-horizon behavior. Code: https://github.com/Gen-Verse/Recuris",
+        "comment": "Code: https://github.com/Gen-Verse/Recuris"
+      },
+      "hash": "38a410e90a8ce33513f0e0ee3ab0c5d9a833f93d6507ee753fb6cceda65c678c",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.25050": {
+      "entry": {
+        "arxiv_id": "2608.25050",
+        "version": 1,
+        "title": "ARISMA: Guidelines for AI- and LLM-Assisted Systematic Reviews, Scoping Reviews, and Mapping Studies",
+        "authors": [
+          "Mahyar Tourchi Moghaddam",
+          "Mina Alipour"
+        ],
+        "published": "2026-08-25T18:40:06Z",
+        "updated": "2026-08-25T18:40:06Z",
+        "abstract": "Systematic reviews, scoping reviews, mapping studies, and related evidence syntheses are increasingly difficult to conduct with fully manual workflows as search volumes, update cycles, and synthesis requirements continue to expand. At the same time, artificial intelligence, machine learning, and large language models are rapidly entering review practice across query formulation, screening, extraction, categorization, appraisal support, and reporting. Yet the empirical evidence remains uneven, task-dependent, and insufficient to justify unconstrained automation. Existing standards such as PRISMA 2020, PRISMA-S, PRISMA-ScR, PRISMA-P, PRESS, and SWiM remain essential, but none provides an end-to-end operational standard for when AI use is methodologically appropriate, how it should be validated, which review decisions must remain human-led, and how AI involvement should be reported so that readers can audit it. This paper proposes ARISMA, an AI Reporting and Integration standard for Systematic Methods and Analysis. ARISMA treats AI as an inspected, benchmarked, logged, and reversible assistant rather than an autonomous reviewer. It is built around one governing principle: every consequential scientific decision must remain human-interpretable, human-auditable, and human-accountable. The paper contributes a lifecycle taxonomy, process guidance, stepwise recommendations across the review pipeline, a governance and provenance model, a tool-support framework, an AI-integrated reporting checklist, and a validation matrix. It also addresses legal, privacy, infrastructure, and sustainability considerations. The framework was iteratively refined through structured expert consultation. The result is a practical and auditable guideline for responsible AI-assisted evidence synthesis.",
+        "comment": "Accepted to be presented at AGENTICS 2026, to be published by Springer"
+      },
+      "hash": "8421276704ceb202f291ec4a23049bfedb0116fb5bf7a24a5745b38d1692e6ca",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.25067": {
+      "entry": {
+        "arxiv_id": "2608.25067",
+        "version": 1,
+        "title": "SimVerity: When Does Simulated Agent Success Survive Physical Deployment?",
+        "authors": [
+          "Zhonghao Zhan",
+          "Yefan Zhang",
+          "Krinos Li",
+          "Hamed Haddadi"
+        ],
+        "published": "2026-08-25T19:00:49Z",
+        "updated": "2026-08-25T19:00:49Z",
+        "abstract": "Simulated evaluation is widely used to benchmark AI agents, yet how much evidence a simulated pass provides about physical deployment has not been systematically quantified. We present SimVerity, a verdict-transfer assurance framework: it replays matched scenarios on target smart home deployments and cross-validates agent execution against independently qualified physical witnesses. Our evaluation highlights that deployment success is a real-world process, not a static property in simulation: completion, reported state, observable effect, and settled outcome diverged within the same execution. Although an advanced simulator cleared all 240 light trials, a camera caught 42 sub-second failures invisible to settled-state checks. False clearance was predictable: a risk profile learned from measured trials and locked before evaluation predicted failures on a path it never physically measured, beating a property-blind baseline in all eleven held-out sessions across two cohorts. Agent auditability was also measurable: switching one agent loop's model-client/serving configuration raised its scenario-matching share from 52-88% to 100%. Finally, a second qualified simulator added no independent cross-check: it never disagreed on any overlapping case, and only physical measurement exposed their shared blind spots. SimVerity turns verdict transfer into an explicit decision: clear, abstain, or escalate before deployment.",
+        "comment": "Submitted to the Main Technical Track of AAAI Conference on Artificial Intelligence (AAAI-27); currently under review"
+      },
+      "hash": "9d32a088fb9258bbadd1f54b649af28600f1c06f2b49db6222bc86934ba0a621",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.26204": {
+      "entry": {
+        "arxiv_id": "2608.26204",
+        "version": 1,
+        "title": "ADeptS-Bench: Measuring the Trustworthiness of Computer Use Agents Across Devices",
+        "authors": [
+          "Joy Chen",
+          "Alejandro Castillejo Munoz",
+          "Pierluca D'Oro",
+          "Yuxuan Sun",
+          "Chloe Evans",
+          "Joseph Tighe"
+        ],
+        "published": "2026-08-25T23:21:57Z",
+        "updated": "2026-08-25T23:21:57Z",
+        "abstract": "Computer Use Agents (CUAs) are increasingly deployed to navigate mobile and desktop applications on behalf of users, yet no benchmark comprehensively evaluates whether they can safely interact with visual interfaces while handling ambiguous instructions. We introduce ADeptS-Bench, a dual-stream trustworthiness benchmark, grounded in the ADEPTS capability framework and general population user studies. The Safety stream provides paired benign/malicious tasks with threats embedded in the visual interface. The Disambiguation stream evaluates whether agents seek clarification when intent is ambiguous. Evaluating seven models reveals that no model consistently exceeds 80% task success while staying below 30% attack success; every model clicks \"Checkout\" on a $25K order without hesitation, and none detects that a \"factory reset\" button is mislabeled as \"Optimize.\" An ablation reveals three distinct safety architectures: tool-dependent (ASR +21-23pp without refusal tool), partially tool-dependent (+10-11pp), and no mechanism (unchanged). In disambiguation, all models overestimate consequence severity, mirroring the over-refusal bias observed in safety. We release all data, evaluation code, and analysis tools upon publication."
+      },
+      "hash": "59999574e74fc0b014d50a70eb36341ca6f532bcbb1ceacf6c1ad1b811c709f2",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.25417": {
+      "entry": {
+        "arxiv_id": "2608.25417",
+        "version": 1,
+        "title": "Paint What You See: Benchmarking Dexterous Visual Tool Use in Multimodal Agents",
+        "authors": [
+          "Shudong Liu",
+          "Dongyang Chen",
+          "Enci Zhang",
+          "Jinwei Liang",
+          "Zheng Ma",
+          "Lewei Lu"
+        ],
+        "published": "2026-08-26T06:19:28Z",
+        "updated": "2026-08-26T06:19:28Z",
+        "abstract": "Evaluation is shifting from static QA toward agentic settings where models act through external tools. We identify a critical yet underexplored capability within this space - dexterous visual tool use: fine-grained, closed-loop parameterized visual action in which models infer tool parameters from visual evidence, and those parameters directly govern the final result. Existing benchmarks cover web navigation, GUI operation, and software engineering, but rarely target this coupling between visual evidence and execution precision. We propose EASEL, a benchmark evaluating a controlled instance of dexterous visual tool use that adopts reference-guided visual reconstruction as its primary proxy task: the agent incrementally paints a canvas to match a reference image. EASEL additionally includes semantic tasks spanning region annotation, handwriting, and path planning. We further provide EASEL-Data, a 440k-sample two-stage curriculum dataset for trajectory supervision, and EASEL-9B to investigate its effect on this capability. Evaluation of 25 models reveals that current multimodal agents systematically struggle on EASEL. Reconstruction similarity bottlenecks at low levels (0.40-0.54), while trajectory diagnostics expose severe closed-loop instability - models typically saturate early or degrade post-peak. Semantic tasks reveal sharp capability boundaries in precision annotation and path planning. EASEL-9B, trained on EASEL-Data, surpasses the base model by a relative 6.3%, ranking third among all evaluated models."
+      },
+      "hash": "0bb5b0143066f6fbd794846b0df1f5ea0c873b2c6b769e01030be1862ad30ff7",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.25559": {
+      "entry": {
+        "arxiv_id": "2608.25559",
+        "version": 1,
+        "title": "AdaVDR: Adaptive Tool Use and Reflection for Video Deep Research",
+        "authors": [
+          "Xintong Zhang",
+          "Xiaomeng Fan",
+          "Shilin Yan",
+          "Ekko He",
+          "Zicheng Liu",
+          "Zijian Zou",
+          "Guannan Zhang",
+          "Yuwei Wu",
+          "Zhi Gao",
+          "Hongwei Xue"
+        ],
+        "published": "2026-08-26T09:07:51Z",
+        "updated": "2026-08-26T09:07:51Z",
+        "abstract": "Video deep research answers complex questions by jointly understanding video content and retrieving external knowledge from the open Web. However, diverse questions and videos require different tool-use strategies, and inappropriate tool calls can produce incorrect results. Uncertain grounding and retrieval also make unnecessary interactions costly and error-prone, increasing latency and reasoning errors. To address these challenges, we propose AdaVDR, an adaptive video deep research agent with adaptive tool invocation and reflection. AdaVDR selects tools according to the task and its capabilities, and backtracks only when unreliable intermediate results require correction. To enable these capabilities, we develop a video deep research data construction pipeline. We first discover retrieval-relevant events and entities in diverse videos and acquire detailed information through grounding and external retrieval to construct high-quality QA pairs. For each QA, task-specific prompts organize the information acquisition process into a tool-use trajectory, allowing different question and video types to follow different grounding and retrieval strategies. We further introduce model-conditioned tool necessity filtering, which evaluates tool calls against the target model's video understanding and internal knowledge, removing tools or tool chains the model can bypass. This yields trajectories tailored to the target model's video understanding capability and knowledge. Using this pipeline, we construct training data and VDR-EE, a benchmark covering entity-centric and event-centric questions. We perform supervised fine-tuning followed by reinforcement learning with a redundancy-aware reward to strengthen adaptive tool invocation and reflection. Experiments show that our method performs best among the evaluated open-source models on VDR-EE and substantially improves over its base models on VideoDR."
+      },
+      "hash": "83ccaaa00e3cbb2c76a44107a17769e991537043dd0c0b98671e338726930445",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2608.26218": {
+      "entry": {
+        "arxiv_id": "2608.26218",
+        "version": 1,
+        "title": "Same Model, Different Harness: Different Coding-Agent Results",
+        "authors": [
+          "Sydney Lewis"
+        ],
+        "published": "2026-08-26T11:55:44Z",
+        "updated": "2026-08-26T11:55:44Z",
+        "abstract": "A coding agent combines a model with a harness, which decides what the model sees, which tools it can use, and how the work continues. We ask whether changing the harness changes the result when the model and task stay fixed. We compare two configurations of the same harness on three coding benchmarks. The control supplies the full conversation in time order, while the treatment keeps the same record but mechanically shortens older tool results as the context fills and responds to repeated or stalled work. Under tight context, the treatment raises mean per-task fail-to-pass fraction (F2PF) in all three pressure comparisons and increases complete solutions on SWE-bench Verified and SWE-bench Pro. The tight-window Verified comparison uses 169 tasks, a 20,480-token window, and a fixed 480-second attempt endpoint; on this cohort, treatment raises mean per-task F2PF from 28 percent to 49 percent and complete solutions from 43 to 72. Without model-specific retuning, the same frozen treatment also raises both endpoints on the same cohort for three additional models with different designs. In the wide-window Qwen3.6 comparisons, observed arm outcomes are close on Verified and Pro, while FeatureBench retains a higher mean per-task F2PF under treatment. On the wide-window Verified cohort, treatment also serves fewer prompt tokens per turn. Because changing the harness changed what unchanged model weights could accomplish, coding-agent evaluations should treat the model and harness together as the tested solver.",
+        "comment": "24 pages, 9 figures. Software and study artifacts: https://github.com/sydches/yuj"
+      },
+      "hash": "29a2d60200139b61aec2497bfb836f047f505744124f952418585f6d228af6fe",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.25777": {
+      "entry": {
+        "arxiv_id": "2608.25777",
+        "version": 1,
+        "title": "LocalLSTC: A Long Short-Term Control Architecture for Locally Deployed GUI Agents",
+        "authors": [
+          "Weiming Li",
+          "Helen Paik",
+          "Yulei Sui"
+        ],
+        "published": "2026-08-26T13:20:27Z",
+        "updated": "2026-08-26T13:20:27Z",
+        "abstract": "Modern GUI-agent frameworks achieve strong desktop task performance with frontier API models, yet persistent control information often remains implicit in growing interaction trajectories. At each step, the planner reconstructs the active task stage, accumulated evidence, and runtime feedback before deciding the next action. This dependence becomes more pronounced under weaker local reasoning backbones. Across four representative state-of-the-art frameworks, replacing GPT-5 with Qwen3.5-9B reduces average OSWorld SR-100 from 60.9\\% to 37.7\\%. Trajectory annotation further identifies at least one control failure in 91.6\\% of failed trajectories. To address this problem, we introduce LocalLSTC, a training-free architecture that organizes control by temporal scope, maintaining persistent cross-step state to guide short-term execution commitments. Long-Term Control maintains the active subgoal, subgoal-aligned evidence, and runtime feedback across interactions, while Short-Term Execution realizes bounded commitments for the current step. Long-to-Short Planning forms each commitment from persistent state, and Short-to-Long Control integrates execution outcomes back into that state for progress assessment, recovery, and termination. With Qwen3.6-27B, LocalLSTC reaches 64.7\\% SR-100 on OSWorld and 65.3\\% on WindowsAgentArena, outperforming the strongest prior local results on both benchmarks. Ablations further support contributions from mechanisms on both sides of execution. These findings identify temporal organization of control information as a distinct architectural dimension for locally deployed GUI agents."
+      },
+      "hash": "a42528a544a470f714774e3e36a2908b8de322590fac7d253c7541f182e1ac0e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2608.26229": {
+      "entry": {
+        "arxiv_id": "2608.26229",
+        "version": 1,
+        "title": "The Green Software Landscape: A Systematic Mapping Study on Evolution, Applications, Software Lifecycle, and Best Practices",
+        "authors": [
+          "Max Hort",
+          "Maria Kechagia",
+          "Federica Sarro"
+        ],
+        "published": "2026-08-26T16:34:32Z",
+        "updated": "2026-08-26T16:34:32Z",
+        "abstract": "Energy consumption and climate change have made sustainability critical in Software Engineering (SE), driving the emergence of Green SE. Over the past 15 years, numerous solutions for sustainable software systems have been published by the SE community, offering a rich resource for analyzing the field's evolution. To explore this, we conducted a systematic mapping study of Green SE research published between 2010 and 2024. We collected 390 publications, categorizing them by application domain (e.g., mobile, cloud, AI) and research type (e.g., optimisation study, benchmarking, literature review Additionally, we analyzed a representative subset of 79 papers to classify the key elements-such as hardware, measurement, stability, and replicability-considered during energy measurement experiments. Our findings indicate that SE conferences host the majority of energy-related literature. Notably, Green SE studies surged in popularity starting in 2023, largely driven by AI-related publications. Optimization and benchmarking emerged as the most prevalent research types. Ultimately, we aim to inform the SE community about current approaches to energy concerns, highlight critical experimental practices, and advocate for continued action toward more sustainable software engineering.",
+        "comment": "29 pages, 6 figures"
+      },
+      "hash": "3427bcbae01752056299797175f388bcc904dd4b735a3182e7ebdf588a087d6e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2608.26235": {
+      "entry": {
+        "arxiv_id": "2608.26235",
+        "version": 1,
+        "title": "The Reasoning Tax: Token Economics of LLM Reasoning Across Task Types and Deployment Contexts",
+        "authors": [
+          "Sachin Gopal Wani",
+          "Ajay Dholakia",
+          "David Ellison"
+        ],
+        "published": "2026-08-26T17:44:50Z",
+        "updated": "2026-08-26T17:44:50Z",
+        "abstract": "Accuracy-only benchmarking of reasoning-capable large language models misses a central deployment question: when do extended thinking tokens earn their cost? We introduce the Token Economy Score (TES), a marginal benchmarking metric that measures the accuracy gain of a reasoning model over a non-reasoning baseline, normalized by the generated-token multiplier. We define paired and approximated TES variants for model families with reasoning toggles and frontier models without direct non-reasoning counterparts. We then conduct an empirical benchmarking analysis across 151 model-benchmark evaluation runs on seven benchmarks spanning mathematics, code generation, science reasoning, instruction following, expert knowledge, knowledge recall, and research-level physics. The analysis examines three deployment-facing dimensions: which task structures yield positive marginal reasoning efficiency, how increasing reasoning effort changes TES within model families, and how deployment context changes economic viability. Results show that task structure predicts reasoning efficiency better than nominal difficulty: sequential inferencechain tasks such as AIME 2025 and LiveCodeBench show high TES, while knowledge-recall tasks such as MMLU-Pro show low TES despite their difficulty. We also find systematic diminishing returns at higher reasoning effort levels, including cases where additional thinking reduces accuracy. Finally, Reasoning Cost Share (RCS) shows that inference spend is often dominated by internal thinking, while Deployment Cost Multiplier (DCM) shows how on-premises deployment can change the economics of otherwise costly reasoning workloads. These findings support a benchmarking-driven model-selection rule: enable reasoning selectively by task type, effort level, and deployment context rather than treating it as a universally beneficial mode.",
+        "comment": "15 pages, 8 figures and tables, accepted at the 2026 TPCTC Conference and will be published at Performance Evaluation and Benchmarking (Springer)"
+      },
+      "hash": "d06956ce9105717c0b7e8563f7b600a71258b371493b31bd976c2371071b06e5",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
     }
   },
   "seen": {
