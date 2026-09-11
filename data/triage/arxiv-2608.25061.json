@@ -5,13 +5,13 @@
   "version": 2,
   "title": "DataKernelBench: Can LLMs Optimize Database Queries on GPUs?",
   "paperUrl": "https://arxiv.org/abs/2608.25061v2",
-  "assessedAt": "2026-09-10T07:40:34Z",
-  "policyVersion": 3,
-  "policyHash": "bb4dc8987508855ffe619329ea793e5fc87a516442e36b9318a648bef3a9aef9",
+  "assessedAt": "2026-09-11T02:47:03Z",
+  "policyVersion": 4,
+  "policyHash": "e009e39b0ca1a30897caeeff8ce5943cc3cbbac1b265f32ecb5342d2e279cfd5",
   "materialHash": "c661261dd7c842408e4af2817a2f79e91312fe31847cb7ff9dfe3dbbcf93b845",
   "materialScope": "abstract_and_arxiv_metadata",
   "decision": "needs_evidence",
-  "score": 3,
+  "score": 5,
   "scoreMax": 11,
   "reasons": [
     "摘要级证据不足以自动收录，保留材料等待补充"
@@ -19,11 +19,18 @@
   "missingSignals": [
     "明确提出新的评测资料或框架",
     "描述任务、问题或评测环境",
-    "描述评分指标或评测协议",
     "给出任务规模或覆盖范围",
     "讨论泛化、污染、稳健性或人工核验"
   ],
   "evidence": [
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "Across ten proprietary and open-weight models on TPC-H SF10 with an H100 GPU, the strongest full-query CUDA configuration achieves $2.11\\times$ speedup over the TorchPlan baseline at full pass rate.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2608.25061v2"
+    },
     {
       "signal": "baseline_comparison",
       "label": "报告基线或多个模型的评测",

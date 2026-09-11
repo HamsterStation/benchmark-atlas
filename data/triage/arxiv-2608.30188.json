@@ -5,20 +5,18 @@
   "version": 2,
   "title": "GPAgentBench-2K: Benchmarking Large Language Model Agents in Complex Clinical Action Space",
   "paperUrl": "https://arxiv.org/abs/2608.30188v2",
-  "assessedAt": "2026-09-10T07:40:34Z",
-  "policyVersion": 3,
-  "policyHash": "bb4dc8987508855ffe619329ea793e5fc87a516442e36b9318a648bef3a9aef9",
+  "assessedAt": "2026-09-11T02:47:03Z",
+  "policyVersion": 4,
+  "policyHash": "e009e39b0ca1a30897caeeff8ce5943cc3cbbac1b265f32ecb5342d2e279cfd5",
   "materialHash": "58e10f23986d8e360531be3d582a769cdcc9411bf6bc9c739706e64f4bdd42ad",
   "materialScope": "abstract_and_arxiv_metadata",
-  "decision": "needs_evidence",
-  "score": 6,
+  "decision": "excluded",
+  "score": 8,
   "scoreMax": 11,
   "reasons": [
-    "摘要级证据不足以自动收录，保留材料等待补充"
+    "医学、生物医学或临床专题，超出当前 Agent 与通用模型评测方向"
   ],
   "missingSignals": [
-    "描述任务、问题或评测环境",
-    "报告基线或多个模型的评测",
     "材料中提供代码或数据链接（未核验内容）",
     "给出任务规模或覆盖范围"
   ],
@@ -32,10 +30,26 @@
       "sourceUrl": "https://arxiv.org/abs/2608.30188v2"
     },
     {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "Large Language Models (LLMs) show great potential as clinical agents, yet existing benchmarks reduce clinical workflows to static predictions or unconstrained Markov Decision Processes (MDPs) with coarse action sets.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2608.30188v2"
+    },
+    {
       "signal": "evaluation_protocol",
       "label": "描述评分指标或评测协议",
       "weight": 2,
       "excerpt": "Crucially, we uncover a clinical quality-safety gap: even frontier models with the highest diagnosis accuracy violate safety constraints in over half of high-risk cases.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2608.30188v2"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "Evaluating 16 state-of-the-art LLMs reveals a significant performance degradation as the action space scales.",
       "source": "abstract",
       "sourceUrl": "https://arxiv.org/abs/2608.30188v2"
     },

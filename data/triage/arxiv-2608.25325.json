@@ -5,20 +5,19 @@
   "version": 1,
   "title": "FinRiskAtlas: Decision-Aligned Evaluation of Large Language Models for Financial Risk Review",
   "paperUrl": "https://arxiv.org/abs/2608.25325v1",
-  "assessedAt": "2026-09-10T07:40:34Z",
-  "policyVersion": 3,
-  "policyHash": "bb4dc8987508855ffe619329ea793e5fc87a516442e36b9318a648bef3a9aef9",
+  "assessedAt": "2026-09-11T02:47:03Z",
+  "policyVersion": 4,
+  "policyHash": "e009e39b0ca1a30897caeeff8ce5943cc3cbbac1b265f32ecb5342d2e279cfd5",
   "materialHash": "71b4666df660c0c91603894b51a9990f332cfb46d3af5b67d99bfdb0623d938f",
   "materialScope": "abstract_and_arxiv_metadata",
   "decision": "needs_evidence",
-  "score": 6,
+  "score": 7,
   "scoreMax": 11,
   "reasons": [
     "摘要级证据不足以自动收录，保留材料等待补充"
   ],
   "missingSignals": [
     "描述评分指标或评测协议",
-    "报告基线或多个模型的评测",
     "材料中提供代码或数据链接（未核验内容）"
   ],
   "evidence": [
@@ -34,7 +33,15 @@
       "signal": "task_definition",
       "label": "描述任务、问题或评测环境",
       "weight": 1,
-      "excerpt": "Existing financial benchmarks cover knowledge, reasoning, compliance, and professional tasks, but their evaluation units are often organized around datasets or task formulations rather than the decisions that deployed systems support.",
+      "excerpt": "Deploying large language models for professional financial review requires more than measuring general financial competence: models must perform the specific review operation required by a workflow and determine whether available evidence is sufficient for a defensible decision.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2608.25325v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "Across 33 model configurations, operation-level evaluation yields non-redundant rankings (mean pairwise Spearman correlation 0.42 across downstream operations), and knowledge-based shortlisting can incur up to 18.01 points of regret on individual operations.",
       "source": "abstract",
       "sourceUrl": "https://arxiv.org/abs/2608.25325v1"
     },

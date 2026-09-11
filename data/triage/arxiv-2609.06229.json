@@ -5,20 +5,18 @@
   "version": 1,
   "title": "SWE-Test: Benchmarking LLM Vulnerability Discovery via Input Prediction",
   "paperUrl": "https://arxiv.org/abs/2609.06229v1",
-  "assessedAt": "2026-09-10T07:40:34Z",
-  "policyVersion": 3,
-  "policyHash": "bb4dc8987508855ffe619329ea793e5fc87a516442e36b9318a648bef3a9aef9",
+  "assessedAt": "2026-09-11T02:47:03Z",
+  "policyVersion": 4,
+  "policyHash": "e009e39b0ca1a30897caeeff8ce5943cc3cbbac1b265f32ecb5342d2e279cfd5",
   "materialHash": "fbed10f1811fd13b595d7a9143fed98024681f5c8b98a3ed9bef8e1f095decef",
   "materialScope": "abstract_and_arxiv_metadata",
   "decision": "needs_evidence",
-  "score": 6,
+  "score": 9,
   "scoreMax": 11,
   "reasons": [
     "摘要级证据不足以自动收录，保留材料等待补充"
   ],
   "missingSignals": [
-    "描述评分指标或评测协议",
-    "报告基线或多个模型的评测",
     "材料中提供代码或数据链接（未核验内容）"
   ],
   "evidence": [
@@ -35,6 +33,22 @@
       "label": "描述任务、问题或评测环境",
       "weight": 1,
       "excerpt": "We recast its measurement as an input-prediction task with a closed, deterministic ground truth: using coverage-guided fuzzing, we mine deep target branches in real-world C/C++ programs and ask an agent to predict an input that drives execution to a given branch.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.06229v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "Evaluating 15 default-effort model-scaffold configurations, the best reaches only 55.0% pass rate in the Feedback-enabled mode, and the mean across seven paired Claude Code configurations is 36.4% with feedback versus 19.3% without.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.06229v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "Evaluating 15 default-effort model-scaffold configurations, the best reaches only 55.0% pass rate in the Feedback-enabled mode, and the mean across seven paired Claude Code configurations is 36.4% with feedback versus 19.3% without.",
       "source": "abstract",
       "sourceUrl": "https://arxiv.org/abs/2609.06229v1"
     },
