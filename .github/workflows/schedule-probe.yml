@@ -1,0 +1,20 @@
+name: Schedule delivery probe
+
+on:
+  # Temporary diagnostic: no checkout, network calls, secrets, or repository writes.
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Record delivered event
+        run: |
+          echo "event=$GITHUB_EVENT_NAME"
+          echo "run_id=$GITHUB_RUN_ID"
+          date -u
