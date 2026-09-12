@@ -245,4 +245,14 @@ GitHub Pages 已公开部署。尚未验证论文实验复现、GAIA 受限数�
 
 ## 后续维护
 
+### 2026-09-12 实际运行与故障区分
+
+GitHub 原生定时事件已实际送达。北京时间 9 月 11 日 22:27 的 [schedule 运行](https://github.com/HamsterStation/benchmark-atlas/actions/runs/34610246929)完成 18 页采集、测试、构建和 Pages 部署；9 月 12 日 15:10 的 [schedule 运行](https://github.com/HamsterStation/benchmark-atlas/actions/runs/34680035566)也自动触发，但遇到 arXiv HTTP 429，正确保留队列并停止发布。短时间看不到事件不能据此认定仓库定时器永久失效，也不能证明重新启用就是恢复的原因。
+
+9 月 12 日冷却到期后的[手动补跑](https://github.com/HamsterStation/benchmark-atlas/actions/runs/34682564516)已成功完成 11 页采集、2 次模型调用和部署，复用原队列生成两篇简介。此记录的事件类型是 `workflow_dispatch`，与前述真实 `schedule` 验证分别记录。
+
+当前推荐继续使用配置中的四个时段、持久冷却和每日两篇总额度。仅在确实需要减少定时事件延迟时，考虑独立托管定时服务调用 GitHub `workflow_dispatch`；它需要单仓库、最小权限的 GitHub 凭证，放在服务的 Secret 中，模型 Key 仍留在 GitHub。外部调度不能消除 arXiv 限流，也不能保证 GitHub runner 立即启动。本项目尚未接入外部定时服务。
+
+主题策略第 5 版修正了 RestoreBench 的误筛：电力或软件的“诊断”不等于医学，医学排除依据临床、患者、疾病等主题词。采集与站点使用同一配置，旧草稿也应用新规则；此修正不修改人工资料或重新生成简介。
+
 按需完善来源与纠错，再考虑扩展采集来源。定期检查 API 查询范围、失败队列和模型预算；升级依赖后使用锁文件与生产页面测试验证。分类变化应同步更新 taxonomy、JSON Schema 和测试。不要让采集草稿成为自动执行的代码，也不要把缺少运行证据的条目标为已复现。

@@ -31,6 +31,16 @@ test('a code deployment cannot publish drafts from a failed collection', () => {
   assert.equal(isDraftReady(paper, '2026-09-11T02:46:36Z'), true);
   assert.equal(isDraftReady(paper, '2026-09-11T04:00:00Z'), true);
 });
+test('engineering diagnosis is kept while medical diagnosis is excluded', () => {
+  assert.equal(inPublicationScope({ ...sample(),
+    title: 'RestoreBench: Can AI Agents Restore Power Flow Convergence?',
+    taskFormat: '在电力潮流不收敛时，通过受限动作诊断并执行修正操作以恢复收敛。',
+  }), true);
+  assert.equal(inPublicationScope({ ...sample(), title: 'LLM Agents for Software Fault Diagnosis' }), true);
+  for (const taskFormat of ['诊断患者的疾病。', '使用 Agent 进行临床诊断。', 'Disease diagnosis with LLM agents.']) {
+    assert.equal(inPublicationScope({ ...sample(), taskFormat }), false);
+  }
+});
 test('schema rejects missing fields, invalid dates and unsafe URLs', () => {
   for (const change of [(p: any) => { delete p.title; }, (p: any) => { p.checkedAt = '2026-02-30'; }, (p: any) => { p.officialCode = 'javascript:alert(1)'; }, (p: any) => { p.targets = ['imagined']; }]) {
     const p = sample(); change(p); assert.throws(() => validatePaper(p));

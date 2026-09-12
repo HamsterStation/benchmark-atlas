@@ -117,6 +117,18 @@ class QualityTests(unittest.TestCase):
         e["abstract"] += " Language models have applications in healthcare and other industries."
         self.assertEqual(assess(e, self.config, self.now)["decision"], "priority_review")
 
+    def test_engineering_diagnosis_is_not_a_medical_topic(self):
+        for title in ["LLM Agents for Software Fault Diagnosis", "Agent 电力诊断 Benchmark"]:
+            with self.subTest(title=title):
+                e = entry()
+                e["title"] = title
+                self.assertEqual(assess(e, self.config, self.now)["decision"], "priority_review")
+        for title in ["LLM Agents for Disease Diagnosis", "Agent 疾病诊断 Benchmark"]:
+            with self.subTest(title=title):
+                e = entry()
+                e["title"] = title
+                self.assertEqual(assess(e, self.config, self.now)["decision"], "excluded")
+
     def test_publication_cutoff_uses_first_publication_not_version_date(self):
         e = entry(version=7)
         e["published"] = "2022-12-31T00:00:00Z"
