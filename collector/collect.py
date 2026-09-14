@@ -110,10 +110,12 @@ class HttpClient:
                 req = Request(url, headers={"User-Agent": "benchmark-atlas/0.1 (metadata research index)", "Accept": "application/atom+xml"})
                 with self.opener.open(req, timeout=self.config["timeout_seconds"]) as response:
                     data = response.read(self.config["max_response_bytes"] + 1)
+                self.last_request = time.monotonic()
                 if len(data) > self.config["max_response_bytes"]:
                     raise ValueError("API response exceeds size limit")
                 return data
             except (HTTPError, URLError, TimeoutError, ConnectionError, RemoteDisconnected, IncompleteRead) as error:
+                self.last_request = time.monotonic()
                 if isinstance(error, HTTPError) and error.code == 429:
                     deadline = retry_deadline((error.headers or {}).get("Retry-After", ""),
                                               self.config.get("rate_limit_cooldown_seconds", 900), datetime.now(timezone.utc))
@@ -270,6 +272,8 @@ class Collector:
                 raise ValueError(f"{key} must be positive")
         if self.config.get("rate_limit_cooldown_seconds", 900) < 60:
             raise ValueError("Rate-limit cooldown must be at least 60 seconds")
+        if not 1 <= self.config.get("queue_cache_max_age_days", 7) <= 30:
+            raise ValueError("Queue cache lifetime must be 1..30 days")
         self.dry_run, self.now = dry_run, now or utcnow()
         self.remote_checkpoints = remote_checkpoints
         if remote_checkpoints and self.root.resolve() != ROOT.resolve():
@@ -354,6 +358,11 @@ class Collector:
     def collect_query(self, query):
         key = hashlib.sha256(query.encode()).hexdigest()[:20]
         progress = self.state["queries"].setdefault(key, {"query": query, "successful_until": None, "active": None})
+        # Successful searches need at most one refresh per day; unfinished windows resume.
+        completed_at = progress.get("last_completed_at")
+        if self.discovery_only and not progress["active"] and completed_at and (
+                parse_time(completed_at).astimezone(ZoneInfo(self.quality["intake_timezone"])).date().isoformat() == self.intake_day):
+            return True
         if not progress["active"]:
             since = parse_time(progress["successful_until"] or self.config["initial_since"]) - timedelta(days=self.config["overlap_days"])
             progress["active"] = {"since": since.isoformat(), "until": self.now, "start": 0}
@@ -374,6 +383,7 @@ class Collector:
             if complete:
                 progress["successful_until"] = active["until"]
                 progress["active"] = None
+                progress["last_completed_at"] = self.now
             self.save(remote=True)  # Queue and cursor commit together before processing model output.
             if complete:
                 return True
@@ -422,11 +432,32 @@ class Collector:
             atomic_json(path, result)
         return result
 
-    def process_queue(self):
+    def ready_materials(self):
+        if "ready_queue" not in self.state:
+            # Legacy triage runs only after a complete discovery. Require its exact hash
+            # and a date covered by an actual successful collection before migration.
+            ready = {}
+            successful = self.state.get("last_successful_collection_at")
+            for aid, item in self.state["queue"].items():
+                triage = read_json(self.root / "data/triage" / (stable_id(aid) + ".json"))
+                if successful and triage and triage.get("materialHash") == item["hash"] == material_hash(item["entry"]):
+                    self.triage_validator.validate(triage)
+                    if parse_time(triage["assessedAt"]) <= parse_time(successful):
+                        ready[aid] = {"hash": item["hash"], "collected_at": successful}
+            self.state["ready_queue"] = ready
+        return {aid: proof for aid, proof in self.state["ready_queue"].items()
+                if aid in self.state["queue"] and proof["hash"] == self.state["queue"][aid]["hash"]
+                == material_hash(self.state["queue"][aid]["entry"])
+                and timedelta(0) <= parse_time(self.now) - parse_time(proof["collected_at"])
+                <= timedelta(days=self.config.get("queue_cache_max_age_days", 7))}
+
+    def process_queue(self, eligible_ids=None):
         processed = 0
         intake = set()
         daily_intake = self.state["intake_usage"].setdefault(self.intake_day, [])
         for aid, item in list(self.state["queue"].items()):
+            if eligible_ids is not None and aid not in eligible_ids:
+                continue
             # Manual additions may supersede entries already in the durable queue.
             curated = self.curated.get(aid)
             if curated and curated["publication"] == "listed" and (curated["version"] or 0) >= item["entry"]["version"]:
@@ -447,7 +478,8 @@ class Collector:
                 item["status"] = "outside_recent_window"
             elif item["status"] in ["awaiting_evidence", "outside_recent_window"]:
                 item["status"] = "queued"
-        pending = sorted(self.state["queue"].items(), key=lambda pair: selection_key(
+        pending = sorted(((aid, item) for aid, item in self.state["queue"].items()
+                          if eligible_ids is None or aid in eligible_ids), key=lambda pair: selection_key(
             pair[1]["entry"], self.triage_results[stable_id(pair[0])], self.selection[pair[0]], self.quality))
         for aid, item in pending:
             if item["status"] in ["awaiting_evidence", "outside_recent_window"]:
@@ -457,6 +489,9 @@ class Collector:
                 continue
             entry = item["entry"]
             record = metadata_record(entry, self.now)
+            proof = self.state.get("ready_queue", {}).get(aid)
+            if proof:
+                record["sources"][0]["scope"] += f" 材料来自 {proof['collected_at']} 完成的采集快照；本次整理使用已保存材料，不代表重新获取论文。"
             previous = read_json(self.root / "data/drafts" / (record["id"] + ".json"))
             new_candidate = not previous or previous["version"] != entry["version"]
             material = json.dumps({"title": entry["title"], "abstract": entry["abstract"]}, ensure_ascii=False)[:self.config["model_max_input_chars"]]
@@ -535,20 +570,27 @@ class Collector:
     def finish(self, aid, item, status, remote=False):
         self.state["seen"][aid] = {"version": item["entry"]["version"], "hash": item["hash"], "status": status, "quality_policy": self.policy_hash}
         del self.state["queue"][aid]
+        self.state.get("ready_queue", {}).pop(aid, None)
         self.save(remote=remote)
 
-    def run(self, ids=None):
+    def run(self, ids=None, *, discover_only=False, queue_only=False):
+        if discover_only and queue_only or queue_only and ids:
+            raise ValueError("Discovery, cached processing and manual IDs are separate modes")
+        self.discovery_only = discover_only
         completed = []
-        sources = [ids] if ids else self.config["queries"]
+        sources = [] if queue_only else [ids] if ids else self.config["queries"]
         retry_at = self.state.get("arxiv_retry_after")
-        if retry_at and parse_time(retry_at) > parse_time(self.now):
+        if not queue_only and retry_at and parse_time(retry_at) > parse_time(self.now):
             sources = []
             self.counts["failed"] += 1
             self.errors.append({"stage": "arxiv", "type": "ArxivCooldown", "http_status": 429, "retry_after": retry_at})
         for source in sources:
             try:
+                previous_pages = self.counts["pages"]
                 completed.append(self.collect_ids(source) if ids else self.collect_query(source))
-                self.state.pop("arxiv_retry_after", None)
+                if self.counts["pages"] > previous_pages:
+                    self.state.pop("arxiv_retry_after", None)
+                    self.state.pop("arxiv_rate_limit_streak", None)
             except Exception as error:
                 completed.append(False)
                 self.counts["failed"] += 1
@@ -556,25 +598,61 @@ class Collector:
                 if isinstance(error, HTTPError):
                     detail["http_status"] = error.code
                 if isinstance(error, ArxivCooldown):
-                    self.state["arxiv_retry_after"] = error.retry_at
-                    detail.update(http_status=error.status, retry_after=error.retry_at)
+                    streak = self.state.get("arxiv_rate_limit_streak", 0) + 1
+                    self.state["arxiv_rate_limit_streak"] = streak
+                    seconds = min(86400, self.config.get("rate_limit_cooldown_seconds", 900) * 2 ** min(streak - 1, 7))
+                    deadline = max(parse_time(error.retry_at), parse_time(self.now) + timedelta(seconds=seconds))
+                    self.state["arxiv_retry_after"] = deadline.isoformat().replace("+00:00", "Z")
+                    detail.update(http_status=error.status, retry_after=self.state["arxiv_retry_after"])
                 self.errors.append(detail)
                 self.save()
                 if isinstance(error, ArxivCooldown):
                     break
         collection_complete = bool(completed) and all(completed)
-        if collection_complete:
-            self.process_queue()
+        processing_complete = False
+        ready = {}
+        if collection_complete and (self.counts["pages"] or not discover_only):
             self.state["last_successful_collection_at"] = self.now
+            ready_ids = {base_id(aid)[0] for aid in ids} if ids else set(self.state["queue"])
+            self.state.setdefault("ready_queue", {}).update({aid: {"hash": item["hash"], "collected_at": self.now}
+                for aid, item in self.state["queue"].items() if aid in ready_ids})
             self.save()
-        if collection_complete and not self.counts["failed"]:
+        if queue_only or collection_complete and not discover_only:
+            ready = self.ready_materials()
+            if queue_only and not ready and self.state["queue"]:
+                self.counts["failed"] += 1
+                self.errors.append({"stage": "queue", "type": "NoFreshCompletedMaterials"})
+            elif queue_only and not self.state.get("last_successful_collection_at"):
+                self.counts["failed"] += 1
+                self.errors.append({"stage": "queue", "type": "NoCompletedDiscovery"})
+            else:
+                self.process_queue(set(ready))
+                processing_complete = not self.counts["failed"]
+                if processing_complete and not self.changes and any(
+                        aid in self.state["queue"] and self.state["queue"][aid]["status"] in
+                        ["failed", "retry_exhausted", "daily_limit"] for aid in ready):
+                    processing_complete = False
+                    self.counts["failed"] += 1
+                    self.errors.append({"stage": "model", "type": "ModelRetryDeferred"})
+                if queue_only and not self.dry_run and not self.model.available and any(
+                        aid in self.state["queue"] and self.state["queue"][aid]["status"] == "waiting_model" for aid in ready):
+                    processing_complete = False
+                    self.counts["failed"] += 1
+                    self.errors.append({"stage": "model", "type": "ModelUnavailable"})
+        if processing_complete:
             self.state["last_publishable_collection_at"] = self.now
-        self.state["last_collection_attempt"] = {"started_at": self.now, "collection_complete": collection_complete,
+            self.state["last_successful_processing_at"] = self.now
+        attempt_key = "last_processing_attempt" if queue_only else "last_collection_attempt"
+        self.state[attempt_key] = {"started_at": self.now, "collection_complete": collection_complete,
+                                                  "processing_complete": processing_complete,
                                                   "failed": self.counts["failed"], "errors": self.errors,
                                                   "run_url": (f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}"
                                                               if os.getenv("GITHUB_REPOSITORY") and os.getenv("GITHUB_RUN_ID") else None)}
         self.save()
-        return {"dry_run": self.dry_run, "collection_complete": collection_complete, **self.counts,
+        return {"dry_run": self.dry_run, "collection_complete": collection_complete,
+                "stage": "queue" if queue_only else "discovery" if discover_only else "combined",
+                "processing_complete": processing_complete,
+                "ready_materials": len(ready), "material_snapshot_at": self.state.get("last_successful_collection_at"), **self.counts,
                 "queue_remaining": len(self.state["queue"]), "last_successful_collection_at": self.previous_success if self.dry_run else self.state["last_successful_collection_at"],
                 "preview_collected_at": self.now if self.dry_run and collection_complete else None,
                 "quality_counts": {decision: sum(p["decision"] == decision for p in self.triage_results.values()) for decision in ["priority_review", "needs_evidence", "excluded"]},
@@ -593,12 +671,17 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="Preview only: no state/draft writes and no model requests")
     parser.add_argument("--ids", nargs="+", help="Fetch explicitly specified base arXiv IDs instead of configured searches")
     parser.add_argument("--report", type=Path, help="Optional report artifact; the only dry-run write")
+    stages = parser.add_mutually_exclusive_group()
+    stages.add_argument("--discover-only", action="store_true", help="Fetch metadata and checkpoint complete materials; no model calls")
+    stages.add_argument("--queue-only", action="store_true", help="Process recent completed materials without any arXiv requests")
     args = parser.parse_args()
-    result = Collector(args.root, dry_run=args.dry_run, remote_checkpoints=os.getenv("ATLAS_REMOTE_CHECKPOINTS") == "true").run(args.ids)
+    result = Collector(args.root, dry_run=args.dry_run, remote_checkpoints=os.getenv("ATLAS_REMOTE_CHECKPOINTS") == "true").run(
+        args.ids, discover_only=args.discover_only, queue_only=args.queue_only)
     if args.report:
         atomic_json(args.report, result)
     print(json.dumps(result, ensure_ascii=False, indent=2))
-    return 1 if result["failed"] or not result["collection_complete"] else 0
+    complete = result["processing_complete"] if args.queue_only else result["collection_complete"]
+    return 1 if result["failed"] or not complete else 0
 
 
 if __name__ == "__main__":

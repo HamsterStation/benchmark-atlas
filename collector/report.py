@@ -16,6 +16,11 @@ def digest(result, limit=2):
              f"规则变更复筛 {result.get('reassessed', 0)} 篇（与论文版本更新分开计数）。",
              f"证据达标 {counts.get('priority_review', 0)} / 待补充证据 {counts.get('needs_evidence', 0)} / 范围排除 {counts.get('excluded', 0)}。",
              f"本轮保存草稿 {len(result.get('changes', []))}；剩余队列 {result.get('queue_remaining', 0)}。", ""]
+    if result.get("stage") == "queue":
+        lines += ["**本步骤仅整理持久队列，不访问 arXiv；不代表今天发现了新论文。**",
+                  f"最近完整采集时间：{safe_text(result.get('material_snapshot_at'))}；可用材料 {result.get('ready_materials', 0)} 篇。", ""]
+    elif result.get("stage") == "discovery":
+        lines += ["本步骤只发现论文，不调用模型、不发布。失败不影响另一独立步骤整理此前完整采集的材料。", ""]
     if result.get("errors"):
         lines += ["### 失败原因", ""]
         for error in result["errors"]:
@@ -26,7 +31,7 @@ def digest(result, limit=2):
                 detail += f" / 最早重试 {error['retry_after']}"
             lines += ["- " + safe_text(detail)]
         lines += ["", "进度与队列已保留；本轮不发布，等待补跑。", ""]
-    if not result.get("collection_complete", True) and not result.get("errors"):
+    if result.get("stage") != "queue" and not result.get("collection_complete", True) and not result.get("errors"):
         lines += ["分页尚未完成；本轮不发布，下次从保存的游标继续。", ""]
     if result.get("selection_policy"):
         policy = result["selection_policy"]

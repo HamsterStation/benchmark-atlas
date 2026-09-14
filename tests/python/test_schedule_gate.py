@@ -25,7 +25,15 @@ class ScheduleGateTests(unittest.TestCase):
 
     def test_model_failure_is_not_a_successful_day(self):
         self.assertEqual(self.action({"last_successful_collection_at": "2026-09-11T02:30:00Z",
-                                      "last_publishable_collection_at": None}), "collect")
+                                  "last_publishable_collection_at": None}), "queue")
+
+    def test_cooldown_allows_independent_processing_of_completed_materials(self):
+        state = {"last_successful_collection_at": "2026-09-10T02:30:00Z", "queue": {"example": {}},
+                 "arxiv_retry_after": "2026-09-11T05:00:00Z"}
+        self.assertEqual(self.action(state), "queue")
+        state["last_publishable_collection_at"] = "2026-09-11T03:00:00Z"
+        self.assertEqual(self.action(state), "publish")
+        self.assertEqual(self.action(state, {"last_successful_deployment_at": "2026-09-11T03:10:00Z"}), "skip")
 
     def test_cooldown_is_respected_and_expires(self):
         state = {"arxiv_retry_after": "2026-09-11T04:00:00Z"}
@@ -40,6 +48,7 @@ class ScheduleGateTests(unittest.TestCase):
 
     def test_manual_runs_keep_explicit_control(self):
         self.assertEqual(self.action({"arxiv_retry_after": "2026-09-12T04:00:00Z"}, event="workflow_dispatch"), "collect")
+        self.assertEqual(self.action(event="workflow_dispatch", queue_only=True), "queue")
 
     def test_review_mode_requires_successful_pr_update(self):
         state = {"last_publishable_collection_at": "2026-09-11T02:30:00Z"}

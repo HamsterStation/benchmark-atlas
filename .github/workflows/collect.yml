@@ -9,6 +9,10 @@ on:
         description: '只预览，不保存、不创建 PR、不发布'
         type: boolean
         default: true
+      queue_only:
+        description: '仅整理近期完整采集的材料，不请求 arXiv'
+        type: boolean
+        default: false
       mode:
         description: '发布模式（auto 还需要 PAGES_ENABLED=true）'
         type: choice
@@ -38,6 +42,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           PUBLISH_MODE: ${{ inputs.mode || vars.PUBLISH_MODE || 'review' }}
+          QUEUE_ONLY: ${{ inputs.queue_only || 'false' }}
   collect:
     needs: schedule-check
     if: needs.schedule-check.outputs.action != 'skip'
@@ -74,9 +79,25 @@ jobs:
       - name: Restore durable state
         id: restore
         run: python scripts/github_sync.py restore
-      - name: Collect
-        id: collect
+      - name: Discover new arXiv metadata
+        id: discover
         if: needs.schedule-check.outputs.action == 'collect'
+        continue-on-error: true
+        run: |
+          if [ "$DRY_RUN" = 'true' ]; then
+            python -m collector.collect --discover-only --dry-run --report work/discovery-report.json
+          else
+            python -m collector.collect --discover-only --report work/discovery-report.json
+          fi
+      - name: Persist discovery independently
+        if: always() && steps.restore.outcome == 'success' && steps.discover.outcome != 'skipped' && env.DRY_RUN != 'true'
+        run: python scripts/github_sync.py persist
+      - name: Report discovery failure without discarding completed materials
+        if: steps.discover.outcome == 'failure'
+        run: echo '::warning::arXiv discovery failed or is incomplete. Only previously completed, recent materials may be processed; see discovery-report.'
+      - name: Process completed materials
+        id: collect
+        if: success() && (needs.schedule-check.outputs.action == 'collect' || needs.schedule-check.outputs.action == 'queue')
         continue-on-error: true
         env:
           MODEL_API_KEY: ${{ secrets.MODEL_API_KEY }}
@@ -85,9 +106,9 @@ jobs:
           MODEL_API_STREAM: ${{ vars.MODEL_API_STREAM || 'false' }}
         run: |
           if [ "$DRY_RUN" = 'true' ]; then
-            python -m collector.collect --dry-run --report work/collection-report.json
+            python -m collector.collect --queue-only --dry-run --report work/collection-report.json
           else
-            python -m collector.collect --report work/collection-report.json
+            python -m collector.collect --queue-only --report work/collection-report.json
           fi
       - name: Persist progress even after an API or model failure
         if: always() && steps.restore.outcome == 'success' && steps.collect.outcome != 'skipped' && env.DRY_RUN != 'true'
@@ -95,6 +116,9 @@ jobs:
       - name: Report
         if: always()
         run: |
+          if [ -f work/discovery-report.json ]; then
+            python scripts/collection_report.py work/discovery-report.json >> "$GITHUB_STEP_SUMMARY"
+          fi
           if [ -f work/collection-report.json ]; then
             python scripts/collection_report.py work/collection-report.json >> "$GITHUB_STEP_SUMMARY"
           fi
@@ -102,10 +126,12 @@ jobs:
         if: always()
         with:
           name: collection-report
-          path: work/collection-report.json
+          path: |
+            work/collection-report.json
+            work/discovery-report.json
           if-no-files-found: warn
       - name: Fail closed after preserving the queue
-        if: steps.collect.outcome == 'failure'
+        if: steps.collect.outcome == 'failure' || (needs.schedule-check.outputs.action != 'publish' && steps.collect.outcome != 'success')
         run: exit 1
       - run: npm test
       - run: python -m unittest discover -s tests/python -v

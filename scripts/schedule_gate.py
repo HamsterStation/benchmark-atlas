@@ -11,8 +11,10 @@ def parse_time(value):
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
 
 
-def decide(state, deployment, *, now, mode="auto", event="schedule"):
+def decide(state, deployment, *, now, mode="auto", event="schedule", queue_only=False):
     if event != "schedule":
+        if queue_only:
+            return {"action": "queue", "reason": "手动选择仅整理已完整采集的材料，不请求 arXiv；仍检查材料新鲜度与每日配额。"}
         return {"action": "collect", "reason": "手动触发，执行一次采集；仍遵守每日配额和接口冷却。"}
     ready = state.get("last_publishable_collection_at", state.get("last_successful_collection_at"))
     local = ZoneInfo("Asia/Shanghai")
@@ -21,11 +23,16 @@ def decide(state, deployment, *, now, mode="auto", event="schedule"):
         reviewed = state.get("last_review_publication_at")
         done = deployed if mode == "auto" else reviewed
         if done and parse_time(done) >= parse_time(ready):
-            return {"action": "skip", "reason": "今天已成功采集并完成发布，本次补跑跳过。"}
-        return {"action": "publish", "reason": "今天采集已成功，仅重试校验、构建与发布，不重复请求 arXiv 或模型。"}
+            return {"action": "skip", "reason": "今天已成功整理并完成发布，本次补跑跳过。"}
+        return {"action": "publish", "reason": "今天整理已成功，仅重试校验、构建与发布，不重复请求 arXiv 或模型。"}
     retry_at = state.get("arxiv_retry_after")
     if retry_at and parse_time(retry_at) > parse_time(now):
+        if state.get("last_successful_collection_at") and state.get("queue"):
+            return {"action": "queue", "reason": f"arXiv 冷却至 {retry_at}；仅尝试整理近期完整采集的材料，不请求 arXiv。"}
         return {"action": "skip", "reason": f"arXiv 冷却中，最早重试时间为 {retry_at}，等待后续补跑。"}
+    collected = state.get("last_successful_collection_at")
+    if collected and parse_time(collected).astimezone(local).date() == parse_time(now).astimezone(local).date():
+        return {"action": "queue", "reason": "今天发现步骤已完成，只处理已采集材料，不重复扫描 arXiv。"}
     return {"action": "collect", "reason": "今天尚未完成采集与发布，从持久进度继续。"}
 
 
@@ -49,7 +56,8 @@ def main():
         state = remote_json(repository, "automation/state.json")
         deployment = remote_json(repository, "automation/deployment.json")
     result = decide(state, deployment, now=datetime.now(timezone.utc).isoformat(),
-                    mode=os.getenv("PUBLISH_MODE", "review"), event=event)
+                    mode=os.getenv("PUBLISH_MODE", "review"), event=event,
+                    queue_only=os.getenv("QUEUE_ONLY", "false").lower() == "true")
     print(json.dumps(result, ensure_ascii=False))
     if os.getenv("GITHUB_OUTPUT"):
         with Path(os.environ["GITHUB_OUTPUT"]).open("a") as handle:
