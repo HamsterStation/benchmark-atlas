@@ -9,7 +9,11 @@
     "cc0b0cc6cecde53ac5cd": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (abs:\"large language model\" OR abs:\"language models\" OR abs:LLM OR abs:LLMs OR abs:\"foundation models\")",
       "successful_until": "2026-09-12T08:10:20Z",
-      "active": null
+      "active": {
+        "since": "2026-09-05T08:10:20+00:00",
+        "until": "2026-09-16T07:43:40Z",
+        "start": 200
+      }
     },
     "14f880dfad109bc470a7": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (ti:agent OR ti:agents OR ti:agentic OR abs:\"LLM agents\" OR abs:\"language agents\" OR abs:\"AI assistants\" OR abs:\"software engineering\" OR abs:\"code generation\" OR abs:\"tool use\" OR abs:\"function calling\")",
@@ -26096,6 +26100,725 @@
       "error": null,
       "next_attempt_at": null,
       "kind": "new"
+    },
+    "2609.06048": {
+      "entry": {
+        "arxiv_id": "2609.06048",
+        "version": 1,
+        "title": "Generating Adversarial Texts for Machine Translation via GRPO",
+        "authors": [
+          "Florian Zogaj",
+          "Jakob Hütteneder",
+          "Giovanni De Muri",
+          "Federico Villa",
+          "Aryan Sood",
+          "Vilém Zouhar"
+        ],
+        "published": "2026-09-05T12:06:59Z",
+        "updated": "2026-09-05T12:06:59Z",
+        "abstract": "As machine translation (MT) systems continue to improve, standard benchmarks become less informative for exposing remaining weaknesses. Traditional methods for creating challenging test sets rely on expensive manual creation or curation, while automated approaches struggle to produce sets with the necessary translation difficulty and linguistic diversity. We propose a scalable reinforcement-learning-based approach for rewriting existing source texts into instances that are more difficult to translate for MT systems. We fine-tune a large language model with Group Relative Policy Optimization (GRPO), using reward signals based on translation difficulty together with constraints for semantic similarity, grammaticality, and approximate length preservation. On WMT25, our approach substantially reduces average COMET translation quality from 0.63 to 0.48, while preserving grammaticality and readability, whereas the base model remains at 0.64. Evaluations on the unseen WMT19-WMT24 benchmarks confirm that this behavior generalizes beyond the training data, and human evaluation further shows that the rewrites substantially lower translation quality while incurring a moderate drop in naturalness and only a small change in grammaticality. We release our code to support reproducibility.",
+        "comment": "Accepted at KONVENS 2026"
+      },
+      "hash": "0571cbe21eca1a9c1388d81ed2e9ccfdfea170355db764930626e14c04e71fe5",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.06080": {
+      "entry": {
+        "arxiv_id": "2609.06080",
+        "version": 1,
+        "title": "PhenoBench: Mapping What a Deeply Phenotyped Human Cohort Can Tell Us",
+        "authors": [
+          "Gal Sapir",
+          "Alon Diament",
+          "Adva Wolf",
+          "Doron Yaya-Stupp",
+          "Dikla Gelbard Solodkin",
+          "Dana Azouri",
+          "Anat Etzion-Fuchs",
+          "Guy Lutsker",
+          "Eran Segal",
+          "Hagai Rossman"
+        ],
+        "published": "2026-09-05T13:15:40Z",
+        "updated": "2026-09-05T13:15:40Z",
+        "abstract": "Deeply phenotyped cohorts combine clinical, imaging, molecular, and wearable observations across timescales from seconds to years. This breadth can reveal which measurements inform which health-related questions, but heterogeneous analyses are not directly comparable. We present PhenoBench, an executable benchmark built around the Human Phenotype Project, in which more than 13,000 participants have completed the initial visit. Each question fixes the target, eligible population, timing, and allowed information; its evaluation contract specifies the split, metric, baseline, and claim boundary. The benchmark defines 90 clinically grounded tasks across 15 domains and 26 input modalities. Measurements showed question- and representation-dependent predictive value, including positive, near-zero, and negative changes in held-out performance relative to matched baselines. We used PhenoBench to evaluate emerging tabular foundation models across 160 matched regression comparisons spanning 52 tasks. These models ranked above standard task-specific models in aggregate but, averaged across the three pretrained models within each cell, improved on ridge by a median of only 0.004 $R^2$ (95% CI, 0.002--0.006). We then used the same cohort data and evaluation contracts to evaluate 14 language models, collectively covering 40 tasks spanning phenotype recovery, classification, follow-up forecasting, and participant ordering. Without cohort-specific fitting, language models made informative predictions on some tasks, but showed task-specific capability gaps, shared failures of scale, and rarely surpassed models fitted on the same fields. PhenoBench turns a multimodal longitudinal cohort into a versioned, auditable evaluation system where new questions, measurements, and models can be added without redefining existing comparisons.",
+        "comment": "33 pages; 5 main figures and 5 supplementary figures. Project website: https://galsapir.github.io/phenobench-benchmark/ . Code and benchmark materials: https://github.com/galsapir/phenobench-benchmark"
+      },
+      "hash": "1f9ef9e452f4e2ced38f026e37f500863f21fdb32d013c5acfd6c9dddaf89213",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.06263": {
+      "entry": {
+        "arxiv_id": "2609.06263",
+        "version": 1,
+        "title": "Beyond the Flag: Clinical Framing Closes the Moderation Gap in Suicide Risk Measurement",
+        "authors": [
+          "Shreyas Krishnan",
+          "Gun Ahn",
+          "Jungjin Kim"
+        ],
+        "published": "2026-09-05T21:16:16Z",
+        "updated": "2026-09-05T21:16:16Z",
+        "abstract": "Moderation APIs are built to flag policy-violating content, not to measure graded clinical risk. But a platform's duty does not end at detection: the response owed to passive distress differs sharply from the response owed to active planning with means access, and emerging regulation (e.g., California Senate Bill 243) is turning that distinction into a compliance requirement. We therefore ask how well deployed safety signals recover clinically meaningful severity. We release a benchmark of 516 r/SuicideWatch posts rated by a licensed psychiatrist on a four-level ordinal schema (Indicator, Ideation, Behavior, Attempt) grounded in the Columbia Suicide Severity Rating Scale, and evaluate moderation APIs, prompted LLMs, and supervised baselines under seven ordinal-aware metrics. Three findings. Vendor moderation APIs separate low- from high-severity posts well (0.860 high-risk F1) but measure severity poorly (0.395 macro F1), systematically over-predicting the most severe category. Clinically grounded zero-shot prompting recovers much of that gap (0.562 macro F1), and expert-authored framing (not fine-tuning, added reasoning, or naive multi-agent aggregation) is the effective lever. The value of reasoning depends on register: it hurts on long, noisy Reddit posts and helps on short, clinician-authored statements. We argue graded severity, not a binary flag, is what a proportionate duty of care requires, and release our evaluation framework to support that measurement.",
+        "comment": "20 pages, 6 figures. Accepted at the 5th Workshop on NLP for Positive Impact (NLP4PI), EMNLP 2026"
+      },
+      "hash": "07b9af996b149917adf6360ce8943d278e751eb81bc10127003a60c366303f12",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.06419": {
+      "entry": {
+        "arxiv_id": "2609.06419",
+        "version": 1,
+        "title": "Separating Capability from Confidence: Grounded Dual-State Calibration for GRPO-Trained Medical Vision-Language Models",
+        "authors": [
+          "Yangyang Xie",
+          "Ke Hao",
+          "Jiaqi Liu",
+          "Yun Gu",
+          "Xinglin Zhang"
+        ],
+        "published": "2026-09-06T06:34:01Z",
+        "updated": "2026-09-06T06:34:01Z",
+        "abstract": "Medical vision-language models (VLMs) require confidence that reflects both answer correctness and patient-specific visual evidence. Recent GRPO-based methods optimize verbalized confidence together with answer generation. However, this joint optimization may interfere with answer learning and drive confidence toward near-binary values. Verbalized confidence also provides no explicit assessment of visual support. We therefore separate capability learning from confidence estimation and propose \\textbf{DualRead}. DualRead builds on the insight that reliability can be read from the actor's internal states at critical moments in the answering process. It freezes the GRPO-trained actor and combines pre-answer solvability with a post-answer assessment of the generated answer and its visual support. To further assess whether confidence reflects visual grounding, we introduce \\textbf{Counterfactual Confidence Grounding AUC} (CCG-AUC). It measures whether confidence decreases when real-image substitution changes the actor from correct to incorrect. Across two VLM backbones and both in- and out-of-distribution medical VQA benchmarks, DualRead improves correctness discrimination and calibration over verbalized confidence while preserving answer accuracy. CCG-AUC reveals whether confidence responds to answer-relevant visual evidence rather than primarily to non-visual cues."
+      },
+      "hash": "bce5f9975fead69ed9a74f56dfe0e4a11ccf1c3911f1a9a74111a3d048ea994a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.06914": {
+      "entry": {
+        "arxiv_id": "2609.06914",
+        "version": 1,
+        "title": "A visual large language foundational model for medical image recognition using clinician-oriented social media",
+        "authors": [
+          "Lingxuan Hou",
+          "Yuhua Xie",
+          "Yue Hu",
+          "Yan Zhuang",
+          "Junqi Li",
+          "Chengzhi Xia",
+          "Binh Phu Nguyen",
+          "Abubakar Siddique",
+          "Minh Nguyen",
+          "Yao Hou",
+          "Yanju Bao",
+          "Kexin Liu",
+          "Ke Chen",
+          "Jianjun Sun",
+          "Zeqi Li",
+          "Trung Nguyen",
+          "Jiangli Lin"
+        ],
+        "published": "2026-09-07T01:30:34Z",
+        "updated": "2026-09-07T01:30:34Z",
+        "abstract": "Large language models (LLMs) have demonstrated strong capabilities across diverse domains, showing considerable potential in medicine. However, their application in medical settings remains limited by the scarcity of visual question answering (VQA) datasets that capture clinical reasoning and explicit image-text alignment. Here, we leverage de-identified medical images and expert commentaries shared on clinician-oriented social media. By combining an advanced LLM with clinician-in-the-loop verification, we established a rigorous pipeline to construct ThoughtMed-1M, a long-form medical VQA dataset containing over one million VQA pairs and designed to capture structured clinical logic and medical image-text alignment. To demonstrate its utility, we developed a FOundational LLM Trained on ThoughtMed-1M (FOLTMed). FOLTMed achieved state-of-the-art performance across 42 medical VQA benchmark datasets, with a macro accuracy of 85.4%, and generated more clinically coherent responses on the ThoughtMed-1M test set. It outperformed state-of-the-art models by 3--5% across factuality and similarity metrics, highlighting a scalable paradigm for advancing research on clinically grounded multimodal LLMs."
+      },
+      "hash": "4aee4891ceadc2c8fa7fd6cafeda752bf921de7d6d96c739a31dbd2b776acc0d",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.06960": {
+      "entry": {
+        "arxiv_id": "2609.06960",
+        "version": 1,
+        "title": "iBrain: A Unified Foundation Model Reading the Brain from Surface to Spikes",
+        "authors": [
+          "Ying Chen",
+          "Tiou Wang",
+          "Zhifeng Yue"
+        ],
+        "published": "2026-09-07T02:56:42Z",
+        "updated": "2026-09-07T02:56:42Z",
+        "abstract": "Invasive neural recordings provide high-fidelity measurements of brain activity, with signals such as intracranial EEG (iEEG) and intracortical spiking activity capturing neural dynamics at different spatial and temporal scales. Yet existing neural foundation models have largely been developed independently for different invasive recording paradigms, leaving joint pretraining across heterogeneous invasive signals underexplored. In this work, we introduce iBrain, a unified foundation model that jointly learns from iEEG and spiking activity. iBrain employs signal-specific encoders to accommodate their distinct signal characteristics and a shared spatiotemporal Transformer backbone to model dependencies across recording channels and time. We pretrain iBrain on over 7,000 hours of heterogeneous neural recordings using masked signal reconstruction and channel-view alignment, promoting contextual modeling of neural dynamics and robustness across different channels. iBrain consistently outperforms single-signal pretraining baselines and achieves state-of-the-art performance on multiple benchmarks. Further experiments demonstrate that iBrain exhibits transferability and data efficiency across diverse recording settings. These results highlight the potential of joint pretraining on heterogeneous invasive neural recordings to support scalable neural modeling and transferable representations across recording settings and downstream tasks."
+      },
+      "hash": "e405b66ae4d8452b311674a7dcd0016968c7f4893ee8e75caac85fdb11a87cb6",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.06976": {
+      "entry": {
+        "arxiv_id": "2609.06976",
+        "version": 1,
+        "title": "HealthLoopQA: A Context-Aware Question Answering Benchmark for Interpreting Wearable Monitoring Data in Diabetes Care",
+        "authors": [
+          "Yuchen Niu",
+          "Yanan Ma",
+          "Srinivasan Nandakumar",
+          "Maolin Chen",
+          "Viktor Schlegel",
+          "Kexin Wei",
+          "Ling Cheng",
+          "Anna Bird",
+          "Anil Anthony Bharath",
+          "Siew-Kei Lam"
+        ],
+        "published": "2026-09-07T03:11:34Z",
+        "updated": "2026-09-07T03:11:34Z",
+        "abstract": "As medical wearables become integrated into daily chronic disease care, effectively interpreting longitudinal monitoring data is essential for patients and clinicians to understand health trends, detect safety-critical events, and make informed decisions. While large language models (LLMs) show promise for transforming this streaming physiological data into personalized health insights, evaluating their reasoning capability and analytical rigor in diverse monitoring tasks remains a fundamental challenge. Existing medical wearable question answering (QA) benchmarks primarily assess short-horizon classification or statistical summaries, largely ignoring the long-term patterns, therapeutic and behavioural contexts, and potential system failures inherent in real-world deployments. To address this, we introduce HealthLoopQA, a comprehensive diagnostic benchmark for evaluating LLM reasoning over continuous diabetes monitoring data. Grounded in a novel taxonomy of eleven atomic reasoning abilities, HealthLoopQA comprises 127 tasks and over 1,500 QA instances spanning process mining, anomaly detection, and prediction over 30-day horizons. To systematically evaluate safety awareness, we complement real-world datasets with a fault-injected simulation testbed modeling diverse device malfunctions and cyber-physical attacks to generate physiologically plausible hazard scenarios. Evaluating state-of-the-art LLMs across prompting and agentic frameworks reveals severe limitations in complex temporal pattern mining. Furthermore, we identify a broader phenomenon of In-context Laziness under long-context prompting, highlighting critical open challenges in deploying LLMs for rigorous long-horizon medical reasoning."
+      },
+      "hash": "2bb16b16ccf2a8b011222459df0432c9d3f1d9b309b0b6872c7f69159cef708e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.07237": {
+      "entry": {
+        "arxiv_id": "2609.07237",
+        "version": 1,
+        "title": "CEDAR: Error-Bounded Residual Routing for Efficient Long-Context Attention",
+        "authors": [
+          "Siyu Li",
+          "Dong Wang",
+          "Jie Zhou",
+          "Wei Li",
+          "Yang Xu",
+          "Sijie Song"
+        ],
+        "published": "2026-09-07T08:56:47Z",
+        "updated": "2026-09-07T08:56:47Z",
+        "abstract": "Post-hoc sparse attention accelerates long-context prefill by routing each query to a small set of token-level interactions. Hard selection, however, assigns zero probability to every omitted chunk: a routing miss cannot be recovered, and a fixed expansion budget spends the same work on easy and ambiguous queries. We introduce Coarse-to-fine Error-aware Dynamic Attention Routing (CEDAR), a coarse-to-fine method that keeps the language model frozen while preserving global coverage. Each semantic chunk contributes a cheap key--value summary to a residual attention path; chunks with high estimated approximation error are then expanded to exact token attention. Exact and summarized contributions are combined in a single softmax normalization, so refinement replaces, rather than duplicates, coarse evidence. We derive an output-error bound governed by within-chunk key/value dispersion and use it to allocate a variable refinement budget. A controlled clustered-attention study shows that residual summaries reduce reconstruction error by more than 98% relative to hard dropping at equal exact-chunk budgets. Experiments on long-context benchmarks demonstrate that CEDAR recovers most of the quality lost by hard sparse routing while maintaining approximately $3\\times$ kernel speedup at 128K context."
+      },
+      "hash": "292d1bded965bd674d0e18dd656dee1a75d860fb5f644db2530b11bd8fc6ec3e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.07441": {
+      "entry": {
+        "arxiv_id": "2609.07441",
+        "version": 1,
+        "title": "TabBench-Bio: A Living Benchmark for Machine Learning on High-Dimensional Biomedical Tables",
+        "authors": [
+          "Jules Kreuer",
+          "Sofiane Ouaari",
+          "Julia Hellmig",
+          "Julius Braitinger",
+          "Nico Pfeifer"
+        ],
+        "published": "2026-09-07T12:50:08Z",
+        "updated": "2026-09-07T12:50:08Z",
+        "abstract": "Biomedical tables often combine thousands of measured variables with only tens or hundreds of labelled samples, a regime that is poorly represented in general-purpose tabular benchmarks. We introduce TabBench-Bio, a living and interactive benchmark of 43 biomedical datasets spanning multiple domains. Under a shared cross-validation protocol, we compare classical estimators, neural networks, and tabular foundation models across 28 feature-by-sample operating points. At the reference cell of 10,000 features and 100 training samples, RealTabPFN v2.5 has the highest point estimate, followed by Logistic Regression and TabDPT, whose point estimates are nearly identical. A paired bootstrap over the target pool separates RealTabPFN v2.5 from Logistic Regression by 145 Elo (95% interval [59, 232]). Tabular foundation models generally occupy the leading ranks, while the strongest configuration depends on the operating point and biomedical modality. The AutoML framework AutoGluon, using its one-hour \"extreme\" preset, is configured as a separate resource-intensive reference and is reported here at the reference cell. Fold-level predictions, run status, and deterministic aggregations make every reported result reproducible and reusable. We invite the community to contribute: TabBench-Bio is designed to grow, and we welcome submissions of new biomedical tabular datasets, particularly from underrepresented assays and clinical endpoints, for inclusion in future releases. The interactive leaderboard is available at: https://tabbench-bio.eu"
+      },
+      "hash": "1ed9f6023f4c8cc6abb96b6fd8063d29fd5a2d1c121779dbdd9d881f117a9dd6",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.07499": {
+      "entry": {
+        "arxiv_id": "2609.07499",
+        "version": 1,
+        "title": "CrACK: Adversarial Attacks on Cross-Model Consistency in Collaborative Vision Foundation Models",
+        "authors": [
+          "Feifei Liu",
+          "Jintao Cheng",
+          "Chi Man Vong",
+          "Xiaoyu Tang"
+        ],
+        "published": "2026-09-07T13:47:33Z",
+        "updated": "2026-09-07T13:47:33Z",
+        "abstract": "Training-free collaborative pipelines that integrate Vision Foundation Models such as CLIP, SAM, and DINO achieve strong open-vocabulary dense prediction and are increasingly deployed in safety-critical applications. The security of these systems is commonly assumed to follow from the robustness of their individual models. We challenge this assumption. We identify a vulnerability shared by every collaborative pipeline: each model consumes the intermediate output of another without verifying semantic consistency, an unverified premise that we term the semantic-spatial alignment dependency. Existing adversarial attacks target a single model and overlook this premise, leaving the inter-model interface entirely unguarded. We propose CrACK (Cross-model Adversarial Consistency attack), an inference-time attack that exploits this interface without modifying any input pixel, model weight, or training data. CrACK operates in two stages: Adversarial Affinity Contradiction Injection corrupts the cross-modal affinity matrix by inverting SAM encoder features under the guidance of CLIP patch-level semantics, and Semantic Interface Poisoning steers the prediction through a max-distance label permutation derived from CLIP text embeddings. Experiments on four collaborative pipelines across eight benchmarks show that CrACK causes catastrophic degradation while every individual model continues to produce its unchanged standalone output, rendering per-model defenses structurally blind. The corruption further cascades into large vision-language model reasoning, driving models such as LLaVA to produce erroneous responses from visually intact inputs. Our results show that the security of a collaborative AI system cannot be reduced to the robustness of its components, and that inter-model feature interfaces must be treated as first-class security boundaries."
+      },
+      "hash": "1f844ff350c716839a26afcbb19bcaeca1d82d05a738fbea0f405722e2df5073",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.07573": {
+      "entry": {
+        "arxiv_id": "2609.07573",
+        "version": 1,
+        "title": "From Simulated Citizens to Simulated Deliberation: Challenges in Representation and Interaction",
+        "authors": [
+          "Chaemin Jang",
+          "Junsik Min",
+          "Jaewoo Choi",
+          "Donggyu Lee",
+          "Haiin Lee",
+          "Junyoung Park",
+          "Namhee Kim",
+          "Hyunwoo Kim",
+          "Jungwon Kim",
+          "Juho Kim",
+          "Nuri Kim",
+          "Jihee Kim"
+        ],
+        "published": "2026-09-07T14:49:25Z",
+        "updated": "2026-09-07T14:49:25Z",
+        "abstract": "Multi-agent LLM deliberation has been explored as a scalable way to simulate public deliberation. For such simulations to be informative, persona agents should reflect population opinion patterns and interaction should shape their conclusions. We evaluate whether LLM-based deliberation can meet these two conditions using census-grounded Korean personas debating real policy questions benchmarked against national surveys. Persona agents do not reliably reproduce population opinion patterns: responses are often far more concentrated and frequently reverse demographic differences in the human data. Deliberations nonetheless produce reasoned, reciprocal, and varied arguments alongside substantial stance movement. Yet much of this movement does not require peer exchange: sealed-monologue agents change position at similar rates and reach nearly the same final balance as full debates, while groups initialized with very different positions often converge to similar endpoints. Anchoring population-informed starting positions, meanwhile, sharply suppresses updating. Thus, population representation, argument generation, and interaction-driven opinion change do not necessarily go together. The simulations readily surface arguments on both sides, though whether they capture the diversity of human perspectives remains untested, leaving open a promising role for argument surfacing even as population simulation requires further validation."
+      },
+      "hash": "47bf02b583aff895f89fb561998143ccceb0fc0c6a1532e42d3a78fee667597e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.07601": {
+      "entry": {
+        "arxiv_id": "2609.07601",
+        "version": 1,
+        "title": "ObGynLongBench: Revealing the Evidence-to-EHR Gap in Longitudinal EHR Decision-Making",
+        "authors": [
+          "Jun Xiang",
+          "Zhijie Bao",
+          "Rong Hu",
+          "Kaizhou Qin",
+          "Wei Chen",
+          "Zhongyu Wei"
+        ],
+        "published": "2026-09-07T15:12:36Z",
+        "updated": "2026-09-07T15:12:36Z",
+        "abstract": "The application of large language models (LLMs) to personalized medical assistants has garnered growing interest. However, existing medical benchmarks largely rely on static question answering with pre-selected evidence, leaving unclear whether LLMs can make reliable clinical decisions from real longitudinal electronic health records (EHRs). To bridge this gap, we introduce ObGynLongBench, a rule-grounded long-context EHR benchmark for obstetric and gynecologic decision-making, comprising 1,500 clinical decision-point cases from 976 real pregnancy EHR histories and traceable rules. Each case is anchored to a patient, a pregnancy-timeline point, and a pre-decision information boundary, enabling Evidence-only, Visit-level EHR, and History-level EHR evaluation. Evaluating 17 LLMs reveals a substantial Evidence-to-EHR Gap: models perform well when evidence is directly provided, but accuracy drops when evidence must be extracted from same-day records or full pre-decision EHR histories. Further analyses identify evidence utilization as a key bottleneck: performance decreases with longer EHR contexts and more complex evidence requirements, and earlier failures often predict later failures within the same patient history. Finally, active-search agents perform best among EHR access strategies, highlighting patient-specific evidence utilization as a central challenge for reliable personalized medical assistants. Resources are available at https://github.com/xiangjun2003/ObgynLongbench.",
+        "comment": "25 pages, including references and appendices"
+      },
+      "hash": "71fac92b2bdca145f313a32926feb13249c64cf8ce0a22c6b39be9e0e8067db0",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.07681": {
+      "entry": {
+        "arxiv_id": "2609.07681",
+        "version": 1,
+        "title": "On the Recall Scaling Laws in Mamba: A Theoretical and Mechanistic Study via Hashing",
+        "authors": [
+          "Yuval Koren",
+          "Assaf Ben-Kish",
+          "Raja Giryes",
+          "Lior Wolf",
+          "Itamar Zimerman"
+        ],
+        "published": "2026-09-07T16:05:24Z",
+        "updated": "2026-09-07T16:05:24Z",
+        "abstract": "Associative Recall (AR) is the cognitive ability to learn and retrieve links between items in memory. In NLP, AR is used as a benchmark for evaluating the in-context memory capacity of architectures such as Mamba, and has been found to strongly correlate with language modeling performance. This paper explores AR from the perspective of mechanistic interpretability, aiming to reverse-engineer the exact internal algorithm used by Mamba to perform recall. Our key insight is that Mamba performs recall by implicitly learning linear hash functions, and we identify the low-level circuit that enables this behavior. Building on these findings and inspired by theoretical tools in similarity-preserving hashing, such as the Johnson-Lindenstrauss lemma, we develop a theoretical framework for analyzing AR, which we term Recall Scaling Laws. Given the vocabulary size and the number of facts in context, this framework allows us to (1) predict the embedding and state dimensions required for Mamba to achieve perfect recall, (2) predict recall success probability given the model dimensions, and (3) analyze multi-layer models and multi-head SSM patterns. Empirical results show that our theoretical findings are accurate and predictive, offering insights into how AR capacity scales with vocabulary, state, embedding size, and architecture.",
+        "comment": "53 pages, 20 figures. Code and experiments available at: https://github.com/yuvalko1/mamba-recall-scaling-laws"
+      },
+      "hash": "84b90e56c43bb59894cd6e19bef3162a3762ee7202fc2c32c3a20544776065af",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.07687": {
+      "entry": {
+        "arxiv_id": "2609.07687",
+        "version": 1,
+        "title": "Perspectives on Cross-Lingual Consistency in LLMs for Medical Questions",
+        "authors": [
+          "Minh Duc Bui",
+          "Mario Sanz-Guerrero",
+          "Abteen Ebrahimi",
+          "Sagi Shaier",
+          "Peter Herbert Kann",
+          "Manuel Mager",
+          "Katharina von der Wense"
+        ],
+        "published": "2026-09-07T16:06:50Z",
+        "updated": "2026-09-07T16:06:50Z",
+        "abstract": "Should multilingual LLMs answer medical questions consistently across input languages, or adapt responses to cultural cues? Existing multilingual medical benchmarks usually assume that medically correct answers should remain consistent across languages and treat cross-lingual variation as model error. In contrast, cultural adaptation research argues that appropriate medical answers may legitimately differ across contexts. We review the multilingual medical NLP literature through these two perspectives, we identify three gaps: limited stakeholder perspectives (e.g., of medical professionals), a lack of empirical evidence on which approach better serves users, and no benchmarks capable of distinguishing universally correct from culture-specific cases. To address the first gap, we survey 356 participants across three stakeholder groups (medical, NLP, and anthropology professionals) in three countries (Germany, Spain, and the United States). Anthropologists consistently favor adaptation, while medical and NLP respondents remain divided, with notable divergence between U.S. and European medical professionals. LLMs prompted with profession and country personas fail to reproduce this variation, overestimating cross-lingual consistency preference among NLP and medical personas. We conclude that neither consistency nor adaptation can currently be considered clearly preferable, highlighting the need for empirical evidence on which approach better serves users across cultural contexts.",
+        "comment": "Accepted to EMNLP 2026 Main"
+      },
+      "hash": "3629e2cedfcc80e097f57a413a7033cec965b8c4979b4b9ccc4a7a37fd2d6c2e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.07821": {
+      "entry": {
+        "arxiv_id": "2609.07821",
+        "version": 1,
+        "title": "A*-Thought-V2: Efficient Latent Reasoning via Geometric Dynamics of LLM",
+        "authors": [
+          "Xiaoang Xu",
+          "Siyuan Liu",
+          "Shuo Wang",
+          "Junlan Feng",
+          "Fanyu Meng",
+          "Zhu Zhang",
+          "Jixun Wang",
+          "Xiaorong Wang",
+          "Zihan Zhou",
+          "Xin Li",
+          "Chaojun Xiao",
+          "Yiming Zhang",
+          "Huijia Wu",
+          "Liuyu Xiang",
+          "Peipei Li",
+          "Zhaofeng He"
+        ],
+        "published": "2026-09-07T17:56:20Z",
+        "updated": "2026-09-07T17:56:20Z",
+        "abstract": "Chain-of-Thought (CoT) improves the reasoning ability of Large Language Models (LLMs) but incurs substantial computation and context costs. Existing methods either lose intermediate information through hard pruning or lack a principled criterion for continuous compression. We present A*-Thought-V2, a geometric dynamics of LLM guided framework that models CoT as a hidden-state trajectory and replaces hard deletion with an explicit-implicit interleaved latent architecture. After projecting question, step, and solution representations into a 3D PCA space, it measures alignment between each local transition and global question-to-solution direction. Aligned steps remain explicit text, whereas deviating steps are compressed into continuous latent tokens. Directional angles capture both local semantics and reasoning dynamics: small angles indicate direct execution and answer formation, while large angles more frequently involve checking, correction, and branch exploration; their temporal variation reveals exploration, convergence, and refinement stages. To train this architecture, we introduce stepwise embedding forcing, which pools each redundant step into a single latent embedding, and label forcing, which supervises that latent token with a soft multi-modal vocabulary distribution instead of a hard one-hot label. Experiments on Qwen3.5-9B and Qwen3.6-27B across six in-domain and out-of-domain benchmarks show that A*-Thought-V2 improves average accuracy by up to 2.6% while reducing response length by up to half, increasing Accuracy per Computation Unit by 2.29$\\times$, and reducing preprocessing and training time by 94.6% and up to 80.3%, respectively. Representation analyses suggest that latent states form a compact region distinct from textual states, while higher entropy at latent-token positions reflects broader soft targets that encourage richer step-level feature learning.",
+        "comment": "Code: https://github.com/AI9Stars/AStar-Thought"
+      },
+      "hash": "0e968a3d9893a8a8809423faa02e81df11a5268ffbef57befe35a30fd8771f0e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.08131": {
+      "entry": {
+        "arxiv_id": "2609.08131",
+        "version": 1,
+        "title": "Jacap: Robust KV Cache Eviction via Jacobian-Based Nonlinear Information Capacity Preservation",
+        "authors": [
+          "Jiaming Yang",
+          "Chenwei Tang",
+          "Liangli Zhen",
+          "Chenyang Zhang",
+          "Jiancheng Lv"
+        ],
+        "published": "2026-09-08T02:08:57Z",
+        "updated": "2026-09-08T02:08:57Z",
+        "abstract": "Key-value (KV) cache eviction is essential for scaling long-context inference in Large Language Models. However, existing policies predominantly rely on empirical heuristics, lacking a rigorous characterization of token utility under the inherently nonlinear softmax attention mechanism. In this work, we rethink KV cache eviction through the lens of local information geometry, modeling the attention process as a nonlinear Gaussian communication channel. By performing a first-order Taylor expansion of the attention mapping, we derive the Jacobian Information Capacity, a novel objective that explicitly captures query relevance, softmax sensitivity, and structural diversity. Guided by this theory, we introduce Jacap, a capacity-aware eviction method that utilizes softmax-aware importance weighting and statistical leverage scores for subset selection. Extensive experiments across diverse architectures and benchmarks demonstrate that \\textsc{Jacap} delivers superior performance in most scenarios, particularly in high-compression regimes.",
+        "comment": "16 pages, 6 figures"
+      },
+      "hash": "f8913e34227a747721eaa8e657c52bfd71878108cd7b34eb0519a0a6c35dfbaa",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.08174": {
+      "entry": {
+        "arxiv_id": "2609.08174",
+        "version": 1,
+        "title": "OntologyBench: Can Dense Retrieval Satisfy Structured Biomedical Constraints?",
+        "authors": [
+          "Xiao Yu Cindy Zhang",
+          "Wyeth Wasserman",
+          "Jian Zhu"
+        ],
+        "published": "2026-09-08T03:04:36Z",
+        "updated": "2026-09-08T03:04:36Z",
+        "abstract": "We introduce OntologyBench, a tiered biomedical retrieval benchmark comprising 471,854 training and 125,744 evaluation query-document relevance pairs across concept grounding, relational retrieval, and compositional phenotype-based retrieval. Although these tasks can be tractable using ontology-aware reference methods, across task tiers, embedding performance is generally lower on relational and compositional tasks than on concept-grounding tasks. Fine-tuning on ontology-derived supervision improves performance on several relational and compositional tasks, whereas the evaluated reranking and LLM-based candidate-scoring methods provide little or no end-to-end improvement. Errors frequently reflect diseases matching only subsets of the phenotype evidence. These findings indicate that the evaluated embedding and reranking configurations do not reliably recover the compatibility encoded by the selected ontology relations and phenotype combinations and motivate retrieval systems that better integrate learned representations with structured biomedical knowledge.",
+        "comment": "19 pages and 1 figure. Accepted to EMNLP 2026 Main conference. https://openreview.net/forum?id=RMiOTIub1j&noteId=RMiOTIub1j"
+      },
+      "hash": "10ec4a8cee78877b535d89f1268eaa344b102ed6b237eeaa27239a6659a570f2",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.08200": {
+      "entry": {
+        "arxiv_id": "2609.08200",
+        "version": 1,
+        "title": "SIM: Subspace Interaction-based Method for Token-Level Text Anomaly Detection",
+        "authors": [
+          "Kehan Yan",
+          "Yue Tan",
+          "Qingfeng Chen",
+          "Shiyuan Li",
+          "Yu Zheng",
+          "Yixin Liu"
+        ],
+        "published": "2026-09-08T03:38:42Z",
+        "updated": "2026-09-08T03:38:42Z",
+        "abstract": "Token-level text anomaly detection, as an emerging trend of text anomaly detection, moves beyond coarse-grained document-level detection by localizing anomalous tokens within text. By providing fine-grained abnormality prediction, token-level text anomaly detection plays a critical role in various real-world applications, such as spam filtering and fake news detection. However, existing methods still rely on the global distance calculation for scoring, during which the local anomaly signals are severely diluted by numerous redundant normal feature dimensions. Moreover, pre-trained language models used in these methods inevitably smooth out surface anomalies, further limiting their effectiveness in token-level anomaly detection. To address these limitations, we propose a Subspace Interaction-based Method (SIM for short) for token-level text anomaly detection. To prevent local signal dilution, SIM adopts a subspace interaction-based anomaly detector, which decouples high-dimensional token embeddings into multiple low-dimensional ones, amplifying localized anomaly signals hidden within specific dimensions. To counteract the over-smoothing effect, we design a hard pseudo-anomaly generation module to construct pseudo-anomalous tokens, simulating the subtle anomalies obscured by semantic smoothing. Also, a probabilistic boundary loss is developed to standardize anomaly scores into statistical distances, effectively enforcing anomalous instances to deviate significantly from the normal distribution center. Extensive experiments on multiple benchmark datasets verify the effectiveness of SIM and demonstrate its remarkable efficiency, robustness, and interpretability. The source code is available at: https://github.com/yankehan/SIM-TAD."
+      },
+      "hash": "7e66d1265f13578e4090cddd2536ff078a7049749d8f7800c505ed7df28a53c0",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.08267": {
+      "entry": {
+        "arxiv_id": "2609.08267",
+        "version": 1,
+        "title": "Evidence-Aligned Entity Verification for Hallucination Detection in Retrieval-Augmented Generation",
+        "authors": [
+          "Runsong Jia",
+          "Zhen Fang",
+          "Mengjia Wu",
+          "Jie Lu",
+          "Yi Zhang"
+        ],
+        "published": "2026-09-08T05:22:29Z",
+        "updated": "2026-09-08T05:22:29Z",
+        "abstract": "Hallucination detection is crucial for large language models (LLMs), as hallucinated content creates significant barriers in applications requiring factual accuracy. Current detection methods mainly depend on internal signals like uncertainty and self-consistency checks, using the model's pre-trained knowledge to identify unreliable outputs. However, pre-trained knowledge may become outdated and has coverage limitations, especially for specialized or recent information. To address these limitations, retrieval-augmented generation (RAG) has emerged as a promising solution by retrieving relevant evidence at inference time, grounding outputs beyond the model's parametric knowledge. In this paper, we target a critical and practical learning problem RAG-based hallucination detection (RHD), where RAG is employed to enhance hallucination detection by addressing information updating challenges. To address RHD, we propose a novel method Evidence-Aligned Entity Verification (EAEV), which detects entity-level hallucinations by leveraging RAG to align generated entities with retrieved evidence contexts. Specifically, EAEV evaluates entity-evidence alignment through three complementary dimensions and introduces counterfactual stability analysis to ensure robust alignments under evidence perturbations. Experiments across multiple RAG benchmarks demonstrate that EAEV achieves consistent improvements over existing methods with strong generalization capabilities.",
+        "comment": "ACL 2026"
+      },
+      "hash": "2f36fd73a796f84edfb4a67a770fdbf87aa4820ef06355ad1fa4082406e89c90",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.08307": {
+      "entry": {
+        "arxiv_id": "2609.08307",
+        "version": 1,
+        "title": "A Measurement Study of LLM Inference Trade-offs Across Edge Continuum Hardware",
+        "authors": [
+          "Maysam Khatib",
+          "Moysis Symeonides",
+          "Demetris Trihinas",
+          "George Pallis",
+          "Marios D. Dikaiakos"
+        ],
+        "published": "2026-09-08T06:28:32Z",
+        "updated": "2026-09-08T06:28:32Z",
+        "abstract": "Large language models (LLMs) are increasingly used as backends for intelligent web services, but serving them across the edge continuum requires balancing quality, latency, model footprint, and energy. This paper presents a controlled measurement study of self-hosted LLM inference across edge and near-edge deployment nodes: an NVIDIA Jetson AGX Orin and a near-edge server with CPU-only and GPU-enabled inference modes. We evaluate multiple open-weight LLMs and quantization variants using a fixed question-answering workload, and compare them against GPT-4o as a cloud-hosted accuracy and latency reference. Our benchmarking pipeline reports accuracy, model footprint, per-token decoding latency, prefill latency, and overall execution energy. The results show that GPU-enabled server execution provides the lowest compute-side latency, while Jetson Orin shows lower measured energy, consistent with its lower platform power under our setup. CPU-only execution is consistently dominated in latency for our workload and shows higher measured energy. We also show that parameter count and downloaded weight-file size alone do not reliably predict observed accuracy or latency. Finally, using Pareto-frontier analysis, we study how deployment decisions may change under possible streamed-token delivery overheads, highlighting that compute-side inference metrics alone can lead to suboptimal placement for latency-sensitive interactive web services.",
+        "comment": "Accepted for publication at WIMS 2026"
+      },
+      "hash": "b3cca36d014174232614846d7efefff5861614ba8c4b1da44b718ad07d78aa11",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.08364": {
+      "entry": {
+        "arxiv_id": "2609.08364",
+        "version": 1,
+        "title": "SentryLine: Evidence-Grounded Question Answering over Evolving Documents in Oncology Care",
+        "authors": [
+          "Tampu Ravi Kumar",
+          "Gaurav Najpande",
+          "Muhammad Ali Khan",
+          "Kaneez Zahra Rubab Khakwani",
+          "Karan Kathuria",
+          "Shorya Azriel Moses",
+          "Yuvraj Kalia",
+          "M Bassam Sonbol",
+          "Irbaz Bin Riaz",
+          "Vivek Gupta"
+        ],
+        "published": "2026-09-08T07:33:01Z",
+        "updated": "2026-09-08T07:33:01Z",
+        "abstract": "Oncology care operates at constant pressure of absorbing rapidly evolving evidence base in biomedicine. The American Society of Clinical Oncology (ASCO) addresses this through living guidelines, but the format introduces a new burden: any recommendation can change at any point, across multiple versioned documents. We present SENTRYLINE, a living guideline-aware clinical question answering system. SENTRYLINE retrieves guideline passages through a vectorless hierarchical RAG pipeline and returns a role-specific answer with inline citations, factual and temporal verification reports, and drift detection notes that surface when a guideline has been updated. We construct ASCOBENCH, a benchmark of 405 three-turn conversations across four question categories with gold answers from expert annotators(clinicians), and use test set to evaluate SENTRYLINE against five baselines under an LLM-as-judge framework. Experiments across three generation backbones show consistent improvements over four retrieval baselines and ASCO's guideline assistant, with particularly strong gains on Reasoning and Role-Specific questions where multi-hop synthesis and register adaptation are required"
+      },
+      "hash": "0081b549522ec873a10eccff17380e64458afb0abfddb51fc78e8d27c70740b0",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.13280": {
+      "entry": {
+        "arxiv_id": "2609.13280",
+        "version": 1,
+        "title": "RxScribe Bench: A Multi-Axis Benchmark for Evaluating Vision-Language Models on Indian Outpatient Prescriptions",
+        "authors": [
+          " Somil",
+          "Vijay Saini",
+          "Vidit Verma",
+          " Riya",
+          "Aastha Batta",
+          "Vibhuti Malhotra",
+          "Chayan Khetan",
+          "Piyush Mittal",
+          "Puneet Poonia"
+        ],
+        "published": "2026-09-08T11:39:30Z",
+        "updated": "2026-09-08T11:39:30Z",
+        "abstract": "Prescription transcription errors are not interchangeable. A model that fabricates a drug and a model that misreads a legible dose pose very different clinical risks, yet prescription-transcription accuracy is typically reported as a single blended figure that treats the two as equivalent. We introduce RxScribe Bench, a benchmark for evaluating vision-language models on handwritten prescription digitization that decomposes performance into four axes tied to clinical severity, rather than folding everything into a single aggregated score. Given only a prescription image and an output schema, a model produces a structured record, which is then compared field by field against a human-authored ground truth of identical shape, with each field also labeled for visibility and legibility. The four axes isolate distinct failure modes, namely Correctness, Hallucination, Engagement, and Robustness. The Robustness axis withholds its hard-field results rather than reporting one when the supporting sample falls below a minimum-evidence threshold. We evaluate frontier vision-language models on real prescriptions across independent cold runs per image, and find that no single model wins across all four axes."
+      },
+      "hash": "0380e677aef7b2ecbd77fe55cc67c2f8e5c80501948a1072978897eaebf8ba48",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.08634": {
+      "entry": {
+        "arxiv_id": "2609.08634",
+        "version": 1,
+        "title": "Suan: Rectifying Direct Preference Safety Alignment in Large Language Models",
+        "authors": [
+          "Oleksandr Cherednichenko",
+          "Roman Klypa"
+        ],
+        "published": "2026-09-08T12:04:38Z",
+        "updated": "2026-09-08T12:04:38Z",
+        "abstract": "Integrating robust safety guardrails into Large Language Models (LLMs) is essential for delivering helpful yet harmless responses. While proprietary systems exhibit reliable safety controls, their underlying methodologies and trade-offs remain largely undisclosed. Achieving comparable security in open-weight models remains a persistent challenge, as post-trained variants frequently suffer from over-refusal and degraded general quality. To overcome these drawbacks, we introduce Suan, a novel preference optimization algorithm. Unlike existing methods, we formulate the optimization objective directly at the gradient level, bypassing the standard variational derivation. As a result, we obtain more interpretable and robust training dynamics. Extensive evaluations across a diverse suite of competitive baselines and benchmarks demonstrate that Suan achieves superior safety alignment while fully preserving response utility."
+      },
+      "hash": "cc00c5c10414010bad594b6d7ce555fc2425051ec71346225ab9cf2ea6baad2a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.13283": {
+      "entry": {
+        "arxiv_id": "2609.13283",
+        "version": 1,
+        "title": "Multimodal-Multiresolution Foundation Model for Lunar Remote Sensing",
+        "authors": [
+          "Paolo Fraccaro",
+          "Gabby Nyirjesy",
+          "Daniela Szwarcman",
+          "Himanshu Patil",
+          "Vishal Gaur",
+          "Rohit Lal",
+          "Rachel A. Slank",
+          "Geoffrey Dawson",
+          "Hiyam Debary",
+          "Michael K. Barker",
+          "Andrew Annex",
+          "Vishnu Viswanathan",
+          "Zachary Morse",
+          "Ethan I. Schaefer",
+          "Nikolaos Dionelis",
+          "Ankur Kumar",
+          "Campbell D. Watson",
+          "Manil Maskey",
+          "Rebekah I. Dawson-Rigas",
+          "Juan Bernabé-Moreno",
+          "Rahul Ramachandran",
+          "Sujit Roy"
+        ],
+        "published": "2026-09-08T14:55:35Z",
+        "updated": "2026-09-08T14:55:35Z",
+        "abstract": "We present a multimodal foundation model for lunar remote sensing, pretrained from scratch on SomBench, a geographically partitioned corpus of nearly two million co-registered tile bundles spanning 11 modalities at two spatial scales (1 m/pixel and 100 m/pixel). The model adapts the TerraMind masked-token architecture with two lunar-specific extensions: acquisition geometry is provided as explicit context, and meter- and hundred-meter-scale tiles are trained jointly so that a single set of weights covers both resolutions. FlexiViT patch embeddings allow adaptation to different patch sizes without retraining, while modality-wise inputs enable flexible multimodal fine-tuning. Qualitative generation experiments suggest the model learns meaningful cross-modal correspondences, including terrain derivatives from elevation and illumination-consistent reflectance from geometry. We evaluate on four benchmarks: crater detection at WAC and NAC scales, irregular mare patch (IMP) segmentation, and polar ice prospectivity regression. Across tasks, the pretrained model matches or outperforms ImageNet-pretrained baselines and an architecturally identical random-init control. On multimodal ice prospectivity regression, pretrained variants achieve the best results, while the random-init model outperforms most baselines, suggesting gains arise from both the architecture and pretraining. Label efficiency is notable for WAC crater detection, where the pretrained model trained on 50% of the data exceeds the strongest ImageNet baseline trained on the full dataset. Among adaptation strategies, LoRA matches or surpasses full fine-tuning on crater detection and IMP segmentation while using far fewer trainable parameters, whereas full fine-tuning performs best for ice prospectivity regression. We release the pretrained checkpoint, benchmark datasets, and fine-tuning code to support reproducible lunar AI research."
+      },
+      "hash": "1a08f239a1b6d0f20e58fd0c96899a9df0c4a50d4c64f4d5a0b20c44044e5379",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.08966": {
+      "entry": {
+        "arxiv_id": "2609.08966",
+        "version": 1,
+        "title": "Good Pretraining, Bad SFT: Checkpoint Quality Across the Training Stack",
+        "authors": [
+          "Sohir Maskey",
+          "Philipp Scholl",
+          "Jonas Knupp",
+          "Pit Neitemeier",
+          "Sascha Wirges"
+        ],
+        "published": "2026-09-08T16:19:15Z",
+        "updated": "2026-09-08T16:19:15Z",
+        "abstract": "Language-model checkpoints are commonly selected by pretraining loss or benchmark scores, assuming that the highest-scoring checkpoint will remain the best starting point for subsequent training. We show that this assumption can fail in a full 30B mixture-of-experts training pipeline. The checkpoints that perform better after the full downstream training stack also have higher solution density, i.e., retain downstream performance under local weight perturbations."
+      },
+      "hash": "3e3b7c1db57e0a7d49e5cc05d84e0c66195804aaf866977b72f0fc2edd1a3f2a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.09004": {
+      "entry": {
+        "arxiv_id": "2609.09004",
+        "version": 1,
+        "title": "Evaluation of Contextual Understanding in Large Language Models",
+        "authors": [
+          "Subavarshana Arumugam",
+          "Mamta Nallaretnam",
+          "Kithuni Wickramasinghe",
+          "Chamath Gunapala",
+          "Pragatheeswaran Vipulanandan",
+          "Uthayasanker Thayasivam",
+          "Kamal Premaratne"
+        ],
+        "published": "2026-09-08T16:41:50Z",
+        "updated": "2026-09-08T16:41:50Z",
+        "abstract": "Large Language Models (LLMs) demonstrate impressive performance across diverse NLP tasks, yet their ability to exhibit genuine contextual understanding remains uncertain. Traditional evaluation metrics such as perplexity, BiLingual Evaluation Understudy (BLEU), or surface-level accuracy fail to reveal how well LLMs extract, integrate, and reason over contextual information--a gap particularly critical in question answering, where models must align responses with contextually grounded knowledge rather than memorized associations. We propose a novel knowledge graph-based evaluation framework introducing Semantic Structural Similarity for KGs (S3KG), a hybrid similarity measure integrating structural and semantic similarity into a continuous evaluation score, alongside a diagnostic framework for categorizing reasoning errors. To validate this pipeline, we evaluate S3KG against established metrics on a curated question-answer (QA) benchmark, demonstrating its effectiveness in measuring correctness, faithfulness, and interpretability in LLM-generated responses."
+      },
+      "hash": "5c002b8c623eed15f25ce4e27aae3c1b39d3f09d528ad67cf6aade5b94237d3f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.09076": {
+      "entry": {
+        "arxiv_id": "2609.09076",
+        "version": 1,
+        "title": "ActReview: Rebuttal-Guided Training Data and Rubric Rewards for Actionable Peer Review Generation",
+        "authors": [
+          "Yiling Ma",
+          "Yilun Zhao",
+          "Sihong Wu",
+          "Ziyu Chen",
+          "Manasi Patwardhan",
+          "Arman Cohan"
+        ],
+        "published": "2026-09-08T17:30:16Z",
+        "updated": "2026-09-08T17:30:16Z",
+        "abstract": "As LLMs are increasingly used for pre-submission self-review, there is growing demand for feedback that not only identifies weaknesses but also guides authors toward concrete revisions. We study this as Actionable Peer-review Generation and decompose it into two subtasks: diagnostic claim generation and revision suggestion generation. We introduce ActReview, a rebuttal-guided post-training framework that connects paper-specific diagnoses to concrete, grounded revision plans. Our central insight is that author rebuttals reveal plausible actions for addressing reviewer concerns and can therefore provide latent supervision for revision-oriented feedback. From real review-rebuttal threads on OpenReview, we construct ActReview-40K by aligning reviewer weaknesses with author responses and grounding the resulting feedback in localized paper evidence. We post-train Qwen3-8B-Base with multi-task supervised fine-tuning followed by GRPO using candidate-aware, weakness-specific rubric rewards. We also introduce ActReview-Bench, a human-curated benchmark of 1,000 instances for evaluating diagnostic quality and revision usefulness. Experiments show that ActReview outperforms prior specialized review-generation models on actionability and grounding while remaining competitive with strong prompt-based LLMs. Human evaluation confirms improved revision usefulness while revealing a remaining gap in technical accuracy, and additional analyses support generalization to held-out papers and robustness across independent judges.",
+        "comment": "50 pages, 20 figures"
+      },
+      "hash": "bee6e6f27e4c3fc8ebe6173dfb2e0c7b2d1ee3cbe55216804bd9c097c5c1ae48",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "reassessed"
+    },
+    "2609.13288": {
+      "entry": {
+        "arxiv_id": "2609.13288",
+        "version": 1,
+        "title": "Target-Checked Reliability Score Refinement for Video Question Answering",
+        "authors": [
+          "Guoxiang Ren",
+          "Rohitash Chandra"
+        ],
+        "published": "2026-09-09T08:29:00Z",
+        "updated": "2026-09-09T08:29:00Z",
+        "abstract": "Video-language models can answer multiple-choice questions with high confidence yet be wrong. We study whether answer-level reliability scores can be improved under target shift without retraining the models or changing their answers. We collect option-probability lists from three fixed video-language models under four deterministic video samplings and represent cross-view changes and cross-model agreement as a response graph. Using a labeled target pilot, we compare the original score, defined as the probability assigned to the chosen answer, with a histogram-based gradient-boosting (HGB) score trained on the development datasets and a regularized logistic-regression score trained on the target pilot. A candidate replaces the original score only when repeated video-level checks indicate a positive, stable improvement. We develop this rule on public VideoQA benchmarks and Video Hallucination Diagnosis (VHD), a controlled diagnostic dataset for shared high-confidence errors. Ranking quality is measured by the area under the risk-coverage curve (AURC), where lower is better. On a held-out 963-question HERBench split, the method reduces mean AURC across the three models by 16.64% (95% confidence interval (CI), 12.12 to 22.61%); the smallest model-level gain is 11.39%. On a separate held-out 911-question Perception Test split, the mean reduction is 18.87% (95% CI, 15.43 to 22.14%). For InternVL3.5, the target check retains the original scores. Using the same outputs, the method outperforms seven training-free baselines in mean AURC on both datasets. It also improves AUROC, reduces calibration error, and lowers the error rate at 50% coverage by 6.50 and 6.58 percentage points.",
+        "comment": "18 pages, 8 figures"
+      },
+      "hash": "fc2cbb8fb918fea129f100d0722f70bbaba07a20d832ed128f2f1db8f4ac3129",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
     }
   },
   "seen": {
@@ -28089,7 +28812,6 @@
     ],
     "run_url": "https://github.com/HamsterStation/benchmark-atlas/actions/runs/34868230169"
   },
-  "arxiv_retry_after": "2026-09-14T17:23:19Z",
   "ready_queue": {
     "2608.24103": {
       "hash": "0bb9406f61b5283afa89060df38cab9a19ec5c96eeb215aaf4d754a5145705cd",
@@ -31944,6 +32666,5 @@
     "failed": 0,
     "errors": [],
     "run_url": "https://github.com/HamsterStation/benchmark-atlas/actions/runs/34868230169"
-  },
-  "arxiv_rate_limit_streak": 1
+  }
 }
