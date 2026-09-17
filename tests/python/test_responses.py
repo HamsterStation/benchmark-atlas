@@ -44,6 +44,20 @@ class ResponsesTests(unittest.TestCase):
         raw += event('response.completed', response=completed())
         self.assertEqual(read_responses_stream(io.BytesIO(raw), 10000, 10), {"summaryZh": "仅测试，不可发布"})
 
+    def test_relay_can_omit_repeated_output_only_after_successful_completion(self):
+        text = '{"summaryZh":"仅测试，不可发布"}'
+        deltas = event('response.output_text.delta', delta=text[:12], output_index=1, content_index=0)
+        deltas += event('response.output_text.delta', delta=text[12:], output_index=1, content_index=0)
+        deltas += event('response.output_text.done', text=text, output_index=1, content_index=0)
+        raw = deltas + event('response.completed', response={"status":"completed", "output":[]})
+        self.assertEqual(read_responses_stream(io.BytesIO(raw), 10000, 10), {"summaryZh":"仅测试，不可发布"})
+        for ending in [b'', event('response.incomplete'), event('response.failed'),
+                       event('response.completed', response={"status":"incomplete", "output":[]}),
+                       event('response.function_call_arguments.delta', delta='{}'),
+                       event('response.content_part.done', part={"type":"refusal"})]:
+            with self.subTest(ending=ending), self.assertRaises(ValueError):
+                read_responses_stream(io.BytesIO(deltas + ending), 10000, 10)
+
     def test_failure_refusal_tool_output_and_missing_completion_are_rejected(self):
         cases = [event('response.output_text.delta', delta='{}'), b'data: [DONE]\n\n',
                  event('response.failed'), event('response.incomplete'), event('error'),

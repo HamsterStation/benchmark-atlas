@@ -269,7 +269,7 @@ def parse_model_json(text):
         raise ModelResponseFormatError("assistant_json", shape) from error
 
 
-def responses_output(response):
+def responses_output(response, streamed_text=""):
     """Accept only completed assistant text; reasoning is never paper material."""
     if response.get("status") != "completed" or response.get("error") or response.get("incomplete_details"):
         raise ValueError("Model response did not complete")
@@ -283,11 +283,14 @@ def responses_output(response):
             if part.get("type") != "output_text" or not isinstance(part.get("text"), str):
                 raise ValueError("Model response contains non-text output or refusal")
             text.append(part["text"])
-    return parse_model_json("".join(text))
+    # Some compatible relays omit the repeated output in the completed event.
+    # Only use streamed assistant text after verifying that event's success.
+    return parse_model_json("".join(text) or streamed_text)
 
 
 def read_responses_stream(response, byte_limit, timeout_seconds):
     total, event = 0, []
+    text_parts = {}
     deadline = time.monotonic() + timeout_seconds
     while True:
         if time.monotonic() > deadline:
@@ -314,10 +317,22 @@ def read_responses_stream(response, byte_limit, timeout_seconds):
                 raise ValueError("Model stream failed or refused")
             if kind in {"response.output_item.added", "response.output_item.done"} and chunk.get("item", {}).get("type") not in {"message", "reasoning"}:
                 raise ValueError("Model stream contains unsupported output")
+            if kind.startswith(("response.function_call", "response.custom_tool", "response.web_search_call",
+                                "response.file_search_call", "response.code_interpreter", "response.mcp")):
+                raise ValueError("Model stream contains unsupported output")
+            if kind in {"response.content_part.added", "response.content_part.done"} and chunk.get("part", {}).get("type") != "output_text":
+                raise ValueError("Model stream contains non-text output or refusal")
+            if kind in {"response.output_text.delta", "response.output_text.done"}:
+                indexes = (chunk.get("output_index", 0), chunk.get("content_index", 0))
+                if any(type(index) is not int or index < 0 for index in indexes):
+                    raise ValueError("Invalid model output index")
+                value = chunk.get("delta") if kind.endswith(".delta") else chunk.get("text")
+                if not isinstance(value, str):
+                    raise ValueError("Invalid streamed model text")
+                text_parts[indexes] = text_parts.get(indexes, "") + value if kind.endswith(".delta") else value
             if kind == "response.completed":
-                # The completed envelope includes the final output. Deltas alone
-                # are not success, and need not be assembled or executed.
-                return responses_output(chunk["response"])
+                streamed_text = "".join(text_parts[index] for index in sorted(text_parts))
+                return responses_output(chunk["response"], streamed_text)
 
 
 class ModelClient:
