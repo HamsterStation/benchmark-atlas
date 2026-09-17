@@ -564,7 +564,10 @@ class Collector:
                     self.save(remote=True)
                     if attempt == self.config["model_retries"] or item["attempts"] >= self.config.get("model_max_attempts_per_version", 3):
                         self.report_once("failed", aid)
-                        self.errors.append({"stage": "model", "id": stable_id(aid), "type": type(error).__name__})
+                        detail = {"stage": "model", "id": stable_id(aid), "type": type(error).__name__}
+                        if isinstance(error, HTTPError):
+                            detail["http_status"] = error.code
+                        self.errors.append(detail)
         self.save(remote=True)
 
     def finish(self, aid, item, status, remote=False):
