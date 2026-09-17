@@ -174,7 +174,9 @@ GitHub 手动运行可勾选 `queue_only=true`；默认仍先尝试发现新论�
 | `MODEL_NAME` | Repository Variable / 环境变量 | 服务支持的模型名称，项目不指定品牌 |
 | `MODEL_API_STREAM` | Repository Variable / 环境变量 | 默认 false；只接受流式请求的兼容服务设 true，解析 SSE 后仍执行同一套 JSON 校验 |
 
-Responses 使用 `instructions`、`input` 请求 JSON，工具列表为空，设置 `store: false`。为兼容代理服务，使用最小请求字段，不发送可选的 `text.format` 与 `max_output_tokens`；通过提示要求 JSON，并在收到返回后严格解析和校验 schema，仍限制响应字节数与读取时间。只有 `response.completed` 且最终状态完成时才解析助手文本。推理内容不作为简介，失败、截断、拒答、工具调用、超时与超大响应都会被拒绝。协议实现参考 [OpenAI Docs 迁移说明](https://developers.openai.com/api/docs/guides/migrate-to-responses)及[流式事件说明](https://developers.openai.com/api/docs/guides/streaming-responses)。第三方兼容服务的可用性以实际诊断为准。
+Responses 使用 `instructions`、`input` 请求 JSON；相同的应用规则也放进独立 `developer` 消息，论文材料只放进 `user` 消息，兼容代理改写顶层指令的情况。工具列表为空，设置 `store: false`。当前使用已实测的最小请求字段，不发送可选的 `text.format` 与 `max_output_tokens`；通过提示要求 JSON，并在收到返回后严格解析和校验 schema，仍限制响应字节数与读取时间。流式正文按输出位置拼接；只有 `response.completed` 且最终状态完成才接收，兼容结束事件省略重复正文的代理。推理内容不作为简介，失败、截断、拒答、工具调用、超时与超大响应都会被拒绝。协议实现参考 [OpenAI Docs 迁移说明](https://developers.openai.com/api/docs/guides/migrate-to-responses)及[流式事件说明](https://developers.openai.com/api/docs/guides/streaming-responses)。第三方兼容服务的可用性以实际诊断为准。
+
+2026-09-17 的 [Responses 正式生成验证](https://github.com/HamsterStation/benchmark-atlas/actions/runs/35183277441)以 1 次模型调用生成有效简介，通过字段校验、测试、生产构建和 Pages 部署。此前的 HTTP 错误与格式错误批次未发布。排障当日累计调用 9 次（包含失败诊断，计数全部保留），正常配置恢复为每日 6 次；每日最多 2 篇的收录额度未调整。这里只验证摘要级资料整理，不代表全文解读或论文实验复现。
 
 模型只收到当前标题和摘要，没有网页访问、工具调用、文件系统或执行权限。响应只能包含 7 个分类/简介字段，任何额外字段会被拒绝。中文直接使用 UTF-8，不要求模型手工编写 Unicode 转义。Responses 返回若只有一个完整 JSON 围栏，可去掉围栏再校验；附加说明、无效 JSON 或其他语言代码仍拒绝。JSON 文本不会成为 MDX、模板或构建代码。材料版本、范围、输入哈希、截断标记、模型名与生成时间写入 provenance；没有读取的全文不进入声明。
 
