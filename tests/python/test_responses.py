@@ -100,8 +100,14 @@ class ResponsesTests(unittest.TestCase):
                 self.assertEqual(result, {"summaryZh": "仅测试，不可发布"})
                 self.assertEqual(request.get_method(), 'POST')
                 self.assertEqual(payload['model'], 'gpt-5.6-luna')
-                self.assertEqual(payload['input'][0]['content'][0]['text'], 'UNTRUSTED MATERIAL')
+                self.assertEqual(payload['input'][0]['role'], 'developer')
+                self.assertEqual(payload['input'][0]['content'][0]['text'], payload['instructions'])
+                self.assertEqual(payload['input'][1]['role'], 'user')
+                self.assertEqual(payload['input'][1]['content'][0]['text'], 'UNTRUSTED MATERIAL')
                 self.assertNotIn('UNTRUSTED MATERIAL', payload['instructions'])
+                # Simulate a relay replacing its top-level persona: app rules survive.
+                payload['instructions'] = 'Provider default persona'
+                self.assertIn('summaryZh', payload['input'][0]['content'][0]['text'])
                 self.assertNotIn('text', payload)
                 self.assertNotIn('max_output_tokens', payload)
                 self.assertFalse(payload['store'])

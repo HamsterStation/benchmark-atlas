@@ -363,7 +363,10 @@ class ModelClient:
         )
         if self.protocol == "responses":
             payload = {"model": self.name, "instructions": prompt,
-                       "input": [{"role": "user", "content": [{"type": "input_text", "text": material}]}],
+                       # Compatible relays may replace top-level instructions.
+                       # Keep trusted app rules separate from untrusted material.
+                       "input": [{"role": "developer", "content": [{"type": "input_text", "text": prompt}]},
+                                 {"role": "user", "content": [{"type": "input_text", "text": material}]}],
                        "store": False, "tools": []}
         else:
             payload = {"model": self.name, "messages": [{"role": "system", "content": prompt}, {"role": "user", "content": material}],
