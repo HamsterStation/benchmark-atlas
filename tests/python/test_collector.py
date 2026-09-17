@@ -143,6 +143,14 @@ class CollectorTests(unittest.TestCase):
         self.assertEqual((result["queue_remaining"], model.calls), (0, 1))
         self.assertEqual(read_json(self.root / "automation/state.json")["last_publishable_collection_at"], "2026-09-11T03:00:00Z")
 
+    def test_failure_on_last_daily_call_is_not_misreported_as_success(self):
+        self.config.update(model_daily_limit=1, model_retries=1)
+        model = Model(fail=True)
+        result = self.collector([entry()], model=model).run()
+        self.assertEqual((result['failed'], model.calls), (1, 1))
+        self.assertEqual(result['errors'][0]['type'], 'TimeoutError')
+        self.assertIsNone(read_json(self.root / 'automation/state.json')['last_publishable_collection_at'])
+
     def test_arxiv_outage_or_incomplete_paging_does_not_spend_model_budget(self):
         records = [entry(f"2609.0000{i}") for i in range(1, 7)]
         model = Model()

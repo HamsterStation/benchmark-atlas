@@ -674,11 +674,15 @@ class Collector:
                     item["next_attempt_at"] = (parse_time(self.now) + timedelta(hours=6)).isoformat().replace("+00:00", "Z")
                     self.save_draft(metadata_record(entry, self.now))
                     self.save(remote=True)
-                    if attempt == self.config["model_retries"] or item["attempts"] >= self.config.get("model_max_attempts_per_version", 3):
+                    if (attempt == self.config["model_retries"]
+                            or item["attempts"] >= self.config.get("model_max_attempts_per_version", 3)
+                            or self.state["model_usage"].get(day, 0) >= self.config["model_daily_limit"]):
                         self.report_once("failed", aid)
                         detail = {"stage": "model", "id": stable_id(aid), "type": type(error).__name__}
                         if isinstance(error, HTTPError):
                             detail.update(safe_model_http_error(error))
+                        elif isinstance(error, ModelResponseFormatError):
+                            detail.update(format_stage=error.stage, format_shape=error.shape)
                         self.errors.append(detail)
         self.save(remote=True)
 
