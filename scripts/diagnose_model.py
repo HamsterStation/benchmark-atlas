@@ -8,7 +8,7 @@ import sys
 from urllib.error import HTTPError
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from collector.collect import ROOT, Collector, atomic_json, metadata_record, read_json, utcnow
+from collector.collect import ROOT, Collector, atomic_json, metadata_record, read_json, safe_model_http_error, utcnow
 
 
 def diagnose(root, *, reserve, model=None):
@@ -49,7 +49,8 @@ def diagnose(root, *, reserve, model=None):
     except HTTPError as error:
         categories = {401: "AuthenticationRejected", 402: "PaymentOrQuotaRejected",
                       403: "AccessForbidden", 404: "RouteOrModelUnavailable", 429: "RateLimited"}
-        result.update(error="HTTPError", http_status=error.code,
+        result.update(safe_model_http_error(error))
+        result.update(error="HTTPError",
                       category=categories.get(error.code, "ProviderHTTPFailure"))
     except Exception as error:
         # Never log a raw exception, provider body, credential, or generated content.

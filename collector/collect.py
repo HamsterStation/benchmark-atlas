@@ -216,6 +216,36 @@ def read_chat_stream(response, byte_limit, timeout_seconds):
                     finished = True
 
 
+def safe_model_http_error(error):
+    """Allowlist protocol diagnostics; never return a provider message or body."""
+    result = {"http_status": error.code}
+    try:
+        body = json.loads(error.read(8192))
+        detail = body.get("error", body)
+        if not isinstance(detail, dict):
+            return result
+        codes = {"unsupported_parameter", "invalid_request_error", "invalid_value", "unsupported_value",
+                 "model_not_found", "missing_required_parameter", "context_length_exceeded",
+                 "insufficient_quota", "invalid_api_key"}
+        if detail.get("code") in codes:
+            result["provider_code"] = detail["code"]
+        message = str(detail.get("message", ""))
+        fields = {"max_output_tokens", "text", "text.format", "response_format", "instructions", "input",
+                  "stream", "store", "model", "temperature", "tools", "tool_choice"}
+        mentioned = sorted(field for field in fields if detail.get("param") == field
+                           or re.search(r"(?<![\w.])" + re.escape(field) + r"(?![\w.])", message))
+        if mentioned:
+            result["parameter_names"] = mentioned
+        for phrase, label in [("not supported", "unsupported"), ("unsupported", "unsupported"),
+                              ("must be", "required_value"), ("required", "required"), ("invalid", "invalid")]:
+            if phrase in message.lower():
+                result["parameter_issue"] = label
+                break
+    except Exception:
+        pass
+    return result
+
+
 def responses_output(response):
     """Accept only completed assistant text; reasoning is never paper material."""
     if response.get("status") != "completed" or response.get("error") or response.get("incomplete_details"):
@@ -623,7 +653,7 @@ class Collector:
                         self.report_once("failed", aid)
                         detail = {"stage": "model", "id": stable_id(aid), "type": type(error).__name__}
                         if isinstance(error, HTTPError):
-                            detail["http_status"] = error.code
+                            detail.update(safe_model_http_error(error))
                         self.errors.append(detail)
         self.save(remote=True)
 

@@ -2,8 +2,9 @@ import io
 import json
 import unittest
 from unittest.mock import patch
+from urllib.error import HTTPError
 
-from collector.collect import ModelClient, read_responses_stream, responses_output
+from collector.collect import ModelClient, read_responses_stream, responses_output, safe_model_http_error
 
 
 def completed(text='{"summaryZh":"仅测试，不可发布"}'):
@@ -18,6 +19,13 @@ def event(kind, **data):
 
 
 class ResponsesTests(unittest.TestCase):
+    def test_provider_message_is_reduced_to_allowlisted_parameter_hints(self):
+        body = {"error": {"code": "invalid_request_error", "param": "text.format",
+                          "message": "Unsupported parameter: text.format SECRET-DO-NOT-PRINT"}}
+        error = HTTPError('https://example.invalid/SECRET', 400, 'SECRET', {}, io.BytesIO(json.dumps(body).encode()))
+        self.assertEqual(safe_model_http_error(error), {"http_status": 400, "provider_code": "invalid_request_error",
+                                                     "parameter_names": ["text.format"], "parameter_issue": "unsupported"})
+
     def test_completed_envelope_parses_unicode_without_using_reasoning_or_partial_deltas(self):
         raw = b': keepalive\n\n' + event('response.output_text.delta', delta='incomplete fragment')
         raw += event('response.completed', response=completed())
