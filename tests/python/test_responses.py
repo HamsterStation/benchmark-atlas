@@ -25,6 +25,11 @@ class ResponsesTests(unittest.TestCase):
         error = HTTPError('https://example.invalid/SECRET', 400, 'SECRET', {}, io.BytesIO(json.dumps(body).encode()))
         self.assertEqual(safe_model_http_error(error), {"http_status": 400, "provider_code": "invalid_request_error",
                                                      "parameter_names": ["text.format"], "parameter_issue": "unsupported"})
+        for body in ['Unsupported parameter: max_output_tokens SECRET',
+                     '{"error":"Unsupported parameter: max_output_tokens SECRET"}']:
+            error = HTTPError('https://example.invalid', 400, 'SECRET', {}, io.BytesIO(body.encode()))
+            self.assertEqual(safe_model_http_error(error), {"http_status": 400,
+                             "parameter_names": ["max_output_tokens"], "parameter_issue": "unsupported"})
 
     def test_completed_envelope_parses_unicode_without_using_reasoning_or_partial_deltas(self):
         raw = b': keepalive\n\n' + event('response.output_text.delta', delta='incomplete fragment')
@@ -75,7 +80,8 @@ class ResponsesTests(unittest.TestCase):
                 self.assertEqual(payload['model'], 'gpt-5.6-luna')
                 self.assertEqual(payload['input'][0]['content'][0]['text'], 'UNTRUSTED MATERIAL')
                 self.assertNotIn('UNTRUSTED MATERIAL', payload['instructions'])
-                self.assertEqual(payload['text']['format'], {"type": "json_object"})
+                self.assertNotIn('text', payload)
+                self.assertNotIn('max_output_tokens', payload)
                 self.assertFalse(payload['store'])
                 self.assertEqual(payload['tools'], [])
                 self.assertEqual(payload.get('stream', False), stream)

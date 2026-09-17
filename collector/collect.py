@@ -220,16 +220,19 @@ def safe_model_http_error(error):
     """Allowlist protocol diagnostics; never return a provider message or body."""
     result = {"http_status": error.code}
     try:
-        body = json.loads(error.read(8192))
-        detail = body.get("error", body)
+        message = error.read(8192).decode("utf-8", errors="replace")
+        try:
+            body = json.loads(message)
+        except ValueError:
+            body = {}
+        detail = body.get("error", body) if isinstance(body, dict) else {}
         if not isinstance(detail, dict):
-            return result
+            detail = {}
         codes = {"unsupported_parameter", "invalid_request_error", "invalid_value", "unsupported_value",
                  "model_not_found", "missing_required_parameter", "context_length_exceeded",
                  "insufficient_quota", "invalid_api_key"}
         if detail.get("code") in codes:
             result["provider_code"] = detail["code"]
-        message = str(detail.get("message", ""))
         fields = {"max_output_tokens", "text", "text.format", "response_format", "instructions", "input",
                   "stream", "store", "model", "temperature", "tools", "tool_choice"}
         mentioned = sorted(field for field in fields if detail.get("param") == field
@@ -237,7 +240,7 @@ def safe_model_http_error(error):
         if mentioned:
             result["parameter_names"] = mentioned
         for phrase, label in [("not supported", "unsupported"), ("unsupported", "unsupported"),
-                              ("must be", "required_value"), ("required", "required"), ("invalid", "invalid")]:
+                              ("不支持", "unsupported"), ("must be", "required_value"), ("required", "required"), ("invalid", "invalid")]:
             if phrase in message.lower():
                 result["parameter_issue"] = label
                 break
@@ -323,7 +326,6 @@ class ModelClient:
         if self.protocol == "responses":
             payload = {"model": self.name, "instructions": prompt,
                        "input": [{"role": "user", "content": [{"type": "input_text", "text": material}]}],
-                       "text": {"format": {"type": "json_object"}}, "max_output_tokens": 1800,
                        "store": False, "tools": []}
         else:
             payload = {"model": self.name, "messages": [{"role": "system", "content": prompt}, {"role": "user", "content": material}],
