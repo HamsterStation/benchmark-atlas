@@ -4,7 +4,7 @@ import unittest
 from unittest.mock import patch
 from urllib.error import HTTPError
 
-from collector.collect import ModelClient, read_responses_stream, responses_output, safe_model_http_error
+from collector.collect import ModelClient, ModelResponseFormatError, parse_model_json, read_responses_stream, responses_output, safe_model_http_error
 
 
 def completed(text='{"summaryZh":"仅测试，不可发布"}'):
@@ -19,6 +19,14 @@ def event(kind, **data):
 
 
 class ResponsesTests(unittest.TestCase):
+    def test_only_one_json_fence_is_tolerated_and_extra_prose_is_rejected(self):
+        self.assertEqual(parse_model_json('```json\n{"summaryZh":"仅供测试"}\n```'), {"summaryZh": "仅供测试"})
+        for text in ['说明：{"summaryZh":"仅供测试"}', '```python\nprint("do not execute")\n```',
+                     '```json\n{}\n```\nmore text', '{"summaryZh":"bad \\u123"}']:
+            with self.subTest(text=text), self.assertRaises(ModelResponseFormatError) as error:
+                parse_model_json(text)
+            self.assertEqual(error.exception.stage, 'assistant_json')
+
     def test_provider_message_is_reduced_to_allowlisted_parameter_hints(self):
         body = {"error": {"code": "invalid_request_error", "param": "text.format",
                           "message": "Unsupported parameter: text.format SECRET-DO-NOT-PRINT"}}

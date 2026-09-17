@@ -249,6 +249,26 @@ def safe_model_http_error(error):
     return result
 
 
+class ModelResponseFormatError(ValueError):
+    def __init__(self, stage, shape):
+        super().__init__("Model output has invalid JSON")
+        self.stage, self.shape = stage, shape
+
+
+def parse_model_json(text):
+    # A single JSON fence is presentation only. Never evaluate code or repair
+    # arbitrary text; the decoded value still goes through the same schema.
+    text = text.strip()
+    fence = re.fullmatch(r"```(?:json)?\s*\n(.*?)\n```", text, re.DOTALL)
+    if fence:
+        text = fence.group(1).strip()
+    try:
+        return json.loads(text)
+    except ValueError as error:
+        shape = "empty" if not text else "object" if text.startswith("{") else "other"
+        raise ModelResponseFormatError("assistant_json", shape) from error
+
+
 def responses_output(response):
     """Accept only completed assistant text; reasoning is never paper material."""
     if response.get("status") != "completed" or response.get("error") or response.get("incomplete_details"):
@@ -263,7 +283,7 @@ def responses_output(response):
             if part.get("type") != "output_text" or not isinstance(part.get("text"), str):
                 raise ValueError("Model response contains non-text output or refusal")
             text.append(part["text"])
-    return json.loads("".join(text))
+    return parse_model_json("".join(text))
 
 
 def read_responses_stream(response, byte_limit, timeout_seconds):
@@ -285,7 +305,10 @@ def read_responses_stream(response, byte_limit, timeout_seconds):
             payload, event = b"\n".join(event), []
             if payload == b"[DONE]":
                 raise ValueError("Model stream has no completed response")
-            chunk = json.loads(payload)
+            try:
+                chunk = json.loads(payload)
+            except ValueError as error:
+                raise ModelResponseFormatError("stream_event", "other") from error
             kind = chunk.get("type", "")
             if chunk.get("error") or kind in {"error", "response.failed", "response.incomplete"} or kind.startswith("response.refusal."):
                 raise ValueError("Model stream failed or refused")
@@ -320,7 +343,7 @@ class ModelClient:
             "role 必须是单个枚举字符串，绝不能是数组；论文兼有新方法和新基准时选择 introduces_benchmark。"
             "targets、scenarios、capabilities 必须是枚举字符串数组；summaryZh、taskFormat、acronym 是字符串或 null。"
             "中文简介控制在 120 至 200 个汉字，taskFormat 不超过 80 个汉字；材料不足时可以更短或为 null。"
-            "为避免流式传输乱码，输出 JSON 的所有非 ASCII 字符必须使用 Unicode 转义，如中文写作 \\u4e2d\\u6587；解析后仍为中文。"
+            "直接输出合法 JSON，不要 Markdown 围栏、前言或解释；中文直接书写，不必手工转成 Unicode 转义。"
             "summaryZh 必须是基于材料的中文摘要，不能补猜。可用分类：" + json.dumps(allowed, ensure_ascii=False)
         )
         if self.protocol == "responses":

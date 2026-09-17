@@ -8,7 +8,7 @@ import sys
 from urllib.error import HTTPError
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from collector.collect import ROOT, Collector, atomic_json, metadata_record, read_json, safe_model_http_error, utcnow
+from collector.collect import ROOT, Collector, ModelResponseFormatError, atomic_json, metadata_record, read_json, safe_model_http_error, utcnow
 
 
 def diagnose(root, *, reserve, model=None):
@@ -55,6 +55,8 @@ def diagnose(root, *, reserve, model=None):
     except Exception as error:
         # Never log a raw exception, provider body, credential, or generated content.
         result.update(error=type(error).__name__)
+        if isinstance(error, ModelResponseFormatError):
+            result.update(format_stage=error.stage, format_shape=error.shape)
     return result
 
 
