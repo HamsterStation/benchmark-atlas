@@ -216,6 +216,54 @@ def read_chat_stream(response, byte_limit, timeout_seconds):
                     finished = True
 
 
+def responses_output(response):
+    """Accept only completed assistant text; reasoning is never paper material."""
+    if response.get("status") != "completed" or response.get("error") or response.get("incomplete_details"):
+        raise ValueError("Model response did not complete")
+    text = []
+    for item in response.get("output", []):
+        if item.get("type") == "reasoning":
+            continue
+        if item.get("type") != "message" or item.get("role") != "assistant" or item.get("status") != "completed":
+            raise ValueError("Model response contains unsupported output")
+        for part in item.get("content", []):
+            if part.get("type") != "output_text" or not isinstance(part.get("text"), str):
+                raise ValueError("Model response contains non-text output or refusal")
+            text.append(part["text"])
+    return json.loads("".join(text))
+
+
+def read_responses_stream(response, byte_limit, timeout_seconds):
+    total, event = 0, []
+    deadline = time.monotonic() + timeout_seconds
+    while True:
+        if time.monotonic() > deadline:
+            raise TimeoutError("Model stream deadline exceeded")
+        line = response.readline(byte_limit - total + 1)
+        total += len(line)
+        if total > byte_limit:
+            raise ValueError("Model response too large")
+        if not line:
+            raise ValueError("Model stream ended before completion")
+        line = line.rstrip(b"\r\n")
+        if line.startswith(b"data:"):
+            event.append(line[5:].lstrip())
+        elif not line and event:
+            payload, event = b"\n".join(event), []
+            if payload == b"[DONE]":
+                raise ValueError("Model stream has no completed response")
+            chunk = json.loads(payload)
+            kind = chunk.get("type", "")
+            if chunk.get("error") or kind in {"error", "response.failed", "response.incomplete"} or kind.startswith("response.refusal."):
+                raise ValueError("Model stream failed or refused")
+            if kind in {"response.output_item.added", "response.output_item.done"} and chunk.get("item", {}).get("type") not in {"message", "reasoning"}:
+                raise ValueError("Model stream contains unsupported output")
+            if kind == "response.completed":
+                # The completed envelope includes the final output. Deltas alone
+                # are not success, and need not be assembled or executed.
+                return responses_output(chunk["response"])
+
+
 class ModelClient:
     """Optional JSON-only HTTP service; no tools, browsing, or executable output."""
     def __init__(self, config):
@@ -224,6 +272,7 @@ class ModelClient:
         self.endpoint = os.getenv("MODEL_API_URL")
         self.name = os.getenv("MODEL_NAME")
         self.stream = os.getenv("MODEL_API_STREAM", "false").lower() == "true"
+        self.protocol = "responses" if urlparse(self.endpoint or "").path.rstrip("/").endswith("/responses") else "chat_completions"
         self.available = bool(self.key and self.endpoint and self.name)
         if self.available and (urlparse(self.endpoint).scheme != "https" or urlparse(self.endpoint).username):
             raise ValueError("MODEL_API_URL must be an HTTPS endpoint without embedded credentials")
@@ -241,19 +290,27 @@ class ModelClient:
             "为避免流式传输乱码，输出 JSON 的所有非 ASCII 字符必须使用 Unicode 转义，如中文写作 \\u4e2d\\u6587；解析后仍为中文。"
             "summaryZh 必须是基于材料的中文摘要，不能补猜。可用分类：" + json.dumps(allowed, ensure_ascii=False)
         )
-        payload = {"model": self.name, "messages": [{"role": "system", "content": prompt}, {"role": "user", "content": material}],
-                   "response_format": {"type": "json_object"}, "temperature": 0, "max_tokens": 1800}
+        if self.protocol == "responses":
+            payload = {"model": self.name, "instructions": prompt,
+                       "input": [{"role": "user", "content": [{"type": "input_text", "text": material}]}],
+                       "text": {"format": {"type": "json_object"}}, "max_output_tokens": 1800,
+                       "store": False, "tools": []}
+        else:
+            payload = {"model": self.name, "messages": [{"role": "system", "content": prompt}, {"role": "user", "content": material}],
+                       "response_format": {"type": "json_object"}, "temperature": 0, "max_tokens": 1800}
         if self.stream:
             payload["stream"] = True
         req = Request(self.endpoint, data=json.dumps(payload).encode(), headers={"Authorization": "Bearer " + self.key, "Content-Type": "application/json"})
         with build_opener(NoRedirect).open(req, timeout=self.config["model_timeout_seconds"]) as response:
             if self.stream:
-                output = read_chat_stream(response, self.config["model_max_output_bytes"], self.config["model_timeout_seconds"])
+                reader = read_responses_stream if self.protocol == "responses" else read_chat_stream
+                output = reader(response, self.config["model_max_output_bytes"], self.config["model_timeout_seconds"])
             else:
                 raw = response.read(self.config["model_max_output_bytes"] + 1)
                 if len(raw) > self.config["model_max_output_bytes"]:
                     raise ValueError("Model response too large")
-                output = json.loads(json.loads(raw)["choices"][0]["message"]["content"])
+                envelope = json.loads(raw)
+                output = responses_output(envelope) if self.protocol == "responses" else json.loads(envelope["choices"][0]["message"]["content"])
         if self.key in json.dumps(output, ensure_ascii=False):
             raise ValueError("Provider echoed a credential; response rejected")
         if "\ufffd" in json.dumps(output, ensure_ascii=False):

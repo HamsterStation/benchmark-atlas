@@ -31,7 +31,8 @@ def diagnose(root, *, reserve, model=None):
         return {**result, "error": "DailyModelLimit"}
     state["model_usage"][day] = used + 1
     reserve(state)
-    result.update(model_calls=1, material_id=aid, model=collector.model.name)
+    result.update(model_calls=1, material_id=aid, model=collector.model.name,
+                  protocol=getattr(collector.model, "protocol", "fixture"))
     material = json.dumps({"title": entry["title"], "abstract": entry["abstract"]}, ensure_ascii=False)
     material = material[:collector.config["model_max_input_chars"]]
     try:

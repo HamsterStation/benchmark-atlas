@@ -165,7 +165,7 @@ GitHub 手动运行可勾选 `queue_only=true`；默认仍先尝试发现新论�
 
 ## 可选模型
 
-基础运行无需任何 Secret。要启用中文草稿，可配置兼容 `messages` / `response_format=json_object` 的 HTTPS chat-completions 接口：
+基础运行无需任何 Secret。要启用中文草稿，可配置 HTTPS Responses 或 Chat Completions 接口。完整地址的路径以 `/responses` 结尾时采用 Responses 协议，其余地址保持 Chat Completions 协议；不会自动改写或回退请求地址。当前服务使用 `gpt-5.6-luna`、`POST /openai/v1/responses`、`stream: true`。
 
 | 配置 | 类型 | 含义 |
 | --- | --- | --- |
@@ -173,6 +173,8 @@ GitHub 手动运行可勾选 `queue_only=true`；默认仍先尝试发现新论�
 | `MODEL_API_URL` | Repository Variable / 环境变量 | 完整 HTTPS 请求地址，不自动拼路径，不接受重定向 |
 | `MODEL_NAME` | Repository Variable / 环境变量 | 服务支持的模型名称，项目不指定品牌 |
 | `MODEL_API_STREAM` | Repository Variable / 环境变量 | 默认 false；只接受流式请求的兼容服务设 true，解析 SSE 后仍执行同一套 JSON 校验 |
+
+Responses 使用 `instructions`、`input` 与 `text.format` 请求 JSON，不附带工具，设置 `store: false`；只有 `response.completed` 且最终状态完成时才解析助手文本。推理内容不作为简介，失败、截断、拒答、工具调用、超时与超大响应都会被拒绝。协议实现参考 [OpenAI Docs 迁移说明](https://developers.openai.com/api/docs/guides/migrate-to-responses)及[流式事件说明](https://developers.openai.com/api/docs/guides/streaming-responses)。第三方兼容服务的可用性以实际诊断为准。
 
 模型只收到当前标题和摘要，没有网页访问、工具调用、文件系统或执行权限。响应只能包含 7 个分类/简介字段，任何额外字段会被拒绝。JSON 文本不会成为 MDX、模板或构建代码。材料版本、范围、输入哈希、截断标记、模型名与生成时间写入 provenance；没有读取的全文不进入声明。
 
