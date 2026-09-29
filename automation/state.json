@@ -22,7 +22,7 @@
       "active": {
         "since": "2026-09-06T07:30:10+00:00",
         "until": "2026-09-18T07:26:04Z",
-        "start": 0
+        "start": 200
       },
       "last_completed_at": "2026-09-16T07:43:40Z"
     }
@@ -28700,6 +28700,448 @@
       },
       "hash": "dfedeac727d43bc21c777bd8f66d3dac21ca8c86fd19cb918a719febebb892b6",
       "status": "awaiting_evidence",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.22255": {
+      "entry": {
+        "arxiv_id": "2609.22255",
+        "version": 1,
+        "title": "Deep Persona: A Psychologically Grounded Architecture and Evaluation Framework for Role-Playing Agents and Simulations",
+        "authors": [
+          "Rotem Dror",
+          "Zohar Elyoseph",
+          "Yuval Haber",
+          "Elad Refoua",
+          "Oshrat Ayalon",
+          "Adir Solomon"
+        ],
+        "published": "2026-09-06T08:53:41Z",
+        "updated": "2026-09-06T08:53:41Z",
+        "abstract": "Existing approaches to persona simulation with Large Language Models (LLMs) mostly rely on shallow character descriptions that fail to sustain coherent character behavior across extended interactions. We introduce Deep Persona, a psychologically grounded, three-layered architecture that organizes personas into hierarchical levels of observable expression, latent beliefs, and core motivational drives, for constructing highly convincing role-playing agents. Governed by the principles of scripted determinism and bounded agency, the architecture restricts the model to a reactive engine guided by a structured internal script. We further propose a reference-free evaluation framework that benchmarks dialogue naturalness against empirical human distributions using established psychological clinical instruments and adversarial stress-tests. Empirical evaluation reveals that while LLMs achieve high pragmatic fluency, they exhibit systematic limitations in emotional expression and joint attention. In addition, we present a case study of two Deep Personas and evaluate them using the proposed framework, demonstrating that structured personas can produce interactions that more closely align with human conversational behavior."
+      },
+      "hash": "307dda505bb4c3675cd6f10d102c21a5067f31d791bedd3b80048f9f93f0675b",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.22259": {
+      "entry": {
+        "arxiv_id": "2609.22259",
+        "version": 1,
+        "title": "Which Part of the Context Layer Does the Work? Separating Semantic Content from Retrieval Scaffolding in Text-to-SQL Agents",
+        "authors": [
+          "Qing Ye"
+        ],
+        "published": "2026-09-06T14:36:34Z",
+        "updated": "2026-09-06T14:36:34Z",
+        "abstract": "Context layers, curated documentation that an analytics agent fetches at query time, produce large accuracy gains on text-to-SQL benchmarks. A with/without comparison cannot say which part of the layer does the work: the semantic content, the retrieval scaffolding that delivers it, or the pre-computed views that usually accompany it. We report a four-arm ablation on DABStep on four models that separates the three. The instrument is a data contract: a YAML artifact that carries a domain's semantics and the rules an agent's tools enforce. One arm empties every field of prose in the frozen contract while holding the tool surface, retrieval instruction, table allow-list and operation rules byte-for-byte fixed. Compiling the contract's own SQL expressions into views gives the ceiling a pre-computed layer would reach: gold on all 176 tasks it covers. Content dominates. It raises hard-task accuracy from 13.9% to 55.1%, 22.6% to 56.6%, 22.9% to 68.4% and 37.0% to 77.4%, beating the same knowledge pasted into the prompt on every model. Scaffolding without content is worth 0 to 5 points on two flash models and 14 to 15 on two frontier models. Against the compiled ceiling the contract arm's shortfall is a failure to derive, and it falls from 39 points to 5 with model capability. The contract beats the prompt because the rule it needs is one lookup away rather than buried in a long prompt: its SQL carries the fee semantics up to 98% of the time against the prompt arm's 4%, and at the lowest cost per correct answer on three of four models. For practitioners: semantics first, scaffolding second, pre-computed macros only where an agent demonstrably fails to derive. Ungoverned arms submitted 166 mutating statements; governed arms none. The gain is confined to the contract's domain. On one model the benchmark's own withheld golds grade the contract arm at 51.9% against 18.8% for the prompt baseline."
+      },
+      "hash": "e0170a558e8501088d1aa91ce267d980a00d62f1a4cc7adffe6651d8a62feb54",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.31632": {
+      "entry": {
+        "arxiv_id": "2609.31632",
+        "version": 1,
+        "title": "EEGAgentBench: Benchmarking LLM Agents on Short- and Long-Horizon EEG Analysis",
+        "authors": [
+          "Huyu Wu",
+          "Weining Weng",
+          "Yuchen Liu",
+          "Yiqiang Chen",
+          "Yang Gu"
+        ],
+        "published": "2026-09-10T04:34:05Z",
+        "updated": "2026-09-10T04:34:05Z",
+        "abstract": "Electroencephalography (EEG) analysis is evolving from short-segment classification toward long-horizon interpretation that demands iterative evidence accumulation, multi-step reasoning, and coordinated use of specialized signal-processing tools. Although large language models (LLMs) have recently shown promise as autonomous agents for EEG analysis, existing EEG agentic evaluations remain fragmented, covering limited tasks over narrow temporal horizons with inconsistent protocols, and providing no comprehensive assessment of agents' reasoning, tool-use, and workflow construction capabilities. To address this gap, we propose \\textbf{EEGAgentBench}, a unified benchmark for systematically evaluating LLM agents on short- and long-horizon EEG analysis. EEGAgentBench spans six representative EEG applications ranging from knowledge question answering to sleep staging. It encompasses signal durations from 2 seconds to nearly 23 hours, with prediction targets ranging from class labels to event intervals and epoch-level sequences. This design supports unified evaluation across knowledge reasoning, short-horizon interpretation, long-horizon event detection, and sequential understanding. The benchmark further provides 10 deterministic EEG analysis tools that expose only task-relevant signal measurements. Agents must therefore select tools autonomously, accumulate evidence iteratively, and construct multi-step workflows. For evaluation, we benchmark 29 frontier LLMs from 15 model families. Results demonstrate that EEGAgentBench effectively distinguishes agent capabilities beyond model scale and inference cost, while revealing substantial limitations of current LLM agents in long-horizon EEG analysis, particularly in sustained evidence accumulation and multi-step reasoning."
+      },
+      "hash": "cbd7fb1e8f2ed2343d01d401e9534d557c1970eb9e7d914fff9d22af41d38fe7",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.30293": {
+      "entry": {
+        "arxiv_id": "2609.30293",
+        "version": 1,
+        "title": "Cartograph: Federated Tool Discovery with Operator-Attested Retrieval for AI Agents",
+        "authors": [
+          "Justice Owusu Agyemang",
+          "Michael Agyare",
+          "Kwame Opuni-Boachie Obour Agyekum",
+          "Kwame Agyeman-Prempeh Agyekum",
+          "Francisca Adoma Acheampong",
+          "Jerry John Kponyo"
+        ],
+        "published": "2026-09-13T09:07:29Z",
+        "updated": "2026-09-13T09:07:29Z",
+        "abstract": "The Model Context Protocol (MCP) enables AI agents to discover and call tools, but loading every definition becomes expensive as connected catalogs grow. We present Cartograph, a federated MCP proxy that changes agent-visible tool discovery from $O(n)$ catalog traversal to $O(k)$ progressive disclosure. Cartograph combines three mechanisms: (1) operator-attested capability cards, Ed25519-signed descriptions generated under the deploying operator's control rather than ranked publisher copy; (2) Rift, a three-layer confusable-cluster analysis comprising density clustering, query-margin analysis, and token diagnosis; and (3) two-stage retrieval, which ranks servers before tools. On a 22-server, 374-tool deployment, Cartograph exposes three proxy tools instead of 374 definitions. A 49-query author-constructed benchmark yields R@5 of 0.816, compared with 0.592 for a Jaccard keyword baseline, while a measured top-5 discovery exchange uses 475 tokens rather than 42,450 under the stated full-catalog accounting. Rift identifies 49 confusable clusters, including four HIGH-risk clusters in bootstrap-generated cards. An exploratory comparison of 119 LLM-generated descriptions removes the observed zero-distance cluster but shows that mixing card-generation regimes can reduce R@5. Gateway measurements over ten trials add 5ms mean latency (0.8%) relative to direct stdio MCP calls. Cartograph is complementary to code-execution approaches: it controls which tool descriptions are surfaced and records the provenance of the descriptions used for ranking for each query."
+      },
+      "hash": "3c7afbcbc509401311a94f784085237e0e5fa0a26a79063ea7fa42cb82208b3f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.14400": {
+      "entry": {
+        "arxiv_id": "2609.14400",
+        "version": 1,
+        "title": "Policy Loopholes in Agent Evaluation: When Policy Ambiguity Masquerades as Agent Error",
+        "authors": [
+          "Hongliu Cao"
+        ],
+        "published": "2026-09-13T10:00:13Z",
+        "updated": "2026-09-13T10:00:13Z",
+        "abstract": "Agent benchmarks evaluate policy compliance but assume each policy determines a unique correct action. Natural-language policies can violate this assumption through silence, ambiguity, or contradiction, admitting multiple defensible readings that a single gold trajectory cannot capture. Auditing two $τ^2$-bench domains, we develop a taxonomy of such policy loopholes and show that affected tasks produce unreliable scores: they lower scores across different models in different ways and make every model less consistent across repeated trials. A cross-domain comparison reveals that exploitability requires both policy ambiguity and tool permissiveness: when policy complexity exceeds what tools can enforce, agents resolve gaps inconsistently and scores become unreliable. Policy specification quality sets the ceiling on evaluation quality. Benchmark developers should audit policies before collecting gold annotations.",
+        "comment": "Accepted at REALM EMNLP 2026"
+      },
+      "hash": "a61c6d630237036ad546f7ee88fedfed971d774277c0ce357e803262cd667ff2",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.14412": {
+      "entry": {
+        "arxiv_id": "2609.14412",
+        "version": 1,
+        "title": "Question's Gambit: The First Move Matters in Agentic Deep Search",
+        "authors": [
+          "Radin Hamidi Rad",
+          "Amin Bigdeli",
+          "Negar Arabzadeh",
+          "Sajad Ebrahimi",
+          "Charles L. A. Clarke",
+          "Benjamin C. M. Fung",
+          "Ebrahim Bagheri"
+        ],
+        "published": "2026-09-13T10:21:07Z",
+        "updated": "2026-09-13T10:21:07Z",
+        "abstract": "Deep research agents answer complex questions through iterative loops of searching, reading, and reasoning. Recent work on reasoning-intensive benchmarks such as BrowseComp-Plus shows that well-configured lexical retrieval can surface high-quality evidence, yet agents may still fail to connect documents carrying evidence to the gold documents. We identify a deep research agent's first retrieval move as an important design decision for this setting. We introduce Question's Gambit, a first-move retrieval module that decomposes the question into a set of clues, reformulates them into complementary searches, consolidates the retrieved results, and reranks the candidate pool before the agent begins its iterative search-and-reasoning process. This produces an opening context designed to support both clue aggregation and final-answer verification. We further evaluate on MultiHop-RAG to test whether these benefits transfer beyond BrowseComp-Plus to a more conventional multi-hop question structure. Experiments on BrowseComp-Plus show that Question's Gambit improves retrieval recall and downstream agent accuracy over strong baselines, improving answer accuracy from 83.1% to 90.5% with gpt-5.5 over Pi-Serini, the strongest reported agentic baseline. Our results confirm that effective agentic deep research depends not only on the tools available inside the loop, but also on the quality of the first move. We published our implementation publicly at https://github.com/radinhamidi/Question-s-Gambit."
+      },
+      "hash": "33b63c98a0ad298f5c9ee0475fb882ea3f59183761dced2ad97c44f6c41e6653",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.14823": {
+      "entry": {
+        "arxiv_id": "2609.14823",
+        "version": 1,
+        "title": "MedTRACE: Tool-Augmented Multimodal Clinical Reasoning Agents for Evidence-Grounded Decision-Making",
+        "authors": [
+          "Ji Lu",
+          "Lifei Liu",
+          "Haoran Yu",
+          "Xianglong Wang",
+          "Yiru Fang",
+          "Kuo Yang",
+          "Huiran Duan",
+          "Jianping Gou"
+        ],
+        "published": "2026-09-13T22:32:49Z",
+        "updated": "2026-09-13T22:32:49Z",
+        "abstract": "Multimodal clinical decision-making requires reliable reasoning over heterogeneous evidence from electronic health records, medical images, and physiological signals. Existing models typically map these inputs directly to diagnoses without explicitly assessing evidence sufficiency, tool-use requirements, or diagnostic uncertainty. This paper presents MedTRACE, a tool-augmented multimodal clinical reasoning agent for evidence-grounded decision-making. MedTRACE uses modality-specific encoders to construct a unified patient-state representation and performs an iterative loop of hypothesis formation, toolaware deliberation, and evidence verification. It dynamically invokes visual grounding, evidence retrieval, and structured parsing tools to locate diagnosis-relevant regions, retrieve clinical knowledge and similar cases, and extract structured findings. The acquired evidence enters an evidence memory, where a consistency verifier confirms or revises the current hypothesis. MedTRACE outputs a diagnosis together with supporting evidence, an auditable reasoning trace, and calibrated confidence. Experiments on multiple multimodal clinical diagnosis benchmarks show that MedTRACE improves diagnostic accuracy by 5.4% and AUROC by 4.7 percentage points over the strongest baseline. It also improves evidenceselection F1 by 8.2 percentage points and visual-grounding IoU by 6.5 percentage points, reduces expected calibration error by 31.6%, and decreases unsupported diagnostic errors by 27.8%. These results demonstrate that active evidence acquisition and verification improve the accuracy, interpretability, and reliability of multimodal clinical decisionmaking.",
+        "comment": "Accepted to the 22nd International Conference on Advanced Data Mining and Applications (ADMA 2026)"
+      },
+      "hash": "5e94bbf9e83ee085909111d9db0048d23ee97dffe6226a12a14be6ee74920a06",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.20301": {
+      "entry": {
+        "arxiv_id": "2609.20301",
+        "version": 1,
+        "title": "AgentPProf: Semantic Profiler for Long Horizon AI Agents",
+        "authors": [
+          "Yusheng Zheng",
+          "Chaokun Chang",
+          "Yu Mao",
+          "Tianyuan Wu",
+          "Yuxi Huang",
+          "Tao Ma",
+          "Wenan Mao",
+          "Shuyi Cheng",
+          "Andi Quinn",
+          "Wei Wang"
+        ],
+        "published": "2026-09-14T02:46:15Z",
+        "updated": "2026-09-14T02:46:15Z",
+        "abstract": "AI agents increasingly orchestrate long-running activities with users, tools, and system resources for days and weeks. To improve agent quality, safety, and cost efficiency, developers need to determine where failures happen, what triggers unsafe effects, and which tasks consume the most budget, then optimize those tasks. In systems software, profiling answers similar questions by aggregating resource consumption and attributing it to responsible code paths to identify hotspots. Yet existing agent observability tools focus on per-execution debugging and tracing rather than cross-run, long term profiling, making these questions difficult to answer at scale. Agent observability needs profiling, not only debugging, but profiling agents is challenging: the responsible entities are task intent like diagnose authentication, compare branches rather than code paths, and lack stable identifiers for aggregation. We propose a semantic operation stack model that adapts profiling to agent trajectories. Uniform operations represent all activities, and operation stacks replace the runtime call stack, enabling hierarchical attribution at different granularities. We observe that an agent's task occupies a contiguous span and decomposes into subtasks, so we introduce recursive operation segmentation, which recursively splits trajectories at task boundaries. AgentPProf is a profiler that aggregates agent trajectories into pprof-compatible profiles, enabling flame graph visualization and analysis. AgentPProf reaches 0.764 $B^3$ F1 against human annotations on CodeTraceBench. On three problem-localization benchmarks, the profile raises MAP by up to 56%, demonstrating that it effectively attributes resources, locates problems, and helps optimize token cost at practical profiling cost. AgentPProf is available at https://github.com/eunomia-bpf/agentsight."
+      },
+      "hash": "ebeababa969026b9aab034e9f3fd61bcb7fcf4d864295800a5f6299e0f64a16f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.15134": {
+      "entry": {
+        "arxiv_id": "2609.15134",
+        "version": 1,
+        "title": "HazardAuditor: From Executable Threats to Safer Computer-Use Agents",
+        "authors": [
+          "Yunhao Feng",
+          "Ruixiao Lin",
+          "Ming Wen",
+          "Yanming Guo",
+          "Xingjun Ma",
+          "Yutao Wu",
+          "Xinhao Deng",
+          "Shouling Ji"
+        ],
+        "published": "2026-09-14T07:09:33Z",
+        "updated": "2026-09-14T07:09:33Z",
+        "abstract": "Computer-use agents increasingly interact with browsers, terminals, file systems, and external services, introducing safety risks that emerge through runtime behavior rather than generated content alone. Existing guard models target static prompts and responses and are poorly suited to agent execution; existing executable safety platforms produce evaluation verdicts rather than the normalized supervision a guard model needs to learn across heterogeneous agent frameworks. We introduce HazardAuditor, an execution-grounded framework that closes both gaps. Its infrastructure runs heterogeneous agents (Claude Code, Codex, Hermes, and OpenClaw) in controlled environments and normalizes their interactions into a canonical event representation for cross-framework supervision. We further observe that token-level post-training objectives create a structural mismatch for generative guards, causing longer rationales to dominate gradient updates. Guard Policy Optimization (GuardPO) addresses this by converting deterministic safety outcomes into sequence-level advantages and normalizing rationale and verdict regions, making the safety decision the effective unit of optimization. Across multiple benchmarks and heterogeneous computer-use systems, HazardAuditor improves accuracy by up to 16.5 percentage points over the strongest prior guard. Code, models, and evaluation artifacts will be available at https://yunhao-feng.github.io/HazardAuditor/."
+      },
+      "hash": "5ac0ddd43541539be649aa52ec6234831b033eee62164a591cb1f21ed9633a01",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.15297": {
+      "entry": {
+        "arxiv_id": "2609.15297",
+        "version": 1,
+        "title": "Admissable: Training Reinforcement Learning Agents against Adversarial Missingness",
+        "authors": [
+          "Paul Stahlhofen",
+          "Luca Hermes",
+          "Tim Kochs",
+          "Markus Vieth",
+          "Barbara Hammer"
+        ],
+        "published": "2026-09-14T09:48:06Z",
+        "updated": "2026-09-14T09:48:06Z",
+        "abstract": "In order to make Reinforcement Learning algorithms applicable in real world scenarios, safety must be ensured even under adverse operating conditions. In this work, we consider the challenge of adversarial feature missingness: a scenario in which an adversary occludes features from the agent's observation in order to reduce performance as much as possible. We formally define adversarial missingness for Reinforcement Learning and compare it to the related concepts of $\\ell_\\infty$-norm bounded adversarial perturbations and learning with missing data. We develop an adversarial training algorithm and show its effectiveness in increasing robustness against adversarial missingness on three MuJoCo benchmark environments. Compared to a baseline trained with random uniform missingness, our method achieves better robustness on all three tasks."
+      },
+      "hash": "8399f07d3ec3f5e74c1cc01ec06cecdd0bded666351d8b69a85039434060d543",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.15319": {
+      "entry": {
+        "arxiv_id": "2609.15319",
+        "version": 1,
+        "title": "Clean Scores, Buried Evidence, and Confident Wrong: A Receipt-Based Audit of Frontier Agentic QA",
+        "authors": [
+          "Luis M. Sánchez"
+        ],
+        "published": "2026-09-14T10:11:58Z",
+        "updated": "2026-09-14T10:11:58Z",
+        "abstract": "Frontier models score well on shallow document/chart reading tasks. In a controlled data-room audit, moving evidence into buried conditions reduced accuracy, increased forced declarations, increased tool calls, and increased cost per correct answer. Confidence and benchmark calibration did not fully capture wrong answers; a documented production incident shows fabricated structural claims can be mixed with accurate numeric tables. Agentic evaluations need claim-level receipts (statement-level provenance, not answer-level scores), condition-aware scoring, and human-adversarial verification - an auditing discipline, not a leaderboard. The setting we measure is financial due diligence; the setting we are building toward next is defense staff work, where the same buried-evidence shape appears. In both, the model is not a party to the consequences; the person who signs is. In plain terms: in the documented cases we examine, agents can pair accurate numbers with confident fabricated explanations, and the burden of proof must therefore move from the model to the evidence trail.",
+        "comment": "28 pages, 9 figures. Frozen evidence archive: https://doi.org/10.5281/zenodo.22310532"
+      },
+      "hash": "5666d27b5adc739fb7c2d0fe1f28d816ff0deb52664881d20b9a766b0b1eda01",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.15683": {
+      "entry": {
+        "arxiv_id": "2609.15683",
+        "version": 1,
+        "title": "V-ICAL Bench: Evaluating Video In-Context Learning for Multimodal Agents in Interactive Environments",
+        "authors": [
+          "Ziqian Fan",
+          "Shibo Xu",
+          "Junjie Li",
+          "Xiangyu Zhao",
+          "Shengyuan Ding",
+          "Yifan Yang",
+          "Zhenjie Yang",
+          "Haodong Duan",
+          "Yue Zhou",
+          "Zhihang Zhong",
+          "Xue Yang"
+        ],
+        "published": "2026-09-14T14:55:03Z",
+        "updated": "2026-09-14T14:55:03Z",
+        "abstract": "While In-Context Learning (ICL) enables models to adapt from exemplars without parameter updates, multimodal ICL remains largely underexplored, particularly regarding video demonstrations in interactive environments. For multimodal agents, learning from videos presents unique challenges: they must translate in-context demonstrations into executable policies, ground these policies in novel visual states, and iteratively refine actions based on environmental feedback. We introduce V-ICAL, a novel benchmark designed to evaluate video-based ICL for multimodal agents. Comprising 342 interactive tasks across 37 environments, V-ICAL utilizes human-curated demonstration videos as task-specific behavioral exemplars, evaluating agents through sustained interaction from a target initialization. The benchmark seamlessly connects in-context knowledge induction with core agentic capabilities, including state grounding, temporal memory, planning, and adaptation in dynamic environments. Extensive evaluations across 19 state-of-the-art multimodal agents reveal significant limitations: the best-performing model, Seed-2.1-Pro, achieves a score of only 54.4/100, while other leading models (e.g., Gemini-3.1-Pro, GPT-5.6) fail to surpass 50, far below the human baseline of 83.6. Controlled comparisons further demonstrate that current agents struggle to reliably translate video exemplars into effective policies, failing to yield consistent performance gains. Ultimately, V-ICAL exposes a critical gap in the ICL capabilities of multimodal agents, underscoring an urgent need for future research."
+      },
+      "hash": "5fe4a5759382f001695660a6156fdd4a0292aaaa94dddf197c6a95156f8fb855",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.15726": {
+      "entry": {
+        "arxiv_id": "2609.15726",
+        "version": 1,
+        "title": "Bench2Dex: Benchmarking Visuo-Tactile Bimanual Dexterous Manipulation Across Dexterous Hands",
+        "authors": [
+          "Zhenjie Yang",
+          "Yideng Zhang",
+          "Dongjie Zhang",
+          "Chenyu Jiang",
+          "Xianshuai Liu",
+          "Yufeng Li",
+          "Zuhao Ge",
+          "Xingyu Jiao",
+          "Zheng Zhang",
+          "Kaiyu He",
+          "He Wang",
+          "Yuwen Zhong",
+          "Yi Deng",
+          "Muyun Jiang",
+          "Xianliang Huang",
+          "Haisheng Su",
+          "Donghang Zhang",
+          "Jian Zhang",
+          "Xue Yang",
+          "Hongyang Li",
+          "Zuxuan Wu",
+          "Yu-Gang Jiang",
+          "Xiaosong Jia",
+          "Junchi Yan"
+        ],
+        "published": "2026-09-14T15:22:59Z",
+        "updated": "2026-09-14T15:22:59Z",
+        "abstract": "Tactile sensing provides contact information that can be difficult to infer from vision alone, but tactile hardware for dexterous hands has not converged to a common design. Dexterous hands differ in finger structure, contact surfaces, and sensor layouts, while simulated tactile signals still differ from measurements produced by physical sensors. These factors make it difficult to study visuo-tactile manipulation across diverse dexterous hands within a consistent experimental setting. We present Bench2Dex, a simulation benchmark for visuo-tactile bimanual manipulation across 12 dexterous hands. We adapt existing robot models with a shared simulated tactile interface that converts local contact geometry into image-like tactile observations. The interface provides a consistent observation format across different hand morphologies without attempting to reproduce the output of a specific physical tactile sensor. Bench2Dex includes 26 bimanual manipulation tasks that involve tool use, articulated-object interaction, and multi-stage manipulation, together with about 1.3K human-teleoperated demonstrations. The benchmark provides synchronized visual, tactile, proprioceptive, action, and object-state observations, together with executable task metrics. For robustness, we group seven perturbation types into invariance axis, where the correct action does not change, and equivariance axis, where the correct action changes together with the perturbation. We evaluate ACT, Diffusion Policy, pi0.5, and GR00T N1.5 on Bench2Dex and report their performance and failure modes. Bench2Dex is meant as a platform for studying visuo-tactile learning across dexterous hands. It does not assume that simulated tactile observations can replace real tactile sensing; it offers a shared setting for algorithm development while tactile hardware and simulation models are still evolving.",
+        "comment": "Technical Report. Project Page: https://bench2dex.github.io/"
+      },
+      "hash": "fee9c38461742378a15f8251bfb23ae2fd22622c9bc151418b9cdbc6423a1cd6",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.16302": {
+      "entry": {
+        "arxiv_id": "2609.16302",
+        "version": 1,
+        "title": "Assurance Envelopes for Autonomous Coding Agents: Minimum-Cost Evidence for Software Change",
+        "authors": [
+          "Anjan Goswami"
+        ],
+        "published": "2026-09-14T20:06:46Z",
+        "updated": "2026-09-14T20:06:46Z",
+        "abstract": "When a coding agent returns to existing software, it inherits evidence from earlier engineering work: tests, type checks, proofs, static analyses, and traces. Reloading all of it is wasteful, but dropping a piece the change depends on can leave a required property unsupported. Given the properties a change must preserve, its obligations, we ask which least-cost subset of the available evidence re-establishes them, and we call such a subset a task-conditioned assurance envelope. Evidence and the rules that combine it form a typed inference graph; an obligation is met when forward chaining from the selected evidence reaches it, and we validate every selection by that closure rather than by trusting the optimizer. The software-derived graphs in our evaluation come from preserved outcomes of prior AI coding-agent runs; we freeze those artifacts and ask which accumulated evidence should be restored for a later task. Small graphs from Rust, IronBlocks, and Pong outcomes show that the minimum envelope depends on the task, that none may exist when current evidence cannot re-establish a required property, that some properties need several pieces of evidence together, and that expanding the requirements adds evidence rather than replacing it. A prespecified synthetic benchmark of 249 instances characterizes computation: a baseline that discards the 'several pieces together' structure necessarily fails to re-derive them; every completed exact cross-check agreed with the CP-SAT optimizer; and median solve time stayed below 20 ms at 500-evidence graphs, except that graphs with many alternative derivations per target timed out at far smaller sizes, so structure, not raw size, drives difficulty. The contribution is a bounded application of established optimization to selecting assurance context for a software change; discovering the obligations and downstream agent benefit remain open.",
+        "comment": "15 pages, 4 figures, 3 tables"
+      },
+      "hash": "22988a7d31f8a3acba3ec0daf2b16509db8ee25c71435065d7c2afcd628c4def",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.16346": {
+      "entry": {
+        "arxiv_id": "2609.16346",
+        "version": 1,
+        "title": "Auto-HSI: Personalized human control of a robot swarm on demand by using LLMs for online automatic code generation",
+        "authors": [
+          "Alessandro Nazzari",
+          "Nathan Cerisara",
+          "Dorian Tonnis",
+          "Raina Zakir",
+          "Lorenzo Labarile",
+          "Weixu Zhu",
+          "Marco Dorigo",
+          "Mary Katherine Heinrich"
+        ],
+        "published": "2026-09-14T21:09:00Z",
+        "updated": "2026-09-14T21:09:00Z",
+        "abstract": "This paper presents Auto-HSI, a method for generating personalized human-swarm interaction (HSI) interfaces on demand. The objective is to enable untrained operators to use natural language descriptions and gesture demonstrations to explain how they want the robots to collectively behave in response to their gestures. Based on these inputs, the code should automatically be generated for personalized state machines that will control the robots as desired, in response to the desired gesture inputs. In the developed Auto-HSI prototype, the generated code produces a personalized interface for centralized control using one- and two-handed gestures, enabling a user to teleoperate the robots' motion, formation shape, and shape deformation. We test the gesture tracking and code generation components of Auto-HSI against performance benchmarks. We then test the full Auto-HSI prototype in ``live'' operation experiments, in which real human operators centrally control 50 simulated robots in a physics-based simulator, under nominal and noisy conditions. In these experiments, robots are teleoperated to: score a goal, traverse a maze that requires shape deformation, and score two simultaneous goals by splitting into two groups. We also demonstrate a real human operator making live updates to their personalized Auto-HSI interface during operation (in simulation). Finally, we demonstrate live operation of real robots."
+      },
+      "hash": "6a9bae8b6174df88e3add9813503a8214509d3cd9481da0c481997803e979176",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.16453": {
+      "entry": {
+        "arxiv_id": "2609.16453",
+        "version": 1,
+        "title": "Predicting Partial Answer Quality and Utility in Agentic Retrieval-Augmented Generation",
+        "authors": [
+          "Fangzheng Tian",
+          "Debasis Ganguly",
+          "Craig Macdonald"
+        ],
+        "published": "2026-09-15T00:17:50Z",
+        "updated": "2026-09-15T00:17:50Z",
+        "abstract": "Agentic Retrieval-Augmented Generation (RAG) has become a promising paradigm for multi-hop question answering, where a reasoning model iteratively issues queries to a retriever and incorporates newly retrieved context into subsequent reasoning steps. While this iterative process can improve final answer quality, current evaluations of agentic RAG largely focus on end-to-end outcomes and provide limited visibility into how a model's answer state changes during generation. In this work, we introduce an in-trajectory probing framework to study intermediate answer states in agentic RAG. Specifically, after each retrieval-reasoning iteration, we force an agentic model to stop reasoning and generate an intermediate answer based on its current state. This allows us to define two iteration-level measures: partial answer quality at each iteration, and partial utility as the change in partial answer quality across iterations. Our analysis across multi-hop QA benchmarks reveals that partial answer quality often plateaus before natural termination, with many later iterations contributing only small measurable improvements. Accordingly, we formulate two prediction tasks, partial answer quality prediction and partial utility prediction, and study trajectory-derived signals from intra-iteration, inter-iteration, and query-iteration perspectives. Experiments show that partial answer quality is more predictable than partial utility, with supervised models achieving Pearson's r above 0.43 for quality prediction. Finally, using predicted answer quality and utility for early stopping reduces average iteration count by about 11% while preserving about 98% of the final answer quality achieved by natural stopping.",
+        "comment": "12 pages, 5 figures, 4 tables, this paper has been accepted by CIKM'26 as a full paper"
+      },
+      "hash": "964319d8727a70ec1c58052220c602733d12f3dfbc19aec1d4bdb16fb38fa6c8",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.22308": {
+      "entry": {
+        "arxiv_id": "2609.22308",
+        "version": 1,
+        "title": "GameReplica: A Benchmark for Black-Box Visual Game Replication by Vision-Language Agents",
+        "authors": [
+          "Boyu Qiao",
+          "Zixin Tang",
+          "Xiaoshuai Hao",
+          "Wenbo Li"
+        ],
+        "published": "2026-09-15T03:07:41Z",
+        "updated": "2026-09-15T03:07:41Z",
+        "abstract": "Coding-agent benchmarks usually evaluate implementation after the target behavior has been specified in text, code, or demonstrations. Existing research has extensively evaluated the ability of coding agents to generate programs from textual specifications. However, under black-box conditions where neither source code nor documentation is available, it remains underexplored whether an agent can induce the rules solely through visual observation and active interaction and reproduce the target system as a verifiable executable system. To this end, we present GameReplica, a closed-loop evaluation framework for end-to-end black-box game replication that covers the full perception, exploration, induction, reproduction, and verification pipeline. GameReplica comprises 125 tasks spanning 25 games across 5 core mechanism families, with each game instantiated at five difficulty levels. The tasks require an agent to access the target game only through screenshots and an action interface, induce the key visual elements and gameplay rules from pixel feedback and interaction outcomes, and generate a self-contained, runnable game replica that can be automatically verified by an external program. Experiments show that current coding agents still face substantial challenges in end-to-end black-box replication: the best-performing model (Claude Opus 4.8) achieves an overall score of 71.6\\%, while the remaining models score only 4.0\\%--42.9\\%. Further analysis reveals a consistent pattern across all models: visual-fidelity scores are substantially higher than implementation- and rule-consistency scores, indicating that agents replicate visual appearance more readily than game mechanics. The difficulty levels further amplify the performance gap: from L1 to L5, the overall score of weaker agents drops sharply, whereas that of the best-performing agent declines only slightly."
+      },
+      "hash": "eb11b10700a39bb5635b2d49661b049982d5dc5fc2104f7e821a7f659d98be7d",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.16917": {
+      "entry": {
+        "arxiv_id": "2609.16917",
+        "version": 1,
+        "title": "Multi-Agent Learning with Cooperation-Driven Optimization Dynamics",
+        "authors": [
+          "Jarod Ketcha Kouakep",
+          "Sreyvi UANN",
+          "Timoteo Carletti"
+        ],
+        "published": "2026-09-15T09:51:54Z",
+        "updated": "2026-09-15T09:51:54Z",
+        "abstract": "Multilayer Artificial Neural Networks trained via backpropagation are the basic blocks of many, more complex, classification algorithms. Their strength lies in the possibility of realizing, with arbitrary precision, any function. This result comes at the cost of the large number of involved parameters to be optimized. In this work, we propose a mechanism for cooperation, i.e., information exchange among several artificial neural networks, with the goal of reducing model complexity while maintaining performance. More precisely, we consider several \"small\" agents, i.e., containing fewer parameters than a reference \"large\" one, that during training share their predictions by incorporating this information into the loss function and thus directly influence weight updates. We consider several strategies for implementing cooperation, e.g., the voter model, majority model, and weighted average model based on an agent's confidence in its prediction. We numerically compare the accuracy of those strategies on several standard benchmarks. Our results support the claim that several small agents can outperform a single large model on a given classification task; the shared signals affect each agent's optimization algorithm by modulating both the descent direction and the step size, converging toward a global consensus. The proposed proof-of-concept significantly reduces the number of parameters to be trained while preserving comparable performance, thereby limiting computational resource usage."
+      },
+      "hash": "33de38ade0f67a22ea2ce3818a7df89dcd8d1a04aa5d78345bc6881ac9234302",
+      "status": "queued",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
