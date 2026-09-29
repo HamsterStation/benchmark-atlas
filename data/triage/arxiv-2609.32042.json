@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2609.32042",
+  "arxivId": "2609.32042",
+  "version": 1,
+  "title": "Quantization Thresholds Replicate, Failure Modes Do Not: A Three-Model Study of Agentic Tool Use in Polish from 8-bit to 2-bit",
+  "paperUrl": "https://arxiv.org/abs/2609.32042v1",
+  "assessedAt": "2026-09-29T16:33:57Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "89fb4e167a8d1ac27e08a6cc03ab1a36ab8686e65f3edcb96f1f93a9cb109ad8",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "excluded",
+  "score": 7,
+  "scoreMax": 11,
+  "reasons": [
+    "未找到 LLM / Agent 评测对象与基准主题的共同证据"
+  ],
+  "missingSignals": [
+    "描述评分指标或评测协议",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "benchmark_contribution",
+      "label": "明确提出新的评测资料或框架",
+      "weight": 3,
+      "excerpt": "We introduce PolAgentBench, a deterministic benchmark with Polish prompts and English tool schemas: a 67-task main suite (15 adversarial probes, 52 hard-tier tasks) and a 46-task arithmetic isolation ladder.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.32042v1"
+    },
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "We ask how GGUF quantization affects agentic tool use in Polish and whether the effects generalize across models.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.32042v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "Only the collapse threshold replicates. (1) All three models fall off a cliff between 3-bit and 2-bit (11B 0.716 to 0.045, 7B 0.463 to 0.149, PLLuM 0.224 to 0.015; paired McNemar p < 0.001 in each), across a fourfold capability spread and both axes. (2) Failure modes do not replicate: at 2-bit the 7B fails long (median 9.1k tokens, 4 steps) while the 11B mostly answers at the first step with a confabulated final answer (37 of 64 failures); PLLuM fails on content across precisions (71.8-92.0% of steps parse). (3) On the arithmetic ladder the unscaffolded rung is a floor, left standing by a rerun that states the no-tool rule; four explicit calls lift the 8-bit 11B from 1/10 to 9/10 and the 7B from 0/10 to 7/10 after format-only failures with the gold value are forgiven, an exploratory effect with eight distinct baseline inputs that does not survive multiplicity correction, while the order-trap arm separates the models at 8-bit (11B 6/6, 7B 0/6). (4) The Polish-versus-English gap is associated with degradation or with task family.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.32042v1"
+    },
+    {
+      "signal": "resource_link",
+      "label": "材料中提供代码或数据链接（未核验内容）",
+      "weight": 2,
+      "excerpt": "https://github.com/JakubPrejzner/polagentbench",
+      "source": "arxiv_comment",
+      "sourceUrl": "https://arxiv.org/abs/2609.32042v1"
+    }
+  ],
+  "resourceCandidates": [
+    "https://github.com/JakubPrejzner/polagentbench"
+  ],
+  "declaredVenue": "34 pages, 1 figure, 21 tables. Code, tasks, trajectories and analysis scripts: https://github.com/JakubPrejzner/polagentbench",
+  "venueVerified": false,
+  "qualityVerified": false
+}

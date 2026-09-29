@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2609.33987",
+  "arxivId": "2609.33987",
+  "version": 1,
+  "title": "Opera: A Verbal Critic Framework for Long-horizon Coding Agents",
+  "paperUrl": "https://arxiv.org/abs/2609.33987v1",
+  "assessedAt": "2026-09-29T16:33:57Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "4e5dbeddc28fe1cc17314f7149c02f77e9f7729b77d09226f556abfc34db8ff7",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "excluded",
+  "score": 4,
+  "scoreMax": 11,
+  "reasons": [
+    "未找到 LLM / Agent 评测对象与基准主题的共同证据"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "材料中提供代码或数据链接（未核验内容）",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "Long-horizon coding agents need timely corrections, yet feedback can be ineffective or even harmful when it misjudges ongoing work or fails to address the underlying problem.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.33987v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "Beyond inference, Opera-guided rollouts provide approximately on-policy training data: fine-tuning Qwen3.5-9B on them improves its resolve rate on held-out SWE-Bench Pro repositories by 10.2 percentage points without a critic at inference time, matching fine-tuning on rollouts from a stronger model, while preserving its performance when switching harness, i.e., from Openhands to Terminus-2, which the latter substantially degrades.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.33987v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "As a test-time critic, Opera improves the resolve rate of non-critic agents by up to 12.4, 15.0, and 8.9 percentage points on Terminal-Bench 2.1, a SWE-Bench Pro subset, and DeepSWE v1.1, respectively, across four policy models, and achieves the highest mean resolve rate among competitive critic baselines on all three benchmarks, and also improves policy models when the policy critiques itself.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.33987v1"
+    }
+  ],
+  "resourceCandidates": [],
+  "declaredVenue": null,
+  "venueVerified": false,
+  "qualityVerified": false
+}
