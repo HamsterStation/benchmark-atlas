@@ -12,7 +12,7 @@
       "active": {
         "since": "2026-09-22T16:32:12+00:00",
         "until": "2026-09-30T16:25:53Z",
-        "start": 200
+        "start": 400
       },
       "last_completed_at": "2026-09-29T16:32:12Z"
     },
@@ -52580,6 +52580,123 @@
         "comment": "20 pages, 7 figures. Accepted to ESEM 2026"
       },
       "hash": "54a332add91c48a0697de2acef176b658fe947befb1a76a2da7c737c19c0705f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.37481": {
+      "entry": {
+        "arxiv_id": "2609.37481",
+        "version": 1,
+        "title": "Label Less, Learn More: Resource-Efficient Active Semi-Supervised Learning for Onboard Satellite Image Annotation",
+        "authors": [
+          "Ahmed Abdelnaby",
+          "Mohamed Elmahallawy",
+          "Marius Bernahrndt",
+          "Tobias Hecking"
+        ],
+        "published": "2026-09-25T18:15:31Z",
+        "updated": "2026-09-25T18:15:31Z",
+        "abstract": "Large-scale pervasive sensing increasingly relies on high-resolution satellite imagery, yet task-specific onboard vision is constrained by costly annotation and limited computation, memory, energy, and communication resources. Existing approaches largely rely on either data-hungry supervised learning or large vision-language foundation models, limiting efficient adaptation and deployment under these constraints. We present SatLabel, a resource-aware learning framework that transforms limited satellite labels into progressively refined onboard models through adaptive sample acquisition and semi-supervised model adaptation. Rather than repeatedly training on uniformly sampled labels, SatLabel closes the loop between model uncertainty, class imbalance, and pseudo-label quality to selectively acquire informative samples while exploiting abundant unlabeled imagery. This enables a compact student to adapt to target sensing domains with reduced annotation and inference costs. We further introduce an optional Mixture-of-Experts (MoE) student with graph-based feature refinement to enhance representation capacity while retaining a lightweight footprint. We evaluate SatLabel on 11 remote-sensing datasets spanning core, extended, and unseen domains against RemoteCLIP zero-shot inference. SatLabel improves Macro-F1 on most core and extended datasets while maintaining strong cross-dataset transfer to unseen domains. More importantly, the Balanced student contains only 11.2 M parameters and occupies approximately 42.8 MB, compared with 151.3M parameters and 577 MB for RemoteCLIP, while requiring 3.65 versus 5.89 GFLOPs. Across four efficiency benchmarks, it achieves approximately 2x higher GPU-forward throughput and reduces energy per image on datasets."
+      },
+      "hash": "9d17658c53e4fca4e1f23bb986cdd616b467fbf705d6665f9fee3ddc1460b23d",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.35872": {
+      "entry": {
+        "arxiv_id": "2609.35872",
+        "version": 1,
+        "title": "SameFact: The Same Safety Facts Lead to Different Responses Across Interfaces",
+        "authors": [
+          "Dongsheng Chen",
+          "Jiaxin Zhang",
+          "Lei Ma",
+          "Xin Yao",
+          "Xuetao Wei"
+        ],
+        "published": "2026-09-26T14:55:03Z",
+        "updated": "2026-09-26T14:55:03Z",
+        "abstract": "Safety evaluations often ask whether a model recognizes that an action is unsafe, whereas agent evaluations ask what the model chooses to do. Using safety judgments as evidence about action selection therefore raises a measurement question: does the influence of the same safety-relevant fact persist across response interfaces? We introduce SameFact, a matched-counterfactual benchmark that tests this question directly. SameFact contains 300 safe/unsafe pairs that hold the task, prior observations, candidate action, identifiers, and non-target facts fixed while changing a single state-grounded safety fact. Across six LLM backbones, we measure the effect of this matched intervention through three interfaces at the same candidate-action boundary: explicit safety judgment, checkpoint candidate admission, and open first-action selection. All six backbones show lower aggregate sensitivity under open first-action selection than under judgment, but the change is not a uniform attenuation: across 24 model-factor cells, Spearman agreement falls from 0.817 between judgment and checkpoint admission to 0.470 between judgment and open first-action selection, while pairwise ordering disagreement rises from 18.5% to 32.6%. A follow-up 2x2 first-response experiment shows that a checkpoint-style protocol increases measured sensitivity in all six backbones by 8.4-29.3 percentage points, whereas action-space effects and their interactions with protocol vary in magnitude and direction across models. These results show that the response interface is part of the measured quantity: judgment and action interfaces share safety signal, but do not provide interchangeable measurements of how safety-relevant facts shape model responses."
+      },
+      "hash": "a5c7950e6dce74eb50fe9e3984f8d1c25503b8dadd507c87a404e84f1870a53c",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.35879": {
+      "entry": {
+        "arxiv_id": "2609.35879",
+        "version": 1,
+        "title": "CruxBench: A Benchmark of Information Discovery",
+        "authors": [
+          "Hui Dai",
+          "Lina Piao",
+          "Nick Merrill",
+          "Nadja Flechner",
+          "Ezra Karger",
+          "Haifeng Xu"
+        ],
+        "published": "2026-09-26T23:28:29Z",
+        "updated": "2026-09-26T23:28:29Z",
+        "abstract": "Benchmarks for large language models (LLMs) typically evaluate the accuracy of answers against fixed reference labels. But a central step in many complex real-world tasks is identifying which questions are worth asking in the first place: decomposing a difficult problem into subquestions -- which we call cruxes -- whose answers provide key steps on the path toward solving the target problem. To evaluate this capability of information discovery, we introduce CruxBench, a benchmark that grades LLM-generated questions by their Value of Information (VOI): how much a model-proposed crux updates beliefs about a target forecasting question. CruxBench enjoys a rare combination of three key properties: it is (1) contamination-resistant by construction, since ground truth is generated by future world events; (2) open-ended, admitting unbounded and complex text-based submissions rather than one correct numeric answer; and (3) grounded, with informativeness measured against quantified changes in real-world beliefs. We evaluate a diverse set of eight models on 293 target forecasting questions and find that VOI correlates highly with independent measures of model capability (r=0.90) and captures cruxes' usefulness for answering target questions. However, information discovery remains challenging even for frontier LLMs, which only narrowly outperform a random-timing baseline.",
+        "comment": "NeurIPS 2026"
+      },
+      "hash": "1624e2c310f3fab7eacb9aca875949172b4f442ef3e7fa24fbdf84003e2330dd",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.37488": {
+      "entry": {
+        "arxiv_id": "2609.37488",
+        "version": 1,
+        "title": "FORUM: Frozen Outputs Reconciled Using Model Agreement for Visual Grounding",
+        "authors": [
+          "Taiyo Sato",
+          "Takamasa Sanda",
+          "Keisuke Maeda",
+          "Takahiro Ogawa",
+          "Miki Haseyama",
+          "Shunya Nagashima"
+        ],
+        "published": "2026-09-27T11:33:20Z",
+        "updated": "2026-09-27T11:33:20Z",
+        "abstract": "Frozen multimodal large language models (MLLMs) now solve standard referring expression comprehension with a single prompted call, yet on adversarial benchmarks with same-category distractors and negation, even the largest models are confidently wrong, and resampling repeats the error. Models built from different data and architectures rarely fall for the same confounder, so their agreement is a strong label-free signal of the correct target. We present FORUM, a training-free test-time fusion of frozen MLLMs guided by two fixed geometric rules: agreement-based selection keeps the region supported by the most distinct models, and medoid localization returns an actual member box instead of a coordinate average, so one loose prediction cannot shift the answer. Fusing three open MLLMs, FORUM surpasses the 397B-parameter published reference by a relative 5% in mean accuracy on the adversarial Ref-Adv-s benchmark, and a plain averaging ensemble by 15%. The gains transfer to standard RefCOCO+, and a balanced lineup with no dominant member still surpasses the 397B model by 5%.",
+        "comment": "Accepted by ACCV 2026"
+      },
+      "hash": "df0d32b181439c3f9d60a89f05311a642366e5a69d873cdf121732106f1ebf41",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.37469": {
+      "entry": {
+        "arxiv_id": "2609.37469",
+        "version": 1,
+        "title": "Relevance Is Not Sufficient Evidence: Detecting Evidence Gaps Before Generation in RAG",
+        "authors": [
+          "Suting Chen",
+          "Peichun Hua",
+          "Yunming Xiao"
+        ],
+        "published": "2026-09-27T17:39:51Z",
+        "updated": "2026-09-27T17:39:51Z",
+        "abstract": "Retrieval-augmented generation (RAG) grounds large language models in external sources, but retrieved passages often name the right entities without providing the facts needed to answer. Even when instructed to abstain, 12 generators answer 40.0-99.3% of insufficient-evidence questions. Training generators to abstain ties the decision to model weights, may reward answers recalled from parametric knowledge, and still requires a full generator call. Can sufficiency be judged from the question and evidence alone, before any answer exists? We identify pitfalls in constructing insufficient-evidence tests: removing relevant evidence or pairing evidence with unrelated questions can reveal labels through lexical overlap or evidence position. We build a paired benchmark using substitution, deletion, and question-swap constructions that vary answer support while controlling selected surface features, such as word use. Sufficiency can be judged without generating an answer, but no single signal works across all datasets. We introduce RINSE (Relevance Is Not Sufficient Evidence), which combines three signals: whether every part of the question is covered, whether any passage offers an answer, and whether a small language model reading the passages together judges them sufficient. Across six datasets, RINSE ranks sufficient above insufficient evidence with a score of 0.837 (chance 0.5), exceeding the best of 10 prior methods (0.746) and a frontier model queried through an API (0.784). Its weakest dataset scores higher than any other method's weakest (0.684 vs. 0.676). RINSE runs locally before generation, taking 36.5 ms per question on a single GPU.",
+        "comment": "22 pages, 7 tables, 2 figures"
+      },
+      "hash": "e231db85d70dc8ac0107eaf35ace5f04c23acc4ace8aa691817aea19609f4932",
       "status": "queued",
       "attempts": 0,
       "error": null,
