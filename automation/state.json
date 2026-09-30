@@ -15,7 +15,11 @@
     "14f880dfad109bc470a7": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (ti:agent OR ti:agents OR ti:agentic OR abs:\"LLM agents\" OR abs:\"language agents\" OR abs:\"AI assistants\" OR abs:\"software engineering\" OR abs:\"code generation\" OR abs:\"tool use\" OR abs:\"function calling\")",
       "successful_until": "2026-09-29T16:32:12Z",
-      "active": null,
+      "active": {
+        "since": "2026-09-22T16:32:12+00:00",
+        "until": "2026-09-30T16:25:53Z",
+        "start": 200
+      },
       "last_completed_at": "2026-09-29T16:32:12Z"
     }
   },
@@ -50087,6 +50091,144 @@
       },
       "hash": "cfde6a05d96008f671475fcba53719d316ebbd5ff63fe16c56dbd64c7e90aa51",
       "status": "awaiting_evidence",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.32259": {
+      "entry": {
+        "arxiv_id": "2609.32259",
+        "version": 1,
+        "title": "Prefill-Free Cross-Family KV Cache Transfer for Heterogeneous Multi-Agent LLMs",
+        "authors": [
+          "Vincent-Daniel Yun",
+          "Woosang Lim",
+          "Haneul Yoo",
+          "Sungjoo Yoo",
+          "Murali Annavaram",
+          "Sai Praneeth Karimireddy"
+        ],
+        "published": "2026-09-26T05:30:18Z",
+        "updated": "2026-09-26T05:30:18Z",
+        "abstract": "Recent multi-agent LLM systems increasingly combine heterogeneous models for specialized agent roles. However, text-based communication requires each receiver to prefill shared context already processed by the sender. Reusing the sender's key-value (KV) cache avoids this redundancy, but prefill-free transfer across model families must handle differences in tokenization, model depth, and KV representations. To address these issues, we propose \\textit{HeteroFold}, a prefill-free cross-family KV cache transfer method that keeps both the sender and receiver frozen. HeteroFold aligns model structures, maps the sender cache into the receiver space, and calibrates it to preserve receiver behavior. Across six transfer directions, HeteroFold achieves the best cache-transfer performance on all four long-context benchmarks and most short-context settings. It also matches text-based communication on the multi-agent benchmark. At 32K context length, Llama-3.1-8B$\\rightarrow$Ministral-3-14B transfer is $10.7\\times$ faster than Native Prefill and $1.18$--$1.47\\times$ faster than the state-of-the-art prefill-free baselines, Dense Latent and KV Ridge. These results show that HeteroFold enables efficient cross-family KV reuse without receiver prefill."
+      },
+      "hash": "ffb616e95abe7f2354b8ae5cca27f36fbe7923179de8d2f9d40b047c186ed6e1",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "updated"
+    },
+    "2609.35868": {
+      "entry": {
+        "arxiv_id": "2609.35868",
+        "version": 1,
+        "title": "Is Human-Readable Text Necessary for Effective LLM Fine-Tuning?",
+        "authors": [
+          "Jinhao Zhang",
+          "Zeyu Liu",
+          "Zicheng Yan",
+          "Yunquan Zhang",
+          "Daning Cheng",
+          "Song Tang"
+        ],
+        "published": "2026-09-26T12:39:54Z",
+        "updated": "2026-09-26T12:39:54Z",
+        "abstract": "Is human readability necessary for effective fine-tuning of large language models? We investigate whether model-conditioned training representations can preserve or improve adaptation utility without requiring a human-readable textual form. We propose Desired-Update-Aligned Synthetic Data (DASA), which uses activation-gradient feedback from a frozen reference model to guide the optimization of continuous synthetic input embeddings. Inspired by the role of activation gradients in local risk reduction, DASA targets useful adaptation updates rather than source-text reconstruction or linguistic fluency. The resulting embeddings are used directly for downstream fine-tuning; discrete token projections are employed only for qualitative inspection. Experiments on six models from the Llama and Qwen families, ranging from 1B to 32B parameters, cover six benchmarks spanning knowledge, mathematical reasoning, code generation, and commonsense reasoning. Under matched LoRA adaptation settings, DASA achieves performance comparable to the source natural-language data and surpasses it in multiple configurations, while outperforming GRADMM in most comparisons. Further experiments cover general-domain and task-specialized source data. Under the evaluated synthesis settings, DASA provides a $3.6$--$4.9\\times$ speedup over GRADMM with comparable peak GPU memory."
+      },
+      "hash": "ed5e68de2378f37a68cd7a7133cc73e40dfad090e171c81983fa5ca3411fb5dd",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.35875": {
+      "entry": {
+        "arxiv_id": "2609.35875",
+        "version": 1,
+        "title": "Beyond Symmetric Agents: Cognitive Diversity and Multi-Agent Debate in Small Language Models",
+        "authors": [
+          "Leonardo Ferreira",
+          "Gardenia Liu",
+          "Kaden Zheng"
+        ],
+        "published": "2026-09-26T19:38:16Z",
+        "updated": "2026-09-26T19:38:16Z",
+        "abstract": "Multi-agent debate (MAD) reportedly improves reasoning and factuality over single-model inference, but prior work treats agents as symmetric peers, leaving open what drives the gains. We test the hypothesis that cognitive diversity among agents is the driver, in the setting where the question is still measurable: small open-weight models with benchmark headroom. Across 23 models from eleven vendor families, five tasks, and 5,500+ debate and control runs, we vary diversity along three axes - personas, sampling temperature, and model identity - pairing every debate configuration with a generation-budget-matched majority-vote control. The hypothesis is rejected on every axis. Debate beats single-agent inference (3--7 points where tasks have headroom) but at matched budget conditions it ties or even loses to self-consistency sampling at 1.6$\\times$ the wall-clock and 3.4$\\times$ the token cost. Persona prompting reduces accuracy and a dose-response experiment over each model's full combinatorial persona space shows the cost is a persona tax, not a diversity tax: redundant personas hurt most, while maximally-diverse teams recover part of the loss. Furthermore, mixed-model teams lose to majority votes over their own rosters, with accuracy tracking member capability rather than heterogeneity, and nearly all of debate's benefit comes from the first exchange of answers. We further identify a pervasive measurement hazard in which debate transcripts silently overflow serving context windows, whose correction alone moves our debate-versus-sampling comparison from $-1.8$ points to parity. Our results recast reported MAD gains as an ensemble-sampling effect and provide the budget-matched, contamination-checked baseline bar that future debate mechanisms should be required to clear.",
+        "comment": "Submitted to ICLR 2027"
+      },
+      "hash": "e0788d3c97d2f9f52e4ec0572a82562d42e68c439a3ba5f2e37666ce6f97eff6",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.37454": {
+      "entry": {
+        "arxiv_id": "2609.37454",
+        "version": 1,
+        "title": "Governing the Edge: Automating Commercial Property and Casualty Insurance Underwriting via a Hybrid Local-Cloud Multi-Agent Framework",
+        "authors": [
+          "Vivek Kumar Singh",
+          "Gautam Bhowmick"
+        ],
+        "published": "2026-09-26T20:27:55Z",
+        "updated": "2026-09-26T20:27:55Z",
+        "abstract": "Underwriters in commercial Property and Casualty (P&C) insurance spend 30 to 40% of their time on administrative work rather than risk judgment, and a single submission takes about 40 minutes by hand. We present Governing the Edge, a multi-agent framework for that layer, organized around a data-residency constraint: sensitive submission data must not leave the perimeter. Eleven agents and two deterministic control nodes, one a human-escalation interrupt, form a 13-node LangGraph workflow across two tiers. Agents touching raw submissions run locally on Gemma 2, each bound through a tool interface logging every invocation (synthetic stubs in the current prototype); only anonymized scores and non-identifying fields cross to Claude Sonnet in the cloud. Compliance rules are encoded as conditions on graph edges, so a non-compliant submission never reaches pricing. We walk through one full scenario end to end, a commercial auto submission whose principal driver carries serious violations, showing every agent call, every tool invocation, and the resulting routing decision. The framework processes a 40-minute manual submission in a few minutes on a single edge device, dominated by serialized on-device inference. On the hard-stop violation tier the framework enforces every rule correctly and reproducibly, since hard stops are deterministic predicates over fields extracted at temperature 0; overall compliance accuracy across the 20-scenario benchmark is 70%, with the remaining gap concentrated in softer, judgment-based tiers. It keeps a complete audit trail and respects the privacy boundary throughout. We release all code, compliance rules, tool stubs, and synthetic datasets.",
+        "comment": "Accepted at AIxB 2026. 6 pages, 2 figures, 7 tables. Data and Code in github: https://github.com/vsingh45/governing-the-edge"
+      },
+      "hash": "7c8c246eb60eec2faf7cc918a91c33131cc02871e85ed5cff431745d39441c1f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.35886": {
+      "entry": {
+        "arxiv_id": "2609.35886",
+        "version": 1,
+        "title": "Agentic Commerce Bench: Measuring Fraud Detection for Agents That Spend Money",
+        "authors": [
+          "Ankit Srivastava",
+          "Debjyoti Paul"
+        ],
+        "published": "2026-09-27T00:58:39Z",
+        "updated": "2026-09-27T00:58:39Z",
+        "abstract": "AI agents now hold spend authority and settle payments without per-action human confirmation. The resulting loss is often not a security failure: a counterparty with the correct domain, the correct settlement address and a genuinely delivered service can charge more than it should, and no check keyed on identity will see it. We present three artefacts for measuring and reducing that loss. First, a taxonomy of agentic commerce fraud that separates five observation levels (agent reasoning, wire, settlement rail, counterparty, principal) from the request-level and history-level evidence available at each, and records which levels can observe which attacks. Second, Agentic Commerce Bench (ACB), a benchmark of twenty fraud classes generated from production aggregates, 1,647 catalogued service operations and 1,068 settlements, of which six involve a counterparty that is exactly who it claims to be. Third, gordonguard, an open-source detector stack and offline harness with which an operator can audit an agent configuration, replay hostile counterparties without an account, and run the same detectors inline. Calibrating to a stated false-positive budget on clean training traffic gives a 6.5% clean flag rate, replicated across three independent generations, and leaves eight of twenty classes no better than chance. On the four classes a reasoning layer can observe, a widely used agent security scanner run over its jailbreak-detection panel scores zero on all four, while correctly scoring 1.0 on a jailbreak supplied as a control. A measured median payment of $0.007 places a hard constraint on deployment: one human review costs 143 times the value of the payment it examines.",
+        "comment": "12 pages, 4 figures. Code and data: https://github.com/BuildWithGordonAI/agentcommercebench"
+      },
+      "hash": "9f85d868b44a278d914eac2ecd5544c74eea5655ea0aa823060749d97b69813f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.35889": {
+      "entry": {
+        "arxiv_id": "2609.35889",
+        "version": 1,
+        "title": "SINGED: Correct Outputs Do Not Certify Safe Execution in LLM Agents",
+        "authors": [
+          "Xiaoyu Xu",
+          "Zi Liang",
+          "Minxin Du",
+          "Qipeng Xie",
+          "Qingqing Ye",
+          "Yuyuan Li",
+          "Haibo Hu"
+        ],
+        "published": "2026-09-27T06:37:04Z",
+        "updated": "2026-09-27T06:37:04Z",
+        "abstract": "Tool-using language-model agents select and execute third-party artifacts. Different implementations can return the requested output while producing hidden execution effects that task-, attack-, or choice-based evaluations may miss. We study functional counterfeits: implementations that match benign alternatives on the requested output but add an effect forbidden by the task contract. We introduce SINGED (Source Integrity and the Nonidentifiability Gap in Execution Decisions for LLM Agents), a controlled benchmark covering five primary and two held-out task families. It varies displayed rank, evidence depth, decision policy, model release, and agent configuration, while task and process oracles verify the artifact and execution path. Across 7,549 audited trials, the randomized-rank study finds counterfeit execution in 45% (27/60) of rank-one trials and none at later ranks. Cross-candidate comparison eliminates shallow failures and reduces layered failures from 15.7% to 4.2%, but leaves dependency failures; its benefit is uncertain on unseen effects and public-package structures. Moreover, seven releases with no counterfeit executions when benign alternatives are available execute the counterfeit in 55/175 single-source cells after alternatives are removed. SINGED thus exposes a rank-, evidence-, and choice-sensitive outcome-to-execution gap: evaluation must connect correct outputs to execution paths.",
+        "comment": "19 pages, 7 figures"
+      },
+      "hash": "9d43f924830540abce02a7ae45639af6754275aebef24ad73429cc01fa383b58",
+      "status": "queued",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
