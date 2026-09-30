@@ -9,7 +9,11 @@
     "cc0b0cc6cecde53ac5cd": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (abs:\"large language model\" OR abs:\"language models\" OR abs:LLM OR abs:LLMs OR abs:\"foundation models\")",
       "successful_until": "2026-09-29T16:32:12Z",
-      "active": null,
+      "active": {
+        "since": "2026-09-22T16:32:12+00:00",
+        "until": "2026-09-30T16:25:53Z",
+        "start": 200
+      },
       "last_completed_at": "2026-09-29T16:32:12Z"
     },
     "14f880dfad109bc470a7": {
@@ -52525,6 +52529,57 @@
         "abstract": "As agents take on longer and more complex problems, controlling the execution becomes a task in its own right. Each step in the run brings new control choices, like which partial work to build on, whether to start fresh, or when to stop. We introduce agentic meta-reasoning, an inference-time harness that makes these choices an explicit and structured reasoning process. Workers carry out the task-level computation, while a controller consolidates what the run has established, explores next options, assesses what each option is worth under the remaining budget, and dispatches the chosen work with context drawn from persistent memory. Between decisions the controller carries only a compact account of the run rather than replaying its full history. Our baselines span production coding agents and research harnesses, together with a Direct Control Agent using the same workers and compute budget allowance. On ProgramBench, which tests long-horizon agentic capability through program reconstruction, meta-reasoning achieves 71.5% with GPT-5.5 against 58.0% for Codex; with Opus 4.8 it achieves 67.2% against 65.5% for Claude Code. On the other benchmarks, spanning abstract reasoning, multi-domain long-horizon reasoning, and proof generation, it gains between 3.6 and 4.2 points over direct control, averaged across three frontier models. It keeps improving over the tested budget ranges where direct control plateaus, though its overhead can hurt at small budgets. Artifact-graph analysis reveals more reuse of earlier work, higher coverage of correct solutions in most settings, and nonuniform gains in final selection. These results indicate that spending computation on structured control becomes more important as agents scale to longer runs."
       },
       "hash": "07bca72c22dc9fd297b147c6df6e5e352b70d73273a527bbee46bdb5d9a43ba4",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.35831": {
+      "entry": {
+        "arxiv_id": "2609.35831",
+        "version": 1,
+        "title": "Beyond the Context Window: An Adaptive Entropy-Based Routing Framework for Hybrid Retrieval and Long-Context Language Models",
+        "authors": [
+          "Isaac Olufadewa",
+          "Miracle Adesina",
+          "Ezekiel Oladejo",
+          "Owen Adeniyi",
+          "Fadare Fadekemi",
+          "Olamide Oso",
+          "Uthman Babatunde",
+          "Matthew Olawoyin"
+        ],
+        "published": "2026-09-23T16:09:36Z",
+        "updated": "2026-09-23T16:09:36Z",
+        "abstract": "Modern large language models now support context windows of more than one million tokens, which has raised the question of whether retrieval-augmented generation (RAG) is still necessary. Pure long-context (LC) processing is expensive and is known to under-attend to information placed in the middle of long inputs, while pure RAG is fast but bounded by retrieval quality and prone to errors when retrieved chunks are partially relevant or contradictory. We propose the Entropy-Driven Adaptive Router (EDAR), a framework that decides at inference time whether to answer a query from retrieved chunks or to escalate it to full long-context processing. The decision uses the predictive entropy of the token-level probability distribution computed over the first few generated tokens of the RAG response. The entropy threshold is selected on a held-out validation set by sweeping cost against accuracy. Experiments compare EDAR against pure-RAG and pure-LC baselines on LongBench v2 and Infinity-Bench. Predictive entropy correlates strongly with hallucination rate on a held-out set of 2,000 generations (Pearson r = 0.85, 95% CI [0.83, 0.87]). On the long-context benchmarks, EDAR retains 97.4% of the accuracy of the pure long-context baseline while reducing total token expenditure by 70.7%, escalating only 18.2% of incoming queries. The accuracy gap between EDAR and the pure long-context system is not statistically distinguishable from zero at standard sample sizes. Predictive entropy is a useful model-internal signal for routing between RAG and long-context inference, and a threshold-based hybrid system can recover most of the accuracy of long-context models at a small fraction of the cost. The framework does not depend on a specific retriever or LC backbone, and it does not require additional supervision beyond what is normally produced during decoding.",
+        "comment": "11 pages, 2 figures"
+      },
+      "hash": "aefeaf5196e1a4a330cae8b9818318483a345ac5ae13909e1b4e701cc5578eb0",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.35841": {
+      "entry": {
+        "arxiv_id": "2609.35841",
+        "version": 1,
+        "title": "Beyond Rule-Based Mutation Testing: Test-Aware Mutant Generation Using Large Language Models",
+        "authors": [
+          "Nils Kiele",
+          "Zainab Saad",
+          "Zirui Wang",
+          "Steve Drew",
+          "Samira Ebrahimi Kahou"
+        ],
+        "published": "2026-09-24T17:27:18Z",
+        "updated": "2026-09-24T17:27:18Z",
+        "abstract": "Mutation testing evaluates test-suite adequacy by injecting synthetic faults into program code. However, traditional rule-based tools often generate large numbers of trivial, redundant, or equivalent mutants that limit their practical use for identifying gaps in a test suite. While recent large language model (LLM)-based approaches generate more realistic faults, most remain test-blind: The model sees only the source code and cannot reason about what existing tests already cover. We propose test-aware mutant generation, in which an LLM receives the problem statement, canonical solution and base tests in a single prompt, and must generate a nontrivial mutant that passes the base unit tests. We evaluate this approach across a set of five LLMs -- Gemini 3.1 Pro, Gemini 3 Flash, GPT 5.1 Codex Mini, GPT 4.1 Mini, Qwen3-32B -- on the HumanEval and MBPP benchmarks. The extended EvalPlus test suites serve as an automated oracle to verify whether surviving mutants represent genuine bugs. Test-aware prompting yields verified fault rates of 87.7% (HumanEval) and 79.1% (MBPP), meaning these mutants pass all base tests but are caught by the oracle. This vastly outperforms the matched test-blind prompting (which yields only 12.2% and 23.0%, respectively) and the traditional rule-based tool mutmut (4.4% and 5.7%). While fault subtlety (the fraction of extended tests a mutant fails) remains comparable across all three methods, test-awareness minimizes the computational cost per verified fault, compared to test-blind prompting. Exposing an LLM to existing unit tests shifts mutant generation from untargeted bug injection toward effective discovery of weaknesses in an existing test suite. Our work establishes a concrete foundation for future research to scale test-aware mutant generation to production-level environments.",
+        "comment": "20 pages, 7 figures. Accepted to ESEM 2026"
+      },
+      "hash": "54a332add91c48a0697de2acef176b658fe947befb1a76a2da7c737c19c0705f",
       "status": "queued",
       "attempts": 0,
       "error": null,
