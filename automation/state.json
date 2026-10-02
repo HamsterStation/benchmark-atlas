@@ -18,7 +18,7 @@
       "active": {
         "since": "2026-09-23T16:25:53+00:00",
         "until": "2026-10-01T17:03:33Z",
-        "start": 0
+        "start": 200
       },
       "last_completed_at": "2026-09-30T16:25:53Z"
     }
@@ -53640,6 +53640,46 @@
       },
       "hash": "1b4b495a66f7cbe7eb819749205ba6a7ab301fc13c27716c2ce350d500e95216",
       "status": "awaiting_evidence",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.38223": {
+      "entry": {
+        "arxiv_id": "2609.38223",
+        "version": 1,
+        "title": "CATP: Design and Evaluation of Local Agent Authorization and Audit Evidence",
+        "authors": [
+          "Linfeng Zhou"
+        ],
+        "published": "2026-09-28T04:06:20Z",
+        "updated": "2026-09-28T04:06:20Z",
+        "abstract": "A signed authorization record authenticates what a signer asserted, but does not by itself establish that the assertion agrees with the policy and action used for a runtime decision. CATP specifies the bindings needed to carry a local pre-execution decision into offline-verifiable evidence. Its hook commits to the enforcement-time policy and adapter-normalized action and durably records the decision before returning permission. A later receipt binds the record to a self-contained audit export. An implementation for Claude Code and Codex supports an empirical examination of these bindings. Controlled, validly signed counterexamples expose five missing consistency checks; adding them changes acceptance on the same inputs, with all 13 expected outcomes satisfied. A separate probe finds that distinct argument vectors can become the same normalized action before hashing, limiting what even a consistent receipt can establish. Eight scripted runtime cases verify hook delivery and allow/deny behavior; failure tests cover tampering, substitution, replay, concurrency and persistence errors. Median paired hook overhead is approximately 85 ms, and offline verification takes approximately 174 ms end to end on the testbed. The evidence remains conditional on a trusted runtime, monitor, host and signing key. It authenticates a decision about the normalized action, without proving execution truth, complete disclosure or autonomous task utility. The optional Groth16 study covers a narrower circuit predicate; the evaluation does not establish superiority over other systems.",
+        "comment": "13 pages, 1 figure. Code: https://github.com/lfzkoala/catp"
+      },
+      "hash": "2fcd15ff48eb5c2b218ef70d85ba92af8935b5d7c17e876080fae676f3ef8046",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2609.38224": {
+      "entry": {
+        "arxiv_id": "2609.38224",
+        "version": 1,
+        "title": "Separation of Duties for Privileged LLM Agents: A Governed Execution Architecture with Measured Security-Utility Trade-offs",
+        "authors": [
+          "Qishuai Jing"
+        ],
+        "published": "2026-09-28T05:32:17Z",
+        "updated": "2026-09-28T05:32:17Z",
+        "abstract": "Large language model agents are increasingly granted real privileges (executing commands, modifying files, calling APIs), so an agent that errs has already acted. Existing defences concentrate on the agent's inputs, while the path from a candidate action to privileged side effects remains less directly studied. We argue that this path must be governed outside the model, and study an architecture interposing four roles (planner, policy gate, executor, auditor) between agent and operating system. Two choices are central: actions arrive as structured intents, so adjudication never parses shell syntax; and approval is a one-shot credential bound to the exact bytes that will run. We evaluate on a 313-case benchmark across eight variants, with prompt-only baselines from three hosted LLMs on 150 stratified cases, five repetitions (2,250 attempted calls; 2,249 completed). Effective attack success falls from 98.3% under direct execution to 7.7% deployed. Re-execution against the real implementation yields a similar aggregate rate (7.6% over 66 sandbox-evaluable payloads) but substantial case-level disagreement, at a corrected false-denial rate of 11.1%. A substantial final-stage reduction (from 30.8% to 7.7%) is attributable to the operating-system sandbox, and the benchmark found four implementation defects, none by design review.",
+        "comment": "12 pages, 2 figures. Supplementary material and a reproducibility artifact are provided as ancillary files"
+      },
+      "hash": "0ba1eb905e11dfc14c2f3c0956a1d99b6ea797be55a4b65a6e7890db06697c13",
+      "status": "queued",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
