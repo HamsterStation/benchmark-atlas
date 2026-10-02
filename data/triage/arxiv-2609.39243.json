@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2609.39243",
+  "arxivId": "2609.39243",
+  "version": 1,
+  "title": "Right Answer, Wrong Mechanism: Detecting Pernicious Divergence in Causal Interventions",
+  "paperUrl": "https://arxiv.org/abs/2609.39243v1",
+  "assessedAt": "2026-10-02T16:18:52Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "1fafb8f5b0d4bdd318fc9d3d3500b516c9a3da233908fe95afd8da9441b7cb68",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 3,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "报告基线或多个模型的评测",
+    "材料中提供代码或数据链接（未核验内容）",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "We make this question testable by planting hidden pathways inside pretrained language models; the pathways are silent on every benchmark prompt by construction, so which interventions depend on them is known exactly.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.39243v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "Across 72 configurations and 100,800 interventions on GPT-2 small, we find three things. (i) Nearest-neighbour and local-PCA distances at the intervention site, as used in prior work, score below chance (AUROC 0.35-0.47) at picking out interventions that give the right answer through a planted pathway. (ii) Hidden-Pathway Contribution (HPC), a label-free test that clamps downstream units to the regime of natural runs with the same output and measures how much of the decision disappears, flags pathway-dominated interventions with AUROC >= 0.99 when the pathway shows up as unit-level out-of-regime activity, but fails when every unit stays within its natural range, which we identify as the open problem. (iii) Optimised interventions actively seek hidden pathways: on a gender task, DAS routes 90-95% of its successes through planted pathways for three of four families, and a downstream on-manifold penalty cuts this share to under 5% at a cost of 6-11 points of success rate.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.39243v1"
+    }
+  ],
+  "resourceCandidates": [],
+  "declaredVenue": "13 pages, 1 figure, 6 tables. Beiming Liu and Minjie Chen contributed equally",
+  "venueVerified": false,
+  "qualityVerified": false
+}

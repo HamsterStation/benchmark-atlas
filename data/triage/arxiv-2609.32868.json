@@ -2,16 +2,16 @@
   "schemaVersion": 1,
   "id": "arxiv-2609.32868",
   "arxivId": "2609.32868",
-  "version": 2,
+  "version": 3,
   "title": "ASCEND: Personal AI Agents for Autonomous Scientific Computing Across HPC Clusters and GPU Workstations",
-  "paperUrl": "https://arxiv.org/abs/2609.32868v2",
-  "assessedAt": "2026-09-30T16:27:15Z",
+  "paperUrl": "https://arxiv.org/abs/2609.32868v3",
+  "assessedAt": "2026-10-02T16:18:52Z",
   "policyVersion": 5,
   "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
-  "materialHash": "96ffbfd59d62cb8075a7e9dc7090babb242c40e416da8a79ea9a8452a0094159",
+  "materialHash": "263fdb0684beb9c3a14ffc0f12259d17a91427e0de681edbc94ae20a8577d945",
   "materialScope": "abstract_and_arxiv_metadata",
   "decision": "needs_evidence",
-  "score": 2,
+  "score": 4,
   "scoreMax": 11,
   "reasons": [
     "摘要级证据不足以自动收录，保留材料等待补充"
@@ -19,19 +19,26 @@
   "missingSignals": [
     "明确提出新的评测资料或框架",
     "描述任务、问题或评测环境",
-    "描述评分指标或评测协议",
     "报告基线或多个模型的评测",
     "给出任务规模或覆盖范围",
     "讨论泛化、污染、稳健性或人工核验"
   ],
   "evidence": [
     {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "We report four recorded cases: 1) The agent closed a failure-recovery loop on a planted tensor-device fault, diagnosing, repairing and resubmitting with job-level artifacts preserved. 2) It reproduced the published evaluation of a weather-forecasting model from released forecasts, recovering an evaluation protocol the paper does not fully state and matching the published curves to 2.1 percent on z500 and 2.4 percent on t850. 3) It parallelized a released 12,693-line geophysical solver under a requirement of bit-for-bit identity with the serial build, cutting runtime from about twelve hours to two. 4) That requirement exposed two instances of undefined behaviour in the solver; both were repaired and reported upstream.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.32868v3"
+    },
+    {
       "signal": "resource_link",
       "label": "材料中提供代码或数据链接（未核验内容）",
       "weight": 2,
       "excerpt": "https://github.com/jpliu168/ASCEND",
       "source": "arxiv_comment",
-      "sourceUrl": "https://arxiv.org/abs/2609.32868v2"
+      "sourceUrl": "https://arxiv.org/abs/2609.32868v3"
     }
   ],
   "resourceCandidates": [

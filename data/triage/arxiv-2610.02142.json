@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2610.02142",
+  "arxivId": "2610.02142",
+  "version": 1,
+  "title": "Keyword Harnesses Fail Open: A Cheap Diagnostic Ladder for Tool-Use Claims in Small Language Models",
+  "paperUrl": "https://arxiv.org/abs/2610.02142v1",
+  "assessedAt": "2026-10-02T16:18:52Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "10bb76cb6089b2989c5b8cbb1e177fa72acb2874c8ddd31b71145ade57603874",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 4,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "报告基线或多个模型的评测",
+    "材料中提供代码或数据链接（未核验内容）",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "Keyword-matching benchmarks can credit small models for tool use they never perform.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.02142v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "A 661.6M parameter model (approx. 65% code/technical text; no dedicated SFT) and a 1,109M model (web-heavy multi-phase curriculum; 6B-token tool-SFT) share decoder, tokenizer, and special tokens, scoring almost identically on lenient tool-use metrics (B4: 0.660 vs. 0.650).",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.02142v1"
+    },
+    {
+      "signal": "scale_or_coverage",
+      "label": "给出任务规模或覆盖范围",
+      "weight": 1,
+      "excerpt": "Verbatim-reproduction checks on training examples separate them completely: the 600M emits valid tool calls with generalized arguments on 6/6 examples; the 1B does so on 0/6 across checkpoints.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.02142v1"
+    }
+  ],
+  "resourceCandidates": [],
+  "declaredVenue": "24 pages, 12 tables, preprint",
+  "venueVerified": false,
+  "qualityVerified": false
+}

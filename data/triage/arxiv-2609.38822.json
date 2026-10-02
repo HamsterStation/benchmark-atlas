@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2609.38822",
+  "arxivId": "2609.38822",
+  "version": 1,
+  "title": "SkillSeek: Revisiting Agent Skill Retrieval at Marketplace Scale",
+  "paperUrl": "https://arxiv.org/abs/2609.38822v1",
+  "assessedAt": "2026-10-02T16:18:52Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "c4829b2a509cf9cc32310f4fa2629507e185dc25c909856878b72508a89a3fc2",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 6,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "The standing answer in the literature outsources selection to the agent itself: an LLM-mediated retrieval loop that rewrites queries and refines candidates inside the agent's decision loop, paying LLM tokens on every task.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.38822v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "Across a $4 \\times 11$ grid of pool, backbone, and method on the 89-task SkillsBench benchmark, SkillSeek reaches observed parity with the LLM-mediated loop of Liu et al. at essentially no extra cost: plain bm25 alone records a pass rate at or above their refined loop on three of four settings, and a small cross-encoder covers the remaining difference on the fourth.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.38822v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "A first-stage recall ceiling explains the pattern, and total per-trial spend drops from USD 51.30 to USD 27.54 (within fifty cents of the no-skill baseline).",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2609.38822v1"
+    },
+    {
+      "signal": "resource_link",
+      "label": "材料中提供代码或数据链接（未核验内容）",
+      "weight": 2,
+      "excerpt": "https://github.com/guanqun-yang/SkillSeek",
+      "source": "arxiv_comment",
+      "sourceUrl": "https://arxiv.org/abs/2609.38822v1"
+    }
+  ],
+  "resourceCandidates": [
+    "https://github.com/guanqun-yang/SkillSeek"
+  ],
+  "declaredVenue": "Accepted at AACL-IJCNLP 2026. Code at https://github.com/guanqun-yang/SkillSeek",
+  "venueVerified": false,
+  "qualityVerified": false
+}
