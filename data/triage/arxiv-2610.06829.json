@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2610.06829",
+  "arxivId": "2610.06829",
+  "version": 1,
+  "title": "CLIFT: Conformal Self-Verification for Web Agent Training and Test-Time Scaling",
+  "paperUrl": "https://arxiv.org/abs/2610.06829v1",
+  "assessedAt": "2026-10-06T09:02:52Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "f9be39b213de6d9b6f2bdedfc63807938673aaf66958ee7c3dda8670d5d14ce4",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "excluded",
+  "score": 2,
+  "scoreMax": 11,
+  "reasons": [
+    "未找到 LLM / Agent 评测对象与基准主题的共同证据"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "描述评分指标或评测协议",
+    "材料中提供代码或数据链接（未核验内容）",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "Open-source web agents are now strong enough to execute realistic browser tasks, but training them with reinforcement learning still depends on weak supervision: binary task success is too sparse for credit assignment, while frontier-language-model judges are too expensive to call at every step and cannot be assumed available at deployment.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.06829v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "During training, the agent answers natural-language verification questions about its own rollouts; a Compositional Conformal Certifier keeps only question signals whose URL-conditional evidence agrees with a training-time judge, assigns signed trust weights through polarity-aware lift, and blends the resulting verifier score into per-step rewards in a way that never subtracts from the judge baseline.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.06829v1"
+    }
+  ],
+  "resourceCandidates": [],
+  "declaredVenue": null,
+  "venueVerified": false,
+  "qualityVerified": false
+}

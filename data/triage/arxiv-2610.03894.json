@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2610.03894",
+  "arxivId": "2610.03894",
+  "version": 1,
+  "title": "Proxy Confidence: Auditing Black-Box LLM Agents with a Surrogate's Log-Probabilities",
+  "paperUrl": "https://arxiv.org/abs/2610.03894v1",
+  "assessedAt": "2026-10-06T09:02:52Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "213475e229e817f4b4c0f1b0b29a0194928016d135b54203aaf0ec8dce0cee46",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 3,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "报告基线或多个模型的评测",
+    "材料中提供代码或数据链接（未核验内容）",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "On difficult coding tasks it reaches AUROC 0.825 where the actor's stated confidence is near chance (0.598), and the generative readouts beat it by +0.07 to +0.28 across three further actors.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.03894v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "The signal drives two deployment modes: a real-time gate escalating the least-trustworthy calls for review (+0.05 to +0.30 accepted-action accuracy at 50% coverage), and confidence feedback, returning the tool result with the score so the agent adapts its next step -- lifting task success on live-execution benchmarks (+0.119 and +0.137, p <= 1e-4) and beating a random-value control where step errors are silent (+0.078, p = 0.003).",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.03894v1"
+    }
+  ],
+  "resourceCandidates": [],
+  "declaredVenue": "20 pages, 6 figures, 12 tables",
+  "venueVerified": false,
+  "qualityVerified": false
+}

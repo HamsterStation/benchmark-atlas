@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2610.03792",
+  "arxivId": "2610.03792",
+  "version": 1,
+  "title": "What Do Verifiable Rewards Teach Video-Language Models About Time? A Controlled Multi-Model Study",
+  "paperUrl": "https://arxiv.org/abs/2610.03792v1",
+  "assessedAt": "2026-10-06T09:02:52Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "d6e6b544ddad8ce887ecfb582270195bbd24e5f59ef018c43ca397a16d936d9c",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 4,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "报告基线或多个模型的评测",
+    "材料中提供代码或数据链接（未核验内容）",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "Reinforcement learning from verifiable rewards (RLVR) has produced large reasoning gains in language models, and verifiable video benchmarks make it applicable to causal-temporal video question answering.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.03792v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "Each cell is evaluated in-domain and on out-of-domain real video (a NExT-QA temporal stress set and an MVBench subset), with frames in order, shuffled, and absent. (1) Verified training yields large in-domain gains that shrink as base competence grows (+14 to +19 points on weaker models; +6 on the strongest). (2) Much of the gain is non-visual: accuracy with no frames rises nearly as much as with frames. (3) Verified-only training can severely degrade out-of-domain accuracy with no sign during training: Qwen3-VL-8B loses 26.7 and 25.2 points on the two real-video sets, while the mixture never significantly degrades a model trained on it.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.03792v1"
+    },
+    {
+      "signal": "scale_or_coverage",
+      "label": "给出任务规模或覆盖范围",
+      "weight": 1,
+      "excerpt": "We fine-tune four open models (Qwen3-VL-8B/4B, Qwen2.5-VL-7B, Gemma-3-12B) with group relative policy optimization under three data recipes: verified (synthetic CLEVRER questions with exact answer and event-order rewards), unverified (self-supervised pretext tasks over 43,751 real web videos), and a 1:1 mixture, plus a verified+real arm that adds 4,000 verifiable questions on real video.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.03792v1"
+    }
+  ],
+  "resourceCandidates": [],
+  "declaredVenue": "8 pages, 3 figures. Submitted to WACV 2027",
+  "venueVerified": false,
+  "qualityVerified": false
+}
