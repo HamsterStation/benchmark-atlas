@@ -8,13 +8,9 @@
     },
     "cc0b0cc6cecde53ac5cd": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (abs:\"large language model\" OR abs:\"language models\" OR abs:LLM OR abs:LLMs OR abs:\"foundation models\")",
-      "successful_until": "2026-10-05T09:07:38Z",
-      "active": {
-        "since": "2026-09-28T09:07:38+00:00",
-        "until": "2026-10-06T09:01:26Z",
-        "start": 800
-      },
-      "last_completed_at": "2026-10-05T09:07:38Z"
+      "successful_until": "2026-10-06T09:01:26Z",
+      "active": null,
+      "last_completed_at": "2026-10-06T09:01:26Z"
     },
     "14f880dfad109bc470a7": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (ti:agent OR ti:agents OR ti:agentic OR abs:\"LLM agents\" OR abs:\"language agents\" OR abs:\"AI assistants\" OR abs:\"software engineering\" OR abs:\"code generation\" OR abs:\"tool use\" OR abs:\"function calling\")",
@@ -67199,6 +67195,96 @@
         "comment": "Accepted at URAI 2026"
       },
       "hash": "c7bce276abd6122bb40aeb1e91b8b782091e7502c29c98a1c5d75edb4f3583a1",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.06679": {
+      "entry": {
+        "arxiv_id": "2610.06679",
+        "version": 1,
+        "title": "Closing the Context Gap: Activation Alignment for Tabular In-Context Learning",
+        "authors": [
+          "Yoel Zeldes"
+        ],
+        "published": "2026-10-05T16:48:02Z",
+        "updated": "2026-10-05T16:48:02Z",
+        "abstract": "Tabular foundation models perform in-context learning (ICL) by conditioning predictions on labeled training examples provided as context. Unlike traditional models that separate training from inference, these models must process all training examples in every forward pass, making each prediction expensive. Restricting the number of training examples reduces this cost but substantially degrades performance. Instead of discarding context, we propose activation alignment, a method that leverages the full context to teach a model how to behave when seeing only a subset. This is achieved by training a lightweight linear transformation on synthetic unlabeled data to map the intermediate activations of a data-constrained \"student\" (using partial context) toward those of a full-context \"teacher\" (using all data). Training the aligner requires no GPU and converges in seconds to minutes on commodity hardware. We evaluate on 38 classification datasets from the TabArena benchmark using the leading two tabular foundation models, TabPFN-3 and TabFM. Across all context budgets, the aligned student yields broad, statistically significant improvements over the unaligned baseline for both models. In low-data regimes, alignment recovers nearly half of the teacher's predictive advantage. The method provides a practical, low-overhead approach to achieving the inference speed of compact contexts while closing a significant fraction of the performance gap to the full-context teacher.",
+        "comment": "14 pages, 4 figures, 1 table. Code: https://github.com/yoel-zeldes/tabalign"
+      },
+      "hash": "bf3e9a1f40aa0920093dc76ec2555430a9c0f63b45c703cc24cced074bdb0cef",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.06686": {
+      "entry": {
+        "arxiv_id": "2610.06686",
+        "version": 1,
+        "title": "OVAL: Output-Aware Local Page Bases for KV Cache Retrieval",
+        "authors": [
+          "Ashkan Shahbazi",
+          "Chayne Thrash",
+          "Soheil Kolouri"
+        ],
+        "published": "2026-10-05T16:51:21Z",
+        "updated": "2026-10-05T16:51:21Z",
+        "abstract": "Long context inference with large language models becomes increasingly expensive as attention must operate over an ever growing KV cache. Page sparse attention reduces this cost by representing each KV page compactly and retrieving only a subset for each query. Existing retrieval methods are designed to estimate attention scores or page relevance, but their objectives do not directly account for how approximation errors affect the resulting value weighted attention output. We introduce \\method{}, an output aware page encoding derived from the joint structure of keys and values while preserving the key information needed for accurate retrieval. \\method{} is training free and requires no additional value dependent statistics at inference time. Once constructed, its stored representation has the same size and decode time scoring cost as a key only spectral representation. Across long reasoning, long context understanding, and long generation benchmarks, \\method{} consistently improves over the key only spectral baseline and performs competitively with recent KV cache compression and retrieval methods. On long reasoning benchmarks, it achieves strong avg@\\(k\\) performance across model benchmark pairs, while matching or surpassing leading baselines on several long context understanding and generation settings with modest decoding overhead. Code is available at \\url{https://github.com/Ashkan13776/oval-kv}."
+      },
+      "hash": "626cebd9f67750418741151529154f877f847bfdf6041638e21681260c0bd444",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.06751": {
+      "entry": {
+        "arxiv_id": "2610.06751",
+        "version": 1,
+        "title": "MatrixFormer: A Foundation Model for Matrix Completion",
+        "authors": [
+          "Dwaipayan Saha",
+          "Jacob Feitelberg",
+          "Kyuseong Choi",
+          "Raaz Dwivedi",
+          "Anish Agarwal"
+        ],
+        "published": "2026-10-05T17:28:38Z",
+        "updated": "2026-10-05T17:28:38Z",
+        "abstract": "Matrix completion underlies problems from tabular imputation to causal inference, yet existing tabular foundation models treat it as entry-by-entry prediction, repeating context for every target and discarding the matrix's two-dimensional structure. We introduce MatrixFormer, a pre-trained matrix-native transformer that predicts a full distribution for every missing entry in a single forward pass. MatrixFormer is trained entirely on synthetic low-rank and latent-factor matrices under diverse missingness patterns. Applied zero-shot and with the same model weights, MatrixFormer achieves competitive performance on causal inference panel-data tasks, language-model benchmark-score completion, tabular imputation, and recommendation systems matrix completion. These results position MatrixFormer as a general-purpose foundation model for matrix completion.",
+        "comment": "17 pages, 5 figures"
+      },
+      "hash": "0c6defb4ba368baff722e20b5ec1890133615a302e2b4b649a80fddd58f77c51",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.06813": {
+      "entry": {
+        "arxiv_id": "2610.06813",
+        "version": 1,
+        "title": "Less Context, Better Geometry: Masked Geometric Encoder for Robust 3D Foundation Models",
+        "authors": [
+          "Zhimin Shao",
+          "Xijun Liu",
+          "Zhaoliang Zhang",
+          "Yutao Tang",
+          "Abhay Yadav",
+          "Rama Chellappa",
+          "Cheng Peng"
+        ],
+        "published": "2026-10-05T17:55:06Z",
+        "updated": "2026-10-05T17:55:06Z",
+        "abstract": "Recent progress in 3D foundation models has enabled rapid 3D reconstruction and camera calibration by leveraging learned 3D priors from vast amount of spatial data. However, the all-to-all global attention design leads to quadratic complexity and limits long-sequence inference; unconstrained cross-view interactions also can propagate unreliable evidence from occluded or visually similar but geometrically distant views. In this paper, We introduce a Masked Geometric Encoder (MGE), which promotes the learning of robust geometric representations under incomplete cross-view context. During training, MGE strategically drops frame tokens from global attention and distills from a pretrained full-context teacher model. This allows the model to learn an intrinsically richer per-frame representation while providing sufficient intermediate supervision to avoid performance degradation. Through extensive experiments, we show that MGE leads to much stronger performance under occlusion and doppelganger views while retaining high performance on standard benchmarks. Such a richer frame representation also leads to more effective token reduction during inference. To this end, we develop a novel Anchor-Guided Adaptive token merging technique that preserves representative anchor frames while jointly merging redundant tokens from the remaining views. Compared to other efficient inference approaches, we can achieve inference speedup while consistently maintaining higher reconstruction quality, particularly in limited-view settings."
+      },
+      "hash": "1716944e0132a6710c201e031553c869e5e627d4e478992383fdda1678761812",
       "status": "queued",
       "attempts": 0,
       "error": null,
