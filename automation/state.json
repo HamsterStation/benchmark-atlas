@@ -12,7 +12,7 @@
       "active": {
         "since": "2026-09-28T09:07:38+00:00",
         "until": "2026-10-06T09:01:26Z",
-        "start": 400
+        "start": 600
       },
       "last_completed_at": "2026-10-05T09:07:38Z"
     },
@@ -64390,6 +64390,51 @@
         "comment": "Project page: https://onefigureeverycanvas.vercel.app/"
       },
       "hash": "52fb0ae28d4505820d4c8419b838959a84f3b3093f14b02144f9cae2e1d3ea27",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.03792": {
+      "entry": {
+        "arxiv_id": "2610.03792",
+        "version": 1,
+        "title": "What Do Verifiable Rewards Teach Video-Language Models About Time? A Controlled Multi-Model Study",
+        "authors": [
+          "Avyay Sadhu",
+          "Patrick Cooper"
+        ],
+        "published": "2026-09-30T21:42:57Z",
+        "updated": "2026-09-30T21:42:57Z",
+        "abstract": "Reinforcement learning from verifiable rewards (RLVR) has produced large reasoning gains in language models, and verifiable video benchmarks make it applicable to causal-temporal video question answering. We study what RLVR teaches video-language models about time. We fine-tune four open models (Qwen3-VL-8B/4B, Qwen2.5-VL-7B, Gemma-3-12B) with group relative policy optimization under three data recipes: verified (synthetic CLEVRER questions with exact answer and event-order rewards), unverified (self-supervised pretext tasks over 43,751 real web videos), and a 1:1 mixture, plus a verified+real arm that adds 4,000 verifiable questions on real video. Each cell is evaluated in-domain and on out-of-domain real video (a NExT-QA temporal stress set and an MVBench subset), with frames in order, shuffled, and absent. (1) Verified training yields large in-domain gains that shrink as base competence grows (+14 to +19 points on weaker models; +6 on the strongest). (2) Much of the gain is non-visual: accuracy with no frames rises nearly as much as with frames. (3) Verified-only training can severely degrade out-of-domain accuracy with no sign during training: Qwen3-VL-8B loses 26.7 and 25.2 points on the two real-video sets, while the mixture never significantly degrades a model trained on it. Adding real verified questions removes that loss (-2.3 points, within noise of base) and keeps a +9.3 in-domain gain, so the cause is narrow synthetic-only data, not verification. (4) No recipe induces temporal-order grounding: across 41 evaluations the ordered-versus-shuffled gap is indistinguishable from zero in 39 and marginal in two, despite an event-order reward. Verifiable rewards improve benchmark accuracy without temporal understanding. Report no-frame controls, and mix in real video to guard against out-of-domain degradation.",
+        "comment": "8 pages, 3 figures. Submitted to WACV 2027"
+      },
+      "hash": "d6e6b544ddad8ce887ecfb582270195bbd24e5f59ef018c43ca397a16d936d9c",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.03842": {
+      "entry": {
+        "arxiv_id": "2610.03842",
+        "version": 1,
+        "title": "KVE-KD: Key Visual Evidence-Guided Knowledge Distillation for Vision-Language Models",
+        "authors": [
+          "Jianbin Zhang",
+          "Xin Sun",
+          "Shanwen Wang",
+          "Wei Ye",
+          "Susanto Rahardja"
+        ],
+        "published": "2026-10-02T15:59:41Z",
+        "updated": "2026-10-02T15:59:41Z",
+        "abstract": "Knowledge distillation is crucial for deploying vision-language models on resource-constrained devices. However, existing methods typically impose uniform supervision across visual tokens or rely on static token selection, which confuses task-relevant cues with background noise and degrades cross-modal reasoning. To address this limitation, we propose Key Visual Evidence-guided Knowledge Distillation (KVE-KD), a framework that dynamically focuses feature distillation on task-relevant visual tokens identified by the teacher model. Specifically, KVE-KD appoints the final pre-generation textual token as a unified semantic anchor and identifies the target cross-modal fusion layer by analyzing changes in the anchor representation through iterative visual-token contribution removal. Within this layer, KVE-KD ranks visual tokens via the anchor-conditioned attention distribution and selects the most informative visual tokens as key visual evidence with normalized entropy. The key visual evidence subsequently guides focused visual feature distillation, making the student align closely with the teacher's task-relevant visual representations while suppressing irrelevant background information. Extensive experiments on six benchmarks demonstrate that KVE-KD outperforms state-of-the-art cross-modal distillation methods, with particularly pronounced gains on tasks requiring complex reasoning and fine-grained visual understanding. Importantly, these improvements are achieved without introducing any inference-time overhead. The source code is available at https://github.com/zhangjianbin07/KVE-KD.",
+        "comment": "10 pages, 8 figures"
+      },
+      "hash": "33c4ec5a971e6355d0914aa4636b5354825dfb759c7f7372a64823c70242574d",
       "status": "queued",
       "attempts": 0,
       "error": null,
