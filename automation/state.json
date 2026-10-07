@@ -15,7 +15,11 @@
     "14f880dfad109bc470a7": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (ti:agent OR ti:agents OR ti:agentic OR abs:\"LLM agents\" OR abs:\"language agents\" OR abs:\"AI assistants\" OR abs:\"software engineering\" OR abs:\"code generation\" OR abs:\"tool use\" OR abs:\"function calling\")",
       "successful_until": "2026-10-06T16:50:11Z",
-      "active": null,
+      "active": {
+        "since": "2026-09-29T16:50:11+00:00",
+        "until": "2026-10-07T17:26:44Z",
+        "start": 200
+      },
       "last_completed_at": "2026-10-06T16:50:11Z"
     }
   },
@@ -65557,6 +65561,79 @@
       },
       "hash": "1716944e0132a6710c201e031553c869e5e627d4e478992383fdda1678761812",
       "status": "awaiting_evidence",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.06905": {
+      "entry": {
+        "arxiv_id": "2610.06905",
+        "version": 1,
+        "title": "ElecSafety: Diagnosing Large Language Model Safety Judgments for Microcontroller Boards",
+        "authors": [
+          "Linjian Yang",
+          "Xinyan Wang",
+          "Kunpeng Liu"
+        ],
+        "published": "2026-10-01T04:39:15Z",
+        "updated": "2026-10-01T04:39:15Z",
+        "abstract": "Large language models (LLMs) progressively support embedded hardware development, but a plausible recommendation may pose safety risks when acting on the physical hardware. Because electrical safety can be different between every microcontroller board, a practical question is raised: can LLMs have the capability to make the right decision on whether a proposed user operation is safe for the board? Although benchmarks for embedded development exist, they primarily target code generation and hardware design tasks. This highlights the lack of tested board-specific judgment regarding electrical safety. To address this gap, we introduce the ElecSafety benchmark to evaluate whether an LLM can respond with the correct label and derive that label from the proper manufacturer constraints and rules. We extract these constraints from vendor datasheets and hardware manuals. Each scenario is defined by a decisive condition and a gold label (safe, hazardous, or cannot determine) before translating the scenario into natural language. We categorize the scenarios into violation and compliant cases, board-swap, near-boundary, and missing-information. We then evaluated the scenario on six open-weight LLMs under various conditions of rule access and token limitations. The finding shows board rules can improve accuracy, whereas limiting the token has a smaller impact. Even the best configuration remains unreliable on near-boundary and missing-information scenarios, and a correct label often rests on the inaccurate constraints."
+      },
+      "hash": "798374a685335b2788cb9dbf00fe13cd0bb1f0696f9d0c0b11db2ba6c1e3d6da",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.06910": {
+      "entry": {
+        "arxiv_id": "2610.06910",
+        "version": 1,
+        "title": "GAMEGO: Training Game-Dev Agents with Synthetic Trajectories Anchored in Real-World Assets",
+        "authors": [
+          "Haoyue Yang",
+          "Jingyao Li",
+          "Zhengfan Wu",
+          "Jing Liu",
+          "Xuanle Zhao",
+          "Kang Liu"
+        ],
+        "published": "2026-10-02T17:05:07Z",
+        "updated": "2026-10-02T17:05:07Z",
+        "abstract": "Recent advances in Large Language Models (LLMs) have demonstrated remarkable capabilities in web front-end execution, with browser-based game generation emerging as a particularly prominent frontier. While previous efforts frequently rely on complex multi-turn workflows or focus on static game evaluation benchmarks, this work targets direct end-to-end real-world game synthesis driven by coding agents. However, generating complex games directly from sparse user queries often forces coding agents to make underspecified assumptions, yielding incomplete mechanics, disconnected gameplay flows, and limited visual aesthetics. To resolve this issue, this paper presents GameGo, a scalable framework that systematically transforms brief game seeds into comprehensive Product Requirements Documents grounded in industry game-development practices. To retain core gameplay constraints without restricting design exploration, GameGo uses task-specific dynamic compression to maximize information density while preserving instruction following. Based on this pipeline, GameGoData is constructed with 55,060 development trajectories across 2D, 2.5D, and 3D games, alongside GameGoBench, a benchmark comprising 124 diverse game queries. Training GameGoCoder on GameGoData yields a model that outperforms matched baselines and is comparable to frontier models across gamedev benchmarks. All code, datasets, and models will be made publicly available."
+      },
+      "hash": "94e563a6308806bc9665cea751f8dc010c3bff4a089090d6db9da0aee8b65819",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.06966": {
+      "entry": {
+        "arxiv_id": "2610.06966",
+        "version": 1,
+        "title": "APEX: Active Protection at Execution Boundaries for LLM Agents",
+        "authors": [
+          "Xinran Zheng",
+          "Xin Fan Guo",
+          "Zhiqiang Hao",
+          "Fan Yang",
+          "Xingzhi Qian",
+          "Jiawei Du",
+          "Jinfeng Xu",
+          "Zheng Xing",
+          "Shuo Yang",
+          "Xingjun Wang"
+        ],
+        "published": "2026-10-03T17:53:29Z",
+        "updated": "2026-10-03T17:53:29Z",
+        "abstract": "Indirect prompt injection (IPI) hides adversarial instructions in content that large language model (LLM) agents read at runtime. As agents compose heterogeneous capability units, including Tools, MCP servers, and Skills, the carriers of injection multiply, and defenses built to recognize attack patterns fall behind them. We instead shift defense from covering attack patterns to one stable point: whatever the carrier and however the injection propagates, harm materializes only at the \\emph{execution boundary}, where the agent turns internal state into an external action or released output. Safety there turns on two conditions, both settled by the trusted task rather than by the run: whether the proposed effect is authorized, and whether the runtime information reaching it is endorsed by that task. We present APEX, an active defense that enforces both at this boundary from a single authorization contract compiled before untrusted execution: \\emph{evidence-gated prevention} admits an effect only when the contract justifies it, while \\emph{deception-based exposure} makes unendorsed use reveal itself before the effect commits. Protection therefore follows from what the task permits rather than from how an attack is built, and applies uniformly across capability units without attack-specific policies or taint tracking. Against 13 baselines, APEX attains 0\\% attack success on five of six benchmarks and 0.56\\% on the sixth, holds 0\\% under adaptive attacks on all three capability-unit types, and remains effective across defender backbones. Code is available at https://github.com/ZhengXR930/APEX_official/tree/official."
+      },
+      "hash": "bbc44ed45639ed0b46c5bce403816994db0b0bd0a8bfe69222d6bee6bec79b24",
+      "status": "queued",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
