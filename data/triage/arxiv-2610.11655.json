@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2610.11655",
+  "arxivId": "2610.11655",
+  "version": 1,
+  "title": "Harness Evolution Hits a Ceiling: When Weight Training Should Begin",
+  "paperUrl": "https://arxiv.org/abs/2610.11655v1",
+  "assessedAt": "2026-10-09T17:02:04Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "adee8148bf15cc9cf7c26e6abf40df154659949149d285f901630b857a98db83",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 4,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "报告基线或多个模型的评测",
+    "材料中提供代码或数据链接（未核验内容）",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "LoRA adapters trained on evolved-harness trajectories internalise the gain: under the original harness they add +0.13 on held-out tasks for both sizes; on 4B they stack with the harness to more than double the held-out score, and on 9B the adapter alone matches the full evolution line, cutting content failures from a quarter of trajectories to one in twenty.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.11655v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "On DeepPlanning, a self-evolving harness loop lifts the held-out score of Qwen3.5-4B from 0.16 to 0.30 and of Qwen3.5-9B from 0.32 to 0.44; for 4B, held-out delivery rises from 55% to 90% while content failures are left for the weights.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.11655v1"
+    },
+    {
+      "signal": "scale_or_coverage",
+      "label": "给出任务规模或覆盖范围",
+      "weight": 1,
+      "excerpt": "The loop transfers to WebArena-Lite (+0.09 on 117 unseen tasks), where the gain lives in what the model sees and adapters do not add to it.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.11655v1"
+    }
+  ],
+  "resourceCandidates": [],
+  "declaredVenue": "21 pages, 7 figures, 15 tables",
+  "venueVerified": false,
+  "qualityVerified": false
+}
