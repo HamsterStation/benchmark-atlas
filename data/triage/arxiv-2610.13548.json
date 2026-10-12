@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2610.13548",
+  "arxivId": "2610.13548",
+  "version": 1,
+  "title": "Auditing VLM Benchmarks from Existing Evaluation Runs",
+  "paperUrl": "https://arxiv.org/abs/2610.13548v1",
+  "assessedAt": "2026-10-12T19:50:22Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "70fc12cb7590ab52beccafd6c6e83e994781c65589b8f74ec0db2d489fa5cbea",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 6,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "报告基线或多个模型的评测",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "Every evaluation run of a vision-language model (VLM) already produces per-question artifacts (predictions, judged correctness, metadata) that leaderboards reduce to a single score and then discard.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.13548v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "Auditing MMStar, a benchmark curated specifically so that the image is indispensable, with three models, we find zero aggregate accuracy gain from the image on 20.2% of its questions.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.13548v1"
+    },
+    {
+      "signal": "scale_or_coverage",
+      "label": "给出任务规模或覆盖范围",
+      "weight": 1,
+      "excerpt": "A second detector flags 134 questions on which every model that answered in parseable form picked the same non-gold option, and these candidates peak in the perception categories, whereas the zero-gain excess is largest in mathematics and science & technology.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.13548v1"
+    },
+    {
+      "signal": "resource_link",
+      "label": "材料中提供代码或数据链接（未核验内容）",
+      "weight": 2,
+      "excerpt": "https://github.com/avos-rnd/vlm-bench",
+      "source": "arxiv_comment",
+      "sourceUrl": "https://arxiv.org/abs/2610.13548v1"
+    }
+  ],
+  "resourceCandidates": [
+    "https://github.com/avos-rnd/vlm-bench"
+  ],
+  "declaredVenue": "11 pages, 5 figures. Accepted at the NeurIPS 2026 Workshop TAE (Trust-AI-Eval): Can We Trust AI Evaluation? (non-archival). Code and artifacts: https://github.com/avos-rnd/vlm-bench",
+  "venueVerified": false,
+  "qualityVerified": false
+}
