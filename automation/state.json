@@ -9,7 +9,11 @@
     "cc0b0cc6cecde53ac5cd": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (abs:\"large language model\" OR abs:\"language models\" OR abs:LLM OR abs:LLMs OR abs:\"foundation models\")",
       "successful_until": "2026-10-13T17:36:56Z",
-      "active": null,
+      "active": {
+        "since": "2026-10-06T17:36:56+00:00",
+        "until": "2026-10-15T07:29:03Z",
+        "start": 200
+      },
       "last_completed_at": "2026-10-13T17:36:56Z"
     },
     "14f880dfad109bc470a7": {
@@ -80367,6 +80371,31 @@
         "abstract": "Training language agents is bottlenecked by the high cost of long-horizon rollouts, yet standard agentic reinforcement learning (RL) learns only from a terminal scalar reward, leaving the supervision in intermediate steps largely unused. Prior work exploits this supervision through value targets that estimate per-step success probabilities or observation targets that fit environment response. Both are hard to construct well: (1) value targets come from the same single scalar signal for each step in the trajectory, and (2) observation targets, such as web pages and terminal logs, are long and noisy and reach only one step ahead. We propose \\name, which adds a third kind of multi-step action targets. On successful on-policy trajectories, \\name trains the policy backbone to generate the action sequences that follows each history. Each action is also supervised when forecast from the preceding histories, forming a temporal ensemble that the shared backbone absorbs during training, and this enables acting and forecasting to co-evolve. The policy still acts one step at a time at inference, with no overhead. Across five benchmarks (ALFWorld, ScienceWorld, WebShop, $τ^2$-bench, and AppWorld), \\name (1) achieves stronger aggregate performance than GRPO and RL baselines with predictive auxiliary targets across simulated environments, while improving overall performance on both realistic applications; (2) delivers up to $1.9\\times$ and $2.0\\times$ higher sample efficiency than ECHO and GRPO, respectively, on ScienceWorld; and (3) achieves these gains with a single policy backbone, without additional models, separate pretraining, or inference overhead. The codebase is available at https://github.com/ulab-uiuc/CoPE."
       },
       "hash": "69e4dc034919c18b8d04046aadc29c579c171ba2ee42736a414e385529c078a4",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.14082": {
+      "entry": {
+        "arxiv_id": "2610.14082",
+        "version": 1,
+        "title": "SenseWeather: Multimodal Sensing for Robust Robotic Perception under Extreme Conditions",
+        "authors": [
+          "Fucai Ke",
+          "Sukai Huang",
+          "Junyi Hao",
+          "Kal Backman",
+          "Naim Rastgoo",
+          "Gholamreza Haffari",
+          "Hamid Rezatofighi"
+        ],
+        "published": "2026-10-08T12:56:42Z",
+        "updated": "2026-10-08T12:56:42Z",
+        "abstract": "Robotic perception must remain reliable when extreme environmental conditions severely degrade the primary RGB observation. Although robotic platforms commonly carry complementary sensors such as depth and infrared, much of the modern perception stack remains RGB-centric, creating a mismatch between multimodal onboard sensing and pretrained downstream models. We study whether complementary sensing can be used upstream to recover a task-compatible RGB observation that preserves existing perception capabilities without modifying or retraining the downstream stack. To this end, we introduce SenseWeather, a controlled multimodal benchmark for robotic perception under severe rain, snow, dust, fog, and darkness, with registered RGB, depth, and infrared observations, clean references, and grounded high-level perception tasks. We further develop Fusion-to-RGB, with two parameter-efficient sensor-fusion realizations based on token-space fusion for a diffusion transformer and residual latent conditioning for an inpainting UNet. Across frozen open-vocabulary grounding and vision-language models, RGB+D+IR fusion improves all paired downstream comparisons over the corresponding RGB-only restorers, including AP50 gains across all ten detector comparisons. Importantly, these perception gains do not consistently follow conventional image-fidelity metrics, and increasing weather severity does not induce monotonic downstream degradation. These results show that complementary sensing can preserve reusable robotic perception under extreme conditions, while highlighting task-level perception robustness as an objective distinct from visual restoration quality."
+      },
+      "hash": "82adf9b246f66f042f0d80fabb34d54a55b0d0b2431b4eed16962b0d7d515b7f",
       "status": "queued",
       "attempts": 0,
       "error": null,
