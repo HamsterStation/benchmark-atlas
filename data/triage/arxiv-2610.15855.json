@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2610.15855",
+  "arxivId": "2610.15855",
+  "version": 1,
+  "title": "Attention Sinks in VLMs Are Borrowed, Not Seen",
+  "paperUrl": "https://arxiv.org/abs/2610.15855v1",
+  "assessedAt": "2026-10-15T07:30:10Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "865037da0d2c3b2233baaf8d3ff687c7985a3bfeabeb82b116eecb7f2ec0ccbd",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 4,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "材料中提供代码或数据链接（未核验内容）",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "Visual attention sinks are image tokens that absorb a large share of attention over the image regardless of the query or task, and they mislead methods that treat attention maps as a record of where the model ``looked.'' Prior work has detected sinks through massive activation dimensions and proposed redistributing their attention, but none have addressed what makes a token become a sink.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.15855v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "Cleaning adds negligible computation to the forward pass, and the re-look improves accuracy with a mean gain of $+4.3$ points on fine-detail VQA benchmarks across model families.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.15855v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "Comparing six candidate detectors on ten VLMs from four families, we find that only the centered cosine similarity between an image token's key and the key of the language model's text-sink detects visual sinks.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.15855v1"
+    }
+  ],
+  "resourceCandidates": [],
+  "declaredVenue": null,
+  "venueVerified": false,
+  "qualityVerified": false
+}
