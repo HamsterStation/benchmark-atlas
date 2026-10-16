@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2610.22130",
+  "arxivId": "2610.22130",
+  "version": 1,
+  "title": "DropKV: Decoupling Residual-Output Perturbation for Near-Optimal KV-Cache Eviction",
+  "paperUrl": "https://arxiv.org/abs/2610.22130v1",
+  "assessedAt": "2026-10-16T07:14:30Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "6d81eb5fb3c728186b4c22ad8d830fe1f567298c68b7b42fc3b5c0b423b52c0e",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 4,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "材料中提供代码或数据链接（未核验内容）",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "While recent eviction methods have moved beyond simple attention-score heuristics to incorporate value representations, they typically face a fundamental trade-off: the underlying optimization for minimizing output perturbation is an NP-hard combinatorial problem, leading to mathematically suboptimal heuristics or implementations that are difficult to kernelize.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.22130v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "By decoupling the joint eviction decision into independent per-token scoring, DropKV circumvents combinatorial intractability and admits a provable constant-factor approximation guarantee under a cone condition that we empirically verify on three long-context LLMs.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.22130v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "Extensive evaluations on the RULER and LongBench benchmarks demonstrate that DropKV consistently outperforms state-of-the-art baselines at equivalent cache budgets, achieving the lowest inference latency among eviction methods while also remaining faster than the dynamic cache baseline.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.22130v1"
+    }
+  ],
+  "resourceCandidates": [],
+  "declaredVenue": "Accepted by NeurIPS 2026",
+  "venueVerified": false,
+  "qualityVerified": false
+}

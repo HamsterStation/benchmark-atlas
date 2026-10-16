@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2610.22066",
+  "arxivId": "2610.22066",
+  "version": 1,
+  "title": "Prism-1: Position- and Rival-Independent Scoring for System One Models",
+  "paperUrl": "https://arxiv.org/abs/2610.22066v1",
+  "assessedAt": "2026-10-16T07:14:30Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "ce849b490e14ee831b40be6f6fcb4998b5ed63af3df3e0af3da2c9cbc2224129",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 4,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "材料中提供代码或数据链接（未核验内容）",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "We test the standard reads, namely single-choice question (SCQ) prompting, with shuffled-order training, order averaging or sorted options, and invariant set architectures, and find that each violates at least one axiom: one shuffle changes 12-20% of SCQ answers, sorting only freezes an arbitrary convention, and a well-chosen added option steers 4-34% of decisions.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.22066v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "We implement this as Prism-1 (Position- and Rival-Independent Scoring for System One Models): every option is read in its own block at shared positions, with the model's usual left-to-right attention, in one forward pass.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.22066v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "Prism-1 stays within one point of that baseline's accuracy and is 2-4 points more accurate once only answers that survive a reordering are counted, while no shuffle changes any of its answers and no added irrelevant option moves its choice among the others.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.22066v1"
+    }
+  ],
+  "resourceCandidates": [],
+  "declaredVenue": null,
+  "venueVerified": false,
+  "qualityVerified": false
+}
