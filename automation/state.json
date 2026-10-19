@@ -15,7 +15,11 @@
     "14f880dfad109bc470a7": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (ti:agent OR ti:agents OR ti:agentic OR abs:\"LLM agents\" OR abs:\"language agents\" OR abs:\"AI assistants\" OR abs:\"software engineering\" OR abs:\"code generation\" OR abs:\"tool use\" OR abs:\"function calling\")",
       "successful_until": "2026-10-18T07:15:41Z",
-      "active": null,
+      "active": {
+        "since": "2026-10-11T07:15:41+00:00",
+        "until": "2026-10-19T07:49:37Z",
+        "start": 200
+      },
       "last_completed_at": "2026-10-18T07:15:41Z"
     }
   },
@@ -85817,6 +85821,25 @@
       "error": null,
       "next_attempt_at": null,
       "kind": "new"
+    },
+    "2610.16550": {
+      "entry": {
+        "arxiv_id": "2610.16550",
+        "version": 2,
+        "title": "CT0: Cybersecurity Transformer",
+        "authors": [
+          "Víctor Mayoral-Vilches"
+        ],
+        "published": "2026-10-12T10:31:44Z",
+        "updated": "2026-10-15T04:01:50Z",
+        "abstract": "General-purpose frontier models are large, expensive to run, and increasingly reluctant to engage with authorised defensive- and offensive-security work. We ask the opposite question: how small can a cybersecurity-specialist transformer be while remaining genuinely useful to a security practitioner? We introduce CT0, a Cybersecurity Transformer architecture, and CT0-Micro, its first incarnation: a compact (~4B-parameter) model built on the open base model, whose backbone is specialised by two-phase on-policy distillation on our Cybersecurity AI (CAI) dataset. CT0 serves two modes from one set of weights: System 1 answers typed security decisions (is this file suspicious, is this request an attack, did the model just refuse) in a single forward pass without generating a token, System 2 is the usual tool-using agent, and a confidence gate spends generation only where the fast path is unsure. Specialisation lifts the agentic path: CT0-Micro solves 21.1% of cybench-subtask against 7.6% for its base, above every open model of comparable footprint and the densest cybersecurity capability per parameter we measured. The fast path is what the architecture buys: CT0-Micro screens eighty files per second for indicators of compromise, catches its own refusals at 96.5% accuracy in 47 ms where the model judging itself reaches 76.5% in 254 ms and misses half of them, flags jailbreak requests at AUROC 0.966 in 8 ms, and, generating only for the facts it is unsure about, extracts vulnerability facts more accurately than either mode alone at a fifth of the generative cost. All of it is built in about 314 RTX PRO 6000 GPU-hours and served from one workstation GPU, with no policy layer between operator and target. Across eighteen benchmarks and use cases run with one checkpoint and head, we report where the design helps, where it does not, and what it still lacks."
+      },
+      "hash": "e8aa6c7abdc8844bc39a267693f3a9a4aa23c4468e1ebd70be521721ab9161b6",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "updated"
     }
   },
   "seen": {
