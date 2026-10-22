@@ -15,7 +15,11 @@
     "14f880dfad109bc470a7": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (ti:agent OR ti:agents OR ti:agentic OR abs:\"LLM agents\" OR abs:\"language agents\" OR abs:\"AI assistants\" OR abs:\"software engineering\" OR abs:\"code generation\" OR abs:\"tool use\" OR abs:\"function calling\")",
       "successful_until": "2026-10-21T07:42:05Z",
-      "active": null,
+      "active": {
+        "since": "2026-10-14T07:42:05+00:00",
+        "until": "2026-10-22T07:37:51Z",
+        "start": 200
+      },
       "last_completed_at": "2026-10-21T07:42:05Z"
     }
   },
@@ -94638,6 +94642,79 @@
       },
       "hash": "8454dff113a2b7edfaae12c098c63b0830b4775cd86aea78faa70902f86e819e",
       "status": "awaiting_evidence",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.28676": {
+      "entry": {
+        "arxiv_id": "2610.28676",
+        "version": 1,
+        "title": "VHDLBench: Benchmarking and Fine-Tuning Large Language Models for VHDL-Based Chip Design",
+        "authors": [
+          "Patrik Drazic",
+          "Benaoumeur Senouci",
+          "Boualem Benatallah"
+        ],
+        "published": "2026-10-19T12:23:01Z",
+        "updated": "2026-10-19T12:23:01Z",
+        "abstract": "The rapid evolution of digital circuit complexity demands innovative approaches to hardware design automation. While Large Language Models (LLMs) have influenced software development, their application to Hardware Description Language (HDL) generation remains largely unexplored, particularly for VHDL. This paper presents a comprehensive study for AI-assisted digital circuit design, addressing gaps in current Electronic Design Automation workflows. The work introduces a VHDL dataset of 18,500+ syntax-verified examples from open-source repositories and converted Verilog designs. Five 7B-parameter LLMs were fine-tuned using parameter-efficient QLoRA technique, enabling deployment in resource-constrained environments. To evaluate model efficacy, a rigorous three-level pipeline was established: (1) syntax and synthesis validation, (2) functional simulation with testbenches, and (3) FPGA prototyping on Zynq SoCs. Results show fine-tuned models achieve up to 92% syntax correctness and 73% functional accuracy on common design tasks, with DeepSeek-Coder demonstrating the highest performance gains. Generated designs were successfully deployed on real hardware, confirming not only syntactic but operational viability. This work demonstrates that LLMs, when tailored with domain-specific data and lightweight fine-tuning can contribute meaningfully to the future of generative EDA workflows.",
+        "comment": "This paper is a long version of a paper accepted for the 4th International Conference on Foundation and Large Language Models, 2026"
+      },
+      "hash": "b01592d1b3e2672f13e80175097c909fee2b349b9d7655cc3232cfbf032c8f78",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.28678": {
+      "entry": {
+        "arxiv_id": "2610.28678",
+        "version": 1,
+        "title": "Benchmarking the Quantum Leap: Auditing LLM Evaluation for Quantum Code Generation",
+        "authors": [
+          "Ethan Seefried",
+          "Romit Ghosh",
+          "Sharmin Afrose",
+          "Nicholas Stapleton",
+          "Vicente Layton Ortega",
+          "Travis Humble",
+          "Tirthankar Ghosal"
+        ],
+        "published": "2026-10-19T14:52:20Z",
+        "updated": "2026-10-19T14:52:20Z",
+        "abstract": "Large language models (LLMs) can generate quantum programs, but reliable evaluation remains difficult because benchmarks differ in task composition, scoring, and failure handling. We evaluate 15 hosted frontier, open-weight, quantum-specialized, and retrieval-augmented models on five quantum code-generation suites (530 tasks), plus 10 models on our new QuantumBenchEval (QBE) benchmark (96 tasks across six topics). We report bootstrap confidence intervals, multiplicity-adjusted paired comparisons, and audits of output validity and evaluator behavior. QiskitHumanEval-Standard approaches saturation (98.7% pass@1), while its Hard variant retains headroom (63.8%). None of the five top-two comparisons across primary suites remains significant after multiple-comparison correction. Evaluator design substantially changes scores: removing checks for unspecified quantities raises GPT-6 Astra's QBE pass@1 from 0% to 94.1% (T1) and from 1.2% to 92.9% (T6), without changing model outputs. We identify 17 QuanBench-117 tasks with shared failures linked to benchmark-owned imports. Controlled probes also reveal unexecuted unit tests, leakage of canonical functions into candidate execution, and reference imports that block otherwise valid candidates. These defects can produce both false failures and false passes, so historical QuanBench results require revalidation under an isolated evaluator. Overall, leaderboard scores alone do not adequately characterize progress in quantum code generation. We release our harness, per-sample results, and audit artifacts and recommend validating evaluators, isolating candidate code, and reporting uncertainty and output validity.",
+        "comment": "27 pages, 9 Figures, 14 Tables"
+      },
+      "hash": "221aa0ab55bd9558b4267f35a7e8a772854945f1644c56db89dfdd215da16c89",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.28679": {
+      "entry": {
+        "arxiv_id": "2610.28679",
+        "version": 1,
+        "title": "VerifierBench: Benchmarking the Generation of Executable Verifiers for LLM Agents",
+        "authors": [
+          "Jianing Yin",
+          "Ziyi Chen",
+          "Hao Wang",
+          "Yiyou Sun",
+          "Zijian Jin",
+          "Dawn Song",
+          "Daoan Zhang"
+        ],
+        "published": "2026-10-19T17:22:36Z",
+        "updated": "2026-10-19T17:22:36Z",
+        "abstract": "Agents need reliable ways to validate their outputs, both when completing tasks and when filtering synthetic training data. We study verifier generation: from the instruction and environment available for solving a task, an agent writes an executable verifier that must accept every valid solution and reject invalid ones. We introduce VerifierBench, a benchmark of 222 tasks from six agent benchmarks spanning tool-call, state-based, and code verification, with 4,993 hidden test cases that include alternative valid solutions and attacks; Verifier4Verifier (V4V), a six-check audit, screens its source verifiers and test suites. Across 19 models in a common agent harness, normalized balanced accuracy ranges from 10.6 to 62.1, with generated verifiers consistently rejecting invalid solutions more reliably than they accept valid ones. This apparent strength can mask overly restrictive verification: most false rejections in the analyzed records come from verifiers that accept no tested solution to a task. Case studies reveal unsupported assumptions about solution formats, tool use, and code changes that exclude valid solutions. These errors survive self-testing because agents test solutions that share the verifier's mistaken assumptions, or submit verifiers without confirming that any correct solution passes. These findings suggest testing both whether a verifier accepts a correct solution and whether it accepts other solutions permitted by the task. The project page and dataset are publicly available."
+      },
+      "hash": "b721ae23c6f648b1f2e769f2898ef4ee27ee021426d35c553e7891d26ca6f693",
+      "status": "queued",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
