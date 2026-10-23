@@ -15,7 +15,11 @@
     "14f880dfad109bc470a7": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (ti:agent OR ti:agents OR ti:agentic OR abs:\"LLM agents\" OR abs:\"language agents\" OR abs:\"AI assistants\" OR abs:\"software engineering\" OR abs:\"code generation\" OR abs:\"tool use\" OR abs:\"function calling\")",
       "successful_until": "2026-10-22T07:37:51Z",
-      "active": null,
+      "active": {
+        "since": "2026-10-15T07:37:51+00:00",
+        "until": "2026-10-23T07:34:53Z",
+        "start": 200
+      },
       "last_completed_at": "2026-10-22T07:37:51Z"
     }
   },
@@ -96556,6 +96560,56 @@
       },
       "hash": "953557c5a9db72624db733e721d25a8e5eba53a9e86e67d8ddb970f5aa42eac3",
       "status": "awaiting_evidence",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.30167": {
+      "entry": {
+        "arxiv_id": "2610.30167",
+        "version": 1,
+        "title": "IRAH: Hierarchical Agentic Tree Search for Retrieval Pipeline Optimization",
+        "authors": [
+          "Maria Ana Cardei",
+          "Aniket Singh",
+          "Amir Moghadam",
+          "Srividhya Baikadi",
+          "Rashmi Shetty"
+        ],
+        "published": "2026-10-16T17:03:17Z",
+        "updated": "2026-10-16T17:03:17Z",
+        "abstract": "Optimizing Information Retrieval (IR) pipelines for Retrieval-Augmented Generation (RAG) requires jointly selecting structural components and numerical hyperparameters under limited evaluation budgets. We introduce the Information Retrieval Agentic Harness (IRAH), which combines Language Agent Tree Search for IR (LATS-IR) with offline meta-learned initialization. LATS-IR performs UCT-guided hierarchical search, first exploring macro-structural pipeline choices and then refining numerical parameters, with natural-language reflections to guide subsequent mutations and provide inspectable search traces. We evaluate IRAH on three in-distribution benchmarks and one out of-distribution benchmark to assess generalization under distribution shift. Under the same meta-learned initialization, LATS-IR outperforms TPE on two of three in-distribution benchmarks, with gains of up to 6.4%, and remains competitive on the out-of-distribution benchmark. Across all four benchmarks, warm-started IRAH achieves the highest average held-out nDCG@10 (0.4816) and improves over its cold-start counterpart. These results establish IRAH as a competitive approach to retrieval pipeline optimization under constrained evaluation budgets.",
+        "comment": "Under review"
+      },
+      "hash": "654bd755542b8d484e6bb62405e027001fbc69990f5abadbc6e2c1b3dcf966df",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.30184": {
+      "entry": {
+        "arxiv_id": "2610.30184",
+        "version": 1,
+        "title": "Self-Evolving Static Analysis via LLM Pseudo-Labeling",
+        "authors": [
+          "Rui Melo",
+          "Andre Duarte",
+          "Aditya Oke",
+          "Shubham Gandhi",
+          "Nachiket Kotalwar",
+          "Rui Abreu",
+          "Lei Li",
+          "Carolyn Rose"
+        ],
+        "published": "2026-10-20T10:17:26Z",
+        "updated": "2026-10-20T10:17:26Z",
+        "abstract": "Security bugs often slip past static analysis not because they are impossible to detect, but because detection rules have not yet been written for the code in front of us. New frameworks, APIs, and coding idioms continually create such gaps, leaving developers to discover failures and manually encode new rules. We present SESAA, a framework in which an Large Language Model (LLM) agent starts from no rules and iteratively evolves a set of readable and auditable joern queries. The agent receives feedback only from a second LLM critic, which inspects flagged and unflagged code to identify likely false alarms and suspected misses, without access to ground-truth labels. The agent then uses this feedback to revise its queries. On the OWASP Benchmark for Python, SESAA reaches a mean F1 of 0.742 across 8 independent runs, well above the default configurations of five widely used tools and comparable to the strongest of them once it is tuned with access to ground-truth labels that SESAA never sees. In a pilot on real-world Python projects, queries induced from code available before a vulnerability was introduced detect 10 of 19 subsequent CVEs, including 9 detected by rules written for the same repository. The resulting detector is a set of executable, human-readable queries that engineers can inspect, modify, and run independently. These results suggest that LLM agents can turn static-analysis rule maintenance from a manually authored process into an iterative process of automated discovery and repair."
+      },
+      "hash": "885420594e4f3f29d6d3e008fe0aa4e77e25cbc1e536a356c33554dd74aa0468",
+      "status": "queued",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
