@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2610.30206",
+  "arxivId": "2610.30206",
+  "version": 1,
+  "title": "MoEZip: Routing-Aware KV Cache Compression for Sparse Mixture-of-Experts LLMs",
+  "paperUrl": "https://arxiv.org/abs/2610.30206v1",
+  "assessedAt": "2026-10-23T07:36:00Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "489add91580473d09d7279cb662f277e8908b8da918e5566e6a4e833aaa41aba",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 4,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "材料中提供代码或数据链接（未核验内容）",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "Existing KV cache compression methods reduce this cost for dense transformers, but overlook a problem specific to MoE: KV eviction can change which experts are selected during answer generation, degrading the generation quality.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.30206v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "To estimate the sensitivity of expert routing to perturbation, we propose a novel metric based on the Fisher information matrix of routing distributions.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.30206v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "At a KV retention ratio of 10\\%, MoEZip improves over the SoTA baseline by +24 and +20 points on average on LongBench and RULER, corresponding to 2.3$\\times$ and 4.9$\\times$ higher scores, respectively.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.30206v1"
+    }
+  ],
+  "resourceCandidates": [],
+  "declaredVenue": "Annual Conference on Neural Information Processing Systems (NeurIPS) 2026, Accepted",
+  "venueVerified": false,
+  "qualityVerified": false
+}
