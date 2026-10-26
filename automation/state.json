@@ -15,7 +15,11 @@
     "14f880dfad109bc470a7": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (ti:agent OR ti:agents OR ti:agentic OR abs:\"LLM agents\" OR abs:\"language agents\" OR abs:\"AI assistants\" OR abs:\"software engineering\" OR abs:\"code generation\" OR abs:\"tool use\" OR abs:\"function calling\")",
       "successful_until": "2026-10-25T07:37:17Z",
-      "active": null,
+      "active": {
+        "since": "2026-10-18T07:37:17+00:00",
+        "until": "2026-10-26T07:50:04Z",
+        "start": 200
+      },
       "last_completed_at": "2026-10-25T07:37:17Z"
     }
   },
@@ -98397,6 +98401,309 @@
       },
       "hash": "07c012ef1370ab0f8804a7893a1a8fd0c248bcd67793c827d9f408c976929301",
       "status": "awaiting_evidence",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.31707": {
+      "entry": {
+        "arxiv_id": "2610.31707",
+        "version": 1,
+        "title": "RubricCraft: Where Solutions Diverge, Criteria Emerge",
+        "authors": [
+          "Hosein Hasanbeig",
+          "Priyanshu Gupta",
+          "Ashish Tiwari",
+          "Vu Le",
+          "Sumit Gulwani"
+        ],
+        "published": "2026-10-21T21:13:36Z",
+        "updated": "2026-10-21T21:13:36Z",
+        "abstract": "Evaluating language agents on open-ended, artifact-producing tasks is difficult: model-based graders can be inconsistent, while exhaustive programmatic checks are often impractical. Textual rubrics make evaluation criteria explicit, but writing them requires domain expertise. Rubrics generated from task descriptions alone can miss requirements and failure modes that become apparent in attempted solutions. We introduce RubricCraft, which treats rubric construction as the generation of natural-language specifications guided by candidate solutions. Given a task description and independently sampled solver trajectories, RubricCraft compares how each attempt satisfies or violates the task requirements and uses these differences to construct rubric criteria. It applies the criteria to the collected solutions and revises checks that overlook errors or penalize valid alternatives. The resulting rubrics capture partial correctness without requiring any single solution to serve as a complete reference. On SpreadsheetBench v2, against a prompt-only rubric written and applied by the same model, RubricCraft rubrics pass fewer wrong outputs (29.5% against 42.6%), fail none of the outputs the benchmark's own checker accepts, and rank outputs by correctness more often, while separating models as often. Repair on a single attempt leaves grading unchanged, but repair driven by attempts from three model families acts on different tasks, and an evidence audit judges most of those repairs improvements, many on tasks whose reference solution is itself wrong."
+      },
+      "hash": "a01095daca254370703d6bec7e08a8c848920c040f3fc92ef85ecd2eda3d90cc",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.31709": {
+      "entry": {
+        "arxiv_id": "2610.31709",
+        "version": 1,
+        "title": "Mining the Design Space of Multi-Agent Workflows",
+        "authors": [
+          "Xavier Cadet",
+          "Junyan Cheng",
+          "Peter Chin",
+          "Kyle Richardson"
+        ],
+        "published": "2026-10-22T00:31:39Z",
+        "updated": "2026-10-22T00:31:39Z",
+        "abstract": "Designing large language model (LLM) multi-agent systems (MAS) still relies on trial and error and informal \"folk wisdom.\" Manual studies test only a few communication structures or topologies (e.g., sequential, parallel, shared-memory, or debate), while automated optimizers discard search trajectories after selecting a task-specific workflow. We present a two-phase pipeline for mining reproducible design principles from workflow code and execution traces. We repurpose AFlow's MCTS optimizer across six composable operators and 26 deterministically verified Enigmata tasks, retaining all intermediate rounds to build a corpus of 28,568 executable workflows. A sandboxed AutoResearch loop then mines orchestration code and prompt templates under an $L_0$-penalized validation objective and tests candidate principles on held-out searches. Across 300 feature-mining trials, we identify effects that persist on held-out searches across three levels of workflow design: workflows beginning with independent solvers and one-shot aggregation (Star-first) perform worse ($Δ= -0.045$); persistent shared documents (SharedMemory) outperform debate ($Δ= +0.135$); and prompt specificity and placeholder-based context routing yield gains comparable to communication-structure selection ($Δ= +0.118$). More broadly, our pipeline and results show the feasibility of turning discarded search trajectories into a statistical testbed for discovering and validating multi-agent workflow design principles.",
+        "comment": "21 pages, including appendices. Equal contribution: Xavier Cadet and Junyan Cheng. Website: https://junyan.ch/apex-paper/"
+      },
+      "hash": "67e20a3c6b9a283e62bde3b7c3ef447840fcb9d0aad426b28f6658d24c7671e1",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.31711": {
+      "entry": {
+        "arxiv_id": "2610.31711",
+        "version": 1,
+        "title": "MBABench-2.0: Evaluating AI Agents on Constructing Financial Spreadsheets Beyond Simple Verifiability",
+        "authors": [
+          "Julian Poeltl",
+          "Thomson Yen",
+          "Patrick Shea",
+          "Shubham Anil Varma",
+          "Dhruv Rastogi",
+          "Zihao Chen",
+          "Mengshi Zhang",
+          "Hongseok Namkoong"
+        ],
+        "published": "2026-10-22T02:30:05Z",
+        "updated": "2026-10-22T02:30:05Z",
+        "abstract": "Spreadsheets are the lingua franca of modern finance, driving valuation, forecast, audit, and many other core workflows of the industry. As LLM agents advance to automate knowledge work, spreadsheet construction is a natural and pertinent testbed. However, most existing spreadsheet benchmarks evaluate agents on fill-in-the-blank style tasks, where an agent performs minor edits in otherwise complete spreadsheets. This protocol fails to capture the most central and time-consuming part of the spreadsheet workflow: the modeling decisions, format design, and sheet layout regular knowledge workers need to toil through to build a workbook from scratch. We introduce MBABench-2.0, a benchmark of 101 original spreadsheet construction tasks, the hardest of which is estimated to take 33 hours for a modeler with 3+ years of experience. Unlike coding or math, where a unit test or a final answer can verify an agent's output, the quality of a financial spreadsheet that concerns readability, maintainability, or auditability, is not so simply verifiable. To holistically evaluate spreadsheet construction, we introduce 129 criteria spanning 12 categories that operationalize quality beyond the accuracy of the spreadsheet. Evaluating over 20 agents across 8 models and 4 harness types, we find that frontier agents rarely construct spreadsheets that are both accurate and meet our quality criteria: the top agent achieves a pass rate of only 16% on the benchmark. The benchmark demonstrates a substantial gap in spreadsheet building capability of current agents."
+      },
+      "hash": "95dcf901b251fda0309d8fe60d096e4c46ef928c95ae9a1961ebc549efa28a76",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.31743": {
+      "entry": {
+        "arxiv_id": "2610.31743",
+        "version": 1,
+        "title": "Not Every Agent Needs the Strongest Model: Unified Prompt-Model Optimization for Heterogeneous LLM-based Multi-Agent Systems",
+        "authors": [
+          "Mingxiu Cai",
+          "Haoyang Xian",
+          "Xinyu Ma",
+          "Yutong Wang",
+          "Zhenxi Song",
+          "Jing Li",
+          "Xuebo Liu"
+        ],
+        "published": "2026-10-22T17:24:23Z",
+        "updated": "2026-10-22T17:24:23Z",
+        "abstract": "Large language model (LLM)-based multi-agent systems (MAS) rely on role-specific prompts and execution models to solve complex tasks collaboratively. However, prompt optimization typically keeps model assignments fixed, leaving differences in role requirements and their associated inference costs outside the search. We present UniMASO, a Unified framework for heterogeneous Multi-Agent System Optimization through the joint adaptation of prompts and model assignments. UniMASO evaluates candidate updates through local, downstream, and global feedback, using cost-aware Pareto search to retain useful quality-cost trade-offs. Topology-aware co-evolution then coordinates these updates according to agent roles and dependencies. Cross-level trajectory memory further supplies historical successes and failures to guide subsequent optimization. Experiments on five benchmarks and five execution topologies show that UniMASO achieves competitive task performance at substantially lower deployment cost than the strongest homogeneous configurations. Under centralized execution, it improves the average score from 69.79 to 70.40 while reducing token-weighted deployment cost by 85.2% relative to DeepSeek-V4-Pro with MASPO. These results support joint prompt-model adaptation as an effective approach to efficient multi-agent collaboration. The code is available at https://github.com/Achilles008/UniMASO_main."
+      },
+      "hash": "676e931355baaaa86b57bacc437ae4a521d5e913e04435050758f049829827a1",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.31746": {
+      "entry": {
+        "arxiv_id": "2610.31746",
+        "version": 1,
+        "title": "Toward an Agentic AI Approach to Public Health Data Collection",
+        "authors": [
+          "Xueyi Zhang",
+          "Hongru Du",
+          "Ensheng Dong"
+        ],
+        "published": "2026-10-22T17:55:56Z",
+        "updated": "2026-10-22T17:55:56Z",
+        "abstract": "Disease surveillance increasingly integrates automated data collection, yet predefined sources and procedures require manual adaptation as reporting practices change. We explore agentic artificial intelligence (AI) as an approach to coordinating surveillance data collection across heterogeneous sources. Specifically, we built a multi-agent framework that integrates source discovery, source assessment, evidence structuring, event linking, and validation. Three retrospective applications illustrate its promise. The workflow recovered all 13 individual cases in a hantavirus outbreak, with links to 85 distinct publisher domains compared with 28 in the reference benchmark, reconstructed Canadian measles counts with a final total 0.33% below the national reference and higher cumulative counts on 79.8% of comparable days, and increased the share of days with recent Sierra Leone mpox reports from 28.2% to 65.6% by incorporating attributed media. These demonstrations also reveal limitations in record completeness and accuracy, while prospective gains in timeliness remain untested. We envision agentic AI as a complementary layer of public health data infrastructure, coordinating evidence-linked collection under surveillance goals and standards defined by public health professionals.",
+        "comment": "46 pages, 2 figures; Supplementary Information included"
+      },
+      "hash": "9b2e9bcf0a877109db4b579853e9083ac54d2c4014415ed0ae874671b39ab371",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.29014": {
+      "entry": {
+        "arxiv_id": "2610.29014",
+        "version": 2,
+        "title": "GenXR-Bench: Benchmarking Coding Agents for Interactive XR Development",
+        "authors": [
+          "William Huang",
+          "David Li",
+          "Xiang 'Anthony' Chen",
+          "Xun Qian",
+          "Nels Numan",
+          "Zhongyi Zhou",
+          "Hyunsung Cho",
+          "Salman Muin Kayser Chishti",
+          "Ding Xia",
+          "Xincheng Huang",
+          "Jiahao Ren",
+          "Faraz Faruqi",
+          "Tianyu Xu",
+          "Yang Zhang",
+          "David Kim",
+          "Ruofei Du"
+        ],
+        "published": "2026-10-21T00:28:16Z",
+        "updated": "2026-10-22T18:09:19Z",
+        "abstract": "Coding agents are rapidly advancing from single-file generation to long-horizon repository-scale engineering, yet the evaluation of their capabilities to author interactive extended reality (XR) applications remains an open challenge. Unlike traditional software, XR applications operate within dynamic 3D physical environments where runtime robustness depends jointly on continuous user motion, spatial input, and environmental sensing. We introduce GenXR-Bench, the first benchmark for the end-to-end evaluation of coding agents in XR software development. GenXR-Bench contains 112 expert-authored tasks spanning 24 feature implementations, 21 bug repairs, and 67 application generation tasks. Held-out tests combine scripted and adaptive interactions with programmatic and visual assertions to evaluate core functionality and runtime behavior. GenXR-Bench's testing suite achieves 96.5% accuracy against blinded expert judgments of 124 candidate applications executed on consumer XR hardware. Evaluating 10 models on GenXR-Bench, we find that the strongest configuration achieves only 50.9% overall Pass@1. Failure analysis identifies recurring misunderstandings in asynchronous sensor lifecycles, physical grounding, and embodied interaction semantics. GenXR-Bench establishes a reproducible testbed for evaluating coding agents in the interactive and physically situated conditions of spatial computing.",
+        "comment": "37 pages, 10 figures. Code available at https://github.com/whuang37/genxr-bench"
+      },
+      "hash": "47b87badd206d1f74d9966046260a81de5745f02f8f56c917e8f351d5801eab9",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "updated"
+    },
+    "2610.31778": {
+      "entry": {
+        "arxiv_id": "2610.31778",
+        "version": 1,
+        "title": "Benchmarks Are Surprisingly Compaction-Friendly",
+        "authors": [
+          "Jeanne Salle",
+          "Hardik Bhatnagar",
+          "Matthias Bethge",
+          "Sahar Abdelnabi",
+          "Maksym Andriushchenko"
+        ],
+        "published": "2026-10-22T18:15:54Z",
+        "updated": "2026-10-22T18:15:54Z",
+        "abstract": "Long horizon agentic tasks are now pushing LLM agents past their context window. To continue the task, the agent scaffold has to free up the context window, a process known as context compaction. Compaction is generally lossy by design: agents can silently lose task constraints, instructions, or their reasoning behind earlier decisions. Although compaction is a standard component of coding agent scaffolds, it has not been studied systematically with frontier models on realistic, long horizon agentic tasks. Previous work evaluate smaller open weight models on toy or synthetic trajectories. We fix the agent scaffold (OpenCode), implement five compaction strategies inside it, and evaluate three frontier models on three long horizon benchmarks (PaperBench, ProgramBench, PostTrainBench). For the two 1M context models, the compaction threshold does not measurably affect the task performance, whereas GPT-5.3-Codex, the model with the smallest context window, performs worse at lower thresholds on PaperBench and, less clearly, on PostTrainBench. No compaction method outperforms default self-summarization, and methods that discard more content cost some models up to 20 points while leaving other models the same. Compaction can, however, silently remove task constraints: on ProgramBench, the first compaction summary already drops about one third of the task's anticheating rules on average, and this rises monotonically with the number of compactions. On real user-agent sessions from SWE-chat, instructions about how the agent should work and what it should not do are dropped around 6 times more than specifications of what to build. We argue that current benchmarks are compaction-friendly: i.e., the objective is fixed and the agent's progress stays on disk, so most of what compaction discards can be recovered, except constraints that don't exist anywhere else.",
+        "comment": "25 pages, 11 figures"
+      },
+      "hash": "2b3e41ef0e4a327969390849b75d18183e58fc65c1f75b60d426986b7a31a5a4",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.31840": {
+      "entry": {
+        "arxiv_id": "2610.31840",
+        "version": 1,
+        "title": "SPECMEM: Accelerating Agentic Tool Calling via Live Memory Management",
+        "authors": [
+          "Zihe Song",
+          "Wenting Zhao",
+          "Ye Liu",
+          "Yuanjie Zhu",
+          "Ke Xu",
+          "Shanghao Li",
+          "Philip S. Yu"
+        ],
+        "published": "2026-10-22T19:24:21Z",
+        "updated": "2026-10-22T19:24:21Z",
+        "abstract": "Tool-calling agents are mostly optimized for accuracy; in deployment, however, their growing cost is latency: every tool call is decoded autoregressively. Speculative decoding accelerates this without changing the output, and retrieved past calls make strong drafts under real use, where each user's behavior tends to repeat. Yet existing systems keep no cross-session memory, or build the draft store once and never update it. We propose SpecMem, a tool-call memory kept alive and managed throughout deployment: verified calls are written back online into bounded per-user stores with LRU eviction, and a side-effect gate defers irreversible calls until verification confirms. On multi-session, multi-user query streams served by three open-weight models, a frozen store steadily loses acceptance while SpecMem holds it: a 27% gap in mean accepted tokens (+11% to +34% across benchmarks, tracking how much novel work arrives after the store is built) and up to 1.74x wall-clock speedup. Ablations attribute the gain almost entirely to keeping the store live; local per-user scoping adds no acceptance but closes a measured cross-user leakage channel, and gating on declared side effects, rather than on retrieval confidence, is what eliminates irreversible mistakes."
+      },
+      "hash": "11b363d962b7a56746fb35f8d02e45fec7d2b01577b12654f0ab57fc209e8975",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.31854": {
+      "entry": {
+        "arxiv_id": "2610.31854",
+        "version": 1,
+        "title": "SWE-Clar: Can Coding Agents Clarify Incomplete Client Requirements and Deliver Greenfield Software?",
+        "authors": [
+          "Jialei Li",
+          "Dingxian Wang",
+          "Xiaoyan Zhao",
+          "Yimeng Bai",
+          "Xuanyi Zhu",
+          "Yang Zhang",
+          "Chao Yin",
+          "Wentao Shi",
+          "Ganesh Prabhu",
+          "Karthik Gomadam Rajagopal",
+          "Brett Levert",
+          "Darvin Yi",
+          "Andrew Rabinovich",
+          "Zhao Chen"
+        ],
+        "published": "2026-10-22T19:36:48Z",
+        "updated": "2026-10-22T19:36:48Z",
+        "abstract": "Greenfield software development in freelance settings requires coding agents to turn incomplete client requests into working software. This makes requirement clarification essential, yet clients may be unable to provide continuous feedback over long development cycles, and receiving their answers does not guarantee correct understanding of complex requirements. These challenges motivate two benchmark design choices: clarification precedes code implementation, and its effectiveness is assessed through explicit tests of requirement understanding. Guided by these choices, we introduce SWE-Clar, a benchmark grounded in real, high-value client commissions to evaluate requirement clarification and code implementation in this setting. It comprises 100 tasks based on real software development jobs on Upwork, each with at least US\\$4,000 in total payments. Each task begins with multi-round interaction between a coding agent and a client agent, followed by separate runs for code implementation with acceptance testing and clarification assessment. For the latter, we construct 512 questions paired with reference answers from real client-freelancer interactions, covering both explicitly stated requirements and those inferred from the conversational context. Both runs begin from the same clarification context but remain isolated, preventing assessment questions from guiding code implementation. Experiments with nine frontier models show that even GPT-6 Astra, which has the highest observed implementation score, achieves a task pass rate of only 67%, underscoring the challenge of independent software delivery in this setting. The dataset and evaluation code are available at https://github.com/upwork/SWE-Clar.",
+        "comment": "29 pages, 9 figures, 11 tables. Code and data: https://github.com/upwork/SWE-Clar"
+      },
+      "hash": "db797ea462a3a6e4fa7c1e7419483350325c88897b7f8d7cff75f32b82ff5e6a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.31914": {
+      "entry": {
+        "arxiv_id": "2610.31914",
+        "version": 1,
+        "title": "Incomparable Minima in Agent Tool Authorization",
+        "authors": [
+          "Xin Xu"
+        ],
+        "published": "2026-10-22T21:06:11Z",
+        "updated": "2026-10-22T21:06:11Z",
+        "abstract": "An agent that needs a tool needs authority to call it, and every proposal for governing that authority has to answer one question: of two grants that both let the agent finish a task, which one is smaller? Over-privilege benchmarks score agents against this answer, and permission solvers compute it. We check the question against the authorisation tables that Microsoft and Google publish, covering 22,305 Microsoft Graph endpoint bindings and 23,852 Google API methods, on tasks generated from each table's own resource structure. For 29.8-33.3% of Graph tasks and 3.2% of Google resource tasks the question has no answer, because the minimal sufficient grants form an antichain, a set of grants none of which authorises a subset of what another does. In its two main authorisation modes, Microsoft's shipped privilegeLevel rates 67.4-74.4% of these incomparable pairs equal. Google ships no such scale, so on Google we apply a reconstruction of the FORTIS privilege ladder, which rates 90.7-98.7% equal. Applying the same reconstruction to Graph attributes much of that difference to the scale rather than the corpus: its form based on the HTTP verb alone rates 92.0% of Google pairs and 89.0-92.0% of Graph pairs equal. Four risk measures (operations, writes, services reached, administrative surface) order 28.7% of incomparable Google pairs and 15.7-23.4% of Graph pairs in opposite directions, so for those pairs the ranking has no measure-independent answer. Offered pools of minimal and larger grants, 6 frontier models pick a minimal grant on 99.0% of 1,708 decisions, a grant smallest under all four measures on 66.7%, and on 22.1% a grant that another option matches or beats on every measure. We propose that benchmarks report which minimal grant an agent chose and that deployments show the alternatives to whoever approves the grant.",
+        "comment": "Accepted as an oral at TAS 2026, AAAI Fall Symposium Series. 9 pages"
+      },
+      "hash": "08f47577668a33bd5806001890c4d405cfd8b522af659a5ce75647665d847971",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.31972": {
+      "entry": {
+        "arxiv_id": "2610.31972",
+        "version": 1,
+        "title": "Reproducible Evaluation as the Substrate for Safe Prompt Compression in Production Agents",
+        "authors": [
+          "Prabal Vashisht",
+          "Zheng Hu",
+          "Ying Yang"
+        ],
+        "published": "2026-10-22T22:24:35Z",
+        "updated": "2026-10-22T22:24:35Z",
+        "abstract": "Evaluating conversational agents that act on live, mutable enterprise data is hard: replayed sessions drift as backend state changes, and a benchmark built today can silently go stale as the data it describes moves on. We present an offline evaluation harness for a production conversational agent that stays reproducible despite the live data it operates on changing, and that can be regenerated on demand once it goes stale. We then use this harness as the fitness function for GEPA-based prompt optimization under a correctness gate that guards against reward hacking. Applied to a production merchant-facing agent, correctness-gated compression shrinks the agent's full prompt surface by 3.5-7.6% without regressing held-out task correctness, consistently across three independent subject-model families, and for one, correctness measurably improves.",
+        "comment": "8 pages (4 pages main text plus references and appendices), 1 table. Accepted at the NeurIPS 2026 Workshop on Agents in the Wild"
+      },
+      "hash": "898f96ba11b52fc4cd519e23d893063ba63e6d9ce96b9410dd6466ac79d92821",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.31974": {
+      "entry": {
+        "arxiv_id": "2610.31974",
+        "version": 1,
+        "title": "Agentic AI Defense: Decode-Time Provenance Binding for MCP",
+        "authors": [
+          "Eric Yocam",
+          "Varghese Vaidyan",
+          "Paris Kalathas",
+          "Patrick Tague",
+          "Bruce DeBruhl",
+          "Yong Wang"
+        ],
+        "published": "2026-10-22T22:27:13Z",
+        "updated": "2026-10-22T22:27:13Z",
+        "abstract": "Agentic AI systems using the Model Context Protocol (MCP) are vulnerable to indirect prompt injection through untrusted tool outputs. We demonstrate cross-modal trust laundering, in which instructions concealed in an email-signature image using least-significant-bit (LSB), discrete cosine transform (DCT), or metadata steganography bypass text scanners and enter a multi-agent workflow when decoded by a tool. To counter this threat, we propose decode-time provenance binding, which combines HMAC-authenticated trust labels with an MCP-maintained provenance ledger and context-taint tracking. The mechanism labels decoded content as untrusted and blocks critical tool calls influenced by that content, even when a compromised agent substitutes a valid trusted label. We evaluate the approach using a real MCP testbed with three steganographic carriers and 24 adaptive payloads. The undefended pipeline exhibits 100% attack success, while keyword and regex defenses each permit 62.5% of attacks. Our mechanism blocks all attacks (0% success), including adversarial label substitution across mediated agent boundaries. A four-component ablation validates the roles of decode marking, cryptographic authentication, lineage tracking, and sink enforcement. An audited trusted-promotion mechanism increases legitimate-task completion from 67% to 100% without compromising protection. The approach provides carrier-independent containment within fully mediated MCP execution environments. Code and data are publicly available.",
+        "comment": "12 pages, 5 figures, 13 tables, 2 algorithms. Code and data available at https://github.com/ericyoc/stego_provenance_defense"
+      },
+      "hash": "2eb9cd54c8e4a7413e7fd686a0b27e1575cec2dd77e1182c7bcdd7af8e044f31",
+      "status": "queued",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
