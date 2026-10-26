@@ -12,7 +12,7 @@
       "active": {
         "since": "2026-10-18T07:37:17+00:00",
         "until": "2026-10-26T07:50:04Z",
-        "start": 200
+        "start": 400
       },
       "last_completed_at": "2026-10-25T07:37:17Z"
     },
@@ -99406,6 +99406,72 @@
         "abstract": "In LLM-agent opinion simulations, each agent reports the probability that a claim is true after seeing its own previous probability and the probabilities reported by its neighbors, and that number becomes its state in the next round. If the number describes the agent's position rather than the sentence it was shown, then rewriting the claim as its complement and replacing every probability p with 1 - p should return the complementary answer, so the two reports should sum to one. We test this with three small open models: Qwen3-4B, Llama-3.2-3B and Gemma-3-4B. On 2,304 agent states taken from a running network simulation, Qwen's paired reports sum to 1.18 on average, and on 48 real fact-checking claims from AVeriTeC they again exceed one. A controlled benchmark of 24 worlds, each with exactly two possible outcomes, shows the same failure in all three models. The discrepancy is two to ten times larger than the change produced by a same-meaning paraphrase, and it persists under repeated sampling and across peer group sizes and report strengths. When the reports are fed back into two populations that start from complementary states, the populations do not remain mirror images: their divergence is positive after five rounds for every model. Averaging each answer with the complement of its paired answer restores consistency by construction and lowers Brier loss averaged over the two wordings, but at the final round it beats the better of the two original wordings for only one of the three models. A schedule-by-targeting experiment on the same model gives a small, stable interaction because such sweeps keep the claim wording fixed. Consistency under rewording therefore needs its own test before simulated probabilities are read as beliefs"
       },
       "hash": "fa55a8cfe3d09cfda3b86360b06d6b3a7ebfa92f576fdb86cf2da04beeee1ea9",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.31695": {
+      "entry": {
+        "arxiv_id": "2610.31695",
+        "version": 1,
+        "title": "Fooling LLM Safety Guards into Judging the Wrong Text",
+        "authors": [
+          "Utkarsh Kanwat"
+        ],
+        "published": "2026-10-20T22:00:29Z",
+        "updated": "2026-10-20T22:00:29Z",
+        "abstract": "Safety guards check content before an LLM application acts on it, and most paste that content into a plain-text prompt. Content that imitates the prompt can append a second task, and the guard answers that one instead. We call this target rebinding. Our explanation is that the guard grades the last complete task in its input, here a harmless decoy, so the harmful request goes through unchanged. In a pre-registered test, an appended forged query and decoy clear all 75 held-out AdvBench requests that Shieldstral-1.0-3B flags. The guard is not persuaded: a directive to ignore the text above clears none of them, and in a follow-up run a harmful decoy stops the attack. On our GuardRebind benchmark, each of five guards has an attack family, chosen per guard, that clears at least 93% of its flagged items. Rebinding explains this best on Shieldstral and gpt-oss-safeguard; on ShieldGemma and Llama Guard 3, generic evasion and trailing text respectively do part of the work, and Qwen3Guard falls mainly to a forgery of its whole task. Training the guard to score content no lower than its most harmful part cuts attack success from 75% to 0.8-1.6% on attack families, decoys and forged queries held out of training. All of these attacks append the forged structure after the request, and we added the held-out-decoy evaluation after a first round of test runs. Clean AUROC falls by at most 0.01, but our test of non-inferiority is inconclusive. A score-guided search still beats this trained guard on 47 of 50 items, usually by placing forged structure before the request. On about half of the items where the search wins, the same search also finds benign text, with no forged structure, that clears the guard.",
+        "comment": "21 pages (13 main body), 2 figures, 8 tables. Code: https://github.com/ukanwat/guardrebind ; model: https://huggingface.co/ukanwat/shieldstral-1.0-3b-rebinding-fix"
+      },
+      "hash": "22284d61b67ceda11a2696e09beb8f83c4a52fd1c556065b2c274eba05b2a92f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.31713": {
+      "entry": {
+        "arxiv_id": "2610.31713",
+        "version": 1,
+        "title": "Omni-UBench: Benchmarking Omni-Modal LLM-based Guardrails Across Safety, Utility, and Reliability",
+        "authors": [
+          "Junhao Wang",
+          "Yidou Chen",
+          "Li Lu",
+          "Hongwei Yao",
+          "Xiaodan Li",
+          "Mengjie Wu",
+          "Yuefeng Chen",
+          "Zhan Qin",
+          "Kui Ren"
+        ],
+        "published": "2026-10-22T04:20:51Z",
+        "updated": "2026-10-22T04:20:51Z",
+        "abstract": "Advances in Omni-modal Large Language Models (OLLMs) have enabled increasingly seamless human-AI interaction, but their unified processing of heterogeneous modalities also expands the attack surface, allowing adversaries to exploit richer input compositions to circumvent safety alignment. To counter such risks, omni-modal guardrails have been proposed to detect and filter unsafe queries across arbitrary modalities. However, their capabilities and limitations remain insufficiently understood due to the absence of a comprehensive evaluation benchmark. In this paper, we present Omni-UBench, the first comprehensive framework for omni-modal safety assessment, evaluating guardrail models along three critical dimensions, i.e., safety, utility, and reliability. Omni-UBench curates over 183k samples drawn from 35+ heterogeneous sources spanning text, image, audio, video, and their cross-modal combinations, annotated with safety labels under a unified risk taxonomy. Benchmarking under Omni-UBench on 15 representative OLLMs and omni-modal guardrails yields several key findings, including: (1) modern OLLMs exhibit strong content moderation potential even without guardrail-specific tuning; (2) existing guardrails still struggle to identify cross-modal queries that conceal harmful intent or involve sophisticated jailbreaks; (3) they further exhibit substantial safety hallucination and over-sensitivity to textual patterns, revealing a deficient understanding of cross-modal safety semantics. Our findings provide valuable insights for developing more trustworthy omni-modal guardrails in future research."
+      },
+      "hash": "ed6791633714b4a4d701f8dfb3bf3bb2641993b2133783beb00c2b52e6ac403e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.31723": {
+      "entry": {
+        "arxiv_id": "2610.31723",
+        "version": 1,
+        "title": "LAMB: A Modern Contextual Language Model for Latin",
+        "authors": [
+          "Aidan McCarthy"
+        ],
+        "published": "2026-10-22T11:07:14Z",
+        "updated": "2026-10-22T11:07:14Z",
+        "abstract": "This article introduces Latin Modern BERT (LAMB), an encoder for the Latin language based on the ModernBERT architecture, pretrained in two phases on more than 74B Latin tokens using a novel morphologically informed masking regimen. We also present two corpora for the Latin language. Acervus contains 24B BERT WordPiece tokens, including over 760K samples from heavily damaged OCR transcriptions, repaired by a ByT5 model trained for Latin text repair. The second dataset, Corpus Trinum, contains a mixture of over 100M strong and weak Latin language semantic triplets. Corpus Trinum is the first Latin semantic triplet dataset, opening the door for Latin language models to be adapted to general sentence semantic similarity tasks. We construct an experimental grid using five tasks and seventeen subtasks, applying a variety of finetuning configurations and subword aggregation techniques for 15 pretrained encoders, 6 LAMB training checkpoints, and an ablation model designed to quantify the impact of different masking regimens. Using this benchmark, we rank Latin encoders and find that LAMB outperforms all other evaluated models on 16 of 17 subtasks, coming within 0.8 percentage points of state of the art on the seventeenth. We provide additional analyses relating Latin encoder performance to tokenizer behavior, syntactic structure, finetuning configuration, pretraining state, subword aggregation, and variation in source texts and domains. In these, we identify unique acquisition dynamics for Latin open class words during terminal decay phases, and establish that for some task categories, finetuning configuration selection can have a greater effect on downstream scores than additional pretraining tokens."
+      },
+      "hash": "03ed38f87a435188c4f11eae64a3288451a4acd6a5ffc4852ee0da5711a6b81a",
       "status": "queued",
       "attempts": 0,
       "error": null,
