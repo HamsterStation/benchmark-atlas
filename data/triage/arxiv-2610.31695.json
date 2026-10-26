@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2610.31695",
+  "arxivId": "2610.31695",
+  "version": 1,
+  "title": "Fooling LLM Safety Guards into Judging the Wrong Text",
+  "paperUrl": "https://arxiv.org/abs/2610.31695v1",
+  "assessedAt": "2026-10-26T07:50:59Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "22284d61b67ceda11a2696e09beb8f83c4a52fd1c556065b2c274eba05b2a92f",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 5,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "报告基线或多个模型的评测",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "Content that imitates the prompt can append a second task, and the guard answers that one instead.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.31695v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "In a pre-registered test, an appended forged query and decoy clear all 75 held-out AdvBench requests that Shieldstral-1.0-3B flags.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.31695v1"
+    },
+    {
+      "signal": "resource_link",
+      "label": "材料中提供代码或数据链接（未核验内容）",
+      "weight": 2,
+      "excerpt": "https://github.com/ukanwat/guardrebind",
+      "source": "arxiv_comment",
+      "sourceUrl": "https://arxiv.org/abs/2610.31695v1"
+    }
+  ],
+  "resourceCandidates": [
+    "https://github.com/ukanwat/guardrebind",
+    "https://huggingface.co/ukanwat/shieldstral-1.0-3b-rebinding-fix"
+  ],
+  "declaredVenue": "21 pages (13 main body), 2 figures, 8 tables. Code: https://github.com/ukanwat/guardrebind ; model: https://huggingface.co/ukanwat/shieldstral-1.0-3b-rebinding-fix",
+  "venueVerified": false,
+  "qualityVerified": false
+}

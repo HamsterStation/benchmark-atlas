@@ -92964,7 +92964,7 @@
         "abstract": "Real-world decision problems combine two qualitatively different kinds of constraints: requirements that must be satisfied, called hard constraints, and preferences that can be violated, called soft constraints. Because these problems are often posed to decision-makers in natural language, large language models offer a natural tool for assisting with their solution. This has given rise to autoformulation, which focuses on using LLMs to translate natural-language descriptions of decision problems into executable mathematical optimization models. However, this research often neglects soft constraints like those proposed by consumers, managers, and planners, despite the fact that many practical problems require modeling them explicitly. We introduce ASTOR, an inference-time framework that maps a natural-language decision problem to a grammar-guided abstract syntax tree (AST) before deterministically compiling the resulting representation into executable optimization code. We also introduce SoftOR, a unified benchmark of natural language problems which focuses on soft constraint formulations. On SoftOR, ASTOR achieves the best aggregate accuracy among comparable single-request and multi-agent LLM methods while remaining competitive on standard autoformulation benchmarks that include only hard constraints. Code and data are available at https://anonymous.4open.science/r/astor-softor-iclr-E34C/README.md."
       },
       "hash": "4eeae9736edadd5016b9d77dcf593128f1d8e5cd0c83ad136f0c597648252b4f",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -95056,7 +95056,7 @@
         "comment": "15 pages, 9 figures. A shorter version was accepted for presentation at the non-archival NeurIPS 2026 TAE workshop"
       },
       "hash": "859885c4268d4fa271bfd01aaf235f87b7bca7e9e017ce03a9bcbaa40f1ebec8",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -97741,7 +97741,7 @@
         "abstract": "Long-text image-text alignment is essential for fine-grained scene understanding, yet existing methods mainly focus on extending context length or improving local alignment. We identify an overlooked failure mode, saliency collapse, where models over-rely on text that features visual prominence while underutilizing non-salient context. Consequently, retrieval performance degrades sharply when salient content is reduced, despite that the non-salient context remains informative. To address this, we propose RoSA, a saliency-aware finetuning framework that decomposes image-text pairs into complementary salient and contextual views, enabling joint learning of prominent and contextual semantics. We propose a modality-independent decomposition strategy to combine object-level visual saliency estimation with LLM-based text decomposition to bridge vision and language. We employ auxiliary objectives to explicitly align these views, ensuring robust representation with both salient and contextual features. RoSA greatly improves long-text retrieval and demonstrates strong robustness to saliency collapse across benchmarks. Moreover, our auxiliary objectives are plug-and-play, bringing consistent gains to existing tuning methods. Code and checkpoints are available at: https://github.com/intelligolabs/RoSA."
       },
       "hash": "a393ec2eed6dd2237af0bb96355af747858eb33df6fd8331542dd664d52a7360",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -98328,7 +98328,7 @@
         "comment": "18 pages, 3 figures, 6 tables"
       },
       "hash": "85391393a2374906501f953681b9a39c73c92abb741fec17b2667c430e94939c",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -98419,7 +98419,7 @@
         "abstract": "Evaluating language agents on open-ended, artifact-producing tasks is difficult: model-based graders can be inconsistent, while exhaustive programmatic checks are often impractical. Textual rubrics make evaluation criteria explicit, but writing them requires domain expertise. Rubrics generated from task descriptions alone can miss requirements and failure modes that become apparent in attempted solutions. We introduce RubricCraft, which treats rubric construction as the generation of natural-language specifications guided by candidate solutions. Given a task description and independently sampled solver trajectories, RubricCraft compares how each attempt satisfies or violates the task requirements and uses these differences to construct rubric criteria. It applies the criteria to the collected solutions and revises checks that overlook errors or penalize valid alternatives. The resulting rubrics capture partial correctness without requiring any single solution to serve as a complete reference. On SpreadsheetBench v2, against a prompt-only rubric written and applied by the same model, RubricCraft rubrics pass fewer wrong outputs (29.5% against 42.6%), fail none of the outputs the benchmark's own checker accepts, and rank outputs by correctness more often, while separating models as often. Repair on a single attempt leaves grading unchanged, but repair driven by attempts from three model families acts on different tasks, and an evidence audit judges most of those repairs improvements, many on tasks whose reference solution is itself wrong."
       },
       "hash": "a01095daca254370703d6bec7e08a8c848920c040f3fc92ef85ecd2eda3d90cc",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -98442,7 +98442,7 @@
         "comment": "21 pages, including appendices. Equal contribution: Xavier Cadet and Junyan Cheng. Website: https://junyan.ch/apex-paper/"
       },
       "hash": "67e20a3c6b9a283e62bde3b7c3ef447840fcb9d0aad426b28f6658d24c7671e1",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -98468,93 +98468,11 @@
         "abstract": "Spreadsheets are the lingua franca of modern finance, driving valuation, forecast, audit, and many other core workflows of the industry. As LLM agents advance to automate knowledge work, spreadsheet construction is a natural and pertinent testbed. However, most existing spreadsheet benchmarks evaluate agents on fill-in-the-blank style tasks, where an agent performs minor edits in otherwise complete spreadsheets. This protocol fails to capture the most central and time-consuming part of the spreadsheet workflow: the modeling decisions, format design, and sheet layout regular knowledge workers need to toil through to build a workbook from scratch. We introduce MBABench-2.0, a benchmark of 101 original spreadsheet construction tasks, the hardest of which is estimated to take 33 hours for a modeler with 3+ years of experience. Unlike coding or math, where a unit test or a final answer can verify an agent's output, the quality of a financial spreadsheet that concerns readability, maintainability, or auditability, is not so simply verifiable. To holistically evaluate spreadsheet construction, we introduce 129 criteria spanning 12 categories that operationalize quality beyond the accuracy of the spreadsheet. Evaluating over 20 agents across 8 models and 4 harness types, we find that frontier agents rarely construct spreadsheets that are both accurate and meet our quality criteria: the top agent achieves a pass rate of only 16% on the benchmark. The benchmark demonstrates a substantial gap in spreadsheet building capability of current agents."
       },
       "hash": "95dcf901b251fda0309d8fe60d096e4c46ef928c95ae9a1961ebc549efa28a76",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
       "kind": "new"
-    },
-    "2610.31743": {
-      "entry": {
-        "arxiv_id": "2610.31743",
-        "version": 1,
-        "title": "Not Every Agent Needs the Strongest Model: Unified Prompt-Model Optimization for Heterogeneous LLM-based Multi-Agent Systems",
-        "authors": [
-          "Mingxiu Cai",
-          "Haoyang Xian",
-          "Xinyu Ma",
-          "Yutong Wang",
-          "Zhenxi Song",
-          "Jing Li",
-          "Xuebo Liu"
-        ],
-        "published": "2026-10-22T17:24:23Z",
-        "updated": "2026-10-22T17:24:23Z",
-        "abstract": "Large language model (LLM)-based multi-agent systems (MAS) rely on role-specific prompts and execution models to solve complex tasks collaboratively. However, prompt optimization typically keeps model assignments fixed, leaving differences in role requirements and their associated inference costs outside the search. We present UniMASO, a Unified framework for heterogeneous Multi-Agent System Optimization through the joint adaptation of prompts and model assignments. UniMASO evaluates candidate updates through local, downstream, and global feedback, using cost-aware Pareto search to retain useful quality-cost trade-offs. Topology-aware co-evolution then coordinates these updates according to agent roles and dependencies. Cross-level trajectory memory further supplies historical successes and failures to guide subsequent optimization. Experiments on five benchmarks and five execution topologies show that UniMASO achieves competitive task performance at substantially lower deployment cost than the strongest homogeneous configurations. Under centralized execution, it improves the average score from 69.79 to 70.40 while reducing token-weighted deployment cost by 85.2% relative to DeepSeek-V4-Pro with MASPO. These results support joint prompt-model adaptation as an effective approach to efficient multi-agent collaboration. The code is available at https://github.com/Achilles008/UniMASO_main."
-      },
-      "hash": "676e931355baaaa86b57bacc437ae4a521d5e913e04435050758f049829827a1",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.31746": {
-      "entry": {
-        "arxiv_id": "2610.31746",
-        "version": 1,
-        "title": "Toward an Agentic AI Approach to Public Health Data Collection",
-        "authors": [
-          "Xueyi Zhang",
-          "Hongru Du",
-          "Ensheng Dong"
-        ],
-        "published": "2026-10-22T17:55:56Z",
-        "updated": "2026-10-22T17:55:56Z",
-        "abstract": "Disease surveillance increasingly integrates automated data collection, yet predefined sources and procedures require manual adaptation as reporting practices change. We explore agentic artificial intelligence (AI) as an approach to coordinating surveillance data collection across heterogeneous sources. Specifically, we built a multi-agent framework that integrates source discovery, source assessment, evidence structuring, event linking, and validation. Three retrospective applications illustrate its promise. The workflow recovered all 13 individual cases in a hantavirus outbreak, with links to 85 distinct publisher domains compared with 28 in the reference benchmark, reconstructed Canadian measles counts with a final total 0.33% below the national reference and higher cumulative counts on 79.8% of comparable days, and increased the share of days with recent Sierra Leone mpox reports from 28.2% to 65.6% by incorporating attributed media. These demonstrations also reveal limitations in record completeness and accuracy, while prospective gains in timeliness remain untested. We envision agentic AI as a complementary layer of public health data infrastructure, coordinating evidence-linked collection under surveillance goals and standards defined by public health professionals.",
-        "comment": "46 pages, 2 figures; Supplementary Information included"
-      },
-      "hash": "9b2e9bcf0a877109db4b579853e9083ac54d2c4014415ed0ae874671b39ab371",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.29014": {
-      "entry": {
-        "arxiv_id": "2610.29014",
-        "version": 2,
-        "title": "GenXR-Bench: Benchmarking Coding Agents for Interactive XR Development",
-        "authors": [
-          "William Huang",
-          "David Li",
-          "Xiang 'Anthony' Chen",
-          "Xun Qian",
-          "Nels Numan",
-          "Zhongyi Zhou",
-          "Hyunsung Cho",
-          "Salman Muin Kayser Chishti",
-          "Ding Xia",
-          "Xincheng Huang",
-          "Jiahao Ren",
-          "Faraz Faruqi",
-          "Tianyu Xu",
-          "Yang Zhang",
-          "David Kim",
-          "Ruofei Du"
-        ],
-        "published": "2026-10-21T00:28:16Z",
-        "updated": "2026-10-22T18:09:19Z",
-        "abstract": "Coding agents are rapidly advancing from single-file generation to long-horizon repository-scale engineering, yet the evaluation of their capabilities to author interactive extended reality (XR) applications remains an open challenge. Unlike traditional software, XR applications operate within dynamic 3D physical environments where runtime robustness depends jointly on continuous user motion, spatial input, and environmental sensing. We introduce GenXR-Bench, the first benchmark for the end-to-end evaluation of coding agents in XR software development. GenXR-Bench contains 112 expert-authored tasks spanning 24 feature implementations, 21 bug repairs, and 67 application generation tasks. Held-out tests combine scripted and adaptive interactions with programmatic and visual assertions to evaluate core functionality and runtime behavior. GenXR-Bench's testing suite achieves 96.5% accuracy against blinded expert judgments of 124 candidate applications executed on consumer XR hardware. Evaluating 10 models on GenXR-Bench, we find that the strongest configuration achieves only 50.9% overall Pass@1. Failure analysis identifies recurring misunderstandings in asynchronous sensor lifecycles, physical grounding, and embodied interaction semantics. GenXR-Bench establishes a reproducible testbed for evaluating coding agents in the interactive and physically situated conditions of spatial computing.",
-        "comment": "37 pages, 10 figures. Code available at https://github.com/whuang37/genxr-bench"
-      },
-      "hash": "47b87badd206d1f74d9966046260a81de5745f02f8f56c917e8f351d5801eab9",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "updated"
     },
     "2610.31778": {
       "entry": {
@@ -98574,132 +98492,7 @@
         "comment": "25 pages, 11 figures"
       },
       "hash": "2b3e41ef0e4a327969390849b75d18183e58fc65c1f75b60d426986b7a31a5a4",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.31840": {
-      "entry": {
-        "arxiv_id": "2610.31840",
-        "version": 1,
-        "title": "SPECMEM: Accelerating Agentic Tool Calling via Live Memory Management",
-        "authors": [
-          "Zihe Song",
-          "Wenting Zhao",
-          "Ye Liu",
-          "Yuanjie Zhu",
-          "Ke Xu",
-          "Shanghao Li",
-          "Philip S. Yu"
-        ],
-        "published": "2026-10-22T19:24:21Z",
-        "updated": "2026-10-22T19:24:21Z",
-        "abstract": "Tool-calling agents are mostly optimized for accuracy; in deployment, however, their growing cost is latency: every tool call is decoded autoregressively. Speculative decoding accelerates this without changing the output, and retrieved past calls make strong drafts under real use, where each user's behavior tends to repeat. Yet existing systems keep no cross-session memory, or build the draft store once and never update it. We propose SpecMem, a tool-call memory kept alive and managed throughout deployment: verified calls are written back online into bounded per-user stores with LRU eviction, and a side-effect gate defers irreversible calls until verification confirms. On multi-session, multi-user query streams served by three open-weight models, a frozen store steadily loses acceptance while SpecMem holds it: a 27% gap in mean accepted tokens (+11% to +34% across benchmarks, tracking how much novel work arrives after the store is built) and up to 1.74x wall-clock speedup. Ablations attribute the gain almost entirely to keeping the store live; local per-user scoping adds no acceptance but closes a measured cross-user leakage channel, and gating on declared side effects, rather than on retrieval confidence, is what eliminates irreversible mistakes."
-      },
-      "hash": "11b363d962b7a56746fb35f8d02e45fec7d2b01577b12654f0ab57fc209e8975",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.31854": {
-      "entry": {
-        "arxiv_id": "2610.31854",
-        "version": 1,
-        "title": "SWE-Clar: Can Coding Agents Clarify Incomplete Client Requirements and Deliver Greenfield Software?",
-        "authors": [
-          "Jialei Li",
-          "Dingxian Wang",
-          "Xiaoyan Zhao",
-          "Yimeng Bai",
-          "Xuanyi Zhu",
-          "Yang Zhang",
-          "Chao Yin",
-          "Wentao Shi",
-          "Ganesh Prabhu",
-          "Karthik Gomadam Rajagopal",
-          "Brett Levert",
-          "Darvin Yi",
-          "Andrew Rabinovich",
-          "Zhao Chen"
-        ],
-        "published": "2026-10-22T19:36:48Z",
-        "updated": "2026-10-22T19:36:48Z",
-        "abstract": "Greenfield software development in freelance settings requires coding agents to turn incomplete client requests into working software. This makes requirement clarification essential, yet clients may be unable to provide continuous feedback over long development cycles, and receiving their answers does not guarantee correct understanding of complex requirements. These challenges motivate two benchmark design choices: clarification precedes code implementation, and its effectiveness is assessed through explicit tests of requirement understanding. Guided by these choices, we introduce SWE-Clar, a benchmark grounded in real, high-value client commissions to evaluate requirement clarification and code implementation in this setting. It comprises 100 tasks based on real software development jobs on Upwork, each with at least US\\$4,000 in total payments. Each task begins with multi-round interaction between a coding agent and a client agent, followed by separate runs for code implementation with acceptance testing and clarification assessment. For the latter, we construct 512 questions paired with reference answers from real client-freelancer interactions, covering both explicitly stated requirements and those inferred from the conversational context. Both runs begin from the same clarification context but remain isolated, preventing assessment questions from guiding code implementation. Experiments with nine frontier models show that even GPT-6 Astra, which has the highest observed implementation score, achieves a task pass rate of only 67%, underscoring the challenge of independent software delivery in this setting. The dataset and evaluation code are available at https://github.com/upwork/SWE-Clar.",
-        "comment": "29 pages, 9 figures, 11 tables. Code and data: https://github.com/upwork/SWE-Clar"
-      },
-      "hash": "db797ea462a3a6e4fa7c1e7419483350325c88897b7f8d7cff75f32b82ff5e6a",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.31914": {
-      "entry": {
-        "arxiv_id": "2610.31914",
-        "version": 1,
-        "title": "Incomparable Minima in Agent Tool Authorization",
-        "authors": [
-          "Xin Xu"
-        ],
-        "published": "2026-10-22T21:06:11Z",
-        "updated": "2026-10-22T21:06:11Z",
-        "abstract": "An agent that needs a tool needs authority to call it, and every proposal for governing that authority has to answer one question: of two grants that both let the agent finish a task, which one is smaller? Over-privilege benchmarks score agents against this answer, and permission solvers compute it. We check the question against the authorisation tables that Microsoft and Google publish, covering 22,305 Microsoft Graph endpoint bindings and 23,852 Google API methods, on tasks generated from each table's own resource structure. For 29.8-33.3% of Graph tasks and 3.2% of Google resource tasks the question has no answer, because the minimal sufficient grants form an antichain, a set of grants none of which authorises a subset of what another does. In its two main authorisation modes, Microsoft's shipped privilegeLevel rates 67.4-74.4% of these incomparable pairs equal. Google ships no such scale, so on Google we apply a reconstruction of the FORTIS privilege ladder, which rates 90.7-98.7% equal. Applying the same reconstruction to Graph attributes much of that difference to the scale rather than the corpus: its form based on the HTTP verb alone rates 92.0% of Google pairs and 89.0-92.0% of Graph pairs equal. Four risk measures (operations, writes, services reached, administrative surface) order 28.7% of incomparable Google pairs and 15.7-23.4% of Graph pairs in opposite directions, so for those pairs the ranking has no measure-independent answer. Offered pools of minimal and larger grants, 6 frontier models pick a minimal grant on 99.0% of 1,708 decisions, a grant smallest under all four measures on 66.7%, and on 22.1% a grant that another option matches or beats on every measure. We propose that benchmarks report which minimal grant an agent chose and that deployments show the alternatives to whoever approves the grant.",
-        "comment": "Accepted as an oral at TAS 2026, AAAI Fall Symposium Series. 9 pages"
-      },
-      "hash": "08f47577668a33bd5806001890c4d405cfd8b522af659a5ce75647665d847971",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.31972": {
-      "entry": {
-        "arxiv_id": "2610.31972",
-        "version": 1,
-        "title": "Reproducible Evaluation as the Substrate for Safe Prompt Compression in Production Agents",
-        "authors": [
-          "Prabal Vashisht",
-          "Zheng Hu",
-          "Ying Yang"
-        ],
-        "published": "2026-10-22T22:24:35Z",
-        "updated": "2026-10-22T22:24:35Z",
-        "abstract": "Evaluating conversational agents that act on live, mutable enterprise data is hard: replayed sessions drift as backend state changes, and a benchmark built today can silently go stale as the data it describes moves on. We present an offline evaluation harness for a production conversational agent that stays reproducible despite the live data it operates on changing, and that can be regenerated on demand once it goes stale. We then use this harness as the fitness function for GEPA-based prompt optimization under a correctness gate that guards against reward hacking. Applied to a production merchant-facing agent, correctness-gated compression shrinks the agent's full prompt surface by 3.5-7.6% without regressing held-out task correctness, consistently across three independent subject-model families, and for one, correctness measurably improves.",
-        "comment": "8 pages (4 pages main text plus references and appendices), 1 table. Accepted at the NeurIPS 2026 Workshop on Agents in the Wild"
-      },
-      "hash": "898f96ba11b52fc4cd519e23d893063ba63e6d9ce96b9410dd6466ac79d92821",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.31974": {
-      "entry": {
-        "arxiv_id": "2610.31974",
-        "version": 1,
-        "title": "Agentic AI Defense: Decode-Time Provenance Binding for MCP",
-        "authors": [
-          "Eric Yocam",
-          "Varghese Vaidyan",
-          "Paris Kalathas",
-          "Patrick Tague",
-          "Bruce DeBruhl",
-          "Yong Wang"
-        ],
-        "published": "2026-10-22T22:27:13Z",
-        "updated": "2026-10-22T22:27:13Z",
-        "abstract": "Agentic AI systems using the Model Context Protocol (MCP) are vulnerable to indirect prompt injection through untrusted tool outputs. We demonstrate cross-modal trust laundering, in which instructions concealed in an email-signature image using least-significant-bit (LSB), discrete cosine transform (DCT), or metadata steganography bypass text scanners and enter a multi-agent workflow when decoded by a tool. To counter this threat, we propose decode-time provenance binding, which combines HMAC-authenticated trust labels with an MCP-maintained provenance ledger and context-taint tracking. The mechanism labels decoded content as untrusted and blocks critical tool calls influenced by that content, even when a compromised agent substitutes a valid trusted label. We evaluate the approach using a real MCP testbed with three steganographic carriers and 24 adaptive payloads. The undefended pipeline exhibits 100% attack success, while keyword and regex defenses each permit 62.5% of attacks. Our mechanism blocks all attacks (0% success), including adversarial label substitution across mediated agent boundaries. A four-component ablation validates the roles of decode marking, cryptographic authentication, lineage tracking, and sink enforcement. An audited trusted-promotion mechanism increases legitimate-task completion from 67% to 100% without compromising protection. The approach provides carrier-independent containment within fully mediated MCP execution environments. Code and data are publicly available.",
-        "comment": "12 pages, 5 figures, 13 tables, 2 algorithms. Code and data available at https://github.com/ericyoc/stego_provenance_defense"
-      },
-      "hash": "2eb9cd54c8e4a7413e7fd686a0b27e1575cec2dd77e1182c7bcdd7af8e044f31",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -98720,7 +98513,7 @@
         "abstract": "LLM agents are increasingly deployed in collaborative settings where they pursue separate tasks while sharing resources and operating under review or oversight processes. Such settings create safety risks not only when agents are malicious, but also when they are simply trying to help. Prior work has largely studied adversarial or explicitly collusive behavior; we show that benign agents pursuing separate objectives can spontaneously cooperate in ways that bypass intended workflows. We call this the \\emph{helpful agent problem}. We study long-horizon shared-resource environments in which agents sometimes depend on resources owned by their peers and cross-owner changes are normally mediated by a reviewer. When review becomes unavailable, agents begin making changes on one another's behalf despite having no shared reward or explicit incentive to cooperate. Crucially, these actions remain within each agent's local permissions while circumventing the system's intended oversight structure. We introduce \\textsc{FavorBench}, a controlled benchmark with measurable downstream side effects, and adapt \\textsc{CooperBench} to test the phenomenon in realistic repositories. Across two benchmarks and four models, we find that out-of-workflow favors emerge frequently. Further, in \\textsc{FavorBench}, favors from at least three models cause significant harm to parties outside the interaction. These results reveal a distinct multi-agent safety challenge: cooperation itself can create pathways around system-level safeguards."
       },
       "hash": "6376df48d13c6ea01f77e1f182479d31f86e3137063dcde3da7310d2152e962c",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -98746,7 +98539,7 @@
         "abstract": "The rapid growth of microdramas has increased demand for high-quality script production. Long-form microdrama script generation with LLMs requires both diverse plot progression and long-range narrative coherence. Our observations reveal that candidate continuations increasingly concentrate on fewer narrative mechanisms as generation progresses, while conventional retrieval may reinforce trope reuse and overlook historical information essential to future plots. To address these challenges, we propose DraMaze, a multi-agent pipeline that explores diverse causal paths through trope memory-guided evolutionary tree search and mutation. It further constructs a Backward Narrative Dependency Tree to organize, retain, and retrieve historical memories based on future narrative goals. We also introduce MiDramaBench, a bilingual benchmark for evaluating script logic and creative quality across different script lengths, together with causal-pattern metrics for narrative repetition and diversity. Experiments show consistent improvements across three backbone LLMs. For 60-episode scripts of up to 60k words, DraMaze reduces causal-pattern repetition by 32.1% and achieves a Logic score of 82.5, outperforming the best-performing baseline by 8.5 points."
       },
       "hash": "7c15eb87cca58fc1ef0bfdcead6c7f04387340639dd11a7a57b922ffc2c1d1fe",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -98768,7 +98561,7 @@
         "comment": "52 pages"
       },
       "hash": "b7b197f6fc76ef00665ebc8eaf8af7ca02ae438d327143af1ac019224a16af07",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -98789,199 +98582,11 @@
         "abstract": "AI-for-Science agents are increasingly being used for formulating scientific hypotheses, running autonomous experiments, and interpreting evidence. These agents are constructed by integrating a large language model (LLM) into a domain-specific agent harness, which in turn can improve the LLM's scientific capability and enable the model to orchestrate scientific tools. In this work, we ask whether model safety is preserved when an LLM is integrated in an AI-for-Science agent harness. We evaluate five agent harnesses on 50 harmful chemistry requests. Specifically, we study how the safety behavior changes under direct prompting, two simple adversarial prompting strategies, and an adaptive attack. Across four recent GPT variants, our results show that the agent harness can increase harmful compliance even under direct prompting. More critically, we find that adaptive attacks that are largely unsuccessful against the base LLM suddenly become highly successful after the agent harness is introduced. Our results show that the safety behavior of the base LLM is not durable once a harness is introduced. Thus, as AI-for-Science agents become more capable and autonomous, the community needs to evaluate and align the agent using domain-specific safety benchmarks."
       },
       "hash": "21b9419bc1763e54736df2aa43886eec140ff3c73cfab59a70f49c2766272d83",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
       "kind": "new"
-    },
-    "2610.32106": {
-      "entry": {
-        "arxiv_id": "2610.32106",
-        "version": 1,
-        "title": "PersonaScienceBench: Evaluating Scientific Agents with Diverse Simulated Researchers",
-        "authors": [
-          "Siyang Wu",
-          "Weizhi Zhang",
-          "Chen Yang",
-          "Esther Xu Fei",
-          "Jorin Overwiening",
-          "Xu Pan",
-          "Jing Tang",
-          "Yixuan He",
-          "Kelvin C. Mo",
-          "Peiwen Li",
-          "Defu Cao",
-          "Xu Hu",
-          "Haixin Wang",
-          "Taoran Li",
-          "Haoming Li",
-          "Zheyuan Deng",
-          "Jingwen Zhang",
-          "Pengsong Zhang",
-          "Haichao Zhang",
-          "Guangze Luo",
-          "Yi Daniel Lu",
-          "Zihuai He",
-          "Chenxi Qiu",
-          "Dianzhuo Wang",
-          "Zhejian Peng",
-          "Shushu Liang",
-          "Wenyi Lu",
-          "Yifan Wang",
-          "Jintao Huang",
-          "Yijun Wang",
-          "Xiaomin Li",
-          "Yuexing Hao"
-        ],
-        "published": "2026-10-23T03:11:01Z",
-        "updated": "2026-10-23T03:11:01Z",
-        "abstract": "Scientific agents collaborate with researchers whose expertise and preferences differ, but benchmarks usually hold the collaborator fixed. We introduce PersonaScienceBench: 200 tasks from five benchmarks across four scientific domains. Simulated researchers provide context and feedback according to persona profiles, while task objectives and grading remain fixed. Agents encounter researcher preferences only through conversation. Across eighteen modelconfigurations, task performance, fact recovery, and self-repetition reveal different strengths. Detailed GPT 6 Astra analyses show distinct agent responses across researcher profiles; interaction traces illustrate targeted clar ification and workflow revision. These behaviors can differ even when final scores match. PersonaScienceBench therefore evaluates how agents collaborate with diverse researchers alongside whether they complete the task."
-      },
-      "hash": "32fd768839f007239ea28a0f553cd2d5440b210c801ea5099c507bbf222d774a",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.32120": {
-      "entry": {
-        "arxiv_id": "2610.32120",
-        "version": 1,
-        "title": "ImageRSI: Verification-Driven Recursive Self-Improvement for Agentic Image Generation",
-        "authors": [
-          "Shuo Han",
-          "Zhilin Wang",
-          "Peng Ling",
-          "Wenjia Gong",
-          "Yang Liu",
-          "Guanjun Jiang",
-          "Yukun Cao",
-          "Xike Xie"
-        ],
-        "published": "2026-10-23T03:42:21Z",
-        "updated": "2026-10-23T03:42:21Z",
-        "abstract": "Complex text-to-image requests remain difficult to satisfy reliably. Verifying and repairing an image can fix an individual output, but a successful repair does not necessarily carry over to other requests. We present ImageRSI, a framework that keeps the image generator frozen and combines three components: five-dimensional verification and repair within each task, an experience library shared across tasks, and offline updating of the judge. Candidate experiences enter the library only after paired A/B validation, and the judge is updated with supervised fine-tuning and GRPO on accumulated image-judgment records and evaluated before reuse. We also introduce ImageReq-Bench, a benchmark of 961 requests built around hard cases in real-world image-generation requests, each paired with an evaluation checklist. ImageRSI achieves a Checklist Strict Accuracy (CSA) of 52.6% on MindBench (with Nano Banana Pro as the generator) and 65.66% on ImageReq-Bench, and we compare system outcomes across judge-training configurations."
-      },
-      "hash": "a7fd69fe879cd4e4733dd965b40efdf987a9b1bfb4a57ecd1a7aa6ccfdf2f293",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.32131": {
-      "entry": {
-        "arxiv_id": "2610.32131",
-        "version": 1,
-        "title": "Pairing Matters: Performance, Failures, and Efficiency in Lightweight Coding Agents",
-        "authors": [
-          "Lu Zhao",
-          "Christopher M. Poskitt",
-          "David Lo"
-        ],
-        "published": "2026-10-23T03:57:58Z",
-        "updated": "2026-10-23T03:57:58Z",
-        "abstract": "Self-hosting coding agents is often necessary for software-engineering teams that must keep proprietary code and development traces within controlled infrastructure. Lightweight, open-weight models make such deployment more feasible by reducing hardware requirements, while strong results on repository-level benchmarks demonstrate their potential for demanding coding tasks. Deploying these models as coding agents requires pairing them with an agent harness, making their joint performance a key deployment consideration. Yet existing leaderboards primarily report fixed harness-model configurations rather than controlled comparisons across alternative pairings. To address this gap, we investigate harness-model interactions through a controlled full-factorial evaluation of six open-source harnesses and three lightweight coding models across 100 SWE-bench Verified tasks, producing 1,800 graded runs under common serving, metering, and grading conditions. For the same model, resolution rates differ by up to 44 percentage points across harnesses, while harness rankings change across models. We apply an evidence-based failure taxonomy to 1,100 unsuccessful runs and find substantial differences in failure patterns across harness-model pairings. A model's dominant failure modes under one harness need not dominate under another. Efficiency is similarly dependent on the pairing: even among model-directed loop harnesses, charged tokens per resolved task vary by more than 20-fold. These findings make harness-model selection a central deployment decision for lightweight coding agents. Strong performance with one harness or model does not guarantee similar results with another. We translate these findings into practitioner guidance for pairing selection, token-efficiency assessment, and trajectory-informed harness engineering, and release the complete experimental records and analysis artifacts."
-      },
-      "hash": "20007873e820fba1461e051c0152cf7d160239204753443ba29e16d222528ac3",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.27746": {
-      "entry": {
-        "arxiv_id": "2610.27746",
-        "version": 4,
-        "title": "S$^2$-MAS: A Society-Scale Multi-Agent Simulation Framework with 500 Million Household Persona Agents",
-        "authors": [
-          "Yang Li",
-          "Yike Wang",
-          "Di Wan",
-          "Chujun He",
-          "Zongsi Xu",
-          "Yitao Yu",
-          "Quanfeng Lu",
-          "Xiyu Chen",
-          "Sheng Zhong",
-          "Deng Binjie",
-          "Yichen Guo",
-          "Zhenwei Guo",
-          "Hou Jun",
-          "Kunhan Guo",
-          "Weihao Lin",
-          "Tuo Zhou",
-          "Hai Liu",
-          "Chenwei Wu",
-          "Jianyuan Zhong",
-          "Xilin Dai",
-          "Ye Luo"
-        ],
-        "published": "2026-10-20T07:05:47Z",
-        "updated": "2026-10-23T05:12:57Z",
-        "abstract": "Simulating economic responses at society scale requires agents whose decisions reflect household circumstances. We introduce S$^2$-MAS, a society-scale multi-agent simulation framework built on 500 million synthetic household personas grounded in real-survey data. Its Genese engine separates decisions from state updates, while reusable financial scenarios and application ledgers track consumption, cash, debt and payments. Trained with SFT + RLCD on 2.93 million examples, sharp-421m-mlx achieves 74.55% accuracy and 38.37% question-macro F1 on one-shot consumer financial-choice tasks derived from held-out survey responses. Its accuracy exceeds GLM-5.3-Flash, Jev 1.13, DeepSeek-V4.1-Flash, GPT-6-Luna and GPT-6-Astra in the common benchmark (full test for the first four; matched 500-group sample for Astra). We evaluate eight financial task families and simulate 12 million distinct household agents in paired purchase-funding conditions. Jointly raising purchase goals and approved credit limits increases consumption, with responses differing across age and income groups. Education, employment and household-size differences persist after age-income standardization and mainly reflect transitions from deferral to purchase. Asset and debt groups differ in cash drawdown, repayment and closing debt. S$^2$-MAS links heterogeneous household decisions to evolving consumption, cash and repayment paths, supporting economic experiments across household groups and population scales.",
-        "comment": "50 pages, 9 main figures and 7 supplementary figures. Project resources: https://github.com/KataDavidXD/s2-mas"
-      },
-      "hash": "e7dacc202622924eda9bcfe0df1efbc2504ce13f57a39e7507b1c9411ee8309a",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "updated"
-    },
-    "2610.32196": {
-      "entry": {
-        "arxiv_id": "2610.32196",
-        "version": 1,
-        "title": "SWE-Shift: Evaluating Coding Agents in Evolving Workspaces",
-        "authors": [
-          "Victor Shea-Jay Huang",
-          "Rongqing Li",
-          "Zhangyue Yin",
-          "Kelong Mao",
-          "Yaqi Zhao",
-          "Xinyuan Wang",
-          "Yao Yin",
-          "Lirui Luo",
-          "Renrui Zhang",
-          "Hongsheng Li"
-        ],
-        "published": "2026-10-23T05:47:59Z",
-        "updated": "2026-10-23T05:47:59Z",
-        "abstract": "Repository-level coding benchmarks largely assume that tasks and environments remain unchanged throughout execution. In software development, code, dependencies, runtime state, and requirements can change while an agent is still working. We introduce SWE-Shift, a benchmark for evaluating coding agents under such mid-execution changes. From the same saved history and workspace, a Clean continuation proceeds without intervention, while a matched Shifted continuation receives a task-relevant update. Success requires completing the current task, preserving still-valid work, and satisfying the applicable state and evidence checks. The benchmark contains 120 scenarios across 12 change families, each evaluated at nine scheduled intervention positions. We evaluate 17 coding-agent systems, all of which have lower Shifted than Clean success. GPT-6 Astra drops from 67.35% to 24.79%, with 20.34% paired success. Tool/session changes and stale evidence yield zero paired success across all systems. Late-position paired success is lower for some systems and higher for others. These results show that success on the unchanged task can coexist with failures to preserve work, recover state, or refresh evidence after an update.",
-        "comment": "47 pages. Code: https://github.com/JeixHuang/SWE-Shift"
-      },
-      "hash": "3720411bfe7e3fa0dc8eabb0376b6094686714495bde5c58d7617e826a227285",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.25931": {
-      "entry": {
-        "arxiv_id": "2610.25931",
-        "version": 2,
-        "title": "EvoSkill v2: Fully Agentic Skill Evolution from Benchmark Adaptation to a Stateful Evolver",
-        "authors": [
-          "Dastin Huang",
-          "Baran Nama",
-          "Salaheddin Alzubi"
-        ],
-        "published": "2026-10-19T07:29:21Z",
-        "updated": "2026-10-23T07:11:56Z",
-        "abstract": "EvoSkill v2 is a three-agent system that edits the instructions (skills) an agent is given, leaving its model and harness intact. The user starts a run by describing a benchmark and supplying a grader, which a benchmark adaptor turns into a benchmark-specific plugin. A solver attempts the tasks, and an evolver reads the solver's training rollouts and rewrites the skills at each epoch. We implement the evolver as one stateful coding agent with a bash tool for the whole run, unlike the two most common designs among the skill optimizers we surveyed: a sequence of single model calls, as in SkillOpt, and an agent that starts afresh each round, as in SkillBoost. We also measure how much the solver's rollouts vary from one attempt to the next, give the evolver several attempts per training task, and accept every epoch's skills instead of selecting among them on noisy scores. With fine-grained ground truth, EvoSkill v2's skills raised the held-out pass rate above the stronger of SkillOpt and SkillBoost by 7.7 percentage points on SpreadsheetBench v2 and by 5.4 on $τ^3$-bench banking. In both benchmarks and both feedback settings, EvoSkill v2's evolver cost less per percentage point of held-out pass rate gained than either baseline's optimizer. EvoSkill v2 also enables a less capable model to improve its own skills, demonstrated by a gain of up to 21.5 percentage points in the $τ^3$-bench banking experiment where Claude Haiku 5.5 powers both solver and evolver.",
-        "comment": "14 pages, 5 figures"
-      },
-      "hash": "e60e39702c398a4f730da1c91dd8248d1005cc8c67babf614f097ee03dedb649",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "updated"
     },
     "2610.32285": {
       "entry": {
@@ -99018,7 +98623,7 @@
         "abstract": "LLM agents are increasingly used to solve real-world problems, and their effectiveness depends on both the underlying models and the harnesses that support their operation. However, most existing benchmarks focus on model capabilities and overall agent performance, with limited attention to the evaluation of agent harnesses. To address this gap, we introduce TraceTrial-Bench, which organizes harness reliability into seven components covering context, execution, governance, lifecycle, observability, tools, and verification. We construct 95 expert-level, mechanism-oriented tasks with executable or state-based ground truth to support semantically equivalent comparisons while preserving the native behavior of each harness. We design a Trajectory Tracing (TT) module to capture agent execution traces and introduce a two-layer evaluation framework that separately assesses agent performance and harness reliability. In addition, we design a Multi-source Evidence Acquisition (MEA) module to provide evidence from the agent context, harness, and execution environment for LLM-based evaluation, and develop a Failure Attribution (FA) module that uses explicit mechanism chains to support attribution at the run level. Across 4 harnesses, 9 models, and 95 tasks, our evaluation of 3,420 runs yields macro-averaged harness scores ranging from 59.8% to 72.0%, while 31.1% of runs achieve task success despite failing at least one harness criterion. TraceTrial-Bench provides an auditable and reproducible foundation for comparing agent harnesses, diagnosing their failures, and studying how harness design interacts with model behavior."
       },
       "hash": "113f78e00133325dc8103247834340c44a794e441a332748c18e42704771ef97",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99042,7 +98647,7 @@
         "comment": "54 pages, 14 figures. Code and data: https://github.com/psptpx/DMAIC-Bench-public"
       },
       "hash": "5476f251dd0208cfed78dbbc74c1b990742122adf400c68ee0bcd6eb67fe0e17",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99071,7 +98676,7 @@
         "comment": "22 pages, 5 figures"
       },
       "hash": "df3ddc32d574109701994146c52a601afebadf44ac87057729947beeb81bbd83",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99104,32 +98709,6 @@
       "next_attempt_at": null,
       "kind": "new"
     },
-    "2610.32417": {
-      "entry": {
-        "arxiv_id": "2610.32417",
-        "version": 1,
-        "title": "Measuring the Energy Cost of Completing Tasks with Quantized Language-Model Agents",
-        "authors": [
-          "Stephen Abkin",
-          "Aldric Yang",
-          "Alex Flesher",
-          "Nitheesh Kodarapu",
-          "Deepak Panigrahy",
-          "Aakash Tyagi",
-          "David Kebo Houngninou"
-        ],
-        "published": "2026-10-23T09:48:03Z",
-        "updated": "2026-10-23T09:48:03Z",
-        "abstract": "Quantization reduces the memory and energy needed to serve large language models (LLMs) and AI agents for coding and data analysis can now run on locally hosted LLMs. In practice, this benefit is commonly benchmarked per output token. Yet an agent calls its model repeatedly, runs tools, and revises its work, and quantization can change both how much the agent generates and whether it succeeds. Existing energy studies either compare quantized models on single requests or measure agents at one fixed precision, overlooking how a change in precision plays out across a complete agent task. To address this gap, this paper presents the first characterization of the task-level energy trade-offs of model quantization in locally hosted agents. We develop 29 agent tasks with automatic pass/fail checks in six families, ranging from single-answer SQL analytics to multi-step repository bug fixing, and measure CPU and GPU energy per output token and per completed task for 4-bit and 8-bit versions of two open-weight models on bare-metal NVIDIA A100 nodes with llama.cpp. Our findings reveal that 4-bit precision generally saves energy per token, though whether it saves energy per completed task is task dependent and changes with the model and the execution budget (i.e., limits on turns, tokens, and time). We trace this discrepancy to the extra tokens needed to complete a task in full, which translates into using up to 3.5 times as much energy per completed task. These findings offer actionable guidance for developers and operators choosing model precision for agents, showing how tokens per completed task, set against the per-token saving, reveal whether lower precision completes the work with less energy.",
-        "comment": "26 pages, 7 figures"
-      },
-      "hash": "8570810661ed6d15b77996c83b75d43a0968d81edadba53a9f6c82c567293fcb",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
     "2610.32429": {
       "entry": {
         "arxiv_id": "2610.32429",
@@ -99151,7 +98730,7 @@
         "comment": "25 pages, 16 figures. Code is available at https://github.com/pope8zdt/Async-RBench"
       },
       "hash": "7f497ea09cfaa9c90b5da3375f1425513a5299c82f504c872258d60430cfd3ee",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99195,85 +98774,6 @@
       "next_attempt_at": null,
       "kind": "new"
     },
-    "2610.32448": {
-      "entry": {
-        "arxiv_id": "2610.32448",
-        "version": 1,
-        "title": "POSEIDON: Scaling Training Environments for Scientific Agents from Code Repositories",
-        "authors": [
-          "Qifan Zhang",
-          "Yuhan Li",
-          "Nuo Chen",
-          "Bowen Liu",
-          "Xiao Hu",
-          "Miao Peng",
-          "Chenyi Zi",
-          "Lixin Liu",
-          "Lydell Huang",
-          "Jing Tang",
-          "Jia Li"
-        ],
-        "published": "2026-10-23T10:14:22Z",
-        "updated": "2026-10-23T10:14:22Z",
-        "abstract": "Training environments remain a major bottleneck for agents in data-driven scientific discovery. Existing collections of executable and verifiable training environments are small, and their construction remains difficult to scale. To address this limitation, we introduce Poseidon, an automated pipeline for generating diverse, verifiable training environments from scientific code repositories at scale. From the same repository budget, Poseidon extracts nearly 10 times as many training environments as a prior approach by decomposing scientific workflows into four complementary task types: Reproduction, Subflow, Completion, and Correction, where each type targets a distinct capability for scientific research. A recursive improvement loop further refines failed candidates and recovers otherwise discarded environments. Using Poseidon, we construct Pearl, a collection of 97,659 executable and verifiable environments from 7,110 public repositories spanning 10 scientific disciplines. To the best of our knowledge, Pearl is the largest and most broadly multidisciplinary collection of scientific-agent training environments to date. Qwen3.5 models (9B, 27B, and 35B-A3B) trained on Pearl achieve consistent gains across six challenging scientific-agent benchmarks. Overall, the scale and diversity of Pearl offer opportunities for training scientific discovery agents."
-      },
-      "hash": "b8266f9d035c512a4ee3c84e5d0e30e3a5ca5a6f75addf96759262ded9e40696",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.32464": {
-      "entry": {
-        "arxiv_id": "2610.32464",
-        "version": 1,
-        "title": "Agentic Memory Management Is the Next Frontier of Information Retrieval",
-        "authors": [
-          "Qingyao Ai"
-        ],
-        "published": "2026-10-23T10:30:55Z",
-        "updated": "2026-10-23T10:30:55Z",
-        "abstract": "Information retrieval has long been focusing on connecting people with information they need to complete their tasks. Recently, the meaning of this has changed dramatically as more and more AI agents now consume, retain, and act on information on a user's behalf. Consequently, information management now also takes place \\emph{inside} the agent in the form of memory management. In this perspective paper, we argue that \\emph{agentic memory management} (AMM), which studies the structure, analysis, organization, storage, searching, retrieval, and \\emph{use} of information in an intelligent agent's memory, is a natural extension of IR research and an area in which the IR community can make distinctive contributions. Specifically, we first present a system-level framework for AMM and introduce a computational taxonomy of memory objects as \\emph{constants}, \\emph{functions}, and \\emph{operators}, each with distinct retrieval semantics. Then, we compare AMM with established IR research and identify their difference and connections. Last but not least, we outline a research agenda covering benchmarks, candidate principles of memory utility, optimization procedures that mix parametric and non-parametric updates, and more. We hope this paper could attract more people, both inside and outside the IR communities, to think more about AMM problems and research from IR perspectives."
-      },
-      "hash": "cfb7fa69e6be4a78338190c1ef6426cfa1c54cfa0c4e5aa7e7da4532b8185f63",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.32483": {
-      "entry": {
-        "arxiv_id": "2610.32483",
-        "version": 1,
-        "title": "When Agents Fail: Model or Harness--Who's to Blame?",
-        "authors": [
-          "Shao Zhang",
-          "Hangfan Zhang",
-          "Yuanyuan Shi",
-          "Hao Li",
-          "Min-Le Su",
-          "Kangcong Li",
-          "Jingping Wang",
-          "Chunjiang Mu",
-          "Chen Zhang",
-          "Yang Chen",
-          "Bo Zhang",
-          "Shuyue Hu"
-        ],
-        "published": "2026-10-23T10:57:54Z",
-        "updated": "2026-10-23T10:57:54Z",
-        "abstract": "LLM agents combine models with execution harnesses, so agentic benchmark performance reflects their joint behavior. We argue that harnesses should therefore be evaluated through their interactions with underlying models. We develop a framework combining five complementary measures: (i) Valid Completion Rate (VCR), how reliably agents finish normally and deliver evaluable results, irrespective of task correctness; (ii) Model-Harness Fit, how well a harness supports task achievement through valid completion for a given model; (iii) Cross-Model Fit, a harness's overall suitability across evaluated models; (iv) Interaction Residuals, pairing-specific execution strengths and weaknesses hidden by component-level summaries; and (v) Token Load, the token demands of agent execution, including failed attempts. We evaluate four general-purpose harnesses (OpenCode, Codex CLI, Pi CLI, and DeepAgents) with four core models, plus two fixed native model-harness systems, on six benchmarks covering context management, tool use, long-context planning, multimodal interaction, and artifact handoff. Including native references and stress conditions, 111 evaluation settings yield 52,168 trajectories. Harness rankings vary across models and benchmarks; task performance and valid completion can favor different pairings, and similar task scores can accompany distinct execution profiles. OpenCode ranks first in cross-model performance, while DeepSeek V4 Flash Preview maintains consistently high Mean VCR across harnesses on the shared four-benchmark panel. These findings support evaluating model-harness interactions, training transferable harness-use capabilities in models, and harness designs adapted to the model and task.",
-        "comment": "Preprint under review"
-      },
-      "hash": "f50b886dc3ad70375c7a0b7f702e8c9cd21c9c45d0d162feb1393bc993bf4d3e",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
     "2610.32485": {
       "entry": {
         "arxiv_id": "2610.32485",
@@ -99290,7 +98790,7 @@
         "comment": "Accepted to NeurIPS 2026, 66 pages, 30 figures, 27 tables"
       },
       "hash": "66ceccc0d7dfd007647f19bcbccf8eaa9905038937eff03d12e750b90bf9a559",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99312,7 +98812,7 @@
         "abstract": "Prompt injection benchmarks assess whether large language models (LLMs) and agents resist malicious instructions embedded in external content. However, a system could perform well by rejecting attacks that obviously abandon the user's request, while still accepting changes that retain most of a legitimate answer but make it incorrect or harmful. Testing more instructions for unrelated outcomes would not necessarily reveal this weakness. We call attacks seeking responses designed to resemble legitimate answers while introducing incorrect or harmful changes near-target prompt injection. We introduce NTBench, the Near-Target Benchmark, which builds on legitimate tasks from existing datasets. For each task, a legitimate reference outcome guides the generation of target--instruction pairs, with separate tracks targeting incorrect and harmful outcomes in responses or agent tool invocations. Harmful targets can also accompany otherwise correct task completion. We combine LLM-based checks with human validation of the intended deviations, then assess whether injected instructions induce them using response judgments or tool-call checks, excluding deviations already observed without injection. We evaluate seven LLMs on ten datasets for language tasks and two agent benchmarks. Under a common budget of three attack executions per sample, both tracks achieve higher overall attack success rates than the fixed-target baseline for every evaluated model in each setting. On language tasks, the increases range from 9.3 to 35.8 percentage points for incorrect targets and 1.7 to 17.3 percentage points for harmful targets. These results show that resistance to the tested fixed-target attacks does not imply resistance to related incorrect or harmful outcomes, and that reference-guided targets broaden the failures revealed by robustness evaluation."
       },
       "hash": "dc08ac7b4e7bd17b953f368b957623ab93c67ae4e8e06b06cf3b2ad2683d967b",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99337,7 +98837,7 @@
         "comment": "Accepted at NeurIPS 2026 (poster). 10 pages of main text plus appendices and the NeurIPS checklist. Code and data: https://gitlab.com/uniluxembourg/snt/sedan/papers/mcp-injector (archived at https://doi.org/10.5281/zenodo.23573765)"
       },
       "hash": "d7316cb025272aa921c8f66ac1606b013653768e06e5bb8b4210f8e12ab644f1",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99357,7 +98857,7 @@
         "comment": "16 pages, 4 figures, 4 tables"
       },
       "hash": "7dce835e4b7fa24b4204769174cf07ac0c76dbdee0ff15477f95c59cfa221e99",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99382,7 +98882,7 @@
         "abstract": "Latent communication requires both an effective continuous reasoning process and an interface through which an external model can leverage its intermediate computation. We present J-Comm, a framework comprising two core components. First, a training-free Geometric Agreement for Latent Reasoning (GEAR) reweights token candidates over existing model embeddings, which monotonically optimizes geometric consensus among candidate tokens in embedding space at each step. Second, we introduce an H+J (Hidden-and-Jacobian) communication interface that gives the Receiver two complementary views of the Sender's reasoning. The H channel supplies continuous inputs derived from feedback distributions, while the J channel conveys intermediate-state cues in vocabulary-indexed Jacobian-lens coordinates. Intuitively, H provides inputs for the Receiver to reason from, while J offers additional guidance within its computation. The Receiver reconstructs these cues using its own dictionary and injects them into intermediate layers during prefill, enabling communication without sharing key-value caches or requiring identical model widths. In Qwen3-8B to Qwen3-4B communication, J-Comm achieves the highest mean score across seven benchmarks, including 94.80% on MATH500, 54.55% on GPQA-Diamond, 73.33% on AIME2024+2025, and 62.93% success on ALFWorld. Compared with TextMAS, it improves performance by 1.29-8.59 percentage points and reduces generated text tokens by 19.2-74.8%."
       },
       "hash": "fae570ea54f032663a1381522a9bc4b67cffac5fc712b39c734b4d444f33babd",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99402,7 +98902,7 @@
         "abstract": "In LLM-agent opinion simulations, each agent reports the probability that a claim is true after seeing its own previous probability and the probabilities reported by its neighbors, and that number becomes its state in the next round. If the number describes the agent's position rather than the sentence it was shown, then rewriting the claim as its complement and replacing every probability p with 1 - p should return the complementary answer, so the two reports should sum to one. We test this with three small open models: Qwen3-4B, Llama-3.2-3B and Gemma-3-4B. On 2,304 agent states taken from a running network simulation, Qwen's paired reports sum to 1.18 on average, and on 48 real fact-checking claims from AVeriTeC they again exceed one. A controlled benchmark of 24 worlds, each with exactly two possible outcomes, shows the same failure in all three models. The discrepancy is two to ten times larger than the change produced by a same-meaning paraphrase, and it persists under repeated sampling and across peer group sizes and report strengths. When the reports are fed back into two populations that start from complementary states, the populations do not remain mirror images: their divergence is positive after five rounds for every model. Averaging each answer with the complement of its paired answer restores consistency by construction and lowers Brier loss averaged over the two wordings, but at the final round it beats the better of the two original wordings for only one of the three models. A schedule-by-targeting experiment on the same model gives a small, stable interaction because such sweeps keep the claim wording fixed. Consistency under rewording therefore needs its own test before simulated probabilities are read as beliefs"
       },
       "hash": "fa55a8cfe3d09cfda3b86360b06d6b3a7ebfa92f576fdb86cf2da04beeee1ea9",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99422,7 +98922,7 @@
         "comment": "21 pages (13 main body), 2 figures, 8 tables. Code: https://github.com/ukanwat/guardrebind ; model: https://huggingface.co/ukanwat/shieldstral-1.0-3b-rebinding-fix"
       },
       "hash": "22284d61b67ceda11a2696e09beb8f83c4a52fd1c556065b2c274eba05b2a92f",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99449,7 +98949,7 @@
         "abstract": "Advances in Omni-modal Large Language Models (OLLMs) have enabled increasingly seamless human-AI interaction, but their unified processing of heterogeneous modalities also expands the attack surface, allowing adversaries to exploit richer input compositions to circumvent safety alignment. To counter such risks, omni-modal guardrails have been proposed to detect and filter unsafe queries across arbitrary modalities. However, their capabilities and limitations remain insufficiently understood due to the absence of a comprehensive evaluation benchmark. In this paper, we present Omni-UBench, the first comprehensive framework for omni-modal safety assessment, evaluating guardrail models along three critical dimensions, i.e., safety, utility, and reliability. Omni-UBench curates over 183k samples drawn from 35+ heterogeneous sources spanning text, image, audio, video, and their cross-modal combinations, annotated with safety labels under a unified risk taxonomy. Benchmarking under Omni-UBench on 15 representative OLLMs and omni-modal guardrails yields several key findings, including: (1) modern OLLMs exhibit strong content moderation potential even without guardrail-specific tuning; (2) existing guardrails still struggle to identify cross-modal queries that conceal harmful intent or involve sophisticated jailbreaks; (3) they further exhibit substantial safety hallucination and over-sensitivity to textual patterns, revealing a deficient understanding of cross-modal safety semantics. Our findings provide valuable insights for developing more trustworthy omni-modal guardrails in future research."
       },
       "hash": "ed6791633714b4a4d701f8dfb3bf3bb2641993b2133783beb00c2b52e6ac403e",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99468,7 +98968,7 @@
         "abstract": "This article introduces Latin Modern BERT (LAMB), an encoder for the Latin language based on the ModernBERT architecture, pretrained in two phases on more than 74B Latin tokens using a novel morphologically informed masking regimen. We also present two corpora for the Latin language. Acervus contains 24B BERT WordPiece tokens, including over 760K samples from heavily damaged OCR transcriptions, repaired by a ByT5 model trained for Latin text repair. The second dataset, Corpus Trinum, contains a mixture of over 100M strong and weak Latin language semantic triplets. Corpus Trinum is the first Latin semantic triplet dataset, opening the door for Latin language models to be adapted to general sentence semantic similarity tasks. We construct an experimental grid using five tasks and seventeen subtasks, applying a variety of finetuning configurations and subword aggregation techniques for 15 pretrained encoders, 6 LAMB training checkpoints, and an ablation model designed to quantify the impact of different masking regimens. Using this benchmark, we rank Latin encoders and find that LAMB outperforms all other evaluated models on 16 of 17 subtasks, coming within 0.8 percentage points of state of the art on the seventeenth. We provide additional analyses relating Latin encoder performance to tokenizer behavior, syntactic structure, finetuning configuration, pretraining state, subword aggregation, and variation in source texts and domains. In these, we identify unique acquisition dynamics for Latin open class words during terminal decay phases, and establish that for some task categories, finetuning configuration selection can have a greater effect on downstream scores than additional pretraining tokens."
       },
       "hash": "03ed38f87a435188c4f11eae64a3288451a4acd6a5ffc4852ee0da5711a6b81a",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99490,7 +98990,7 @@
         "abstract": "Chain-of-thought (CoT) monitoring aims to detect potentially harmful behaviors in large language models (LLMs) from their CoTs. Intervention-based evaluations measure this property by asking whether a monitor can detect the role of an intervention from the CoT when the targeted behavior occurs, typically using minimal-criterion sensitivity ($\\mathsf{TPR_{mc}}$) proposed by~\\citep{guan2025monitoring}. However, a target behavior observed under intervention is not necessarily caused by it, and we show that this metric can overestimate how often a monitor detects target behaviors actually caused by the intervention. Specifically, we establish $\\mathsf{TPR_{mc}}$ as an upper bound on this causal detection rate and derive a complementary lower bound, which provides a tighter evaluation framework for CoT monitorability. With this framework, we study whether LLMs can be trained to make their CoTs easier to monitor. We first construct a training dataset of paired control--intervention tasks spanning multiple intervention types. Using the dataset, we design and apply three intervention-specific training methods based on off-policy self-distillation, reinforcement learning, and on-policy self-distillation to train separate variants of each base model. Across various model-monitor configurations, all three methods generally improve CoT monitorability over the corresponding base models under our extended evaluation framework. Our code is available at https://github.com/xinyue-lxy/learning-to-be-monitored."
       },
       "hash": "4e8dc36812a66f7f61fb5b9c43dcfc6442db7512fe11e5fc1b4153389a811a37",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99524,7 +99024,7 @@
         "comment": "28 pages. Project page: https://wang-yinxi.github.io/representnav/"
       },
       "hash": "ace108e791cff5be62aab5cdc53f9b981c3b4ba3ae7f7fa60b4bef64d491d43c",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99559,7 +99059,7 @@
         "abstract": "The life-cycle of robotics foundation models crucially depends on data labels. Outcome reward labels are needed for monitoring real-world deployments. Process reward labels are needed during RL post-training. Timestamped captions are needed for filtering and balancing pretraining data. We present Flora, an industrial-quality data engine used for training GR00T models, that simultaneously covers these capabilities. Flora achieves SOTA scores on the captioning benchmark WGO-Bench and reward benchmarks RoboReward and Robometer. On internal benchmarks it is competitive with GPT-6 Astra while beating other frontier models. The model is substantially cheaper than API-based alternatives, roughly 125 times cheaper than GPT-6 Astra. Florais battle tested at scale, labeling 200,000 hours of data per day across 512 GB300s. By open-sourcing our data engine, we enable researchers to scale custom robotics datasets and explore emerging applications such as physical auto-research and human-to-robot transfer."
       },
       "hash": "776c325b70424fe889f8b3ac98e25c9438ce068969308ec4132d5a3025bb0250",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99601,7 +99101,7 @@
         "abstract": "Recent advances in speech generation are shifting toward context-aware, multi-turn, and multi-speaker synthesis. While these capabilities are in high demand for applications such as audiobook and audio drama production, evaluation has not kept pace with these advances. Beyond traditional zero-shot Text-to-Speech (TTS), modern systems in this domain primarily fall into three categories: instruction-controllable generation models, multi-turn dialogue models, and the audio branches of audio-visual generation models. However, existing benchmarks evaluate these paradigms in isolation, failing to provide a unified assessment of context modeling, instruction following, and multi-speaker generation. Meanwhile, recent progress in audio understanding models has made it feasible to evaluate such complex scenarios using LLM-as-a-Judge approaches. To bridge this gap, we introduce DRAMA-Eval, a comprehensive benchmark for evaluating such systems. DRAMA-Eval utilizes structured script contexts and offers a holistic evaluation framework covering objective, local, and global aspects of generation quality, enabling the assessment of acoustic fidelity, sentence-level execution, and long-range coherence. We benchmark leading open-source and commercial models on a human?verified dataset. The results reveal critical weaknesses in long-range speaker consistency and implicit instruction following that require deep contextual understanding. To facilitate reproducible research, we release a 12-hour bilingual (Chinese-English) test set of manually corrected real-world scripts, accompanied by ground-truth audio, evaluation code, and benchmark results."
       },
       "hash": "c3ae49e6f76b4ff3a48d3dcde3fd84953be0b80ab033eb44d85b54f28c825710",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99629,27 +99129,7 @@
         "comment": "23 pages, 6 Figures"
       },
       "hash": "4b45947738e00eb377517187ac2d65b05845ac4415e565d59a887057fe1fbed2",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.31863": {
-      "entry": {
-        "arxiv_id": "2610.31863",
-        "version": 1,
-        "title": "Machine-Readable Operator Manuals over the ISO 11783 Network for Offline, Multilingual LLM Assistance",
-        "authors": [
-          "Timo Oksanen",
-          "Julius Gun"
-        ],
-        "published": "2026-10-22T19:52:26Z",
-        "updated": "2026-10-22T19:52:26Z",
-        "abstract": "If agricultural machinery is to support intelligent, offline assistance, then the system must access technical documentation dynamically. In this paper, the Semantic Synchronization of operator manuals over ISO 11783-based CAN buses is analyzed, defined as the process that brings the local knowledge base of a tractor-side assistant into agreement with the operator manual of the connected implement. Data transfer performance was benchmarked using Markdown, JSON, and XML; various open-weight Large Language Models (LLMs) were also evaluated in cross-lingual query tasks. The automatic evaluation of the answers was validated against four human raters. A complete manual was transferred over a physical ISO 11783 network in 31 to 89 s, depending on format and transport settings, which is comparable to the object pool upload that operators already wait for at the first coupling of an implement. Markdown produced the smallest files, while the question-answering performance was comparable across the three formats for most models. With retrieval-augmented generation, locally run models answered most questions on the English manual correctly, with no advantage of the largest model over 7B and 8B models, but performed worse on the five other language editions. Keyword retrieval failed across languages, whereas semantic retrieval provided the cross-lingual capability. The exchange requires only a new parameter group that uses the existing request and transport mechanisms of ISO 11783, which makes it a candidate for standardization. The study is a proof of concept with inference on PC-grade hardware; deployment on embedded agricultural hardware remains future work."
-      },
-      "hash": "f0ade078257e10352cf1c8c1d75862cc1b5a12860afc256b7d55bc5e83669bda",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99669,7 +99149,7 @@
         "comment": "21 pages, 11 figures, 12 tables"
       },
       "hash": "c0fd4adf41ae97861a36801e6e420d83e8df0490f623504a1ab8635093d73103",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99692,7 +99172,7 @@
         "abstract": "PDE foundation models enable data-efficient adaptation but are deployed autoregressively, so short-horizon accuracy need not imply reliable simulation. We ask whether the short-horizon advantage of a foundation-model recipe persists when its predictions are repeatedly fed back as inputs for a long horizon. We define error amplification as G=E(H_f)/E(H_s), which measures full-horizon error relative to short-horizon error. We evaluate seven models on seven two-dimensional time-dependent PDE datasets: scratch-trained FNO and DeepONet; fine-tuned DPOT, GPhyT, Poseidon, and Walrus; and frozen in-context VICON. We report VRMSE, relative L_2, and relative MAE. Six datasets provide paired short- and full-horizon scores, while CE-RM contributes short-rollout sweeps only. At least one fine-tuned foundation model outperforms both scratch baselines in 26 of 30 short-rollout dataset--budget cells under every metric. Nevertheless, full-horizon VRMSE exceeds short-horizon VRMSE in 140 of 144 paired trained configurations, with a median error amplification of $2.04$. The count below VRMSE one falls from 104 to 53, and 12 full rollouts exceed ten although none does at the short horizon. Walrus achieves the lowest full-horizon VRMSE in 16 of 24 cells, yet its median error amplification is $2.70$. Relative L_2 and relative MAE show the same qualitative pattern. These results show that favorable short-horizon rankings can coexist with substantial error amplification. PDE foundation-model benchmarks should therefore report horizon-resolved absolute errors, amplification statistics, and failure incidence rather than a single local forecast score."
       },
       "hash": "58084e3d6a776ad8730fb1ae2aea034981866db067ecc74bd7f6a9cfc874dd0d",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99715,7 +99195,7 @@
         "abstract": "Modern Large Language Models (LLMs) remain vulnerable to carefully orchestrated multi-turn interactions that progressively bypass safety mechanisms. However, many existing red-teaming approaches rely on heuristics or impose strong assumptions that limit their applicability in fully black box settings. We address this gap by introducing $M^3$, an automated red-teaming framework that formalizes multi-turn jailbreaking as a finite-horizon Markov Decision Process (MDP). In $M^3$, an attacker LLM interacts with a target LLM while operating over a compact internal state produced by a state LLM. Across two benchmarks and six target models, $M^3$ consistently outperforms state-of-the-art multi-turn red-teaming methods in Attack Success Rates (ASR), achieving improvements of up to 53% in ASR@5. Even with lightweight attacker, $M^3$ attains gains up to 26% in ASR@1 and 34% in ASR@5, compared to baselines that use higher capacity attackers. Beyond improved effectiveness, $M^3$ exhibits steeper risk escalation over conversational turns and achieves more consistent performance across risk categories (up to 4.82 improvement in Gini index) without relying on predefined risk taxonomy, providing a scalable and principled framework for multi-turn red-teaming and safety evaluation."
       },
       "hash": "a04fdbfc6bee5fcb05fda3605541fc065cba396da34b3662d9c20b2be91b3d89",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99745,54 +99225,7 @@
         "abstract": "Vision language models (VLMs) have been increasingly adopted in consumer smart-home camera systems to interpret recorded videos and provide insights. However, video clips captured from smart-home cameras are different from curated web videos dominating existing VLM benchmarks. Smart-home video clips often do not contain subtitles or narration and are captured from different viewing angles, under various lighting conditions, and in diverse scenarios. However, the capabilities of the model in this domain, under sparse visual signals and limited context, are not fully assessed by existing VLM benchmarks. To close this gap, we introduce OpenHome, a visual-only, four-option multiple-choice benchmark for evaluating smart-home video understanding. It contains 2,254 questions on 1,118 real-world video clips and organizes 10 tasks into three capability levels. Perception evaluates visible content, Reasoning evaluates causal, spatial, and temporal relationships, and Insight evaluates subject intent, supporting evidence and appropriate homeowner responses. Based on the dataset, we describe the task design, data pipeline and evaluation protocol, and report results for 32 closed-source and open-weight VLMs. The best model, Gemini 4 Argon, reaches 81.2% overall accuracy. Frontier closed-source models outperform open-weight models on every level. The best closed-source model leads the best open-weight model by 16.3% on Perception, 22.4% on Reasoning and 37.4% on Insight."
       },
       "hash": "344a3f9427e22b2bca3d390ad556f5a6d6ab3b84380633ed90ab9d9edaa4cf2b",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.32013": {
-      "entry": {
-        "arxiv_id": "2610.32013",
-        "version": 1,
-        "title": "MAGIC: Margin-gated Contrastive Debiasing with Evidence Restoration for VLM Test-time Robustness Scaling",
-        "authors": [
-          "Shunshun Gu",
-          "Enze Zhang",
-          "Ming Pei",
-          "Hang Zhou",
-          "Xiao Luo"
-        ],
-        "published": "2026-10-23T00:24:44Z",
-        "updated": "2026-10-23T00:24:44Z",
-        "abstract": "This paper studies the problem of test-time robustness scaling for large vision-language models (LVLMs), which aims to mitigate language bias during inference. Existing approaches typically adopt test-time scaling techniques such as contrastive decoding to improve inference performance. Despite the progress, the performance of these approaches is far from satisfactory due to intentional evidence removal during perturbations and redundant inference cost. Towards this end, we propose a novel approach named Margin-gated Contrastive Debiasing with Evidence Restoration (MAGIC). The core of our MAGIC is to evaluate the decision margins of LVLMs to selectively activate textual and visual perturbation branches for efficient debiased inference. In particular, our MAGIC first measures the prediction margins of crucial tokens, and applies a gating function to identify low-confidence responses that are susceptible to language biases. For selected samples, we integrate the token logits from multiple textual and image perturbation branches with the original ones for debiased decision. More importantly, we selectively restore the most informative corrupted views with sharp prediction distributions for ambiguous samples after debiasing, enabling evidence recovery for discriminative decision-making. We further utilize a calibration dataset to actively identify and prune ineffective branches during contrastive debiasing for cost reduction. Extensive experiments on benchmark datasets validate the effectiveness of the proposed MAGIC in comparison with extensive baselines."
-      },
-      "hash": "da4bd97893075c316571b73af338d0faafa5e76b57b0729ce56df962e24bfde4",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.32022": {
-      "entry": {
-        "arxiv_id": "2610.32022",
-        "version": 1,
-        "title": "CEMIR vs. FISER: a comparative study of reasoning-based and enrichment-based approaches to pragmatic intent recognition",
-        "authors": [
-          "Ziya Hosseynzadeh",
-          "Farjad Fallah",
-          "Farnoosh Fallah",
-          "Soroush Gooran",
-          "Mohammad Amanloo",
-          "Hossein Sameti"
-        ],
-        "published": "2026-10-23T00:48:20Z",
-        "updated": "2026-10-23T00:48:20Z",
-        "abstract": "Intent recognition in human-robot interaction requires agents to resolve ambiguous natural language instructions by inferring the speaker's underlying goals. Research has increasingly focused on two notable paradigms for addressing this task: structured symbolic reasoning and multimodal input enrichment. However, it remains unclear whether enrichment-based methods provide benefit in settings where the ambiguity concerns unstated human intent rather than missing observable scene information. In this paper, we present a comparative and diagnostic study benchmarking FISER - a framework utilizing structured social and embodied reasoning - against CEMIR (Context-Enriched Multimodal Intent Recognition), a method that performs multimodal enrichment by synthesizing narratives and photorealistic images from textual prompts. By evaluating both approaches across four Large Language Models (LLMs), ranging from Qwen2.5-Omni-3B to GPT-5, on the HandMeThat v2 benchmark, we analyze their capability to resolve pragmatic ambiguities. Our statistical analysis, employing multiple-comparison correction, reveals no statistically significant difference in performance between FISER and CEMIR across any model or difficulty level. This pattern holds across all sixteen model-by-difficulty comparisons, as well as in a targeted ablation isolating CEMIR's narrative and visual components. Instead, performance is primarily associated with backbone capability and the inherent difficulty of the ambiguity. These findings suggest a boundary condition for text-derived multimodal enrichment: when the relevant task constraints are already available in the textual instruction, synthetic multimodal augmentation may not provide measurable benefit over structured reasoning on the same text."
-      },
-      "hash": "753bd3839772107b1bbd57f556a89c6a943c53ccdccdadabe62dc0be0fb74483",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99814,7 +99247,7 @@
         "abstract": "Formal specification generation is a critical step towards formal verification and correctness assurance of software. Recently, large language models have been widely adopted in automatic generation of formal specifications. However, existing LLM-based specification generation approaches often assume that the input program is correct, which deviates from the real purpose of formal verification---to figure out whether the program meets its requirements when its correctness is unknown. Therefore, we conduct an empirical study of LLM-based specification generation under the bimodal setting: given both the natural language requirement and its corresponding code implementation, whose correctness is unknown. We construct a benchmark of 1,403 C programs and evaluate ACSL specification generation with Frama-C verification. Our study reaches several interesting findings: first, when the code implementation is correct, providing the natural language requirement does not further improve the pass rate of generated specifications. Second, when the code implementation is incorrect, LLM-based specification generation may erroneously pass verification by producing weak or implementation-misled specifications, and this cannot be fully alleviated by advanced prompting approaches. Compared with the non-formal HoarePrompt approach, LLM-generated formal specifications are less effective in predicting requirement-code consistency. Our study takes a first look at applying LLM-based formal specification generation to verifying program correctness against requirements, and points to requirement-faithful specification generation as a new direction for future LLM-based formal specification research."
       },
       "hash": "9b49d8de39c8db95911387b26f19fa5aeac21d93ac9792ac3e028b1e00c790ea",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99835,29 +99268,7 @@
         "abstract": "EEG foundation models report downstream gains, yet their protocols seldom include three controls. These are the same encoder untrained, spectral features fitted on the same data, and a layer picked without looking at test scores. We therefore evaluate five publicly released EEG foundation models and an in-house JEPA-style model under one protocol with all three controls and several seeds, on five benchmarks and four added task families. The controls change the reading in three ways. First, picking the probed layer by its test score raises the layer-wise peak by an average of +0.034 and reverses the peak-versus-output gap in 9 of 36 cells. Second, with the layer picked on validation, random initialisation matches or beats pretraining for half of the models on sleep and emotion, and no model beats a five-band log-power baseline on emotion or motor imagery. Third, after full fine-tuning only 5 of 30 pairs gain beyond twice their seed spread, and the one clear loss of -0.290 AUROC persists under matched learning rates. From these results we draw four reporting practices, and we release every cell for re-analysis."
       },
       "hash": "03c4bd509020022a3bbcee5f0fa58e9f9cc09218aa602e9c1620a2f33e014b1a",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.32073": {
-      "entry": {
-        "arxiv_id": "2610.32073",
-        "version": 1,
-        "title": "Guided Zero-Shot Anomaly Explanation for Anonymized Crowd Video Monitoring: Context, Categorization, and Spatial Localization",
-        "authors": [
-          "Mulugeta Weldezgina Asres",
-          "Lei Jiao",
-          "Christian Walter Omlin"
-        ],
-        "published": "2026-10-23T02:19:42Z",
-        "updated": "2026-10-23T02:19:42Z",
-        "abstract": "Despite the promising development of deep learning for video anomaly detection (VAD), explainability (XAI) of these models remains a challenge. Explainable and privacy-protecting VAD builds transparency and trust that facilitates adoption of computer vision systems, including safety and security monitoring. However, anomaly explainability in privacy-preserving VAD systems is underexplored. In this study, we present the XAVAD approach, a unified descriptive anomaly XAI for an anonymized VAD, that integrates flexible zero-shot anonymization, anomaly type categorization, visual localization, and scene context description. We provide empirical and qualitative assessments of multifaceted explanations integrated with full-body visual anonymization for privacy protection. We adopt a multimodal CLIP embedding for videos, using improved LLM-assisted prompting and pool-scoring mechanisms for anomaly-type identification. We enhance Grad-ECLIP for spatial anomaly heatmap localization, leveraging computation and accuracy through our novel prompt-guided patching autofocus mechanism. We employ VLMs to generate context and reasoning descriptions of detected anomalies through curated prompt engineering. We have evaluated the accuracy and computational cost of XAVAD on several publicly available CCTV and video datasets. Our experiments demonstrate substantial gains of our XAVAD over state-of-the-art benchmark approaches and provide insights into privacy protection trade-offs in XAI for VAD. We further present ablation studies and assessments across diverse configurations and modeling alternatives to demonstrate the efficacy of our proposed methods. Code: https://github.com/muleina/XAVAD}{https://github.com/muleina/XAVAD .",
-        "comment": "21 pages, 12 figures, 13 tables, preprint"
-      },
-      "hash": "1d51db9ae85a3ab9cb652ca7dccc1da93b9e4652fc448442bd7a3bfdd23ba4c7",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99879,7 +99290,7 @@
         "abstract": "Large language models (LLMs) exhibit mode collapse, where their output distribution concentrates on familiar semantic modes. When diversity disappears, repeated sampling becomes semantic repetition rather than discovery, making rare but stronger solutions unlikely to surface and leaving self-evolution and continual learning difficult to sustain. Most remedies intervene only at inference time, shaping sam- ples without making diversity a model capability. We propose PRISM, a training-time framework that internalizes diversity within the model. PRISM combines (i) submodular curation that pairs each prompt with diverse-yet-correct multi-teacher solutions, and (ii) stochastic embedding modulation, which turns special-token perturbations into implicit signals for sampling distinct outputs. A theoretical analysis establishes the stability of this mechanism. On WritingPrompts and BookMIA, PRISM moves the quality-diversity frontier outward, achieving the best generation quality in all model-benchmark settings while maintaining the strongest or near-strongest semantic diversity across two open-weight model families. It also improves sampling efficiency on math and code benchmarks. Beyond inference, PRISM yields a stronger foundation for reinforcement learning, sustaining diverse rollouts and mitigating the diversity collapse commonly observed during RL training."
       },
       "hash": "13999931d8045dd9ced2e36b06a7d53b5f51451eec43340a0c32a3dbca368e65",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99901,7 +99312,7 @@
         "abstract": "In drug development, lead optimization must improve competing properties, such as increasing permeability and reducing toxicity, while limiting scaffold changes that could compromise the lead's potency. RL-based post-training, such as C-MORAL, addresses this problem by fine-tuning molecular language models to directly optimize molecular leads for objectives of interest, which relies on expensive task-specific datasets and faces challenges in achieving multi-objective optimization (MOO). We argue a pre-trained model may already contain useful molecular edits that zero-shot generation cannot efficiently reach. Motivated by the limited search capabilities of zero-shot generation, we develop an efficient Metropolis-Hastings search strategy to better explore the proposal distribution. We propose ReMedI, which uses the molecular language model as a base proposer for inference-time alignment. Given a lead and a set of multi-objective tasks, the model proposes edits conditioned on the current molecule, while Metropolis--Hastings refinement guides sequential edits under an objective for property improvement, preservation, and lead similarity. On both C-MuMOInstruct and SMDD benchmarks, refinement improves frozen base models across three backbones, reaching significantly higher multi-objective optimization success rates compared to baselines. These search traces can then distilled into the base model which improves zero-shot generation and subsequent search using approximately 7.8 times less training molecular leads than that of C-MORAL. ReMedI achieves approximately 2.8 times the strict-success coverage of RL baseline C-MORAL, including on out-of-distribution tasks, with matched lead-relative similarity."
       },
       "hash": "3fc71b8c08be912365081ed5221a4caee1ac711e6b866f6ca70efb3dcee4f82b",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99924,7 +99335,7 @@
         "abstract": "Large language models often acquire specialized capabilities through successive pretraining stages, but these gains can come at the cost of forgetting earlier knowledge. In this work, we investigate whether such trade-offs can be improved by changing how strongly each domain contributes to learning while keeping its data exposure fixed. We find that, in controlled knowledge--mathematics experiments, loss reweighting produces a single checkpoint that surpasses the best knowledge and reasoning scores attained along either stage trajectory. This reveals an independent control that data-mixture ratios alone do not capture. Building on this finding, we propose LARE (Loss-Adaptive Reweighting under fixed Exposure), which automatically adjusts domain weights from running loss statistics. Motivated by a theoretical analysis of gradient noise, its normalized inverse-square-root rule balances relative loss scales without changing the sampled mixture or requiring additional runs to search for weights. Across knowledge, mathematics, and code, \\Method{} improves all five evaluated benchmarks for a 1.5B model trained on 240B tokens, averaging +7.84 pp over a matched direct mixture, including gains of +17.06 pp on GSM8K and +9.00 pp on MATH. These findings demonstrate that adjusting domain loss scales can improve joint capabilities without additional domain exposure."
       },
       "hash": "6c05d35a207853da115ee4828676cd2e0bb68e491ebfd3404256a9b6ee1dfef9",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99948,7 +99359,7 @@
         "abstract": "When a language model is asked whether its own answer is correct, three languages are involved: that of the question, that requested for the answer, and that of the verifier instruction asking for the judgment. Multilingual confidence evaluations seldom separate the three. We vary them independently in a six-language factorial design with ten open-weight models (3B-14B) on LSQA, MMMLU and TriviaQA, holding each answer fixed across verifier languages and measuring confidence with a first-token P(True) probe. The three languages move different parts of the evaluation: which of them governs accuracy depends on the benchmark, matching the response language to the question or verifier language sharpens discrimination but not calibration, and the verifier language alone shifts calibration error by up to 0.04 without changing accuracy. The scorer matters as well: an unvalidated judge would have shrunk the MMMLU English-Hindi accuracy gap from 0.198 to 0.038. Multilingual confidence results, model rankings included, are therefore comparable only when all three languages are reported and the scorer is validated."
       },
       "hash": "d74ad0ef8688b350911edaf276c9a66e47e8a4bc937e8ed7f1a632bb7e661585",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99972,7 +99383,7 @@
         "abstract": "Existing personalized information retrieval methods mainly model differences in user needs through user preferences and query intent, while paying little attention to the personalized expression differences that arise when different users express the same retrieval need. Existing real query data typically lack stable user identities, long-term expression histories, and intent-matched counterparts, making it difficult to systematically evaluate the impact of personalized expression differences on retrieval outcomes. To this end, we propose PersonalQuery-Benchmark (PQB). PQB models personalized syntactic expression and personalized writing errors from users' historical texts, constructs personalized syntactic expression queries and personalized writing-error queries, and validates benchmark quality through LLM assessment and independent human evaluation. PQB covers three Amazon product domains with 6,516 query instances in total, and is evaluated on five retrieval models representing lexical, learned sparse, dense bi-encoder, late-interaction, and hybrid architectures, together with two LLM-based ranking models. Results show that even when the information need is held fixed, personalized expression differences still induce measurable ranking variation; different retrieval models exhibit clearly different sensitivities to syntactic variation and writing-error variation, while higher overall retrieval effectiveness does not necessarily correspond to stronger robustness against expression variation. PQB provides a new benchmark and evaluation framework for systematically studying personalized expression robustness. The associated code and dataset are available at the following address: https://github.com/cpxjazz123/PersonalQuery-Benchmark."
       },
       "hash": "6021d435334ce78a2d8fc68b821092c7ee20d4da8b2adfab593ce7f71859411f",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -99995,7 +99406,7 @@
         "abstract": "Scientific discovery requires identifying the scientific principles underlying observed phenomena to guide further investigation. As these empirical principles are often unknown in complex discovery processes, they are constructed via a hypotheses-to-principle pipeline to obtain recurring causalities from progressively accumulated observations during test-time discovery. However, constructing this knowledge requires substantial domain expertise, time, and effort, making this translation stage a bottleneck for scientific discovery. To address this limitation, we propose Principia, an LLM-based framework that constructs and continually refines scientific principles at test time. Drawing on how human researchers develop principles, Principia forms comparative causal hypotheses from related inputs and their observed outcomes, then synthesizes recurring relationships across these hypotheses into inductive principles. By applying the constructed hypotheses and inductive principles to the task, it obtains new observations, revises the hypotheses used based on these new observations, and reconstructs principles from the updated hypotheses, allowing scientific knowledge to continuously evolve throughout test-time discovery. Across benchmarks spanning molecular optimization, protein engineering, gene perturbation, and molecular property prediction, Principia outperforms baselines relying on internal knowledge, external sources, or experience summaries, while generating principles that are plausible and consistent with the scientific literature, demonstrating its effectiveness in constructing and refining task-specific hypotheses and principles at test time for scientific discovery. Our code is available at https://github.com/DongkiKim95/Principia."
       },
       "hash": "391d334cb677ff44e426e71e5179f2c7a783725ed46d5c6e7c933329f7be9c83",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100018,7 +99429,7 @@
         "comment": "24 pages, 11 figures"
       },
       "hash": "ab043e7e9b2c31ceedaf6944434113ebdd1a5718317eba603158bc712b6e200f",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100043,7 +99454,7 @@
         "abstract": "Training large language models (LLMs) in sub-8-bit arithmetic promises substantial gains in memory bandwidth and compute throughput, yet FP4 formats introduce quantization error severe enough to destabilize optimization if left unaddressed. We present ALTO, an open-source training recipe for GPT-OSS-20B, a 20-billion-parameter mixture-of-experts (MoE) model, on the MLPerf Small MoE Training benchmark under the MXFP4 microscaling format. The recipe combines established techniques from Abecassis, Felix et al. [arXiv:2509.25149] (hybrid 1D/2D block quantization, randomized Hadamard transforms, and stochastic rounding) with a simplified weight de-oscillation scheme adapted from TetraJet-v2 [arXiv:2510.27527]. On C4 validation at global batch size 16, MXFP4 + RHT + SR + de-oscillation reaches a validation loss of 3.3350 at 16,128 steps, only 0.007 above the BF16 baseline (3.3283), closing roughly 50% of the gap left by MXFP4 without de-oscillation (3.3418). Measured by steps to reach the MLPerf quality target (validation loss 3.34), de-oscillation cuts the FP4 convergence overhead relative to BF16 from +20.0% to +5.0%. We also report negative end-to-end results from differential gradient estimation, outlier clipping, and macro-block scaling, despite each showing operator-level SNR gains. All experiments use simulated MXFP4 kernels on AMD MI300 hardware and wall-clock speed has not been optimized."
       },
       "hash": "d94ac76496087e5be599994a8dcba38e066e189720e1599853c021d0451206e7",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100066,30 +99477,6 @@
         "comment": "Accepted at MLCSA Workshop at Asian Conference on Computer Vision (ACCV 2026). Benchmark, code and models available at https://github.com/semanticsugarbeets/rootdown"
       },
       "hash": "02d7e0aa61251ead77fdfe83c04692dc31dbc767ccb515b0dc5ae651b38f6ef9",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.31121": {
-      "entry": {
-        "arxiv_id": "2610.31121",
-        "version": 2,
-        "title": "RGraph-Eval: Task-Grounded Scene Graphs for Evaluating Robot Video Generation",
-        "authors": [
-          "Aleksandr Lazarev",
-          "Sofia Zimina",
-          "Roman Kuznetsov",
-          "Tatiana Zemskova",
-          "Iaroslav Koshelev",
-          "Dmitry Yudin"
-        ],
-        "published": "2026-10-22T11:39:01Z",
-        "updated": "2026-10-23T07:54:04Z",
-        "abstract": "Generated robot videos can look convincing while depicting the wrong interaction: a different object is moved, a grasp disappears, or a placement ends outside its destination. We introduce RGraph-Eval, a reference-based framework that makes these discrepancies explicit through task-grounded temporal scene graphs. Unlike approaches that construct separate evidence representations for different evaluation dimensions, we organize task entities, interactions, and motion within a unified, interpretable scene graph representation. A foundation-model pipeline identifies manipulation roles, grounds persistent object masks, infers and verifies state transitions and action intervals, and reconstructs manipulated-object motion in three dimensions. Applying this representation to a generated video and a reference demonstration supports an interpretable RGraph-Eval score with visible-object, relation-change, and 3D path-shape components. We also introduce ShareRobot-SG, a collection of 1,000 manipulation scenes from ten ShareRobot sources annotated with the multimodal representation. Our evaluation separates graph-generation quality from agreement with human video judgments and includes comparisons with adapted SVG2 and SG-Ego, as well as a benchmark of three video generators. The framework connects robot-video assessment to the observable entities and interactions underlying a task while making the graph annotations reusable beyond evaluation. Code will be publicly available at https://github.com/SashaDance/rgraph-eval."
-      },
-      "hash": "923fad334fa9ce5d05ae682ce34dd5b28386370f9bb820bf66acae5ca1b4154a",
       "status": "queued",
       "attempts": 0,
       "error": null,
@@ -100120,7 +99507,7 @@
         "comment": "49 pages, 18 figures. Code: https://github.com/alden199/Solvent ; Model: https://huggingface.co/Alden19910/Solvent"
       },
       "hash": "5edce3bf25245f12c0e848bae2fabe973efcbcc1d334f87f40fae0739fe49f3f",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100142,7 +99529,7 @@
         "comment": "19 pages, 11 figures, 10 tables"
       },
       "hash": "748f1f4b9dc52d1c35da059f64055928ca8877113dc3b72ee46dd9943e5e7f8d",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100165,7 +99552,7 @@
         "comment": "Preprint. 31 pages, 16 figures, 18 tables"
       },
       "hash": "f56a0b75487e288d013ea55075a681970531eb968da63174d1a2fd3e59637173",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100186,27 +99573,7 @@
         "comment": "27 pages, 4 figures, 12 tables. Code and data: https://github.com/ningfanxing-sys/nem-llm-text-activity"
       },
       "hash": "b6596ffdb4cf87b1d0af1d849a2ec440571e00c89ba6e98c53f4cefff799252d",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.32423": {
-      "entry": {
-        "arxiv_id": "2610.32423",
-        "version": 1,
-        "title": "Cycle-of-Thought: Self-Evaluative Iterative Reasoning for Table Visual Question Answering in Document Images",
-        "authors": [
-          "Somraj Gautam",
-          "Gaurav Harit"
-        ],
-        "published": "2026-10-23T09:50:37Z",
-        "updated": "2026-10-23T09:50:37Z",
-        "abstract": "Recent advances in Vision-Language Models (VLMs) have significantly improved Visual Question Answering (VQA) performance, yet their reasoning over structured content such as tables remains inconsistent, often plagued by spatial misalignment and logical hallucinations. Existing approaches for improving table VQA typically rely on architectural modifications or expensive supervised fine-tuning (SFT), which impose high barriers to entry due to the need for large-scale, expert-annotated datasets and significant computational resources. In this work, we propose Self-RefineVQA, a training-free, inference-time self-correction framework that improves table VQA performance without additional labeled data or model updates. Inspired by human revision behavior, our method enables a single VLM to iteratively act as a generator, critic, and refiner, forming a closed self-feedback loop that corrects common reasoning errors through prompt-guided re-evaluation. Experiments on tabular VQA benchmarks demonstrate that Self-RefineVQA yields consistent accuracy gains in monolingual and cross-lingual understanding, with a particularly significant boost for small models, enabling lightweight models (e.g., 2B-7B parameters) to rival the performance of significantly larger counterparts. Furthermore, we provide a comparative complexity analysis demonstrating that while inference cost increases linearly, our framework offers superior data efficiency and a lower cumulative cost by eliminating the prohibitive annotation bottleneck of human labeling required for fine-tuning. Our results highlight the potential of prompt-based self-improvement as a scalable, accessible paradigm for reliable table reasoning in VLMs."
-      },
-      "hash": "d4e50cf4ec281dd944fe88738a6b43c41d6b4831cc52771ce2812f6df1def1fd",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100229,31 +99596,7 @@
         "abstract": "Visual grounding with vision-language models such as CLIP typically produces a single deterministic relevance map for an image-query pair, without indicating whether the localisation is reliable or whether the referent is present at all. We introduce \\textbf{PROVE} (\\textbf{Pro}babilistic \\textbf{V}isual Grounding via Patch-Level \\textbf{E}vidence), a post-hoc evidential adapter that maps frozen CLIP patch features to per-patch Beta distributions without modifying the backbone. PROVE casts grounding as per-patch membership: each patch accumulates positive and negative evidence for whether it belongs to the referent, so a query may match zero, one, or many patches. We train PROVE with an evidential objective on soft patch-coverage targets, and define a prior-pull objective that keeps absent-referent examples near an uninformative prior, so that vacuity serves as an absence signal without a dedicated presence classifier. During inference, a single forward pass yields, in closed form, a posterior-mean grounding map, a spatial vacuity map, and an image-level absence score. We evaluate PROVE on referring-expression benchmarks: it is competitive in localisation with state-of-the-art CLIP grounding methods, its uncertainty tracks localisation error and supports selective prediction under abstention, and its image-level score detects when the referent is absent altogether. Our evidential patch-membership modelling offers a simple, drop-in mechanism for probabilistic verification in frozen vision-language grounding systems."
       },
       "hash": "d9803cb3864cbda4ac671bd732724b223e12fc31c69097fd00b391cf3f8176e8",
-      "status": "queued",
-      "attempts": 0,
-      "error": null,
-      "next_attempt_at": null,
-      "kind": "new"
-    },
-    "2610.32469": {
-      "entry": {
-        "arxiv_id": "2610.32469",
-        "version": 1,
-        "title": "ALLMTS: Automated LLM-based Medical Triage System",
-        "authors": [
-          "Michał Remigiusz Janiszewski",
-          "Artur Stopa",
-          "Łukasz Lenkiewicz",
-          "Wojciech Achtelik",
-          "Bartosz Gonczarek"
-        ],
-        "published": "2026-10-23T10:39:56Z",
-        "updated": "2026-10-23T10:39:56Z",
-        "abstract": "Telephone triage is a safety critical task: from a brief intake note, a nurse must decide whether a caller needs an ambulance, an emergency department, an appointment, or self care at home. Queried directly, large language models (LLMs) are unreliable: they over-escalate routine cases and cannot justify their recommendations against an auditable clinical standard. We present the Automated LLM-based Medical Triage System (ALLMTS), which grounds every disposition in the same commercially maintained telehealth guidelines nurses use. Rather than asking an LLM to triage, ALLMTS makes it execute the guideline: it selects the appropriate guideline and evaluates its triage assessment questions. The disposition follows deterministically from the first positive answer, using the same traversal rule a nurse follows. We evaluate ALLMTS on 566 synthetic, expert-validated scenarios spanning 14 dispositions and designed to test specific guideline questions. ALLMTS achieves 0.95 accuracy, compared with 0.47 for a raw-LLM baseline. On a curated 50-scenario subset released as an open benchmark, ALLMTS reaches 0.98 accuracy, on par with the 0.944 correct disposition rate that a five nurse expert panel recorded on those same scenarios. Critically, on that subset the baselines have over-triage rates of up to 0.50 (0.44 on the full dataset), whereas ALLMTS reduces the over-triage rate to at most 0.02 while maintaining low under-triage. These results support coupling LLM language understanding with executable clinical guidelines for triage from intake notes.",
-        "comment": "Accepted at the GenAI4Health Workshop at NeurIPS 2026"
-      },
-      "hash": "10043aa97ae3d933a9f979e24bab05ca5ff2cdc31092eb4e072c0471df59bed2",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100278,7 +99621,7 @@
         "abstract": "Advances in Multimodal Large Language Models (MLLMs) have driven substantial progress in multimodal embeddings. Recent methods exploit generative capabilities by augmenting embedded inputs with self-generated reasoning to produce more informative embeddings. However, conventional retrieval supervision for training embedding models specifies pairwise relevance relations without explicitly guiding the reasoning used for input augmentation. Such reasoning is neither directly observed nor uniquely determined by the input, allowing multiple plausible traces to introduce semantic cues of varying retrieval utility. Existing approaches largely optimize reasoning conditioned on the input alone, limiting the exploration of retrieval-relevant traces. We introduce PILOT, a framework that models reasoning as a latent variable and instantiates its prior and posterior distributions as distinct reasoning modes of a shared MLLM. The prior conditions only on the input, whereas the posterior uses additional training-time relational evidence to guide reasoning exploration. To translate the posterior's broader exploration into inference-time improvements, we derive an importance-weighted variational objective and instantiate it as a prior-posterior co-evolution framework that improves both modes under a shared inference-compatible reward while selectively transferring posterior trajectories to the prior according to their utility and prior reachability. On the 78-task MMEB-V2 benchmark, PILOT outperforms the primary baseline across all 12 task groups at both 2B and 7B parameters, improving overall scores by 3.2 and 3.3 points, respectively, with the largest gains in visual-document retrieval (+6.1 and +6.4 points). Our results show that relational supervision is most valuable not as a post-hoc reward but as a signal for shaping how reasoning is explored in training reasoning-enhanced embedding models."
       },
       "hash": "6764b48f6b1dc35516a8e97e28f4a14031dfb577910d3b3421561e888d704795",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100304,7 +99647,7 @@
         "comment": "9 pages, 6 figures, 4 tables"
       },
       "hash": "1a67bb60809c20f2320787cf19d7e9a0d82e00ae77ff4e326ed293caba6f4dfc",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100325,7 +99668,7 @@
         "comment": "Accepted at WACV 2027"
       },
       "hash": "aeeb664fdf7f81698641b11abbf4c77a6690f65413bae6a6ed0d2adbce72e02d",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100346,7 +99689,7 @@
         "comment": "Accepted to WACV 2027"
       },
       "hash": "0e6da0c26ded679f0c128a237be732d35e67742caacb2734268ab2cd29ffc7af",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100368,7 +99711,7 @@
         "abstract": "Existing evaluation protocols for unit tests rely on aggregate metrics such as branch coverage and mutation score. These metrics quantify the extent to which a test suite exercises program behavior, but do not identify the behavioral obligations it systematically leaves unchecked. We propose BlindSpotEval, an obligation-based evaluation framework aligned with the Arrange-Act-Assert pattern. The framework comprises three metrics, Boundary-Value Adequacy, Control-Flow Adequacy, and Oracle Strength, complemented by an assessment of execution reliability. We also introduce ObligBench, a complexity-stratified Java benchmark comprising 895 complex and 700 low-complexity functions with source-side obligation annotations. Evaluating 14,320 tests from four LLMs under four prompting strategies reveals systematic blind spots. Incorrect assertions account for 15.6% of test failures, illustrating that coverage alone does not establish oracle correctness. Among executable tests, coverage of null, negative, and empty arguments reaches only 34.8%, 23.8%, and 38.8%, compared with average coverage above 93% for booleans. Catch blocks and default groups have Control-Flow Adequacy scores of only 0.100 and 0.312. Across both dimensions, LLM-generated tests exhibit the happy-path bias observed in human-written tests, concentrating on normal inputs and expected flows while leaving unusual values and exceptional paths unchecked. Oracle strength is high on average but uneven, with weaker assertions for object return property values and exceptions. These blind spots also occur in low-complexity functions, suggesting that code complexity alone does not explain them. BlindSpotEval provides construct-level adequacy profiles that identify under-tested obligation types and can guide targeted improvements beyond those supported by aggregate scores alone."
       },
       "hash": "a80a739d81d707590f6112494787ed8a96e5d3ac0b2eae13351943732670c0a6",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100390,7 +99733,7 @@
         "abstract": "Large language models and agents have shown significant power in advanced physical research. In this paper, We introduce PHYRD, a living benchmark for theoretical-physics reasoning with 63 Reproduce and 43 Discover problems. Reproduce tests derivation of published results; Discover tests consequences of modified theoretical conditions. FormulaForest constructs the tasks with reference solutions and subquestion-level rubrics. Across five models, whole-problem accuracy ranges from 49.21% to 68.25% on Reproduce and from 18.60% to 74.42% on closed-book Discover. With tools, four models complete more Discover problems, but conceptual errors and missing arguments persist. Besides, our experimental results demonstrate the value of FormulaForest as synthetic data. On FrontierScience, a benchmark developed by OpenAI, it raises the accuracy of a Qwen-35B-A3B model from 61% to 72%."
       },
       "hash": "28f306b57e1aa15af7acee1121411cec1d7a72e1b3b48416c1bfe295d73f8e6e",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100416,7 +99759,7 @@
         "abstract": "Pharmaceutical companies maintain vast archives of legacy preclinical study reports that contain study-context details, such as fasting, anesthesia, and laboratory instrumentation, that are rarely captured in structured data formats, yet they can correlate with clinical pathology parameters values and limit the reuse of historical data. This work demonstrates practical, scalable solutions to recover such descriptors from heterogeneous report texts using large language model (LLM)-based extraction pipelines developed independently by two industry teams. The pipelines identify and normalize metadata fields and return verbatim evidence with page and section reference, hasting human verification and iterative refinement. Evaluation of over 400 documents against expert-curated reference values showed high agreement across a broad set of metadata fields. Performance was strongest for consistently reported items and lower for descriptors subject to linguistic or report structure variability. Extraction time has shrunk from 25 minutes in the manual benchmark to 1.6 minutes. As a concrete biological demonstration, we show that fasting status extracted from report text was associated with species- and analyte-specific shifts in clinical chemistry parameters, illustrating how recovered metadata can improve selection of historical controls. Key strengths of the approach are scalability, traceability, and the ability to recover information missing from current industry standards. Main limitations are dependence on source-report quality and initial expert effort to define and refine schemas. These results establish how LLMs can convert heterogeneous, unstructured legacy reports into evidence-grounded, reusable and structured metadata, leading to better experimental comparability, and thus enabling reliable data pooling or informed virtual control selection."
       },
       "hash": "f9375fdadfb30f6f0076d81d0a274e0af19425900140730c777102deedc31010",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100437,7 +99780,7 @@
         "abstract": "Large Language Models (LLMs) increasingly serve as reasoning components in modern software systems, yet a model that answers a logical query correctly can contradict itself when the same problem is restated in an equivalent form. Static benchmarks evaluate queries in isolation and therefore fail to expose such inconsistencies. To address this limitation, we present LGMT, an open-source tool that detects reasoning inconsistencies through metamorphic relations grounded in first-order logic. Given a source test case in premise-conclusion form, LGMT generates logically equivalent follow-up cases and checks whether the model's entailment predictions agree across the pair, without ground-truth labels. The tool provides 20 built-in metamorphic relations, supports custom ones verified by the Z3 theorem prover, and runs from a CLI or a web studio, including an offline mock mode requiring no API key. Across six widely used LLMs on a bundled benchmark of 3,091 metamorphic groups, LGMT reveals inconsistency rates ranging from 20.84% to 29.44%. LGMT is publicly available on GitHub at https://github.com/MaxwelsDonc/lgmt-tool, with a demonstration video at https://youtu.be/gou4opptu1U."
       },
       "hash": "3cca918f69be52d341cf2080c1ae69d8c5cbc6dc0c4b858504c7ed63e6c72de2",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100468,7 +99811,7 @@
         "comment": "Preprint submitted to Future Generation Computer Systems"
       },
       "hash": "c295221e2322d283351b6093af6e04711cd1c39873593726ef2e2c3496d14d99",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100491,7 +99834,7 @@
         "comment": "23 pages, 16 figures, including supplementary material. Jiyeong Chae and Hyunkyo Seo contributed equally. Project page: https://a56239637-dot.github.io/Natural-Language-to-Nav2-Project-Page/"
       },
       "hash": "195280e23493d1201017937c67f30c95c3146da226421968195ce61f658a3ee0",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100512,7 +99855,7 @@
         "abstract": "Multimodal large language models (MLLMs) read images through visual tokens, and under the small per-image budgets that efficient deployment requires, the fine text of documents, charts and infographics becomes illegible. Zooming in recovers the evidence, but the region must be chosen before the model answers. We find that MLLMs know where the evidence is, but not in a form that can be read before they answer: the answer tokens localize it from the middle layers on, whereas the attention available before answering does so only in the top layers, at a depth that varies across models, and diffusely. Supervising the pre-answer attention to point degrades reading, and the benefit of zooming is governed by each image's information gap. Building on these findings, we introduce ours, which lets an MLLM look where its answer would. A dedicated look token, processed in a single prefill and kept out of the answering pass, learns in hindsight to attend as the model's own correct answers do, extracting this knowledge into a concentrated pointer before any answer exists. Its hidden state then selects how to look, from no zoom to crops, square windows, windows that adapt to the pointer and foveated warps, supervised by the counterfactual outcome of every view. ours needs no box annotations, per-model layer search, external localizers or generation before the answer. On Qwen3-VL at three scales and five text-rich benchmarks, it surpasses the strongest baseline by 4.8-9.1 points at 98 visual tokens per view and attention-guided zooming by 11.1-17.0 points, while running faster than attention-guided and grounding-based zooming."
       },
       "hash": "bc9726a392cf298b8706911cc11c71dc9a505e81cc1d644ddd2bed40fbf62dbd",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100536,7 +99879,7 @@
         "abstract": "On-policy self-distillation enables post-training foundation models without relying on stronger external teachers. However, existing approaches rely on ground-truth question-answer pairs, human-curated problem sets, or other supervised signals. In this work, we reformulate on-policy self-distillation as a self-training framework, driven by self-generated question-answer pairs and privileged reasoning demonstrations. We push supervision to the limit: guided solely by coarse, high-level topic descriptions, the model synthesizes its own curriculum of queries and privileged reasoning traces without access to any human-curated prompts or answers. We find that self-distillation on fully synthetic privileged information enables a model to improve across multiple domains while retaining its capabilities on domains it is not self-trained on. We demonstrate the generality of this framework across text and multimodal domains, achieving consistent self-improvement on standard language benchmarks and Visual Question Answering. Our findings demonstrate that foundation models possess rich latent capabilities that can be amplified without external task supervision or curated problem distributions."
       },
       "hash": "1abe1d0bd8d14a83fcc6e87a0b4bed7a12b6cf5ddf42b97f2fba0d6e10b1cff0",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100561,7 +99904,7 @@
         "abstract": "Quantitative and dense task progress feedback is essential for robotic manipulation across data curation, policy evaluation, and reinforcement learning. Existing progress annotations often rely on sparse keyframe markings derived from subjective manual judgments, limiting their scalability and cross-task consistency, particularly in long-horizon manipulation. To overcome these challenges, we propose action-aware quantification, a unified progress specification that decomposes long-horizon trajectories into object-level subtasks via a vision-language model (VLM) and assigns weighted action credits to capture fine-grained execution dynamics. Using VLM auto-labeling and human calibration, we construct an 800+ hour training video dataset and LOOM, a long-horizon progress benchmark containing 19,618 human-calibrated evaluation frames. To model these dense progress dynamics, we introduce NimCritic, a predictive progress critic trained via Joint Video-Progress Learning. We further incorporate Historical Progress Perturbation to mitigate sequential drift, and design a contrastive Video-Progress Alignment objective that bridges asymmetric expert streams by mutually grounding intermediate visual dynamics and denoised progress trajectories. NimCritic matches or outperforms state-of-the-art process reward models (PRMs) on the established Video Progress Benchmark (VPB) and LOOM, surpassing GVL (GPT-6-Sol) on VPB by about 65% in terminal success accuracy (TSA). On the large-scale RoboArena policy evaluation benchmark, it also retrieves human-selected successful rollouts with about 97% overall recall. These results establish action-aware quantification as a scalable foundation for dense progress feedback in robotic manipulation."
       },
       "hash": "a33c3a3536bc446f52f19ac28d270199baf91c8a2eaaa4bfce733f929dfb32af",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100589,7 +99932,7 @@
         "comment": "Accepted by ACM MM 2026. Project Page: https://hhnk666.github.io/Video-MemComp.github.io"
       },
       "hash": "4181e8d63b00708b71eba13d5a559cf8b183720cd4e26f3e8938943f5d0edd77",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100611,7 +99954,7 @@
         "comment": "26 pages, 6 figures, accepted at the NeurIPS 2026 Workshop TS-LIMITS"
       },
       "hash": "cfc5ca5ee89e71b3ee5cd12ff41a25dba9206d0aa56e812a40e15c00acb0334e",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100637,7 +99980,7 @@
         "abstract": "Longitudinal causal effect estimation is complicated by time-varying confounding and treatment-confounder feedback loops. Existing methods generally require data-specific nuisance-model fitting, and many are tailored to prespecified treatment sequences or prediction horizons, leading to time-consuming computation at deployment. We introduce *Policy In-Context Longitudinal causal Effect estimation with Prior-data Fitted Networks* (**PICLE-PFN**), the first foundation model for longitudinal causal effect estimation that supports *dynamic* treatment policies. PICLE-PFN represents target policies through in-context history-decision demonstrations, providing a unified interface for a broad class of treatment policies. Pretrained over synthetic data sampled from longitudinal structural causal models, PICLE-PFN amortizes causal effect estimation across datasets, policies, and horizons. Given a new observational dataset and target policy, it directly predicts conditional average potential outcomes (CAPOs) in one forward pass without task-specific training or hyperparameter tuning. Across synthetic and semi-synthetic longitudinal benchmarks, PICLE-PFN achieves competitive RMSE and substantially improved uncertainty calibration with a fraction of deployment runtime, compared to state-of-the-art conventional estimators trained and tuned separately for each dataset."
       },
       "hash": "27904c961289c83c0b78cbc8763ddfa4e436d3ca4ff1329749963679069701a9",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -100662,7 +100005,7 @@
         "comment": "Accepted at the 49th IEEE/ACM International Conference on Software Engineering (ICSE 2027)"
       },
       "hash": "c525d5bfa70fb59ab87614827d1ef883d73af914ef780007e765f81d697a2a70",
-      "status": "queued",
+      "status": "awaiting_evidence",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
@@ -108873,8 +108216,8 @@
       "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
     },
     "2610.25931": {
-      "version": 1,
-      "hash": "120c6cf96c2bf637b46dc651d0c27c1e3878a82f1ced0a5913da9ea6739316bd",
+      "version": 2,
+      "hash": "e60e39702c398a4f730da1c91dd8248d1005cc8c67babf614f097ee03dedb649",
       "status": "out_of_scope",
       "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
     },
@@ -109317,8 +108660,8 @@
       "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
     },
     "2610.29014": {
-      "version": 1,
-      "hash": "71c16a4914aee96594877952f0b72c29b731a9217ffe91a356586cbf04d8781e",
+      "version": 2,
+      "hash": "47b87badd206d1f74d9966046260a81de5745f02f8f56c917e8f351d5801eab9",
       "status": "out_of_scope",
       "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
     },
@@ -109545,8 +108888,8 @@
       "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
     },
     "2610.27746": {
-      "version": 3,
-      "hash": "16a153fac8f73f2529ab8286a8c866c96b0752fd45cd15c8771d991662a15391",
+      "version": 4,
+      "hash": "e7dacc202622924eda9bcfe0df1efbc2504ce13f57a39e7507b1c9411ee8309a",
       "status": "out_of_scope",
       "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
     },
@@ -109698,6 +109041,138 @@
       "version": 1,
       "hash": "8a16ab3996c72120a6a7f56b55bfcc9dfa083e6f36e339f19e382fa636bd862d",
       "status": "listed",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.31743": {
+      "version": 1,
+      "hash": "676e931355baaaa86b57bacc437ae4a521d5e913e04435050758f049829827a1",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.31746": {
+      "version": 1,
+      "hash": "9b2e9bcf0a877109db4b579853e9083ac54d2c4014415ed0ae874671b39ab371",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.31840": {
+      "version": 1,
+      "hash": "11b363d962b7a56746fb35f8d02e45fec7d2b01577b12654f0ab57fc209e8975",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.31854": {
+      "version": 1,
+      "hash": "db797ea462a3a6e4fa7c1e7419483350325c88897b7f8d7cff75f32b82ff5e6a",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.31914": {
+      "version": 1,
+      "hash": "08f47577668a33bd5806001890c4d405cfd8b522af659a5ce75647665d847971",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.31972": {
+      "version": 1,
+      "hash": "898f96ba11b52fc4cd519e23d893063ba63e6d9ce96b9410dd6466ac79d92821",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.31974": {
+      "version": 1,
+      "hash": "2eb9cd54c8e4a7413e7fd686a0b27e1575cec2dd77e1182c7bcdd7af8e044f31",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.32106": {
+      "version": 1,
+      "hash": "32fd768839f007239ea28a0f553cd2d5440b210c801ea5099c507bbf222d774a",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.32120": {
+      "version": 1,
+      "hash": "a7fd69fe879cd4e4733dd965b40efdf987a9b1bfb4a57ecd1a7aa6ccfdf2f293",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.32131": {
+      "version": 1,
+      "hash": "20007873e820fba1461e051c0152cf7d160239204753443ba29e16d222528ac3",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.32196": {
+      "version": 1,
+      "hash": "3720411bfe7e3fa0dc8eabb0376b6094686714495bde5c58d7617e826a227285",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.32417": {
+      "version": 1,
+      "hash": "8570810661ed6d15b77996c83b75d43a0968d81edadba53a9f6c82c567293fcb",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.32448": {
+      "version": 1,
+      "hash": "b8266f9d035c512a4ee3c84e5d0e30e3a5ca5a6f75addf96759262ded9e40696",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.32464": {
+      "version": 1,
+      "hash": "cfb7fa69e6be4a78338190c1ef6426cfa1c54cfa0c4e5aa7e7da4532b8185f63",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.32483": {
+      "version": 1,
+      "hash": "f50b886dc3ad70375c7a0b7f702e8c9cd21c9c45d0d162feb1393bc993bf4d3e",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.31863": {
+      "version": 1,
+      "hash": "f0ade078257e10352cf1c8c1d75862cc1b5a12860afc256b7d55bc5e83669bda",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.32013": {
+      "version": 1,
+      "hash": "da4bd97893075c316571b73af338d0faafa5e76b57b0729ce56df962e24bfde4",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.32022": {
+      "version": 1,
+      "hash": "753bd3839772107b1bbd57f556a89c6a943c53ccdccdadabe62dc0be0fb74483",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.32073": {
+      "version": 1,
+      "hash": "1d51db9ae85a3ab9cb652ca7dccc1da93b9e4652fc448442bd7a3bfdd23ba4c7",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.31121": {
+      "version": 2,
+      "hash": "923fad334fa9ce5d05ae682ce34dd5b28386370f9bb820bf66acae5ca1b4154a",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.32423": {
+      "version": 1,
+      "hash": "d4e50cf4ec281dd944fe88738a6b43c41d6b4831cc52771ce2812f6df1def1fd",
+      "status": "out_of_scope",
+      "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
+    },
+    "2610.32469": {
+      "version": 1,
+      "hash": "10043aa97ae3d933a9f979e24bab05ca5ff2cdc31092eb4e072c0471df59bed2",
+      "status": "out_of_scope",
       "quality_policy": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c"
     }
   },
@@ -109883,6 +109358,9 @@
     ],
     "2026-10-25": [
       "2610.21561v3"
+    ],
+    "2026-10-26": [
+      "2610.32441v1"
     ]
   },
   "last_publishable_collection_at": "2026-10-25T07:38:14Z",
@@ -126003,40 +125481,8 @@
       "hash": "95dcf901b251fda0309d8fe60d096e4c46ef928c95ae9a1961ebc549efa28a76",
       "collected_at": "2026-10-26T07:50:04Z"
     },
-    "2610.31743": {
-      "hash": "676e931355baaaa86b57bacc437ae4a521d5e913e04435050758f049829827a1",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.31746": {
-      "hash": "9b2e9bcf0a877109db4b579853e9083ac54d2c4014415ed0ae874671b39ab371",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.29014": {
-      "hash": "47b87badd206d1f74d9966046260a81de5745f02f8f56c917e8f351d5801eab9",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
     "2610.31778": {
       "hash": "2b3e41ef0e4a327969390849b75d18183e58fc65c1f75b60d426986b7a31a5a4",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.31840": {
-      "hash": "11b363d962b7a56746fb35f8d02e45fec7d2b01577b12654f0ab57fc209e8975",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.31854": {
-      "hash": "db797ea462a3a6e4fa7c1e7419483350325c88897b7f8d7cff75f32b82ff5e6a",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.31914": {
-      "hash": "08f47577668a33bd5806001890c4d405cfd8b522af659a5ce75647665d847971",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.31972": {
-      "hash": "898f96ba11b52fc4cd519e23d893063ba63e6d9ce96b9410dd6466ac79d92821",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.31974": {
-      "hash": "2eb9cd54c8e4a7413e7fd686a0b27e1575cec2dd77e1182c7bcdd7af8e044f31",
       "collected_at": "2026-10-26T07:50:04Z"
     },
     "2610.31985": {
@@ -126055,30 +125501,6 @@
       "hash": "21b9419bc1763e54736df2aa43886eec140ff3c73cfab59a70f49c2766272d83",
       "collected_at": "2026-10-26T07:50:04Z"
     },
-    "2610.32106": {
-      "hash": "32fd768839f007239ea28a0f553cd2d5440b210c801ea5099c507bbf222d774a",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.32120": {
-      "hash": "a7fd69fe879cd4e4733dd965b40efdf987a9b1bfb4a57ecd1a7aa6ccfdf2f293",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.32131": {
-      "hash": "20007873e820fba1461e051c0152cf7d160239204753443ba29e16d222528ac3",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.27746": {
-      "hash": "e7dacc202622924eda9bcfe0df1efbc2504ce13f57a39e7507b1c9411ee8309a",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.32196": {
-      "hash": "3720411bfe7e3fa0dc8eabb0376b6094686714495bde5c58d7617e826a227285",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.25931": {
-      "hash": "e60e39702c398a4f730da1c91dd8248d1005cc8c67babf614f097ee03dedb649",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
     "2610.32285": {
       "hash": "113f78e00133325dc8103247834340c44a794e441a332748c18e42704771ef97",
       "collected_at": "2026-10-26T07:50:04Z"
@@ -126095,28 +125517,12 @@
       "hash": "4b6deef134639f53ac6e7b142139ad20e0be04724175fa89727402a39e573f0c",
       "collected_at": "2026-10-26T07:50:04Z"
     },
-    "2610.32417": {
-      "hash": "8570810661ed6d15b77996c83b75d43a0968d81edadba53a9f6c82c567293fcb",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
     "2610.32429": {
       "hash": "7f497ea09cfaa9c90b5da3375f1425513a5299c82f504c872258d60430cfd3ee",
       "collected_at": "2026-10-26T07:50:04Z"
     },
     "2610.32441": {
       "hash": "b3492c6201c4b3f6207465dc8cc02460c482f2c9d1fb7e5bd672ff6d5acc40db",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.32448": {
-      "hash": "b8266f9d035c512a4ee3c84e5d0e30e3a5ca5a6f75addf96759262ded9e40696",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.32464": {
-      "hash": "cfb7fa69e6be4a78338190c1ef6426cfa1c54cfa0c4e5aa7e7da4532b8185f63",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.32483": {
-      "hash": "f50b886dc3ad70375c7a0b7f702e8c9cd21c9c45d0d162feb1393bc993bf4d3e",
       "collected_at": "2026-10-26T07:50:04Z"
     },
     "2610.32485": {
@@ -126175,10 +125581,6 @@
       "hash": "4b45947738e00eb377517187ac2d65b05845ac4415e565d59a887057fe1fbed2",
       "collected_at": "2026-10-26T07:50:04Z"
     },
-    "2610.31863": {
-      "hash": "f0ade078257e10352cf1c8c1d75862cc1b5a12860afc256b7d55bc5e83669bda",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
     "2610.31869": {
       "hash": "c0fd4adf41ae97861a36801e6e420d83e8df0490f623504a1ab8635093d73103",
       "collected_at": "2026-10-26T07:50:04Z"
@@ -126195,24 +125597,12 @@
       "hash": "344a3f9427e22b2bca3d390ad556f5a6d6ab3b84380633ed90ab9d9edaa4cf2b",
       "collected_at": "2026-10-26T07:50:04Z"
     },
-    "2610.32013": {
-      "hash": "da4bd97893075c316571b73af338d0faafa5e76b57b0729ce56df962e24bfde4",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.32022": {
-      "hash": "753bd3839772107b1bbd57f556a89c6a943c53ccdccdadabe62dc0be0fb74483",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
     "2610.32053": {
       "hash": "9b49d8de39c8db95911387b26f19fa5aeac21d93ac9792ac3e028b1e00c790ea",
       "collected_at": "2026-10-26T07:50:04Z"
     },
     "2610.32067": {
       "hash": "03c4bd509020022a3bbcee5f0fa58e9f9cc09218aa602e9c1620a2f33e014b1a",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.32073": {
-      "hash": "1d51db9ae85a3ab9cb652ca7dccc1da93b9e4652fc448442bd7a3bfdd23ba4c7",
       "collected_at": "2026-10-26T07:50:04Z"
     },
     "2610.32101": {
@@ -126251,10 +125641,6 @@
       "hash": "02d7e0aa61251ead77fdfe83c04692dc31dbc767ccb515b0dc5ae651b38f6ef9",
       "collected_at": "2026-10-26T07:50:04Z"
     },
-    "2610.31121": {
-      "hash": "923fad334fa9ce5d05ae682ce34dd5b28386370f9bb820bf66acae5ca1b4154a",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
     "2610.32308": {
       "hash": "5edce3bf25245f12c0e848bae2fabe973efcbcc1d334f87f40fae0739fe49f3f",
       "collected_at": "2026-10-26T07:50:04Z"
@@ -126271,16 +125657,8 @@
       "hash": "b6596ffdb4cf87b1d0af1d849a2ec440571e00c89ba6e98c53f4cefff799252d",
       "collected_at": "2026-10-26T07:50:04Z"
     },
-    "2610.32423": {
-      "hash": "d4e50cf4ec281dd944fe88738a6b43c41d6b4831cc52771ce2812f6df1def1fd",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
     "2610.32440": {
       "hash": "d9803cb3864cbda4ac671bd732724b223e12fc31c69097fd00b391cf3f8176e8",
-      "collected_at": "2026-10-26T07:50:04Z"
-    },
-    "2610.32469": {
-      "hash": "10043aa97ae3d933a9f979e24bab05ca5ff2cdc31092eb4e072c0471df59bed2",
       "collected_at": "2026-10-26T07:50:04Z"
     },
     "2610.32474": {
