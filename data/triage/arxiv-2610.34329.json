@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2610.34329",
+  "arxivId": "2610.34329",
+  "version": 1,
+  "title": "SHIFT-JEV: Certified Abstention and Gain-Gated Continual Adaptation for LLM-Based Decision Models under Distribution Shift",
+  "paperUrl": "https://arxiv.org/abs/2610.34329v1",
+  "assessedAt": "2026-10-28T16:40:54Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "50940580ebdf5caa861a57a49f1ede8011786058a90e9735e23ee8d0dec76592",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 4,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "描述任务、问题或评测环境",
+    "材料中提供代码或数据链接（未核验内容）",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "It scores the risk of each decision from uncertainty, format and option-consistency signals, certifies abstention thresholds with Learn-then-Test, monitors the decision stream with drift and label-shift detectors, and accepts a model update only when an expected-gain gate finds a significant held-out improvement without loss on earlier regimes.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.34329v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "In continual adaptation, SHIFT-Jev reaches 70.5% accuracy on Qwen3-0.6B, above replay, LwF, EWC and fine-tuning baselines in every seed, whereas on Qwen3-4B its conservative gate leaves it 0.4 to 1.4 points behind them.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.34329v1"
+    },
+    {
+      "signal": "scale_or_coverage",
+      "label": "给出任务规模或覆盖范围",
+      "weight": 1,
+      "excerpt": "At a target risk of 10%, a learned uncertainty score with a certified threshold exceeds the target in 3 to 5 of 27 environment-seed tests, against 5 to 15 for a max-probability score with the same certification and 9 to 14 for conformal prediction sets; drift-based routing changes little.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.34329v1"
+    }
+  ],
+  "resourceCandidates": [],
+  "declaredVenue": "31 pages, 11 figures",
+  "venueVerified": false,
+  "qualityVerified": false
+}

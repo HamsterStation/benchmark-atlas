@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2610.34561",
+  "arxivId": "2610.34561",
+  "version": 1,
+  "title": "GRASP: Group-Adaptive Hybrid RL-SFT Post-Training for Medical VQA without Reasoning Annotations",
+  "paperUrl": "https://arxiv.org/abs/2610.34561v1",
+  "assessedAt": "2026-10-28T16:40:54Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "a963523619852f00d3ce6bd3d9a602d08da1df60f76f94cb2c4973254d83fb74",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "excluded",
+  "score": 7,
+  "scoreMax": 11,
+  "reasons": [
+    "医学、生物医学或临床专题，超出当前 Agent 与通用模型评测方向"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "给出任务规模或覆盖范围"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "Adapting general-purpose vision-language models (VLMs) to medical visual question answering (VQA) is valuable for helping clinicians read images and make diagnoses, but annotated data are scarce and provide only short answers, without reasoning annotations.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.34561v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "On an OOD benchmark spanning eight imaging modalities, GRASP-trained InternVL3-8B and Qwen3-VL-8B beat all 10 compared general and medical VLMs in open-ended accuracy, including models trained on up to 2,600 times more data or with over 250 times more trainable parameters.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.34561v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "Tuning only about 1% of the parameters with LoRA, GRASP outperforms all compared training objectives both in domain and on OOD open-ended questions across Qwen3-VL-8B, InternVL3-8B and Gemma 3-4B.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.34561v1"
+    },
+    {
+      "signal": "validity_analysis",
+      "label": "讨论泛化、污染、稳健性或人工核验",
+      "weight": 1,
+      "excerpt": "Supervised fine-tuning (SFT) fits these labels but overfits to them and amplifies their biases, eroding out-of-domain (OOD) generalization.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.34561v1"
+    },
+    {
+      "signal": "resource_link",
+      "label": "材料中提供代码或数据链接（未核验内容）",
+      "weight": 2,
+      "excerpt": "https://github.com/sea-comet/GRASP-MedVQA",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2610.34561v1"
+    }
+  ],
+  "resourceCandidates": [
+    "https://github.com/sea-comet/GRASP-MedVQA"
+  ],
+  "declaredVenue": null,
+  "venueVerified": false,
+  "qualityVerified": false
+}
