@@ -12,7 +12,7 @@
       "active": {
         "since": "2026-10-19T16:48:43+00:00",
         "until": "2026-10-28T16:39:43Z",
-        "start": 200
+        "start": 400
       },
       "last_completed_at": "2026-10-26T16:48:43Z"
     },
@@ -95328,7 +95328,7 @@
     "2610.29196": {
       "entry": {
         "arxiv_id": "2610.29196",
-        "version": 1,
+        "version": 2,
         "title": "A Unified Evaluation Framework of Physical Adversarial Robustness in the Edge VLM Era",
         "authors": [
           "Eric Liang",
@@ -95336,16 +95336,16 @@
           "Kaiwen Yuan"
         ],
         "published": "2026-10-21T04:38:02Z",
-        "updated": "2026-10-21T04:38:02Z",
+        "updated": "2026-10-23T19:12:44Z",
         "abstract": "Recent advancements in Vision-Language Models (VLMs) enable end-to-end visual grounding via language prompts and generative decoding, demonstrating largely improved zero-shot and open-vocabulary detection capabilities. As a result, VLMs are rapidly being deployed at the edge in safety-critical real-world systems. However, the physical adversarial robustness of edge VLMs has not been systematically studied, and the fundamental differences in output with modern object detectors create methodological challenges for fair evaluation. To compare the two families directly, we evaluate every selected representative model on one outcome: whether an adversarial patch worn on a person evades detection of the model. We report this by introducing a unified metric, conditional attack success rate (cASR), counted only on images the model still localizes under a matched gray occluder, and partition every failure into omission (no box), substitution (a box on the patch), and displacement (a box on neither). We benchmark the physical adversarial vulnerability of compact grounding VLMs against a range of object detectors, and find that the VLMs can be as vulnerable as the detectors. We disclose that failure mode is largely associated with the output format of a model rather than its architecture family. Of the three, only omission is visible to a downstream system; displacement and substitution return confident, well-formed boxes, making them potentially more dangerous failures. Further, we find that, under distribution shift, VLMs that primarily failed by omission instead shift to failing more by displacement/substitution. Thus, a grounding VLM can inherit the detector's vulnerability while showing the possibility to adopt more dangerous failure modes. Our code and data are available at https://github.com/ericliang1/physical-adversarial-robustness.",
         "comment": "Accepted at the NeurIPS 2026 Workshop on Grounded and Faithful Vision-Language Models for Real-World Deployment (VLM4RWD). 16 pages, 6 figures, 5 tables. Code: https://github.com/ericliang1/physical-adversarial-robustness"
       },
-      "hash": "e0fcb81d712e0c2e1f7224b97452764e47d6aae8802fad157c1c67e67e1c7fb9",
-      "status": "awaiting_evidence",
+      "hash": "0108ce9857515ae28289f4e8fe9a41424c7527417926786d348d63def26ec567",
+      "status": "queued",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
-      "kind": "new"
+      "kind": "updated"
     },
     "2610.29207": {
       "entry": {
@@ -103772,6 +103772,674 @@
         "comment": "Accepted to Findings of EMNLP 2026"
       },
       "hash": "745891b0ec283b5d9f730662a3eb281066369ef71a2001de2c070cec44a64006",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33088": {
+      "entry": {
+        "arxiv_id": "2610.33088",
+        "version": 1,
+        "title": "AnalogPortBench: Benchmarking LLMs on Analog Circuit Porting",
+        "authors": [
+          "Saeid Rajabi",
+          "Aly Moussa",
+          "Vishal Saxena",
+          "Chengmo Yang",
+          "Satwik Patnaik"
+        ],
+        "published": "2026-10-21T20:45:51Z",
+        "updated": "2026-10-21T20:45:51Z",
+        "abstract": "Analog circuit design still relies heavily on expert knowledge, and porting proven designs to new process nodes is a recurring bottleneck. As a lower supply reduces available voltage headroom, a working topology may require redesign or fail to meet specifications. While large language models (LLMs) have begun to generate and optimize analog circuits, existing benchmarks focus on one process node and assume feasible specifications. To bridge this gap, we introduce AnalogPortBench, a benchmark of 54 tasks for porting ten circuits, from current mirrors to telescopic amplifiers, from a 0.18 $μ$m process to the open-source SKY130 PDK. Tasks range from a direct port through a reduced supply and harder specifications to infeasible ones, and every feasible task has a reference design verified at five process corners. Evaluating six frontier LLMs at two reasoning levels, with and without simulation feedback, we find that models port simple circuits but rarely re-design headroom-sensitive amplifiers, seldom recognize infeasible specifications, and gain more from simulation feedback than from more samples or reasoning. Code and data are available at https://github.com/saeidrajabii/AnalogPortBench.",
+        "comment": "5 pages, 3 figures, 4 tables Code and data: https://github.com/saeidrajabii/AnalogPortBench"
+      },
+      "hash": "9bea17602794ab87969b8358ee3a4d104bdf3bbd4967d1a7627f6eb80c88b5a3",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33097": {
+      "entry": {
+        "arxiv_id": "2610.33097",
+        "version": 1,
+        "title": "IRON-Meme: A Benchmark for Structured Understanding of Identities and Roles in Online Meme Narratives",
+        "authors": [
+          "Gabriella Bollici",
+          "Stefano De Giorgis",
+          "Wouter Van Atteveldt",
+          "Filip Ilievski"
+        ],
+        "published": "2026-10-22T10:51:07Z",
+        "updated": "2026-10-22T10:51:07Z",
+        "abstract": "As polarization grows on social media, understanding how political memes shape online narratives has become increasingly important. Previous research has relied on either qualitative frameworks that are hard to scale or computational methods that lack theoretical grounding. Both approaches treat narrative categories in isolation and focus exclusively on moral portrayals of identity. To address these limitations, we introduce a framework grounded in social science theories, encompassing three categories: social identities (such as gender, politics, and ethnicity), viewpoints (ingroup and outgroup perspectives), and narrative roles (moral character, intelligence, status, and power). Building on this framework, we present IRON-Meme, a human-annotated benchmark comprising 1,110 political memes across substantially more templates than existing benchmarks. Our analysis of IRON-Meme shows that most memes assign derogatory roles and that identities, roles, and templates are systematically interconnected. Evaluation of nine vision-language models indicates that frontier-scale and reasoning models achieve the highest performance, while accuracy on social identities and narrative roles decreases for less frequent labels. Incorporating template background knowledge does not enhance narrative role classification, suggesting that meme interpretation relies on how memes are adapted for specific communicative purposes. We make IRON-Meme and our code publicly available.",
+        "comment": "Submitted to ARR"
+      },
+      "hash": "df42259ca8bf20eeb1c7a44865b33927d0a68a449ce711651b1b3f65ed03d89a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33112": {
+      "entry": {
+        "arxiv_id": "2610.33112",
+        "version": 1,
+        "title": "Conformance as a Distribution: Delegation Contracts, Error Budgets, and the Allocation of Evaluation Authority in Use-Based AI Regulation",
+        "authors": [
+          "John deVadoss"
+        ],
+        "published": "2026-10-23T00:08:49Z",
+        "updated": "2026-10-23T00:08:49Z",
+        "abstract": "Use-based AI regulation assigns obligations by deployment risk but lacks an evidentiary object to carry them. A benchmark score is a property of a model; conformance of a deployment is a failure rate under a declared distribution of contexts, bounded by a scope and subject to expiry. We take the delegation contract of earlier work (frozen configuration, scoped claim, executable revision rule) and study it under strategic play between a deployer, an auditor, and an enforcement point. We ask whether a declared context mixture can be made truthful; whether an audit can be unbiased against a system that detects evaluation traffic; whether a certification error budget can sustain a long-lived deployment; whether an aggregate audit can support a per-subgroup guarantee; and whether an incident metric that counts system failures but not fallback costs ranks arrangements correctly. For each we give a mechanism and a proposition: a proper-scoring penalty on the declared mixture bounds the excess failure of a best-responding deployer by $O(λ^{-1/2})$ in the penalty weight; a commit-reveal audit drawn from live traffic is unbiased by construction and grades the evaluator with the same sample; a halving error budget drives certification coverage below $(1-p)^n$ while $α$-investing sustains it under a marginal false-certification guarantee; a per-subgroup guarantee costs audit size scaling as $1/m$ in subgroup mass; and any failure-only incident metric prefers withdrawal at every fallback cost, even when total loss ranks the arrangements oppositely. Five preregistered synthetic studies test each claim; no language model or production system is evaluated. Enforcement sits at distribution, capability-access, monetization and risk-transfer choke points, expiry of the conformance record is a standard of care, and conformance-as-a-rate is set against the EU AI Act's static conformity assessment."
+      },
+      "hash": "93a5c4d18e010a87d4131d5f400f14a56d6ce8d1d273664a2598f7d664a52ec6",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33134": {
+      "entry": {
+        "arxiv_id": "2610.33134",
+        "version": 1,
+        "title": "LLMs Can Tackle High Energy Theoretical Physics, yet Gaps Remain: Part I, Quantum Field Theory",
+        "authors": [
+          "Tong Liu",
+          "Bohan Li",
+          "Gongrui Cheng",
+          "Zixiong Yu",
+          "Yulan He",
+          "Volker Tresp"
+        ],
+        "published": "2026-10-23T14:07:03Z",
+        "updated": "2026-10-23T14:07:03Z",
+        "abstract": "Beyond math and code, Large language models (LLMs) are beginning to tackle problems that have traditionally required substantial training for theoretical physicists, but it remains unclear how far this capability extends and where it might break. As a first step toward pushing LLMs in high-energy theoretical physics, we introduce QFT-Bench, a benchmark of 75 graduate- to research-level problems requiring extensive reasoning and derivation across core Quantum Field Theory (QFT) subareas. Each question has a well-defined target and closed-form reference answer. Evaluation combines symbolic verification with LLM-based judge. Across 39 proprietary and open-source models, frontier models already demonstrate substantial capabilities on nontrivial QFT calculations, with the strongest models exceeding 95% accuracy. At the same time, clear gaps remain. Even strong models still make errors in calculations, conventions, and instruction following, while weaker models often fail at the level of physical concepts or derivations. We further monitor models' CoTs and show that current models exhibit nontrivial reasoning unfaithfulness, i.e., they could reach correct answers but the reasoning itself does not justify and logically support them. These results provide a quantitative assessment of current LLM capabilities in QFT and a first step toward broader evaluation in high-energy theoretical physics."
+      },
+      "hash": "a90f07f57f8a8dcd85ea5aa782bccedf5ddc33ed510ca8a92a2cac1bdc283910",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33198": {
+      "entry": {
+        "arxiv_id": "2610.33198",
+        "version": 1,
+        "title": "Deletion, Substitution, Repair and Transplant: Component Attribution in BARBICAN, a Layered Prompt-Injection Gateway for MCP",
+        "authors": [
+          "İpek Abasıkeleş Turgut",
+          "Edip Gümüş"
+        ],
+        "published": "2026-10-23T18:47:06Z",
+        "updated": "2026-10-23T18:47:06Z",
+        "abstract": "A neural classifier can fail completely inside a layered defense without any end-to-end number moving. We demonstrate this on BARBICAN, a fail-closed gateway for language-model tool mediation whose arbitration stage spent an entire recorded evaluation receiving text mangled by a misconfigured tokenizer. Correcting the misconfiguration lifts that stage's corpus-wide area under the ROC curve (AUC) from 0.392 to 0.855 and pushes system recall down, from 80.67% to 80.34%; a stub that answers \"malicious\" scores 80.77%, higher than either. The reason emerges once the stage's input distribution is examined: upstream routing hands it a band that is 96.82% malicious, and the enforcement design lets an incriminating verdict block while an exculpating one releases an input only through one narrow branch. Yet deleting it costs 673 detections. Substituting its verdict with a constant instead moves between 12 and 140 of 25,000 decisions. Transplanted into the arbitration stage, an off-the-shelf classifier that separates the band's inputs at an AUC of 0.916 changes 16 of 25,000 decisions. Measured against such detectors with operating points chosen away from the test data, the gateway leads on its own benchmark distribution and falls behind once that distribution changes. In our earlier gateway, the review model's band is 92.94% malicious and a constant verdict is as accurate as the review model. We argue that an ablation figure for any routed stage is unreadable without the class balance of the band that stage receives, and that deletion experiments need substitution experiments beside them.",
+        "comment": "24 pages, 13 tables. Reproduction artifacts (per-request traces, detector scores, verification script): https://doi.org/10.5281/zenodo.23590822"
+      },
+      "hash": "aa80e0204a25637c6111a8d7766f622aeb7f9f872def394b7a5c3ca80383152b",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33203": {
+      "entry": {
+        "arxiv_id": "2610.33203",
+        "version": 1,
+        "title": "Of Chains and Gains: What Reinforcement Learning changes on Reasoning-based Image Quality Assessment",
+        "authors": [
+          "Yixuan Li",
+          "Yuxuan Jiang",
+          "Hanwei Zhu",
+          "Hancheng Zhu",
+          "Fan Zhang",
+          "Shiqi Wang",
+          "David Bull"
+        ],
+        "published": "2026-10-23T18:49:15Z",
+        "updated": "2026-10-23T18:49:15Z",
+        "abstract": "Reinforcement Learning with Verifiable Rewards (RLVR) has improved the performance of large Vision-Language Models (VLMs) on image quality assessment (IQA). Existing approaches often attribute these gains to improved reasoning before scoring, supported by increasingly plausible Chain-of-Thought (CoT). However, whether these gains exceed sampling effects and how they depend on explicit reasoning remain unclear. We rigorously investigate these questions through sampling-aware evaluation, controlled reasoning interventions, and shortcut experiments. We find that RL-trained models outperform base models under large-budget $\\operatorname{max}_g@k$ evaluation, while improvements beyond averaging are concentrated in-distribution. RLVR produces chains that raise base-model performance when transplanted and improves scoring with the chain held fixed. Yet scoring becomes less dependent on the chain during inference, more clearly at 7B than at 32B. Steering the probed quality direction in thinking tokens also has little effect on scoring. Finally, RL can improve scoring accuracy by exploiting textual cues correlated with mean opinion scores (MOSs), which could inflate benchmark performance. Together, these findings show that RLVR raises quality scoring and produces more useful chains, but that better scoring does not imply a stronger reliance on explicit reasoning, while score-based rewards can also encourage reliance on quality-irrelevant shortcuts. We hope this preliminary study can enlighten more and more concrete reasoning schemes in IQA."
+      },
+      "hash": "06b91bf947e31115c3dee48b7870840f2e7db29048017087a43a676c876629d7",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33205": {
+      "entry": {
+        "arxiv_id": "2610.33205",
+        "version": 1,
+        "title": "Scaling Qualitative Analysis with Large Language Models: Development and Validation of the Smart Coder Framework for Human-LLM Collaborative Coding",
+        "authors": [
+          "Cheng Tang",
+          "Kun Wang",
+          "Yaxuan Yang",
+          "Shiyu Wang",
+          "Allan Cohen",
+          "Rachael Eriksen Brown",
+          "Chandra Hawley Orrill"
+        ],
+        "published": "2026-10-23T18:52:09Z",
+        "updated": "2026-10-23T18:52:09Z",
+        "abstract": "Current uses of large language models (LLMs) for qualitative coding often rely on ad hoc prompting with limited guidance for reliability and human oversight. To address these limitations, we propose the Smart Coder Framework, a three-phase approach structuring human-LLM collaborative coding through Instruction, Prompt Strategy, and Reliability Check. We evaluated the framework using 72 middle-school mathematics teacher interview transcripts and a human-consensus benchmark. A factorial design compared instructed versus uninstructed prompts, few-shot versus few-shot plus chain-of-thought prompting, and single-pass versus self-consistency coding. Twelve transcripts were used for prompt development and calibration, and 60 for the formal evaluation. In the results, instruction consistently improved agreement. Chain-of-thought further improved agreement under adequate instruction, and self-consistency produced smaller, theme-dependent gains but helped identify unstable decisions for human review. Performance also varied by transcript characteristics. Overall, the framework systematically structures and monitors LLM-assisted qualitative coding while preserving human authority over coding decisions.",
+        "comment": "29 pages, including supplemental materials"
+      },
+      "hash": "488cf38d46d4f20d2decbf98f4c9e7e12f7c8bce463691890efaa8192b13cbd8",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33215": {
+      "entry": {
+        "arxiv_id": "2610.33215",
+        "version": 1,
+        "title": "Vision Token Pruning via Query-Vision Interaction Decomposition",
+        "authors": [
+          "Harshithanjani Athi",
+          "Sravan Kumar Ankireddy",
+          "Jianzhong Charlie Zhang",
+          "Hyeji Kim"
+        ],
+        "published": "2026-10-23T19:06:29Z",
+        "updated": "2026-10-23T19:06:29Z",
+        "abstract": "Large vision-language models (VLMs), which process both visual inputs and text queries, incur high inference costs due to the large number of visual tokens, making visual token pruning a natural approach for improving efficiency. Recent work has leveraged query information to guide token selection, often through heuristics derived from attention patterns or token dynamics. However, these approaches do not explicitly exploit the underlying structure of query-vision interactions. We address this gap by observing that the query-vision interaction matrix, naturally induced by the query and key projections already present in transformer attention, is effectively low-rank, with a small number of dominant latent interaction modes capturing query-relevant semantics. Motivated by this observation, we propose Query-Vision Decomposition (QViD), a novel training-free query-aware visual token pruning method that exploits this structure. Extensive experiments on both image and video understanding benchmarks show that QViD consistently improves performance under matched token budgets, with the largest gains appearing under aggressive compression regimes.",
+        "comment": "10 pages for the main paper, 8 figures including supplementary material, accepted at NeurIPS 2026"
+      },
+      "hash": "814dffad65495bd3b80a17ee952a03e702003f756abbe42aded072468ce9b06b",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33217": {
+      "entry": {
+        "arxiv_id": "2610.33217",
+        "version": 1,
+        "title": "Neyman Orthogonal Activation Steering",
+        "authors": [
+          "David Arbour",
+          "Erfan Jahanparast",
+          "Serina Chang",
+          "Avi Feller"
+        ],
+        "published": "2026-10-23T19:09:12Z",
+        "updated": "2026-10-23T19:09:12Z",
+        "abstract": "Activation steering is a popular approach for shifting LLM output toward a desired behavior, and increasingly for generating realistic synthetic data. The standard recipe estimates a steering direction by contrasting LLM activations on prompts with and without a target concept, such as truthfulness. In this paper, we separate the estimand (the steering direction these methods target) from the estimator used to recover it, two notions the literature often conflates. We frame nearly all existing methods as plug-in estimators of the average gradient of an outcome regression, with the binary contrastive label fixed as the outcome. Using this framing, we can immediately incorporate flexible modeling approaches and extend existing methods to allow for continuous outcomes such as log-probabilities or oracle ratings. Flexible ML models that fit the outcome well, however, might not estimate the gradient well, which motivates estimators that target the gradient directly. Drawing on the debiased machine learning literature, we develop a complementary estimator built on the Stein score, the Riesz representer of the gradient functional. Combining the two routes gives an orthogonalized estimator with classical double-robustness properties. We illustrate the framework on activation steering applied to a number of benchmark datasets."
+      },
+      "hash": "16d0f8fd468c517cf079f054a751128a9658319bdb1bf8e4a4ae5718a758687a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33258": {
+      "entry": {
+        "arxiv_id": "2610.33258",
+        "version": 1,
+        "title": "Two Uncertainties Are Not One: Disagreement versus Decision-Risk in Cheap Structured Content Moderation",
+        "authors": [
+          "Karan Yadav"
+        ],
+        "published": "2026-10-23T20:08:04Z",
+        "updated": "2026-10-23T20:08:04Z",
+        "abstract": "Content moderation compresses a graded, contested human judgment into a binary act (leave up / take down) over billions of items, at a scale where running a frontier LLM on every post is uneconomical. A new class of frozen \"System One\" models returns typed, calibrated decisions instead of text at ~USD 0.000025 per call and ~100 ms. We run the first independent audit of one such model on 142,658 human-labeled comments, and benchmark it against 14 frontier reasoning models (the GPT-5.x, Claude, Gemini 3, and Grok families) on a shared probe set. Two findings stand out. First, the cheap model is accuracy-competitive: its zero-shot classification AUROC (0.83) is not statistically separable (paired bootstrap, n=56; a failure to reject parity, not proof of equivalence) from 13 of the 14 frontier systems while costing 1-3 orders of magnitude less, and it is no worse calibrated than several of them. Second, \"confidence\" conflates two uncertainties that come apart: human disagreement (where annotators split on satire and coded language) and decision risk (where the automatic action is costly-wrong). Under an asymmetric moderation loss these call for opposite escalation signals, so no single confidence number serves both. Because the model prices extra questions at nearly zero, decomposing the judgment into parallel sub-questions and reading their spread recovers a human-disagreement signal that the model's native confidence misses -- but this remedy is specific: it helps the weakest, disagreement-blind models and only when the decomposition aligns with the sources of disagreement; a specialist toxicity model and the strongest LLMs do not need it, and the effect is distribution-sensitive. We will release the instrument, the cached runs, and the analysis.",
+        "comment": "11 pages, 6 figures, 5 tables"
+      },
+      "hash": "79471a8a9e74dd40c895faa590e90bf3b42ab87b859dc018dde29f11e4f2c397",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33265": {
+      "entry": {
+        "arxiv_id": "2610.33265",
+        "version": 1,
+        "title": "Image Clustering with Vision-Language Model Embeddings",
+        "authors": [
+          "João P. Matos-Carvalho",
+          "Nuno Fachada"
+        ],
+        "published": "2026-10-23T20:21:15Z",
+        "updated": "2026-10-23T20:21:15Z",
+        "abstract": "Pretrained vision-language models provide image representations whose suitability for clustering may vary with feature extraction, image domain, and partitioning algorithm. We compare nine representation pipelines across seven image benchmarks and four clustering configurations, yielding 252 baseline combinations. Eight pipelines extract visual features, including two vision-only references; the ninth generates descriptions and embeds the resulting text. With agglomerative clustering (Ward linkage) fixed, Qwen3-VL achieves the highest adjusted Rand index (ARI) on five datasets, including 0.925 on MNIST, while BLIP-2 leads on CIFAR-10 and CIFAR-100 with ARIs of 0.925 and 0.591, respectively. A separate sensitivity analysis compares raw and L2-normalized embeddings at their original dimensionality across all 63 dataset-representation pairs. Normalization preserves the highest-ARI representation in every dataset, increases ARI in 35 pairs, decreases it in 26, and leaves two numerically unchanged. On the SVHN dataset, the highest ARI remains low, rising from 0.097 to 0.098 after normalization. The evaluated caption-mediated pipeline obtains relatively high ARI on isolated digits but does not consistently exceed direct visual features. These findings support selecting and evaluating complete representation-clustering pipelines for the intended domain, with explicit attention to extraction and normalization choices."
+      },
+      "hash": "625864fc346a7bef00fb97df0af02419b5d5518ab3c82b45936e36be329858e0",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33340": {
+      "entry": {
+        "arxiv_id": "2610.33340",
+        "version": 1,
+        "title": "Compression of Vision Foundation Models for Retinal OCT via Growing-Neural-Gas Codebooks and Graph-Guided Masked Image Modeling",
+        "authors": [
+          "Ali Yavari",
+          "Tilman Schmoll",
+          "Rainer A. Leitgeb",
+          "Wolfgang Drexler",
+          "Thomas Schlegl"
+        ],
+        "published": "2026-10-23T22:27:25Z",
+        "updated": "2026-10-23T22:27:25Z",
+        "abstract": "Vision foundation models for retinal imaging are large and computationally demanding, limiting point-of-care deployment. We ask how much of such a model's downstream utility survives compression into a smaller network. We propose a topology-aware discretization framework that distills a continuous foundation model into a discrete codebook, then uses it as the reconstruction target for masked image modeling (MIM). It combines gradient-free codebook learning via Growing Neural Gas, which yields an adjacency graph over the codes, with a graph-distance soft cross-entropy loss that replaces one-hot MIM targets with topologically graded supervision. With student pretraining on 383 public Duke iAMD optical coherence tomography (OCT) volumes, the pipeline distills an 86M-parameter teacher into a 22M-parameter student with at least 3.6x fewer FLOPs. The student performs close to, and in some settings above, its teacher across three classification and two segmentation benchmarks, with the magnitude and direction of the difference depending on the teacher, task, metric, and student capacity. On the external OLIVES benchmark, it surpasses its MIRAGE teacher on every metric (98.06% vs. 95.22% balanced accuracy). It works with two Vision Transformer (ViT-Base) teachers, retinal (MIRAGE) and natural-image (DINOv3); with the out-of-domain teacher, the student outperforms it on retinal-layer segmentation, indicating that the added value of retina-specific pretraining is task-dependent: largest for segmentation, while a general-domain teacher is competitive for classification. These results yield compact retinal models potentially suitable for deployment, transferring across OCT datasets, devices, and clinical tasks, including three datasets not used in the student's pretraining.",
+        "comment": "31 pages, 2 figures, 8 tables; supplementary material provided as an ancillary file"
+      },
+      "hash": "9bb51eb3988919e58c3088bed2bb55dde4d822c4c4eb2f6afb90b4eb998fc8dc",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33352": {
+      "entry": {
+        "arxiv_id": "2610.33352",
+        "version": 1,
+        "title": "From Hype to ROI: An Economic Model for LLM Adoption in Information Systems and Security Operations",
+        "authors": [
+          "Pellegrino Casoria",
+          "Andrea Araldo",
+          "Rosario Patanè",
+          "Simon Pietro Romano"
+        ],
+        "published": "2026-10-23T22:46:08Z",
+        "updated": "2026-10-23T22:46:08Z",
+        "abstract": "Large Language Models (LLMs) promise significant efficiency gains across information-intensive operations by automating repetitive language-based tasks. However, adoption decisions remain largely opportunistic, as organizations struggle to move from pilots to sustainable industrialization. Without systematic economic frameworks, practitioners cannot assess whether LLM investments create value in a given context. This paper develops a general economic model to support informed LLM adoption decisions in operational information systems. Facing high uncertainty, we represent parameters as random variables centered on authoritative benchmarks, and evaluate the model by Monte Carlo simulation across pessimistic-to-optimistic assumptions on LLM efficiency. The ROI distributions show the probability of profitability and the Value at Risk for each configuration, together with a sensitivity analysis of its main drivers. As a first instantiation, we apply the model to Security Operations Centers (SOCs), mapping workflows onto established standards to identify tasks suited to LLM augmentation. The model balances productivity gains, driven by alert volume, analyst effort, and LLM efficiency, against operational costs, including inference, infrastructure, and error remediation, covering both cloud API and self-hosted deployments. Results show that adoption economics are context-dependent, and that automation is an exploitable lever, gated by accuracy, while the cost of errors and the model's price are secondary. Across the analyzed models and prices, most configurations are unprofitable, with profitability limited to high-accuracy, low-uncertainty deployments. The model gives organizations a quantitative basis for evidence-based adoption decisions, by locating the boundary between profit and loss, and the loss risked beyond it."
+      },
+      "hash": "54149073adabbf6a9414a92c75892841602f2ebd1ffe0757ec2acded03673279",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33355": {
+      "entry": {
+        "arxiv_id": "2610.33355",
+        "version": 1,
+        "title": "BenchBench-Cloning: Evaluating Molecular Cloning Design and Protocol Development",
+        "authors": [
+          "Aditya Sivakumar",
+          "Peter Ciaccia",
+          "Hassaan Qadir",
+          "Ian Hsu",
+          "Ashu Singhal"
+        ],
+        "published": "2026-10-23T22:51:29Z",
+        "updated": "2026-10-23T22:51:29Z",
+        "abstract": "Molecular cloning is one of the most routine wet-lab workflows, yet existing evaluations of language models in biology mostly test knowledge recall or isolated steps rather than end-to-end experimental planning. We introduce BenchBench-Cloning, a benchmark for large language models comprising 65 molecular cloning tasks grounded in sequence records, laboratory notebooks, and published experimental studies. Planning a molecular cloning experiment requires defining a set of constructs needed for a scientific objective and a construction route to produce them. BenchBench-Cloning contains 50 protocol-development tasks, in which agents produce an executable protocol for a specified construct, and 15 construct-design tasks, in which agents determine the constructs a scientific objective calls for. Protocol-development tasks are evaluated by execution in a cloning simulator; construct-design tasks are evaluated with task-specific deterministic checks and, where needed, rubric-based LLM-as-a-judge evaluation. Across eight systems with repeated attempts per task, GPT-6 Astra scores highest at 30.6%, with the others between 8.6% and 22.2%, and the benchmark remains unsaturated under best-of-ten sampling. As integrating individual cloning decisions into complete, valid plans remains challenging even for frontier models, we expect BenchBench-Cloning to serve as a useful benchmark for tracking progress in experimental planning."
+      },
+      "hash": "b0f3547fb6a7b4d565edfd9d9cde6ed328011e1ff3d949cfdf4834e885cd4c29",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33375": {
+      "entry": {
+        "arxiv_id": "2610.33375",
+        "version": 1,
+        "title": "AgentOrch: How Close Can Global Orchestration Come to Step-by-Step Interaction?",
+        "authors": [
+          "Zijie Liu",
+          "Qi Yang Huang",
+          "Jinhao Duan",
+          "Yueh Che Lee",
+          "Thomas A. Joseph",
+          "Zayne Turner",
+          "Adam Seligman",
+          "Tianlong Chen",
+          "Zhaozhuo Xu"
+        ],
+        "published": "2026-10-24T00:08:11Z",
+        "updated": "2026-10-24T00:08:11Z",
+        "abstract": "Enterprise workflow agents typically rely on step-by-step interaction (Step-by-Step): the agent executes an action, observes its result, and invokes a large language model (LLM) again to decide the next step. Global orchestration (Global) instead generates a complete executable workflow in advance and executes it without further LLM calls, substantially reducing inference overhead, but it remains less accurate than Step-by-Step. We study how close Global can come to Step-by-Step and what narrows the remaining gap. We introduce AgentOrch, a benchmark that directly compares global orchestration with step-by-step interaction on 650 enterprise SOPs and 3,220 runtime variants under matched tools, environments, and evaluation. Step-by-Step remains more accurate for every evaluated model, but the gap has shrunk by about 79% from early models to the strongest recent model. We identify three routes to further narrowing this gap. Incremental workflow construction improves Global accuracy by an average of 9.98 percentage points (pp) without runtime execution feedback. Revising complete workflows with execution feedback improves all evaluated models, including 6.13 pp on held-out runtime variants. Targeted training on complete workflows improves accuracy by an average of 12.18 pp across all five trained models. Although a gap remains, global orchestration offers a promising path toward enterprise agents that deliver higher accuracy with fewer LLM calls."
+      },
+      "hash": "1ed5e1ab34b8940ba777d5ec6c0d5a2b15ef88672dcbc0ac91e1c4d021e1e75a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33377": {
+      "entry": {
+        "arxiv_id": "2610.33377",
+        "version": 1,
+        "title": "AdShot: Benchmarking Multimodal Large Language Models for Video Advertisement Clipping",
+        "authors": [
+          "Wen Xie",
+          "Om Rastogi",
+          "Sai Siddhartha Vivek Dhir Rangoju",
+          "Gijs Overgoor",
+          "Yakov Bart",
+          "Sarah Ostadabbas"
+        ],
+        "published": "2026-10-24T00:14:26Z",
+        "updated": "2026-10-24T00:14:26Z",
+        "abstract": "Advertisers routinely create multiple duration variants of ads to meet marketing budgets and viewer preferences, a labor-intensive and costly process. While multimodal large language models (MLLMs) excel at general video understanding, their ability to perform specialized editorial tasks remains unexplored. We introduce AdShot, a benchmark for evaluating MLLMs on shot selection for ad clipping. It contains 823 professionally edited ad pairs (30-sec sources and 15-sec edits) across 194 brands and 17 industries, annotated with shot-level boundaries and content features (action, emotion, information, imagery). We evaluate 13 state-of-the-art video-only MLLMs and 2 audio-visual MLLMs (7B-72B parameters) on shot selection accuracy (Precision, Recall, F1), duration constraints (15s), and content preservation, including an audio ablation. We find: (1) model architecture matters more than scale, with smaller models often matching or exceeding larger ones; performance is strongest for target ads with 6-10 shots; (2) models exhibit a mean absolute duration error of 5.39s, with most tending to overshoot the 15s target, though they can still substantially reduce human editing effort; (3) all models exhibit systematic content biases, favoring information-rich and emotion-focused shots while under-selecting action and imagery. We publicly release our benchmark to facilitate research at the intersection of multimodal AI and computational advertising."
+      },
+      "hash": "90d2e736aef775702056aa262a754b3c936a458caa556deb9483eb9ce6b9e9d8",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33413": {
+      "entry": {
+        "arxiv_id": "2610.33413",
+        "version": 1,
+        "title": "AV-FABLE: Audio-Visual Manipulation Forensics in Long-Form Videos",
+        "authors": [
+          "Yuesheng Huang",
+          "Hoi Fan Au",
+          "Jiaqi Hou",
+          "Ruicheng Zhang",
+          "Jiarui He",
+          "Haocheng Yang",
+          "Bin Hu",
+          "Kewei Zhang",
+          "Weijian Deng",
+          "Jun Zhou",
+          "Xiu Li"
+        ],
+        "published": "2026-10-24T03:01:21Z",
+        "updated": "2026-10-24T03:01:21Z",
+        "abstract": "Localized AI manipulations in long-form videos often affect brief events within otherwise authentic content, making video-level classification insufficient for forensic analysis. Existing audio-visual deepfake benchmarks largely focus on short talking-head clips, while long-form temporal forensics remains predominantly visual. We introduce AV-FABLE, a dual-timeline benchmark for sparse manipulations in open-scene long-form audio-visual videos. AV-FABLE contains 16,650 pristine--manipulated twin pairs (998 hours) created with 27 editing configurations, with separate audio and visual timelines that enable modality-specific temporal localization and expose errors hidden by joint-timeline evaluation. On AV-FABLE, zero-shot prompting of audio-visual large language models (AV-LLMs) yields near-chance detection and poor temporal localization. In contrast, supervised readouts of their frozen perception features recover strong forensic signals, suggesting manipulation evidence is encoded in these representations but not effectively exposed through language outputs. Motivated by this observation, we propose NFSR(Native Forensics via Separated Readouts), which reads frozen AV-LLM features with separate audio and visual temporal decoders. NFSR achieves the best audio-visual localization performance in-domain and across all three out-of-distribution settings, including transfer to held-out videos from an external long-video forensic benchmark. AV-FABLE, code, and model weights will be publicly released.",
+        "comment": "41 pages, 10 figures, including appendices"
+      },
+      "hash": "897110f1c0df66028b630dd0b2025ddad62160d7ded84ab1e50099fccbdb6c43",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33440": {
+      "entry": {
+        "arxiv_id": "2610.33440",
+        "version": 1,
+        "title": "Perturbation-Based Data Selection for Medical Question Answering",
+        "authors": [
+          "Yuexin Wu",
+          "Dayou Yu",
+          "Vasile Rus"
+        ],
+        "published": "2026-10-24T04:33:48Z",
+        "updated": "2026-10-24T04:33:48Z",
+        "abstract": "Selecting a compact training subset is an important step in adapting medical language models from existing question-answering banks. We investigate perturbation-based data selection using two signals derived from Gaussian perturbations of the final-block representation: prediction-change frequency and non-flipping margin contraction. After a shared entropy prefilter, Representation-Sensitivity Prioritization (RSP) combines the signals using automatic root-mean-square scaling, while RSP-Drop ranks candidates by contraction alone. Both selectors use only questions and answer options during selection. We evaluate them with MedGemma-4B on five medical QA datasets at retained-set budgets of 64, 128, and 256 examples. At the primary budget of 128, RSP and RSP-Drop obtain dataset-averaged Macro-F1 scores of 47.55 and 48.28, respectively, compared with 45.11 for entropy-pool-matched random selection. Their relative performance varies across datasets and budgets. A selected-set case study identifies contrasting clean-margin profiles among the examples exchanged by the two rules, while a full-pool ablation shows that entropy prefiltering is not uniformly beneficial. These retrospective results characterize the empirical utility and limitations of perturbation-based selection under a fixed adaptation protocol. Evaluation uses one backbone and benchmarks with documented training-family overlap; it does not establish clinical effectiveness.",
+        "comment": "10 pages. Preprint submitted to IEEE ICHI 2027. Extends the non-archival GenAI4Health @ NeurIPS 2026 study arXiv:2609.09684v2 with automatic RMS scaling, RSP-Drop, budget analyses, and entropy-prefilter ablations"
+      },
+      "hash": "f9eb5b90b2df5b0c9ac752d880442fdf8a8bc3df4f0fadd614cbee5daedaec71",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33448": {
+      "entry": {
+        "arxiv_id": "2610.33448",
+        "version": 1,
+        "title": "BoardSafety: AI-Ready Data from Manufacturer Documentation for Development-Board Safety",
+        "authors": [
+          "Linjian Yang",
+          "Xinyan Wang",
+          "Kunpeng Liu"
+        ],
+        "published": "2026-10-24T04:59:33Z",
+        "updated": "2026-10-24T04:59:33Z",
+        "abstract": "The development of large language models (LLMs) are capable to assist with hardware experiments. In this scenario, this raises a practical question: Can LLMs determine whether a proposed operation is safe for a specific development board? Documented operating limits and safety requirements are board-specific, even across products from the same manufacturer. This variation makes board-specific safety judgments by an LLM difficult to evaluate. To address this problem, we introduce the BoardSafety Benchmark. The benchmark is built from vendor datasheets and hardware guides. For data transformation, these documents are converted into a board-specific safety rule base and are then used to create labeled operating scenarios. Each data item pairs a board and a proposed operation to an applicable safety rule with ground-truth label, indicating the level of safety. The categorized level for each operation includes safe, unsafe, or insufficient-info. In addition, the benchmark covers diverse operations, board-specific cases, boundary conditions, and missing-information cases. We evaluate a series of models by varying their access to board-specific rules and the use of structured-rationale prompting. Our results demonstrate that providing the safety rules generally improves accuracy, whereas structured-rationale prompting produces gains that vary across models and rule-access conditions. Overall, the evaluated models cannot yet reliably determine whether an operation is safe, which implies that critical exploration is required for this field."
+      },
+      "hash": "3b1d55dc9e2ce43003924dea6c7dfff89249f099e68f39f6a51ed7906d19fe04",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33478": {
+      "entry": {
+        "arxiv_id": "2610.33478",
+        "version": 1,
+        "title": "MarineLife-16K: An Attribute-Rich Video-Text Dataset for Motion-Aware Marine Video Understanding",
+        "authors": [
+          "Quang-Trung Truong",
+          "Thanh-Nghia Nguyen",
+          "Phu-Phong Vo",
+          "Jaeyeon Kim",
+          "Cheng Chen",
+          "Jie Zhang",
+          "Binh-Son Hua",
+          "Duc Thanh Nguyen",
+          "Ivor Tsang",
+          "Sai-Kit Yeung"
+        ],
+        "published": "2026-10-24T06:05:26Z",
+        "updated": "2026-10-24T06:05:26Z",
+        "abstract": "Marine video understanding is crucial for a wide range of real-world applications. However, existing marine video datasets suffer from limitations, including the limited number of data samples, fine-grained text descriptions, and detailed visual attributes. To address these limitations, we introduce a large-scale, video-text dataset featuring rich, in-the-wild visual attributes tailored for complex marine environments. Our dataset comprises 2,000 video-text pairs annotated with 13 attributes covering up to four objects per scene, object visual/geometric properties, behaviors, environmental context, and camera motion, spanning diverse lighting conditions, times of day, and 7 countries. From these annotations, we generate 16,080 video-question pairs (12,080 multiple-choice, 4,000 open-ended). Furthermore, we benchmark both proprietary and open-source video-LLM models on video question answering and video captioning tasks. We find that (i) proprietary models often achieves superior performances; (ii) VLMs handle object motion well but struggle with complex camera motion; (iii) closed-source models struggle to perceive camera motion; and (iv) VLMs struggle to reason in static cameras.",
+        "comment": "Published at WACV2027"
+      },
+      "hash": "e76e1e82a1cb18cd364d114ea7d63c40905aa09af3c091a1d50ac85669839b2f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33493": {
+      "entry": {
+        "arxiv_id": "2610.33493",
+        "version": 1,
+        "title": "Small Edits, Shifting Decisions: Benchmarking LLM Accuracy and Reliability on French Input Variants",
+        "authors": [
+          "Jiaming Yu",
+          "Xiaotian Xie",
+          "Jian Ma",
+          "Yingjie Li"
+        ],
+        "published": "2026-10-24T06:46:00Z",
+        "updated": "2026-10-24T06:46:00Z",
+        "abstract": "French users may omit apostrophes and diacritics or make keyboard typos in everyday input. The effects of these common variations on language model performance and prediction reliability remain insufficiently understood. To address this gap, we construct a controlled French surface-variant benchmark covering seven task types, with 4,200 original-low-high triplets (12,600 input instances). Each high-intensity variant retains all low-intensity edits and adds further changes. We evaluate six models from two LLM families. The results show that accuracy decreases and Brier score and negative log-likelihood (NLL) increase with perturbation intensity. Larger models show smaller accuracy losses under high intensity, but increases in Brier score and NLL do not consistently decrease with scale. Keyboard typos cause the largest losses in accuracy and the quality of predicted probabilities at the predefined high-intensity settings. Finally, calibration temperatures fitted on original inputs transfer effectively to surface variants. Combining calibration with input restoration further improves Brier score and NLL over either method alone while preserving restored accuracy. Our benchmark provides a unified framework for jointly evaluating task accuracy and prediction reliability under common French surface variations."
+      },
+      "hash": "4807894b256a342613baed661ece06385e6f03b94612cc961223d42cb06a28ed",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33564": {
+      "entry": {
+        "arxiv_id": "2610.33564",
+        "version": 1,
+        "title": "What Remains OOD? OODConceptBench for Open-World Concept Recognition in Vision-Language Models",
+        "authors": [
+          "Zhiran Luo",
+          "Zhiyong Yang",
+          "Zitai Wang",
+          "Sicong Li",
+          "Qianqian Xu",
+          "Qingming Huang"
+        ],
+        "published": "2026-10-24T09:33:41Z",
+        "updated": "2026-10-24T09:33:41Z",
+        "abstract": "In the era of large-scale pretrained models, zero-shot generalization has increasingly blurred the boundary between known and unknown concepts. However, current evaluations do not directly reveal which open-world concepts different vision-language models can recognize. To study this problem, we introduce OODConceptBench, a hierarchical benchmark for open-world concept recognition on image-concept pairs. The full benchmark set (L1) contains 30,752 images, and the harder subset (L2) contains 14,285 images. The benchmark covers 560 concept phrases across seven open-world categories. We evaluate 37 vision-language models across release year, model family, and variant. We obtain three main findings. First, target-concept recognition is lower on L2 than on L1 across all 37 evaluated models. Second, later-released models do not necessarily achieve stronger open-world concept recognition. Third, an increase in overall recognition does not imply consistent improvement across all benchmark categories. Together, these results show that OOD remains a challenge even in the era of large-scale vision-language pretraining."
+      },
+      "hash": "999f78c0106324bac0637cec32342d24c2bd72318786ff282c854a1072e57f5e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33586": {
+      "entry": {
+        "arxiv_id": "2610.33586",
+        "version": 1,
+        "title": "Words Are the Voice of the Mind: Depression Severity Estimation from Social Traces via Mental-Guided Evidence Reasoning",
+        "authors": [
+          "Nada Xu",
+          "Xueqin Chen",
+          "Qiang Gao",
+          "Hongru Liang",
+          "Wenqiang Lei"
+        ],
+        "published": "2026-10-24T10:28:49Z",
+        "updated": "2026-10-24T10:28:49Z",
+        "abstract": "Depression severity estimation is crucial for mental health assessment and intervention, yet traditional approaches depend on clinical interviews or self-report questionnaires that require users' active participation. With the widespread use of online social media, users leave rich social traces that may reflect their mental states, motivating the task of social media-based depression severity estimation. Existing efforts have progressed from textual-feature-based classification to LLM-based questionnaire completion over standardized scale items, yet they still fall short in user-specific mental priors modeling, diversified semantic retrieval, and fine-grained reasoning over mental evidence. To address these limitations, we propose UMer, a user-specific mental evidence reasoning framework for social traces-based depression severity estimation. UMer first distills a user-specific mental prior from historical social traces to capture the user's psychological tendencies, behavioral patterns, and self-expression style. It then performs scale-guided multi-query retrieval to construct evidence memories from item-relevant posts. Finally, it conducts coarse-to-fine evidence-aware reasoning to distinguish direct and indirect evidence and predict item-level scores with interpretable rationales. Extensive experiments on real-world benchmarks demonstrate that UMer not only achieves competitive performance over existing baselines, but also provides evidence-grounded interpretability and generalizes to other scale-based tasks."
+      },
+      "hash": "ae2e2320d4e7c58a983ba9db616d14770777b89ddc09fe2d76d1de733181e399",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33587": {
+      "entry": {
+        "arxiv_id": "2610.33587",
+        "version": 1,
+        "title": "Who Verifies the Verifiers? Accountable Semantic Consensus for AI-Mediated Web Information Verification",
+        "authors": [
+          "Yanna Jiang",
+          "Mingyuan Li",
+          "Xu Wang",
+          "Guangsheng Yu"
+        ],
+        "published": "2026-10-24T10:30:56Z",
+        "updated": "2026-10-24T10:30:56Z",
+        "abstract": "Large language models (LLMs) increasingly decide whether Web evidence supports online claims, often by voting over several assessors whose errors are presumed independent and benign. On the open Web, retrieved pages can steer the assessors that read them, and assessors from one model family fail together. We prove that even for independent assessors whose every output sequence is possible on both valid and invalid claims, any protocol that decides only from their outputs and always reaches an agreed verdict never rejects invalid claims or rejects valid ones with positive probability. We present Astral, which pins all assessors to one committed snapshot of the Web evidence. With up to f assessors faulty, Astral accepts a verdict only when 2f+1 assessors attest to it above a confidence threshold and no signed challenge stands. On five public benchmarks with two of seven assessors adversarial, Astral lowers pooled attack success to 21.5-53.1%, against 54.7-77.8% for majority voting. The cost is coverage, as without attack 16.0-61.7% of claims receive a binary verdict and the rest are disputed for audit. Our code runs at https://anonymous.4open.science/r/Astral-55F1."
+      },
+      "hash": "60ecc9aa498063a5fb0e3c3c0250031c3009c61c7c38a08b9cb08286afd3a2f6",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33592": {
+      "entry": {
+        "arxiv_id": "2610.33592",
+        "version": 1,
+        "title": "Auditing evaluation artifacts and data leakage in large language model systems for rare disease diagnosis",
+        "authors": [
+          "Jian Yang",
+          "Peilin Liu",
+          "Xiaohan Li",
+          "Songda Li",
+          "Yu Cao",
+          "Yuqing Feng",
+          "Haomin Li"
+        ],
+        "published": "2026-10-24T10:35:48Z",
+        "updated": "2026-10-24T10:35:48Z",
+        "abstract": "Augmented large language model (LLM) systems have reported high benchmark accuracies in rare disease diagnosis, yet their real-world clinical utility remains unproven. A recent meta-analysis flagged augmented LLM diagnostic evaluations as having a high risk of bias due to suspected data leakage; however, the precise impact of these vulnerabilities on model inference has yet to be fully quantified. In this study, we present a comprehensive empirical audit to quantify evaluation artifacts across prevailing AI paradigms, using a repository of over 60,000 cases from diverse public and independent clinical cohorts. By reconstructing a state-of-the-art agentic framework, we demonstrate that candidate-space contamination artificially inflates performance: enforcing strict cross-dataset isolation resulted in a marked performance decline, with the cross-dataset mean Recall@1 decreasing from 54.3% (under conventional one-vs-rest evaluation) to 40.3% (Hedges' g = 0.94). Similar spatial overfitting in supervised classifiers caused diagnostic accuracy to drop from an internal mean of 42.9% to 16.7% across external cohorts (Cohen's d = 2.01). Furthermore, we quantify how LLMs infer diagnoses by exploiting retrospective therapeutic cues in clinical narratives, and how temporal misalignment in foundational knowledge bases leads to performance fluctuations. We conclude that prevailing evaluation protocols for augmented LLM systems inadvertently reflect data leakage rather than genuine medical reasoning. To address these systematic artifacts, we propose a rigorous evaluation framework - coupling strict data-isolation protocols with standardized benchmarking safeguards - to ensure future diagnostic AI for rare diseases is evaluated on actual clinical robustness.",
+        "comment": "18 page, 3 figures"
+      },
+      "hash": "b4bf68b7cd0dc1f68e049a95a88aa1e5ccd271ef6f62f4816b447756ff0971cd",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33608": {
+      "entry": {
+        "arxiv_id": "2610.33608",
+        "version": 1,
+        "title": "Mycelium: A Meta-Study of Hallucination Detection Across Provenance, Typology, and Granularities",
+        "authors": [
+          "Julia Belikova",
+          "Elisei Rykov"
+        ],
+        "published": "2026-10-24T11:20:24Z",
+        "updated": "2026-10-24T11:20:24Z",
+        "abstract": "Hallucination detection is increasingly important for evaluating and deploying large language models. However, existing methods are often compared across benchmarks that define and measure hallucination in substantially different ways, making reported scores difficult to interpret across settings. We study hallucination detection as a benchmark-conditioned measurement problem and organize existing benchmarks along three axes: provenance, which describes how model outputs and evidence conditions are obtained; typology, which captures the factuality and faithfulness failures represented by benchmark labels; and granularity, which specifies the unit at which hallucinations are annotated, predicted, and evaluated. Using this framework, we analyze how benchmark construction, annotation, and evaluation choices shape the underlying prediction task, and relate detector mechanisms and assumptions to the settings in which their performance is measured. We also examine span-level evaluation, where variation in annotation boundaries can substantially affect reported results, and propose Span Coverage F1 as a complementary containment-based metric. Our analysis clarifies what detector scores capture, highlights limitations of cross-benchmark comparisons, and motivates more explicit evaluation of generalization across benchmark conditions."
+      },
+      "hash": "6fa47c2afc3202a786c3d0218376e42d7c0f44553e2471088ab3c7a66f22e3a1",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33624": {
+      "entry": {
+        "arxiv_id": "2610.33624",
+        "version": 1,
+        "title": "RSI Arena: Towards Recursive Self-Improvement with Human Feedback",
+        "authors": [
+          "Yue Huang",
+          "Yanbo Wang",
+          "Lichi Li",
+          "Yuanyuan Chen",
+          "Andreas Haupt",
+          "Xiaonan Luo",
+          "Zheyuan Liu",
+          "Jihye Choi",
+          "Felix Juefei-Xu",
+          "Xiangliang Zhang",
+          "Radha Poovendran",
+          "Misha Sra",
+          "Ying Liu",
+          "Ben Burtenshaw",
+          "Thomas Wolf",
+          "Alex Pentland",
+          "Zichen Chen",
+          "Zhangchen Xu"
+        ],
+        "published": "2026-10-24T11:54:45Z",
+        "updated": "2026-10-24T11:54:45Z",
+        "abstract": "Can AI agents autonomously train useful language models and improve them using feedback from users? We introduce RSI Arena, a two-stage study of autonomous post-training as a step toward recursive self-improvement. Ten frontier models act as training agents, each starting from NVIDIA Nemotron 3.5 Lightning 30B-A3B Base. During a six-day first stage, each agent has 1,000 GPU-hours and $300 in API credit on a shared 64-GPU cluster, independently selecting data, implementing training procedures, and choosing checkpoints. We evaluate their models on 20 benchmarks and through blind human evaluations. All ten agents produce working assistants, with the strongest model, trained by GPT-6 Astra, closing a median of 76% of the base-to-Instruct gap across 12 capability benchmarks. Its human-preference rating is also close to NVIDIA Instruct after statistical adjustment for answer length and formatting. In Stage 2, each agent receives the comparison records and votes involving its Stage 1 model and is given three additional days for further training. Using NVIDIA Instruct as a common reference across the two evaluation rounds, we observe an improvement from Stage 1 to Stage 2 in the style-adjusted relative rating of eight of the ten models. We show that benchmark gains were modest, with no clear link to preference gains, while some agents encouraged longer responses and one model showed increased harmful compliance on StrongREJECT. RSI Arena provides an auditable setting for studying how human feedback can guide autonomous model development. It takes a step toward recursive self-improvement with human feedback (RSIHF), in which people help define what improvement means for the AI systems they use.",
+        "comment": "39 pages. Project website: https://rsiarena.org"
+      },
+      "hash": "0dddf9e3dbab0d010434275b3217022d274b082dd1ead15e499b574f7a3310ce",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.33644": {
+      "entry": {
+        "arxiv_id": "2610.33644",
+        "version": 1,
+        "title": "AlphaIdeaBench: Benchmarking Automated Research Idea Generation under Feasibility Constraints with Peer Review Alignment",
+        "authors": [
+          "Shunchao Zhou",
+          "Chang Yang",
+          "Jingrui Wang",
+          "Shuxin Zhuang",
+          "Rundong Wang",
+          "Runsheng Yu",
+          "Xinrun Wang"
+        ],
+        "published": "2026-10-24T12:52:49Z",
+        "updated": "2026-10-24T12:52:49Z",
+        "abstract": "Research ideas are always proposed under resource constraints: a plan must fit the available compute, API credit, and time. Yet evaluations of research-ideation agents mostly score unconstrained novelty or overlap with a published paper, and their LLM judges are rarely checked against peer review. We introduce AlphaIdeaBench, a benchmark of 100 ideation tasks (50 workshop calls for papers and 50 open problems stated in surveys), each paired with an explicit resource budget and a shared proposal schema. An LLM judge scores each proposal on 12 dimensions covering validity, novelty, and feasibility. To validate the judge, we compare its scores on four novelty axes (problem, method, scenario, and insight) with scores derived from reviewer comments on 600 papers from ICLR 2026, NeurIPS 2025, and ICML 2025. For problem and method novelty, Gemini 3.7 Flash is within one point of the reviewer-derived score on 94-97% of papers; agreement on scenario novelty is relatively lower. We evaluate eight published harnesses on a shared backbone and, within one harness, eight backbone LLMs. CoI-Agent obtains the highest overall score, narrowly ahead of SciMON, which leads on method and insight novelty. All harnesses score low on scenario novelty and rarely change the problem setting. The backbone largely determines which open problem a proposal targets, whereas the harness determines whether a proposal addresses one problem or combines several. Weaker backbones such as Llama 4 Scout fail to carry out that harness's strategy and score low on budget feasibility. Finally, when only the budget is varied on three topics, a larger budget changes the experimental setting on compute-intensive topics but only adds tests on an inexpensive one. We release the tasks, rubrics, and scores to foster standardized, reproducible benchmarking of future research-ideation agents under constraints."
+      },
+      "hash": "907246decf45f90b0d9b67046bdc14ac8506b28522f4c0faab8b1f331a9d563a",
       "status": "queued",
       "attempts": 0,
       "error": null,
