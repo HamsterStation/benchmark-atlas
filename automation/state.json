@@ -9,7 +9,11 @@
     "cc0b0cc6cecde53ac5cd": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (abs:\"large language model\" OR abs:\"language models\" OR abs:LLM OR abs:LLMs OR abs:\"foundation models\")",
       "successful_until": "2026-10-29T16:56:38Z",
-      "active": null,
+      "active": {
+        "since": "2026-10-22T16:56:38+00:00",
+        "until": "2026-10-30T16:42:47Z",
+        "start": 200
+      },
       "last_completed_at": "2026-10-29T16:56:38Z"
     },
     "14f880dfad109bc470a7": {
@@ -107776,6 +107780,39 @@
         "abstract": "Realistic, fast robotics simulations could enable large-scale training of embodied AI models that transfer to the real world. However, despite decades of progress, available simulations cover only a narrow range of real-world tasks and physical phenomena. The core bottleneck is that creating better simulations requires significant expert effort and therefore does not scale. To address this, we introduce Gym-Anything for Robotics, a framework in which coding agents create realistic robotics simulations. Our core insight is that simulation creation is a coding agent task, so improvements in coding agents translate directly into richer and more faithful simulations. We select simulations based on U.S. GDP data to cover economically valuable physical work, define what makes a good simulation and a good task, and develop an adversarial creation-audit loop that checks each simulation and task against these definitions. Using this pipeline, we build RoboWorld, a set of 25 simulations with 25 test and 175 training RL environments of varying difficulty. Even the best frontier models fail on every RoboWorld test task, achieving an average reward of only 0.06. Building on RoboWorld, we introduce several new ways for frontier models to improve, including in-context learning across repeated attempts, a privileged teacher that reads the simulator state and teaches a student in context, self-assisted learning from the model's own privileged experience, and code policies that generate demonstrations across varied scenes to train vision-language-action models (VLAs) such as $π_{0.5}$. Each of these substantially improves performance. We release our pipeline, RL environments, and benchmark to facilitate future research. Code and data are available at https://gym-anything.github.io/robotics"
       },
       "hash": "21ea091784aafde2cb605ea80ba30de5d4f37ebce6f6e594303faa79c863fa1d",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2610.37697": {
+      "entry": {
+        "arxiv_id": "2610.37697",
+        "version": 1,
+        "title": "chATLAS: A Retrieval-Augmented Conversational Assistant for the ATLAS Experiment",
+        "authors": [
+          "Joe Egan",
+          "Ben Elliot",
+          "Samuel Van Stroud",
+          "Alex Sopio",
+          "Ki Ryeong Park",
+          "Daniele Dal Santo",
+          "Zhaohui Li",
+          "Runze Li",
+          "Jeremy Couthures",
+          "Joe George",
+          "Cary Randazzo",
+          "Juerg Beringer",
+          "Daniel Murnane",
+          "Gabriel Facini"
+        ],
+        "published": "2026-10-24T12:51:38Z",
+        "updated": "2026-10-24T12:51:38Z",
+        "abstract": "Large scientific collaborations produce extensive internal documentation spread across heterogeneous systems, making it difficult for collaborators to locate and reuse existing knowledge. We present chATLAS, a deployed Retrieval-Augmented Generation (RAG) assistant developed for the ATLAS experiment at CERN. The system provides conversational access to more than 30,000 documents from several collaboration resources, material largely unavailable to general-purpose language models, using hybrid dense--sparse retrieval deployed on CERN infrastructure. A domain-specific benchmark built from automatically generated question--answer pairs is used to evaluate retrieval and generation performance and to guide design choices. We study the selection and domain-specific fine-tuning of an embedding model, contextual retrieval, ranking strategies, and generator choice. Fine-tuning combined with contextual retrieval more than doubles how often the correct document is returned as the top result on the most technically challenging documentation source. The deployed system also includes intent routing, safety handling, Mattermost integration, and an MCP server for future agentic workflows. chATLAS demonstrates that domain-adapted RAG can provide source-attributed, domain-specific access to collaboration knowledge, and offers a practical foundation for scientific collaborations and other organisations that rely on accurate, up-to-date retrieval from proprietary documentation.",
+        "comment": "20 pages, 6 figures"
+      },
+      "hash": "009ced45aef2567231cf2847f7897f94cbe116f60d267aea5e4c5b29e356785c",
       "status": "queued",
       "attempts": 0,
       "error": null,
