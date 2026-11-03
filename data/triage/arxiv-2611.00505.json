@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2611.00505",
+  "arxivId": "2611.00505",
+  "version": 1,
+  "title": "To Jev or Not to Jev: When Can System-1 Decision Models Replace LLM Judges?",
+  "paperUrl": "https://arxiv.org/abs/2611.00505v1",
+  "assessedAt": "2026-11-03T17:54:48Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "b0a30ad94189bdfbcc6f2973930d75f4787e2ba6eae90d4b96fd71208f63c1a5",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 5,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "材料中提供代码或数据链接（未核验内容）",
+    "给出任务规模或覆盖范围"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "Decision models such as TypeSafe's Jev answer typed questions about a text (yes/no, multiple choice, or an ordinal score) with calibrated probabilities in a single forward pass and without generating text, which makes them an inexpensive candidate for LLM-as-a-judge workloads.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.00505v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "Two general System-1 leaderboards that contain no judging tasks predict judging accuracy (Pearson r = 0.95-0.96), a well-calibrated System-1 first stage matches Opus on LLMBar while escalating 17% of items, and same-size controls show that the correctness deficit of a 4B decision model is a reasoning gap rather than a size gap.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.00505v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "We evaluate 14 System-1 decision models, selected with a pre-stated protocol, against four generative judges (Claude Haiku 5.5, GPT-5.6 with and without reasoning, and Claude Opus 5.5 with thinking) on eleven established judge benchmarks.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.00505v1"
+    },
+    {
+      "signal": "validity_analysis",
+      "label": "讨论泛化、污染、稳健性或人工核验",
+      "weight": 1,
+      "excerpt": "Robustness to instructions injected into the judged response is a property of the individual model rather than of the System-1 design: an appended note to the evaluator reverses 0-5% of the correct verdicts of five models but 17-49% for the other nine.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.00505v1"
+    }
+  ],
+  "resourceCandidates": [],
+  "declaredVenue": null,
+  "venueVerified": false,
+  "qualityVerified": false
+}
