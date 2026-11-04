@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2611.05066",
+  "arxivId": "2611.05066",
+  "version": 1,
+  "title": "VIGOR: Visual Gain Ordering for Hallucination Mitigation in Multimodal Discrete Diffusion Language Models",
+  "paperUrl": "https://arxiv.org/abs/2611.05066v1",
+  "assessedAt": "2026-11-04T18:00:54Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "fbc1706eb971b9c8cd2a607e70501df72eb6b06d7a7f32da6cf5203c94bdf8c8",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 4,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "描述评分指标或评测协议",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "We argue that hallucination in multimodal dLLMs is not only a token prediction problem, but also a premature commitment problem: during iterative denoising, some masked positions are unmasked too early because their confidence is driven more by language priors than by visual evidence, and these early commitments can bias later generation.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.05066v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "At each denoising step, VIGOR compares the confidence of each candidate token under the original image-conditioned pass and an additional visual-ablation pass, and prioritizes positions whose predictions are more strongly supported by the image.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.05066v1"
+    },
+    {
+      "signal": "resource_link",
+      "label": "材料中提供代码或数据链接（未核验内容）",
+      "weight": 2,
+      "excerpt": "https://github.com/THU-BPM/Vigor",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.05066v1"
+    }
+  ],
+  "resourceCandidates": [
+    "https://github.com/THU-BPM/Vigor"
+  ],
+  "declaredVenue": "Accepted to NeurIPS 2026",
+  "venueVerified": false,
+  "qualityVerified": false
+}
