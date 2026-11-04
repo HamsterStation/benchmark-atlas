@@ -15,7 +15,11 @@
     "14f880dfad109bc470a7": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (ti:agent OR ti:agents OR ti:agentic OR abs:\"LLM agents\" OR abs:\"language agents\" OR abs:\"AI assistants\" OR abs:\"software engineering\" OR abs:\"code generation\" OR abs:\"tool use\" OR abs:\"function calling\")",
       "successful_until": "2026-11-03T17:52:12Z",
-      "active": null,
+      "active": {
+        "since": "2026-10-27T17:52:12+00:00",
+        "until": "2026-11-04T17:59:50Z",
+        "start": 200
+      },
       "last_completed_at": "2026-11-03T17:52:12Z"
     }
   },
@@ -113961,6 +113965,339 @@
       },
       "hash": "6608bba091bb3f539c072b4e04206b0cb479df063522cc42438dbaf7a78e1a64",
       "status": "awaiting_evidence",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.03710": {
+      "entry": {
+        "arxiv_id": "2611.03710",
+        "version": 1,
+        "title": "te-comp: A Complete MLIR Compiler Generating Self-Contained C Inference Engines for MCUs",
+        "authors": [
+          "Van Chan Ngo"
+        ],
+        "published": "2026-10-31T00:17:50Z",
+        "updated": "2026-10-31T00:17:50Z",
+        "abstract": "Deploying deep learning on microcontrollers (MCUs) requires fitting both the model weights and runtime activations within tens to hundreds of kilobytes of SRAM and Flash. Existing approaches either use an interpreter with a pre-written kernel library or combine a Python code generator with hand-written C kernels. This incurs dispatch overhead and requires framework dependencies. None produces self-contained, dependency-free C code specialized to a given model. In this paper, we present te-comp, the first complete MLIR-based compiler that takes a standard model in .tflite or .safetensors format and emits all C source files needed for deployment: the inference engine (kernels, weight arrays, memory layout) and the RTOS integration layer with zero runtime dependencies. On 10 MCUNet CNN benchmarks, te-comp outperforms MCUNet TinyEngine by using 38% less SRAM (up to 5.9$\\times$) and 15% less Flash, while generating complete C code rather than linking a pre-written kernel library. To demonstrate, we use te-comp to compile an 8.3M-parameter GPT-Neo transformer (TinyStories-v2) and deploy it on a single-core Cortex-M7 at 160MHz. The full firmware uses 249KB of 512KB SRAM and 3.62MB of 4MB Flash and achieves approximately 1 token/s interactive text generation via Q4_0 weight quantization, a stateful int4 KV cache, and vocabulary pruning -- a capability no existing MCU inference framework supports."
+      },
+      "hash": "ad896bd1368fb9e702f0952857508244dba6040695abe52243b6d27b3b689c2f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.03713": {
+      "entry": {
+        "arxiv_id": "2611.03713",
+        "version": 1,
+        "title": "Unsatz: Evaluating Scientific Discovery Without a Given Ansatz",
+        "authors": [
+          "Ethan Ji",
+          "Wei Wang",
+          "Yizhou Sun"
+        ],
+        "published": "2026-10-31T04:52:14Z",
+        "updated": "2026-10-31T04:52:14Z",
+        "abstract": "Before a scientist fits any parameter, they must decide what the model contains: which quantities exist, which are hidden, how they interact, and how they are measured. Physicists call such a trial form an ansatz. Benchmarks for automated equation discovery mostly supply it, by fixing the variables, a library of candidate terms, or a law to be modified. We introduce Unsatz, a benchmark in which an LLM agent must construct the ansatz itself. Each task is a simulated system, generated from a private seed as a program in a small modeling language: ordinary, delay, or partial differential equations, discrete maps, static and causal models, or stochastic processes, possibly with hidden states, distorted sensors, and uninformative measurement channels. The agent buys experiments within a budget, writes candidate programs in the same language, obtains their coefficients from the benchmark's fitter, and is scored only on how its final program predicts experiments it never saw: conditions outside the range it could explore, interventions, and longer runs. Across 80 systems in 20 domains, nine language models solve between 21% and 60%. On 44 of these systems, classical equation-discovery methods almost never succeed, although the same data usually suffice once the true equations are given with unknown coefficients; the difficulty lies in finding the structure, not in estimating it. Because mechanisms recur across systems, we also give agents the program they discovered for a related system; it helped only when the new system shared the mechanism and the first investigation had succeeded. Stronger agents make fewer unscientific errors; beyond these, agents find which variables a system has but not how they act, and prefer revisions that lower the training error to revisions that predict better."
+      },
+      "hash": "c5f291257f841bfc4b316f4eaa28b219e911a8e7b5b1edca77b6a821714a8e15",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.03743": {
+      "entry": {
+        "arxiv_id": "2611.03743",
+        "version": 1,
+        "title": "EvoMemState: Evolving Memory State for Personal Agents",
+        "authors": [
+          "Zhishang Xiang",
+          "Yunbo Tang",
+          "Zhongqiao Liu",
+          "Junkai Chen",
+          "Zerui Chen",
+          "Qingguo Hu",
+          "Yuxuan Zhang",
+          "William Grant",
+          "Qinggang Zhang",
+          "Jinsong Su"
+        ],
+        "published": "2026-11-02T02:42:04Z",
+        "updated": "2026-11-02T02:42:04Z",
+        "abstract": "Long-term memory enables large language model (LLM) agents to provide continuous personalized assistance by retaining user information across interactions. Existing systems support this process through fact extraction, organization, updating, and retrieval, but largely maintain memories as independent facts. This fact-centric paradigm may overlook how new facts update, constrain, or conflict with earlier ones, while leaving their applicability, role, and priority for the current request implicit. In this paper, we introduce EvoMemState, a state-centric framework that augments persistent facts with two complementary states: Relational States that capture how facts remain valid and relate to one another as memory evolves, and a Reasoning State that determines how these facts should be applied to the current request. Specifically, EvoMemState consists of three key components: (i) Ontology-Guided Memory State Induction extracts Persistent Facts and constructs Relational States that maintain their validity, scope, and evolving relations. (ii) RL-Based State Evolution internalizes memory-use experience into a policy through reinforcement learning to generate a request-specific Reasoning State. (iii) State-Aware Reasoning then combines the relevant facts with their Relational States and the generated Reasoning State to guide the personal agent. Extensive experiments on long-term dialogue and memory-use benchmarks demonstrate consistent improvements over existing memory systems in retrieval completeness and memory-grounded response accuracy. Our code and implementation details are available at https://github.com/XMUDeepLIT/EvoMemState.git."
+      },
+      "hash": "5d5c5a62f332cd5dbf84c30621215d4a671a6f9e9be52d1a8a8fac85af2b526c",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.03754": {
+      "entry": {
+        "arxiv_id": "2611.03754",
+        "version": 1,
+        "title": "The Web Doesn't Sit Still: Adversarial Self-Evolving Attacks on Search Agents",
+        "authors": [
+          "Geyuan Wang",
+          "Shunyu Liu",
+          "Siyuan Liang",
+          "Chenyang Lyu",
+          "Dacheng Tao"
+        ],
+        "published": "2026-11-02T11:06:25Z",
+        "updated": "2026-11-02T11:06:25Z",
+        "abstract": "Large Language Models (LLMs) have shown promise for empowering search agents to tackle complex information-seeking tasks. However, since acquiring external information necessitates web search, these agents are highly susceptible to various adversarial attacks (e.g., malicious information injection or stealthy context manipulation). Existing attack strategies inevitably rely on static and human-crafted templates, failing to emulate the dynamic and complex nature of real-world threats. In this paper, we propose an adversarial self-evolution framework that integrates bi-level optimization between the attacker's strategy evolution and the defender's adaptive mitigation, to expose the vulnerabilities of search agents. Specifically, we introduce the Contrastive Rollout Evolutionary Optimization (CREO) method to drive the directional evolution of the attack strategy population via contrastive evolutionary signals. To provide a stable environment for this continuous evolution, we further construct a controlled sandbox and design fine-grained metrics to quantify internal vulnerabilities. Extensive experiments across various multi-hop QA benchmarks and frontier LLMs demonstrate that the proposed framework yields attack efficacy superior to static baselines, underscoring the urgent need to develop more robust defense frameworks.",
+        "comment": "Accepted at NeurIPS 2026"
+      },
+      "hash": "72ee9e8c9c8b923c5c9304fb5b2a5bb7776096c15622be11427010244995792c",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.03765": {
+      "entry": {
+        "arxiv_id": "2611.03765",
+        "version": 1,
+        "title": "VagueBench: Benchmarking the Robustness of Embodied Agents on Ambient Context Illusions",
+        "authors": [
+          "Yang Qu",
+          "Qiang Fu",
+          "Zonghao Ying",
+          "Jiayi Zhao",
+          "Yaoyuan Zhang",
+          "Jinyang Guo",
+          "Jian Yang",
+          "Aishan Liu",
+          "Yingxun Wang",
+          "Xianglong Liu"
+        ],
+        "published": "2026-11-02T15:00:40Z",
+        "updated": "2026-11-02T15:00:40Z",
+        "abstract": "Embodied agents are increasingly deployed in open-world environments, yet current robustness evaluations remain biased toward hazardous instructions and jailbreak vulnerabilities. A more fundamental issue is largely overlooked: agents are rarely tested under semantically sufficient but contextually minimal instructions (i.e., common in real-world human communication), where auxiliary contextual cues are absent. For the first, we identify a novel phenomenon termed Ambient Context Illusion, where agents fail to execute tasks correctly when non-essential contextual details are omitted, despite unchanged task semantics. To systematically study this, we establish VagueBench, a benchmark built upon the AI2-THOR interactive simulation environment for the evaluation of context dependency in embodied agents. We systematically consider key semantic components of instructions (entities, procedures, constraints, and prior knowledge) and derive a unified taxonomy with four categories and nine subtypes to reduce auxiliary information. VagueBench contains 1,303 instruction pairs across diverse indoor environments, constructed via a human-agent co-generation framework that integrates semantic redundancy estimation, taxonomy-guided transformation, and rigorous semantic-invariance verification. Through extensive evaluation on 6 state-of-the-art embodied agents, we observe significant degradation on VagueBench in both task performance and executability (relatively -19.65% in task success rate and relatively +54.10% in empty plan rate) revealing a strong reliance on auxiliary linguistic signals rather than core task semantics. Furthermore, we demonstrate that this phenomenon persists in real-world robotic systems, where it can lead to incorrect decisions and potential safety risks."
+      },
+      "hash": "ce76bfdc71a56fb7d2eb9c74348fa40fba48d39ed5847c3a98248bb7b27c0849",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.03826": {
+      "entry": {
+        "arxiv_id": "2611.03826",
+        "version": 1,
+        "title": "Rethinking Next-Visit Diagnosis Prediction Beyond Aggregate Metrics: Retrieval--Memory Multi-Agent Adjudication",
+        "authors": [
+          "Heejoon Koo"
+        ],
+        "published": "2026-11-02T19:03:08Z",
+        "updated": "2026-11-02T19:03:08Z",
+        "abstract": "Next-visit diagnosis prediction forecasts the diagnoses documented at a patient's next encounter, turning retrospective electronic health records into prospective clinical prediction. However, conventional aggregate evaluation obscures its multifaceted nature: distributionally, models must handle variable-size diagnosis sets and long-tailed labels; temporally, they must distinguish persistent, newly recorded, and recurrent diagnoses; and both vary with observed history depth. We introduce an evaluation framework along these dimensions and apply it to rule-based heuristics, LLM-based prompting, retrieval, memory, and multi-agent approaches. This reveals that repeating the last visit outperforms most LLM-based approaches overall despite predicting no new or recurrent diagnoses, and that retrieval and memory exhibit distinct profiles whose relative strengths vary across temporal transitions and backbones. Motivated by this, we propose LONGINUS, a retrieval-memory multi-agent adjudication framework combining evidence retrieved from patient records with structured memory of the patient trajectory. Using cross-view agreement as a reliability heuristic, it preserves shared predictions and adjudicates disagreements without revealing their source. Across MIMIC-III and MIMIC-IV with four LLM backbones, LONGINUS achieves the best transition-specific performance among LLM-based methods in nearly all settings while remaining competitive with them on aggregate metrics.",
+        "comment": "2 figures, 18 tables, and 29 pages"
+      },
+      "hash": "459753f930d990bf664e121f87fad9f94055d29846da1061be7fbc787159af61",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.03832": {
+      "entry": {
+        "arxiv_id": "2611.03832",
+        "version": 1,
+        "title": "El Agente Fármaco: A Scalable AI Scientist for Drug Discovery",
+        "authors": [
+          "Marcel Müller",
+          "Mohammad Ghazi Vakili",
+          "Yoshihiro Ogura",
+          "Ella Ashoori",
+          "Shimeng Wang",
+          "Alessandro S. Nascimento",
+          "Eddie Calleja",
+          "Yutong Zhao",
+          "Yimeng Liu",
+          "Ella Miray Rajaonson",
+          "Aiwei Yin",
+          "Jiaru Bai",
+          "Yunheng Zou",
+          "Abraham C. Stern",
+          "Varinia Bernales",
+          "Alán Aspuru-Guzik"
+        ],
+        "published": "2026-11-02T19:08:49Z",
+        "updated": "2026-11-02T19:08:49Z",
+        "abstract": "Computational drug discovery offers a growing range of tools for proposing and evaluating molecules, but combining them and deciding what to do next still requires substantial expert effort. Here, we introduce El Agente Fármaco, an AI scientist that uses modern large language model (LLM) technology to turn discovery goals expressed in everyday language into complex, scalable computational screening workflows. The agentic harness selects scientific tools, reviews their results, and adjusts subsequent steps to the target and the user's objectives. Our approach centers on a shared scientific memory: Fármaco Atlas, which stores molecules, structures, and results together with their provenance -- a record of how they were obtained. The agent uses targeted database queries to retrieve the evidence needed for each decision. A single request can launch calculations for an entire collection of molecules, without requiring a separate LLM decision for every compound. This design limits the information the model must process as screening collections grow, while keeping the underlying results available for inspection and further analysis. The integrated tools support molecule generation, prediction of binding and molecular properties, and searches for compounds available for purchase. In a retrospective comparison with an expert-led campaign, the agent proposed chemically distinct candidates with competitive docking scores and higher calculated drug-likeness under explicitly imposed selection criteria. In a 22-task benchmark against plain tool calls and Codex, the agent achieved the highest observed mean model-judged score, with lower median cumulative token use and peak context. Fármaco provides a foundation for flexible, scalable drug discovery workflows that connect scientific reasoning with an enduring, traceable record of computational work.",
+        "comment": "63 pages, 13 figures, including Supporting Information"
+      },
+      "hash": "7101790da4c9fa4f0378b3ce482da9ae364ba4df8e0a1a98a388d0a71af3905a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.03930": {
+      "entry": {
+        "arxiv_id": "2611.03930",
+        "version": 1,
+        "title": "What Is This Memory Useful For? Measuring Task-Conditioned Utility in Long-Term Agent Memory",
+        "authors": [
+          "Chih-Hsuan Yang",
+          "Anjir Ahmed Chowdhury",
+          "Feng Yan",
+          "Rajeev Thakur"
+        ],
+        "published": "2026-11-02T20:32:20Z",
+        "updated": "2026-11-02T20:32:20Z",
+        "abstract": "A stored experience may answer one future question and offer little help with another. We measure this task-conditioned utility rather than assigning each memory a single importance score. A task-blind writer stores a memory without seeing the later task; a frozen reader then answers that task with and without the memory, using identical filler. A cost ledger records the resources used to form, store and expose the memory. On single-call factual-recall tasks built from LongMemEval-V2 web-agent memories, the same memory helps more when it contains information needed for the answer. Its mean paired reward gain on these answer-bearing task pairs exceeds that on matched-control pairs by $+0.33$ (95% interval $+0.21$ to $+0.46$). The tested task-blind summaries and structured records yield smaller gains than Raw, including at fixed total context; a budget sweep is consistent with retention of answer-bearing content contributing to the difference. The bearing--control contrast remains positive in a new session with randomized memory position and under a second reader, although individual memory--task labels change. Generic retrieval performs above chance but misses most screen-defined answer-bearing memories. The factual-recall gains do not extend to the tested software-engineering and scientific-coding benchmarks, where even raw memories have no measurable effect. We provide a public, versioned Conditional Memory Utility Dataset of paired measurements and costs. The practical takeaway is to evaluate memory compression by the task utility it preserves alongside its costs. Task-conditioned measurements make this comparison possible; their stability must also be checked.",
+        "comment": "18 pages, including supplementary material. Project website: https://chihhsuan-yang.github.io/AAMAS2027-ConditionalMemory/"
+      },
+      "hash": "2234c6714f199541e7cfd514ae55be21dd502c92357d23c5b1e202f5d772752a",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.03931": {
+      "entry": {
+        "arxiv_id": "2611.03931",
+        "version": 1,
+        "title": "Beyond Division of Labor: How Roles Shape Feedback and Recovery in Multi-Agent Systems",
+        "authors": [
+          "Chih-Hsuan Yang",
+          "Xinyang Li",
+          "Rajeev Thakur",
+          "Feng Yan"
+        ],
+        "published": "2026-11-02T20:35:24Z",
+        "updated": "2026-11-02T20:35:24Z",
+        "abstract": "Roles in multi-agent large language model (LLM) systems allocate decisions as well as work. In a Planner--Executor--Reviewer team, the Reviewer's approval can determine when the team submits an answer and receives corrective feedback. We study both functions by varying role instructions while holding agents, topology, call budget, and ground-truth evaluator constant, using three open-weight models on Omni-MATH and two on SciBench. Removing roles largely eliminates functional specialization without lowering first-pass accuracy. After a failed first answer, however, submission decisions matter: a role-structured Reviewer often withholds approval, so its team submits less often and receives fewer evaluator verdicts. In an exploratory comparison with feedback available to both teams, the role-free team recovers more often across all five model--benchmark settings. Two further analyses support the importance of feedback opportunities. In a post hoc comparison at equal numbers of verdicts, the pooled recovery difference is small (role-structured minus role-free: $+0.009$, 95% interval $[-0.014,+0.033]$). In an exploratory intervention on $400$ Omni-MATH problems with gemma-4, keeping the role prompts but forcing submission in every cycle raises recovery from $0.198$ to $0.613$; the paired comparison detects no difference from the role-free team. The takeaway is to evaluate roles through recovery after failure as well as specialization. For systems with reliable external feedback, this requires measuring who may submit, how often the team receives feedback, and which agents can act on it.",
+        "comment": "19 pages, including supplementary material. Project website: https://chihhsuan-yang.github.io/AAMAS2027-AgentProtocols/"
+      },
+      "hash": "23539dbf2c8ea54871a6ff81c1349a29bc5bcb24fc48459d936bcf2864a39cb6",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.03935": {
+      "entry": {
+        "arxiv_id": "2611.03935",
+        "version": 1,
+        "title": "Labtune: Treating Lab Organization and Information Sharing as Experimental Variables in LLM-Agent Discovery",
+        "authors": [
+          "Goran Mitevski"
+        ],
+        "published": "2026-11-02T20:38:41Z",
+        "updated": "2026-11-02T20:38:41Z",
+        "abstract": "De-siloing can create groupthink; silos can prevent knowledge sharing and reduce research efficiency. The same tension appears in research systems built with large language model (LLM) agents, yet their organization is usually fixed by design. I propose treating laboratory structure and information sharing as experimental variables. I introduce Labtune, an open framework for bounded research workflows with user-selected laboratory organization, communication policy, model configuration and budget. Users can choose among six editable designs, from multidisciplinary silos and transdisciplinary teams to co-leaders, hub-and-spoke structures, flat co-labs and a single scientist. Information sharing can independently vary from none to high detail, with an optional channel for conditional abstractions called wisdom. Sharing is enforced by the controller at phase barriers rather than through unrestricted agent chat, while delegation does not create additional budget or permissions. Development evidence is separated from protected confirmation, and an optional multi-lab layer allows laboratories with different structures to exchange filtered information. Labtune is an idea and system-description paper, not a benchmark result. Its contribution is to make laboratory organization and information sharing configurable and measurable under matched budgets. I do not claim that one design or level of sharing is best; the aim is to create a concrete experimental space in which those differences can be tested.",
+        "comment": "14 pages. Exploratory preprint"
+      },
+      "hash": "100b523feb38766446faf754827076a47989c527936c330ad193f1ece3de2068",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.03939": {
+      "entry": {
+        "arxiv_id": "2611.03939",
+        "version": 1,
+        "title": "From Benchmarks to Behaviors: A Framework for Auditing AI Agents",
+        "authors": [
+          "Nick Hagar"
+        ],
+        "published": "2026-11-02T20:41:39Z",
+        "updated": "2026-11-02T20:41:39Z",
+        "abstract": "Generative AI systems increasingly mediate access to information. Their behavior depends on tools, instructions, and user memories that are often difficult for researchers to observe or control. Here, I introduce TRACE (Transparent Research on Agent Contexts and Environments), a framework for systematically auditing how these components shape AI agent behavior. Built on an open-source agent harness, TRACE enables controlled manipulation of system components. It also records inputs, outputs, and task execution for downstream analysis. I demonstrate this framework through an experiment examining how user memories influence source selection when agents answer questions about the 2026 U.S. midterm elections. I find that memories expressing explicit preference for a publisher increase its inclusion among the first three cited sources in a response by 33-39 percentage points. Memories identifying the user as a Republican or expressing distrust of mainstream media shift citations rightward. That same media distrust memory also increases citation of sources expressing misinformation or conspiracy theories by 6.3 percentage points, with substantial variation across models. These findings demonstrate that concise user memories can alter source selection in consequential settings, even when questions and search results remain fixed. TRACE extends algorithm auditing to agent harnesses, providing a transparent way to study agent behaviors that benchmarks or commercial interfaces may struggle to isolate.",
+        "comment": "39 pages, 4 figures"
+      },
+      "hash": "6426c5a10a2ed8853088215f06af1ec3578b1df788160958fb1bad912edeef2b",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.03982": {
+      "entry": {
+        "arxiv_id": "2611.03982",
+        "version": 1,
+        "title": "SLATE: A Large-Scale Benchmark for Long-Horizon API Selection in E-commerce Tool Use",
+        "authors": [
+          "Rongzhe Wei",
+          "Ge Shi",
+          "Min Cheng",
+          "Sarthak Ghosh",
+          "Vaibhav Gorde",
+          "Leman Akoglu",
+          "Pan Li",
+          "Na Zhang"
+        ],
+        "published": "2026-11-02T21:22:07Z",
+        "updated": "2026-11-02T21:22:07Z",
+        "abstract": "Enterprises increasingly want LLM agents to automate standard operating procedures over their software stacks -- mapping each step of a procedure to the right call among thousands of internal APIs, without hand-authored step-to-API mappings. The core difficulty is API selection at scale: choosing and composing the correct tools over a long horizon, judged only by whether the overall task succeeds. Current tool-use benchmarks do not test this regime -- they expose only a handful of tools, evaluate single-step invocation, or grade multi-step behavior with subjective LLM-as-a-judge scores that penalize valid alternative trajectories. We introduce SLATE (Synthetic Large-scale API Toolkit for E-commerce), a large-scale benchmark that tests large-toolset, long-horizon API selection in a realistic enterprise domain. SLATE couples (i) queries decomposed into hierarchical, tool-grounded procedures over a ~1,000-tool e-commerce library, (ii) a deterministic, context-aware simulator that returns recorded outputs for matching calls and default responses otherwise, and (iii) an end-to-end task-success metric -- a task succeeds when it reaches every reference outcome -- that credits diverse-but-valid trajectories while remaining fully automatic and reproducible. Experiments with six open decision models and the language models they are built on, from 3B to 12B parameters, show that even the best model completes only 5.0% of the tasks, establishing SLATE as a challenging testbed for reliable enterprise tool use. We release SLATE, its simulator, and the evaluation harness at https://geshijoker.github.io/slate/",
+        "comment": "20 pages, 13 figures, 6 tables. Camera-ready version for the NeurIPS 2026 Workshop on Agentic AI Benchmarks and Applications for Enterprise Tasks (AABA4ET). Project page: https://geshijoker.github.io/slate/"
+      },
+      "hash": "3c04159b96db38f803b54de44a2f3de3fdf14138d7a3b61445bfa9982f51da2f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.04003": {
+      "entry": {
+        "arxiv_id": "2611.04003",
+        "version": 1,
+        "title": "WASP-Mem: Let Agent Organize Procedural Memory. Human Spend Effort on Diagnosis",
+        "authors": [
+          "Peizhi Niu",
+          "Ge Shi",
+          "Vaibhav Gorde",
+          "Sarthak Ghosh",
+          "Christos Faloutsos",
+          "Min Cheng",
+          "Kevin Chen"
+        ],
+        "published": "2026-11-02T21:43:49Z",
+        "updated": "2026-11-02T21:43:49Z",
+        "abstract": "LLM agents struggle to automate complex enterprise procedures because static, pre-built harness cannot capture proprietary policies, undocumented behaviors, or state-dependent recovery paths that surface only during execution. Procedural memory accrued from agent experience offers a training-free path to closing this gap -- yet unlike episodic records or semantic facts, it must consolidate repeated successes and diagnosed failures into reusable actions and recovery strategies. We introduce WASP-Mem (Wiki-based Agent-Synthesized Procedural Memory), a nimble but effective method that distills execution traces and feedback into persistent, interlinked wiki pages, enabling continual agent learning. On TheAgentCompany benchmark, WASP-Mem raises the checkpoint pass rate by 4.6-6.1% over the strongest baseline we compared across three models while requiring 57-61% less storage. We further present a systematic controlled study spanning consolidation method, feedback type, trace ingestion scope, and refinement rounds. Our results reveal that prescriptive knowledge organization such as human defined schemas and explicit deduplication rules hurts performance rather than closing the procedural-knowledge gap. In contrast, human diagnosis converts failed traces into corrective knowledge and drives sustained improvement: a single round of human diagnosis outperforms four rounds of self-judgment by 7.0-10.9%. These findings point to a simple division of labor: let agents organize procedural memory, and invest human effort where it matters most -- diagnosis.",
+        "comment": "24 pages (10 main + references and appendix), 6 figures, 14 tables. Peizhi Niu and Ge Shi contributed equally"
+      },
+      "hash": "29df6f760cc8894323fd487019bdc06d18bc025b3330bf030d983cf9da34e6f0",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.04070": {
+      "entry": {
+        "arxiv_id": "2611.04070",
+        "version": 1,
+        "title": "Are LLM Research Agents Reliable Judges of Predictability? Evidence from Planted-Signal Worlds",
+        "authors": [
+          "Chang Liu"
+        ],
+        "published": "2026-11-02T23:25:11Z",
+        "updated": "2026-11-02T23:25:11Z",
+        "abstract": "Researchers ask large language model (LLM) research agents whether a forecasting model beats a static benchmark, a verdict that real data cannot check. We treat the agent as a statistical test and score pre-specified runs of three frontier models and one open-weight model in simulated worlds with a planted signal. The agents detect weak signals more often than a pre-specified out-of-sample test, mainly because they accept weaker evidence: held to an agent's false-positive rate, a conventional in-sample test does as well or better. The agents claim predictability too often in worlds without a signal, state miscalibrated probabilities, and change their verdicts after a sentence about prior research; the magnitudes depend on the model. The excess false claims persist in simulated worlds without a resampling artifact. Agent verdicts are informative but need a neutral brief, a decision rule fixed outside the agent and a sealed holdout."
+      },
+      "hash": "a0a68e7e48ee7050abbbff6e625d5a2b01bed6abd2b715562c5fd6c6f15d0c96",
+      "status": "queued",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
