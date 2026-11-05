@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2611.05791",
+  "arxivId": "2611.05791",
+  "version": 1,
+  "title": "FlyHash for LLM Agent Memory: An Empirical Validation and a New Application",
+  "paperUrl": "https://arxiv.org/abs/2611.05791v1",
+  "assessedAt": "2026-11-05T18:03:56Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "d45f628c9c91de942918db849c9ccb84ad5f792128be50c0190aaf63ed26a8f4",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 4,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "描述评分指标或评测协议",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "We apply FlyHash, to our knowledge for the first time, to LLM agent memory retrieval, and ask three questions a practitioner actually needs answered: does the quality advantage hold under a correctly matched-bit protocol (it does, robustly, across 10 seeds and four datasets spanning two modalities, with one specific, previously undocumented comparison pitfall identified and corrected along the way); does that advantage translate into real memory and latency savings, including against the dense-vector indexing (HNSW) practitioners default to today (no: at equal bits FlyHash's codes are larger and slower to compare than SimHash's, and HNSW dominates both hash methods at ordinary scale; a sparse-set comparison we introduce recovers most but not all of a naive latency gap, leaving hashing's practical case narrower and more specific than the quality result alone implies); and does the advantage survive genuine, non-circular agent-memory relevance labels rather than the nearest-neighbor-by-embedding proxy this literature otherwise relies on (it does).",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.05791v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "We apply FlyHash, to our knowledge for the first time, to LLM agent memory retrieval, and ask three questions a practitioner actually needs answered: does the quality advantage hold under a correctly matched-bit protocol (it does, robustly, across 10 seeds and four datasets spanning two modalities, with one specific, previously undocumented comparison pitfall identified and corrected along the way); does that advantage translate into real memory and latency savings, including against the dense-vector indexing (HNSW) practitioners default to today (no: at equal bits FlyHash's codes are larger and slower to compare than SimHash's, and HNSW dominates both hash methods at ordinary scale; a sparse-set comparison we introduce recovers most but not all of a naive latency gap, leaving hashing's practical case narrower and more specific than the quality result alone implies); and does the advantage survive genuine, non-circular agent-memory relevance labels rather than the nearest-neighbor-by-embedding proxy this literature otherwise relies on (it does).",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.05791v1"
+    },
+    {
+      "signal": "resource_link",
+      "label": "材料中提供代码或数据链接（未核验内容）",
+      "weight": 2,
+      "excerpt": "https://github.com/mohanji/flyhash-agent-memory",
+      "source": "arxiv_comment",
+      "sourceUrl": "https://arxiv.org/abs/2611.05791v1"
+    }
+  ],
+  "resourceCandidates": [
+    "https://github.com/mohanji/flyhash-agent-memory"
+  ],
+  "declaredVenue": "19 pages. Code, data and interactive demo: https://github.com/mohanji/flyhash-agent-memory (archived at https://doi.org/10.5281/zenodo.23903302)",
+  "venueVerified": false,
+  "qualityVerified": false
+}
