@@ -12,7 +12,7 @@
       "active": {
         "since": "2026-10-29T18:02:57+00:00",
         "until": "2026-11-07T16:28:40Z",
-        "start": 200
+        "start": 400
       },
       "last_completed_at": "2026-11-05T18:02:57Z"
     },
@@ -118105,6 +118105,111 @@
         "abstract": "Latent communication enables agents to collaborate efficiently by directly exchanging intermediate model representations rather than raw sensor data or text messages. Existing approaches, however, are primarily designed for LLM agents and do not consider the bandwidth constraints and heterogeneous task deadlines faced by cyber-physical agents. In this work, we propose SCALE, a real-time latent communication method tailored for cyber-physical agents. Motivated by the spatio-temporal continuity of the physical world, SCALE matches tokens across consecutive latent messages using similarity scores to identify reusable information and avoid redundant transmission. It then profiles the semantic gain and communication cost of transmitting different amounts of latent information. Based on these profiles, SCALE employs a real-time scheduler that jointly determines which pending messages to transmit and how many latent tokens to send, subject to available bandwidth and task deadlines. We evaluate SCALE across three cyber-physical benchmarks and a physical spider robot case study under diverse network conditions and heterogeneous task deadlines. Our results show that SCALE significantly improves both task performance and on-time delivery in bandwidth-constrained networks. Our code is available at: https://anonymous.4open.science/r/SCALE-4E80/."
       },
       "hash": "7b89ce1975ec1bf3fadb04e19a2b8f86a09be152d6bc75218ba043e078203f30",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.06976": {
+      "entry": {
+        "arxiv_id": "2611.06976",
+        "version": 1,
+        "title": "On the Opportunities and Challenges of Prefill-to-Autoregressive Cross-Model Transfer",
+        "authors": [
+          "Zhenyi Shen",
+          "Junru Lu",
+          "Wei Liu",
+          "Jiangnan Ye",
+          "Jiazheng Li",
+          "Di Yin",
+          "Xing Sun",
+          "Tameem Adel",
+          "Yali Du",
+          "Lin Gui",
+          "Yulan He"
+        ],
+        "published": "2026-11-04T13:33:47Z",
+        "updated": "2026-11-04T13:33:47Z",
+        "abstract": "Prefill-to-Autoregressive Cross-model Transfer (PACT), a form of latent communication between language models, combines a larger model's prompt representations with a smaller model's efficient generation, offering a promising way to balance capability and inference cost. However, existing systems provide limited support for independently evaluating large-small model collaboration, and improved task performance alone does not establish whether the receiver benefits from the sender's information. We introduce PLatour, an open-source PACT framework that connects frozen models through lightweight, zero-initialized linear bridges trained directly with task rewards and supports hybrid-attention architectures. PLatour significantly outperforms open-source baselines on generation tasks and surpasses Mostik's reported results on shared mathematics and coding benchmarks using a substantially smaller sender. However, controlled experiments show that the gains on some tasks can be reproduced by uninformative sender signals, self-communication, or receiver-only training. We find that trainable bridges can act as parameter-efficient adaptation mechanisms without exploiting useful sender information. We therefore propose PACT-Check to quantify how much of a trained PACT system's gain genuinely comes from communication. Finally, we discuss the opportunities and challenges of PACT systems. Code is available at https://github.com/zhenyi4/platour.",
+        "comment": "35 pages"
+      },
+      "hash": "d7e4ee147985e9c2d8a94cf450afc554a392a6ce01842f61242f3df0cd1c2a97",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.06982": {
+      "entry": {
+        "arxiv_id": "2611.06982",
+        "version": 1,
+        "title": "Decode Before You Hear: Speculative Listening for Chunk-Interleaved Full-Duplex Speech Language Models",
+        "authors": [
+          "Yutong Bian",
+          "Yanglin Zhang",
+          "Yuxiang Wang",
+          "Luoyuan Zhang",
+          "Rongshen He",
+          "Zihao Wang",
+          "Junwen Qiu",
+          "Jiaqi Li",
+          "Zhizheng Wu"
+        ],
+        "published": "2026-11-04T15:16:15Z",
+        "updated": "2026-11-04T15:16:15Z",
+        "abstract": "Chunk-interleaved full-duplex speech language models listen and speak in fixed time chunks, and each chunk must be processed before the next one arrives. Their workload is asymmetric across chunks: listen chunks leave compute idle while awaiting audio, and speak and tool-call chunks require serial generation, which delays responses and tool calls. Using the idle compute for the next chunk requires decoding it before its audio arrives, under an assumed input. Taking silence as the assumed input and comparing the output with the output under real audio on four models, we observe two properties. First, the next audio chunk does not change the output in 95.3% of chunks. Second, 88% of changes begin at the first output token. Building on these properties, we propose Speculative Listening, a training-free, lossless framework for input-time self-speculative decoding. During idle time, the model drafts the next chunk under silence and, for changes at the first token, a second branch from the runner-up first token. It keeps all drafts in a cross-chunk hypothesis pool and verifies them when the audio arrives. On our eight-task benchmark TickTock-Bench, Speculative Listening speeds up speak chunks by 2.6-2.8x and tool-call chunks by up to 23.4x. On average, it reduces the decoding delay before a response starts by 73%, to 74-241 ms, close to the 200 ms gap between human turns, and the maximum lag behind real time by 94.4%.",
+        "comment": "13 pages, 6 figures, 8 tables"
+      },
+      "hash": "404ae6efabdcb75feda6191284ca6d34f54971c4876eab51760e16b9b69e7275",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.06988": {
+      "entry": {
+        "arxiv_id": "2611.06988",
+        "version": 1,
+        "title": "Big Models, Small Gains: Frozen Forecasters as Classifiers on MONSTER",
+        "authors": [
+          "Rishit Jain",
+          "Rishit Kar",
+          "Chetashri Bhadane",
+          "Nilesh Patil"
+        ],
+        "published": "2026-11-04T16:50:28Z",
+        "updated": "2026-11-04T16:50:28Z",
+        "abstract": "Forecasting foundation models are increasingly used as frozen feature extractors for time series classification, but it remains unclear whether their pretrained representations offer an advantage over strong classifiers that do not require pretraining. This raises an important question: do these representations provide useful information beyond what the model architecture alone can capture, particularly when labelled data are scarce? We present a controlled benchmarking of two forecasting models, Reverso and Chronos-Bolt, on six large datasets from the MONSTER benchmark, using 1%, 10%, and 100% of the available training labels. We compare their frozen representations against four established time series classification methods and random-weight versions of the same forecasting models. Our results show that pretraining improves classification accuracy over random-weight counterparts on five of the six datasets, with gains of up to 23 percentage points. However, the frozen representations do not reliably outperform the strongest non-pretrained baseline in any setting: they perform worse in 15 of 17 settings and tie in the remaining two. Further experiments show that restoring amplitude information recovers part of the performance gap, while fine-tuning and forecast-error features do not close it. These findings highlight the importance of strong task specific baselines and random weight controls when evaluating forecasting foundation models for classification. Our code is available at https://github.com/Rachet2006/frozen-forecasters-monster.",
+        "comment": "Asian Conference on Machine Learning, FMLTS Workshop, 2026"
+      },
+      "hash": "4bd5b40bb8c5c58b9fbaba09c16d9a751b2c630f62be7e249a88808d6c54286f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.06993": {
+      "entry": {
+        "arxiv_id": "2611.06993",
+        "version": 1,
+        "title": "Batch-Conditioned Semantic Anchors for Robust Transductive Adaptation of Vision--Language Models",
+        "authors": [
+          "Mohammed Rahman Sherif Khan Mohammad",
+          "Ardhendu Behera",
+          "Sandip Pradhan",
+          "Swagat Kumar",
+          "Amr Ahmed"
+        ],
+        "published": "2026-11-04T18:18:47Z",
+        "updated": "2026-11-04T18:18:47Z",
+        "abstract": "Transductive adaptation improves vision-language models at test time by refining predictions on an unlabeled batch, but current methods face a key trade-off. Aggressive approaches exploit batch structure but can drift when batches are sparse, have prior shift, or cover little of the label space. Conservative methods better preserve CLIP text semantics, but fixed semantic references can under-adapt even when the batch provides strong corrective evidence. We propose JPTA (Joint Prior and Transport Adaptation), a prior-aware framework that casts transductive VLM adaptation as batch-conditioned semantic reference estimation. Instead of treating CLIP text prototypes as fixed priors or freely replaceable, JPTA views them as semantic references that shift toward image-side batch structure only under calibrated evidence. It estimates batch priors and soft image-side prototypes to form transported semantic references whose impact is scaled by batch reliability. Across standard benchmarks, low effective-class regimes, all-class evaluation, and online streams, JPTA consistently outperforms TransCLIP and StatA, with the largest gains on sparse and prior-shifted batches. Anchor-drift, active-support, and absent-class-mass diagnostics show that JPTA fixes effective-class mismatch without unconstrained transductive drift, indicating that robust transductive VLM adaptation should recalibrate semantic references using reliable batch evidence rather than choose between unrestricted transduction and fixed prototypes. Code is available at https://github.com/MR-Sherif/JPTA.git.",
+        "comment": "Accepted at NeurIPS 2026"
+      },
+      "hash": "6e3d2ef15290440c64fd6007845420ce53747223e2ea3d56a13c808c05060e7e",
       "status": "queued",
       "attempts": 0,
       "error": null,
