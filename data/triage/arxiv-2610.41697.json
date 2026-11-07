@@ -2,19 +2,19 @@
   "schemaVersion": 1,
   "id": "arxiv-2610.41697",
   "arxivId": "2610.41697",
-  "version": 1,
+  "version": 2,
   "title": "TSBPO: Tree-Structured Branching for Policy Optimization in Interactive Language Agents",
-  "paperUrl": "https://arxiv.org/abs/2610.41697v1",
-  "assessedAt": "2026-11-02T20:24:18Z",
+  "paperUrl": "https://arxiv.org/abs/2610.41697v2",
+  "assessedAt": "2026-11-07T16:29:38Z",
   "policyVersion": 5,
   "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
-  "materialHash": "d13214bd1c972646dfcdb1e87bb4aaf688229e27d6d2a5fec7b79c94c4d17e6b",
+  "materialHash": "ef4509401d54a1ad35943d3fd478f00929da5e2e8ae2ae9db35f27437f9f48a9",
   "materialScope": "abstract_and_arxiv_metadata",
-  "decision": "needs_evidence",
+  "decision": "excluded",
   "score": 4,
   "scoreMax": 11,
   "reasons": [
-    "摘要级证据不足以自动收录，保留材料等待补充"
+    "材料表明提出方法并使用已有基准评估，未见新基准贡献"
   ],
   "missingSignals": [
     "明确提出新的评测资料或框架",
@@ -27,29 +27,29 @@
       "signal": "task_definition",
       "label": "描述任务、问题或评测环境",
       "weight": 1,
-      "excerpt": "Training interactive language agents from terminal outcomes poses three coupled problems: which task and state continuations to sample, how to assign delayed feedback to decisions, and how to aggregate token losses for multi-token actions.",
+      "excerpt": "Dynamics-Predictive Sampling (DPS) [9] provides a task-level predictive sampling reference, but interactive agents also need to choose which visited states merit further continuations.",
       "source": "abstract",
-      "sourceUrl": "https://arxiv.org/abs/2610.41697v1"
+      "sourceUrl": "https://arxiv.org/abs/2610.41697v2"
     },
     {
       "signal": "evaluation_protocol",
       "label": "描述评分指标或评测协议",
       "weight": 2,
-      "excerpt": "With a Qwen2.5-1.5B actor, fixed checkpoints obtain 97.79% seen and 96.64% unseen stochastic success on ALFWorld and an 81.07% per-episode success rate over six stochastic episodes for each of the 500 WebShop test goals.",
+      "excerpt": "With a Qwen2.5-1.5B actor, fixed checkpoints attain 97.79% seen and 96.64% unseen stochastic success on ALFWorld, and an 81.07% per-episode success rate over six stochastic episodes for each of the 500 WebShop test goals.",
       "source": "abstract",
-      "sourceUrl": "https://arxiv.org/abs/2610.41697v1"
+      "sourceUrl": "https://arxiv.org/abs/2610.41697v2"
     },
     {
       "signal": "baseline_comparison",
       "label": "报告基线或多个模型的评测",
       "weight": 1,
-      "excerpt": "On the resulting replayed physical trees, trajectory advantages compare immediate sibling segments, while observation-group step advantages compare outcomes at matched task/observation states.",
+      "excerpt": "On the resulting physical rollout trees, a tree-aware step-level credit assignment algorithm compares immediate sibling segments and assigns their local outcome contrasts to the turns they contain.",
       "source": "abstract",
-      "sourceUrl": "https://arxiv.org/abs/2610.41697v1"
+      "sourceUrl": "https://arxiv.org/abs/2610.41697v2"
     }
   ],
   "resourceCandidates": [],
-  "declaredVenue": null,
+  "declaredVenue": "v2: corrected experiment configuration description, revised abstract and claims; results unchanged",
   "venueVerified": false,
   "qualityVerified": false
 }
