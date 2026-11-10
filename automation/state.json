@@ -8,13 +8,9 @@
     },
     "cc0b0cc6cecde53ac5cd": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (abs:\"large language model\" OR abs:\"language models\" OR abs:LLM OR abs:LLMs OR abs:\"foundation models\")",
-      "successful_until": "2026-11-09T20:46:12Z",
-      "active": {
-        "since": "2026-11-02T20:46:12+00:00",
-        "until": "2026-11-10T17:53:07Z",
-        "start": 400
-      },
-      "last_completed_at": "2026-11-09T20:46:12Z"
+      "successful_until": "2026-11-10T17:53:07Z",
+      "active": null,
+      "last_completed_at": "2026-11-10T17:53:07Z"
     },
     "14f880dfad109bc470a7": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (ti:agent OR ti:agents OR ti:agentic OR abs:\"LLM agents\" OR abs:\"language agents\" OR abs:\"AI assistants\" OR abs:\"software engineering\" OR abs:\"code generation\" OR abs:\"tool use\" OR abs:\"function calling\")",
@@ -123938,6 +123934,605 @@
         "abstract": "Many problems across the sciences compare two stochastic processes through the sequences they generate. Reinforcement learning asks what a new policy would return from the trajectories of an old one; molecular simulation asks how much more a ligand binds from samples of the unbound state; climate attribution asks how a heat wave shifted under warming; and language-model post-training asks what a deployed agent will do from logged interactions. In every case, one quantity would answer all these questions at once: the ratio of the two probability laws over their generated sequences, the trajectory density ratio. This ratio exists only under strong conditions. When one process reaches states the other cannot, the ratio does not exist; when their overlap is thin, its variance grows without control with the sequence length; and when they concentrate on different lower-dimensional sets, the ratio is undefined altogether. Weak support of this kind is the norm for sequence data, not a sampling accident, and its price is paid in identifiability rather than in noise alone. This survey organizes the field around a three-level diagnosis of weak support and a map of the nine retreats that methods take when the full ratio is out of reach, from direct estimation and reweighting through staged decomposition, stationarization, and partial-identification bounds to smoothing, transport couplings, operator spectra, and direct estimation of a single functional. Each retreat keeps part of what the ratio offers and pays for the rest, and each application domain has standardized the retreat its data force. The survey closes with open problems: testable diagnostics at every level, partial identification at the trajectory level, a rate theory of time-amplified error, and benchmarks with ground truth."
       },
       "hash": "62fe8dd094793aae629758cdb84183a4b726f03aa06198ffabc1cceaad68fba0",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12016": {
+      "entry": {
+        "arxiv_id": "2611.12016",
+        "version": 1,
+        "title": "Speculative Self-Distillation enables Efficient Knowledge Internalization",
+        "authors": [
+          "Shayan Talaei",
+          "Agam Bhatia",
+          "Arshia Soltani Moakhar",
+          "Jonas Hübotter",
+          "Amin Saberi",
+          "Azalia Mirhoseini"
+        ],
+        "published": "2026-11-09T07:53:11Z",
+        "updated": "2026-11-09T07:53:11Z",
+        "abstract": "Many real-world applications require language models to internalize knowledge that was absent from pretraining, to incorporate continually updated facts, or to learn new domain skills. Self-distillation has emerged as a natural approach for this task. A model conditioned on the source material acts as the teacher, and an unconditioned student is trained to reproduce the teacher's behavior closed-book. We propose Speculative Self-Distillation (SSD), an efficient per-token mixed-policy method for self-distillation. The student generates each rollout by default, while the teacher intervenes only at positions where its next-token distribution substantially diverges from the student's. Unlike off-policy distillation with teacher-generated prefixes, this design keeps training rollouts close to the student's test-time behavior, while avoiding the low-signal states that fully on-policy rollouts drift into. In effect, SSD lets the teacher steer the rollout exactly where the privileged context changes the prediction. On three closed-book QA benchmarks measuring fact recall, knowledge updates, and skill acquisition, SSD nearly matches on-policy distillation while using 38-69% fewer supervised tokens and consistently outperforms off-policy distillation on the held-out test set. On a forgetting stress test, SSD retains the most general capability while also achieving the best in-domain accuracy and using less supervision than the on-policy baseline. Overall, SSD establishes a new accuracy-efficiency-forgetting Pareto frontier for self-distillation.",
+        "comment": "NeurIPS 2026. 26 pages, 8 figures, 12 tables. Project page: https://ssd-distill.github.io/ Code: https://github.com/ShayanTalaei/SpeculativeSelfDistillation"
+      },
+      "hash": "5ccc4caf3fa7fd4eafd33af68215a5583f42c0d5ee0ff66ff1ce79dba1baa8d8",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12060": {
+      "entry": {
+        "arxiv_id": "2611.12060",
+        "version": 1,
+        "title": "COMPASS: Composable Policy-Amortized Structured Search for LLM-Based Optimization Modeling",
+        "authors": [
+          "Nguyen Le Minh Hoang",
+          "Van Duc Cuong",
+          "Bui Trong Duc",
+          "Huynh Thi Thanh Binh"
+        ],
+        "published": "2026-11-09T08:36:42Z",
+        "updated": "2026-11-09T08:36:42Z",
+        "abstract": "Large language models offer a promising technique for translating natural-language optimization problems into solver code, but their reliability remains constrained by the quality of template retrieval. While recent structured methods improve over flat prompting through hierarchical taxonomy search, their traversal rules remain fixed or LLM-driven at inference time, leaving retrieval unable to improve from past successes and failures. This motivates treating template retrieval as a policy that can be learned from modeling experience, rather than as a static inference-time rule. We propose COMPASS, a policy-amortized framework for retrieving optimization templates in LLM-based solver modeling, which represents the template library as a directed acyclic graph and formulates retrieval as a sequential decision process over template nodes. A deep Q-network learns a reusable traversal policy from template-level judgments and execution feedback, reducing reliance on fixed heuristic traversal through feedback-driven graph navigation. To support extensible retrieval, COMPASS embeds problem descriptions and template nodes in a shared semantic space, allowing newly inserted templates to be scored from their text descriptions without redefining the action space. Experiments across multiple LLM backbones and optimization-modeling benchmarks demonstrate that COMPASS consistently improves over heuristic structured retrieval, with the largest gains on complex and mixed-category problems."
+      },
+      "hash": "3444de6c8e3ffccf7db4bb93f5315482a3eb04eeffbfe0123ede09302ee78428",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12102": {
+      "entry": {
+        "arxiv_id": "2611.12102",
+        "version": 1,
+        "title": "SPARK: Simple Post-training for Adapting pRetrained Knowledge to Robot Control",
+        "authors": [
+          "Taekyung Kim",
+          "Jeongeun Park",
+          "Byeongho Heo",
+          "Sungjoon Choi",
+          "Sangdoo Yun",
+          "Dongyoon Han"
+        ],
+        "published": "2026-11-09T09:18:46Z",
+        "updated": "2026-11-09T09:18:46Z",
+        "abstract": "Large-scale representation learning has produced public foundation models that provide strong general-purpose visual features. However, their pretraining objectives are not designed for robot representation learning, so the resulting embeddings tend to emphasize global semantics rather than the temporally sensitive representations required for robot control. Training robot models from scratch is also undesirable due to the limited scale and high collection cost of robotics data, as well as the substantial computational burden of pre-training. In this paper, we propose SPARK (Simple Post-training for Adapting pRetrained Knowledge), a post-training method that adapts foundation models to robot control. SPARK is built on two principles: temporal abstraction, which encourages the encoder to derive compact features that preserve information essential for understanding temporal changes and action-relevant scene structure, and knowledge preservation, which aligns patch-level representations with those of the original foundation model to retain useful pretrained semantics. These objectives yield compact visual state representations that remain semantically meaningful while preserving useful prior knowledge. Experiments across multiple robotics benchmarks show that SPARK consistently improves success rates and generalization over vanilla foundation models, and further demonstrate that these gains transfer to real-world robot manipulation.",
+        "comment": "CoRL 2026. 16 pages, 3 figures, 13 tables"
+      },
+      "hash": "3cda46570903a66e818a17120032bbeadf4256ede5610e9c0670c61dbdfb2d3e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12141": {
+      "entry": {
+        "arxiv_id": "2611.12141",
+        "version": 1,
+        "title": "Do Time-Series Foundation Models Forecast Index-Futures Returns? A Preregistered Evaluation of Models, Metrics, and Input Representations",
+        "authors": [
+          "Rishabh Upadhyay"
+        ],
+        "published": "2026-11-09T09:53:19Z",
+        "updated": "2026-11-09T09:53:19Z",
+        "abstract": "We ask whether the apparent forecasting skill of frozen time-series foundation models (TSFMs) on intraday index-futures returns is incremental skill. In a pre-registered evaluation on E-mini Nasdaq-100 (NQ) and E-mini S&P 500 (ES) futures, a common panel of five zero-shot models (Chronos-Bolt, Chronos-2, TimesFM 2.5, Moirai 2.0 and TiRex), plus separate experiments with Kronos, is compared with a no-change forecast at 5-120 minutes, using native prices, log returns, volatility-standardised returns and a volume clock as inputs. On a blind set opened once, 0 of 160 model-representation-horizon-market cells beat no-change, and a Hansen SPA test gives p = 1.000 on both markets; a later retrospective hold-out, scored as a descriptive check, gives 0 of 120. Input representations change forecast magnitude but not accuracy, and a transformation-aware ridge regression does as well. Several standard measures nevertheless suggest skill. Price-level correlation exceeds 0.9996, but no-change scores higher. Within-day RankIC across forecast origins rewards a trivial revert-to-mean rule (+0.35 at 30 minutes); we derive the expected within-day covariance under a random walk in closed form, and a sign-randomised null reproduces about 95% of the observed value. One model beats HAR for 5-minute volatility, but not the EWMA its input already contains. On strongly planted synthetic signals the models recover part of the signal at 5 minutes, and recovery deteriorates at 30 minutes. Benchmark-level success of TSFMs should therefore not be assumed to carry over to low-signal domains such as intraday returns."
+      },
+      "hash": "8e5d11809477f2cc408a7e23aaa9c015455be92cea94ec8af7f05df57024c41b",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12240": {
+      "entry": {
+        "arxiv_id": "2611.12240",
+        "version": 1,
+        "title": "Prune, Don't Merge: Expert Compression of Mixture-of-Experts LLMs on Multilingual Production Tasks",
+        "authors": [
+          "Tomas Rasymas",
+          "Povilas Kvedaras"
+        ],
+        "published": "2026-11-09T11:30:23Z",
+        "updated": "2026-11-09T11:30:23Z",
+        "abstract": "Mixture-of-Experts language models are cheap to run per token but expensive to hold in GPU memory, which drives the cost of serving them in production. One-shot expert compression shrinks them after a single calibration pass. Its two current state-of-the-art methods are REAP for expert pruning, which deletes the least salient experts, and REAM for expert merging, which merges them into the most salient ones. Both have been evaluated only on academic benchmarks. We compare the two on five multilingual production tasks of a web-hosting company, from classification to the generation of marketing HTML email templates, with two 30B-parameter models (Qwen3-30B-A3B-Instruct-2507 and the hybrid Mamba-attention Nemotron-3.5-Lightning) at 25% and 50% of experts removed and the same calibration data. Pruning wins: on the same rows, REAP is significantly better in 16 of 20 comparisons and REAM in 2. At 25%, REAP keeps 93.6% of Qwen3-30B's generative quality and REAM 62.5%, although on benchmarks the two are within a point for the same model. The damage concentrates in the output contract rather than the content: 89.8-95.2% of each significant loss on email templates comes from hard-gate failures such as invalid JSON, broken mobile layouts and runaway generation, and most failed non-English domain descriptions copy the prompt's English opening phrase. Cross-perplexity and logit divergence, two diagnostics from the REAP paper, also track production quality, as does the rate of repetition loops; n-gram diversity does not. We close with practical guidance for compressing MoE models for production.",
+        "comment": "38 pages, 8 figures, 15 tables"
+      },
+      "hash": "c31fe6e8fdaa4feb002ea6440f4bc80ec90e62e455e137e7818d96b882dde25c",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12259": {
+      "entry": {
+        "arxiv_id": "2611.12259",
+        "version": 1,
+        "title": "A forensic evaluation framework for egocentric foundation models: an EFM3D case study for crime scene reconstruction",
+        "authors": [
+          "Davidson Chisom Onwubiko",
+          "Shahana Bano",
+          "Carlos Francisco Moreno-García"
+        ],
+        "published": "2026-11-09T11:49:04Z",
+        "updated": "2026-11-09T11:49:04Z",
+        "abstract": "Foundation models increasingly combine geometry, semantics, and spatial context for three-dimensional scene understanding, but their suitability for forensic crime scene reconstruction remains unclear. This study presents a structured forensic evaluation framework for egocentric foundation models and demonstrates it using the Egocentric Foundation Model for 3D (EFM3D). Four simulated indoor crime scenes were recorded with Meta Project Aria Gen~1 at Robert Gordon University's East Lodge House forensic training facility. The framework evaluates room-scale reconstruction, semantic scene understanding, computational performance, and forensic suitability. Across the four scenes, EFM3D generated meshes averaging $12{,}668\\pm2{,}430$ vertices and $24{,}838\\pm4{,}903$ faces, with 39,529 recorded semantic predictions spanning 21--24 categories at a mean confidence of 0.40. Because reference meshes and expert-labelled 3D ground truth were unavailable, these statistics are treated as descriptive outputs rather than measures of geometric or detection accuracy. Final inference runs processed $1{,}388\\pm203$ snippets per scene at $0.69\\pm0.01$ samples/s and required $50.77\\pm6.12$ minutes per recording. A seven-criterion capability profile indicated stronger support for room geometry, furniture localisation, scene context, and spatial relationships than for fine-scale forensic evidence. The results position EFM3D as a complementary tool for contextual documentation and scene review rather than a replacement for high-fidelity forensic capture. The framework provides a reproducible basis for evaluating future egocentric foundation models in specialised forensic settings.",
+        "journal_ref": "International Conference of Machine Vision 2026"
+      },
+      "hash": "dd03b1a062d339d85ee7be105b387b772e960cadc56311269ec9373219ea658c",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12285": {
+      "entry": {
+        "arxiv_id": "2611.12285",
+        "version": 1,
+        "title": "Learning Evidence-Grounded Reasoning for Context-Aware Time Series Forecasting",
+        "authors": [
+          "Xingpeng Gao",
+          "Mingyue Cheng",
+          "Daoyu Wang",
+          "Huajian Zhang",
+          "Xiaoyu Tao"
+        ],
+        "published": "2026-11-09T12:12:18Z",
+        "updated": "2026-11-09T12:12:18Z",
+        "abstract": "LLM-driven time series forecasting has become increasingly promising by leveraging contextual features to generate future values directly or refine forecast priors. However, incorporating contextual features alone does not ensure that models can identify which features matter for forecasting and understand what they suggest about future dynamics. We argue that the fundamental challenge is how to extract predictive evidence from contextual features and when and how to leverage it to guide forecasting decisions. In this paper, we propose CastReasoner, an evidence-grounded reasoning model for context-aware time series forecasting. Specifically, CastReasoner uses a structured chain of thought (CoT) to extract predictive evidence from contextual features, infer the future dynamics suggested by this evidence, and assess these dynamics against the forecast prior to guide adaptive forecasting decisions. To enable this capability, we design a reasoning-centric two-stage post-training framework including supervised fine-tuning (SFT) and reinforcement learning (RL). First, we synthesize reasoning trajectories through controllable multi-teacher guidance and select high-quality ones using a novel student-aware difficulty metric. Second, we design fine-grained multi-objective rewards to further improve reasoning and forecasting. To address heterogeneous learning needs across domains in both stages, we introduce a convergence-guided data balancing strategy. Through this two-stage training, CastReasoner improves both reasoning quality and predictive accuracy. Extensive experiments across multi-domain forecasting benchmarks demonstrate that CastReasoner achieves superior forecasting performance."
+      },
+      "hash": "8fb6f359c34762f1c3ab3c17b9700d0b96bd2fce9e111f3868e1be6f823c73d4",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12305": {
+      "entry": {
+        "arxiv_id": "2611.12305",
+        "version": 1,
+        "title": "HumanSightBench: A Benchmark for Human Visual Perception in MLLMs",
+        "authors": [
+          "Zixin Su",
+          "Yangguang Lin",
+          "Zegang Peng",
+          "Yuntong Sun",
+          "Xuanyi Wang",
+          "Jiahao Wang",
+          "Qiankai Xu",
+          "Bing Yuan",
+          "Jinze Bai",
+          "Youbin Wu",
+          "Jingjia Huang",
+          "Ruyang Liu",
+          "Yanxu Hu"
+        ],
+        "published": "2026-11-09T12:27:19Z",
+        "updated": "2026-11-09T12:27:19Z",
+        "abstract": "Multimodal large language models (MLLMs) have demonstrated strong performance on knowledge-intensive and reasoning-based vision-language benchmark datasets, but still struggle to solve the visual questions that people can solve easily. Evaluating the differences between MLLMs and human-level visual perception is challenging due to end-to-end evaluation which combines various skills, or because we are uncertain if individual items are valid. Specifically, observed errors may reflect visual perception, language priors, background knowledge, question ambiguity, and underspecified answers. Our guideline for HumanSightBench is that we construct items that are human-easy by construction and model-hard by evaluation. HumanSightBench contains 2,876 visual questions with short answers across 7 top-level perceptual categories and 21 subcategories. We only include items that pass five inclusion gates: question clarity, answer uniqueness, visual grounding, human solvability, and text-only shortcut filtering. According to the protocol, errors are defined as incorrect answers on human-validated visual tasks with the evaluated interface. The inclusion gates are intended to reduce confounds from ambiguity and external knowledge. The best pass@3 score is 65.6% across eight evaluated MLLMs. No evaluated model exceeds 27.5% on Counting. These results identify capability gaps that are hidden by overall scores and can help future training experiments and held-out evaluation."
+      },
+      "hash": "b23c2572255dcf475517127b76364a23320aefee0ac892ae63cd7f3b8568349b",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12311": {
+      "entry": {
+        "arxiv_id": "2611.12311",
+        "version": 1,
+        "title": "MNN-Pocket-0.3B Technical Report",
+        "authors": [
+          " MNN Team"
+        ],
+        "published": "2026-11-09T12:33:26Z",
+        "updated": "2026-11-09T12:33:26Z",
+        "abstract": "This technical report presents MNN-Pocket-0.3B, a compact 300M-parameter dense language model designed for efficient on-device deployment and supporting context lengths of up to 32K tokens. With an INT4 deployment footprint of only 173 MB and decoding throughput of up to 466 tokens/s on iPad Pro M5 (Metal), it can be seamlessly integrated into applications on edge devices such as smartphones and smart glasses. MNN-Pocket-0.3B is developed through the co-design of its architecture, data, training pipeline, and inference system. Hardware-aware architecture selection and dependency-aware vocabulary pruning balance model capability with on-device memory and compute constraints. A four-stage pre-training pipeline covering approximately 4.1 trillion high-quality Chinese and English tokens equips the model with broad knowledge and reasoning capabilities. This is followed by a three-stage post-training pipeline comprising instruction fine-tuning, multi-teacher on-policy distillation, and quantization-aware training. Finally, hardware-specific optimizations in the MNN inference engine enable fast, memory-efficient inference and long-context processing. Extensive evaluations demonstrate that MNN-Pocket-0.3B achieves frontier-level performance among models of comparable size, with particularly strong results in Chinese and English knowledge and reasoning, mathematics, coding, and instruction following. It consistently outperforms similarly sized open-source models and even surpasses several 0.5B-parameter models on instruction-following benchmarks. We release MNN-Pocket-0.3B with open weights and ready-to-use MNN deployment packages. We hope it will provide a practical foundation for capable, responsive, and memory-efficient edge applications while advancing research and development in on-device language models.",
+        "comment": "24 pages, 9 figures"
+      },
+      "hash": "8b0638ddd175f7f823fe9c8b0321479f9da6dc4d6197bad60bab25fd90ee93b8",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12345": {
+      "entry": {
+        "arxiv_id": "2611.12345",
+        "version": 1,
+        "title": "TMT: Adapting CLIP to Infrared Imagery via Text-Derived Modality Knowledge Transfer",
+        "authors": [
+          "Ruofan Wang",
+          "Puzuo Wang",
+          "Xin Chen",
+          "Zibo Yu",
+          "Jungang Yang",
+          "Yi Hou"
+        ],
+        "published": "2026-11-09T13:01:10Z",
+        "updated": "2026-11-09T13:01:10Z",
+        "abstract": "Vision-language models such as CLIP achieve strong performance across computer vision tasks, yet their image-text alignment is less reliable for infrared (IR) imagery because large-scale pre-training is dominated by visible-spectrum data. Due to the high cost of the infrared-text labeling, we investigate adapting CLIP to IR through only paired infrared-visible images, which requires considering modality-specific knowledge while preserving scene content and CLIP's image-text alignment. To achieve this, we propose TMT (Text-Derived Modality Knowledge Transfer), which adapts CLIP's image encoder through a text-defined infrared-to-visible direction and supervision from paired IR-visible images. First, we found that modality discrepancy can be described by corresponding text embeddings, thus using the direction of text embedding differences to guide the knowledge transfer between visible and infrared modalities without erasing infrared-specific information. To enhance the representation of semantics and details of infrared images, we introduce Generative-Perceptual Co-Supervision that combines semantic alignment from CLIP visible image encoder with diffusion noise-prediction feedbacks. On four source-disjoint IR classification benchmarks, TMT achieves the highest mean zero-shot accuracy among the compared methods (48.92%). It also achieves the best IR-text retrieval results among the compared methods without infrared-text supervision during adaptation and the highest open-vocabulary segmentation mIoU on both CART and SemanticRT among the CLIP-like methods."
+      },
+      "hash": "a85ca5b67e60a60d9322c239b59862d5152193764c5fcd3cb45302314cac5bdb",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12356": {
+      "entry": {
+        "arxiv_id": "2611.12356",
+        "version": 1,
+        "title": "DForkTree: Accelerating Speculative Decoding with Fork-Aware Block Diffusion Draft Trees",
+        "authors": [
+          "Zhicheng Zheng",
+          "Cheng Zhang",
+          "Chenkai Tang"
+        ],
+        "published": "2026-11-09T13:06:52Z",
+        "updated": "2026-11-09T13:06:52Z",
+        "abstract": "Speculative decoding speeds up language models by letting a lightweight drafter propose several future tokens that the target model verifies in parallel. Block diffusion drafters such as DFlash draft a whole block in one forward pass, and DDTree builds a draft tree from their per-position distributions. Each of these distributions assumes that the drafter's own most likely continuation is correct. A tree, however, gains over a chain only on branches that leave this continuation, where the drafter's top-1 accuracy drops from 89% to 18% and its candidate lists miss the right token far more often. When re-run from the fork token, the same drafter is usually correct, so the errors come from the prefix that the distributions condition on rather than from what the drafter knows. We introduce DForkTree, a training-free method that re-anchors each branch on its own tokens. DForkTree adds n-gram statistics from the target model's own outputs to the drafter's scores as pointwise mutual information, weights them more after the fork, and builds the optimal tree under these scores exactly on the GPU. On Qwen3.5-4B and 9B, with all tree methods sharing one drafter, tree pipeline and verifier, DForkTree is the fastest tree method on every benchmark. It is up to 41.5% faster than DFlash and 15.1% faster than DDTree in the same setting, with average speedups of up to 4.75x over autoregressive decoding.",
+        "comment": "20 pages, 13 figures, 13 tables. Code: https://github.com/Perseus037/DForkTree"
+      },
+      "hash": "bbfe067bfd076aa514f670306d235e53408d3c7db1fcc692543b0f2ed96183fd",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12392": {
+      "entry": {
+        "arxiv_id": "2611.12392",
+        "version": 1,
+        "title": "More Than Just Style: Benchmarking Personality Influence in Large Language Models",
+        "authors": [
+          "Yuhao Liu",
+          "Mengyu Wang",
+          "Xiao Chen",
+          "Lu Liu"
+        ],
+        "published": "2026-11-09T13:29:45Z",
+        "updated": "2026-11-09T13:29:45Z",
+        "abstract": "In addition to the effects of explicit input prompts and instructions, large language model outputs are influenced by underlying behavioral preferences similar to human personality tendencies. These tendencies can affect how models interpret situations and make decisions. However, their influence is difficult to disentangle from the effects of model capabilities and instructions. Therefore, we introduce SPACE, a benchmark framework combining a controlled evaluation protocol with complementary datasets for personality verification, capability assessment, and hierarchical situational tasks. Controlled comparisons across guidance conditions help distinguish personality influence from measured capability changes and immediate instruction effects. Experimental results demonstrate that although prompting can shift generation style, models' internal personality tendencies are persistent and not readily overridden by opposing instructions. Furthermore, these underlying tendencies have an observable influence on LLM task performance, highlighting the need for greater attention to these characteristics and potential applications. Training code and SPACE benchmark specifications are available at https://github.com/Niklauseik/SPACE-training.",
+        "comment": "37 pages, 8 figures"
+      },
+      "hash": "b620fac47631d6647f9409a49b535a4939c4ce5061b7ebb3bcbff8af7763fe07",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12407": {
+      "entry": {
+        "arxiv_id": "2611.12407",
+        "version": 1,
+        "title": "BDBBQ: A Human-AI Collaborative Benchmark for Bengali Social Bias in LLMs",
+        "authors": [
+          "Provat Saha",
+          "Ashika Habib Khan",
+          "Tahseen Tanha",
+          "Hasin Ishrak",
+          "Muhammad Iqbal Hossain"
+        ],
+        "published": "2026-11-09T13:40:09Z",
+        "updated": "2026-11-09T13:40:09Z",
+        "abstract": "Despite growing attention to social bias in large language models (LLMs), existing bias benchmarks provide limited coverage of culturally grounded evaluation in Bengali, particularly within Bangladesh's sociocultural context. To address this gap, we develop a bilingual extension of BanglaBBQ comprising 61,312 question-answering instances across 12 social categories in English and Bengali. The benchmark incorporates balanced answer permutations, contrasting question framings, and both ambiguous and disambiguated contexts to systematically examine model performance and stereotype-aligned bias across languages. We validate the dataset through structural checks, 220 statistical tests, and expert annotation of 150 instances by four annotators, achieving strong inter-annotator agreement (Fleiss' \\k{appa}=0.8349). We evaluate eight LLMs across 490,496 instances and identify five key findings. First, disambiguated contexts yield substantially greater accuracy improvements in Bengali (+36.59 percentage points) than in English (+17.71). Second, all evaluated models exhibit lower accuracy in Bengali, although Mistral-Nemo shows the smallest cross-lingual accuracy gap (5.12 percentage points). Third, stereotype-aligned bias exhibits language and model dependent variation, increasing in Bengali for Gemma 2 9B but decreasing for Mistral-Nemo. Fourth, higher accuracy does not necessarily correspond to lower stereotype-aligned bias. Finally, bias varies considerably across social categories, with Qwen 2.5 7B exhibiting stronger stereotype alignment in Bengali for Politics and Physical Appearance. These findings demonstrate that cross-lingual performance and social bias are distinct dimensions of LLM behavior and underscore the importance of culturally grounded, language-sensitive benchmarks for evaluating fairness beyond English-centric settings."
+      },
+      "hash": "3c835be3d013fb5a7448ea185a3c74d0bdbdb9ce9bff985ff03f914ceef804f4",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12420": {
+      "entry": {
+        "arxiv_id": "2611.12420",
+        "version": 1,
+        "title": "Path-Level Structural and Semantic Alignment for Hierarchical Multi-Label Text Classification",
+        "authors": [
+          "Xindi Wang",
+          "Aifen Xiong",
+          "Baiyang Wang",
+          "Xuri Ge",
+          "Robert Mercer",
+          "Frank Rudzicz",
+          "Yifan Peng",
+          "Zhumin Chen",
+          "Hongjun Wang"
+        ],
+        "published": "2026-11-09T13:49:01Z",
+        "updated": "2026-11-09T13:49:01Z",
+        "abstract": "Hierarchical multi-label text classification (HMTC) requires models to capture both structural dependencies among labels and the fine-grained semantics of labels at different hierarchy levels. Existing methods often model hierarchy through prediction constraints or representations of individual labels and local relations. Structural and semantic supervision, however, are usually formulated separately. We instead use complete root-to-node label paths as a shared unit for both. Our framework introduces two auxiliary training objectives while retaining a standard multi-label classifier at inference. PathSimNCE aligns document representations with hierarchical paths using hierarchy-aware contrastive targets. These targets provide graded supervision for structurally related paths while preserving explicit supervision for the ground-truth paths. The complementary semantic objective uses LLM-generated, document-conditioned descriptions of the same positive paths. It thereby provides context-specific label semantics beyond static label representations. Experiments on three benchmarks show consistent improvements: structural alignment is particularly beneficial in deeper hierarchies, while semantic alignment provides additional gains for fine-grained labels.",
+        "comment": "14 pages, 7 figures"
+      },
+      "hash": "ac00332e46140bf7e255754ff6adcda86e6164b0a884ec253082b0ab8478b601",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12426": {
+      "entry": {
+        "arxiv_id": "2611.12426",
+        "version": 1,
+        "title": "dNaViT: Discrete Codes are General-Purpose Visual Representations",
+        "authors": [
+          "Xiaotong Li",
+          "Zhengrong Yue",
+          "Xu Huang",
+          "Jialv Zou",
+          "Minhao Jing",
+          "Wenhao Yan",
+          "Haodong Li",
+          "Hai Huang",
+          "Bo Zhao",
+          "Yan Feng",
+          "Peng Pei",
+          "Xunliang Cai"
+        ],
+        "published": "2026-11-09T13:51:18Z",
+        "updated": "2026-11-09T13:51:18Z",
+        "abstract": "Discrete autoregressive modeling, notably through next-token prediction, has become a cornerstone of modern language models. Extending this paradigm to vision allows visual and language models to converge on a unified framework, thereby fostering shared methodology and infrastructure. This work investigates a central question: how far can a finite discrete vocabulary go in representing the richness of the visual world? We present dNaViT, a Discrete Native-resolution Vision Transformer that produces discrete visual primitives analogous to language tokens. Built upon a frozen pretrained encoder, dNaViT applies lightweight residual modulation with a dual-branch objective to inject reconstruction-aware cues into semantic features. By leveraging grouped product quantization, it scales discrete capacity without inflating spatial sequence lengths, while a balanced training recipe maintains both semantic and pixel-level information. Consequently, dNaViT functions as a versatile discrete visual tokenizer, enabling unified encoding across downstream tasks alongside high-fidelity image decoding. Extensive evaluations show that dNaViT matches or exceeds task-specific baselines across 12 visual understanding benchmarks, 4 generation benchmarks, and an image editing benchmark. These findings demonstrate that a compact discrete vocabulary can serve as a universal visual currency and unlock the full potential of fully unified, native multimodal methodology.",
+        "comment": "Technical Report. Project page: https://lixiaotong97.github.io/dNaViT/ ; Code: https://github.com/meituan-longcat/LongCat-Next ; Models: https://huggingface.co/meituan-longcat/LongCat-Next"
+      },
+      "hash": "3409634fb683e98a0c2fcbd0ee6e0c1027328fed8ef9de0d972b4927904123f5",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12491": {
+      "entry": {
+        "arxiv_id": "2611.12491",
+        "version": 1,
+        "title": "Out-of-the-Box Tabular Foundation Models for Bayesian Optimization in Materials Discovery",
+        "authors": [
+          "Klemens Flöge",
+          "Simon Bing",
+          "Leo Grinsztajn",
+          "Eliott Kalfon",
+          "Lennart Purucker",
+          "Noah Hollmann",
+          "Frank Hutter"
+        ],
+        "published": "2026-11-09T14:40:10Z",
+        "updated": "2026-11-09T14:40:10Z",
+        "abstract": "Bayesian optimization is widely used in active learning loops for materials science. Gaussian processes serve as the de-facto surrogate model family, but require task-dependent kernel choices and can lack the modeling capacity for complex relationships. Tabular foundation models (TFMs) have recently emerged as the state-of-the-art for predictive tasks on structured data, without requiring bespoke kernels or hyperparameter tuning. We evaluate two TFMs, TabPFN and TabICL, as out-of-the-box surrogate models on two standard materials science benchmarks, comparing against a large field of baselines encompassing Gaussian processes, random forests, and CatBoost. Our findings indicate that TFMs are highly competitive surrogate models across the two benchmarks, without task-specific training for active learning or GP kernel selection. Our results motivate developing TFMs further as surrogates for active learning in materials discovery.",
+        "comment": "Accepted at the AI4Mat Workshop at NeurIPS 2026. 19 pages, 12 figures, 5 tables. Code: https://github.com/PriorLabs/matsci-bo-bench"
+      },
+      "hash": "e389d706f03b1c395f5bcdabcea5814279c94fefa718a9d8c4d458ca7f3f7ace",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12509": {
+      "entry": {
+        "arxiv_id": "2611.12509",
+        "version": 1,
+        "title": "UniHam: A Large-Scale SOC-Complete Dataset and Benchmark for Hamiltonian Learning in Materials",
+        "authors": [
+          "Yuewen Huang",
+          "Pin Chen",
+          "Yutong Lu"
+        ],
+        "published": "2026-11-09T14:49:03Z",
+        "updated": "2026-11-09T14:49:03Z",
+        "abstract": "Accurate prediction of electronic Hamiltonians would enable broad property inference while avoiding the high computational cost of Density Functional Theory (DFT). However, progress toward general-purpose materials foundation models is limited by a data bottleneck: existing Hamiltonian datasets are typically small, lack structural diversity, and often omit essential relativistic physics such as spin--orbit coupling (SOC). We therefore construct UniHam, a large-scale Hamiltonian dataset and benchmark suite comprising 100,000+ DFT-computed complex-valued Hermitian Hamiltonians with full SOC, covering 72 elements and a wide range of crystal geometries and symmetries (spanning diverse lattice types and space-group families). Building on UniHam, we benchmark two representative state-of-the-art models under a standardized protocol and introduce complementary evaluation metrics that jointly assess three dimensions: (i) Hamiltonian reconstruction accuracy, (ii) out-of-distribution (OOD) generalization across composition/symmetry shifts, and (iii) the ability to support downstream property prediction from the predicted Hamiltonians. Experiments on UniHam demonstrate that the proposed benchmark and metrics effectively differentiate model capabilities, revealing intrinsic SOC- and element-dependent failure modes, large variations in compositional OOD robustness, and the necessity of spectral-level evaluation to assess whether Hamiltonian predictions reliably support downstream electronic-structure properties. Overall, UniHam provides a reproducible, SOC-complete benchmark that can sharpen model comparisons and accelerate the development of next-generation foundation models for quantum materials.",
+        "journal_ref": "Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining, Vol. 2 (2026), pp. 9486-9497"
+      },
+      "hash": "6ba92a99f922f0b89cc850c851886ba73b61559fbd24c824826b904bc0944b3c",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12524": {
+      "entry": {
+        "arxiv_id": "2611.12524",
+        "version": 1,
+        "title": "EditJudge-Bench: Auditing VLM Image-Edit Judges with Synthetic Ground Truth",
+        "authors": [
+          "Jens Parslov",
+          "Marco Schouten",
+          "Dim P. Papadopoulos"
+        ],
+        "published": "2026-11-09T14:59:34Z",
+        "updated": "2026-11-09T14:59:34Z",
+        "abstract": "Vision-language models (VLMs) are increasingly used as automated judges for image-editing benchmarks, yet their reliability is poorly understood. Auditing these judges is difficult because real edited images lack controlled ground truth and entangle the requested changes with model artefacts, unintended side effects, and ambiguous degrees of success. In this paper, we introduce EditJudge-Bench, a diagnostic benchmark of 1,382 synthetic before/after image pairs rendered in Blender, with edits parameterised across nine categories derived from real user requests and exact ground truth from known 3D scene parameters. Because every edit is generated by a known intervention on a controlled scene, EditJudge-Bench evaluates VLM judges as binary verifiers of whether an instruction was correctly executed, isolating judge perception from editor quality. Across 25 judge configurations, we find substantial reliability gaps: (a) the widely adopted VIEScore template reaches only 69.0% AUROC with GPT-4o; (b) fine-tuned judges score 51.7-66.3%; spatial edits such as rotation and shape remain challenging; (c) prompt-formatting choices like image-text ordering shift performance by up to 14.1 points. Despite using only synthetic data, judge rankings on EditJudge-Bench correlate strongly with two real-image human-preference benchmarks ($ρ$=0.95 and $ρ$=0.71), indicating that controlled audits surface failure modes relevant to real evaluation.",
+        "comment": "Accepted to NeurIPS 2026 (Evaluations & Datasets Track). 26 pages, 6 figures, 5 tables. Project page: https://jenspars.github.io/EditJudge-Bench/"
+      },
+      "hash": "e1a03acfc0009daca2179786a49d3f55d64117fd8bf0edc18bd3558698cb1d38",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12572": {
+      "entry": {
+        "arxiv_id": "2611.12572",
+        "version": 1,
+        "title": "Text2NGAC: a multi-LLM pipeline for NGAC policy extraction with mutation-based verification",
+        "authors": [
+          "Ayesha Habib",
+          "Huixiang Zhang",
+          "Dan Zhu",
+          "Waiz Haider"
+        ],
+        "published": "2026-11-09T15:32:40Z",
+        "updated": "2026-11-09T15:32:40Z",
+        "abstract": "Access-control policies are written in natural language but enforced as formal models, and translating them into NIST Next Generation Access Control (NGAC) graphs remains unsolved: prior systems cover only subsets of the NGAC model, and none verify the graphs they extract. We present Text2NGAC, a pipeline of cooperating large language models that disambiguates each sentence before extraction, escalates uncertain sentences to a multi-model ensemble, and checks the resulting graph with a five-strategy verifier whose own effectiveness is measured by controlled mutation testing. To our knowledge it is the first system to extract all four NGAC relationship types - associations, prohibitions, event-response obligations, and assignments - from real-world policy documents. Three results anchor the evaluation. The verifier detects 99.7% of 918 injected mutants and every structural fail-open fault, and the fault classes it misses are characterized and weighted by security consequence rather than left unexamined. The extracted graphs are enforceable: one corpus's graph loads unmodified into the NIST reference implementation, which reproduces all 55 access decisions the graph entails and fires an extracted obligation end-to-end. Extraction reaches 97.3-99.6% exact-tuple-match accuracy on the 714 scored sentences of four real corpora, far above three reproduced baselines on matched metrics, and paraphrase probes with semantic re-scoring bound the pipeline's sensitivity to rewording. Reported accuracy is wording- and benchmark-specific, adversarial input is outside the verifier's guarantees, and the intended deployment is extraction plus structural verification feeding expert review. A complete two-tier reproducibility artifact accompanies the paper.",
+        "comment": "33 pages, 6 figures. Under review at Cybersecurity (SpringerOpen)"
+      },
+      "hash": "efbb17ae528d5e4b974000c872ce0677f2a213a4cd6d77e21e46868bdc4f7bdf",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12699": {
+      "entry": {
+        "arxiv_id": "2611.12699",
+        "version": 1,
+        "title": "GeoScope: Training-Free Program Execution beyond the Counting Horizon for Ultra-High-Resolution Remote Sensing Question Answering",
+        "authors": [
+          "Guohui Deng",
+          "Yuhang Jiang",
+          "Chengjun Wang",
+          "Zhongwen Hu",
+          "Zhaocong Wu",
+          "Linsheng Huang",
+          "Jinling Zhao",
+          "Chao Ruan",
+          "Miaozhong Xu",
+          "Chi Chen"
+        ],
+        "published": "2026-11-09T16:57:25Z",
+        "updated": "2026-11-09T16:57:25Z",
+        "abstract": "In ultra-high-resolution (UHR) remote sensing images, the objects that questions count in a region or relate by direction often span only a few pixels. Existing methods mainly decide where a vision-language model (VLM) should look and trust its answer in the chosen view. We show that this assumption fails for counting, and measure VLMs as one calibrates a sensor. All eight open VLMs tested fall increasingly short once a view holds more than a certain number of objects, about five for most on DOTA aerial images. This counting horizon narrows as views grow and objects appear smaller. An empirical power-law response model predicts the undercount a split recovers and the spurious counts it adds, and supports the rule of splitting only views beyond the horizon. In GeoScope, a text-only language model parses the question into a typed spatial program that fixes the region and its resolution. The VLM only grounds and counts within its operating range, and directions are computed explicitly from the grounded boxes. To our knowledge, it is the first UHR method to split views by a measured limit of the VLM. Without training, it improves Qwen3-VL-8B by 16.3 points on regional counting and 10.5 on spatial relations in XLRS-Bench, and has the highest reported accuracy, trained methods included, on regional counting and on the whole benchmark by question. On UHR-Micro it improves global and regional counting by 16.8 and 36.2 points, 15.6 of the former from splitting. On MME-RealWorld counting it gains 11.4 points, and we show that an option that is almost never correct yet often chosen distorts comparisons there. Project page: https://avalon-s.github.io/GeoScope/",
+        "comment": "Preprint. 72 pages including the Supplementary Material. Project page: https://avalon-s.github.io/GeoScope/"
+      },
+      "hash": "695564fd6117d5dc0e308af44878bbd10b7cdca2b74402b8ea29d639cc2967ca",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12712": {
+      "entry": {
+        "arxiv_id": "2611.12712",
+        "version": 1,
+        "title": "Will AI mess my RTL? A snapshot-based approach to verifying AI-written RTL",
+        "authors": [
+          "Bernat Homs",
+          "Oscar Palomar",
+          "Miquel Moreto",
+          "Marcelo Orenes-Vera"
+        ],
+        "published": "2026-11-09T17:03:14Z",
+        "updated": "2026-11-09T17:03:14Z",
+        "abstract": "With the growing interest in using AI (Artificial Intelligence) for RTL (Register-Transfer Level) hardware development, robust and comprehensive verification has become more important than ever. As Large Language Models (LLMs) increasingly assist in creating and modifying RTL designs, ensuring that these changes preserve existing functionality is paramount for building trust in AI-driven workflows. We present SVApshot, a fully automated framework that leverages LLMs to generate and systematically attempt to correct SystemVerilog Assertions (SVA) for RTL modules, completely removing the human from the generation loop. SVApshot introduces a novel snapshot methodology that captures the current functionality of a design as a comprehensive set of formal assertions, creating a regression suite for validating future changes--whether made by humans or AI. The framework features automated duplicate detection, assertion set expansion, and iterative repair of failing assertions using LLM-guided debugging with formal verification feedback. Our experimental evaluation across diverse RTL modules demonstrates high coverage for complex modules, with successful detection of both manually-injected and AI-introduced bugs. Additionally, this framework opens the door for automatic generation of formal testbenches to benchmark LLMs for hardware design, moving beyond binary pass/fail metrics towards nuanced assertion-based scoring.",
+        "comment": "7 pages, 1 figure"
+      },
+      "hash": "de3b4705d9f16ac458f138b29f9eaa9a28a4e023f80deea6cb6b150cdad0b5cf",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12750": {
+      "entry": {
+        "arxiv_id": "2611.12750",
+        "version": 1,
+        "title": "The Narrative Gap: Can LLMs Help Us Navigate Diverse Narratives Across Languages?",
+        "authors": [
+          "Nikhil Sharma",
+          "Kelly Marchisio",
+          "Kenton Murray",
+          "Ziang Xiao"
+        ],
+        "published": "2026-11-09T17:31:47Z",
+        "updated": "2026-11-09T17:31:47Z",
+        "abstract": "Large language models (LLMs) increasingly mediate how people seek and consume information, including accounts that differ across languages and regions, especially on contested topics. Supporting diverse information seeking requires models to help users navigate competing narratives across languages and information streams. We define six capabilities necessary for diverse multilingual information seeking: three foundational capabilities for narrative inclusion, narrative exclusion, and missing narrative identification; and three higher-level capabilities for presenting diverse narratives, preserving narrative coverage under confirmatory queries, and maintaining information parity across languages. To guide the development of those information seeking capabilities, we introduce \\textsc{NarrativeBench}, a benchmark comprising 1,333 news articles in 23 publication languages across 23 contested topics and 460 Reddit-grounded queries. Evaluating 14 LLMs across 24 query languages, we find that current models lack the capabilities needed to reliably navigate diverse narratives, limiting users' control over the perspectives they receive and leaving substantial gaps in exposure to competing accounts even when diversity is explicitly requested. Information access also differs across query framings and languages, risking echo chambers, linguistic filter bubbles, and information disparities that weaken the common ground needed for democratic discourse. \\textsc{NarrativeBench} provides a foundation for developing information systems that give users across languages and regions agency to navigate diverse narratives.",
+        "comment": "NeurIPS 2026 Evaluations and Dataset Track"
+      },
+      "hash": "c22b6cfc9dc52c89ca406908b333fab540fa29420fb96040c402ee93a1deb964",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12791": {
+      "entry": {
+        "arxiv_id": "2611.12791",
+        "version": 1,
+        "title": "Large Language Models as a Universal Searcher for Open-World Automated Machine Learning",
+        "authors": [
+          "Yuxuan Hu",
+          "Jihao Liu",
+          "Weikang Shi",
+          "Xijie Huang",
+          "Linda Wei",
+          "Mingjie Zhan",
+          "Aojun Zhou",
+          "Rui Liu",
+          "Hongsheng Li"
+        ],
+        "published": "2026-11-09T17:58:38Z",
+        "updated": "2026-11-09T17:58:38Z",
+        "abstract": "Developing effective machine learning models requires complex manual tuning, while current Automated Machine Learning (AutoML) frameworks remain domain-specific and isolate model architecture, training hyperparameter, and data ratio optimization. Here, we bridge this gap by proposing a universal, large language model (LLM)-based AutoML framework that jointly optimizes these configurations for the first time without the need for task-specific fine-tuning. We propose NCode, a unified numerical encoding scheme that translates diverse AutoML design choices into universal discrete sequences and effectively reframes the optimization process as a unified ranking task. Trained solely on optimization trajectories derived from a limited, single-domain vision task, the proposed LLM-based searcher demonstrates impressive cross-task, cross-modality and joint search-space optimization generalizability, achieving state-of-the-art performance across image classification, image segmentation, speaker verification and text-to-image benchmarks. Crucially, it exhibits superior scalability in the large-scale training and joint optimization of a billion-parameter Diffusion Transformer, requiring 896 GPU-days and attaining a state-of-the-art GenEval score of 0.91. By leveraging reinforcement learning to instill Chain-of-Thought reasoning, we provide a systematic way to interpret the LLM-based searcher's internal decision-making mechanisms, revealing its optimization strategy shifted from the early-stage diversity-driven exploration to the late-stage anchor exploitation. Our proposed framework provides a scalable, generalizable, and interpretable pathway toward general-purpose open-world machine learning optimization."
+      },
+      "hash": "c452f39268f22b8ef637d0e93e60141a3e43e5b4e49cce489b8635119f75da87",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12807": {
+      "entry": {
+        "arxiv_id": "2611.12807",
+        "version": 1,
+        "title": "Suppression Is Not Erasure: Mechanistic Analysis and Reactivation Boundaries of Subspace Projection for LoRA Backdoor Defense",
+        "authors": [
+          "Junsheng Fu",
+          "Shuangshuang Gao"
+        ],
+        "published": "2026-11-09T18:12:40Z",
+        "updated": "2026-11-09T18:12:40Z",
+        "abstract": "Low-Rank Adaptation (LoRA) is the standard paradigm for customizing large language models, yet third-party LoRA adapters pose a supply-chain risk: modifying less than 1% of model parameters suffices to implant stealthy backdoors. Recent defenses project adapter weights onto estimated backdoor subspaces, reporting near-zero static Attack Success Rates (ASR). We audit subspace-projection defenses across four model scales (Qwen2.5-0.5B/1.5B/3B/7B) and three architectures (Qwen2.5, InternLM2.5, Spark). Constructively, module-wise rank-1 trigger-difference projection (k=1, alpha=1) reduces ASR from 60.4% to 0.0% on standard benchmarks and from 70.3% to 0.0% on a 1,000-sample uncontaminated suite (p = 3.055e-299, instruction-level p = 9.49e-16) in under 5 seconds end-to-end, and we prove via a spectral-gap bound why trigger-free calibration with benign polite suffixes aligns with u1(B) (median cosine 0.9048) and achieves 0.0% ASR without prior trigger knowledge. Our main contribution is a negative finding: static ASR reduction does not imply parameter erasure. Under 5-sample few-shot reactivation, every evaluated weight-editing defense rebounds (91.7%-100.0% ASR in 1 epoch for standard projections, Fine-Pruning, ANP, SVD truncation and Li & Kim's dual-end projection; 48.7% for our single-round dual variant), all reaching 100.0% by Epoch 2, with first-epoch loss up to 5.7x lower than training from scratch. Using an exact spectrum-preserving Haar orthogonal rotation control (Frobenius norm 10.0928 preserved to 1.70e-6) and N=1..6 cumulative Gram-Schmidt basis ablation, we decompose reactivation into residual trigger-difference coupling energy at Epoch 1 (Spearman rho = 0.986), base-model learnability at Epoch 2 (100%), and benign semantic direction conflict (41.7%).",
+        "comment": "22 pages, 6 figures, 8 tables"
+      },
+      "hash": "e63e2a0fe98cd3e937647e4ff00086bb7b652403a3b9a083ebe10d4e863e88bf",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12883": {
+      "entry": {
+        "arxiv_id": "2611.12883",
+        "version": 1,
+        "title": "Beyond Modality Preference: Controlling Multimodal Arbitration under Modality Conflict in MLLMs",
+        "authors": [
+          "Zhaoying Pan",
+          "Shenyu Lu",
+          "Jun Hui Wong",
+          "Junyi Chai",
+          "Xiaoqian Wang"
+        ],
+        "published": "2026-11-09T18:59:36Z",
+        "updated": "2026-11-09T18:59:36Z",
+        "abstract": "Multimodal large language models (MLLMs) integrate information across modalities, but become unreliable when those modalities disagree. Under conflicting inputs, MLLMs may favor modalities that are not the most reliable for the task, thus motivating inference-time control of modality arbitration. We identify a small set of attention heads, termed arbitration heads, that causally influence whether predictions follow visual or textual evidence. Building on this, we introduce a lightweight, training-free intervention that biases these heads toward a designated trusted modality at inference time. The identified heads are stable across calibration set sizes and generalize across settings, and steering them enables effective bidirectional control of modality reliance across diverse benchmarks. Our findings identify an effective control mechanism to align MLLM predictions with task-specified modality priorities. The code is available at https://github.com/zhaoyingpan/modality-arbitration.",
+        "comment": "WACV 2027"
+      },
+      "hash": "cc77a693b1cb042cb6879c1a8b1de3d7b3318954b17456a5508bf5370d952880",
       "status": "queued",
       "attempts": 0,
       "error": null,
