@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2611.12125",
+  "arxivId": "2611.12125",
+  "version": 1,
+  "title": "CARE-PO: Controllable Tool-Call Efficiency for LLM Agents",
+  "paperUrl": "https://arxiv.org/abs/2611.12125v1",
+  "assessedAt": "2026-11-10T17:53:56Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "cc47f30a0ada31175ca183ada823dc78b60808420cea15a0180d7eeac93d4562",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 4,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "材料中提供代码或数据链接（未核验内容）",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "External tool calls are a major running cost of an LLM agent, while its training objectives align almost exclusively with task completion.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.12125v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "On GAIA, five of the six operating points across three model sizes improve on their base model in success rate and call count at once.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.12125v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "Some methods add an efficiency reward to the objective to reduce the call count, but introduce problems of their own: the anchor they price calls against is computed from the policy's own rollouts (e.g., the group's shortest correct rollout) and so moves with the policy; training can drift toward a collapsed policy that issues no tool call at all, a degeneracy seen in published reports and in our 27B baseline; and a training run delivers a single operating point, so the user cannot trade efficiency against capability.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.12125v1"
+    }
+  ],
+  "resourceCandidates": [],
+  "declaredVenue": "Under review at ICLR 2027",
+  "venueVerified": false,
+  "qualityVerified": false
+}

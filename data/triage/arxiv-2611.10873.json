@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2611.10873",
+  "arxivId": "2611.10873",
+  "version": 1,
+  "title": "BRAT: Bounded Residual-Aligned Training for Stable Multi-Pass LLM Post-Training",
+  "paperUrl": "https://arxiv.org/abs/2611.10873v1",
+  "assessedAt": "2026-11-10T17:53:56Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "5d222c0f5538eb90113829b33a443a43721e57164cc13346ac76cc30543fee3d",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 3,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "描述任务、问题或评测环境",
+    "材料中提供代码或数据链接（未核验内容）",
+    "给出任务规模或覆盖范围",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "Measuring how well an update estimated from a small rollout group aligns with the KL-regularized target on held-out rollouts of the same prompts, we find that this alignment drops by nearly an order of magnitude from in-sample to held-out rollouts across three base models, suggesting that repeated passes largely overfit the sampled group.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.10873v1"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "Under such multi-pass reuse, existing objectives fail in different ways: unclipped updates collapse as the policy drifts away from the sampling policy, adding a negative baseline avoids collapse but reinforces every sampled response, and PPO-style ratio clipping cuts off gradients abruptly.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.10873v1"
+    }
+  ],
+  "resourceCandidates": [],
+  "declaredVenue": null,
+  "venueVerified": false,
+  "qualityVerified": false
+}
