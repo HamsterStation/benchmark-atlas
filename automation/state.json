@@ -14,13 +14,9 @@
     },
     "14f880dfad109bc470a7": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (ti:agent OR ti:agents OR ti:agentic OR abs:\"LLM agents\" OR abs:\"language agents\" OR abs:\"AI assistants\" OR abs:\"software engineering\" OR abs:\"code generation\" OR abs:\"tool use\" OR abs:\"function calling\")",
-      "successful_until": "2026-11-10T17:53:07Z",
-      "active": {
-        "since": "2026-11-03T17:53:07+00:00",
-        "until": "2026-11-11T17:54:53Z",
-        "start": 200
-      },
-      "last_completed_at": "2026-11-10T17:53:07Z"
+      "successful_until": "2026-11-11T17:54:53Z",
+      "active": null,
+      "last_completed_at": "2026-11-11T17:54:53Z"
     }
   },
   "queue": {
@@ -124180,6 +124176,189 @@
         "abstract": "Foundation models such as GPT and Claude have shown strong capabilities in spatial understanding and embodied intelligence. These advances make agentic robotics a promising path toward artificial general intelligence in robotics. However, we find that using foundation models to control robots poses serious safety risks, and comprehensive safety evaluation is still lacking. We introduce RoboRisk, a comprehensive benchmark for evaluating safety in agentic robotics. Its 92 simulated tasks and 13 physical-robot tasks fall into five categories: Task-level Refusal (T), Plan Repair (P), Execution-time Hazard (E), Injection (I), and Sequential Memory (S). Prior benchmarks cover at most two of these categories, and several evaluate only text outputs. In contrast, RoboRisk covers all five and executes every task in closed loop. We evaluate six state-of-the-art foundation models on RoboRisk: GPT-6 Astra, GPT-6.1 Sol, GPT-6 Luna, Claude Opus 5.5, Gemini 4 Argon, and Grok 4.7. These models generally show high harm rates. We also evaluate two robot-specific APIs: the Dream API and PokeBot's RoboAPI. We further propose the Lease-Enforced Agentic Safety Harness (LEASH), which offers essential safety infrastructure for agentic robotics and can be integrated into nearly any agentic architecture. LEASH leverages a decision model (Jev or OpenAI's Decisions API) to implement task, action, and commit gates, which review the task, each action, and each irreversible operation in their visual context. The planner and all three gates share a common safety policy. Experiments on RoboRisk in simulation and on physical robots show that LEASH effectively reduces harm across all six foundation models. It largely preserves their task completion performance and adds little time and token overhead."
       },
       "hash": "fcf1b6a68e1ed74a8a75465bf87e5afa0bec82bec23b388d2f44a09bcc25d217",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.14210": {
+      "entry": {
+        "arxiv_id": "2611.14210",
+        "version": 1,
+        "title": "Tree-Ising: Repairing Language Models with Bit-Level Ising Edits",
+        "authors": [
+          "Hadi Salloum",
+          "Ammar Ali"
+        ],
+        "published": "2026-11-10T15:32:04Z",
+        "updated": "2026-11-10T15:32:04Z",
+        "abstract": "Weight-space programming, introduced in recent MIT work by Takehi et al., enables a frontier LLM agent to read a network's weights and write a repair. Their GPT-6 Astra agent corrected the reasoning loops of Qwen3.5-0.8B without gradients, using 158 agent turns, 89.7 million tokens, and 50 forward-pass requests. Our method, Tree-Ising, casts this repair as a sparse discrete optimization problem over the model's own BF16 weights. Forward statistics define an objective that weakens a loop direction, strengthens a concluding direction, and preserves the layer's output on productive tokens. Within a state-tree representation, where lossless BF16 storage acts as a special case, the admissible edits are sign flips and exponent shifts that preserve all shared group exponents and mantissas. We decompose this objective exactly into independent QUBO (Ising) problems, one per output row, which we solve on a GPU using simulated annealing or quantum-inspired simulated bifurcation. On the agent's two layers, Tree-Ising achieves 54.6% on MATH-500, outperforming the agent's edit (51.7%) under the same evaluation protocol, while the base model scores 7.9% as reported. The simulated bifurcation solver yields a statistically indistinguishable repair at 55.1%. Both solvers outperform the agent edit across all five math benchmarks, with statistically significant improvements on MATH-500 and GSM8K after correcting for multiple comparisons. Our approach modifies 13% to 17% fewer weights and reduces BF16 bit flips by a factor of 2.2 to 2.3. It requires only four forward-pass requests and zero LLM tokens, with the annealing recipe costing about $0.90 in GPU time. On Qwen3.5-2B, with layers and dose selected using only the base model, the same recipe increases greedy GSM8K accuracy from 21.6% to 69.4%. As a proof of concept, we execute an eight-variable repair subproblem using QAOA on an IBM Heron processor."
+      },
+      "hash": "2b2a693d76df100f365b03ab46f71747a5c4a9582136d1565c22c8f961b47520",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.14244": {
+      "entry": {
+        "arxiv_id": "2611.14244",
+        "version": 1,
+        "title": "An AI Assistant for Automating Anti-Corruption Expertise of Draft Legislation Based on the TRACE Framework",
+        "authors": [
+          "Serhii Zabolotnii",
+          "Alina Tarasova"
+        ],
+        "published": "2026-11-10T15:56:01Z",
+        "updated": "2026-11-10T15:56:01Z",
+        "abstract": "We present an AI assistant for automating anti-corruption expertise of draft legislation based on the TRACE architecture, designed to screen bills for corruption risks: pinpoint provisions an expert would criticise and name the regulatory defect in each. The pipeline combines a deterministic parsing core, model-guided single-provision qualification, rule-based factor assignment, and external human oversight. To evaluate the assistant, we constructed an open benchmark from the published conclusions of Ukraine's National Agency on Corruption Prevention (NAZK), comprising 132 draft laws with 474 model-extracted findings. A system flag agrees with a finding when it targets a compatible provision and an LLM judge rates the risk as the same (strict) or partly the same (lenient). On 100 draft laws, the pipeline matches 0.28 of the findings within its top ten flags using the local Gemma 4 31B model, 0.30 with Sonnet 5.5, and 0.43-0.46 across all flags (non-blind; the frozen blind baseline achieves 0.21, 95% CI 0.16-0.26). Across all runs, most misses occur on provisions that the system located but qualified as a different risk, and none of the 32 legal-collision findings was matched. On 21 acts held out from tuning, the pipeline outperforms a monolithic prompt containing the full methodology under the strict measure, though not under the lenient one, and Opus 5.5 adds nothing over Sonnet. The reported scores reflect agreement with model-extracted findings rated by an LLM judge whose two access routes agree on 73 of 74 labels, without human expert validation.",
+        "comment": "18 pages, 3 figures, 8 tables"
+      },
+      "hash": "e9441643336d170357157c413e23fa499e790b1849f8a8e5d84ec08a9dc8f6ff",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.14320": {
+      "entry": {
+        "arxiv_id": "2611.14320",
+        "version": 1,
+        "title": "Don't Just Trust Your Memory: Evidence-Linked Memory Reduces Memory-Induced Degradation in LLM Agents",
+        "authors": [
+          "Yukyeong Lee",
+          "Yumin Choi",
+          "Jinheon Baek",
+          "Sung Ju Hwang"
+        ],
+        "published": "2026-11-10T16:46:59Z",
+        "updated": "2026-11-10T16:46:59Z",
+        "abstract": "External memory enables LLM agents to improve from experience by distilling trajectories of past tasks into concise lessons for new tasks. However, memory can also lead to memory-induced degradation, where an agent fails on tasks it would solve without memory, often because it follows a lesson that is incorrect, or misapplies or misreads a valid one. This is because lessons are inferred from trajectories labeled only with task success or failure, yet are typically provided without the trajectories they came from, leaving the agent no way to check them. To address this, we introduce WikiTrace, an evidence-linked memory system designed to let agents check each lesson against its original trajectory. Specifically, motivated by the finding that a trajectory often still holds the evidence needed to catch an erroneous lesson, WikiTrace stores each lesson as a concise insight linked to a summary of why its trajectory succeeded or failed and to the raw trajectory itself. Then, on a new task, the agent starts from all insights and, whenever one lacks details needed to act, conflicts with another, or comes from a failed task, descends through its links with terminal tools to fill in missing details or correct the insight before acting. We validate WikiTrace on five agentic benchmarks, showing that it consistently outperforms existing memory approaches and a baseline given the same insights alone, while also reducing memory-induced degradation. Our code is available at https://github.com/yukyeongleee/wikitrace",
+        "comment": "Submitted to ACL Rolling Review (October 2026 cycle); under review"
+      },
+      "hash": "bd44e665f05ccd98c2ca88859dfc349c945a7bcbfc9d7a4673a5450cc777c366",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.14326": {
+      "entry": {
+        "arxiv_id": "2611.14326",
+        "version": 1,
+        "title": "When Should Agents Remember? Falsification-Gated Self-Evolution for LLM Agents",
+        "authors": [
+          "Runxuan Tang",
+          "Haoyu Gao",
+          "Yuyan Ding",
+          "Junyi Yao",
+          "Zihao Zheng",
+          "Zecheng Sheng",
+          "Liwei Hou"
+        ],
+        "published": "2026-11-10T16:52:25Z",
+        "updated": "2026-11-10T16:52:25Z",
+        "abstract": "LLM agents increasingly operate in long-horizon, verifier-rich environments, but current self-improvement mechanisms often write episode-derived lessons directly into memory, making local success an unreliable signal for reusable and safe knowledge. This paper addresses the core question of when an experience-derived behavioral update should be admitted into persistent agent state. We propose Falsification-Gated Self-Evolution (FGSE), a verifier-grounded framework that represents each candidate lesson as a structured hypothesis with an explicit precondition, behavior change, expected effect, and verifier. FGSE applies the hypothesis only in a temporary state, tests it on target-transfer, falsification, and archived-regression probes, and then commits, refines, or rejects it according to measured gain and risk. Across web, app, tool-use, and long-term memory benchmarks, FGSE achieves strong task performance, including 39.8 WebArena success rate, 78.8 AppWorld average completion, and 0.724/0.487 Pass$^1$ on $τ$-Retail/$τ$-Airline, while reducing falsification failures to 5.0%, regression damage to 1.3%, and harmful committed updates to 3.6%. These results suggest that testing memory updates as hypotheses supports more reliable long-term adaptation."
+      },
+      "hash": "e7ab299509baed78715dfd31131c7bde3a78b1ca160010bd8fa0beedd1738cf6",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.14364": {
+      "entry": {
+        "arxiv_id": "2611.14364",
+        "version": 1,
+        "title": "ARE-bench: Benchmarking Agents' Research Ability in Real-World Researcher Sessions and Workspaces",
+        "authors": [
+          "Jiahang Lin",
+          "Wanying Ren",
+          "Wanghan Xu",
+          "Huayu Sha",
+          "Yang Shu",
+          "Zhonghang Lu",
+          "Chengjun Pan",
+          "Yi Dong",
+          "Shichun Liu",
+          "Yuyang Hu",
+          "Shihan Dou",
+          "Honglin Guo",
+          "Huijie Lv",
+          "Pujun Zheng",
+          "Zhe Sun",
+          "Yuankai Ying",
+          "Yiding Wang",
+          "Jiahao Chen",
+          "Zhixiong Yang",
+          "Dingbo Yuan",
+          "Yicheng Zou",
+          "Zhecan Wang",
+          "Guoxiu He",
+          "Xiaoyu Xing",
+          "Qi Zhang",
+          "Tao Gui",
+          "Xuanjing Huang"
+        ],
+        "published": "2026-11-10T17:21:31Z",
+        "updated": "2026-11-10T17:21:31Z",
+        "abstract": "Research agents achieve increasingly strong benchmark scores, yet these scores do not necessarily translate into reliable delivery in ongoing research projects. Many research-agent benchmarks emphasize standalone tasks and relatively self-contained workflows in clean or curated workspaces. However, researchers ask agents to complete one step within an ongoing project, where requests depend on earlier session decisions and workspaces contain unfinished files, outdated versions, and failed attempts. We introduce ARE-bench to evaluate whether research agents advance ongoing projects while respecting prior decisions and existing workspace state, grounded in real session context and in-progress workspaces. ARE-bench includes 75 tasks built on agent sessions and full workspaces from recruited researchers' own projects, spanning seven research stages, 33 requirements, and 150 sub-requirements, with 1,173 binary checklist items in total. Each task is anchored at a real user request, preserves its requirements, and summarizes the earlier requests still in effect as background. The complete workspace is replayed to that boundary without cleanup, preserving artifacts from earlier turns. Each checklist is compiled from an intent-aligned rubric and credits any valid solution. Across seven frontier models, the strongest passes every checklist item on only 66.2% of tasks, and Design and Execution rank among the hardest stages for every model. Three models pass about 69% of tasks when only delivery contracts and general norms are checked, but just 28.4% to 40.0% once historical and material or workspace requirements are also checked. Evaluating delivery without these contextual requirements can therefore overestimate research agents and mask differences between them."
+      },
+      "hash": "faf07fcbae87c3ab69cb2f3af0352e7d564e40750d0133c2731806dba404002c",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.14493": {
+      "entry": {
+        "arxiv_id": "2611.14493",
+        "version": 1,
+        "title": "Comparative Analysis of Agent Evaluation Frameworks: Stability, Detection, and Discovery in Enterprise Analytics Agents",
+        "authors": [
+          "Howard Zhang",
+          "Chuck Arvin",
+          "Logan Brown",
+          "Mihir Bhatia",
+          "Neelu Choudhary",
+          "Lily Miao"
+        ],
+        "published": "2026-11-10T18:50:06Z",
+        "updated": "2026-11-10T18:50:06Z",
+        "abstract": "Deploying LLM-based analytics agents in enterprise settings requires evaluation frameworks that can reliably detect failures across complex, multi-tool workflows. We present a three-phase comparative study of three evaluation frameworks, each representing a distinct evaluation paradigm (trace-based LLM judging, text-only LLM judging with red-teaming, and deterministic heuristics), applied to two analytics agents in a controlled research setting using frozen execution traces. Phase 1 quantifies evaluation harness stability through repeated measurements, finding that 97% of configurations meet the stability threshold and that stability patterns are agent-independent. Phase 2 measures known risk detection on 72 ground-truth test cases, where the trace-based framework achieves the best precision-recall balance (F1=0.90) while text-only evaluation matches on recall but generates 5x more false alarms. Phase 3 evaluates unknown risk discovery, uncovering 24 novel failures with zero overlap between functional testing and security red-teaming. Our results demonstrate that (1) the information available to the evaluation harness determines evaluation quality, (2) functional and security evaluation are complementary, and (3) LLM-based evaluation harnesses surface subtle errors that human reviewers miss. We recommend a two-framework strategy: trace-based evaluation for functional assessment and adversarial red-teaming for security validation.",
+        "comment": "Accepted to KDD 2026, Jeju, Korea. 9 pages, 3 figures"
+      },
+      "hash": "56bd9ddc2c8787025f62967af6627b3d59937ee24d9a9f0d7b0402cfe08e50a4",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.14511": {
+      "entry": {
+        "arxiv_id": "2611.14511",
+        "version": 1,
+        "title": "Pyrite: Building and Benchmarking Protein-Ligand Pose Ranking Agents",
+        "authors": [
+          "Megha Srivastava",
+          "Michael H. Lim",
+          "Allison M. Keys",
+          "Pranav Murugan",
+          "Nate Gruver"
+        ],
+        "published": "2026-11-10T18:56:32Z",
+        "updated": "2026-11-10T18:56:32Z",
+        "abstract": "Predicting how a ligand binds to its target is central to small-molecule drug discovery. Modern cofolding models can generate diverse candidate poses, but reliably ranking these candidates remains challenging. We introduce Pyrite, a pairwise pose-ranking benchmark comprising 1,500 pose pairs across diverse protein-ligand complexes. Expert chemists equipped with 3D visualization tools and physics-based scores perform near chance, highlighting the difficulty of interpreting available chemical signals. To investigate automated ranking, we introduce PyriteRep, a structured representation of molecular geometry, protein-ligand interactions, and physicochemical scores, and develop two LLM-based agents: PyriteReasoner, which directly compares poses through text-based reasoning, and PyriteFeaturizer, which generates executable code to construct features for logistic regression, optionally incorporating features derived from LLM subcalls. These agents achieve up to 67% and 74% accuracy, respectively, exceeding observed expert performance. LLM-guided feature discovery generally outperforms direct reasoning, while Group Relative Policy Optimization (GRPO) improves open-weight models, enabling them to match or surpass closed-source frontier models in our evaluations. These results establish Pyrite as a challenging test of pose-ranking ability and highlight LLM-guided feature discovery as a promising approach to interpret and combine the outputs of computational chemistry tools.",
+        "comment": "32 pages, Agentic AI for Biological Discovery Workshop (NeurIPS 2026)"
+      },
+      "hash": "bc9f6a8c4bd1dddf8f0f5abb4eba0b203f9d7eb66d0176e961ebdc8324cc51a7",
       "status": "queued",
       "attempts": 0,
       "error": null,
