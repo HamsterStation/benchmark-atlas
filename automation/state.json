@@ -12,7 +12,7 @@
       "active": {
         "since": "2026-11-03T17:53:07+00:00",
         "until": "2026-11-11T17:54:53Z",
-        "start": 200
+        "start": 400
       },
       "last_completed_at": "2026-11-10T17:53:07Z"
     },
@@ -119807,23 +119807,23 @@
     "2611.09794": {
       "entry": {
         "arxiv_id": "2611.09794",
-        "version": 1,
-        "title": "Seeing What Matters: Benchmarking Task-Conditioned Actionable Spatial Belief for Manipulation",
+        "version": 2,
+        "title": "Seeing What Execution Needs: Benchmarking Task-Conditioned Actionable Spatial Belief for Manipulation",
         "authors": [
           "Yina Jian",
           "Mingkun Xu"
         ],
         "published": "2026-11-06T17:49:56Z",
-        "updated": "2026-11-06T17:49:56Z",
-        "abstract": "When should a robot look at the cup, and when at the portafilter? Spatial-reasoning benchmarks evaluate whether a model can describe a scene, but manipulation needs something more specific: the ability to acquire the particular evidence that makes the current command executable. A view that is informative for one task can be useless for another, even at the same workstation. We introduce Seeing What Matters, a benchmark for task-conditioned actionable spatial belief in simulated tabletop manipulation. Across three domains--coffee workstation, drawer/cabinet, and microwave/appliance--the benchmark provides 860 frozen evaluation cases; expanding across methods, budgets, and inference repeats yields more than 115,000 evaluator episodes under two protocols: closed-loop actionability and same-object functional out-of-distribution generalization. Each case pairs a set of candidate RGB views with a manipulation command, shared scripted skills, and hidden postconditions, so the benchmark directly measures whether a view-selection policy acquires the observations its command actually needs. We also provide a diagnostic reference pipeline that maintains a spatial-functional belief state and ranks views by missing evidence. At primary budget settings, this pipeline reaches 98.8% closed-loop and 98.9% functional-OOD success; ablating the functional or command-binding components collapses performance to near zero. Seven vision-language models, evaluated on the same cases, reach only 26-43%. Replacing the reference pipeline's coverage metadata with frozen RGB-derived scores preserves 98.5%/98.9% success; shuffling the visual scores collapses it to 15%/11%, confirming that the result depends on image content. These gaps suggest that spatial belief for manipulation should be evaluated not by scene-level completeness, but by whether it acquires the evidence the current command requires.",
-        "comment": "22 pages (8 main + 14 supplement). Extended cross-domain evaluation and physical robot validation in progress"
+        "updated": "2026-11-09T21:29:25Z",
+        "abstract": "When should a robot look at the cup, and when at the portafilter? A view that is informative for one task can be useless for another, even at the same workstation. We introduce Seeing What Execution Needs, a benchmark for task-conditioned actionable spatial belief in simulated tabletop manipulation. Its aligned three-domain track contains 1,080 frozen cases (360 each for coffee workstation, drawer/cabinet, and microwave/appliance). The primary coffee protocols -- closed-loop actionability and same-object functional out-of-distribution generalization -- produce over 115,000 evaluator episodes across evaluated methods, budgets, and inference repeats. Each case pairs candidate RGB views with a manipulation command, shared scripted skills, and hidden postconditions, directly measuring whether selected observations support execution. A metadata-assisted diagnostic reference pipeline maintains spatial-functional beliefs and ranks views by missing evidence. At primary budget settings, it reaches 98.8% closed-loop and 98.9% functional-OOD success; removing functional fields or command binding reduces functional-OOD success to 0.0% and 19.7%, respectively. Under a separate full-preview contract, seven vision-language models reach 26-43%. Replacing coverage metadata with frozen RGB-derived scores retains 98.5%/98.9% success; shuffling these scores reduces success to 15%/11%, supporting dependence on image content. Separately, the aligned three-domain evaluation at H=3 supports portability of the benchmark interface under frozen domain-specific schemas. These results suggest that spatial belief for manipulation should be evaluated by whether acquired evidence meets the current command's execution requirements.",
+        "comment": "22 pages (11 main + 11 supplement). Extended cross-domain evaluation and physical robot validation in progress"
       },
-      "hash": "4fbd4e8b7e810a752ca7e75ec7cc5951e50e4b415a52a5656331a7b8df9b57fa",
-      "status": "awaiting_evidence",
+      "hash": "7860193d2a3f16f939743075400fffffc2df4e1d81fa8ca1ace227fb308f8802",
+      "status": "queued",
       "attempts": 0,
       "error": null,
       "next_attempt_at": null,
-      "kind": "new"
+      "kind": "updated"
     },
     "2611.09872": {
       "entry": {
@@ -124363,6 +124363,530 @@
         "comment": "32 pages, Agentic AI for Biological Discovery Workshop (NeurIPS 2026)"
       },
       "hash": "bc9f6a8c4bd1dddf8f0f5abb4eba0b203f9d7eb66d0176e961ebdc8324cc51a7",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12936": {
+      "entry": {
+        "arxiv_id": "2611.12936",
+        "version": 1,
+        "title": "LandslideFM: A Foundation Model Towards Unified Landslide Perception and Understanding",
+        "authors": [
+          "Shanwen Wang",
+          "Sirui Wang",
+          "Xin Sun",
+          "Jungong Han"
+        ],
+        "published": "2026-11-06T12:59:06Z",
+        "updated": "2026-11-06T12:59:06Z",
+        "abstract": "Intelligent landslide detection is essential for disaster prevention. However, existing models primarily focus on isolated visual tasks, require extensive labeled data, and lack deep analytical and scene-understanding capabilities. To address these limitations, we propose LandslideFM, the first unified foundation model that connects visual perception tasks with contextual interpretation of landslides. Specifically, LandslideFM adapts to multiple visual tasks via a Source-Agreement Graduated Trust semi-supervised learning framework that leverages limited labeled data alongside abundant unlabeled data. Furthermore, predicted landslide regions provide explicit spatial guidance to a Vision-Language Model adapted through parameter-efficient fine-tuning, enabling comprehensive landslide reasoning. To support training and evaluation in this domain, we also present LandslideVL, the first benchmark for intelligent landslide analysis, combining visual imagery and newly introduced textual prompts. Comprehensive experiments across public datasets and LandslideVL demonstrate that LandslideFM achieves superior quantitative and qualitative performance. Most importantly, LandslideFM surpasses general-purpose VLMs in specialized landslide reasoning and scene analysis. Our code is released at https://github.com/wangshanwen001/LandslideFM."
+      },
+      "hash": "0b80189266d129c528e80cba2f931081d6f0579468b2c393336f8df929c86054",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12942": {
+      "entry": {
+        "arxiv_id": "2611.12942",
+        "version": 1,
+        "title": "Tabular Foundation Models vs Tuned Gradient Boosting for Telecom Churn: A Profit- and Calibration-Aware Evaluation",
+        "authors": [
+          "Ismail Hossain Polas"
+        ],
+        "published": "2026-11-06T17:15:06Z",
+        "updated": "2026-11-06T17:15:06Z",
+        "abstract": "Tabular foundation models (TFMs) predict from a labelled context in a single forward pass. A recent benchmark reported that they decisively outperform tree ensembles for customer churn, but it compared them with untuned gradient-boosted trees (GBDTs) and scored only ranking metrics, while a retention campaign is judged in money. We re-evaluate TabPFN-2.5, TabPFN-3.5, TabPFN-3.5-Fast and TabICL v2 against Optuna-tuned GBDTs on five public telecom churn datasets over 10 seeded splits. We separate three questions: whether a model ranks churners well, whether that ranking earns more expected maximum profit (EMP), and whether its probabilities can drive a threshold policy. With a split-aware test and Holm correction over 20 pre-declared comparisons, TabPFN-3.5 earns significantly more EMP than the best tuned GBDT on Cell2Cell (1.9%) and Iranian (7.6%), and these two gains also hold against each of the three tuned GBDTs separately. On Orange it is ahead in all 10 splits (14.3%), but the gain is not significant after correction (Holm p = 0.155). The splits resample the same datasets, so these results do not stand for independent operators. TabICL v2, the earlier benchmark's leader, beats the best tuned GBDT only on Iranian, not all three of them, and underpredicts Orange churn by 2.1 points on a 7.3% base rate. On the datasets and splits where we tested them, a substantially larger tuning budget and a duplicate-aware split leave the main conclusions unchanged. Retuning the baseline cuts the earlier headline gap from 6.1 to 4.0 PR-AUC points without closing it. The licence of the TabPFN-3.5 weights we used (License v1.0), not scoring cost, is what stands between its gains and production use.",
+        "comment": "17 pages, 2 figures, 14 tables. Code, per-split predictions and reproducibility audit: https://github.com/ihpolash/tfm-churn-profit-audit (archived at https://doi.org/10.5281/zenodo.24015719)"
+      },
+      "hash": "d01572bef366794a53eb98f8b79d7ef62c18faf34f32c58b2e8708402107689b",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12955": {
+      "entry": {
+        "arxiv_id": "2611.12955",
+        "version": 1,
+        "title": "Predictive Surprise as Self-Grounding Concept Bottleneck for Interpretable Time Series",
+        "authors": [
+          "Sachith Abeywickrama",
+          "Emadeldeen Eldele",
+          "Min Wu",
+          "Xiaoli Li",
+          "Chau Yuen"
+        ],
+        "published": "2026-11-07T06:18:39Z",
+        "updated": "2026-11-07T06:18:39Z",
+        "abstract": "Time-series classifiers deployed in risk-sensitive domains must be (1) accurate, (2) interpretable, and (3) able to abstain when evidence is weak. Existing methods do not deliver all 3 at once, and the obstacle is structural, rather than logistical. Meaningful temporal patterns cannot be defined without knowing segment boundaries, yet meaningful boundaries cannot be placed without knowing which patterns to expect. Existing approaches break this circularity by using fixed windows or expert-annotated vocabularies, thereby sacrificing at least one of the 3 properties. We introduce ConceptTime, which closes the loop through a single self-supervised signal. A frozen probabilistic forecaster predicts a distribution over the next observation at every timestep of the sequence. We call the mismatch between its prediction and the realized signal the predictive surprise. This signal both locates segment boundaries and characterizes each resulting segment through the forecaster. Segments are thus grounded by how they behaved relative to expectation, not by what they look like. These summaries cluster into a vocabulary of dynamical regimes that we call concepts. A lightweight head classifies from the concept sequence, and the distance to the nearest concept yields reliability by design. Across 17 public benchmarks, ConceptTime is competitive with state-of-the-art black-box accuracy, beats every interpretable baseline, and retains near-98% accuracy on Epilepsy with 1% of labels. It further remains competitive with softmax, prototype-distance, and SHAP/TimeX/TimeX++ on OOD detection and deletion faithfulness, without a single annotation, language model call, or domain expert. Code is available at: https://github.com/Sachithx/ConceptTime.git.",
+        "comment": "Accepted at NeurIPS 2026, Main Track, Poster"
+      },
+      "hash": "e58998dc8c262545ccb98fb4b36c57e18e865f3d958bf7d9dcbf16b6c9c0fd51",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12970": {
+      "entry": {
+        "arxiv_id": "2611.12970",
+        "version": 1,
+        "title": "TrustMod-SM: A Multi-Axis Benchmark for Evaluating Trustworthiness of LLMs in Social Media Content Moderation",
+        "authors": [
+          "Aizan Zafar",
+          "Sreekantam Sai Venkata",
+          "Gathik Jindal",
+          "Ritu Raj Sharma",
+          "Zishan Ahmad",
+          "Tulika Saha",
+          "Srinath Srinivasa"
+        ],
+        "published": "2026-11-07T16:37:46Z",
+        "updated": "2026-11-07T16:37:46Z",
+        "abstract": "Large Language Models (LLMs) show strong potential for social media content moderation, but their trustworthiness beyond overall accuracy remains underexplored. We introduce TrustMod-SM, a benchmark of roughly 29,000 instances across eight datasets, to evaluate LLM moderators on five dimensions: trustfulness, fairness, safety, robustness, and context integrity. Evaluating 16 open-weight models (0.5B-284B parameters, spanning text-only and vision-language architectures) and one closed frontier model, we find persistent trustworthiness gaps. Higher detection accuracy often coincides with greater demographic disparity, and models frequently comply with concealment or exaggeration prompts, assign high confidence to wrong predictions, rarely escalate ambiguous cases, and struggle to separate hate speech from counter-speech or reclaimed language (especially below 8B parameters). Scaling does not uniformly resolve these issues, and no single model excels across all five dimensions."
+      },
+      "hash": "47b998cf51952fffd1cfec93cbb2076f64d30e99b84eba2ec910233462aa028f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12974": {
+      "entry": {
+        "arxiv_id": "2611.12974",
+        "version": 1,
+        "title": "StatPrompt-LLM: A Lightweight Statistical Refinement for Foundation-Style Time-Series Forecasting",
+        "authors": [
+          "Aniket Sinha",
+          "Veronica W. Tsou"
+        ],
+        "published": "2026-11-08T01:56:51Z",
+        "updated": "2026-11-08T01:56:51Z",
+        "abstract": "Time-series forecasting has recently seen a paradigm shift with the introduction of foundation-style models that adapt large pretrained language architectures to sequential data. However, effectively exposing fundamental temporal structures, such as trend, scale, and temporal dependence, to these models remains an open challenge, particularly when the available observations are limited. In this paper, we conduct an exploratory empirical study across different generations of forecasting architectures and propose StatPrompt-LLM, a lightweight statistical refinement of Time-LLM. StatPrompt-LLM augments the existing Time-LLM prompting mechanism with dataset-level statistical information and introduces a zero-initialised autoregressive bypass as a complementary linear forecasting pathway. We evaluate our framework on electricity and meteorological time-series benchmarks, including ETTh1, ETTh2, and Weather, under full-prefix and reduced-prefix configurations. Under the 10% reduced-prefix configuration, StatPrompt-LLM achieved lower in-sample prediction errors than Time-LLM, with unweighted average relative reductions across datasets of 40.2% in MSE and 21.4% in MAE. Full-prefix results were more dataset-dependent. Ablation analyses revealed relatively modest and dataset-dependent changes when selected additional statistical descriptor groups were masked within the combined architecture. Computational profiling indicated additional model parameters and runtime overhead relative to Time-LLM.",
+        "comment": "10 pages, 1 figure, 7 tables"
+      },
+      "hash": "5e0f2d5389cb1e3ff90024fcba45550496093bc27152d9250d25ad9a55fec06d",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12990": {
+      "entry": {
+        "arxiv_id": "2611.12990",
+        "version": 1,
+        "title": "Multimodal Graph Learning: A Survey of Models, Benchmarks, and Frontiers",
+        "authors": [
+          "Rui Xue",
+          "Tianfu Wu"
+        ],
+        "published": "2026-11-08T10:29:16Z",
+        "updated": "2026-11-08T10:29:16Z",
+        "abstract": "Multimodal attributed graphs (MAGs), in which nodes carry text, images, and other modalities while edges encode relations among entities, underlie e-commerce, social media, content platforms, and creative applications. Learning on MAGs has developed along two complementary lines: graph-centric methods redesign how modalities are fused, propagated, and connected within message passing, while foundation-model-centric methods pretrain transferable multimodal graph encoders or bring graph context into multimodal large language models for prediction and generation. In parallel, several benchmarks have appeared with different datasets and evaluation protocols. This survey takes an algorithm-centric and evaluation-grounded view of the field and makes three contributions. Modeling: we introduce a unified message-passing formulation and organize methods into five integration levels (feature, propagation, topology, learning, and foundation model), covering discriminative and graph-conditioned generative models; within this formulation we derive representative methods as special cases, compare their assumptions, expressiveness, and cost, and identify cross-modal sensitivity as a property that separates otherwise similar architectures. Datasets and evaluation: we review recent benchmarks, summarize their datasets and metrics, define model-independent descriptors (label homophily, average degree, clustering, and edge provenance), and map each evaluation protocol to the baselines it uses. Frontiers: we connect multimodal graph learning to AI agents, covering the multimodal graphs that agents perceive and remember and graph engineering, the practice of organizing agent workflows as explicit graphs; we then discuss open problems, concrete efforts for the community, and research directions, including when graph structure helps in the presence of strong multimodal foundation models."
+      },
+      "hash": "b0159994f7420bf7f799d9420eca4c4d26f6eeabe5901ec5b61122202d45d20b",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.12995": {
+      "entry": {
+        "arxiv_id": "2611.12995",
+        "version": 1,
+        "title": "Capacity Allocation at the Source: Sparse Target Optimization for LLM Knowledge Editing",
+        "authors": [
+          "Dongyao Chen",
+          "Jiayun Lei",
+          "Zhiyuan Ji",
+          "Zhiying Deng",
+          "Wei Liu",
+          "Xiaobo Sun"
+        ],
+        "published": "2026-11-08T13:28:43Z",
+        "updated": "2026-11-08T13:28:43Z",
+        "abstract": "Knowledge editing has emerged as a promising approach for efficiently updating embedded knowledge in large language models (LLMs). It first computes an ideal target hidden state that steers the LLM toward the new output, and then edits the model parameters so that the original hidden state is mapped to this target. While most existing methods focus on the second stage of parameter editing in preserving other knowledge, we find that the upstream construction of the target hidden state also plays an important role in allocating the model's limited capacity space. We first establish a theoretical connection between interference in the parameter space and interference between target hidden states, showing that the two are positively correlated. Building on this insight, we propose a simple yet effective $\\ell_1$ regularization method that prunes away unnecessary ``tentacles'' of each knowledge vector, retaining only the essential components. With fewer extraneous tentacles, each edit affects less other knowledge, enabling better coexistence. Extensive experiments across multiple LLMs and benchmark datasets verify the effectiveness of our method. Code: https://github.com/wintersdragon-c/STO.",
+        "comment": "neurips2026"
+      },
+      "hash": "b8c120344536977023b5842f302cd729fc52800339c2aee5087c58cc2abb3813",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.13000": {
+      "entry": {
+        "arxiv_id": "2611.13000",
+        "version": 1,
+        "title": "PhysMoE: Fast Spatial Grounding with Single-Token Coordinate Representation in Modality-Decoupled VLMs",
+        "authors": [
+          "Ruimeng Liu",
+          "Denan Liang",
+          "Ruofei Bai",
+          "Fuming Zhang",
+          "Kuan Xu",
+          "Shenghai Yuan",
+          "Lihua Xie"
+        ],
+        "published": "2026-11-08T16:00:02Z",
+        "updated": "2026-11-08T16:00:02Z",
+        "abstract": "Embodied Vision-Language Models (VLMs) are backbones for robotic planning and manipulation. However, for coordinate prediction in grounding tasks, existing architectures suffer from two distinct bottlenecks: discrete tokenization disrupts spatial continuity with high decoding latency, while standard point regression fails on multi-contact affordances and irregularly shaped targets. To resolve these challenges, we propose PhysMoE, introducing three core contributions: (1) sharing lower layers for multimodal context while routing upper layers to specialized spatial (pixel) and linguistic (text) experts by physical modality, eliminating gradient interference; (2) encoding each coordinate as a single token by reusing the visual encoder's learned positional embeddings, injecting 2D spatial priors to natively align coordinates with visual features and ease training; and (3) differentiable Signed Distance Field (SDF) supervision on pointing, accommodating affordances and irregular geometries without costly mask decoders. Compared to the base model, PhysMoE achieves a 15.7% average gain and an 8.31x throughput speedup across 9 coordinate-based grounding benchmarks (trajectory, affordance, and localization), while preserving multimodal understanding and reasoning across 11 text-based embodied benchmarks."
+      },
+      "hash": "cbd7acb0aed5e9f7f4db8c8caa3509c5795c750195266af932b19c2e9ace77f4",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.13001": {
+      "entry": {
+        "arxiv_id": "2611.13001",
+        "version": 1,
+        "title": "One Table, Many Queries: Benchmarking Generalist Tabular Models Across Generation, Imputation, and Prediction",
+        "authors": [
+          "Yuanrui Wang",
+          "Kaifang Li",
+          "Xuanyue Li",
+          "Ziyun Li",
+          "Yan Lu",
+          "Xingxuan Zhang",
+          "Peng Cui"
+        ],
+        "published": "2026-11-08T16:26:20Z",
+        "updated": "2026-11-08T16:26:20Z",
+        "abstract": "Generation, imputation, and prediction query different aspects of the same tabular distribution, but are usually evaluated separately. This leaves unclear which capabilities they share, how their training objectives interact, and whether one model can perform all three well. We introduce the One Table Benchmark (\\ours{}), spanning 56 datasets, 46 registered methods, and 20 capability axes under aligned data splits and explicit task contracts. We compare task ranks on aligned support, train five backbones under all seven non-empty objective combinations on five datasets with three seeds, and contrast fixed-model profiles with specialist portfolios. Rank comparisons connect imputation and prediction through numerical recovery and dependence preservation, and link generation to both through predictive utility; distributional fidelity follows different, sometimes opposing, rankings. Objective interventions show the largest pooled gains from including the recipient's own objective. Generation has the broadest coverage of positive pooled auxiliary effects, while prediction shows potential to improve imputation and synthetic-data utility, with responses that vary across backbones. Cross-addition effects reveal that objective benefits need not add and depend on the objectives already present. Fixed-model comparisons expose corresponding utility--fidelity trade-offs: some generalists surpass specialist portfolios on utility, while fidelity continues to favor specialization. Frozen foundation models show strong prediction and numerical point imputation, together with promising synthetic-data utility, highlighting their potential across all three tasks. These findings motivate unified tabular models that share useful conditional information while improving categorical reconstruction and faithful joint sampling."
+      },
+      "hash": "6aa0e1790cf0b0fef648b912673ca7610e6a43e0061f45c2cc183fdc9ac67658",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.13028": {
+      "entry": {
+        "arxiv_id": "2611.13028",
+        "version": 1,
+        "title": "GTAGym: Real AAA Game Tasks Environment for Evaluation and Reinforcement Learning",
+        "authors": [
+          "Jiajun Chen",
+          "Shicheng Fang",
+          "Jiahao Lu",
+          "Yuxin Wang",
+          "Xipeng Qiu"
+        ],
+        "published": "2026-11-09T08:59:36Z",
+        "updated": "2026-11-09T08:59:36Z",
+        "abstract": "AAA games offer a rich testbed for evaluating agent perception, reasoning, and control. However, evaluating whether agents can complete tasks in AAA games is challenging and often human-annotated because task outcomes are often difficult to verify automatically, let alone applying it for Reinforcement Learning (RL). We introduce GTAGym, an environment and framework for evaluation and RL on GTA V tasks. Its evaluation benchmark, GTAVBench, derived from GTA V main-story missions, contains 103 online tasks reconstructed across nine task families, alongside 47 image-based shooting and sniping tasks using GTA V imagery. A web server provides access to the online environment and evaluation interface, supporting parallel testing through screenshots and keyboard-mouse actions with automatic engine-state outcome checks. We evaluate six frontier LLMs on GTAVBench with textual task instructions and on its GTAVBench-AGI branch, where instructions appear only in the first screenshot and a harness automatically compresses interaction history. The best configuration achieves 70.9% overall accuracy in GTAVBench-AGI, yet aerial navigation, evasion and interception remain difficult. GTAGym also provides a scalable generator that samples task parameters within user-specified ranges and option sets under fixed templates, creating batches of 3D and image-based shooting environments for RL with automatic reward and termination signals. LoRA RL of Qwen3.8-27B on generated on-foot navigation tasks improves the in-domain performance and transfers to out-of-domain task categories, and native GTA V tasks from 15% to 23%."
+      },
+      "hash": "2fd384ffb0a9c6f8e3dc24712051c65e010544b17c2878143d22687c22939721",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.13069": {
+      "entry": {
+        "arxiv_id": "2611.13069",
+        "version": 1,
+        "title": "INTENT: Out-of-Sample, Out-of-Time, and Cold-Start Evaluation on User Event Sequences",
+        "authors": [
+          "Mattias Kvist",
+          "Erik Lidman Hillbom",
+          "Edoardo de Cal",
+          "Davis Siemens",
+          "Adam Fredriksson",
+          "Rickard Brüel-Gabrielsson"
+        ],
+        "published": "2026-11-09T18:58:56Z",
+        "updated": "2026-11-09T18:58:56Z",
+        "abstract": "Banks now train foundation models on ordered sequences of customer events such as transactions, app sessions, and authorizations. Deployed, such a model predicts forward in time, often for customers and merchants absent from training, yet each is evaluated on private data, so no two can be compared. Public benchmarks for such sequences rarely test a period the model has not seen; recommendation studies usually hold out each user's last events instead. We present INTENT (INTEraction, Novelty, and Transfer evaluation for next-action prediction), a public benchmark that scores a model in seven cells defined by whether the user, the period, and the target item appeared in training. An audit of 59 public dataset families retains five datasets; the most common defect is the lack of a calendar timestamp that orders events. No date lies within the time span of all five datasets, so each is split at its own cutoff, chosen by one rule fixed before any model is evaluated. Summed over the datasets, every cell holds at least 111,769 users. In reference results the cell determines the best model: a transformer leads on seen items after the cutoff but scores zero on new items, a variant that embeds item metadata helps mainly on MicroLens, and repeating the user's last item leads on new items in four of five datasets. This parameter-free control also shows that on three datasets most of the score lost after the cutoff reflects changed behavior rather than the model. The pipeline, the cutoff rule, and the per-cell user counts are publicly available.",
+        "comment": "4 pages + references and appendix. Accepted at the MFMB workshop at ACM ICAIF '26 (non-archival). Code: https://github.com/kthaisociety/intent"
+      },
+      "hash": "bb30782e1e4603cac05bdf4c25057e01f5c57dff050d62bdda12f23e8867e051",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.13107": {
+      "entry": {
+        "arxiv_id": "2611.13107",
+        "version": 1,
+        "title": "Catch It Where It Happens: Real Time Error Correction During LLM Reasoning",
+        "authors": [
+          "Rotem Elimelech",
+          "Michael Shalyt",
+          "Ido Kaminer"
+        ],
+        "published": "2026-11-09T19:00:40Z",
+        "updated": "2026-11-09T19:00:40Z",
+        "abstract": "Large language models (LLMs) are increasingly trusted with mathematical, scientific and engineering work, yet their mistakes are often confidently written and hard to spot. A single wrong step tends to propagate, making the model waste inference tokens following a false premise. Existing safeguards either check only the final answer and restart from scratch, or rely on a verifier LLM that competes for GPU capacity and slows down response time. We propose online, deterministic verification: many kinds of reasoning steps can be validated by code, so a step can be verified in real time, as it is written, without any model call or GPU use. Whenever a check fails, we point out the mistake and let the model continue from the same spot. We demonstrate this approach on symbolic mathematics, where derivations already contain explicit expressions that a computer algebra system can check in milliseconds. Tested on the ASyMoB benchmark with three open-weights models, our online validation improves accuracy by 1.4-5.6 percentage points, corresponding to a 1.8-14.9% net reduction in incorrect answers, while increasing token usage by only 6-7%. Because the verifier is independent of the model, the approach complements progress in LLMs rather than competing with it: every new model can benefit immediately, and the benefit grows as deterministic checkers extend to more kinds of reasoning steps."
+      },
+      "hash": "f72c06fbfaa71eacaa559b7a368a327c188155a2dfd7a3be12539b16b426e395",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.13127": {
+      "entry": {
+        "arxiv_id": "2611.13127",
+        "version": 1,
+        "title": "Activation-Guided Graph Retrieval for Cognitive Memory Reconstruction in Language Model Systems",
+        "authors": [
+          "Marvin Danig"
+        ],
+        "published": "2026-11-09T19:13:16Z",
+        "updated": "2026-11-09T19:13:16Z",
+        "abstract": "Retrieval-augmented language model systems generally select context by query-conditioned relevance. We argue that long-lived AI systems require a second operator: activation-conditioned memory availability. We specify an architecture in which request and goal cues seed an authorized memory graph, activation and fan attenuation allocate a bounded traversal frontier, retrieved entities recursively emit cues, and a typed evidence graph is reconstructed before generation. The specification yields five architectural consequences about candidate selection, traversal control, graph regularization, evidence reconstruction, and reinforcement. We derive implementation-level cost estimates and define ablations, failure conditions, and a reproducible evaluation protocol. The central claim is narrowed or falsified if a simpler graph reranker matches full traversal on causal and temporal recovery under equal budgets. This architecture-and-analysis preprint reports no benchmark measurements. If the claim holds, retrieval returns the evidence path that makes a memory available, not only a ranked list.",
+        "comment": "Architecture and analysis preprint; no benchmark measurements. Companion research essay and revision notes: https://achiral.ai/research/activation-guided-graph-retrieval"
+      },
+      "hash": "7c11698f00d8b030632f03e60405b69b2e45cfbd228fd4f3b20da345c31bafce",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.13137": {
+      "entry": {
+        "arxiv_id": "2611.13137",
+        "version": 1,
+        "title": "Byzantine-Robust Muon: Resilient Momentum Orthogonalization for Distributed Learning",
+        "authors": [
+          "Grigory Malinovsky",
+          "Yury Demidovich",
+          "Peter Richtárik"
+        ],
+        "published": "2026-11-09T19:18:37Z",
+        "updated": "2026-11-09T19:18:37Z",
+        "abstract": "Optimization methods, including the Muon optimizer based on the Linear Minimization Oracle (LMO) and momentum orthogonalization, have shown strong empirical performance in large-scale and distributed learning, yet their robustness to adversarial behavior and data heterogeneity is not well understood. We study these methods within a unified first-order trust-region framework and analyze Muon-based updates with robust aggregation for Byzantine-robust distributed and federated learning. Our analysis does not rely on the i.i.d. assumption and introduces a non-Euclidean notion of heterogeneity consistent with the trust-region geometry. Under this framework, we establish convergence guarantees for both general non-convex and star-convex objectives. Our results provide a theoretical characterization of Byzantine-robust Muon-based optimization, with an additive heterogeneity error floor consistent with known impossibility results, under explicit aggregation assumptions. Under an explicit additive oracle-error condition, the guarantees also cover inexact orthogonalization, with the non-convex Byzantine terms in the bound's numerator unchanged but a smaller progress denominator. In simulated federated training with ResNet-18 and ViT-Tiny on CIFAR-10, additional image benchmarks, and a 38M-parameter byte-level language model on TinyStories, the tested Muon configuration attains higher attacked accuracy (lower perplexity) than the tested SGD and normalized-SGD configurations, and than sign updates on CIFAR-10. Fixed-honest controls further show a substantial RFA advantage over averaging under a bounded RFA-query attack, higher attacked accuracy for Muon-NS than tensorwise Euclidean normalization from shared checkpoints, and lower held-out TinyStories perplexity than a tuned AdamW baseline.",
+        "comment": "51 pages"
+      },
+      "hash": "11f5016b1bce8b51e21442d11bf3dfc114abde968a8f0335aede87285295d524",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.13140": {
+      "entry": {
+        "arxiv_id": "2611.13140",
+        "version": 1,
+        "title": "Agreeing on the Answer but Not the Reason: Measurement Limits of LLM Reasoning Failure Taxonomies",
+        "authors": [
+          "Madhu Sudhan Rao Beesetty"
+        ],
+        "published": "2026-11-09T19:21:12Z",
+        "updated": "2026-11-09T19:21:12Z",
+        "abstract": "Failure taxonomies for LLM reasoning are increasingly reported as measurements: papers state what fraction of a model's errors fall into named categories, then compare those fractions across models. We show that for one such category the reported fraction is largely a property of the measurement procedure. We defined Compositional Collapse (a model notices a required sub-part of a problem, then drops or misapplies it) and measured it across twelve models and eleven languages on a public multilingual math benchmark (2,316 graded records). First, 50.1% of failures carry evidence for more than one category, so the reported plurality depends on the order in which the classifier tests them: reversing two tests moves it in eleven of twelve models, and across all six orderings Collapse's share spans 26.4% to 76.4%. Second, agreement collapses for the category but not for the task. Native speakers of all eleven languages judged 179 transcripts, agreeing with our inspector at kappa = 0.932 on answer correctness but only kappa = 0.093 on Collapse. A second native speaker per language re-rated 142 items; on 121 determinate pairs the two humans agree with each other at kappa = 0.659, while each agrees with the inspector at kappa <= 0.094. Re-running the same inspector model with the human instructions verbatim raises kappa against Human 2 from 0.147 to 0.636, so the gap is largely attributable to the prompt, not the model. Third, the inspector labels Collapse 1.81 times as often as native speakers, but only 1.17 times once a defective benchmark item (a deleted clause in the Bengali and Chinese translations) is excluded. We recommend four cheap checks before comparing failure-mode rates across models: report label co-occurrence, permute the tie-break, validate on a shared independent sample, and audit systematic disagreements.",
+        "comment": "11 pages. Accepted at IEEE CogMI 2026 (regular paper)"
+      },
+      "hash": "cecdbcf5168686968830dbc87c03a8a533e225ebf2ba9e280b3bbb19a04f8875",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.13150": {
+      "entry": {
+        "arxiv_id": "2611.13150",
+        "version": 1,
+        "title": "VIGOR: Benchmarking Visual Rationale Correctness in Multimodal Large Language Models",
+        "authors": [
+          "Yanlin Chen",
+          "Tang Li",
+          "Xi Peng"
+        ],
+        "published": "2026-11-09T19:30:03Z",
+        "updated": "2026-11-09T19:30:03Z",
+        "abstract": "Multimodal large language models (MLLMs) are typically evaluated by whether they produce correct answers, but correctness alone does not reveal whether their outputs are supported by the right visual evidence. We introduce VIGOR, a benchmark for evaluating VIsually GrOunded Rationales in MLLMs. VIGOR represents visual rationales as explicit concepts paired with pixel-level groundings, covering multiple abstraction levels including low-level visual properties, intermediate structures, objects, parts and high-level motion, relations. To construct VIGOR at scale, we develop an automatic annotation framework that reuses existing dense supervision when available and generates missing concept groundings through proposal-based annotation followed by conservative multimodal verification. Using VIGOR, we evaluate whether MLLMs \"look at what they say\" by comparing model-derived visual evidence for each expressed concept against annotated ground-truth rationales. Our results show that current MLLMs exhibit limited visual rationale correctness and reveal distinct grounding failures across concept levels. VIGOR provides a benchmark and scalable data construction pipeline for studying whether MLLM outputs are supported by appropriate visual evidence. Code is available at https://github.com/deep-real/VIGOR",
+        "comment": "NeurIPS 2026"
+      },
+      "hash": "d801ce4c7586b911d9e976b66062aa48f6536821d893ecab44de71cfd22bca0f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.13192": {
+      "entry": {
+        "arxiv_id": "2611.13192",
+        "version": 1,
+        "title": "Multimodal Road Closure Mapping via Cross-Modal Graph Attention",
+        "authors": [
+          "Izzeddin Teeti",
+          "Vaibhav Kango",
+          "Nidhi Sridhar",
+          "Mohamed Moustafa"
+        ],
+        "published": "2026-11-09T20:13:18Z",
+        "updated": "2026-11-09T20:13:18Z",
+        "abstract": "Accurate and timely identification of road closures is critical for large-scale navigation and logistics systems, yet remains challenging due to the need to jointly reason over visual evidence, spatial context, and road network topology. Existing approaches either rely on manual map updates or focus on detecting closure-related objects without resolving which road segment is affected. In this work, we introduce a unified multimodal and multitask framework that jointly performs road closure classification (no, partial, complete) and road segment association within a single learning architecture. Our model integrates graph-structured map data, satellite imagery augmented with projected street-level detections, and street-view images using modality-specific encoders and cross-modal transformer attention, enabling explicit reasoning over visual cues and network topology. Evaluated on nearly 20K real-world scenarios collected from a large-scale commercial vehicle fleet, our approach achieves 72.7% closure classification accuracy and 60% road segment association accuracy, outperforming frontier vision-language models by over 28 percentage points on closure classification while being over 4,000x smaller and 100x faster at inference. Extensive ablations demonstrate the importance of cross-modal attention, edge-aware pooling, and graph message passing for accurate geospatial reasoning. This work establishes the first benchmark for joint road closure classification and segment-level attribution, and shows that task-specific architectural inductive biases substantially outperform general-purpose multimodal models for structured geospatial understanding.",
+        "comment": "Published at ACM SIGSPATIAL 2026. 11 pages, 4 figures"
+      },
+      "hash": "d2322b99bb792e142a1db3c8773753d65240f0950d7a400bb70413c0e61fd88e",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.13200": {
+      "entry": {
+        "arxiv_id": "2611.13200",
+        "version": 1,
+        "title": "Image Quality and the Reliability of Fabric-Density Measurement: Counting Threads from Smartphone Photos Through a Pick Glass",
+        "authors": [
+          "Anoubhav Agarwaal"
+        ],
+        "published": "2026-11-09T20:24:29Z",
+        "updated": "2026-11-09T20:24:29Z",
+        "abstract": "Thread density, the threads per inch along and across a woven fabric, is a basic specification that buyers check whenever fabric is sold. Without laboratory instruments, inspectors count it slowly, by eye, through a pick glass, a folding 10$\\times$ magnifier with a one-inch window. A smartphone photo through that glass could make the check faster and leave a record. We judge such a photo by what it is used for, as in task-based image quality: it is good if the thread count from it is within $\\pm$5% of the true count, a common tolerance in fabric specifications. We introduce PickGlass-TPI: 76 factory scenes of 44 fabric patches, each counted in an open annotation tool by a textile-trained annotator, whose counts are the reference. On it we benchmark frontier and open vision-language models, CNNs, counting specialists and a training-free spectral counter (PG-Lattice). No method agrees with the reference within the tolerance. The best methods are off by about a quarter: a small open model that we tuned only on synthetic images (Molmo2-4B, 25%) is level with the best frontier model, GPT-6.1-sol (27% when asked directly, 25% given four magnified close-ups of the window). Both err less than a non-expert annotator (37%), but only the tuned model also beats, on both error measures, a baseline that guesses each scene's density as the average of the others. PG-Lattice most often repeats its count within 5% across two photos of the same patch, but its misses, like GPT-6.1-sol's errors, are often a factor of two. Even the reference repeats a count across such re-shoots only to a median 9%, so one photo cannot yet be shown to meet $\\pm$5%; the image quality that matters is reliability across re-shoots. Generic no-reference quality scores chosen before labeling do not rank PG-Lattice's error, and generative enhancement raises perceptual scores but does not reliably improve the count.",
+        "comment": "Accepted at the WVAQ workshop at WACV 2027"
+      },
+      "hash": "873d2e8fc14c9f2e76cf65406e6f090a51eb8cd7f11e150254258bd64928ca0b",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.13209": {
+      "entry": {
+        "arxiv_id": "2611.13209",
+        "version": 1,
+        "title": "ARoute: Task-Aligned Batch and Streaming Model Routing",
+        "authors": [
+          "Daofu Zhang",
+          "Qingcheng Zeng",
+          "Chunwei Liu",
+          "Fuheng Zhao"
+        ],
+        "published": "2026-11-09T20:31:42Z",
+        "updated": "2026-11-09T20:31:42Z",
+        "abstract": "Language models increasingly power data-intensive applications, from semantic data processing to question answering and agentic workflows. Using frontier models for every request is prohibitively expensive, while relying only on smaller models reduces accuracy. We study model routing under a user-specified cost budget, aiming to maximize accuracy under task-specific correctness criteria. Existing routers fall short in two ways: pretrained routers rely on generic preference signals that may not reflect a task's own correctness criteria or a new model pair, and model cascades run the weaker model first on every request, adding sequential latency. We present ARoute, a task-aligned router that learns cost and accuracy signals to select a model for each request before inference. ARoute has two variants: ARoute-Batch operates on a batch of requests known in advance, routing requests with the greatest expected benefit to the stronger model subject to the budget, whereas ARoute-Stream processes requests online, using a threshold calibrated on a small validation set to satisfy the cost quota and dynamically adjusting it as the budget is consumed. For ARoute-Stream, we provide a finite-sample guarantee on expected normalized spending. We evaluate ARoute on MMLU-Pro, LiveCodeBench, SuperGPQA, and two value-filling tasks built from SWAN semantic query benchmark against other state-of-the-art approaches. At matched cost, ARoute-Batch achieves the highest mean accuracy in all 15 task-cost settings, improving over the strongest baseline by 4.1 percentage points on average and by up to 11.9 points. ARoute also completes a batch up to 2.8x faster than cascades."
+      },
+      "hash": "7b6c158983bdf27957c619748f418df65babc5eea8ac4a8ac92a72b7df46b017",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.13213": {
+      "entry": {
+        "arxiv_id": "2611.13213",
+        "version": 1,
+        "title": "Before Words, Beyond Speech: Evaluating Nonverbal Social Reasoning in Early Childhood",
+        "authors": [
+          "Marie Amale Huynh",
+          "Laura Bravo-Sánchez",
+          "Lauren Klein",
+          "Nick Haber",
+          "Philip Fisher",
+          "Serena Yeung-Levy"
+        ],
+        "published": "2026-11-09T20:35:48Z",
+        "updated": "2026-11-09T20:35:48Z",
+        "abstract": "Children's earliest years are a period of intense social learning, during which meaning is built through gaze, gesture, and physical contact. Yet, this critical aspect of social interaction remains under-evaluated in multimodal video understanding, as existing benchmarks prioritize the conversation-driven interactions of adults. We address this gap with \\bench ($\\textbf{N}$aturalistic $\\textbf{E}$arly-childhood $\\textbf{S}$ocial in$\\textbf{T}$eractions), the first child-centric benchmark for nonverbal social reasoning. \\bench comprises \\totalvids manually annotated clips ($\\sim$12s) curated for diversity across naturalistic settings, cultural contexts, and developmental stages. Beyond a lack of data, targeted model improvement in this domain is hindered by coarse evaluation schemas that conflate basic perception with higher-order reasoning. To resolve this, \\bench introduces a compositional schema that builds atomic interaction cues into progressive levels of social reasoning: contextual, behavioral, interpersonal, and open-ended descriptions. Extensive analysis of state-of-the-art Vision-Language Models (VLMs) reveals a stark performance collapse: despite strong contextual recognition, models exhibit substantial gaps in decoding precise behavioral and interpersonal cues. We trace these failures to specific biases, including poor consequence grounding and temporal sensitivity. Finally, we ground \\bench in real-world applications by evaluating VLMs using domain adaptation strategies. Ultimately, \\bench provides a rigorous testbed for advancing socially grounded artificial intelligence in early childhood. Project page: https://laubravo.github.io/nest_website/.",
+        "comment": "Accepted as NeurIPS 2026 Spotlight paper. Project page at \\hyperlink{https://laubravo.github.io/nest_website/}{this URL}"
+      },
+      "hash": "d0fa379ad796735e5db6bc9ec22703faf823babadcb92f6f9d116613a7cba928",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.13233": {
+      "entry": {
+        "arxiv_id": "2611.13233",
+        "version": 1,
+        "title": "Decisions by Discrimination: Differential Evidence for Medical Reasoning",
+        "authors": [
+          "Yunpeng Xiao",
+          "Yuzhang Xie",
+          "Junhao Huang",
+          "Carl Yang",
+          "Xiao Hu",
+          "Kai Shu"
+        ],
+        "published": "2026-11-09T21:02:23Z",
+        "updated": "2026-11-09T21:02:23Z",
+        "abstract": "Large language models (LLMs) are increasingly studied for clinical decision support, and medical question answering provides a testbed for evaluating this capability. In particular, medical multiple-choice questions (MCQs) reflect a core challenge in clinical decision-making: plausible options often share overlapping evidence, while only a few decisive factors distinguish the correct option from incorrect ones. However, existing retrieval-based and reasoning-oriented methods mainly focus on supplying broadly relevant knowledge or eliciting reasoning paths, rather than identifying the compact differential evidence that separates confusing alternatives. In this work, we present a retrieval-grounded differential evidence framework for medical MCQs. Our method extracts option-specific pieces of differential evidence and organizes them into concise evidence prompts for answer selection. This design better aligns external knowledge with differential reasoning while reducing irrelevant context. Experiments show consistent accuracy gains across multiple datasets and target LLMs. Ablation studies further show that our framework outperforms both directly using retrieved evidence chunks and closed-source LLM-generated general hints, and that its improvements are not solely explained by answer-proximal guidance, but are consistent with differential evidence serving as a compact aid for reasoning over competing alternatives. Our findings also offer insights for medical reasoning and other decision-making settings with multiple possible choices.",
+        "comment": "Accepted by AACL 2026 (main)",
+        "journal_ref": "Proceedings of AACL-IJCNLP 2026 (Volume 1: Long Papers), pp. 5589-5603, 2026"
+      },
+      "hash": "f071e542d211c0fcc3bf116e5a4b4b541f5dc63e902949f4cb06a237d114ab78",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.13331": {
+      "entry": {
+        "arxiv_id": "2611.13331",
+        "version": 1,
+        "title": "Stochastic Projections and Rank-Aware Learning Rates for Federated LoRA",
+        "authors": [
+          "Saber Malekmohammadi",
+          "Kevin Kuo",
+          "Virginia Smith",
+          "Golnoosh Farnadi"
+        ],
+        "published": "2026-11-09T22:58:41Z",
+        "updated": "2026-11-09T22:58:41Z",
+        "abstract": "Fine-tuning large-scale foundation models across resource-constrained, distributed clients presents significant computational and communication challenges. While merging Low-Rank Adaptation (LoRA) with Federated Learning (FL) enables rank-based flexibility, the interdependence of the adaptation matrices ($\\mathbf{A}$ and $\\mathbf{B}$) often complicates optimization. In this work, we theoretically demonstrate that LoRA fine-tuning with Gaussian initialization and a frozen $\\mathbf{A}$ matrix acts as a stochastic approximation of full fine-tuning, where batch gradients are subject to a random, rank-dependent perturbation. Motivated by this insight, we propose freezing and periodically resampling $\\mathbf{A}$ matrices at the client level. This strategy decouples the $\\mathbf{A}$ and $\\mathbf{B}$ gradients, diminishes LoRA low-rank constraints and reduces both computational and uplink communication overheads by 50\\%, allowing for the reallocation of resources toward higher adaptation ranks. Furthermore, we show that in this frozen-$\\mathbf{A}$ regime, the adaptation rank $r$ directly governs the signal-to-noise ratio (SNR) of the perturbed gradients. Specifically, we find that the SNR increases linearly with $r$, implying that clients' learning rates must be dynamically scaled with their adaptation ranks for higher utility. Building on these foundations, we introduce SPRA-LoRA (Stochastic Projection Rank-Aware LoRA), a federated rank-aware fine-tuning strategy that utilizes frozen, resampled $\\mathbf{A}$ matrices and rank-dependent learning rates for clients. We also prove its convergence with heterogeneous client resources. Our experiments across benchmark datasets demonstrate that SPRA-LoRA consistently outperforms state-of-the-art baselines with half the overhead on clients."
+      },
+      "hash": "bf2f0b91718047b9227cc96d45c7d6a0d210b83587e2e54db5d1433341d95a5f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.13334": {
+      "entry": {
+        "arxiv_id": "2611.13334",
+        "version": 1,
+        "title": "Disentangling Multimodal Rotary Positional Embedding in Vision-Language Models",
+        "authors": [
+          "Zhaoyi Liu",
+          "Haichuan Zhang",
+          "Xiaochuan Gong",
+          "Yancheng Zhu",
+          "Bowei Tian",
+          "Wanghao Ye",
+          "Yufan Zhang",
+          "Ang Li"
+        ],
+        "published": "2026-11-09T23:00:25Z",
+        "updated": "2026-11-09T23:00:25Z",
+        "abstract": "Vision-language models widely adopt Multimodal Rotary Position Embedding (MRoPE), an extension of Rotary Position Embedding (RoPE) that incorporates temporal, height, and width axes to encode the spatial structure of visual tokens. However, MRoPE also assigns height and width coordinates to text tokens that lack inherent spatial structure, introducing spatial positional effects into text-vision attention. Existing MRoPE variants explore different frequency allocations and coordinate layouts, with their designs suggesting different intuitions about these cross-modal effects: they may provide useful spatial references for associating language with visual regions, or introduce unnecessary positional preferences that hinder text-vision interactions. In this work, we disentangle intra-visual spatial structure from cross-modal spatial effects to investigate this question. We identify a constraint of shared coordinate layouts that prevents eliminating cross-modal spatial effects while preserving intra-visual spatial encoding, and develop controlled experiments to isolate their respective contributions. Our results across multiple model scales, MRoPE variants, and benchmarks show that cross-modal spatial effects provide little additional benefit as spatial references and can even impair model performance, while intra-visual spatial encoding remains useful for fine-grained grounding."
+      },
+      "hash": "df2a75373ca208bf92692f829b691f23757bb02e45716b9587778352575a2645",
       "status": "queued",
       "attempts": 0,
       "error": null,
