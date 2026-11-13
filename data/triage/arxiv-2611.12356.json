@@ -2,24 +2,23 @@
   "schemaVersion": 1,
   "id": "arxiv-2611.12356",
   "arxivId": "2611.12356",
-  "version": 1,
+  "version": 2,
   "title": "DForkTree: Accelerating Speculative Decoding with Fork-Aware Block Diffusion Draft Trees",
-  "paperUrl": "https://arxiv.org/abs/2611.12356v1",
-  "assessedAt": "2026-11-10T17:53:56Z",
+  "paperUrl": "https://arxiv.org/abs/2611.12356v2",
+  "assessedAt": "2026-11-13T17:46:46Z",
   "policyVersion": 5,
   "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
-  "materialHash": "bbfe067bfd076aa514f670306d235e53408d3c7db1fcc692543b0f2ed96183fd",
+  "materialHash": "9737013f9ef690b5c9d651228a6b40a6e7be30b5d8f85a8665b7a2959859aa44",
   "materialScope": "abstract_and_arxiv_metadata",
-  "decision": "needs_evidence",
-  "score": 4,
+  "decision": "excluded",
+  "score": 5,
   "scoreMax": 11,
   "reasons": [
-    "摘要级证据不足以自动收录，保留材料等待补充"
+    "材料表明提出方法并使用已有基准评估，未见新基准贡献"
   ],
   "missingSignals": [
     "明确提出新的评测资料或框架",
     "描述任务、问题或评测环境",
-    "报告基线或多个模型的评测",
     "给出任务规模或覆盖范围",
     "讨论泛化、污染、稳健性或人工核验"
   ],
@@ -28,9 +27,17 @@
       "signal": "evaluation_protocol",
       "label": "描述评分指标或评测协议",
       "weight": 2,
-      "excerpt": "A tree, however, gains over a chain only on branches that leave this continuation, where the drafter's top-1 accuracy drops from 89% to 18% and its candidate lists miss the right token far more often.",
+      "excerpt": "Once a path forks, the drafter's top-1 accuracy drops from 89% to 18% and its top candidates often miss the true token.",
       "source": "abstract",
-      "sourceUrl": "https://arxiv.org/abs/2611.12356v1"
+      "sourceUrl": "https://arxiv.org/abs/2611.12356v2"
+    },
+    {
+      "signal": "baseline_comparison",
+      "label": "报告基线或多个模型的评测",
+      "weight": 1,
+      "excerpt": "On Qwen3.5-4B and 9B, DForkTree outperforms all baselines on every benchmark, by up to 41.5% over DFlash and 15.1% over DDTree, with average speedups of up to 4.75x over autoregressive decoding.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.12356v2"
     },
     {
       "signal": "resource_link",
@@ -38,13 +45,13 @@
       "weight": 2,
       "excerpt": "https://github.com/Perseus037/DForkTree",
       "source": "arxiv_comment",
-      "sourceUrl": "https://arxiv.org/abs/2611.12356v1"
+      "sourceUrl": "https://arxiv.org/abs/2611.12356v2"
     }
   ],
   "resourceCandidates": [
     "https://github.com/Perseus037/DForkTree"
   ],
-  "declaredVenue": "20 pages, 13 figures, 13 tables. Code: https://github.com/Perseus037/DForkTree",
+  "declaredVenue": "21 pages, 12 figures, 13 tables. Code: https://github.com/Perseus037/DForkTree",
   "venueVerified": false,
   "qualityVerified": false
 }
