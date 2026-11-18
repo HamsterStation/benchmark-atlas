@@ -9,7 +9,11 @@
     "cc0b0cc6cecde53ac5cd": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (abs:\"large language model\" OR abs:\"language models\" OR abs:LLM OR abs:LLMs OR abs:\"foundation models\")",
       "successful_until": "2026-11-16T20:30:45Z",
-      "active": null,
+      "active": {
+        "since": "2026-11-09T20:30:45+00:00",
+        "until": "2026-11-18T10:12:46Z",
+        "start": 200
+      },
       "last_completed_at": "2026-11-16T20:30:45Z"
     },
     "14f880dfad109bc470a7": {
@@ -131738,6 +131742,46 @@
         "comment": "23 pages, 6 figures. Companion paper to an 18-volume textbook collection. Textbook PDFs: https://xingyangyu.com/textbook/"
       },
       "hash": "712729cdc12d9e6936e03d638298b80ddf72f7a8febfadb8762ea1f7e77e52bb",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.18750": {
+      "entry": {
+        "arxiv_id": "2611.18750",
+        "version": 1,
+        "title": "Feature-Space Latent Forecasting for Endoscopic Surgical Video Understanding",
+        "authors": [
+          "Songtao Hu",
+          "Hang Su"
+        ],
+        "published": "2026-11-11T15:43:35Z",
+        "updated": "2026-11-11T15:43:35Z",
+        "abstract": "Surgical workflow assistance is inherently anticipatory: systems must reason about how procedures evolve, not just recognize the current frame. However, many prior approaches perform prediction in pixel space by synthesizing future frames, which primarily focuses on appearance fidelity rather than the semantic representations required for downstream reasoning. To address this limitation, we propose a feature-space semantic forecasting framework that models temporal dynamics directly within the representations of a frozen Vision Foundation Model (VFM). Specifically, we build a hierarchical target representation from multi-layer VFM features, replace future-frame feature tokens with learnable \\texttt{[MASK]} tokens, and train a masked transformer to forecast the corresponding future latent features from observed context, thereby formulating procedural evolution as masked future feature prediction. Experiments on public laparoscopic benchmarks demonstrate consistent improvements in phase anticipation, multi-label tool presence prediction, and remaining-time estimation over RGB-based forecasting baselines, while enabling a plug-and-play representation interface for lightweight downstream heads."
+      },
+      "hash": "d06eadf4b57860947f3ab754015d0e2aab7c32691ad61a47fe323e16c3c4a2f5",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.18790": {
+      "entry": {
+        "arxiv_id": "2611.18790",
+        "version": 1,
+        "title": "Same Evidence, Different Verdicts: Delivery of CT Images and DICOM Metadata Changes VLM Quality-Control Decisions",
+        "authors": [
+          "Nicolas Avelar"
+        ],
+        "published": "2026-11-13T01:10:59Z",
+        "updated": "2026-11-13T01:10:59Z",
+        "abstract": "Vision-language models (VLMs) are being proposed as automated checks on clinical imaging inputs, where a scan and its DICOM metadata can disagree; a truncated CT series wrongly admitted to volumetric follow-up, such as lung-nodule growth assessment in screening, biases the measurement. A natural safeguard is to let the model judge the image before it sees the metadata. We find this backfires. On 60 NLST chest CT pairs with coverage defects whose ground truth is computed from scan geometry, a false header that Claude Haiku 5.5 resisted when shown with the image (2% of its detections overruled) overturned 91% of them when it arrived after the model's answer (Nemotron-3.5-VL 43% to 100%). With the order reversed, the image overturned 98-100% of the header's errors (Claude models): whichever source came second won. This is not generic sycophancy: a neutral \"please confirm\" reversed 0 of 1,072 correct refusals, and the effect persisted when the header arrived as a tool result, as in agentic pipelines. One warning sentence cut sequential reversal to at most 9%, and the pattern held on 24 real mismatched pairs. Contributions: (i) evidence that VLM input-check decisions on identical evidence depend on delivery; (ii) a testbed with exact geometric ground truth; (iii) a validation protocol for clinical VLM input checks. Code, prompts and all call logs: https://github.com/nav92061/ct-vlm-delivery-order",
+        "comment": "4 pages, 2 figures, 1 table. Submitted to IEEE ISBI 2027"
+      },
+      "hash": "c8ec437bb43c102952867633634a6a2a98ded993c40802c31d57e0f5f9aa73bd",
       "status": "queued",
       "attempts": 0,
       "error": null,
