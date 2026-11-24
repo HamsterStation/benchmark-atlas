@@ -9,7 +9,11 @@
     "cc0b0cc6cecde53ac5cd": {
       "query": "(ti:benchmark OR abs:benchmark OR abs:testbed OR abs:\"evaluation framework\") AND (abs:\"large language model\" OR abs:\"language models\" OR abs:LLM OR abs:LLMs OR abs:\"foundation models\")",
       "successful_until": "2026-11-22T17:51:27Z",
-      "active": null,
+      "active": {
+        "since": "2026-11-15T17:51:27+00:00",
+        "until": "2026-11-24T12:31:51Z",
+        "start": 200
+      },
       "last_completed_at": "2026-11-22T17:51:27Z"
     },
     "14f880dfad109bc470a7": {
@@ -140453,6 +140457,171 @@
         "abstract": "Recent multimodal search agents use reasoning, vision, and live web search across many turns to answer questions beyond parametric knowledge by orchestrating a small library of hand-crafted search and visual tools. However, the library is laborious to create and maintain, and frozen when new query types, evidence formats, and failure modes are encountered in the wild. Human practitioners, by contrast, cope with insufficient tools by fashioning new ones from familiar parts and reusing them across tasks. Inspired by this, we propose ToolSmith, an automatic tool-generation framework that grows and reuses modules on top of a lean base tool library. We evaluate ToolSmith on three in-domain multimodal search benchmarks and ten out-of-domain benchmarks under a VLM-as-a-Judge protocol. ToolSmith consistently improves over the base library across deployed agents of varying scales, with larger backbones reaping greater gains, demonstrating the scalability of the approach. Our code and data are available at https://threesr.github.io/toolsmith/."
       },
       "hash": "1e889abd3a9fc31c8098a83da4f2662d6accd83cf902fb7bceecaaa63e0027ea",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.28094": {
+      "entry": {
+        "arxiv_id": "2611.28094",
+        "version": 1,
+        "title": "LightOnOCR for AMNLT: Reading Chant Notation and Lyrics in One Pass, from Single Staves to Whole Pages",
+        "authors": [
+          "Robert Klugseder"
+        ],
+        "published": "2026-11-17T07:53:32Z",
+        "updated": "2026-11-17T07:53:32Z",
+        "abstract": "Aligned music notation and lyrics transcription (AMNLT) asks for the notes of a chant, its sung text and the assignment of syllables to notes in one output. Fuentes-Martínez et al., who defined the task, found that the one vision-language model they tested fell far behind specialised recognisers. We fine-tune LightOnOCR-3-1B, a page OCR model with one billion parameters, end to end, vision encoder included, to write a staff as a GABC string whose letters denote staff positions. Trained on the published AMNLT training split alone, it more than halves the best published aligned music and lyrics error rate (AMLER) on Solesmes, the one directly comparable dataset (9.9 against 21.0 %); on Einsiedeln and Salzinnes, measured in a different encoding, its figures are also lower. The benchmark does not measure generalisation to unseen manuscripts: while the pitch error on AMNLT validation stays between 1.7 and 1.9 %, on 200 staves from five unseen manuscripts it falls from 24.9 to 1.3 % as we add chant aligned through CantusDB, Transkribus ground truth and silver staves kept only where two readers agree. Trained also on multi-staff images, it reads whole pages without staff detection (pitch error 3.3 to 3.8 % on validation and test pages, 1.9 % on pages of unseen manuscripts). Remaining errors include Gothic F clefs read as C clefs, notes dropped with abbreviated or illegible text and lower accuracy on pages with small notation. Controlled ablations are needed to explain the gains."
+      },
+      "hash": "b2145e043120704859c717eb43f145087f4b837aec099500d3d3d32bc8d88386",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.28097": {
+      "entry": {
+        "arxiv_id": "2611.28097",
+        "version": 1,
+        "title": "ORDO: Fine-Grained Motion Understanding in Video LLMs via Order-Dependent Supervision",
+        "authors": [
+          "Jiaye Luan",
+          "Chaoning Zhang",
+          "Pengcheng Zheng",
+          "Dongshen Han",
+          "Sheng Zheng",
+          "Ping Guo",
+          "Caiyan Qin",
+          "Yang Du",
+          "Yang Yang"
+        ],
+        "published": "2026-11-17T09:20:05Z",
+        "updated": "2026-11-17T09:20:05Z",
+        "abstract": "Video large language models (video LLMs) answer a wide range of questions about real videos, yet they remain weak at fine-grained motion such as whether an object speeds up or slows down. Existing methods train these models on synthetic motion clips, on order pretext tasks such as reordering shuffled clips, or with rewards that compare ordered and perturbed frames. None of them requires that the label be unrecoverable from the frames once their order is discarded, so a model can fit such data from static cues without learning to use frame order. We propose ORDO, a framework that builds this requirement into the training data. We define order-necessary supervision as data in which the unordered set of frames has the same distribution under competing labels, and we realise it for motion attributes with three constructions, time-reversal pairing, matched spatial extent and uniform interval coverage. A procedural curriculum of six motion primitives instantiates these constructions, and low-rank adapters of the language model are trained on it with an answer-level objective and self-distillation replay on real videos. With 4,000 synthetic clips, ORDO raises the mean accuracy over four motion benchmarks by +7.6, +4.9 and +5.1 points on Qwen3.5-9B, Qwen3-VL-8B and Molmo2-8B, while the same training with shuffled frames changes it by less than one point. Code and generator will be made publicly available.",
+        "comment": "16 pages, 5 figures, 9 tables. Includes supplementary material"
+      },
+      "hash": "5b03b6eb1cbd816586407059d9d0a694e5e7ce230712d0bf9e5503127705b366",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.28099": {
+      "entry": {
+        "arxiv_id": "2611.28099",
+        "version": 1,
+        "title": "VidRouteBench: A Benchmark for Budgeted Video-Generation Routing",
+        "authors": [
+          "Dayu Wang"
+        ],
+        "published": "2026-11-17T11:23:40Z",
+        "updated": "2026-11-17T11:23:40Z",
+        "abstract": "Text-to-video generators differ by two orders of magnitude in price, and a cheap configuration of a strong model is often good enough for a prompt. Routing prompts across such arms (model x sampling configuration) should buy quality at fixed budget, but no dataset supports studying it: public video-preference sets contain only closed models, one configuration each. We release VidRouteBench: 16 arms from 7 open families spanning 121x in measured cost ($0.0025-$0.298 per clip), 27,110 clips (1,421 A800-hours) over 1,625 grouped prompts, a quality score frozen after calibration against human preferences (68.7% CV accuracy vs 66.2% for the best single scorer), per-clip scores on 9 identifiable quality dimensions, repeated seeds, an encrypted test split, and a sealed newest family for cold start. The evaluator compares a router against the best prompt-agnostic mixture of arms, not the best single arm. Per-prompt specialisation here is real and predictable (oracle gap 0.642, 47% reproducible across seeds, prompt-arm interaction F=4.47 at p=1.6e-63), unlike LLM-routing arms, where the same pipeline finds none. We then propose OPMU (one probe, many utilities): label a new arm on K probe prompts, predict its 9 dimensions once, and serve any scenario utility by scalarising afterwards. Over 215 utility directions OPMU Pareto-dominates the prompt-agnostic baseline for 94% of directions versus 90% for per-scenario routers, with no per-scenario retraining. Three baselines fail instructively: bag-of-words features lose almost all routing gain in the low-data regime (0.009 vs 0.168); crediting a new arm with its probe average is harmful (-3.32 recovery) although it is the strong baseline on RewardBench-style arms (0.786); Chebyshev scalarisation does not help, our cost-utility front being convex."
+      },
+      "hash": "35e0ff6c5cf2b8986bc4bdb7bd13100cdea907f2ddae978447a9bbfaa6885c0f",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.28100": {
+      "entry": {
+        "arxiv_id": "2611.28100",
+        "version": 1,
+        "title": "You Only Think Once: Rescuing Hybrid Vision-Language Models Lost in Thought",
+        "authors": [
+          "Tianyi Tan",
+          "Wentao Wang",
+          "Xiaohan Li",
+          "Zining Ren",
+          "Siyuan Li",
+          "Xutao Mao",
+          "Rui Qian",
+          "Luoxi Zhang",
+          "Shiwen Ni"
+        ],
+        "published": "2026-11-17T11:31:41Z",
+        "updated": "2026-11-17T11:31:41Z",
+        "abstract": "Thinking at length before answering is expected to strengthen the visual reasoning of vision-language models (VLMs), yet hybrid VLMs often get lost in thought: their thoughts loop or exhaust the budget without an answer, so thinking can score below answering directly. Existing early-exit methods watch a thought for the moment its answer is ready and force the answer out of it, but in a hybrid VLM that moment often never comes. We find that the remedy is not to stop a failing thought earlier, but to stop taking its answer: once a thought is given up, the model's own direct answers decide. Based on this, we propose **YOTO (You Only Think Once)**, a method that answers first and thinks at most once. YOTO draws direct answers until a probe-weighted vote settles; only an unsettled problem receives a single thought, which a failure head on the hidden state monitors and stops as soon as it predicts failure, handing the problem back to direct answers. At a matched 20k-token budget, YOTO is up to 5.9 points more accurate than the strongest early-exit baseline, using one failure-head threshold across model sizes. Keeping the released weights frozen, it adds only two linear probes. On the full MathVision benchmark, YOTO improves Qwen3.5-2B from 40.1% to 57.3% and Qwen3.5-4B from 68.3% to 73.7%, above the 72.8% that Qwen3.5-9B, a model more than twice its size, reaches with thinking. Its gains carry over to five further benchmarks and a second model family. These results suggest that hybrid VLMs reason better by answering first and thinking once than by thinking longer."
+      },
+      "hash": "83899a343bf2c5d08b78317b0c6a9a8d715135a408d07ba610ec196111d1ed53",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.28113": {
+      "entry": {
+        "arxiv_id": "2611.28113",
+        "version": 1,
+        "title": "Benchmarking Foundation Models for Bone Scaffold Pore Detection: A Comparative Analysis of Few-Shot Performance",
+        "authors": [
+          "Tri Tin Vo",
+          "Vu Thien An Ngo",
+          "Nhi Kieu",
+          "Cuong Hung Luu",
+          "Giang V. H. Phan",
+          "Kien Nguyen",
+          "Clinton Fookes"
+        ],
+        "published": "2026-11-18T04:18:35Z",
+        "updated": "2026-11-18T04:18:35Z",
+        "abstract": "Evaluating the mechanical properties of bone scaffolds conventionally requires destructive testing or costly Finite Element Analysis, while deep learning alternatives are constrained by the scarcity of labeled biomaterial imaging data. This study introduces the first expert-annotated, pixel-dense dataset of biopolymer bone-scaffold SEM images, spanning five magnification series, and uses it to benchmark two state-of-the-art pre-trained foundation models under a 12-shot fine-tuning regime. SAM3, an instance segmenter, and YOLOv26, a bounding-box detector, feed the predicted pore geometry to regression heads that estimate Young's modulus and compressive yield strength. Our central finding is that both models fail by pore density rather than magnification: YOLOv26's predicted pore counts saturate and porosity estimation collapses on the most crowded frames, whereas SAM3 over-fragments sparse pore fields and merges adjacent pores in dense ones, producing eight catastrophic failures against three for YOLOv26. Averaged across the 44-image evaluation set, YOLOv26 achieves lower porosity error (19.9% vs. 23.1% MAE), higher precision, and a higher F1 score, whereas SAM3 offers pixel-level instance segmentation that YOLOv26's bounding boxes cannot reproduce. We conclude that model selection should be driven by pore density rather than SEM magnification alone.",
+        "comment": "16 pages, 5 figures, 3 tables. Accepted at the Australasian Data Science and Machine Learning Conference (AusDM 2026)"
+      },
+      "hash": "3d78c0031bb0f0039bb970ae2e7160cd56ba711336ff97b05d0b77a00068685c",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.28117": {
+      "entry": {
+        "arxiv_id": "2611.28117",
+        "version": 1,
+        "title": "PhoneQC: Benchmarking Multimodal LLMs for Order-Level Smartphone Trade-in Inspection",
+        "authors": [
+          "Zihan Deng",
+          "Xinpei Lin",
+          "Du Tiantian",
+          "Lequan Yu"
+        ],
+        "published": "2026-11-18T07:32:12Z",
+        "updated": "2026-11-18T07:32:12Z",
+        "abstract": "As vision-language models enter remote smartphone trade-in, sellers already upload six views and a diagnostic screen, which makes it easy to treat the human quote as a step a model can take over. A model may mark a crack or read the screen, yet the quote is a staff form: appearance fill stays near 0.25, and the closed models that score a little higher do so only on the orders they answer, so human appraisal remains necessary. Two obstacles stand in the way. (1) Single-view defect sets and attribute benchmarks do not score an order-level form under a fixed input contract, so a box or a leaked field can be mistaken for a finished quote. (2) The unread half of the form is the staff fields, and a model left to emit boxes or captions does not learn them. We present PhoneQC, a 335-order iPhone-heavy cut that ranks systems by a 0 to 100 form score (Score100) only inside matched protocols (images alone; images plus a detector sidecar), with a declared upper bound that is not ranked as a peer. As a case study on that board, field-only LoRA freezes the backbone, adapts attention projections, and supervises staff fields while leaving the defect list empty; the adapter sees the same images as the zero-shot model. On image-only T1 the 3B model rises from 26.6 to 33.3 at coverage 0.928; without the empty-blocker item the open ranking still favors the adapter, while the remaining gap to a person stays large on this cut."
+      },
+      "hash": "e69ce708904d417fc4c72494980aa94a815753bd62aa871c469ff1697211b0b9",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.28123": {
+      "entry": {
+        "arxiv_id": "2611.28123",
+        "version": 1,
+        "title": "Seeing the Invisible: How Vision-Language Models Read, Predict and Trace Radio Fields",
+        "authors": [
+          "Yiyang Zhu",
+          "Xin Li",
+          "Guangyuan Liu",
+          "Ziheng Liu",
+          "Jiayi Zhang",
+          "Chau Yuen"
+        ],
+        "published": "2026-11-18T11:52:11Z",
+        "updated": "2026-11-18T11:52:11Z",
+        "abstract": "Operating in the physical world requires reasoning beyond what cameras directly capture. In a city, radio signals are invisible to the lens, yet their strength is governed by the buildings and streets an image does show. Given only these visible structures, can vision-language models (VLMs) infer the invisible radio field they shape? Probing true physical reasoning requires exact fields in real cities, alongside controlled interventions where a single physical factor changes. We build a label-free engine that turns any coordinate on Earth into a ray-traceable city, simulates matched single-factor counterfactuals, and computes every answer exactly. This yields RadioVISTA, a benchmark and training dataset for visual reasoning about invisible fields. Physically, a radio field is the sum of its propagation paths, yet across six continents we uncover a striking field-path dissociation: frontier VLMs accurately judge where a field is strong, but fail to tell whether a single direct or one-wall path exists. Open models fail even earlier at reading the field itself, and are systematically wrong, scoring below random guessing even when credited for any of four attempts. On unseen cities, fine-tuning brings a 9B open model close to frontier proprietary models on fields, yet neither supervised nor reinforcement fine-tuning improves path tracing. Supervising only final answers teaches models to approximate the field, yet leaves single-path geometry out of reach."
+      },
+      "hash": "6f3fb93c2c30db1b5b538ebe112fa10d9436dc5f36d511d65d63717f3b5a6cd1",
       "status": "queued",
       "attempts": 0,
       "error": null,
