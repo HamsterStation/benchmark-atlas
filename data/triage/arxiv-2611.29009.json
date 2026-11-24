@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "arxiv-2611.29009",
+  "arxivId": "2611.29009",
+  "version": 1,
+  "title": "Mind the Trap As LLMs Guess the Data Model: Grain-Aware Guards Against Fan-out in Text-to-SQL and Its Benchmarks",
+  "paperUrl": "https://arxiv.org/abs/2611.29009v1",
+  "assessedAt": "2026-11-24T12:32:53Z",
+  "policyVersion": 5,
+  "policyHash": "659a5d53211b260861c9470a895f51e7858b819ececec695c67b89390a51c85c",
+  "materialHash": "582a4f35199ddb6117d405f46eceef690e8751a985665a0250cffb103c0b7303",
+  "materialScope": "abstract_and_arxiv_metadata",
+  "decision": "needs_evidence",
+  "score": 6,
+  "scoreMax": 11,
+  "reasons": [
+    "摘要级证据不足以自动收录，保留材料等待补充"
+  ],
+  "missingSignals": [
+    "明确提出新的评测资料或框架",
+    "报告基线或多个模型的评测",
+    "讨论泛化、污染、稳健性或人工核验"
+  ],
+  "evidence": [
+    {
+      "signal": "task_definition",
+      "label": "描述任务、问题或评测环境",
+      "weight": 1,
+      "excerpt": "An audit that tests the condition on the data finds distorted gold answers for 4.2% of the dev questions of BIRD, a widely used benchmark, and BIRD's later, independent revision changed 44% of the answers the audit flags as definite fan-out, against 16% of unflagged ones.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.29009v1"
+    },
+    {
+      "signal": "evaluation_protocol",
+      "label": "描述评分指标或评测协议",
+      "weight": 2,
+      "excerpt": "Across eight LLM agents, functional dependencies (FDs) computed from the data help no more than per-column statistics on GrainTraps, but grain-aware FDs, which also state each measure's grain and the repetition per key, cut fan-out errors on BIRD from 18.4% of runs to about 13%, also on held-out questions and without LLM judges.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.29009v1"
+    },
+    {
+      "signal": "scale_or_coverage",
+      "label": "给出任务规模或覆盖范围",
+      "weight": 1,
+      "excerpt": "We release BIRD-FanOut, 486 BIRD questions with reviewed gold, and GrainTraps, synthetic questions that set this trap and related ones.",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.29009v1"
+    },
+    {
+      "signal": "resource_link",
+      "label": "材料中提供代码或数据链接（未核验内容）",
+      "weight": 2,
+      "excerpt": "https://github.com/ahmed-mahran/misqal",
+      "source": "abstract",
+      "sourceUrl": "https://arxiv.org/abs/2611.29009v1"
+    }
+  ],
+  "resourceCandidates": [
+    "https://github.com/ahmed-mahran/misqal"
+  ],
+  "declaredVenue": "17 pages, 14 figures, 9 tables. Code, data and benchmarks: https://github.com/ahmed-mahran/misqal",
+  "venueVerified": false,
+  "qualityVerified": false
+}
