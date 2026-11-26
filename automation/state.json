@@ -12,7 +12,7 @@
       "active": {
         "since": "2026-11-18T11:21:42+00:00",
         "until": "2026-11-26T10:56:57Z",
-        "start": 200
+        "start": 400
       },
       "last_completed_at": "2026-11-25T11:21:42Z"
     },
@@ -146641,6 +146641,29 @@
         "comment": "28 pages, 5 figures, 6 tables"
       },
       "hash": "be63008b303daa6a03030b30c60ae9794624f7e0fbb7d79b1a56426bf42c2426",
+      "status": "queued",
+      "attempts": 0,
+      "error": null,
+      "next_attempt_at": null,
+      "kind": "new"
+    },
+    "2611.33210": {
+      "entry": {
+        "arxiv_id": "2611.33210",
+        "version": 1,
+        "title": "Confidence-Based Adaptive Retrieval Fails Where It Matters Most: A Paradox in Biomedical Question Answering",
+        "authors": [
+          "Chengying She",
+          "Siyu Deng",
+          "Haiyan Ge",
+          "Lizhuang Liu"
+        ],
+        "published": "2026-11-23T07:31:05Z",
+        "updated": "2026-11-23T07:31:05Z",
+        "abstract": "Large language models (LLMs) are increasingly used for biomedical question answering, but plausible incorrect answers remain a safety risk in clinical settings. Retrieval-augmented generation (RAG) can ground responses in medical literature, while confidence-based adaptive RAG retrieves only when the model appears uncertain. We evaluate this routing strategy on three biomedical QA benchmarks of increasing difficulty and compare models across a broad range of parameter scales. The results reveal a paradox: confidence is well calibrated (AUROC 0.78--0.89) on standard medical exam questions where retrieval adds little value (+2.4\\% to -1.4\\%), yet becomes \\emph{near-random} (AUROC 0.506) on specialist-level questions where retrieval helps most (+11.2\\%). Five uncertainty signals---first-token probability, margin, entropy, consistency-based sampling, and verbalized confidence---show the same failure pattern. Five post-hoc calibration correction strategies, including density-ratio reweighting and rank-preserving transformation, do not recover a useful routing signal on hard questions (best AUROC: 0.507). Cross-model comparison shows that larger parameter scale and higher base accuracy do not guarantee reliable confidence-based routing under specialist-domain difficulty shift. These findings challenge the premise of confidence-based adaptive RAG: in high-stakes biomedical settings, defaulting to always-retrieve is safer and more accurate than confidence-based routing when calibration on the target domain is unknown.",
+        "comment": "accepted by BIBM2027 Workshop"
+      },
+      "hash": "e554bc6a81e66a0e5d4d74b181f1e4acbef3e99d5ec10d52b480bd179b8db2c0",
       "status": "queued",
       "attempts": 0,
       "error": null,
