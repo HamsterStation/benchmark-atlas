@@ -3,7 +3,7 @@
   "id": "arxiv-2611.31301",
   "arxivId": "2611.31301",
   "title": "MOZAIC: An Audio-Video Deepfake Benchmark for Telling What Is Fake",
-  "acronym": null,
+  "acronym": "MOZAIC",
   "authors": [
     "Shaina Raza",
     "Mohamed Hafez",
@@ -16,14 +16,23 @@
   "versionUpdatedAt": "2026-11-25",
   "version": 2,
   "addedAt": "2026-11-26",
-  "updatedAt": "2026-11-26",
+  "updatedAt": "2026-11-27",
   "checkedAt": null,
-  "role": "uncertain",
-  "targets": [],
-  "scenarios": [],
-  "capabilities": [],
-  "summaryZh": null,
-  "taskFormat": null,
+  "role": "introduces_benchmark",
+  "targets": [
+    "llm",
+    "multimodal"
+  ],
+  "scenarios": [
+    "general"
+  ],
+  "capabilities": [
+    "multimodal",
+    "robustness",
+    "grounding"
+  ],
+  "summaryZh": "MOZAIC是一个面向音视频深度伪造检测的配对基准。每个源视频均构造视频与音频分别真实或伪造的四种组合，用于区分模态贡献，涵盖人脸替换、全帧视频扩散和语音转换。基准包含137745个片段及四项任务：音视频真实性、操纵类型、身份验证和解释。实验显示，多模态大模型在四分类真实性判断上仍较弱，检测器虽取得较高分数，但面对未见生成器时泛化能力下降。",
+  "taskFormat": "四分类音视频真实性、操纵类型识别、身份验证与检测解释；支持多模态模型评测及检测器训练。",
   "metrics": [],
   "officialCode": null,
   "officialData": null,
@@ -33,7 +42,7 @@
       "kind": "arxiv_abstract",
       "version": "v2",
       "checkedAt": null,
-      "scope": "arXiv API 元数据与摘要，自动获取，尚未人工核查。"
+      "scope": "arXiv API 元数据与摘要，自动获取，尚未人工核查。 材料来自 2026-11-27T10:54:38Z 完成的采集快照；本次整理使用已保存材料，不代表重新获取论文。"
     }
   ],
   "review": {
@@ -48,14 +57,14 @@
     "runs": []
   },
   "provenance": {
-    "method": "metadata_only",
-    "generatedAt": "2026-11-26T10:58:10Z",
+    "method": "model",
+    "generatedAt": "2026-11-27T10:55:40Z",
     "materialScope": "abstract",
     "materialVersion": "v2",
-    "materialHash": "f8fbeb6faa8ac05f2f835d761816fd0757a221f7029b13fc7383bdb29fc23844",
+    "materialHash": "9902f731edbe64da001c2dbb97ba4133c5a8ef2cdfdfe0ef8475abedde0c3f13",
     "materialTruncated": false,
-    "model": null
+    "model": "gpt-5.6-luna"
   },
-  "publication": "pending",
+  "publication": "listed",
   "isTest": false
 }
